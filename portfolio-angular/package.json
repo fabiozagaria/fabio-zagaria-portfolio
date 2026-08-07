@@ -1,14 +1,29 @@
 {
   "name": "portfolio-angular",
   "version": "0.0.0",
+  "description": "Portfolio professionale di Fabio Zagaria, Junior Backend Developer con visione full stack.",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:ci": "ng test --watch=false",
+    "format:check": "prettier --check ../README.md README.md \"src/**/*.{ts,html,css}\" angular.json package.json \"../.github/workflows/*.yml\""
   },
   "private": true,
+  "homepage": "https://fabio-zagaria-portfolio.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabiozagaria/fabio-zagaria-portfolio.git"
+  },
+  "author": "Fabio Zagaria",
+  "keywords": [
+    "portfolio",
+    "angular",
+    "typescript",
+    "junior-backend-developer"
+  ],
   "packageManager": "npm@10.9.2",
   "dependencies": {
     "@angular/common": "^21.2.0",
