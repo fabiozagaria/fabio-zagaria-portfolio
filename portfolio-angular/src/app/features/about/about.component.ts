@@ -1,21 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PROJECTS } from '../../data/projects.data';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  templateUrl: './about.component.html'
+  templateUrl: './about.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AboutComponent implements OnInit {
-  codingDays = 0;
-
-  ngOnInit() {
-    this.calculateCodingDays();
-  }
-
-  private calculateCodingDays() {
-    const codingStartDate = new Date(2025, 11, 1); // December is 11 (0-indexed)
-    const today = new Date();
-    const diff = today.getTime() - codingStartDate.getTime();
-    this.codingDays = Math.floor(diff / (1000 * 3600 * 24));
-  }
+export class AboutComponent {
+  readonly projectCount = PROJECTS.length;
 }

@@ -1,23 +1,9 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './contact.component.html'
+  templateUrl: './contact.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ContactComponent {
-  private readonly cvPath = '/assets/documents/CV.pdf';
-  private readonly cvFilename = 'CV.pdf';
-
-  downloadCv(event: MouseEvent): void {
-    event.preventDefault();
-
-    const downloadLink = document.createElement('a');
-
-    downloadLink.href = this.cvPath;
-    downloadLink.download = this.cvFilename;
-    downloadLink.click();
-  }
-}
+export class ContactComponent {}

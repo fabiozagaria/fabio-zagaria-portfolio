@@ -1,18 +1,80 @@
-<!-- Navbar -->
-<nav class="c-nav" id="navbar" [class.scrolled]="isScrolled">
+<a class="c-skip-link" href="#main-content">Vai al contenuto principale</a>
+
+<nav class="c-nav" id="navbar" aria-label="Navigazione principale">
   <div class="c-nav__container o-container">
-    <div class="c-nav__logo" routerLink="/">
-      <img src="assets/img/logo.png" alt="MetalCoder Logo" class="c-nav__logo-img">
+    <a class="c-nav__logo" routerLink="/" aria-label="Fabio Zagaria — home">
+      <img
+        src="assets/img/logo-nav.webp"
+        alt=""
+        aria-hidden="true"
+        width="160"
+        height="160"
+        class="c-nav__logo-img"
+      />
       <span class="c-nav__logo-text">Fabio Zagaria</span>
-    </div>
+    </a>
     <ul class="c-nav__menu" [class.c-nav__menu--active]="isMenuOpen" id="nav-menu">
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="c-nav__link" (click)="closeMenu()">Home</a></li>
-      <li><a routerLink="/about" routerLinkActive="active" class="c-nav__link" (click)="closeMenu()">About</a></li>
-      <li><a routerLink="/experience" routerLinkActive="active" class="c-nav__link" (click)="closeMenu()">Experience</a></li>
-      <li><a routerLink="/projects" routerLinkActive="active" class="c-nav__link" (click)="closeMenu()">Projects</a></li>
-      <li><a routerLink="/contact" routerLinkActive="active" class="c-nav__link" (click)="closeMenu()">Contact Me</a></li>
+      <li>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="c-nav__link"
+          (click)="closeMenu()"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/about"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="c-nav__link"
+          (click)="closeMenu()"
+          >Chi sono</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/experience"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="c-nav__link"
+          (click)="closeMenu()"
+          >Esperienza</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/projects"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="c-nav__link"
+          (click)="closeMenu()"
+          >Progetti</a
+        >
+      </li>
+      <li>
+        <a
+          routerLink="/contact"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="c-nav__link"
+          (click)="closeMenu()"
+          >Contatti</a
+        >
+      </li>
     </ul>
-    <button class="c-nav__toggle" [class.c-nav__toggle--active]="isMenuOpen" (click)="toggleMenu()" aria-label="Menu">
+    <button
+      class="c-nav__toggle"
+      [class.c-nav__toggle--active]="isMenuOpen"
+      (click)="toggleMenu()"
+      type="button"
+      aria-controls="nav-menu"
+      [attr.aria-expanded]="isMenuOpen"
+      [attr.aria-label]="isMenuOpen ? 'Chiudi il menu' : 'Apri il menu'"
+    >
       <span class="c-nav__toggle-line"></span>
       <span class="c-nav__toggle-line"></span>
       <span class="c-nav__toggle-line"></span>
@@ -20,7 +82,7 @@
   </div>
 </nav>
 
-<main>
+<main id="main-content" tabindex="-1">
   <router-outlet></router-outlet>
 </main>
 
@@ -28,7 +90,7 @@
   <div class="o-container">
     <div class="c-footer__content">
       <div class="c-footer__text">
-        <p>&copy; 2026 Fabio Zagaria (MetalCoder). Powered by Angular.</p>
+        <p>&copy; {{ currentYear }} Fabio Zagaria. Sviluppato con Angular.</p>
       </div>
     </div>
   </div>

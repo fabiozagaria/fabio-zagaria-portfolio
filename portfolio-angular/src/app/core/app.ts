@@ -1,35 +1,43 @@
-import { Component, HostListener } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, Component, HostListener, OnDestroy } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class App {
-  // Navigation
-  isScrolled = false;
+export class App implements OnDestroy {
   isMenuOpen = false;
+  readonly currentYear = new Date().getFullYear();
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    this.isScrolled = window.scrollY > 50;
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    this.closeMenu();
   }
 
-  toggleMenu() {
+  toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
+    this.updatePageScrollLock();
+  }
+
+  closeMenu(): void {
+    this.isMenuOpen = false;
+    this.updatePageScrollLock();
+  }
+
+  ngOnDestroy(): void {
+    document.body.style.removeProperty('overflow');
+  }
+
+  private updatePageScrollLock(): void {
     if (this.isMenuOpen) {
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+      return;
     }
-  }
 
-  closeMenu() {
-    this.isMenuOpen = false;
-    document.body.style.overflow = '';
+    document.body.style.removeProperty('overflow');
   }
 }
