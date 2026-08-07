@@ -22,13 +22,21 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets"
+                "input": "src/assets/documents",
+                "output": "/assets/documents"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/icons",
+                "output": "/assets/icons"
+              },
+              {
+                "glob": "*.webp",
+                "input": "src/assets/img",
+                "output": "/assets/img"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.css"]
           },
           "configurations": {
             "production": {

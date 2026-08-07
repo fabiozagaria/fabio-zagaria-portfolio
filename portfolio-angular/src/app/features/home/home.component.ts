@@ -1,26 +1,26 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './home.component.html'
+  imports: [RouterLink],
+  templateUrl: './home.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  skills = [
+  readonly skills = [
     {
-      category: 'In uso nei progetti',
-      items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Angular']
+      category: 'Backend',
+      items: ['Java', 'Spring Boot', 'Spring JDBC', 'MySQL', 'REST API'],
     },
     {
-      category: 'In apprendimento',
-      items: ['Java', 'Spring Boot', 'MySQL']
+      category: 'Frontend',
+      items: ['Angular', 'TypeScript', 'JavaScript', 'HTML', 'CSS'],
     },
     {
       category: 'Strumenti',
-      items: ['Git', 'GitHub', 'Vercel', 'VS Code']
-    }
-  ];
+      items: ['Git', 'GitHub', 'Vercel', 'VS Code'],
+    },
+  ] as const;
 }

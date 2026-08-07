@@ -1,57 +1,65 @@
-  <section id="home" class="c-hero o-section">
-    <div class="c-hero__bg">
-      <div class="c-hero__matrix"></div>
-      <div class="c-hero__grid"></div>
-    </div>
-    <div class="c-hero__content o-container">
-      <div class="c-hero__text">
-        <div class="c-hero__logo-wrapper">
-          <img src="assets/img/logo.png" alt="Fabio Zagaria Logo" class="c-hero__logo-img">
-        </div>
-        <p class="c-hero__subtitle" style="font-size: 2rem; margin-bottom: 0.5rem;">PROGRAMMAZIONE E INFORMATICA</p>
-        <p class="c-hero__description" style="max-width: 600px; text-align: left; line-height: 1.6;">
-          <strong>Junior Full Stack Developer in formazione.</strong><br>
-          Studio sviluppo web con focus su Angular, Java, Spring Boot e MySQL. Costruisco progetti pratici per trasformare metodo, studio e disciplina in competenze professionali.
-        </p>
-        <div class="c-hero__actions">
-          <a routerLink="/projects" class="c-btn c-btn--primary">
-            <i class="fas fa-code"></i> View Projects
-          </a>
-          <a routerLink="/contact" class="c-btn c-btn--secondary">
-            <i class="fas fa-envelope"></i> Contact Me
-          </a>
-        </div>
+<section id="home" class="c-hero o-section">
+  <div class="c-hero__bg">
+    <div class="c-hero__matrix"></div>
+    <div class="c-hero__grid"></div>
+  </div>
+  <div class="c-hero__content o-container">
+    <div class="c-hero__text">
+      <p class="c-hero__eyebrow">
+        <span aria-hidden="true"></span> Disponibile per opportunità junior
+      </p>
+      <h1 class="c-hero__title">
+        Junior Backend Developer
+        <span>con visione full stack.</span>
+      </h1>
+      <p class="c-hero__description">
+        Ho completato 650 ore di formazione Full Stack Web e sviluppo API REST con Java, Spring
+        Boot, Spring JDBC e MySQL. Uso Angular e TypeScript per costruire interfacce complete e
+        comprendere il prodotto dalla UI al database.
+      </p>
+      <div class="c-hero__actions">
+        <a routerLink="/projects" class="c-btn c-btn--primary">
+          <i class="fas fa-code" aria-hidden="true"></i> Vedi i progetti
+        </a>
+        <a
+          href="/assets/documents/CV.pdf"
+          download="CV_Fabio_Zagaria.pdf"
+          class="c-btn c-btn--secondary"
+        >
+          <i class="fas fa-download" aria-hidden="true"></i> Scarica il CV
+        </a>
       </div>
-      <div class="c-hero__visual">
-        <div class="c-terminal">
-          <div class="c-terminal__header">
-            <div class="c-terminal__controls">
-              <span class="c-terminal__control c-terminal__control--close"></span>
-              <span class="c-terminal__control c-terminal__control--minimize"></span>
-              <span class="c-terminal__control c-terminal__control--maximize"></span>
-            </div>
-            <div class="c-terminal__title">fabiozagaria1999@portfolio:~$</div>
+    </div>
+    <div class="c-hero__visual">
+      <div class="c-terminal" aria-label="Riepilogo dello stack tecnologico di Fabio Zagaria">
+        <div class="c-terminal__header">
+          <div class="c-terminal__controls" aria-hidden="true">
+            <span class="c-terminal__control c-terminal__control--close"></span>
+            <span class="c-terminal__control c-terminal__control--minimize"></span>
+            <span class="c-terminal__control c-terminal__control--maximize"></span>
           </div>
-          <div class="c-terminal__body">
-            <div class="c-terminal__line">
-              <span class="c-terminal__prompt">$</span>
-              <span class="c-terminal__command">ng serve --open</span>
-            </div>
-            <div class="c-terminal__output">
-              @for (skillGroup of skills; track skillGroup.category) {
-                <div class="c-terminal__skill" style="margin-bottom: 1rem; display: block;">
-                  <span style="color: var(--clr-cyber-green); font-weight: bold; display: block; margin-bottom: 0.3rem;">[{{ skillGroup.category }}]</span>
-                  <div style="padding-left: 1rem; color: var(--clr-white-subtle);">
-                    @for (item of skillGroup.items; track item) {
-                      <span style="display: inline-block; margin-right: 0.8rem;">> {{ item }}</span>
-                    }
-                  </div>
+          <div class="c-terminal__title">fabio&#64;portfolio:~$</div>
+        </div>
+        <div class="c-terminal__body">
+          <div class="c-terminal__line">
+            <span class="c-terminal__prompt">$</span>
+            <span class="c-terminal__command">whoami --stack</span>
+          </div>
+          <div class="c-terminal__output">
+            @for (skillGroup of skills; track skillGroup.category) {
+              <div class="c-terminal__skill-group">
+                <span class="c-terminal__skill-label">[{{ skillGroup.category }}]</span>
+                <div class="c-terminal__skill-items">
+                  @for (item of skillGroup.items; track item) {
+                    <span>&gt; {{ item }}</span>
+                  }
                 </div>
-              }
-            </div>
-            <div class="c-terminal__cursor">_</div>
+              </div>
+            }
           </div>
+          <div class="c-terminal__cursor">_</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

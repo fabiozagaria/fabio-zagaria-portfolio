@@ -7,7 +7,7 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-      providers: [provideRouter(routes)]
+      providers: [provideRouter(routes)],
     }).compileComponents();
   });
 
@@ -22,5 +22,18 @@ describe('App', () => {
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.c-nav__logo-text')?.textContent).toContain('Fabio Zagaria');
+  });
+
+  it('should expose the mobile menu state to assistive technologies', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    const menuButton = fixture.nativeElement.querySelector('.c-nav__toggle') as HTMLButtonElement;
+
+    expect(menuButton.getAttribute('aria-expanded')).toBe('false');
+
+    menuButton.click();
+    fixture.detectChanges();
+
+    expect(menuButton.getAttribute('aria-expanded')).toBe('true');
   });
 });

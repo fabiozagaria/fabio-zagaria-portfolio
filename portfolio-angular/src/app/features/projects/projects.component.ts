@@ -1,71 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PortfolioProject, PROJECTS } from '../../data/projects.data';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  templateUrl: './projects.component.html'
+  templateUrl: './projects.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent {
-  projects = [
-    {
-      title: 'Avvocà - Studio Legale',
-      icon: 'fas fa-globe',
-      description: 'Sito Web REALE per un avvocato esperto.',
-      problem: 'Creare una presenza online professionale per uno studio legale.',
-      solution: 'Sviluppo di un sito statico performante e accessibile.',
-      technologies: ['HTML', 'CSS', 'JS'],
-      learning: 'Gestione del cliente, UI/UX per professionisti, responsive design.',
-      status: 'Completato',
-      liveLink: 'https://www.avvoca.net/',
-      githubLink: ''
-    },
-    {
-      title: 'Fakeflix',
-      icon: 'fas fa-film',
-      description: 'Clone dell\'interfaccia di Netflix sviluppato come progetto pratico. Un esercizio completo di responsive design e DOM manipulation.',
-      problem: 'Replicare una UI complessa senza framework.',
-      solution: 'Utilizzo avanzato di Flexbox, Grid e JavaScript puro.',
-      technologies: ['HTML', 'CSS', 'JS'],
-      learning: 'Gestione dello stato in Vanilla JS, layout complessi, organizzazione del CSS.',
-      status: 'Completato',
-      liveLink: 'https://fakeflix-lemon-six.vercel.app/',
-      githubLink: 'https://github.com/JavaMetalCoder/Fakeflix'
-    },
-    {
-      title: 'LabForWeb',
-      icon: 'fas fa-code',
-      description: 'Repository contenente gli esercizi e i progetti realizzati durante il percorso di formazione LabForWeb.',
-      problem: 'Raccogliere e tracciare i progressi formativi.',
-      solution: 'Organizzazione in cartelle tematiche per modulo.',
-      technologies: ['HTML', 'CSS', 'JS', 'Angular', 'Bootstrap', 'MySQL'],
-      learning: 'Costanza, versioning con Git, evoluzione del codice.',
-      status: 'In sviluppo',
-      liveLink: '',
-      githubLink: 'https://github.com/JavaMetalCoder/LABFORWEB'
-    },
-    {
-      title: 'LabTV',
-      icon: 'fas fa-tv',
-      description: 'Progetto LabForWeb dedicato alla creazione di una piattaforma web per contenuti video e intrattenimento.',
-      problem: 'Realizzare un\'interfaccia chiara e coinvolgente per presentare contenuti multimediali.',
-      solution: 'Sviluppo di una web app organizzata per sezioni, con attenzione alla navigazione e alla resa responsive.',
-      technologies: ['Angular', 'Bootstrap'],
-      learning: 'Strutturazione di una UI multimediale, gestione dei contenuti e consolidamento delle basi frontend.',
-      status: 'In sviluppo',
-      liveLink: 'https://lab-tv.vercel.app/',
-      githubLink: 'https://github.com/fabiozagaria/LabTV'
-    },
-    {
-      title: 'Gestionale Spese',
-      icon: 'fas fa-wallet',
-      description: 'Applicazione per gestire e monitorare le spese in modo semplice e ordinato.',
-      problem: 'Tenere sotto controllo entrate, uscite e movimenti economici senza perdere il quadro generale.',
-      solution: 'Realizzazione di un gestionale dedicato alla registrazione e consultazione delle spese.',
-      technologies: ['Angular', 'Bootstrap', 'Spring Boot', 'MySQL'],
-      learning: 'Organizzazione dei dati, gestione delle operazioni CRUD e logica applicativa orientata all\'utente.',
-      status: 'In sviluppo',
-      liveLink: 'https://gestionale-spese.vercel.app/',
-      githubLink: 'https://github.com/fabiozagaria/gestionale-spese'
-    }
-  ];
+  readonly projects: readonly PortfolioProject[] = PROJECTS;
 }

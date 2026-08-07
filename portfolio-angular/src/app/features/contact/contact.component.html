@@ -1,58 +1,96 @@
-<section id="contact" class="c-contact o-section scroll-reveal" [class.revealed]="true">
+<section id="contact" class="c-contact o-section">
   <div class="c-contact__container o-container">
-    <h2 class="c-section-title">
-      <span class="c-section-title__number">04</span>CONTATTAMI
-    </h2>
+    <h1 class="c-section-title"><span class="c-section-title__number">04</span>CONTATTI</h1>
 
     <div class="c-contact__content c-contact__content--single">
       <div class="c-contact__info">
-        <h3>Parliamone</h3>
-        <p>Sono disponibile per opportunita junior, stage, collaborazioni e progetti formativi.</p>
+        <h2>Parliamo di una collaborazione</h2>
+        <p>
+          Sono disponibile per ruoli Junior Backend o Full Stack, a Roma oppure in modalità ibrida e
+          da remoto in Italia.
+        </p>
+        <a
+          class="c-btn c-btn--primary c-contact__primary-action"
+          href="mailto:fabiozagaria@proton.me"
+        >
+          <i class="fas fa-paper-plane" aria-hidden="true"></i> Scrivimi
+        </a>
 
         <div class="c-contact__details">
           <div class="c-contact__item">
-            <i class="fas fa-envelope c-contact__item-icon"></i>
+            <i class="fas fa-envelope c-contact__item-icon" aria-hidden="true"></i>
             <div class="c-contact__links">
-              <a href="mailto:zagariafabio1999@gmail.com">zagariafabio1999@gmail.com</a>
               <a href="mailto:fabiozagaria@proton.me">fabiozagaria@proton.me</a>
             </div>
           </div>
 
           <div class="c-contact__item">
-            <i class="fab fa-github c-contact__item-icon"></i>
-            <a href="https://github.com/fabiozagaria" target="_blank" rel="noopener noreferrer">github.com/fabiozagaria</a>
+            <i class="fab fa-github c-contact__item-icon" aria-hidden="true"></i>
+            <a href="https://github.com/fabiozagaria" target="_blank" rel="noopener noreferrer"
+              >github.com/fabiozagaria</a
+            >
           </div>
 
           <div class="c-contact__item">
-            <i class="fab fa-linkedin c-contact__item-icon"></i>
-            <a href="https://linkedin.com/in/fabiozagaria" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-
-          <div class="c-contact__item">
-            <i class="fas fa-globe c-contact__item-icon"></i>
-            <a href="https://fabio-zagaria-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">fabio-zagaria-portfolio.vercel.app</a>
-          </div>
-
-          <div class="c-contact__item">
-            <i class="fab fa-instagram c-contact__item-icon"></i>
-            <a href="https://www.instagram.com/zagariafabio.dev" target="_blank" rel="noopener noreferrer">Instagram: zagariafabio.dev</a>
-          </div>
-
-          <div class="c-contact__item">
-            <img src="assets/img/x-logo.svg" alt="X" class="c-contact__item-img">
-            <a href="https://x.com/fabiozagariadev" target="_blank" rel="noopener noreferrer">X: fabiozagariadev</a>
+            <i class="fab fa-linkedin c-contact__item-icon" aria-hidden="true"></i>
+            <a href="https://linkedin.com/in/fabiozagaria" target="_blank" rel="noopener noreferrer"
+              >LinkedIn</a
+            >
           </div>
         </div>
 
-        <div class="c-contact__cv-actions" aria-label="Azioni curriculum">
-          <a class="c-btn c-btn--primary" href="/assets/documents/CV.pdf" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-eye"></i>
-            Guarda CV
-          </a>
-          <a class="c-btn c-btn--secondary" href="/assets/documents/CV.pdf" download="CV.pdf" (click)="downloadCv($event)">
-            <i class="fas fa-download"></i>
-            Scarica CV
-          </a>
+        <div class="c-contact__documents" aria-label="Documenti professionali">
+          <h3>Documenti professionali</h3>
+
+          <div class="c-contact__documents-grid">
+            <article class="c-contact__document">
+              <p class="c-contact__document-title">Curriculum vitae</p>
+              <div class="c-contact__document-actions" aria-label="Azioni curriculum">
+                <a
+                  class="c-btn c-btn--primary"
+                  href="/assets/documents/CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fas fa-eye" aria-hidden="true"></i>
+                  Guarda CV
+                </a>
+                <a
+                  class="c-btn c-btn--secondary"
+                  href="/assets/documents/CV.pdf"
+                  download="CV_Fabio_Zagaria.pdf"
+                >
+                  <i class="fas fa-download" aria-hidden="true"></i>
+                  Scarica CV
+                </a>
+              </div>
+            </article>
+
+            <article class="c-contact__document">
+              <p class="c-contact__document-title">
+                Attestato Full Stack Developer - LabForWeb, 650 ore
+              </p>
+              <div class="c-contact__document-actions" aria-label="Azioni attestato LabForWeb">
+                <a
+                  class="c-btn c-btn--primary"
+                  href="/assets/documents/Attestato_LabForWeb_Fabio_Zagaria.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fas fa-certificate" aria-hidden="true"></i>
+                  Guarda attestato
+                </a>
+                <a
+                  class="c-btn c-btn--secondary"
+                  href="/assets/documents/Attestato_LabForWeb_Fabio_Zagaria.pdf"
+                  download="Attestato_LabForWeb_Fabio_Zagaria.pdf"
+                >
+                  <i class="fas fa-download" aria-hidden="true"></i>
+                  Scarica attestato
+                </a>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </div>

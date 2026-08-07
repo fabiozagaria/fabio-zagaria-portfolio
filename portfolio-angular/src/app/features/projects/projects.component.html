@@ -1,41 +1,70 @@
-  <section id="projects" class="c-projects o-section scroll-reveal" [class.revealed]="true">
-    <div class="c-projects__container o-container">
-      <h2 class="c-section-title">
-        <span class="c-section-title__number">03</span>PROGETTI
-      </h2>
-      <div class="c-projects__grid">
-        @for (project of projects; track project.title) {
-          <div class="c-card" style="display: flex; flex-direction: column;">
-            <div class="c-card__image">
-              <span class="c-card__placeholder"><i [class]="project.icon"></i></span>
+<section id="projects" class="c-projects o-section">
+  <div class="c-projects__container o-container">
+    <h1 class="c-section-title"><span class="c-section-title__number">03</span>PROGETTI</h1>
+    <p class="c-section-subtitle">
+      Applicazioni reali e progetti formativi, con il lavoro backend più recente in evidenza.
+    </p>
+
+    <div class="c-projects__grid">
+      @for (project of projects; track project.id) {
+        <article class="c-card">
+          <div class="c-card__image" aria-hidden="true">
+            <span class="c-card__placeholder"><i [class]="project.icon"></i></span>
+          </div>
+
+          <div class="c-card__content">
+            <div class="c-card__heading">
+              <h2 class="c-card__title">{{ project.title }}</h2>
+              <span class="c-card__status" [attr.data-status]="project.status">
+                {{ project.status }}
+              </span>
             </div>
-            <div class="c-card__content" style="flex: 1; display: flex; flex-direction: column;">
-              <h3 class="c-card__title">{{ project.title }} <span class="c-card__status">{{ project.status }}</span></h3>
-              <p class="c-card__description">{{ project.description }}</p>
-              
-              <div class="c-card__details">
-                <p style="margin-bottom: 0.5rem;"><strong>Problema:</strong> {{ project.problem }}</p>
-                <p style="margin-bottom: 0.5rem;"><strong>Soluzione:</strong> {{ project.solution }}</p>
-                <p><strong>Apprendimento:</strong> {{ project.learning }}</p>
-              </div>
 
-              <div class="c-card__tags" style="margin-top: auto; padding-bottom: 1rem;">
-                @for (tech of project.technologies; track tech) {
-                  <span class="c-card__tag">{{ tech }}</span>
-                }
-              </div>
+            <p class="c-card__description">{{ project.description }}</p>
 
+            <ul class="c-card__highlights" aria-label="Caratteristiche principali">
+              @for (highlight of project.highlights; track highlight) {
+                <li>{{ highlight }}</li>
+              }
+            </ul>
+
+            <div class="c-card__tags" aria-label="Tecnologie utilizzate">
+              @for (tech of project.technologies; track tech) {
+                <span class="c-card__tag">{{ tech }}</span>
+              }
+            </div>
+
+            @if (project.liveLink || project.githubLink) {
               <div class="c-card__actions">
                 @if (project.liveLink) {
-                  <a [href]="project.liveLink" target="_blank" rel="noopener noreferrer" class="c-card__action"><i class="fas fa-external-link-alt"></i> Live</a>
+                  <a
+                    [href]="project.liveLink"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="c-card__action"
+                    [attr.aria-label]="'Apri la demo di ' + project.title + ' in una nuova scheda'"
+                  >
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo
+                  </a>
                 }
                 @if (project.githubLink) {
-                  <a [href]="project.githubLink" target="_blank" rel="noopener noreferrer" class="c-card__action"><i class="fab fa-github"></i> GitHub</a>
+                  <a
+                    [href]="project.githubLink"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="c-card__action"
+                    [attr.aria-label]="
+                      'Apri il repository GitHub di ' + project.title + ' in una nuova scheda'
+                    "
+                  >
+                    <i class="fab fa-github" aria-hidden="true"></i> Codice
+                  </a>
                 }
               </div>
-            </div>
+            }
           </div>
-        }
-      </div>
+        </article>
+      }
     </div>
-  </section>
+  </div>
+</section>

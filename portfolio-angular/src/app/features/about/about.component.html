@@ -1,69 +1,69 @@
-<section id="about" class="c-about o-section scroll-reveal" [class.revealed]="true">
+<section id="about" class="c-about o-section">
   <div class="c-about__container o-container">
-    <h2 class="c-section-title">
-      <span class="c-section-title__number">01</span>CHI SONO
-    </h2>
+    <h1 class="c-section-title"><span class="c-section-title__number">01</span>CHI SONO</h1>
 
     <div class="c-about__content">
       <div class="c-about__text">
         <div class="c-about__text-block">
-          <h3>We! Salve! Mi presento:</h3>
+          <h2>Junior Backend Developer, con visione full stack</h2>
           <p>
-            Sono Fabio Zagaria, futuro Full Stack Developer con una forte attenzione alla
-            qualità del codice, all'architettura software e alla costruzione di
-            applicazioni moderne, scalabili e manutenibili.
+            Sono Fabio Zagaria. Ho completato un percorso Full Stack Web di 650 ore e sto
+            consolidando il mio profilo backend con Java, Spring Boot, API REST e MySQL.
           </p>
           <p>
-            Dopo un percorso lavorativo in ambito ospedaliero, dove ho sviluppato
-            responsabilità, precisione e capacità di lavorare sotto pressione, ho deciso
-            di investire seriamente nella programmazione e nella mia crescita
-            professionale nel settore IT.
+            Nel lavoro in ambito ospedaliero ho sviluppato precisione, affidabilità e capacità di
+            gestire responsabilità e ritmi intensi: qualità che porto anche nello sviluppo software.
           </p>
           <p>
-            Sto approfondendo tecnologie come JavaScript, TypeScript, Angular, Java,
-            Spring Boot e MySQL, con l'obiettivo di costruire applicazioni complete,
-            dalla parte front-end fino alla logica back-end e alla persistenza dei dati.
-          </p>
-          <p>
-            Il mio modo di studiare e sviluppare non si limita al risultato immediato:
-            mi interessa comprendere il perché delle scelte tecniche, progettare codice
-            leggibile, separare correttamente le responsabilità e applicare principi di
-            clean code, sicurezza e scalabilità.
-          </p>
-          <p>
-            Sono particolarmente orientato al mondo back-end e all'architettura
-            applicativa, ma considero la conoscenza del front-end fondamentale per avere
-            una visione completa del prodotto software. Ogni progetto che realizzo è per
-            me un'occasione per consolidare competenze, sperimentare soluzioni migliori
-            e avvicinarmi sempre di più al mio obiettivo professionale: diventare uno
-            sviluppatore competente, affidabile e capace di creare valore reale
-            attraverso il codice.
+            Cerco un'opportunità junior in cui contribuire a progetti concreti, ricevere feedback da
+            sviluppatori esperti e crescere scrivendo codice leggibile e ben organizzato.
           </p>
         </div>
 
         <div class="c-about__text-block">
-          <h4>Stack Tecnologico</h4>
-          <p><strong>HTML, CSS, JavaScript, TypeScript, Angular, Java, Spring Boot, MySQL</strong></p>
+          <h2>Stack tecnologico</h2>
+          <dl class="c-about__stack">
+            <div>
+              <dt>Backend</dt>
+              <dd>Java, Spring Boot, Spring JDBC, REST API, MySQL</dd>
+            </div>
+            <div>
+              <dt>Frontend</dt>
+              <dd>Angular, TypeScript, JavaScript, HTML, CSS</dd>
+            </div>
+            <div>
+              <dt>Strumenti</dt>
+              <dd>Git, GitHub, VS Code, Vercel</dd>
+            </div>
+          </dl>
         </div>
       </div>
 
       <div class="c-about__aside">
         <figure class="c-about__portrait">
-          <img src="assets/img/io.png" alt="Ritratto di Fabio Zagaria" class="c-about__portrait-img">
+          <img
+            src="assets/img/io-640.webp"
+            alt="Ritratto di Fabio Zagaria"
+            class="c-about__portrait-img"
+            width="640"
+            height="640"
+            decoding="async"
+            fetchpriority="high"
+          />
         </figure>
 
         <div class="c-about__stats">
           <div class="c-about__stat-item">
-            <span class="c-about__stat-number">4</span>
+            <span class="c-about__stat-number">{{ projectCount }}</span>
             <span class="c-about__stat-label">Progetti</span>
           </div>
           <div class="c-about__stat-item">
-            <span class="c-about__stat-number">8</span>
-            <span class="c-about__stat-label">Tecnologie</span>
+            <span class="c-about__stat-number">650</span>
+            <span class="c-about__stat-label">Ore di formazione</span>
           </div>
           <div class="c-about__stat-item">
-            <span class="c-about__stat-number">{{ codingDays }}</span>
-            <span class="c-about__stat-label">Giorni di Studio</span>
+            <span class="c-about__stat-number">Backend</span>
+            <span class="c-about__stat-label">Focus professionale</span>
           </div>
         </div>
       </div>
