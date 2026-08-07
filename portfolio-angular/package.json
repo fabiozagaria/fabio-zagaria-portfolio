@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:ci": "ng test --watch=false",
-    "format:check": "prettier --check ../README.md README.md \"src/**/*.{ts,html,css}\" angular.json package.json \"../.github/workflows/*.yml\""
+    "format:check": "prettier --check ../README.md README.md \"src/**/*.{ts,html,css}\" angular.json package.json vercel.json \"../.github/workflows/*.yml\""
   },
   "private": true,
   "homepage": "https://fabio-zagaria-portfolio.vercel.app/",
