@@ -84,7 +84,6 @@ export const PROJECTS = [
     ],
     technologies: ['HTML', 'CSS', 'JavaScript'],
     status: 'Completato',
-    liveLink: 'https://fakeflix-lemon-six.vercel.app/',
     githubLink: 'https://github.com/JavaMetalCoder/Fakeflix',
   },
   {
