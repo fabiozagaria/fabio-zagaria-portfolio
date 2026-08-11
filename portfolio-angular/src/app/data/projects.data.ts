@@ -1,4 +1,9 @@
-export type ProjectStatus = 'Completato' | 'In corso' | 'In sviluppo';
+export type ProjectStatus = 'Completato' | 'In corso' | 'In sviluppo' | 'Sospeso';
+
+export interface PortfolioRepository {
+  readonly label: string;
+  readonly url: string;
+}
 
 export interface PortfolioProject {
   readonly id: string;
@@ -9,7 +14,7 @@ export interface PortfolioProject {
   readonly technologies: readonly string[];
   readonly status: ProjectStatus;
   readonly liveLink?: string;
-  readonly githubLink?: string;
+  readonly repositories?: readonly PortfolioRepository[];
 }
 
 export const PROJECTS = [
@@ -26,7 +31,12 @@ export const PROJECTS = [
     ],
     technologies: ['Java', 'Spring Boot', 'Spring JDBC', 'MySQL', 'REST API'],
     status: 'Completato',
-    githubLink: 'https://github.com/fabiozagaria/student-management-api',
+    repositories: [
+      {
+        label: 'Codice API',
+        url: 'https://github.com/fabiozagaria/student-management-api',
+      },
+    ],
   },
   {
     id: 'gestionale-spese',
@@ -42,23 +52,37 @@ export const PROJECTS = [
     technologies: ['Angular', 'TypeScript', 'Signals', 'Reactive Forms', 'REST API'],
     status: 'In sviluppo',
     liveLink: 'https://gestionale-spese.vercel.app/',
-    githubLink: 'https://github.com/fabiozagaria/expense-tracker-angular',
+    repositories: [
+      {
+        label: 'Frontend',
+        url: 'https://github.com/fabiozagaria/expense-tracker-angular',
+      },
+      {
+        label: 'Backend',
+        url: 'https://github.com/fabiozagaria/expense-tracker-api',
+      },
+    ],
   },
   {
     id: 'lab-tv',
     title: 'LabTV',
     icon: 'fas fa-tv',
     description:
-      'Catalogo cinematografico Angular che integra TMDB per ricerca, dettagli, cast e titoli simili.',
+      'Catalogo cinematografico Angular temporaneamente sospeso, in attesa del completamento del Gestionale Spese.',
     highlights: [
       'Integrazione di una REST API esterna con HttpClient e RxJS',
       'Routing dinamico e modelli TypeScript tipizzati',
       'Gestione degli stati di caricamento ed errore',
     ],
     technologies: ['Angular', 'TypeScript', 'RxJS', 'Signals', 'TMDB API'],
-    status: 'Completato',
+    status: 'Sospeso',
     liveLink: 'https://lab-tv.vercel.app/',
-    githubLink: 'https://github.com/fabiozagaria/labtv-angular',
+    repositories: [
+      {
+        label: 'Codice',
+        url: 'https://github.com/fabiozagaria/labtv-angular',
+      },
+    ],
   },
   {
     id: 'fakeflix',
@@ -74,6 +98,11 @@ export const PROJECTS = [
     technologies: ['HTML', 'CSS', 'JavaScript'],
     status: 'Completato',
     liveLink: 'https://fakeflix-lemon-six.vercel.app/',
-    githubLink: 'https://github.com/fabiozagaria/fakeflix-vanilla-js',
+    repositories: [
+      {
+        label: 'Codice',
+        url: 'https://github.com/fabiozagaria/fakeflix-vanilla-js',
+      },
+    ],
   },
 ] as const satisfies readonly PortfolioProject[];
