@@ -1,15 +1,23 @@
 import { PROJECTS } from './projects.data';
 
 describe('portfolio projects', () => {
-  it('prioritizes the current backend project', () => {
+  it('prioritizes the completed backend project', () => {
     expect(PROJECTS[0].title).toBe('Backend Studenti');
-    expect(PROJECTS[0].status).toBe('In corso');
+    expect(PROJECTS[0].status).toBe('Completato');
+    expect(PROJECTS[0].githubLink).toContain('student-management-api');
   });
 
-  it('marks the LabForWeb course project as completed on 7 August 2026', () => {
-    const labForWeb = PROJECTS.find((project) => project.id === 'labforweb');
+  it('shows only the strongest standalone projects', () => {
+    expect(PROJECTS.map((project) => project.id)).toEqual([
+      'backend-studenti',
+      'gestionale-spese',
+      'lab-tv',
+      'fakeflix',
+    ]);
+  });
 
-    expect(labForWeb?.status).toBe('Completato');
-    expect(labForWeb?.description).toContain('7 agosto 2026');
+  it('does not include the Avvocà site or the coursework archive', () => {
+    expect(PROJECTS.some((project) => project.id === 'avvoca')).toBe(false);
+    expect(PROJECTS.some((project) => project.id === 'labforweb')).toBe(false);
   });
 });
