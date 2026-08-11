@@ -34,7 +34,7 @@
               }
             </div>
 
-            @if (project.liveLink || project.githubLink) {
+            @if (project.liveLink || project.repositories?.length) {
               <div class="c-card__actions">
                 @if (project.liveLink) {
                   <a
@@ -47,17 +47,21 @@
                     <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo
                   </a>
                 }
-                @if (project.githubLink) {
+                @for (repository of project.repositories ?? []; track repository.url) {
                   <a
-                    [href]="project.githubLink"
+                    [href]="repository.url"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="c-card__action"
                     [attr.aria-label]="
-                      'Apri il repository GitHub di ' + project.title + ' in una nuova scheda'
+                      'Apri ' +
+                      repository.label +
+                      ' di ' +
+                      project.title +
+                      ' su GitHub in una nuova scheda'
                     "
                   >
-                    <i class="fab fa-github" aria-hidden="true"></i> Codice
+                    <i class="fab fa-github" aria-hidden="true"></i> {{ repository.label }}
                   </a>
                 }
               </div>
