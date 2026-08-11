@@ -43,12 +43,12 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 
 ## Progetti in evidenza
 
-| Progetto                                                                         | Stato       | Cosa dimostra                                                    |
-| -------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------- |
-| [Student Management API](https://github.com/fabiozagaria/student-management-api) | Completato  | Spring Boot, JDBC Template, MySQL, REST e architettura a layer   |
-| [LabTV](https://github.com/fabiozagaria/labtv-angular)                           | Completato  | Angular, RxJS, Signals, routing dinamico e integrazione TMDB     |
-| [Expense Tracker](https://github.com/fabiozagaria/expense-tracker-angular)       | In sviluppo | Form reattivi, stato con Signals e integrazione frontend-backend |
-| [Fakeflix](https://github.com/fabiozagaria/fakeflix-vanilla-js)                  | Completato  | JavaScript vanilla, DOM, stato e interfaccia responsive          |
+| Progetto                                                                                                                                              | Stato       | Cosa dimostra                                                  |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------- |
+| [Student Management API](https://github.com/fabiozagaria/student-management-api)                                                                      | Completato  | Spring Boot, JDBC Template, MySQL, REST e architettura a layer |
+| [LabTV](https://github.com/fabiozagaria/labtv-angular)                                                                                                | Sospeso     | Riprenderà dopo il completamento del Gestionale Spese          |
+| Expense Tracker: [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo | Angular Signals, Spring Boot, JPA, MySQL e integrazione REST   |
+| [Fakeflix](https://github.com/fabiozagaria/fakeflix-vanilla-js)                                                                                       | Completato  | JavaScript vanilla, DOM, stato e interfaccia responsive        |
 
 ## Cosa dimostra questa repository
 
