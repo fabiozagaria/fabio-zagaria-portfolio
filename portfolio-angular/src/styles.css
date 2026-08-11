@@ -945,6 +945,24 @@ main {
   color: var(--clr-cyber-green);
 }
 
+.c-projects__github-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+  text-align: center;
+}
+
+.c-projects__github-cta p {
+  max-width: 42rem;
+  color: var(--clr-white-subtle);
+}
+
+.c-projects__github-link {
+  gap: var(--space-xs);
+}
+
 /* Contact */
 .c-contact__content {
   display: grid;
@@ -1254,6 +1272,10 @@ main {
 
   .c-card__content {
     padding: var(--space-md);
+  }
+
+  .c-projects__github-link {
+    width: 100%;
   }
 
   .c-about__text-block {
