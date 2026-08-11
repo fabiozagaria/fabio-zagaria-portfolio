@@ -873,6 +873,12 @@ main {
   border-color: rgba(154, 91, 0, 0.22);
 }
 
+.c-card__status[data-status='Sospeso'] {
+  color: #6b7280;
+  background: rgba(107, 114, 128, 0.12);
+  border-color: rgba(107, 114, 128, 0.24);
+}
+
 .c-card__description {
   color: var(--clr-white-subtle);
   margin-bottom: var(--space-lg);
