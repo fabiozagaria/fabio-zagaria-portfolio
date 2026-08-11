@@ -15,9 +15,4 @@ describe('portfolio projects', () => {
       'fakeflix',
     ]);
   });
-
-  it('does not include the Avvocà site or the coursework archive', () => {
-    expect(PROJECTS.some((project) => project.id === 'avvoca')).toBe(false);
-    expect(PROJECTS.some((project) => project.id === 'labforweb')).toBe(false);
-  });
 });
