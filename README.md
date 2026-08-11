@@ -32,23 +32,23 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 
 ## Profilo in 30 secondi
 
-|                               |                                                                                         |
-| ----------------------------- | --------------------------------------------------------------------------------------- |
-| **Ruoli di interesse**        | Junior Backend Developer · Junior Full Stack Developer                                  |
-| **Focus backend**             | Java · Spring Boot · Spring JDBC · REST API · MySQL                                     |
-| **Competenze frontend**       | Angular · TypeScript · JavaScript · HTML · CSS                                          |
-| **Formazione recente**        | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026                 |
-| **Progetto backend principale** | Student Management API: CRUD completo, validazione, transazioni e persistenza MySQL    |
-| **Disponibilità**             | Roma · modalità ibrida · remoto in Italia                                               |
+|                                 |                                                                                     |
+| ------------------------------- | ----------------------------------------------------------------------------------- |
+| **Ruoli di interesse**          | Junior Backend Developer · Junior Full Stack Developer                              |
+| **Focus backend**               | Java · Spring Boot · Spring JDBC · REST API · MySQL                                 |
+| **Competenze frontend**         | Angular · TypeScript · JavaScript · HTML · CSS                                      |
+| **Formazione recente**          | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026             |
+| **Progetto backend principale** | Student Management API: CRUD completo, validazione, transazioni e persistenza MySQL |
+| **Disponibilità**               | Roma · modalità ibrida · remoto in Italia                                           |
 
 ## Progetti in evidenza
 
-| Progetto                                                                    | Stato          | Cosa dimostra                                                   |
-| --------------------------------------------------------------------------- | -------------- | ---------------------------------------------------------------- |
-| [Student Management API](https://github.com/fabiozagaria/student-management-api) | Completato     | Spring Boot, JDBC Template, MySQL, REST e architettura a layer   |
-| [LabTV](https://github.com/fabiozagaria/labtv-angular)                       | Completato     | Angular, RxJS, Signals, routing dinamico e integrazione TMDB      |
-| [Expense Tracker](https://github.com/fabiozagaria/expense-tracker-angular)   | In sviluppo    | Form reattivi, stato con Signals e integrazione frontend-backend  |
-| [Fakeflix](https://github.com/fabiozagaria/fakeflix-vanilla-js)              | Completato     | JavaScript vanilla, DOM, stato e interfaccia responsive           |
+| Progetto                                                                         | Stato       | Cosa dimostra                                                    |
+| -------------------------------------------------------------------------------- | ----------- | ---------------------------------------------------------------- |
+| [Student Management API](https://github.com/fabiozagaria/student-management-api) | Completato  | Spring Boot, JDBC Template, MySQL, REST e architettura a layer   |
+| [LabTV](https://github.com/fabiozagaria/labtv-angular)                           | Completato  | Angular, RxJS, Signals, routing dinamico e integrazione TMDB     |
+| [Expense Tracker](https://github.com/fabiozagaria/expense-tracker-angular)       | In sviluppo | Form reattivi, stato con Signals e integrazione frontend-backend |
+| [Fakeflix](https://github.com/fabiozagaria/fakeflix-vanilla-js)                  | Completato  | JavaScript vanilla, DOM, stato e interfaccia responsive          |
 
 ## Cosa dimostra questa repository
 
