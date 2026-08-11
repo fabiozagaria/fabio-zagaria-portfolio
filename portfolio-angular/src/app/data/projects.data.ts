@@ -1,4 +1,9 @@
-export type ProjectStatus = 'Completato' | 'In corso' | 'In sviluppo';
+export type ProjectStatus = 'Completato' | 'In corso' | 'In sviluppo' | 'Sospeso';
+
+export interface PortfolioRepository {
+  readonly label: string;
+  readonly url: string;
+}
 
 export interface PortfolioProject {
   readonly id: string;
@@ -9,7 +14,7 @@ export interface PortfolioProject {
   readonly technologies: readonly string[];
   readonly status: ProjectStatus;
   readonly liveLink?: string;
-  readonly githubLink?: string;
+  readonly repositories?: readonly PortfolioRepository[];
 }
 
 export const PROJECTS = [
@@ -18,87 +23,86 @@ export const PROJECTS = [
     title: 'Backend Studenti',
     icon: 'fas fa-server',
     description:
-      'API REST per la gestione persistente degli studenti, sviluppata con Java e Spring Boot.',
+      'API REST completa per la gestione persistente degli studenti, sviluppata con Java e Spring Boot.',
     highlights: [
-      'Operazioni CRUD e risposte HTTP coerenti',
-      'Architettura controller, service e repository',
+      'CRUD completo e risposte HTTP coerenti',
+      'Architettura a layer con controller, service e repository',
       'Validazione, transazioni e gestione centralizzata degli errori',
     ],
     technologies: ['Java', 'Spring Boot', 'Spring JDBC', 'MySQL', 'REST API'],
-    status: 'In corso',
+    status: 'Completato',
+    repositories: [
+      {
+        label: 'Codice API',
+        url: 'https://github.com/fabiozagaria/student-management-api',
+      },
+    ],
   },
   {
     id: 'gestionale-spese',
     title: 'Gestionale Spese',
     icon: 'fas fa-wallet',
-    description: 'Applicazione web per registrare e consultare entrate e uscite.',
+    description:
+      'Applicazione full stack in evoluzione per registrare e gestire entrate e uscite personali.',
     highlights: [
-      'Form reattivi e validazione dei dati',
-      'Filtri e riepilogo dei movimenti',
-      'Interfaccia responsive orientata alla semplicità d’uso',
+      'Stato reattivo con Angular Signals',
+      'Form reattivi, validazione e client HTTP dedicato',
+      'Integrazione CRUD con backend Spring Boot',
     ],
-    technologies: ['Angular', 'TypeScript', 'Reactive Forms', 'Bootstrap'],
+    technologies: ['Angular', 'TypeScript', 'Signals', 'Reactive Forms', 'REST API'],
     status: 'In sviluppo',
     liveLink: 'https://gestionale-spese.vercel.app/',
-    githubLink: 'https://github.com/fabiozagaria/gestionale-spese',
-  },
-  {
-    id: 'avvoca',
-    title: 'Avvocà — Studio legale',
-    icon: 'fas fa-scale-balanced',
-    description: 'Sito web realizzato per un professionista del settore legale.',
-    highlights: [
-      'Analisi delle esigenze di un cliente reale',
-      'Navigazione chiara e design responsive',
-      'Ottimizzazione della presenza online dello studio',
+    repositories: [
+      {
+        label: 'Frontend',
+        url: 'https://github.com/fabiozagaria/expense-tracker-angular',
+      },
+      {
+        label: 'Backend',
+        url: 'https://github.com/fabiozagaria/expense-tracker-api',
+      },
     ],
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    status: 'Completato',
-    liveLink: 'https://www.avvoca.net/',
   },
   {
     id: 'lab-tv',
     title: 'LabTV',
     icon: 'fas fa-tv',
-    description: 'Web app dedicata alla presentazione di contenuti video e intrattenimento.',
+    description:
+      'Catalogo cinematografico Angular temporaneamente sospeso, in attesa del completamento del Gestionale Spese.',
     highlights: [
-      'Interfaccia organizzata per sezioni',
-      'Componenti riutilizzabili in Angular',
-      'Layout responsive per contenuti multimediali',
+      'Integrazione di una REST API esterna con HttpClient e RxJS',
+      'Routing dinamico e modelli TypeScript tipizzati',
+      'Gestione degli stati di caricamento ed errore',
     ],
-    technologies: ['Angular', 'TypeScript', 'Bootstrap'],
-    status: 'In sviluppo',
+    technologies: ['Angular', 'TypeScript', 'RxJS', 'Signals', 'TMDB API'],
+    status: 'Sospeso',
     liveLink: 'https://lab-tv.vercel.app/',
-    githubLink: 'https://github.com/fabiozagaria/LabTV',
+    repositories: [
+      {
+        label: 'Codice',
+        url: 'https://github.com/fabiozagaria/labtv-angular',
+      },
+    ],
   },
   {
     id: 'fakeflix',
     title: 'Fakeflix',
     icon: 'fas fa-film',
     description:
-      'Riproduzione responsive di una piattaforma streaming, sviluppata senza framework.',
+      'Landing page responsive ispirata a una piattaforma streaming, sviluppata senza framework.',
     highlights: [
-      'Layout complessi con Flexbox e Grid',
-      'Interazioni e gestione del DOM in JavaScript',
-      'Organizzazione modulare degli stili',
+      'Rendering dinamico e gestione centralizzata dello stato',
+      'Modale riutilizzabile, caroselli e selezione degli episodi',
+      'Validazione dei form e interazioni con il DOM',
     ],
     technologies: ['HTML', 'CSS', 'JavaScript'],
     status: 'Completato',
-    githubLink: 'https://github.com/JavaMetalCoder/Fakeflix',
-  },
-  {
-    id: 'labforweb',
-    title: 'Percorso LabForWeb',
-    icon: 'fas fa-code',
-    description:
-      'Esercizi e progetti del corso Full Stack Web di 650 ore, concluso il 7 agosto 2026.',
-    highlights: [
-      'Sviluppo frontend con Angular e TypeScript',
-      'Backend Java con Spring Boot e MySQL',
-      'Versionamento del codice con Git e GitHub',
+    liveLink: 'https://fakeflix-lemon-six.vercel.app/',
+    repositories: [
+      {
+        label: 'Codice',
+        url: 'https://github.com/fabiozagaria/fakeflix-vanilla-js',
+      },
     ],
-    technologies: ['Angular', 'Java', 'Spring Boot', 'MySQL'],
-    status: 'Completato',
-    githubLink: 'https://github.com/JavaMetalCoder/LABFORWEB',
   },
 ] as const satisfies readonly PortfolioProject[];
