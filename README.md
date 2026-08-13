@@ -32,23 +32,25 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 
 ## Profilo in 30 secondi
 
-|                                 |                                                                                     |
-| ------------------------------- | ----------------------------------------------------------------------------------- |
-| **Ruoli di interesse**          | Junior Backend Developer · Junior Full Stack Developer                              |
-| **Focus backend**               | Java · Spring Boot · Spring JDBC · REST API · MySQL                                 |
-| **Competenze frontend**         | Angular · TypeScript · JavaScript · HTML · CSS                                      |
-| **Formazione recente**          | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026             |
-| **Progetto backend principale** | Student Management API: CRUD completo, validazione, transazioni e persistenza MySQL |
-| **Disponibilità**               | Roma · modalità ibrida · remoto in Italia                                           |
+|                                 |                                                                                |
+| ------------------------------- | ------------------------------------------------------------------------------ |
+| **Ruoli di interesse**          | Junior Backend Developer · Junior Full Stack Developer                         |
+| **Focus backend**               | Java · Spring Boot · Spring JDBC · REST API · MySQL                            |
+| **Competenze frontend**         | Angular · TypeScript · JavaScript · HTML · CSS                                 |
+| **Formazione recente**          | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026        |
+| **Progetto backend principale** | Student Management API: MVP CRUD, validazione, transazioni e persistenza MySQL |
+| **Disponibilità**               | Roma · modalità ibrida · remoto in Italia                                      |
 
 ## Progetti in evidenza
 
-| Progetto                                                                                                                                              | Stato       | Cosa dimostra                                                  |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------- |
-| [Student Management API](https://github.com/fabiozagaria/student-management-api)                                                                      | Completato  | Spring Boot, JDBC Template, MySQL, REST e architettura a layer |
-| [LabTV](https://github.com/fabiozagaria/labtv-angular)                                                                                                | Sospeso     | Riprenderà dopo il completamento del Gestionale Spese          |
-| Expense Tracker: [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo | Angular Signals, Spring Boot, JPA, MySQL e integrazione REST   |
-| [Fakeflix](https://github.com/fabiozagaria/fakeflix-vanilla-js)                                                                                       | Completato  | JavaScript vanilla, DOM, stato e interfaccia responsive        |
+| Progetto                                                                                                                                              | Stato          | Cosa dimostra                                                  |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------------------------------------------------------- |
+| [Student Management API](https://github.com/fabiozagaria/student-management-api)                                                                      | MVP completato | Spring Boot, JDBC Template, MySQL, REST e architettura a layer |
+| Expense Tracker: [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo    | Angular Signals, Spring Boot, JPA, MySQL e integrazione REST   |
+
+LabTV, Fakeflix e gli esercizi formativi restano consultabili dal
+[profilo GitHub](https://github.com/fabiozagaria?tab=repositories), ma non sono presentati
+come progetti principali del portfolio.
 
 ## Cosa dimostra questa repository
 
@@ -58,7 +60,7 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 | **Qualità del codice**   | TypeScript strict, `ChangeDetectionStrategy.OnPush`, Prettier e test Vitest                           |
 | **Accessibilità**        | HTML semantico, gerarchia dei titoli, focus visibile, skip link e menu mobile accessibile da tastiera |
 | **Performance**          | Immagini WebP, copia selettiva degli asset e bundle iniziale stimato in circa 69 kB trasferiti        |
-| **SEO**                  | Metadati Open Graph, canonical URL e dati strutturati Schema.org                                      |
+| **SEO**                  | Metadati e canonical specifici per route, Open Graph e dati strutturati Schema.org                    |
 | **Delivery**             | CI su GitHub Actions e deploy automatico su Vercel                                                    |
 
 ## Scelte tecniche principali

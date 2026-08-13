@@ -1,4 +1,4 @@
-export type ProjectStatus = 'Completato' | 'In corso' | 'In sviluppo' | 'Sospeso';
+export type ProjectStatus = 'MVP completato' | 'In sviluppo';
 
 export interface PortfolioRepository {
   readonly label: string;
@@ -9,31 +9,37 @@ export interface PortfolioProject {
   readonly id: string;
   readonly title: string;
   readonly icon: string;
+  readonly focus: string;
   readonly description: string;
   readonly highlights: readonly string[];
   readonly technologies: readonly string[];
   readonly status: ProjectStatus;
+  readonly statusDetail: string;
   readonly liveLink?: string;
+  readonly liveLabel?: string;
   readonly repositories?: readonly PortfolioRepository[];
 }
 
 export const PROJECTS = [
   {
-    id: 'backend-studenti',
-    title: 'Backend Studenti',
+    id: 'student-management-api',
+    title: 'Student Management API',
     icon: 'fas fa-server',
+    focus: 'Progetto backend principale',
     description:
-      'API REST completa per la gestione persistente degli studenti, sviluppata con Java e Spring Boot.',
+      "MVP di un'API REST per la gestione persistente degli studenti, sviluppata con Java e Spring Boot.",
     highlights: [
       'CRUD completo e risposte HTTP coerenti',
       'Architettura a layer con controller, service e repository',
       'Validazione, transazioni e gestione centralizzata degli errori',
     ],
     technologies: ['Java', 'Spring Boot', 'Spring JDBC', 'MySQL', 'REST API'],
-    status: 'Completato',
+    status: 'MVP completato',
+    statusDetail:
+      'Le funzionalità CRUD core sono concluse. Test automatici, OpenAPI e Security sono evoluzioni pianificate.',
     repositories: [
       {
-        label: 'Codice API',
+        label: 'Repository API',
         url: 'https://github.com/fabiozagaria/student-management-api',
       },
     ],
@@ -42,6 +48,7 @@ export const PROJECTS = [
     id: 'gestionale-spese',
     title: 'Gestionale Spese',
     icon: 'fas fa-wallet',
+    focus: 'Prodotto full stack',
     description:
       'Applicazione full stack in evoluzione per registrare e gestire entrate e uscite personali.',
     highlights: [
@@ -49,9 +56,12 @@ export const PROJECTS = [
       'Form reattivi, validazione e client HTTP dedicato',
       'Integrazione CRUD con backend Spring Boot',
     ],
-    technologies: ['Angular', 'TypeScript', 'Signals', 'Reactive Forms', 'REST API'],
+    technologies: ['Angular', 'TypeScript', 'Spring Boot', 'Spring Data JPA', 'MySQL', 'REST API'],
     status: 'In sviluppo',
+    statusDetail:
+      'La demo frontend è navigabile con dati dimostrativi; persistenza completa e autenticazione sono in evoluzione.',
     liveLink: 'https://gestionale-spese.vercel.app/',
+    liveLabel: 'Demo frontend',
     repositories: [
       {
         label: 'Frontend',
@@ -60,48 +70,6 @@ export const PROJECTS = [
       {
         label: 'Backend',
         url: 'https://github.com/fabiozagaria/expense-tracker-api',
-      },
-    ],
-  },
-  {
-    id: 'lab-tv',
-    title: 'LabTV',
-    icon: 'fas fa-tv',
-    description:
-      'Catalogo cinematografico Angular temporaneamente sospeso, in attesa del completamento del Gestionale Spese.',
-    highlights: [
-      'Integrazione di una REST API esterna con HttpClient e RxJS',
-      'Routing dinamico e modelli TypeScript tipizzati',
-      'Gestione degli stati di caricamento ed errore',
-    ],
-    technologies: ['Angular', 'TypeScript', 'RxJS', 'Signals', 'TMDB API'],
-    status: 'Sospeso',
-    liveLink: 'https://lab-tv.vercel.app/',
-    repositories: [
-      {
-        label: 'Codice',
-        url: 'https://github.com/fabiozagaria/labtv-angular',
-      },
-    ],
-  },
-  {
-    id: 'fakeflix',
-    title: 'Fakeflix',
-    icon: 'fas fa-film',
-    description:
-      'Landing page responsive ispirata a una piattaforma streaming, sviluppata senza framework.',
-    highlights: [
-      'Rendering dinamico e gestione centralizzata dello stato',
-      'Modale riutilizzabile, caroselli e selezione degli episodi',
-      'Validazione dei form e interazioni con il DOM',
-    ],
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    status: 'Completato',
-    liveLink: 'https://fakeflix-lemon-six.vercel.app/',
-    repositories: [
-      {
-        label: 'Codice',
-        url: 'https://github.com/fabiozagaria/fakeflix-vanilla-js',
       },
     ],
   },

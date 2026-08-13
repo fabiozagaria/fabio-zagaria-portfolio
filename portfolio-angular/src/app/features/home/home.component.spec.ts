@@ -20,25 +20,29 @@ describe('HomeComponent', () => {
     expect(downloadLink?.getAttribute('download')).toBe('CV_Fabio_Zagaria.pdf');
   });
 
-  it('shows the GitHub activity snapshot', () => {
+  it('shows only the selected recruiter-facing projects', () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
 
-    expect(element.textContent).toContain('GitHub nel 2026');
-    expect(element.textContent).toContain('40');
-    expect(element.textContent).toContain('Commit nel periodo');
+    expect(element.textContent).toContain('Student Management API');
+    expect(element.textContent).toContain('Gestionale Spese');
+    expect(element.textContent).not.toContain('GitHub nel 2026');
+    expect(element.textContent).not.toContain('Fakeflix');
   });
 
-  it('filters the activity by month without counting weekend days as weekdays', () => {
+  it('uses the hero to explain a real backend flow instead of repeating the stack', () => {
     const fixture = TestBed.createComponent(HomeComponent);
-    fixture.componentInstance.selectMonthValue('2026-08');
     fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+    const architectureLink = element.querySelector<HTMLAnchorElement>('.c-backend-map__link');
 
-    expect(fixture.componentInstance.periodStats()).toEqual({
-      commits: 21,
-      activeDays: 4,
-      activeWeekdays: 2,
-    });
+    expect(element.textContent).toContain('Backend in pratica');
+    expect(element.textContent).toContain('Controller');
+    expect(element.textContent).toContain('Service');
+    expect(element.textContent).toContain('Repository');
+    expect(element.textContent).toContain('MySQL');
+    expect(element.textContent).not.toContain('whoami --stack');
+    expect(architectureLink?.getAttribute('href')).toBe('/projects#student-management-api');
   });
 });
