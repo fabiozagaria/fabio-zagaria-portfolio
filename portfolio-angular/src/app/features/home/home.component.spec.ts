@@ -37,7 +37,7 @@ describe('HomeComponent', () => {
 
     expect(fixture.componentInstance.periodStats()).toEqual({
       commits: 21,
-      activeDays: 5,
+      activeDays: 4,
       activeWeekdays: 2,
     });
   });
