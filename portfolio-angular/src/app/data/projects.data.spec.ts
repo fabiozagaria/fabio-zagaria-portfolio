@@ -1,9 +1,9 @@
 import { PROJECTS } from './projects.data';
 
 describe('portfolio projects', () => {
-  it('prioritizes the completed backend project', () => {
-    expect(PROJECTS[0].title).toBe('Backend Studenti');
-    expect(PROJECTS[0].status).toBe('Completato');
+  it('prioritizes the completed backend MVP', () => {
+    expect(PROJECTS[0].title).toBe('Student Management API');
+    expect(PROJECTS[0].status).toBe('MVP completato');
     expect(PROJECTS[0].repositories[0].url).toContain('student-management-api');
   });
 
@@ -16,19 +16,17 @@ describe('portfolio projects', () => {
     ]);
   });
 
-  it('marks LabTV as suspended until the expense tracker is completed', () => {
-    const labTv = PROJECTS.find((project) => project.id === 'lab-tv');
+  it('labels the expense tracker demo as frontend-only', () => {
+    const expenseTracker = PROJECTS.find((project) => project.id === 'gestionale-spese');
 
-    expect(labTv?.status).toBe('Sospeso');
-    expect(labTv?.description).toContain('Gestionale Spese');
+    expect(expenseTracker?.liveLabel).toBe('Demo frontend');
+    expect(expenseTracker?.statusDetail).toContain('dati dimostrativi');
   });
 
-  it('shows only the strongest standalone projects', () => {
+  it('shows only the two strongest recruiter-facing projects', () => {
     expect(PROJECTS.map((project) => project.id)).toEqual([
-      'backend-studenti',
+      'student-management-api',
       'gestionale-spese',
-      'lab-tv',
-      'fakeflix',
     ]);
   });
 });

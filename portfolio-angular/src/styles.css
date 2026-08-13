@@ -784,8 +784,10 @@ main {
 /* Projects */
 .c-projects__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-lg);
+  max-width: 1000px;
+  margin-inline: auto;
 }
 
 .c-card {
@@ -797,6 +799,7 @@ main {
   overflow: hidden;
   transition: all var(--transition-base);
   position: relative;
+  scroll-margin-top: calc(var(--header-height) + var(--space-md));
 }
 
 .c-card:hover {
@@ -834,6 +837,24 @@ main {
   padding: var(--space-lg);
 }
 
+.c-card__focus,
+.c-card__section-label {
+  color: var(--clr-cyber-green-bright);
+  font-family: var(--ff-mono);
+  font-size: 0.78rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.c-card__focus {
+  margin-bottom: var(--space-xs);
+}
+
+.c-card__section-label {
+  margin-bottom: var(--space-xs);
+}
+
 .c-card__heading {
   display: flex;
   align-items: flex-start;
@@ -861,22 +882,10 @@ main {
   white-space: nowrap;
 }
 
-.c-card__status[data-status='In corso'] {
-  color: #0f766e;
-  background: rgba(20, 184, 166, 0.12);
-  border-color: rgba(15, 118, 110, 0.24);
-}
-
 .c-card__status[data-status='In sviluppo'] {
   color: #9a5b00;
   background: rgba(244, 184, 96, 0.16);
   border-color: rgba(154, 91, 0, 0.22);
-}
-
-.c-card__status[data-status='Sospeso'] {
-  color: #6b7280;
-  background: rgba(107, 114, 128, 0.12);
-  border-color: rgba(107, 114, 128, 0.24);
 }
 
 .c-card__description {
@@ -906,6 +915,21 @@ main {
   font-weight: var(--fw-bold);
 }
 
+.c-card__status-detail {
+  display: grid;
+  gap: 0.2rem;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-sm);
+  color: var(--clr-white-subtle);
+  background: rgba(59, 130, 246, 0.06);
+  border-left: 3px solid var(--clr-cyber-green);
+  font-size: var(--fs-300);
+}
+
+.c-card__status-detail strong {
+  color: var(--clr-white);
+}
+
 .c-card__tags {
   display: flex;
   gap: var(--space-xs);
@@ -924,6 +948,7 @@ main {
 
 .c-card__actions {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--space-sm);
   margin-top: var(--space-sm);
   padding-top: var(--space-sm);
@@ -1017,14 +1042,15 @@ main {
 .c-contact__item {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   width: 100%;
   min-width: 0;
-  padding: var(--space-md);
+  padding: var(--space-sm);
   background: var(--clr-cyber-green-subtle);
   border: 1px solid rgba(59, 130, 246, 0.14);
   border-radius: var(--radius-md);
   color: var(--clr-white-subtle);
+  font-size: 0.95rem;
   text-align: left;
 }
 
@@ -1039,7 +1065,8 @@ main {
 .c-contact__links a {
   color: inherit;
   text-decoration: none;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .c-contact__item a:hover,

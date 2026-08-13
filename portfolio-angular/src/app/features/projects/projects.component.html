@@ -2,17 +2,18 @@
   <div class="c-projects__container o-container">
     <h1 class="c-section-title"><span class="c-section-title__number">03</span>PROGETTI</h1>
     <p class="c-section-subtitle">
-      Applicazioni reali e progetti formativi, con il lavoro backend più recente in evidenza.
+      Due progetti principali presentati con responsabilità, scelte tecniche e stato reale.
     </p>
 
     <div class="c-projects__grid">
       @for (project of projects; track project.id) {
-        <article class="c-card">
+        <article class="c-card" [id]="project.id">
           <div class="c-card__image" aria-hidden="true">
             <span class="c-card__placeholder"><i [class]="project.icon"></i></span>
           </div>
 
           <div class="c-card__content">
+            <p class="c-card__focus">{{ project.focus }}</p>
             <div class="c-card__heading">
               <h2 class="c-card__title">{{ project.title }}</h2>
               <span class="c-card__status" [attr.data-status]="project.status">
@@ -22,11 +23,17 @@
 
             <p class="c-card__description">{{ project.description }}</p>
 
-            <ul class="c-card__highlights" aria-label="Caratteristiche principali">
+            <p class="c-card__section-label">Responsabilità e scelte tecniche</p>
+            <ul class="c-card__highlights">
               @for (highlight of project.highlights; track highlight) {
                 <li>{{ highlight }}</li>
               }
             </ul>
+
+            <p class="c-card__status-detail">
+              <strong>Stato reale</strong>
+              <span>{{ project.statusDetail }}</span>
+            </p>
 
             <div class="c-card__tags" aria-label="Tecnologie utilizzate">
               @for (tech of project.technologies; track tech) {
@@ -42,9 +49,16 @@
                     target="_blank"
                     rel="noopener noreferrer"
                     class="c-card__action"
-                    [attr.aria-label]="'Apri la demo di ' + project.title + ' in una nuova scheda'"
+                    [attr.aria-label]="
+                      'Apri ' +
+                      (project.liveLabel ?? 'la demo') +
+                      ' di ' +
+                      project.title +
+                      ' in una nuova scheda'
+                    "
                   >
-                    <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                    {{ project.liveLabel ?? 'Demo' }}
                   </a>
                 }
                 @for (repository of project.repositories ?? []; track repository.url) {
