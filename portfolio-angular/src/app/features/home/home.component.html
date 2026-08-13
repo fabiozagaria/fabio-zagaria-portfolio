@@ -59,3 +59,114 @@
     </div>
   </div>
 </section>
+
+<section class="c-activity" aria-labelledby="github-activity-title">
+  <div class="o-container">
+    <div class="c-activity__header">
+      <div>
+        <p class="c-activity__eyebrow">Attività verificabile</p>
+        <h2 id="github-activity-title">GitHub nel {{ activity.year }}</h2>
+        <p class="c-activity__intro">
+          Commit pubblici e costanza feriale, aggiornati dal profilo GitHub. La streak considera
+          almeno un commit dal lunedì al venerdì: sabato e domenica non la interrompono.
+        </p>
+      </div>
+      <label class="c-activity__filter">
+        <span>Periodo</span>
+        <select [value]="selectedMonth()" (change)="selectMonth($event)">
+          <option value="all">Tutto il {{ activity.year }}</option>
+          @for (month of monthOptions; track month.value) {
+            <option [value]="month.value">{{ month.label }}</option>
+          }
+        </select>
+      </label>
+    </div>
+
+    <div class="c-activity__stats" aria-live="polite">
+      <article class="c-activity__stat">
+        <strong>{{ periodStats().commits }}</strong>
+        <span>Commit nel periodo</span>
+      </article>
+      <article class="c-activity__stat">
+        <strong>{{ periodStats().activeWeekdays }}</strong>
+        <span>Giorni feriali attivi</span>
+      </article>
+      <article class="c-activity__stat">
+        <strong>{{ currentWeekdayStreak }}</strong>
+        <span>Streak feriale attuale</span>
+      </article>
+      <article class="c-activity__stat">
+        <strong>{{ longestWeekdayStreak }}</strong>
+        <span>Miglior streak feriale</span>
+      </article>
+    </div>
+
+    <div class="c-activity__content">
+      <article class="c-activity__panel">
+        <div class="c-activity__panel-heading">
+          <h3>Griglia feriale</h3>
+          <span>{{ periodStats().activeDays }} giorni attivi totali</span>
+        </div>
+        <div class="c-activity__grid-scroll" tabindex="0" aria-label="Griglia dei commit feriali">
+          <div
+            class="c-activity__grid"
+            role="img"
+            aria-label="Attività GitHub dal lunedì al venerdì"
+          >
+            @for (day of activityCells(); track day.date) {
+              <span
+                class="c-activity__day"
+                [attr.data-level]="day.level"
+                [style.grid-column]="day.column"
+                [style.grid-row]="day.row"
+                [attr.title]="day.label"
+                [attr.aria-label]="day.label"
+              ></span>
+            }
+          </div>
+        </div>
+        <div class="c-activity__legend" aria-hidden="true">
+          <span>Meno</span>
+          @for (level of [0, 1, 2, 3, 4]; track level) {
+            <i class="c-activity__day" [attr.data-level]="level"></i>
+          }
+          <span>Più</span>
+        </div>
+      </article>
+
+      <article class="c-activity__panel">
+        <div class="c-activity__panel-heading">
+          <h3>Commit per mese</h3>
+          <span>Weekend inclusi nel totale</span>
+        </div>
+        <div class="c-activity__months">
+          @for (month of monthlyActivity; track month.value) {
+            <button
+              type="button"
+              class="c-activity__month"
+              [class.c-activity__month--selected]="selectedMonth() === month.value"
+              (click)="selectMonthValue(month.value)"
+              [attr.aria-label]="month.label + ': ' + month.commits + ' commit'"
+            >
+              <span>{{ month.label.slice(0, 3) }}</span>
+              <span class="c-activity__bar-track" aria-hidden="true">
+                <span
+                  class="c-activity__bar"
+                  [style.width.%]="(month.commits / maxMonthlyCommits) * 100"
+                ></span>
+              </span>
+              <strong>{{ month.commits }}</strong>
+            </button>
+          }
+        </div>
+      </article>
+    </div>
+
+    <div class="c-activity__footer">
+      <span>Dati aggiornati al {{ activity.snapshotDate }}</span>
+      <a href="https://github.com/fabiozagaria" target="_blank" rel="noopener noreferrer">
+        Verifica su GitHub <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>

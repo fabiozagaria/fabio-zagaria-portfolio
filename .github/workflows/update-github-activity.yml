@@ -1,0 +1,45 @@
+name: Update GitHub activity
+
+on:
+  schedule:
+    - cron: "0 6 * * 0,3"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-github-activity
+  cancel-in-progress: true
+
+jobs:
+  update:
+    name: Refresh portfolio activity data
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Collect public GitHub commits
+        run: node portfolio-angular/scripts/update-github-activity.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit refreshed snapshot as GitHub Actions bot
+        run: |
+          if git diff --quiet -- portfolio-angular/src/app/data/github-activity.data.ts; then
+            echo "Activity snapshot is already current."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add portfolio-angular/src/app/data/github-activity.data.ts
+          git commit -m "chore: update GitHub activity data"
+          git push
