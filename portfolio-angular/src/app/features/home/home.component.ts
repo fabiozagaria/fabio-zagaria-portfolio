@@ -11,20 +11,5 @@ import { PROJECTS, type PortfolioProject } from '../../data/projects.data';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  readonly skills = [
-    {
-      category: 'Backend',
-      items: ['Java', 'Spring Boot', 'Spring JDBC', 'MySQL', 'REST API'],
-    },
-    {
-      category: 'Frontend',
-      items: ['Angular', 'TypeScript', 'JavaScript', 'HTML', 'CSS'],
-    },
-    {
-      category: 'Strumenti',
-      items: ['Git', 'GitHub', 'Maven', 'Vercel'],
-    },
-  ] as const;
-
   readonly featuredProjects: readonly PortfolioProject[] = PROJECTS;
 }

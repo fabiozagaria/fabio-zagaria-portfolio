@@ -27,35 +27,59 @@
       </div>
     </div>
     <div class="c-hero__visual">
-      <div class="c-terminal" aria-label="Riepilogo dello stack tecnologico di Fabio Zagaria">
-        <div class="c-terminal__header">
-          <div class="c-terminal__controls" aria-hidden="true">
-            <span class="c-terminal__control c-terminal__control--close"></span>
-            <span class="c-terminal__control c-terminal__control--minimize"></span>
-            <span class="c-terminal__control c-terminal__control--maximize"></span>
-          </div>
-          <div class="c-terminal__title">fabio&#64;portfolio:~$</div>
+      <aside class="c-backend-map" aria-labelledby="backend-map-title">
+        <div class="c-backend-map__header">
+          <p class="c-backend-map__eyebrow">Backend in pratica</p>
+          <span class="c-backend-map__status">MVP completato</span>
         </div>
-        <div class="c-terminal__body">
-          <div class="c-terminal__line">
-            <span class="c-terminal__prompt">$</span>
-            <span class="c-terminal__command">whoami --stack</span>
-          </div>
-          <div class="c-terminal__output">
-            @for (skillGroup of skills; track skillGroup.category) {
-              <div class="c-terminal__skill-group">
-                <span class="c-terminal__skill-label">[{{ skillGroup.category }}]</span>
-                <div class="c-terminal__skill-items">
-                  @for (item of skillGroup.items; track item) {
-                    <span>&gt; {{ item }}</span>
-                  }
-                </div>
-              </div>
-            }
-          </div>
-          <div class="c-terminal__cursor">_</div>
-        </div>
-      </div>
+
+        <h2 id="backend-map-title">Student Management API</h2>
+        <p class="c-backend-map__intro">
+          Un flusso REST organizzato a layer, con responsabilità separate dalla richiesta HTTP alla
+          persistenza.
+        </p>
+
+        <ol class="c-backend-map__flow" aria-label="Flusso architetturale del progetto">
+          <li>
+            <span class="c-backend-map__step">01</span>
+            <div>
+              <strong>Controller</strong>
+              <span>Endpoint REST e risposte HTTP coerenti</span>
+            </div>
+          </li>
+          <li>
+            <span class="c-backend-map__step">02</span>
+            <div>
+              <strong>Service</strong>
+              <span>Regole applicative e confini transazionali</span>
+            </div>
+          </li>
+          <li>
+            <span class="c-backend-map__step">03</span>
+            <div>
+              <strong>Repository</strong>
+              <span>Query e mapping con Spring JDBC</span>
+            </div>
+          </li>
+          <li>
+            <span class="c-backend-map__step">04</span>
+            <div>
+              <strong>MySQL</strong>
+              <span>Persistenza e vincoli di integrità</span>
+            </div>
+          </li>
+        </ol>
+
+        <ul class="c-backend-map__qualities" aria-label="Aspetti tecnici implementati">
+          <li>Validazione</li>
+          <li>Transazioni</li>
+          <li>Error handling</li>
+        </ul>
+
+        <a routerLink="/projects" fragment="student-management-api" class="c-backend-map__link">
+          Esamina architettura e codice <span aria-hidden="true">→</span>
+        </a>
+      </aside>
     </div>
   </div>
 </section>
