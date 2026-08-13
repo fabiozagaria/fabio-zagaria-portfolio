@@ -112,9 +112,7 @@ export class HomeComponent {
             new Date(Date.UTC(Number(month.slice(0, 4)), Number(month.slice(5, 7)), 0)),
           );
     const endDate = monthEnd < this.activity.snapshotDate ? monthEnd : this.activity.snapshotDate;
-    const counts = new Map<string, number>(
-      this.activity.daily.map((day) => [day.date, day.count]),
-    );
+    const counts = new Map<string, number>(this.activity.daily.map((day) => [day.date, day.count]));
     const start = this.fromIsoDate(startDate);
     const end = this.fromIsoDate(endDate);
     const gridStart = new Date(start);
@@ -123,7 +121,11 @@ export class HomeComponent {
     gridStart.setUTCDate(gridStart.getUTCDate() - daysFromMonday);
     const cells: ActivityCell[] = [];
 
-    for (const cursor = new Date(start); cursor <= end; cursor.setUTCDate(cursor.getUTCDate() + 1)) {
+    for (
+      const cursor = new Date(start);
+      cursor <= end;
+      cursor.setUTCDate(cursor.getUTCDate() + 1)
+    ) {
       const weekday = cursor.getUTCDay();
       if (weekday === 0 || weekday === 6) {
         continue;
@@ -147,9 +149,7 @@ export class HomeComponent {
   }
 
   private calculateCurrentWeekdayStreak(): number {
-    const counts = new Map<string, number>(
-      this.activity.daily.map((day) => [day.date, day.count]),
-    );
+    const counts = new Map<string, number>(this.activity.daily.map((day) => [day.date, day.count]));
     const cursor = this.fromIsoDate(this.activity.streakCutoff);
     let streak = 0;
 
@@ -171,9 +171,7 @@ export class HomeComponent {
   }
 
   private calculateLongestWeekdayStreak(): number {
-    const counts = new Map<string, number>(
-      this.activity.daily.map((day) => [day.date, day.count]),
-    );
+    const counts = new Map<string, number>(this.activity.daily.map((day) => [day.date, day.count]));
     const end = this.fromIsoDate(this.activity.streakCutoff);
     let current = 0;
     let longest = 0;

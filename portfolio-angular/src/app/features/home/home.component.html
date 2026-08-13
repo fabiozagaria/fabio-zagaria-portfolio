@@ -108,7 +108,11 @@
           <span>{{ periodStats().activeDays }} giorni attivi totali</span>
         </div>
         <div class="c-activity__grid-scroll" tabindex="0" aria-label="Griglia dei commit feriali">
-          <div class="c-activity__grid" role="img" aria-label="Attività GitHub dal lunedì al venerdì">
+          <div
+            class="c-activity__grid"
+            role="img"
+            aria-label="Attività GitHub dal lunedì al venerdì"
+          >
             @for (day of activityCells(); track day.date) {
               <span
                 class="c-activity__day"
@@ -160,11 +164,7 @@
 
     <div class="c-activity__footer">
       <span>Dati aggiornati al {{ activity.snapshotDate }}</span>
-      <a
-        href="https://github.com/fabiozagaria"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://github.com/fabiozagaria" target="_blank" rel="noopener noreferrer">
         Verifica su GitHub <span aria-hidden="true">↗</span>
       </a>
     </div>
