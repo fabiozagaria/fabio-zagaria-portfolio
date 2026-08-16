@@ -39,12 +39,12 @@ describe('ContactComponent', () => {
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
     const instagramLink = element.querySelector<HTMLAnchorElement>(
-      'a[href="https://www.instagram.com/fabiozagaria.dev/"]',
+      'a[href="https://www.instagram.com/zagariafabio.dev/"]',
     );
 
     expect(instagramLink).not.toBeNull();
     expect(instagramLink?.getAttribute('target')).toBe('_blank');
     expect(instagramLink?.getAttribute('rel')).toBe('noopener noreferrer');
-    expect(instagramLink?.textContent?.trim()).toBe('Instagram · fabiozagaria.dev');
+    expect(instagramLink?.textContent?.trim()).toBe('Instagram · zagariafabio.dev');
   });
 });
