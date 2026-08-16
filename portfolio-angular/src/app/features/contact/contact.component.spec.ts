@@ -31,4 +31,20 @@ describe('ContactComponent', () => {
     expect(xLink?.getAttribute('rel')).toBe('noopener noreferrer');
     expect(xLink?.textContent?.trim()).toBe('X · fabiozagariadev');
   });
+
+  it('links to the public Instagram profile securely', async () => {
+    await TestBed.configureTestingModule({ imports: [ContactComponent] }).compileComponents();
+
+    const fixture = TestBed.createComponent(ContactComponent);
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+    const instagramLink = element.querySelector<HTMLAnchorElement>(
+      'a[href="https://www.instagram.com/fabiozagaria.dev/"]',
+    );
+
+    expect(instagramLink).not.toBeNull();
+    expect(instagramLink?.getAttribute('target')).toBe('_blank');
+    expect(instagramLink?.getAttribute('rel')).toBe('noopener noreferrer');
+    expect(instagramLink?.textContent?.trim()).toBe('Instagram · fabiozagaria.dev');
+  });
 });
