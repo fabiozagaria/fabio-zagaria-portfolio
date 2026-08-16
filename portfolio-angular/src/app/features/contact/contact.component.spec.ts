@@ -15,4 +15,20 @@ describe('ContactComponent', () => {
       '/downloads/Attestato_LabForWeb_Fabio_Zagaria.pdf',
     ]);
   });
+
+  it('links to the public X profile securely', async () => {
+    await TestBed.configureTestingModule({ imports: [ContactComponent] }).compileComponents();
+
+    const fixture = TestBed.createComponent(ContactComponent);
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+    const xLink = element.querySelector<HTMLAnchorElement>(
+      'a[href="https://x.com/fabiozagariadev"]',
+    );
+
+    expect(xLink).not.toBeNull();
+    expect(xLink?.getAttribute('target')).toBe('_blank');
+    expect(xLink?.getAttribute('rel')).toBe('noopener noreferrer');
+    expect(xLink?.textContent?.trim()).toBe('X · fabiozagariadev');
+  });
 });
