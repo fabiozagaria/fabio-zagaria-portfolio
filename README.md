@@ -28,6 +28,15 @@
   <img src="https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel&logoColor=white" alt="Deploy Vercel" />
 </p>
 
+<!-- availability-status:start -->
+
+> [!IMPORTANT]
+> **Pausa programmata - dal 29 agosto al 6 settembre 2026.**
+>
+> In quei giorni non sarò disponibile per attività di studio, sviluppo o nuove collaborazioni. Riprenderò dal 7 settembre.
+
+<!-- availability-status:end -->
+
 Questo repository contiene il codice sorgente del mio portfolio professionale. È anche un esempio concreto del mio modo di organizzare un progetto Angular: componenti standalone, routing lazy, dati tipizzati, test automatici e attenzione ad accessibilità, SEO e performance.
 
 ## Profilo in 30 secondi

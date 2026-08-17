@@ -82,6 +82,26 @@
   </div>
 </nav>
 
+@if (availabilityStatus; as status) {
+  <aside
+    class="c-availability-status"
+    [attr.data-state]="status.state"
+    role="status"
+    aria-label="Stato di disponibilità"
+  >
+    <div class="c-availability-status__content o-container">
+      <span class="c-availability-status__indicator" aria-hidden="true"></span>
+      <div>
+        <p class="c-availability-status__heading">
+          <strong>{{ status.title }}</strong>
+          <span>{{ status.dateRange }}</span>
+        </p>
+        <p class="c-availability-status__message">{{ status.message }}</p>
+      </div>
+    </div>
+  </aside>
+}
+
 <main id="main-content" tabindex="-1">
   <router-outlet></router-outlet>
 </main>

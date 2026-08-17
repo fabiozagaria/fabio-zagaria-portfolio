@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostListener, OnDestroy } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { getAvailabilityStatus } from './availability-status';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 export class App implements OnDestroy {
   isMenuOpen = false;
   readonly currentYear = new Date().getFullYear();
+  readonly availabilityStatus = getAvailabilityStatus();
 
   @HostListener('document:keydown.escape')
   onEscape(): void {
