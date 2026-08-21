@@ -54,7 +54,7 @@ export const PROJECTS = [
     highlights: [
       'Stato reattivo con Angular Signals',
       'Form reattivi, validazione e client HTTP dedicato',
-      'Integrazione CRUD con backend Spring Boot',
+      'Prima integrazione GET con backend Spring Boot',
     ],
     technologies: ['Angular', 'TypeScript', 'Spring Boot', 'Spring Data JPA', 'MySQL', 'REST API'],
     status: 'In sviluppo',
