@@ -95,7 +95,7 @@ come progetti principali del portfolio.
 - `portfolio-angular/src/app/data`: modelli e contenuti tipizzati dei progetti.
 - `portfolio-angular/src/app/features`: pagine standalone del portfolio.
 - `portfolio-angular/src/assets`: documenti e immagini ottimizzate.
-- `portfolio-angular/scripts`: generazione riproducibile del curriculum.
+- `portfolio-angular/scripts/generate_cv.py`: sorgente autorevole e generazione riproducibile del curriculum.
 - `.github/workflows/ci.yml`: controlli automatici di qualità, test e build.
 
 ## Avvio locale
