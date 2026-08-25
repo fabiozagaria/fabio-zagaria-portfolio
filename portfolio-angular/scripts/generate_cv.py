@@ -1,360 +1,228 @@
 from pathlib import Path
-from io import BytesIO
 
-from PIL import Image as PillowImage
-from reportlab.lib import colors
-from reportlab.lib.enums import TA_LEFT
-from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
-from reportlab.lib.units import mm
-from reportlab.lib.utils import ImageReader
-from reportlab.platypus import (
-    Flowable,
-    KeepTogether,
-    Paragraph,
-    SimpleDocTemplate,
-    Spacer,
-    Table,
-    TableStyle,
-)
-
+from reportlab.pdfbase.pdfmetrics import stringWidth
 
 PROJECT_DIR = Path(__file__).resolve().parents[1]
 OUTPUT_PATH = PROJECT_DIR / "src" / "assets" / "documents" / "CV.pdf"
-PORTRAIT_PATH = PROJECT_DIR / "src" / "assets" / "img" / "io.png"
 
-NAVY = colors.HexColor("#213A57")
-INK = colors.HexColor("#17212B")
-MUTED = colors.HexColor("#4A5968")
+W, H = 595.276, 841.89
+LEFT, RIGHT, TOP = 42, 42, 44
+BLUE = (0.075, 0.266, 0.459)
+INK = (0.03, 0.03, 0.03)
+MUTED = (0.35, 0.35, 0.35)
 
 
-class CircularPortrait(Flowable):
-    def __init__(self, image_path: Path, size: float):
-        super().__init__()
-        self.width = size
-        self.height = size
-        portrait = PillowImage.open(image_path).convert("RGB")
-        portrait.thumbnail((480, 480), PillowImage.Resampling.LANCZOS)
-        self.image_data = BytesIO()
-        portrait.save(self.image_data, format="JPEG", quality=90, optimize=True)
-        self.image_data.seek(0)
-        self.image = ImageReader(self.image_data)
+def pdf_escape(text: str) -> str:
+    data = text.encode("cp1252", errors="replace")
+    result = []
+    for value in data:
+        if value in (40, 41, 92):
+            result.append("\\" + chr(value))
+        elif 32 <= value <= 126:
+            result.append(chr(value))
+        else:
+            result.append(f"\\{value:03o}")
+    return "".join(result)
 
-    def draw(self):
-        canvas = self.canv
-        canvas.saveState()
-        clip = canvas.beginPath()
-        clip.circle(self.width / 2, self.height / 2, self.width / 2)
-        canvas.clipPath(clip, stroke=0, fill=0)
-        canvas.drawImage(
-            self.image,
-            0,
-            0,
-            width=self.width,
-            height=self.height,
-            preserveAspectRatio=True,
-            anchor="c",
-            mask="auto",
+
+def wrap(text: str, font: str, size: float, max_width: float) -> list[str]:
+    words = text.split()
+    lines: list[str] = []
+    current = ""
+    for word in words:
+        candidate = word if not current else f"{current} {word}"
+        if stringWidth(candidate, font, size) <= max_width:
+            current = candidate
+        else:
+            if current:
+                lines.append(current)
+            current = word
+    if current:
+        lines.append(current)
+    return lines
+
+
+def build_cv() -> None:
+    output: list[str] = []
+
+    def fill(rgb: tuple[float, float, float]) -> None:
+        output.append(f"{rgb[0]:.3f} {rgb[1]:.3f} {rgb[2]:.3f} rg")
+
+    def stroke(rgb: tuple[float, float, float]) -> None:
+        output.append(f"{rgb[0]:.3f} {rgb[1]:.3f} {rgb[2]:.3f} RG")
+
+    def text(x: float, y: float, value: str, font: str = "F1", size: float = 9, rgb=INK) -> None:
+        fill(rgb)
+        output.append(
+            f"BT /{font} {size:.2f} Tf {x:.2f} {y:.2f} Td ({pdf_escape(value)}) Tj ET"
         )
-        canvas.restoreState()
-        canvas.setStrokeColor(NAVY)
-        canvas.setLineWidth(1)
-        canvas.circle(self.width / 2, self.height / 2, self.width / 2, stroke=1, fill=0)
 
-
-def section_heading(text: str, style: ParagraphStyle) -> Table:
-    table = Table([[Paragraph(text, style)]], colWidths=[None])
-    table.setStyle(
-        TableStyle(
-            [
-                ("LEFTPADDING", (0, 0), (-1, -1), 0),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 0),
-                ("TOPPADDING", (0, 0), (-1, -1), 0),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 1.5 * mm),
-                ("LINEBELOW", (0, 0), (-1, -1), 0.8, NAVY),
-            ]
-        )
-    )
-    return table
-
-
-def bullet(text: str, style: ParagraphStyle) -> Paragraph:
-    return Paragraph(f"- {text}", style)
-
-
-def add_page_number(canvas, document):
-    canvas.saveState()
-    canvas.setTitle("CV - Fabio Zagaria")
-    canvas.setAuthor("Fabio Zagaria")
-    canvas.setSubject("Curriculum Vitae - Junior Backend Developer")
-    canvas.setFillColor(MUTED)
-    canvas.setFont("Helvetica", 6.5)
-    page_label = f"Fabio Zagaria | Curriculum Vitae | Pagina {document.page}"
-    canvas.drawRightString(A4[0] - 14 * mm, 8 * mm, page_label)
-    canvas.restoreState()
-
-
-def build_cv():
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-
-    document = SimpleDocTemplate(
-        str(OUTPUT_PATH),
-        pagesize=A4,
-        leftMargin=14 * mm,
-        rightMargin=14 * mm,
-        topMargin=11 * mm,
-        bottomMargin=12 * mm,
-        title="CV - Fabio Zagaria",
-        author="Fabio Zagaria",
-    )
-
-    sample = getSampleStyleSheet()
-    styles = {
-        "name": ParagraphStyle(
-            "Name",
-            parent=sample["Normal"],
-            fontName="Helvetica-Bold",
-            fontSize=22,
-            leading=23,
-            textColor=NAVY,
-            spaceAfter=1.5 * mm,
-        ),
-        "role": ParagraphStyle(
-            "Role",
-            parent=sample["Normal"],
-            fontName="Helvetica-Bold",
-            fontSize=11.5,
-            leading=13.5,
-            textColor=NAVY,
-            spaceAfter=1.2 * mm,
-        ),
-        "contact": ParagraphStyle(
-            "Contact",
-            parent=sample["Normal"],
-            fontName="Helvetica",
-            fontSize=8.5,
-            leading=10.3,
-            textColor=INK,
-        ),
-        "section": ParagraphStyle(
-            "Section",
-            parent=sample["Normal"],
-            fontName="Helvetica-Bold",
-            fontSize=10.5,
-            leading=12,
-            textColor=NAVY,
-            spaceBefore=0,
-            spaceAfter=0,
-        ),
-        "body": ParagraphStyle(
-            "Body",
-            parent=sample["Normal"],
-            fontName="Helvetica",
-            fontSize=9,
-            leading=11.2,
-            textColor=INK,
-            alignment=TA_LEFT,
-            spaceAfter=0.7 * mm,
-        ),
-        "compact": ParagraphStyle(
-            "Compact",
-            parent=sample["Normal"],
-            fontName="Helvetica",
-            fontSize=8.4,
-            leading=10.2,
-            textColor=INK,
-            spaceAfter=0.35 * mm,
-        ),
-        "item_title": ParagraphStyle(
-            "ItemTitle",
-            parent=sample["Normal"],
-            fontName="Helvetica",
-            fontSize=9,
-            leading=10.8,
-            textColor=INK,
-            spaceAfter=0.5 * mm,
-        ),
-        "legal": ParagraphStyle(
-            "Legal",
-            parent=sample["Normal"],
-            fontName="Helvetica",
-            fontSize=6.2,
-            leading=7.4,
-            textColor=MUTED,
-        ),
+    font_names = {
+        "F1": "Helvetica",
+        "F2": "Helvetica-Bold",
+        "F3": "Helvetica-Oblique",
+        "F4": "Helvetica-BoldOblique",
     }
 
-    story = []
+    def centered(y: float, value: str, font: str, size: float, rgb) -> None:
+        x = (W - stringWidth(value, font_names[font], size)) / 2
+        text(x, y, value, font, size, rgb)
 
-    header_text = [
-        Paragraph("Fabio Zagaria", styles["name"]),
-        Paragraph("Junior Backend Developer | Full Stack Developer", styles["role"]),
-        Paragraph(
-            "Roma, Italia | +39 366 719 1008 | "
-            '<link href="mailto:fabiozagaria@proton.me" color="#213A57">fabiozagaria@proton.me</link> | Patente B',
-            styles["contact"],
-        ),
-        Paragraph(
-            '<link href="https://fabio-zagaria-portfolio.vercel.app/" color="#213A57">Portfolio</link> | '
-            '<link href="https://github.com/fabiozagaria" color="#213A57">GitHub</link> | '
-            '<link href="https://www.linkedin.com/in/fabiozagaria" color="#213A57">LinkedIn</link>',
-            styles["contact"],
-        ),
+    def line(y: float) -> None:
+        stroke(BLUE)
+        output.append(f"0.8 w {LEFT:.2f} {y:.2f} m {W - RIGHT:.2f} {y:.2f} l S")
+
+    def segments(x: float, y: float, values: list[tuple[str, str, tuple]], size: float) -> None:
+        current_x = x
+        for value, font, rgb in values:
+            text(current_x, y, value, font, size, rgb)
+            current_x += stringWidth(value, font_names[font], size)
+
+    y = H - TOP
+    centered(y, "Fabio Zagaria", "F2", 18.5, BLUE)
+    y -= 18
+    centered(y, "Junior Backend Developer | Full Stack Developer", "F2", 10.1, BLUE)
+    y -= 12
+    centered(y, "Roma, Italia | +39 366 719 1008 | fabiozagaria@proton.me | Patente B", "F1", 7.9, INK)
+    y -= 10
+    centered(y, "Portfolio: fabio-zagaria-portfolio.vercel.app | GitHub: github.com/fabiozagaria | LinkedIn: linkedin.com/in/fabiozagaria", "F1", 7.5, INK)
+    y -= 15
+
+    def section(title: str) -> None:
+        nonlocal y
+        text(LEFT, y, title, "F2", 9.5, BLUE)
+        line(y - 3)
+        y -= 13
+
+    def paragraph(value: str, size: float = 7.6, leading: float = 9.15) -> None:
+        nonlocal y
+        for current in wrap(value, "Helvetica", size, W - LEFT - RIGHT):
+            text(LEFT, y, current, "F1", size, INK)
+            y -= leading
+        y -= 1.5
+
+    def bullet(value: str, size: float = 7.35, leading: float = 8.8) -> None:
+        nonlocal y
+        lines = wrap(value, "Helvetica", size, W - LEFT - RIGHT - 10)
+        for index, current in enumerate(lines):
+            prefix = "- " if index == 0 else "  "
+            text(LEFT, y, prefix + current, "F1", size, INK)
+            y -= leading
+        y -= 0.2
+
+    section("PROFILO PROFESSIONALE")
+    paragraph(
+        "Junior Backend Developer backend-oriented con formazione Full Stack Web di 650 ore completata. "
+        "Sviluppo API REST e applicazioni full stack con Java, Spring Boot, MySQL, JPA/Hibernate, Angular e TypeScript, "
+        "con attenzione a validazione, gestione degli errori, separazione dei layer e sicurezza applicativa. "
+        "Porto inoltre oltre cinque anni di esperienza lavorativa in un contesto sanitario complesso, con responsabilità operative, "
+        "priorità e lavoro sotto pressione."
+    )
+
+    section("COMPETENZE TECNICHE")
+    skills = [
+        ("Linguaggi:", " Java, TypeScript, JavaScript, SQL"),
+        ("Backend e API:", " Spring Boot, Spring MVC, API REST, DTO, Bean Validation, exception handling, Spring Security"),
+        ("Persistenza:", " MySQL, JPA/Hibernate, Spring Data JPA, EntityManager, transazioni"),
+        ("Frontend:", " Angular 21, Signals, Reactive Forms, HttpClient, HTML5, CSS3, Bootstrap"),
+        ("Tooling:", " Git, GitHub, Maven, Postman, Vercel"),
+        ("Principi:", " OOP, separazione delle responsabilità, architettura a layer, autenticazione/autorizzazione, ownership delle risorse"),
     ]
+    for label, value in skills:
+        segments(LEFT, y, [(label, "F2", INK), (value, "F1", INK)], 7.45)
+        y -= 8.9
+    y -= 2
 
-    header = Table(
-        [[header_text, CircularPortrait(PORTRAIT_PATH, 27 * mm)]],
-        colWidths=[document.width - 31 * mm, 27 * mm],
-        hAlign="LEFT",
-    )
-    header.setStyle(
-        TableStyle(
-            [
-                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
-                ("LEFTPADDING", (0, 0), (-1, -1), 0),
-                ("RIGHTPADDING", (0, 0), (0, 0), 4 * mm),
-                ("RIGHTPADDING", (1, 0), (1, 0), 0),
-                ("TOPPADDING", (0, 0), (-1, -1), 0),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
-            ]
-        )
-    )
-    story.extend([header, Spacer(1, 2.2 * mm)])
-
-    story.extend(
+    section("PROGETTI")
+    segments(
+        LEFT,
+        y,
         [
-            section_heading("PROFILO PROFESSIONALE", styles["section"]),
-            Spacer(1, 1.2 * mm),
-            Paragraph(
-                "Junior Backend Developer backend-oriented con formazione Full Stack Web di 650 ore completata. "
-                "Sviluppo API REST con Java, Spring Boot, Spring JDBC e MySQL, applicando architettura a layer, "
-                "validazione degli input e gestione centralizzata degli errori. Conosco Angular e TypeScript per "
-                "integrare frontend e backend. Cerco un ruolo junior in cui crescere su backend, API e sicurezza applicativa.",
-                styles["body"],
-            ),
-            Spacer(1, 0.7 * mm),
-            section_heading("COMPETENZE TECNICHE", styles["section"]),
-            Spacer(1, 1.1 * mm),
-        ]
+            ("Expense Tracker - Gestionale Spese", "F2", BLUE),
+            (" | In sviluppo | ", "F1", INK),
+            ("Angular 21, TypeScript, Java 21, Spring Boot, MySQL, JPA/Hibernate", "F3", INK),
+        ],
+        7.8,
     )
+    y -= 10
+    bullet("Applicazione full stack per inserire, modificare e riepilogare spese personali; frontend Angular collegato alle API Spring Boot tramite HttpClient.")
+    bullet("Frontend con Signals, Reactive Forms, validazioni custom e sincronizzazione dello stato dopo risposte HTTP; gestione della data coerente con LocalDate backend.")
+    bullet("Backend REST con DTO e mapping, service/controller/repository, Bean Validation, gestione centralizzata degli errori, CORS locale e persistenza MySQL; uso pratico di EntityManager e dirty checking.")
 
-    skills_left = [
-        Paragraph("<b>Linguaggi:</b> Java, TypeScript, JavaScript, SQL", styles["compact"]),
-        Paragraph("<b>Frontend:</b> Angular, HTML5, CSS3, Bootstrap, Reactive Forms", styles["compact"]),
-        Paragraph("<b>Tooling:</b> Git, GitHub, Maven, Vercel", styles["compact"]),
-    ]
-    skills_right = [
-        Paragraph("<b>Backend e API:</b> Spring Boot, REST API, Spring JDBC, validazione, transazioni", styles["compact"]),
-        Paragraph("<b>Database:</b> MySQL, SQL, modellazione relazionale, operazioni CRUD", styles["compact"]),
-        Paragraph("<b>Principi:</b> OOP, architettura a layer, Clean Code, OWASP awareness", styles["compact"]),
-    ]
-    skills = Table(
-        [[skills_left, skills_right]],
-        colWidths=[document.width / 2 - 2 * mm, document.width / 2 + 2 * mm],
-    )
-    skills.setStyle(
-        TableStyle(
-            [
-                ("VALIGN", (0, 0), (-1, -1), "TOP"),
-                ("LEFTPADDING", (0, 0), (0, 0), 0),
-                ("RIGHTPADDING", (0, 0), (0, 0), 3 * mm),
-                ("LEFTPADDING", (1, 0), (1, 0), 3 * mm),
-                ("RIGHTPADDING", (1, 0), (1, 0), 0),
-                ("TOPPADDING", (0, 0), (-1, -1), 0),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
-            ]
-        )
-    )
-    story.extend([skills, Spacer(1, 1.3 * mm), section_heading("PROGETTI", styles["section"]), Spacer(1, 1 * mm)])
-
-    projects = [
-        (
-            "<b>Student Management API</b> | <i>MVP completato</i> | Java 21, Spring Boot, Spring JDBC, MySQL",
-            [
-                "Progettata un'API REST CRUD per la gestione persistente degli studenti con endpoint versionati e risposte HTTP coerenti.",
-                "Separati controller, service e repository; aggiunte validazioni, transazioni e gestione centralizzata degli errori 400, 404 e 409.",
-            ],
-        ),
-        (
-            "<b>Gestionale Spese</b> | <i>In sviluppo</i> | Angular, TypeScript, Spring Boot",
-            [
-                "Realizzata un'app web per inserimento, modifica e riepilogo delle spese con componenti riutilizzabili e servizi dedicati.",
-                "Implementati Reactive Forms, validazioni frontend e aggiornamento dinamico dei riepiloghi; integrazione persistente e autenticazione in evoluzione.",
-            ],
-        ),
-        (
-            "<b>Portfolio personale</b> | 2026 | Angular, TypeScript, GitHub, Vercel",
-            [
-                "Creato e pubblicato un sito responsive con progetti selezionati, metadati per route, test automatici e CI.",
-            ],
-        ),
-    ]
-    for title, project_bullets in projects:
-        block = [Paragraph(title, styles["item_title"])]
-        block.extend(bullet(text, styles["compact"]) for text in project_bullets)
-        block.append(Spacer(1, 0.45 * mm))
-        story.append(KeepTogether(block))
-
-    story.extend([Spacer(1, 0.3 * mm), section_heading("FORMAZIONE IT", styles["section"]), Spacer(1, 1 * mm)])
-    education = [
-        Paragraph(
-            "<b>Developer Full Stack Web</b> | LabForWeb | 19 gennaio 2026 - 7 agosto 2026 | 650 ore",
-            styles["item_title"],
-        ),
-        Paragraph(
-            "Percorso pratico su HTML, CSS, JavaScript, TypeScript, Angular, MySQL, Java, Java EE, Spring, "
-            "Spring Boot, Git/GitHub, sviluppo CRUD, frontend e backend.",
-            styles["compact"],
-        ),
-        Spacer(1, 0.6 * mm),
-        Paragraph(
-            "<b>Master Java</b> | PC Academy | Settembre 2019 - Aprile 2020 | 300 ore",
-            styles["item_title"],
-        ),
-        Paragraph(
-            "Java 8, OOP, REST, SQL, Android, Clean Code e principi di architettura software.",
-            styles["compact"],
-        ),
-    ]
-    story.extend([KeepTogether(education), Spacer(1, 1.1 * mm)])
-
-    story.extend([section_heading("ESPERIENZA PROFESSIONALE", styles["section"]), Spacer(1, 1 * mm)])
-    experience = [
-        Paragraph(
-            "<b>Portantino</b> | Eraclya - Policlinico Gemelli | Roma | Giugno 2021 - in corso",
-            styles["item_title"],
-        ),
-        bullet(
-                "Gestisco trasporto pazienti e supporto operativo in un contesto sanitario complesso, rispettando procedure e priorità operative.",
-            styles["compact"],
-        ),
-        bullet(
-                "Collaboro con personale sanitario, tecnico e amministrativo, mantenendo precisione, comunicazione chiara e affidabilità sotto pressione.",
-            styles["compact"],
-        ),
-    ]
-    story.extend([KeepTogether(experience), Spacer(1, 1.1 * mm)])
-
-    story.extend([section_heading("ISTRUZIONE E LINGUE", styles["section"]), Spacer(1, 1 * mm)])
-    story.extend(
+    segments(
+        LEFT,
+        y,
         [
-            Paragraph(
-                "<b>Istruzione:</b> Diploma tecnico - Informatica e Telecomunicazioni | ITIS A. Einstein | 2018 | 75/100 | Articolazione Telecomunicazioni",
-                styles["compact"],
-            ),
-            Paragraph(
-                "<b>Lingue:</b> Italiano madrelingua | Inglese: comprensione B2, produzione e interazione B1",
-                styles["compact"],
-            ),
-            Spacer(1, 1.2 * mm),
-            Paragraph(
-                "Autorizzo il trattamento dei dati personali presenti nel CV ai sensi del Regolamento UE 2016/679 (GDPR) e della normativa italiana vigente.",
-                styles["legal"],
-            ),
-        ]
+            ("Task Manager API - Security Lab", "F2", BLUE),
+            (" | ", "F1", INK),
+            ("Java 21, Spring Boot, Spring Security, JPA/Hibernate, MySQL", "F3", INK),
+        ],
+        7.8,
     )
+    y -= 10
+    bullet("CRUD di task associati all'utente autenticato, con controllo di ownership per impedire accessi o modifiche alle risorse di altri utenti.")
+    bullet("Registrazione utenti con BCrypt, CustomUserDetailsService, DaoAuthenticationProvider e AuthenticationManager; Basic Authentication implementata e migrazione a JWT in corso.")
+    y -= 2
 
-    document.build(story, onFirstPage=add_page_number, onLaterPages=add_page_number)
+    section("FORMAZIONE IT")
+    segments(
+        LEFT,
+        y,
+        [
+            ("Developer Full Stack Web - LabForWeb", "F2", BLUE),
+            (" | Gennaio 2026 - Agosto 2026 | 650 ore | completato", "F3", INK),
+        ],
+        7.8,
+    )
+    y -= 10
+    paragraph("HTML, CSS, JavaScript, TypeScript, Angular, MySQL, Java, Java EE/Jakarta EE, Spring, Spring Boot e Git. Percorso pratico su CRUD, API REST, frontend SPA, database e basi di sicurezza applicativa.", 7.2, 8.6)
+    segments(LEFT, y, [("Master Java - PC Academy", "F2", BLUE), (" | Settembre 2019 - Aprile 2020 | 300 ore", "F3", INK)], 7.8)
+    y -= 10
+    paragraph("Java 8, OOP, REST, SQL, Android, Clean Code, separazione delle responsabilità e principi di architettura software.", 7.2, 8.6)
+
+    section("ESPERIENZA PROFESSIONALE")
+    segments(LEFT, y, [("Portantino - Eraclya, Policlinico Gemelli", "F2", BLUE), (" | Roma | Giugno 2021 - in corso", "F3", INK)], 7.8)
+    y -= 10
+    bullet("Gestione del trasporto pazienti e del supporto operativo in un contesto sanitario complesso, rispettando procedure e priorità variabili.", 7.2, 8.6)
+    bullet("Coordinamento quotidiano con personale sanitario, tecnico e amministrativo, con comunicazione chiara e affidabile.", 7.2, 8.6)
+    bullet("Attività sotto vincoli di tempo e urgenze, con attenzione alle procedure, adattamento rapido e problem solving operativo.", 7.2, 8.6)
+    y -= 1
+
+    section("ISTRUZIONE E LINGUE")
+    segments(LEFT, y, [("Diploma:", "F2", INK), (" Informatica e Telecomunicazioni - ITIS A. Einstein | 2018 | 75/100 | Articolazione Telecomunicazioni", "F1", INK)], 7.2)
+    y -= 9
+    segments(LEFT, y, [("Lingue:", "F2", INK), (" Italiano madrelingua | Inglese: comprensione B2, produzione/interazione B1", "F1", INK)], 7.2)
+    y -= 11
+    text(LEFT, y, "Autorizzo il trattamento dei dati personali presenti nel CV ai sensi del Regolamento UE 2016/679 (GDPR) e della normativa italiana vigente.", "F1", 5.6, MUTED)
+
+    content = "\n".join(output) + "\n"
+    objects = [
+        "<< /Type /Catalog /Pages 2 0 R >>",
+        "<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
+        "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.276 841.89] /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R /F4 7 0 R >> >> /Contents 8 0 R >>",
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>",
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>",
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>",
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-BoldOblique /Encoding /WinAnsiEncoding >>",
+        f"<< /Length {len(content.encode('ascii'))} >>\nstream\n{content}endstream",
+    ]
+
+    parts = ["%PDF-1.4\n%ASCII\n"]
+    offsets = [0]
+    position = len(parts[0].encode("ascii"))
+    for index, obj in enumerate(objects, 1):
+        offsets.append(position)
+        block = f"{index} 0 obj\n{obj}\nendobj\n"
+        parts.append(block)
+        position += len(block.encode("ascii"))
+
+    xref_position = position
+    xref = ["xref\n0 9\n", "0000000000 65535 f \n"]
+    xref.extend(f"{offset:010d} 00000 n \n" for offset in offsets[1:])
+    trailer = f"trailer\n<< /Size 9 /Root 1 0 R >>\nstartxref\n{xref_position}\n%%EOF\n"
+
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_PATH.write_text("".join(parts) + "".join(xref) + trailer, encoding="ascii", newline="\n")
 
 
 if __name__ == "__main__":
