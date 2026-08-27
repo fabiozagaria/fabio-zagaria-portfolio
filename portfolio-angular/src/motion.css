@@ -1,24 +1,13 @@
 :root {
-  --ff-primary:
-    "Aptos Display", "Segoe UI Variable Display", "Segoe UI", system-ui,
-    sans-serif;
-  --ff-secondary:
-    "Aptos", "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  --ff-primary: 'Aptos Display', 'Segoe UI Variable Display', 'Segoe UI', system-ui, sans-serif;
+  --ff-secondary: 'Aptos', 'Segoe UI Variable Text', 'Segoe UI', system-ui, sans-serif;
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body {
   background:
-    radial-gradient(
-      circle at 12% 16%,
-      rgba(59, 130, 246, 0.1),
-      transparent 28rem
-    ),
-    radial-gradient(
-      circle at 88% 82%,
-      rgba(20, 184, 166, 0.1),
-      transparent 30rem
-    ),
+    radial-gradient(circle at 12% 16%, rgba(59, 130, 246, 0.1), transparent 28rem),
+    radial-gradient(circle at 88% 82%, rgba(20, 184, 166, 0.1), transparent 30rem),
     linear-gradient(180deg, #e3eceb 0%, var(--clr-black-soft) 46%, #dcebea 100%);
 }
 
@@ -48,7 +37,7 @@ body {
 
 .c-hero__bg::before,
 .c-hero__bg::after {
-  content: "";
+  content: '';
   position: absolute;
   border-radius: 50%;
   filter: blur(0.5rem);
@@ -60,11 +49,7 @@ body {
   right: 5%;
   width: clamp(12rem, 24vw, 22rem);
   aspect-ratio: 1;
-  background: radial-gradient(
-    circle,
-    rgba(59, 130, 246, 0.18),
-    transparent 68%
-  );
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.18), transparent 68%);
   animation: portfolio-orbit 12s ease-in-out infinite alternate;
 }
 
@@ -73,11 +58,7 @@ body {
   left: 38%;
   width: clamp(9rem, 18vw, 16rem);
   aspect-ratio: 1;
-  background: radial-gradient(
-    circle,
-    rgba(20, 184, 166, 0.15),
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.15), transparent 70%);
   animation: portfolio-orbit 10s 1.2s ease-in-out infinite alternate-reverse;
 }
 
@@ -122,14 +103,14 @@ body {
 }
 
 .c-btn i,
-.c-btn [aria-hidden="true"] {
+.c-btn [aria-hidden='true'] {
   transition: transform var(--transition-base);
 }
 
 .c-btn:hover i,
 .c-btn:focus-visible i,
-.c-btn:hover [aria-hidden="true"],
-.c-btn:focus-visible [aria-hidden="true"] {
+.c-btn:hover [aria-hidden='true'],
+.c-btn:focus-visible [aria-hidden='true'] {
   transform: translateX(0.18rem);
 }
 
@@ -140,8 +121,7 @@ body {
 .c-contact__info {
   background:
     linear-gradient(var(--clr-black), var(--clr-black)) padding-box,
-    linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(20, 184, 166, 0.18))
-      border-box;
+    linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(20, 184, 166, 0.18)) border-box;
   border: 1px solid transparent;
   box-shadow: var(--shadow-sm);
   transition:
@@ -158,12 +138,7 @@ body {
   transform: translateY(-0.45rem);
   background:
     linear-gradient(var(--clr-black), var(--clr-black)) padding-box,
-    linear-gradient(
-        135deg,
-        var(--clr-cyber-green),
-        var(--clr-cyber-green-bright)
-      )
-      border-box;
+    linear-gradient(135deg, var(--clr-cyber-green), var(--clr-cyber-green-bright)) border-box;
   box-shadow: var(--glow-sm), var(--shadow-lg);
 }
 
@@ -178,8 +153,8 @@ body {
   transform: translateY(-0.08rem);
 }
 
-.c-card__status[data-status="Laboratorio attivo"],
-.c-proof__status[data-status="Laboratorio attivo"] {
+.c-card__status[data-status='Laboratorio attivo'],
+.c-proof__status[data-status='Laboratorio attivo'] {
   color: #0f766e;
   background: rgba(20, 184, 166, 0.14);
   border-color: rgba(15, 118, 110, 0.24);
