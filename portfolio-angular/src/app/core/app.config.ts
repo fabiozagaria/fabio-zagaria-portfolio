@@ -20,4 +20,3 @@ export const appConfig: ApplicationConfig = {
     { provide: TitleStrategy, useClass: PortfolioSeoStrategy },
   ],
 };
-

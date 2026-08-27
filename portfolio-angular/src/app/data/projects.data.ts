@@ -107,4 +107,3 @@ export const PROJECTS = [
     ],
   },
 ] as const satisfies readonly PortfolioProject[];
-

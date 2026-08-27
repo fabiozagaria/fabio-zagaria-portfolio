@@ -56,4 +56,3 @@ describe('HomeComponent', () => {
     expect(element.textContent).not.toContain("Uso dell'AI");
   });
 });
-

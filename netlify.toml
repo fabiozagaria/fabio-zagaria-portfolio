@@ -1,0 +1,9 @@
+[build]
+  base = "portfolio-angular"
+  command = "npm ci && npm run build"
+  publish = "dist/portfolio-angular/browser"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
