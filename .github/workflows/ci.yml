@@ -35,15 +35,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Inspect formatting
-        run: |
-          npx prettier --write ../README.md src/app/features/home/home.component.html
-          echo '---README-B64---'
-          base64 -w0 ../README.md
-          echo
-          echo '---HOME-B64---'
-          base64 -w0 src/app/features/home/home.component.html
-          echo
+      - name: Format changed files
+        run: npx prettier --write ../README.md src/app/features/home/home.component.html
+
+      - name: Upload formatted files
+        uses: actions/upload-artifact@v4
+        with:
+          name: carac-formatted-files
+          path: |
+            README.md
+            portfolio-angular/src/app/features/home/home.component.html
+          if-no-files-found: error
 
       - name: Run tests
         run: npm run test:ci
