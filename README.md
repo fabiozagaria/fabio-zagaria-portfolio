@@ -47,6 +47,7 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 | **Focus backend**               | Java · Spring Boot · Spring JDBC · REST API · MySQL                            |
 | **Competenze frontend**         | Angular · TypeScript · JavaScript · HTML · CSS                                 |
 | **Formazione recente**          | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026        |
+| **Apprendimento continuo**      | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali              |
 | **Progetto backend principale** | Student Management API: MVP CRUD, validazione, transazioni e persistenza MySQL |
 | **Disponibilità**               | Roma · modalità ibrida · remoto in Italia                                      |
 
@@ -60,6 +61,32 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 LabTV, Fakeflix e gli esercizi formativi restano consultabili dal
 [profilo GitHub](https://github.com/fabiozagaria?tab=repositories), ma non sono presentati
 come progetti principali del portfolio.
+
+## Apprendimento continuo — Metodo CARAC
+
+Dopo il percorso Full Stack continuo lo studio con un ciclo che ho chiamato **CARAC**:
+**Comprendi → Applica → Ricostruisci → Autonomizza → Consolida**.
+
+| Fase | Cosa significa nella pratica |
+| ---- | ---------------------------- |
+| **Comprendi** | Studio il meccanismo, il flusso e il perché delle scelte prima di concentrarmi sulla sintassi. |
+| **Applica** | Uso il concetto in un laboratorio o in una prima implementazione guidata. |
+| **Ricostruisci** | Lo spiego a voce e ricostruisco i passaggi a libro chiuso. |
+| **Autonomizza** | Lo rifaccio in un esercizio separato, con primo tentativo autonomo e supporto progressivamente ridotto. |
+| **Consolida** | Lo riprendo dopo un intervallo e lo trasferisco in scenari diversi o in un progetto reale. |
+
+Gli esercizi di consolidamento possono restare **privati**: servono a verificare l'apprendimento, non a riempire il portfolio. I progetti pubblici hanno invece l'obiettivo di dimostrare progettazione, implementazione, testing, debugging e capacità di portare avanti software concreto.
+
+Uso strumenti AI come **tutor, interlocutore per il richiamo attivo, code reviewer e supporto di debugging mirato**. Negli esercizi il primo tentativo resta autonomo; nei progetti l'AI non sostituisce progettazione e implementazione.
+
+### Roadmap di studio
+
+| Orizzonte | Focus |
+| --------- | ----- |
+| **Attuale** | Spring Security: JWT access/refresh, ruoli e authorities, filter chain, CSRF/CORS, logout/revoca e conferma e-mail |
+| **Prossimo** | Testing con JUnit, Mockito e strumenti Spring; JPA/Spring Data avanzato; Docker |
+| **Successivo** | Architettura backend, delivery/CI-CD, cloud fundamentals e sistemi distribuiti |
+| **Direzione professionale** | Diventare un backend developer solido, capace di progettare e spiegare le proprie scelte tecniche e crescere progressivamente verso responsabilità architetturali |
 
 ## Cosa dimostra questa repository
 
