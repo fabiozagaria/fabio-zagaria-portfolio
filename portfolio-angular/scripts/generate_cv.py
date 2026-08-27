@@ -176,6 +176,24 @@ def build_cv() -> None:
     )
     y -= 10
     paragraph("HTML, CSS, JavaScript, TypeScript, Angular, MySQL, Java, Java EE/Jakarta EE, Spring, Spring Boot e Git. Percorso pratico su CRUD, API REST, frontend SPA, database e basi di sicurezza applicativa.", 7.2, 8.6)
+
+    segments(
+        LEFT,
+        y,
+        [
+            ("Sviluppo continuo - Metodo CARAC", "F2", BLUE),
+            (" | post-corso", "F3", INK),
+        ],
+        7.8,
+    )
+    y -= 10
+    paragraph(
+        "Comprendi, Applica, Ricostruisci, Autonomizza, Consolida: studio continuo con richiamo attivo, "
+        "esercizi autonomi e progetti reali; strumenti AI usati come tutor, per code review e debugging mirato.",
+        7.0,
+        8.3,
+    )
+
     segments(LEFT, y, [("Master Java - PC Academy", "F2", BLUE), (" | Settembre 2019 - Aprile 2020 | 300 ore", "F3", INK)], 7.8)
     y -= 10
     paragraph("Java 8, OOP, REST, SQL, Android, Clean Code, separazione delle responsabilità e principi di architettura software.", 7.2, 8.6)
