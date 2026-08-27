@@ -42,7 +42,7 @@
 
 .c-proof__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-lg);
 }
 
@@ -83,10 +83,16 @@
   white-space: nowrap;
 }
 
-.c-proof__status[data-status='In sviluppo'] {
+.c-proof__status[data-status="In sviluppo"] {
   color: #9a5b00;
   background: rgba(244, 184, 96, 0.16);
   border-color: rgba(154, 91, 0, 0.22);
+}
+
+.c-proof__status[data-status="Laboratorio attivo"] {
+  color: #0f766e;
+  background: rgba(20, 184, 166, 0.14);
+  border-color: rgba(15, 118, 110, 0.24);
 }
 
 .c-proof__focus {
@@ -112,6 +118,12 @@
   margin-top: var(--space-xl);
 }
 
+@media (max-width: 64em) {
+  .c-proof__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 48em) {
   .c-proof__header,
   .c-proof__grid {
@@ -127,3 +139,4 @@
     padding: var(--space-lg);
   }
 }
+

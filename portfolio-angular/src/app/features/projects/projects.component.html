@@ -4,7 +4,8 @@
       <span class="c-section-title__number" aria-hidden="true">03</span>PROGETTI
     </h1>
     <p class="c-section-subtitle">
-      Due progetti principali presentati con responsabilità, scelte tecniche e stato reale.
+      Due progetti e un laboratorio di studio, presentati con responsabilità,
+      scelte tecniche e stato reale.
     </p>
 
     <div class="c-projects__grid">
@@ -21,7 +22,9 @@
 
             <p class="c-card__description">{{ project.description }}</p>
 
-            <p class="c-card__section-label">Responsabilità e scelte tecniche</p>
+            <p class="c-card__section-label">
+              Responsabilità e scelte tecniche
+            </p>
             <ul class="c-card__highlights">
               @for (highlight of project.highlights; track highlight) {
                 <li>{{ highlight }}</li>
@@ -56,10 +59,13 @@
                     "
                   >
                     <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                    {{ project.liveLabel ?? 'Demo' }}
+                    {{ project.liveLabel ?? "Demo" }}
                   </a>
                 }
-                @for (repository of project.repositories ?? []; track repository.url) {
+                @for (
+                  repository of project.repositories ?? [];
+                  track repository.url
+                ) {
                   <a
                     [href]="repository.url"
                     target="_blank"
@@ -73,7 +79,8 @@
                       ' su GitHub in una nuova scheda'
                     "
                   >
-                    <i class="fab fa-github" aria-hidden="true"></i> {{ repository.label }}
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    {{ repository.label }}
                   </a>
                 }
               </div>
@@ -84,7 +91,9 @@
     </div>
 
     <div class="c-projects__github-cta">
-      <p>Vuoi vedere anche esercizi, esperimenti e progetti ancora in evoluzione?</p>
+      <p>
+        Vuoi vedere anche esercizi, esperimenti e progetti ancora in evoluzione?
+      </p>
       <a
         href="https://github.com/fabiozagaria?tab=repositories"
         target="_blank"
@@ -98,3 +107,4 @@
     </div>
   </div>
 </section>
+

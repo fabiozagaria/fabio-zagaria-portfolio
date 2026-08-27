@@ -41,7 +41,7 @@
                 "output": "/assets/img"
               }
             ],
-            "styles": ["src/styles.css"]
+            "styles": ["src/styles.css", "src/motion.css"]
           },
           "configurations": {
             "production": {
@@ -86,3 +86,4 @@
     }
   }
 }
+

@@ -1,0 +1,272 @@
+:root {
+  --ff-primary:
+    "Aptos Display", "Segoe UI Variable Display", "Segoe UI", system-ui,
+    sans-serif;
+  --ff-secondary:
+    "Aptos", "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+  background:
+    radial-gradient(
+      circle at 12% 16%,
+      rgba(59, 130, 246, 0.1),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 88% 82%,
+      rgba(20, 184, 166, 0.1),
+      transparent 30rem
+    ),
+    linear-gradient(180deg, #e3eceb 0%, var(--clr-black-soft) 46%, #dcebea 100%);
+}
+
+::view-transition-old(root) {
+  animation: portfolio-route-out 180ms ease-in both;
+}
+
+::view-transition-new(root) {
+  animation: portfolio-route-in 460ms var(--ease-spring) both;
+}
+
+.c-hero__text {
+  animation: portfolio-hero-copy 720ms var(--ease-spring) both;
+}
+
+.c-backend-map {
+  animation: portfolio-hero-card 820ms 100ms var(--ease-spring) backwards;
+  transition:
+    transform var(--transition-slow),
+    box-shadow var(--transition-slow);
+}
+
+.c-backend-map:hover {
+  transform: translateY(-0.35rem) rotate(0.2deg);
+  box-shadow: var(--glow-lg), var(--shadow-lg);
+}
+
+.c-hero__bg::before,
+.c-hero__bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(0.5rem);
+  pointer-events: none;
+}
+
+.c-hero__bg::before {
+  top: 14%;
+  right: 5%;
+  width: clamp(12rem, 24vw, 22rem);
+  aspect-ratio: 1;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.18),
+    transparent 68%
+  );
+  animation: portfolio-orbit 12s ease-in-out infinite alternate;
+}
+
+.c-hero__bg::after {
+  bottom: 4%;
+  left: 38%;
+  width: clamp(9rem, 18vw, 16rem);
+  aspect-ratio: 1;
+  background: radial-gradient(
+    circle,
+    rgba(20, 184, 166, 0.15),
+    transparent 70%
+  );
+  animation: portfolio-orbit 10s 1.2s ease-in-out infinite alternate-reverse;
+}
+
+.c-nav__logo-img,
+.c-nav__logo-text {
+  transition:
+    transform var(--transition-base),
+    color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.c-nav__logo:hover .c-nav__logo-img,
+.c-nav__logo:focus-visible .c-nav__logo-img {
+  transform: rotate(-4deg) scale(1.06);
+  box-shadow: var(--glow-md);
+}
+
+.c-nav__logo:hover .c-nav__logo-text,
+.c-nav__logo:focus-visible .c-nav__logo-text {
+  color: var(--clr-cyber-green-bright);
+  transform: translateX(0.15rem);
+}
+
+.c-btn {
+  isolation: isolate;
+  transition:
+    color var(--transition-base),
+    background var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+.c-btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.c-btn:hover,
+.c-btn:focus-visible {
+  transform: translateY(-0.2rem) scale(1.015);
+}
+
+.c-btn i,
+.c-btn [aria-hidden="true"] {
+  transition: transform var(--transition-base);
+}
+
+.c-btn:hover i,
+.c-btn:focus-visible i,
+.c-btn:hover [aria-hidden="true"],
+.c-btn:focus-visible [aria-hidden="true"] {
+  transform: translateX(0.18rem);
+}
+
+.c-card,
+.c-proof__card,
+.c-about__text-block,
+.c-experience__item,
+.c-contact__info {
+  background:
+    linear-gradient(var(--clr-black), var(--clr-black)) padding-box,
+    linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(20, 184, 166, 0.18))
+      border-box;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition-slow),
+    box-shadow var(--transition-slow),
+    border-color var(--transition-slow);
+}
+
+.c-card:hover,
+.c-proof__card:hover,
+.c-about__text-block:hover,
+.c-experience__item:hover,
+.c-contact__info:hover {
+  transform: translateY(-0.45rem);
+  background:
+    linear-gradient(var(--clr-black), var(--clr-black)) padding-box,
+    linear-gradient(
+        135deg,
+        var(--clr-cyber-green),
+        var(--clr-cyber-green-bright)
+      )
+      border-box;
+  box-shadow: var(--glow-sm), var(--shadow-lg);
+}
+
+.c-card__tag {
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.c-card:hover .c-card__tag {
+  transform: translateY(-0.08rem);
+}
+
+.c-card__status[data-status="Laboratorio attivo"],
+.c-proof__status[data-status="Laboratorio attivo"] {
+  color: #0f766e;
+  background: rgba(20, 184, 166, 0.14);
+  border-color: rgba(15, 118, 110, 0.24);
+}
+
+@supports (animation-timeline: view()) {
+  .c-proof__card,
+  .c-card,
+  .c-about__text-block,
+  .c-about__portrait,
+  .c-about__stat-item,
+  .c-experience__item,
+  .c-contact__info {
+    animation: portfolio-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 4% cover 28%;
+  }
+}
+
+@keyframes portfolio-route-out {
+  to {
+    opacity: 0;
+    transform: translateY(-0.6rem) scale(0.99);
+  }
+}
+
+@keyframes portfolio-route-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.1rem) scale(0.985);
+  }
+}
+
+@keyframes portfolio-hero-copy {
+  from {
+    opacity: 0;
+    transform: translateX(-1.5rem);
+  }
+}
+
+@keyframes portfolio-hero-card {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem) rotate(1deg) scale(0.98);
+  }
+}
+
+@keyframes portfolio-orbit {
+  to {
+    transform: translate3d(1.5rem, -1rem, 0) scale(1.08);
+  }
+}
+
+@keyframes portfolio-reveal {
+  from {
+    opacity: 0.25;
+    filter: blur(0.35rem);
+    transform: translateY(2rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  .c-hero__text,
+  .c-backend-map,
+  .c-hero__bg::before,
+  .c-hero__bg::after,
+  .c-proof__card,
+  .c-card,
+  .c-about__text-block,
+  .c-about__portrait,
+  .c-about__stat-item,
+  .c-experience__item,
+  .c-contact__info {
+    animation: none;
+    filter: none;
+    transform: none;
+  }
+}
+
