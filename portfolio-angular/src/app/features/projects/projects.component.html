@@ -1,6 +1,6 @@
 <section id="projects" class="c-projects o-section">
   <div class="c-projects__container o-container">
-    <h1 class="c-section-title"><span class="c-section-title__number">03</span>PROGETTI</h1>
+    <h1 class="c-section-title"><span class="c-section-title__number" aria-hidden="true">03</span>PROGETTI</h1>
     <p class="c-section-subtitle">
       Due progetti principali presentati con responsabilità, scelte tecniche e stato reale.
     </p>
@@ -8,9 +8,6 @@
     <div class="c-projects__grid">
       @for (project of projects; track project.id) {
         <article class="c-card" [id]="project.id">
-          <div class="c-card__image" aria-hidden="true">
-            <span class="c-card__placeholder"><i [class]="project.icon"></i></span>
-          </div>
 
           <div class="c-card__content">
             <p class="c-card__focus">{{ project.focus }}</p>
