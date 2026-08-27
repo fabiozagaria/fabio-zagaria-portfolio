@@ -57,6 +57,6 @@ describe('App', () => {
     expect(meta.getTag("property='og:url'")?.content).toBe(
       'https://fabio-zagaria-portfolio.vercel.app/projects',
     );
-    expect(meta.getTag("name='description'")?.content).toContain('Student Management API');
+    expect(meta.getTag("name='description'")?.content).toContain('Gestionale Spese');
   });
 });

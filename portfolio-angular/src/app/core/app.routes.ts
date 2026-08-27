@@ -46,7 +46,7 @@ export const routes: Routes = [
       seo: {
         path: '/projects',
         description:
-          'Progetti selezionati di Fabio Zagaria: Student Management API ed Expense Tracker con codice, tecnologie e stato reale.',
+          'Progetti selezionati di Fabio Zagaria: Gestionale Spese e LabTV con codice, demo, tecnologie e stato reale.',
       },
     },
     loadComponent: () =>

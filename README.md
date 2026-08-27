@@ -41,26 +41,28 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 
 ## Profilo in 30 secondi
 
-|                                 |                                                                                |
-| ------------------------------- | ------------------------------------------------------------------------------ |
-| **Ruoli di interesse**          | Junior Backend Developer · Junior Full Stack Developer                         |
-| **Focus backend**               | Java · Spring Boot · Spring JDBC · REST API · MySQL                            |
-| **Competenze frontend**         | Angular · TypeScript · JavaScript · HTML · CSS                                 |
-| **Formazione recente**          | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026        |
-| **Apprendimento continuo**      | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali              |
-| **Progetto backend principale** | Student Management API: MVP CRUD, validazione, transazioni e persistenza MySQL |
-| **Disponibilità**               | Roma · modalità ibrida · remoto in Italia                                      |
+|                            |                                                                         |
+| -------------------------- | ----------------------------------------------------------------------- |
+| **Ruoli di interesse**     | Junior Backend Developer · Junior Full Stack Developer                  |
+| **Focus backend**          | Java · Spring Boot · Spring JDBC · REST API · MySQL                     |
+| **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                          |
+| **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026 |
+| **Apprendimento continuo** | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali       |
+| **Progetto principale**    | Gestionale Spese: Angular, API Spring Boot, CRUD JPA e MySQL            |
+| **Disponibilità**          | Roma · modalità ibrida · remoto in Italia                               |
 
 ## Progetti in evidenza
 
-| Progetto                                                                                                                                              | Stato          | Cosa dimostra                                                  |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------------------------------------------------------- |
-| [Student Management API](https://github.com/fabiozagaria/student-management-api)                                                                      | MVP completato | Spring Boot, JDBC Template, MySQL, REST e architettura a layer |
-| Expense Tracker: [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo    | Angular Signals, Spring Boot, JPA, MySQL e integrazione REST   |
+| Progetto                                                                                                                                                                                              | Stato                              | Cosa dimostra                                                                      |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
+| Gestionale Spese: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo                        | Angular Signals, Reactive Forms, test frontend, Spring Boot, DTO, CRUD JPA e MySQL |
+| LabTV: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                               | Demo funzionante, sviluppo sospeso | Integrazione TMDB, HttpClient, RxJS, modelli tipizzati e routing parametrico       |
 
-LabTV, Fakeflix e gli esercizi formativi restano consultabili dal
+Student Management API, Fakeflix e gli esercizi formativi restano consultabili dal
 [profilo GitHub](https://github.com/fabiozagaria?tab=repositories), ma non sono presentati
-come progetti principali del portfolio.
+come progetti principali. Task Manager con JPA e Spring Security è un laboratorio attivo e
+verrà promosso soltanto dopo il completamento del ciclo di autenticazione, dei test e della
+documentazione.
 
 ## Apprendimento continuo — Metodo CARAC
 

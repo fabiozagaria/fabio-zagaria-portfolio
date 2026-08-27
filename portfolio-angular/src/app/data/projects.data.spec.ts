@@ -1,10 +1,10 @@
 import { PROJECTS } from './projects.data';
 
 describe('portfolio projects', () => {
-  it('prioritizes the completed backend MVP', () => {
-    expect(PROJECTS[0].title).toBe('Student Management API');
-    expect(PROJECTS[0].status).toBe('MVP completato');
-    expect(PROJECTS[0].repositories[0].url).toContain('student-management-api');
+  it('prioritizes the full stack expense tracker', () => {
+    expect(PROJECTS[0].title).toBe('Gestionale Spese');
+    expect(PROJECTS[0].status).toBe('In sviluppo');
+    expect(PROJECTS[0].statusDetail).toContain('CRUD');
   });
 
   it('links both repositories for the expense tracker', () => {
@@ -14,19 +14,18 @@ describe('portfolio projects', () => {
       'Frontend',
       'Backend',
     ]);
+    expect(expenseTracker?.liveLabel).toBe('Demo UI');
   });
 
-  it('labels the expense tracker demo as frontend-only', () => {
-    const expenseTracker = PROJECTS.find((project) => project.id === 'gestionale-spese');
+  it('presents LabTV as a working API integration demo', () => {
+    const labTv = PROJECTS.find((project) => project.id === 'labtv');
 
-    expect(expenseTracker?.liveLabel).toBe('Demo frontend');
-    expect(expenseTracker?.statusDetail).toContain('dati dimostrativi');
+    expect(labTv?.status).toBe('Demo funzionante');
+    expect(labTv?.liveLink).toBe('https://lab-tv.vercel.app/');
+    expect(labTv?.repositories[0].url).toContain('labtv-angular');
   });
 
   it('shows only the two strongest recruiter-facing projects', () => {
-    expect(PROJECTS.map((project) => project.id)).toEqual([
-      'student-management-api',
-      'gestionale-spese',
-    ]);
+    expect(PROJECTS.map((project) => project.id)).toEqual(['gestionale-spese', 'labtv']);
   });
 });

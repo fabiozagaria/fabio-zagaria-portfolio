@@ -25,24 +25,32 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
 
-    expect(element.textContent).toContain('Student Management API');
     expect(element.textContent).toContain('Gestionale Spese');
-    expect(element.textContent).not.toContain('GitHub nel 2026');
+    expect(element.textContent).toContain('LabTV');
+    expect(element.textContent).not.toContain('Student Management API');
     expect(element.textContent).not.toContain('Fakeflix');
   });
 
-  it('uses the hero to explain a real backend flow instead of repeating the stack', () => {
+  it('uses the hero to explain the full stack flow of the main project', () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
     const architectureLink = element.querySelector<HTMLAnchorElement>('.c-backend-map__link');
 
-    expect(element.textContent).toContain('Backend in pratica');
-    expect(element.textContent).toContain('Controller');
-    expect(element.textContent).toContain('Service');
-    expect(element.textContent).toContain('Repository');
-    expect(element.textContent).toContain('MySQL');
-    expect(element.textContent).not.toContain('whoami --stack');
-    expect(architectureLink?.getAttribute('href')).toBe('/projects#student-management-api');
+    expect(element.textContent).toContain('Full stack in pratica');
+    expect(element.textContent).toContain('Angular UI');
+    expect(element.textContent).toContain('Client API');
+    expect(element.textContent).toContain('Spring Boot');
+    expect(element.textContent).toContain('JPA e MySQL');
+    expect(architectureLink?.getAttribute('href')).toBe('/projects#gestionale-spese');
+  });
+
+  it('keeps the home focused on role, projects and contact actions', () => {
+    const fixture = TestBed.createComponent(HomeComponent);
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+
+    expect(element.textContent).not.toContain('Metodo CARAC');
+    expect(element.textContent).not.toContain("Uso dell'AI");
   });
 });

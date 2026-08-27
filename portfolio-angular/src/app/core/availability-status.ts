@@ -30,8 +30,7 @@ export function getAvailabilityStatus(now = new Date()): AvailabilityStatus | nu
       state: 'scheduled',
       title: 'Pausa programmata',
       dateRange: '29 agosto - 6 settembre 2026',
-      message:
-        'In quei giorni non sarò operativo su studio, progetti o nuove collaborazioni. Riprenderò dal 7 settembre.',
+      message: 'Disponibile di nuovo dal 7 settembre.',
     };
   }
 
@@ -39,8 +38,7 @@ export function getAvailabilityStatus(now = new Date()): AvailabilityStatus | nu
     state: 'away',
     title: 'Attualmente in ferie',
     dateRange: 'Fino al 6 settembre 2026',
-    message:
-      'In questo periodo non sono operativo su studio, progetti o nuove collaborazioni. Riprenderò dal 7 settembre.',
+    message: 'Disponibile di nuovo dal 7 settembre.',
   };
 }
 
