@@ -1,4 +1,4 @@
-export type ProjectStatus = 'MVP completato' | 'In sviluppo';
+export type ProjectStatus = 'In sviluppo' | 'Demo funzionante';
 
 export interface PortfolioRepository {
   readonly label: string;
@@ -22,46 +22,23 @@ export interface PortfolioProject {
 
 export const PROJECTS = [
   {
-    id: 'student-management-api',
-    title: 'Student Management API',
-    icon: 'fas fa-server',
-    focus: 'Progetto backend principale',
-    description:
-      "MVP di un'API REST per la gestione persistente degli studenti, sviluppata con Java e Spring Boot.",
-    highlights: [
-      'CRUD completo e risposte HTTP coerenti',
-      'Architettura a layer con controller, service e repository',
-      'Validazione, transazioni e gestione centralizzata degli errori',
-    ],
-    technologies: ['Java', 'Spring Boot', 'Spring JDBC', 'MySQL', 'REST API'],
-    status: 'MVP completato',
-    statusDetail:
-      'Le funzionalità CRUD core sono concluse. Test automatici, OpenAPI e Security sono evoluzioni pianificate.',
-    repositories: [
-      {
-        label: 'Repository API',
-        url: 'https://github.com/fabiozagaria/student-management-api',
-      },
-    ],
-  },
-  {
     id: 'gestionale-spese',
     title: 'Gestionale Spese',
     icon: 'fas fa-wallet',
-    focus: 'Prodotto full stack',
+    focus: 'Progetto principale · full stack',
     description:
       'Applicazione full stack in evoluzione per registrare e gestire entrate e uscite personali.',
     highlights: [
-      'Stato reattivo con Angular Signals',
-      'Form reattivi, validazione e client HTTP dedicato',
-      'Prima integrazione GET con backend Spring Boot',
+      'Frontend Angular con Signals, Reactive Forms e test di componenti e servizi',
+      'CRUD REST con DTO dedicati e persistenza JPA/MySQL',
+      'Contratto HTTP separato tra interfaccia, stato applicativo e backend',
     ],
     technologies: ['Angular', 'TypeScript', 'Spring Boot', 'Spring Data JPA', 'MySQL', 'REST API'],
     status: 'In sviluppo',
     statusDetail:
-      'La demo frontend è navigabile con dati dimostrativi; persistenza completa e autenticazione sono in evoluzione.',
+      "La demo pubblica mostra l'interfaccia. Il backend espone il CRUD delle spese nel repository; deployment dell'API, integrazione completa e autenticazione sono ancora in evoluzione.",
     liveLink: 'https://gestionale-spese.vercel.app/',
-    liveLabel: 'Demo frontend',
+    liveLabel: 'Demo UI',
     repositories: [
       {
         label: 'Frontend',
@@ -70,6 +47,31 @@ export const PROJECTS = [
       {
         label: 'Backend',
         url: 'https://github.com/fabiozagaria/expense-tracker-api',
+      },
+    ],
+  },
+  {
+    id: 'labtv',
+    title: 'LabTV',
+    icon: 'fas fa-film',
+    focus: 'Integrazione API esterna',
+    description:
+      'Applicazione Angular per esplorare film, cast e titoli simili attraverso i dati della TMDB API.',
+    highlights: [
+      'Catalogo dinamico con HttpClient, RxJS e modelli TypeScript',
+      'Routing parametrico per dettaglio, cast, regista e film simili',
+      'Stati di caricamento ed errore gestiti nei flussi asincroni',
+    ],
+    technologies: ['Angular', 'TypeScript', 'RxJS', 'Signals', 'TMDB API', 'Bootstrap'],
+    status: 'Demo funzionante',
+    statusDetail:
+      'La demo e il flusso catalogo-dettaglio sono funzionanti. Lo sviluppo è temporaneamente sospeso e non include autenticazione o persistenza utente.',
+    liveLink: 'https://lab-tv.vercel.app/',
+    liveLabel: 'Demo online',
+    repositories: [
+      {
+        label: 'Repository',
+        url: 'https://github.com/fabiozagaria/labtv-angular',
       },
     ],
   },
