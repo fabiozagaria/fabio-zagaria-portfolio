@@ -35,8 +35,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Check formatting
-        run: npm run format:check
+      - name: Capture formatted files
+        run: |
+          npx prettier --write ../README.md src/app/features/about/about.component.html src/app/features/contact/contact.component.html src/app/features/home/home.component.html src/app/features/projects/projects.component.html
+          for file in ../README.md src/app/features/about/about.component.html src/app/features/contact/contact.component.html src/app/features/home/home.component.html src/app/features/projects/projects.component.html; do
+            echo "FORMAT_FILE:$file"
+            base64 -w 0 "$file"
+            echo
+          done
+          exit 1
 
       - name: Run tests
         run: npm run test:ci
