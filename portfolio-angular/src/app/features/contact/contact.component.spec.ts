@@ -16,35 +16,20 @@ describe('ContactComponent', () => {
     ]);
   });
 
-  it('links to the public X profile securely', async () => {
+  it('keeps the contact path focused on professional channels', async () => {
     await TestBed.configureTestingModule({ imports: [ContactComponent] }).compileComponents();
 
     const fixture = TestBed.createComponent(ContactComponent);
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
-    const xLink = element.querySelector<HTMLAnchorElement>(
-      'a[href="https://x.com/fabiozagariadev"]',
+    const externalLinks = Array.from(
+      element.querySelectorAll<HTMLAnchorElement>('a[target="_blank"]'),
     );
 
-    expect(xLink).not.toBeNull();
-    expect(xLink?.getAttribute('target')).toBe('_blank');
-    expect(xLink?.getAttribute('rel')).toBe('noopener noreferrer');
-    expect(xLink?.textContent?.trim()).toBe('X · fabiozagariadev');
-  });
-
-  it('links to the public Instagram profile securely', async () => {
-    await TestBed.configureTestingModule({ imports: [ContactComponent] }).compileComponents();
-
-    const fixture = TestBed.createComponent(ContactComponent);
-    fixture.detectChanges();
-    const element = fixture.nativeElement as HTMLElement;
-    const instagramLink = element.querySelector<HTMLAnchorElement>(
-      'a[href="https://www.instagram.com/zagariafabio.dev/"]',
-    );
-
-    expect(instagramLink).not.toBeNull();
-    expect(instagramLink?.getAttribute('target')).toBe('_blank');
-    expect(instagramLink?.getAttribute('rel')).toBe('noopener noreferrer');
-    expect(instagramLink?.textContent?.trim()).toBe('Instagram · zagariafabio.dev');
+    expect(element.textContent).toContain('GitHub · fabiozagaria');
+    expect(element.textContent).toContain('LinkedIn · fabiozagaria');
+    expect(element.textContent).not.toContain('X ·');
+    expect(element.textContent).not.toContain('Instagram ·');
+    expect(externalLinks.every((link) => link.rel === 'noopener noreferrer')).toBe(true);
   });
 });
