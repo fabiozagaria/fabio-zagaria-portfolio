@@ -41,22 +41,22 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 
 ## Profilo in 30 secondi
 
-|                                 |                                                                                |
-| ------------------------------- | ------------------------------------------------------------------------------ |
-| **Ruoli di interesse**          | Junior Backend Developer · Junior Full Stack Developer                         |
-| **Focus backend**               | Java · Spring Boot · Spring JDBC · REST API · MySQL                            |
-| **Competenze frontend**         | Angular · TypeScript · JavaScript · HTML · CSS                                 |
-| **Formazione recente**          | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026        |
-| **Apprendimento continuo**      | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali              |
-| **Progetto principale**         | Gestionale Spese: Angular, API Spring Boot, CRUD JPA e MySQL                      |
-| **Disponibilità**               | Roma · modalità ibrida · remoto in Italia                                      |
+|                            |                                                                         |
+| -------------------------- | ----------------------------------------------------------------------- |
+| **Ruoli di interesse**     | Junior Backend Developer · Junior Full Stack Developer                  |
+| **Focus backend**          | Java · Spring Boot · Spring JDBC · REST API · MySQL                     |
+| **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                          |
+| **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026 |
+| **Apprendimento continuo** | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali       |
+| **Progetto principale**    | Gestionale Spese: Angular, API Spring Boot, CRUD JPA e MySQL            |
+| **Disponibilità**          | Roma · modalità ibrida · remoto in Italia                               |
 
 ## Progetti in evidenza
 
-| Progetto | Stato | Cosa dimostra |
-| --- | --- | --- |
-| Gestionale Spese: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo | Angular Signals, Reactive Forms, test frontend, Spring Boot, DTO, CRUD JPA e MySQL |
-| LabTV: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular) | Demo funzionante, sviluppo sospeso | Integrazione TMDB, HttpClient, RxJS, modelli tipizzati e routing parametrico |
+| Progetto                                                                                                                                                                                              | Stato                              | Cosa dimostra                                                                      |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
+| Gestionale Spese: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo                        | Angular Signals, Reactive Forms, test frontend, Spring Boot, DTO, CRUD JPA e MySQL |
+| LabTV: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                               | Demo funzionante, sviluppo sospeso | Integrazione TMDB, HttpClient, RxJS, modelli tipizzati e routing parametrico       |
 
 Student Management API, Fakeflix e gli esercizi formativi restano consultabili dal
 [profilo GitHub](https://github.com/fabiozagaria?tab=repositories), ma non sono presentati
