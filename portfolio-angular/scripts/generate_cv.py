@@ -161,7 +161,7 @@ def build_cv() -> None:
     )
     y -= 10
     bullet("CRUD di task associati all'utente autenticato, con controllo di ownership per impedire accessi o modifiche alle risorse di altri utenti.")
-    bullet("Registrazione utenti con BCrypt, CustomUserDetailsService, DaoAuthenticationProvider e AuthenticationManager; Basic Authentication implementata e migrazione a JWT in corso.")
+    bullet("Registrazione utenti con BCrypt e CustomUserDetailsService; autenticazione stateless con JWT access token e refresh token casuali salvati come hash. Rinnovo, rotazione, revoca e test di sicurezza sono ancora in sviluppo.")
     y -= 2
 
     section("FORMAZIONE IT")
