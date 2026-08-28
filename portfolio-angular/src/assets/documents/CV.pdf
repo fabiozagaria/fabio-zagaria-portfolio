@@ -22,7 +22,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-BoldOblique /Encoding /WinAnsiEncoding >>
 endobj
 8 0 obj
-<< /Length 7921 >>
+<< /Length 7969 >>
 stream
 0.075 0.266 0.459 rg
 BT /F2 18.50 Tf 237.49 797.89 Td (Fabio Zagaria) Tj ET
@@ -101,9 +101,9 @@ BT /F3 7.80 Tf 169.30 555.79 Td (Java 21, Spring Boot, Spring Security, JPA/Hibe
 0.030 0.030 0.030 rg
 BT /F1 7.35 Tf 42.00 545.79 Td (- CRUD di task associati all'utente autenticato, con controllo di ownership per impedire accessi o modifiche alle risorse di altri utenti.) Tj ET
 0.030 0.030 0.030 rg
-BT /F1 7.35 Tf 42.00 536.79 Td (- Registrazione utenti con BCrypt, CustomUserDetailsService, DaoAuthenticationProvider e AuthenticationManager; Basic Authentication implementata e) Tj ET
+BT /F1 7.35 Tf 42.00 536.79 Td (- Registrazione utenti con BCrypt e CustomUserDetailsService; autenticazione stateless con JWT access token e refresh token casuali salvati come hash.) Tj ET
 0.030 0.030 0.030 rg
-BT /F1 7.35 Tf 42.00 527.99 Td (  migrazione a JWT in corso.) Tj ET
+BT /F1 7.35 Tf 42.00 527.99 Td (  Rinnovo, rotazione, revoca e test di sicurezza sono ancora in sviluppo.) Tj ET
 0.075 0.266 0.459 rg
 BT /F2 9.50 Tf 42.00 516.99 Td (FORMAZIONE IT) Tj ET
 0.075 0.266 0.459 RG
@@ -174,5 +174,5 @@ xref
 trailer
 << /Size 9 /Root 1 0 R >>
 startxref
-8670
+8718
 %%EOF
