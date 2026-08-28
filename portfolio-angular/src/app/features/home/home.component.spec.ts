@@ -20,13 +20,15 @@ describe('HomeComponent', () => {
     expect(downloadLink?.getAttribute('download')).toBe('CV_Fabio_Zagaria.pdf');
   });
 
-  it('shows only the selected recruiter-facing projects', () => {
+  it('shows the selected projects and labels Task Manager as a lab', () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
 
     expect(element.textContent).toContain('Gestionale Spese');
     expect(element.textContent).toContain('LabTV');
+    expect(element.textContent).toContain('Task Manager Security Lab');
+    expect(element.textContent).toContain('Laboratorio guidato');
     expect(element.textContent).not.toContain('Student Management API');
     expect(element.textContent).not.toContain('Fakeflix');
   });

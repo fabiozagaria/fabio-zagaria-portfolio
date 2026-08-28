@@ -46,7 +46,7 @@ export const routes: Routes = [
       seo: {
         path: '/projects',
         description:
-          'Progetti selezionati di Fabio Zagaria: Gestionale Spese e LabTV con codice, demo, tecnologie e stato reale.',
+          'Progetti e laboratori di Fabio Zagaria: Gestionale Spese, LabTV e Task Manager Security Lab con codice, tecnologie e stato reale.',
       },
     },
     loadComponent: () =>

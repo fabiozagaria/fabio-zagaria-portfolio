@@ -1,4 +1,4 @@
-export type ProjectStatus = 'In sviluppo' | 'Demo funzionante';
+export type ProjectStatus = 'In sviluppo' | 'Demo funzionante' | 'Laboratorio attivo';
 
 export interface PortfolioRepository {
   readonly label: string;
@@ -72,6 +72,37 @@ export const PROJECTS = [
       {
         label: 'Repository',
         url: 'https://github.com/fabiozagaria/labtv-angular',
+      },
+    ],
+  },
+  {
+    id: 'task-manager-security-lab',
+    title: 'Task Manager Security Lab',
+    icon: 'fas fa-shield-halved',
+    focus: 'Laboratorio guidato · backend',
+    description:
+      'Laboratorio di studio usato per sperimentare autenticazione e persistenza in una semplice API CRUD di task.',
+    highlights: [
+      'Registrazione e login con password BCrypt e access token JWT',
+      "CRUD dei task limitato all'utente autenticato tramite Spring Security",
+      'Refresh token casuale salvato come hash; flusso refresh e revoca ancora da completare',
+    ],
+    technologies: [
+      'Java',
+      'Spring Boot',
+      'Spring Security',
+      'Spring Data JPA',
+      'Hibernate',
+      'MySQL',
+      'JWT',
+    ],
+    status: 'Laboratorio attivo',
+    statusDetail:
+      'È un esercizio guidato di apprendimento, non un prodotto ideato autonomamente. Lo uso per comprendere Spring Security, JPA e Hibernate; documentazione, test e ciclo refresh/revoca sono ancora incompleti.',
+    repositories: [
+      {
+        label: 'Repository laboratorio',
+        url: 'https://github.com/fabiozagaria/task-manager-api-jpa-security',
       },
     ],
   },

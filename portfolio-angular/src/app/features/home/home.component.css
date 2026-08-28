@@ -42,7 +42,7 @@
 
 .c-proof__grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-lg);
 }
 
@@ -89,6 +89,12 @@
   border-color: rgba(154, 91, 0, 0.22);
 }
 
+.c-proof__status[data-status='Laboratorio attivo'] {
+  color: #0f766e;
+  background: rgba(20, 184, 166, 0.14);
+  border-color: rgba(15, 118, 110, 0.24);
+}
+
 .c-proof__focus {
   margin-bottom: var(--space-xs);
 }
@@ -110,6 +116,12 @@
   display: flex;
   justify-content: center;
   margin-top: var(--space-xl);
+}
+
+@media (max-width: 64em) {
+  .c-proof__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 48em) {

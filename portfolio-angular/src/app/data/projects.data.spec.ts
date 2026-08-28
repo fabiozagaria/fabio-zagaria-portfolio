@@ -25,7 +25,21 @@ describe('portfolio projects', () => {
     expect(labTv?.repositories[0].url).toContain('labtv-angular');
   });
 
-  it('shows only the two strongest recruiter-facing projects', () => {
-    expect(PROJECTS.map((project) => project.id)).toEqual(['gestionale-spese', 'labtv']);
+  it('labels Task Manager honestly as a guided learning lab', () => {
+    const taskManager = PROJECTS.find((project) => project.id === 'task-manager-security-lab');
+
+    expect(taskManager?.status).toBe('Laboratorio attivo');
+    expect(taskManager?.focus).toContain('Laboratorio guidato');
+    expect(taskManager?.statusDetail).toContain('non un prodotto ideato autonomamente');
+    expect(taskManager?.technologies).toContain('Spring Security');
+    expect(taskManager?.technologies).toContain('Hibernate');
+  });
+
+  it('shows two recruiter-facing projects and one explicit study lab', () => {
+    expect(PROJECTS.map((project) => project.id)).toEqual([
+      'gestionale-spese',
+      'labtv',
+      'task-manager-security-lab',
+    ]);
   });
 });
