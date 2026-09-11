@@ -22,7 +22,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-BoldOblique /Encoding /WinAnsiEncoding >>
 endobj
 8 0 obj
-<< /Length 7969 >>
+<< /Length 8029 >>
 stream
 0.075 0.266 0.459 rg
 BT /F2 18.50 Tf 237.49 797.89 Td (Fabio Zagaria) Tj ET
@@ -103,7 +103,7 @@ BT /F1 7.35 Tf 42.00 545.79 Td (- CRUD di task associati all'utente autenticato,
 0.030 0.030 0.030 rg
 BT /F1 7.35 Tf 42.00 536.79 Td (- Registrazione utenti con BCrypt e CustomUserDetailsService; autenticazione stateless con JWT access token e refresh token casuali salvati come hash.) Tj ET
 0.030 0.030 0.030 rg
-BT /F1 7.35 Tf 42.00 527.99 Td (  Rinnovo, rotazione, revoca e test di sicurezza sono ancora in sviluppo.) Tj ET
+BT /F1 7.35 Tf 42.00 527.99 Td (  Rinnovo, rotazione e revoca esplicita/logout sono implementati; cookie HttpOnly/Secure e test di sicurezza sono ancora in sviluppo.) Tj ET
 0.075 0.266 0.459 rg
 BT /F2 9.50 Tf 42.00 516.99 Td (FORMAZIONE IT) Tj ET
 0.075 0.266 0.459 RG
@@ -174,5 +174,5 @@ xref
 trailer
 << /Size 9 /Root 1 0 R >>
 startxref
-8718
+8778
 %%EOF
