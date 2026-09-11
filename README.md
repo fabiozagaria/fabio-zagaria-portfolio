@@ -28,15 +28,6 @@
   <img src="https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel&logoColor=white" alt="Deploy Vercel" />
 </p>
 
-<!-- availability-status:start -->
-
-> [!IMPORTANT]
-> **Pausa programmata - dal 29 agosto al 6 settembre 2026.**
->
-> In quei giorni non sarò disponibile per attività di studio, sviluppo o nuove collaborazioni. Riprenderò dal 7 settembre.
-
-<!-- availability-status:end -->
-
 Questo repository contiene il codice sorgente del mio portfolio professionale. È anche un esempio concreto del mio modo di organizzare un progetto Angular: componenti standalone, routing lazy, dati tipizzati, test automatici e attenzione ad accessibilità, SEO e performance.
 
 ## Profilo in 30 secondi
@@ -55,14 +46,14 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 
 | Progetto                                                                                                                                                                                              | Stato                              | Cosa dimostra                                                                      |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
-| Gestionale Spese: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo                        | Angular Signals, Reactive Forms, test frontend, Spring Boot, DTO, CRUD JPA e MySQL |
-| LabTV: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                               | Demo funzionante, sviluppo sospeso | Integrazione TMDB, HttpClient, RxJS, modelli tipizzati e routing parametrico       |
+| Gestionale Spese `0.3.0`: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo | Angular Signals, Reactive Forms, test frontend, Spring Boot, DTO, CRUD JPA e MySQL; Security in consolidamento |
+| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular) | Demo funzionante, sviluppo sospeso | Integrazione TMDB, HttpClient, RxJS, modelli tipizzati e routing parametrico |
 
 Student Management API, Fakeflix e gli esercizi formativi restano consultabili dal
 [profilo GitHub](https://github.com/fabiozagaria?tab=repositories), ma non sono presentati
-come progetti principali. Task Manager con JPA e Spring Security è un laboratorio attivo e
-verrà promosso soltanto dopo il completamento del ciclo di autenticazione, dei test e della
-documentazione.
+come progetti principali. Task Manager con JPA e Spring Security resta un laboratorio: rinnovo,
+rotazione e revoca esplicita/logout dei refresh token sono implementati; cookie HttpOnly/Secure,
+test comportamentali e documentazione restano da completare prima di un'eventuale promozione.
 
 ## Apprendimento continuo — Metodo CARAC
 
