@@ -97,7 +97,8 @@ Uso strumenti AI come **tutor, interlocutore per il richiamo attivo, code review
 - Le pagine sono caricate solo quando vengono visitate, riducendo il JavaScript iniziale.
 - I dati dei progetti sono separati dai componenti e verificati tramite tipi TypeScript.
 - I componenti statici usano `OnPush` per evitare controlli non necessari.
-- Il CV pubblico usa un unico PDF a colonna singola, leggibile e compatibile con i sistemi ATS; gli asset sorgente non necessari vengono esclusi dalla build.
+- Il CV pubblico usa un unico PDF a colonna singola, leggibile e compatibile con i sistemi ATS; gli
+  asset sorgente non necessari vengono esclusi dalla build.
 - La navigazione mantiene titoli di pagina specifici e ripristina la posizione di scroll tra le route.
 
 ## Stack
