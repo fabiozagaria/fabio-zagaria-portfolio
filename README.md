@@ -44,10 +44,10 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 
 ## Progetti in evidenza
 
-| Progetto                                                                                                                                                                                              | Stato                              | Cosa dimostra                                                                      |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
-| Gestionale Spese `0.3.0`: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo | Angular Signals, Reactive Forms, test frontend, Spring Boot, DTO, CRUD JPA e MySQL; Security in consolidamento |
-| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular) | Demo funzionante, sviluppo sospeso | Integrazione TMDB, HttpClient, RxJS, modelli tipizzati e routing parametrico |
+| Progetto                                                                                                                                                                                                      | Stato                              | Cosa dimostra                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Gestionale Spese `0.3.0`: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo                        | Angular Signals, Reactive Forms, test frontend, Spring Boot, DTO, CRUD JPA e MySQL; Security in consolidamento |
+| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                               | Demo funzionante, sviluppo sospeso | Integrazione TMDB, HttpClient, RxJS, modelli tipizzati e routing parametrico                                   |
 
 Student Management API, Fakeflix e gli esercizi formativi restano consultabili dal
 [profilo GitHub](https://github.com/fabiozagaria?tab=repositories), ma non sono presentati
