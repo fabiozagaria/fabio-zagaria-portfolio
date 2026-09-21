@@ -1,4 +1,4 @@
-export type ProjectStatus = 'In sviluppo' | 'Demo funzionante' | 'Laboratorio attivo';
+export type ProjectStatus = 'Concluso' | 'Laboratorio attivo';
 
 export interface PortfolioRepository {
   readonly label: string;
@@ -23,22 +23,22 @@ export interface PortfolioProject {
 export const PROJECTS = [
   {
     id: 'gestionale-spese',
-    title: 'Gestionale Spese',
+    title: 'Expense Tracker',
     icon: 'fas fa-wallet',
-    focus: 'Progetto principale · full stack',
+    focus: 'Progetto full stack · concluso',
     description:
-      'Applicazione full stack in evoluzione per registrare e gestire entrate e uscite personali.',
+      'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
     highlights: [
       'Frontend Angular con Signals, Reactive Forms e test di componenti e servizi',
-      'CRUD REST con DTO dedicati e persistenza JPA/MySQL',
-      'Contratto HTTP separato tra interfaccia, stato applicativo e backend',
+      'CRUD REST, entrate e dashboard con DTO dedicati e persistenza JPA/MySQL',
+      'Autenticazione JWT con verifica email, refresh token HttpOnly e dati isolati per utente',
     ],
-    technologies: ['Angular', 'TypeScript', 'Spring Boot', 'Spring Data JPA', 'MySQL', 'REST API'],
-    status: 'In sviluppo',
+    technologies: ['Angular', 'TypeScript', 'Spring Boot', 'Spring Security', 'Spring Data JPA', 'MySQL', 'REST API'],
+    status: 'Concluso',
     statusDetail:
-      "La demo pubblica mostra l'interfaccia. Il backend espone il CRUD delle spese nel repository; deployment dell'API, integrazione completa e autenticazione sono ancora in evoluzione.",
+      'Scope funzionale concluso. Il backend include autenticazione, spese, entrate e riepilogo; le ultime modifiche Income/Dashboard richiedono ancora una verifica end-to-end completa con backend locale attivo.',
     liveLink: 'https://gestionale-spese.vercel.app/',
-    liveLabel: 'Demo UI',
+    liveLabel: 'Demo frontend',
     repositories: [
       {
         label: 'Frontend',
@@ -63,9 +63,9 @@ export const PROJECTS = [
       'Stati di caricamento ed errore gestiti nei flussi asincroni',
     ],
     technologies: ['Angular', 'TypeScript', 'RxJS', 'Signals', 'TMDB API', 'Bootstrap'],
-    status: 'Demo funzionante',
+    status: 'Concluso',
     statusDetail:
-      'La demo e il flusso catalogo-dettaglio sono funzionanti. Lo sviluppo è temporaneamente sospeso e non include autenticazione o persistenza utente.',
+      'Release frontend conclusa: applicazione Angular che integra la TMDB API per catalogo e dettaglio. Non sono previsti backend proprietario, autenticazione o persistenza utente.',
     liveLink: 'https://lab-tv.vercel.app/',
     liveLabel: 'Demo online',
     repositories: [
