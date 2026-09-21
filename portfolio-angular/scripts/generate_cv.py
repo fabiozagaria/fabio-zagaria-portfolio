@@ -144,6 +144,23 @@ def build_cv() -> None:
         LEFT,
         y,
         [
+            ("JobFlow - In sviluppo", "F2", BLUE),
+            (" | Java 21, Spring Boot", "F3", MUTED),
+        ],
+        9.95,
+    )
+    y -= 11
+    bullet(
+        "Nuovo progetto principale dedicato allo studio di elaborazioni asincrone e architetture backend oltre il tradizionale CRUD."
+    )
+    bullet(
+        "Roadmap tecnica: ciclo di vita dei job e worker; successivamente concorrenza, realtime, messaging e integrazione AI, introdotti progressivamente durante lo sviluppo."
+    )
+
+    segments(
+        LEFT,
+        y,
+        [
             ("Expense Tracker - Gestionale Spese", "F2", BLUE),
             (" | Java 21, Spring Boot, Angular 21, MySQL, JPA/Hibernate", "F3", MUTED),
         ],
@@ -158,20 +175,6 @@ def build_cv() -> None:
     )
     bullet(
         "Frontend con Signals, Reactive Forms, validazioni personalizzate e sincronizzazione dello stato dopo le risposte HTTP."
-    )
-
-    segments(
-        LEFT,
-        y,
-        [
-            ("Task Manager API - Security Lab", "F2", BLUE),
-            (" | Java 21, Spring Boot, Spring Security, JPA/Hibernate, MySQL", "F3", MUTED),
-        ],
-        9.95,
-    )
-    y -= 11
-    bullet(
-        "CRUD di task per utente autenticato, controllo di ownership, password BCrypt e configurazione con CustomUserDetailsService, DaoAuthenticationProvider e AuthenticationManager."
     )
     y -= 1
 
