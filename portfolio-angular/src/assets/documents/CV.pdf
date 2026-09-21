@@ -1,149 +1,86 @@
 %PDF-1.4
-%ASCII
+%“Œ‹ž ReportLab Generated PDF document (opensource)
 1 0 obj
-<< /Type /Catalog /Pages 2 0 R >>
+<<
+/F1 2 0 R /F2 3 0 R /F3 4 0 R /F4 5 0 R
+>>
 endobj
 2 0 obj
-<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
 endobj
 3 0 obj
-<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.276 841.89] /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R /F4 7 0 R >> >> /Contents 8 0 R >>
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
 endobj
 4 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+<<
+/BaseFont /Helvetica-BoldOblique /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
+>>
 endobj
 5 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+<<
+/BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding /Name /F4 /Subtype /Font
+>>
 endobj
 6 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+<<
+/Contents 10 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 9 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
 endobj
 7 0 obj
-<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-BoldOblique /Encoding /WinAnsiEncoding >>
+<<
+/PageMode /UseNone /Pages 9 0 R /Type /Catalog
+>>
 endobj
 8 0 obj
-<< /Length 5894 >>
-stream
-0.080 0.100 0.130 rg
-BT /F2 21.00 Tf 229.37 799.89 Td (Fabio Zagaria) Tj ET
-0.075 0.266 0.459 rg
-BT /F2 11.60 Tf 162.57 778.89 Td (Junior Backend Developer | Full Stack Developer) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 8.80 Tf 171.97 764.89 Td (Roma | +39 366 719 1008 | fabiozagaria@proton.me | Patente B) Tj ET
-0.075 0.266 0.459 rg
-BT /F1 7.90 Tf 143.01 752.89 Td (fabio-zagaria-portfolio.vercel.app | github.com/fabiozagaria | linkedin.com/in/fabiozagaria) Tj ET
-0.075 0.266 0.459 rg
-BT /F2 11.70 Tf 44.00 733.89 Td (PROFILO PROFESSIONALE) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 10.20 Tf 44.00 717.39 Td (Junior Backend Developer con formazione Full Stack Web di 650 ore, orientato a Java e Spring Boot. Sviluppo) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 10.20 Tf 44.00 705.19 Td (API REST e applicazioni full stack con MySQL, JPA/Hibernate, Angular e TypeScript, con attenzione a) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 10.20 Tf 44.00 692.99 Td (validazione, sicurezza, gestione degli errori e separazione dei layer. Porto inoltre oltre cinque anni di esperienza) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 10.20 Tf 44.00 680.79 Td (operativa al Policlinico Gemelli, in un contesto con priorit\340 variabili e lavoro sotto pressione.) Tj ET
-0.075 0.266 0.459 rg
-BT /F2 11.70 Tf 44.00 666.59 Td (COMPETENZE TECNICHE) Tj ET
-0.080 0.100 0.130 rg
-BT /F2 9.90 Tf 44.00 650.09 Td (Backend:) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.90 Tf 88.56 650.09 Td ( Java 21, Spring Boot, Spring MVC, Spring Security, API REST, Maven) Tj ET
-0.080 0.100 0.130 rg
-BT /F2 9.90 Tf 44.00 638.09 Td (Database:) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.90 Tf 91.31 638.09 Td ( MySQL, JPA/Hibernate, Spring Data JPA, EntityManager, transazioni) Tj ET
-0.080 0.100 0.130 rg
-BT /F2 9.90 Tf 44.00 626.09 Td (Frontend:) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.90 Tf 90.19 626.09 Td ( TypeScript, JavaScript, Angular 21, Signals, Reactive Forms, HTML5, CSS3) Tj ET
-0.080 0.100 0.130 rg
-BT /F2 9.90 Tf 44.00 614.09 Td (Pratiche e strumenti:) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.90 Tf 142.48 614.09 Td ( Git, GitHub, Postman, DTO, Bean Validation, exception handling, architettura a layer) Tj ET
-0.075 0.266 0.459 rg
-BT /F2 11.70 Tf 44.00 600.09 Td (PROGETTI) Tj ET
-0.075 0.266 0.459 rg
-BT /F2 9.95 Tf 44.00 583.59 Td (Expense Tracker - Gestionale Spese) Tj ET
-0.340 0.380 0.420 rg
-BT /F3 9.95 Tf 215.44 583.59 Td ( | Java 21, Spring Boot, Angular 21, MySQL, JPA/Hibernate) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.75 Tf 46.00 572.59 Td (- Applicazione full stack per gestire spese personali, con frontend Angular collegato alle API Spring Boot tramite) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.75 Tf 46.00 560.89 Td (  HttpClient.) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.75 Tf 46.00 548.49 Td (- Backend REST con DTO, Bean Validation, gestione centralizzata degli errori, persistenza JPA e controllo di) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.75 Tf 46.00 536.79 Td (  ownership; autenticazione con JWT, refresh token e verifica email.) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.75 Tf 46.00 524.39 Td (- Frontend con Signals, Reactive Forms, validazioni personalizzate e sincronizzazione dello stato dopo le risposte) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.75 Tf 46.00 512.69 Td (  HTTP.) Tj ET
-0.075 0.266 0.459 rg
-BT /F2 9.95 Tf 44.00 500.29 Td (Task Manager API - Security Lab) Tj ET
-0.340 0.380 0.420 rg
-BT /F3 9.95 Tf 198.27 500.29 Td ( | Java 21, Spring Boot, Spring Security, JPA/Hibernate, MySQL) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.75 Tf 46.00 489.29 Td (- CRUD di task per utente autenticato, controllo di ownership, password BCrypt e configurazione con) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.75 Tf 46.00 477.59 Td (  CustomUserDetailsService, DaoAuthenticationProvider e AuthenticationManager.) Tj ET
-0.075 0.266 0.459 rg
-BT /F2 11.70 Tf 44.00 464.19 Td (FORMAZIONE IT) Tj ET
-0.075 0.266 0.459 rg
-BT /F2 9.95 Tf 44.00 447.69 Td (Developer Full Stack Web - LabForWeb) Tj ET
-0.340 0.380 0.420 rg
-BT /F3 9.95 Tf 229.22 447.69 Td ( | Gen 2026 - Ago 2026 | 650 ore | completato) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.70 Tf 44.00 436.69 Td (HTML, CSS, JavaScript, TypeScript, Angular, MySQL, Java, Java EE/Jakarta EE, Spring, Spring Boot e Git. Percorso) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.70 Tf 44.00 425.09 Td (pratico su CRUD, API REST, SPA, database e sicurezza applicativa.) Tj ET
-0.075 0.266 0.459 rg
-BT /F2 9.95 Tf 44.00 411.49 Td (Master Java - PC Academy) Tj ET
-0.340 0.380 0.420 rg
-BT /F3 9.95 Tf 170.63 411.49 Td ( | Set 2019 - Apr 2020 | 300 ore) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.70 Tf 44.00 400.49 Td (Java 8, OOP, REST, SQL, Android, Clean Code e principi di architettura software.) Tj ET
-0.075 0.266 0.459 rg
-BT /F2 11.70 Tf 44.00 386.89 Td (ESPERIENZA PROFESSIONALE) Tj ET
-0.075 0.266 0.459 rg
-BT /F2 9.95 Tf 44.00 370.39 Td (Portantino - Eraclya, Policlinico Gemelli) Tj ET
-0.340 0.380 0.420 rg
-BT /F3 9.95 Tf 232.02 370.39 Td ( | Roma | Giu 2021 - in corso) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.75 Tf 46.00 359.39 Td (- Trasporto pazienti e supporto operativo nel rispetto di procedure, urgenze e priorit\340 variabili; coordinamento) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.75 Tf 46.00 347.69 Td (  quotidiano con personale sanitario, tecnico e amministrativo.) Tj ET
-0.075 0.266 0.459 rg
-BT /F2 11.70 Tf 44.00 334.29 Td (ISTRUZIONE E LINGUE) Tj ET
-0.080 0.100 0.130 rg
-BT /F2 9.90 Tf 44.00 317.79 Td (Diploma:) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.90 Tf 86.35 317.79 Td ( Informatica e Telecomunicazioni - ITIS A. Einstein | 2018 | 75/100 | Telecomunicazioni) Tj ET
-0.080 0.100 0.130 rg
-BT /F2 9.90 Tf 44.00 305.79 Td (Lingue:) Tj ET
-0.080 0.100 0.130 rg
-BT /F1 9.90 Tf 79.75 305.79 Td ( Italiano madrelingua | Inglese: comprensione B2, produzione e interazione B1) Tj ET
-0.340 0.380 0.420 rg
-BT /F1 6.40 Tf 44.00 292.79 Td (Autorizzo il trattamento dei dati personali presenti nel CV ai sensi del Regolamento UE 2016/679 \(GDPR\) e della normativa italiana vigente.) Tj ET
-endstream
+<<
+/Author (\(anonymous\)) /CreationDate (D:20260921131316+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20260921131316+00'00') /Producer (ReportLab PDF Library - \(opensource\)) 
+  /Subject (\(unspecified\)) /Title (\(anonymous\)) /Trapped /False
+>>
 endobj
 9 0 obj
-<< /Title (CV Fabio Zagaria - Junior Backend Developer) /Author (Fabio Zagaria) /Subject (Curriculum Vitae) /Keywords (Java, Spring Boot, Angular, MySQL, Junior Backend Developer) >>
+<<
+/Count 1 /Kids [ 6 0 R ] /Type /Pages
+>>
+endobj
+10 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ] /Length 2689
+>>
+stream
+Gatm<?$$b@&q/*pkXTetTB/h',VKsDCu`&k$VIiWQ'XcTn8*bI(3)_kPokLf8)x^C7(0A$AKeu<#m[hmU:6,KOr--@B=ob(HE-gJnj$G^-Ve*=[]R`BDmb9h$)VOE.^=*P&d-eDe]@goYHhc62[Q?(e!P@%P1qbNoNpHI"9$Q8PSBcEuS9TTX\DT8Z$.l!WS5,"!UZZ%oN=.WZ&jEW^;hFrKiP,s'#q*?;d&+SJJ"L"4He5EdO(Pp'rjBR[q43Q#qT1;/p/cu/9tHsb(nbS\@!DNVA_M9h$E;sB7:1<Y_`;)p6tT]?&%F$N"=>%ZCjt4X^GF+fN;*9P"P'cjdWu/FG;?mJD"kNLj*//Yp9@jV[.>r@a9r&_4'hKdftj:m'_&"UhZ(c`e2"EJ*$:-,k,IK^[W,hjc<iQZ$=:%HHi</OlrMSXK$"U6m7CmW8LB^oa[A[Ha]67mRq3I@4r='hR+d[-S8N\/:D/e=jfqA$1Qh)f?G!b[j=f;1?fgDNYVeo1qhsFX4j`A"1)\s+okjsaUCLK?FIKZ4@aoWD`OH>#V[PMQ',X(Hi]NAQbbSFH-QuF&%JkSL'Oh)ohZTpgKbo<m@9N_bCURch@?N(%cJ_GhD8Tm5Os8'poL;1b%jiIhQ)>)H_aHn)%087g,<'DblF2h<^Mb[5*q`:3`0@;:0ks!-SJMT2\4HC^nO]NEVCaTqBuFt)/V>?B6sSG`5q\lunY[aH_49]B%#OdB&SjJ<;Wn<[Re)K;b3,-"8D#.g2N/2p&k"2_XZ2Qs8>P,M>Ur7l0ciHtY[JfK(f14#()RCEi2c&b@SoN+0):)HM6LqG-rR?SUHOcXetuj=ckQGtCGjKI`9L;IA6Hd8;G"s+`YUDLo:1cHCOdc$G!Y^Xkk=I`7tYc"pNZbtTRSoe?e#00hJL^(fh,ORBn])]Yla/uHpaY1m!H)2(9e`("C9(%#3#F%mAKs[I_l[369eXh?s7NmQ9;;.NYg?n1#4j&RS?r1p\;'Z%4WI`4aLYT+P#]!/PFce.gr^nBjTq%%<l('p5eI`Kd('rh4F#8V6*qWYO^E6S=$3*aXn?N(1A7mq8#[VhljoO)rH8HAE)//$B=Hpe#O',FnEJK9P@EWYj.'.*aT1q#;9/teACRuon'"US;6hSS8jk3-W?J4$<b1EMg._#nA*HhX2NcpVP4<h\^lJO!`E'lhg=[5]e+/`5u<o#0HAYG\D9R\4V6bK$F@JRF12MJIf#4hjRaXYhr+]m.HE#IW5@o'-h(<"dgklRmJ8EiV\U2')M_r"Z*sqen0C9dp-Nq>YHYBh>Yk8iaF&!]D7D+WOp\[go<Nt+1_L[!LhC2X5iU*8_#gfu(f`:F9#@H'<TM5A*3Y0apbkGu9IoB\8P(1lqQZ][B^Ylpj8#,gr84In^X_&<CUGDFY$gmk&<%on(G#[5,G[^#*[rp<N2oU&Fc?+h?TCO[^J"6bWt1:.;+*g]A.'VXOXDBQ'ToI#MR,^/"W"uZNa["_BFFm$S$*[A2^GER9#er@i`R*:ZkmJ(qA;#K5%tf_i76aehfB<l_(-.+n6a2a*;,;cSQ2$_Q_eAhrL@C<+2'fVFpm_%NiD!Ie(paXA*6L',7XIW1aI'U<#hVq2poEJEf,l*Fl9>FT='H:9G0Om&r[d<hhhQub6#!VY-cLN$#/)h$.J1RWasURR$B3]WgS7hcQ[.%)kld/+/%+@q(sJ\BV_bAU*Obr"=e:GQu'Xh8BM@*hbtNa+L2O(dtAIc)m6Z%bddX"V#6]jp,mkkBHp9-D4-dM0]3<cOrB2+_FFR%4`GiIX>G_fpn4A6oEeuZ,7:&Oq6K)0pJj^[<bT?J/<Q50:.jRbP!%_O$qDs9c;@@j)Ai/.gYQT0,6on2CP:R=N\"SiNT7??nH<a^'SDD>5>.j<Qe$J:?e2JTKULS:".Z\VQf[Uq<?I*Bf]QlRVp21Q!-_YTe38@BS@B$VVFI$BlIp*g>8<r.]u>!Q'aB<>C\F#B9t./q]i20JO!lK_($,c_0II#iEYRJ7XF!HHqsAQ=6CgDIobIbY<?hoPj%W6_SP40XXVUI5E4KPI0rf?o"@dh'74dSZa1"BG_DU>ikn6B>71a/W0YF968.@eQT'a8O<:3ROC)@1;(>Rf.XOWohcM,ah8J*1R&h<$l):S:YRa<$%luW9=SE]K9e`le@:9a'$gZlph1)c+,f^8E>H<0.8;>hKBrK<Ng849Gqh&W.J8fjD.ms*rr+KE^_01A/,Ec<m%B/Q&t28!h7GMB@^$3J_1H"P?r18H1iA]ea#Wq>'2gdsiT'15HjeNbsbe;ZH1>8587R\L(ci:cb6dg,MEW`Z&d'2/+$81e;ed[a=:[=k\2'9-BKC3Z8rWoUjh7V/j?S\\pk=B,U>?LsOilu3St5F/B1J=GNRji9Et4a+(l(Kl?Og2g4I9[+0M2Q@'MSoEbp,$ggs@LjFg-d]2.+B#;.Lr1<6hrlW+m@QF6Wbt&7<l7A-F%8BR]0V`4p75M!2<lUlc[s,ndfDs)\M[(D#tjsdL9n.W1M<+pk$!Gf\1#m.g!$RE\MNFCI_";&g91S\h!LEh?l=2)P>uL0BdL7BFpY?YTeV+iSn-ApCL&4qFg<:<2j2UZfU@2aeEhYd-6O\N8Q2?5S]dgTpZ$dI3&hB$?22jX4<KQtquNYdA<<*r5uJ;+?l?DuF)#$R-PsGm5N]d_fD~>endstream
 endobj
 xref
-0 10
+0 11
 0000000000 65535 f 
-0000000016 00000 n 
-0000000065 00000 n 
+0000000061 00000 n 
 0000000122 00000 n 
-0000000285 00000 n 
-0000000382 00000 n 
-0000000484 00000 n 
-0000000589 00000 n 
-0000000698 00000 n 
-0000006643 00000 n 
+0000000229 00000 n 
+0000000341 00000 n 
+0000000460 00000 n 
+0000000575 00000 n 
+0000000779 00000 n 
+0000000847 00000 n 
+0000001127 00000 n 
+0000001186 00000 n 
 trailer
-<< /Size 10 /Root 1 0 R /Info 9 0 R >>
+<<
+/ID 
+[<631ddb2eeeb89166a466650b758b98a1><631ddb2eeeb89166a466650b758b98a1>]
+% ReportLab generated PDF document -- digest (opensource)
+
+/Info 8 0 R
+/Root 7 0 R
+/Size 11
+>>
 startxref
-6841
+3967
 %%EOF
-~º&¥«a–&âšš+´ö­
