@@ -2,9 +2,9 @@ import { PROJECTS } from './projects.data';
 
 describe('portfolio projects', () => {
   it('prioritizes the full stack expense tracker', () => {
-    expect(PROJECTS[0].title).toBe('Gestionale Spese');
-    expect(PROJECTS[0].status).toBe('In sviluppo');
-    expect(PROJECTS[0].statusDetail).toContain('CRUD');
+    expect(PROJECTS[0].title).toBe('Expense Tracker');
+    expect(PROJECTS[0].status).toBe('Concluso');
+    expect(PROJECTS[0].statusDetail).toContain('verifica end-to-end');
   });
 
   it('links both repositories for the expense tracker', () => {
@@ -14,13 +14,13 @@ describe('portfolio projects', () => {
       'Frontend',
       'Backend',
     ]);
-    expect(expenseTracker?.liveLabel).toBe('Demo UI');
+    expect(expenseTracker?.liveLabel).toBe('Demo frontend');
   });
 
   it('presents LabTV as a working API integration demo', () => {
     const labTv = PROJECTS.find((project) => project.id === 'labtv');
 
-    expect(labTv?.status).toBe('Demo funzionante');
+    expect(labTv?.status).toBe('Concluso');
     expect(labTv?.liveLink).toBe('https://lab-tv.vercel.app/');
     expect(labTv?.repositories[0].url).toContain('labtv-angular');
   });
