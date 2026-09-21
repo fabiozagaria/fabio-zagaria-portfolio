@@ -1,4 +1,4 @@
-export type ProjectStatus = 'Concluso' | 'Laboratorio attivo';
+export type ProjectStatus = 'Concluso' | 'In sviluppo' | 'Laboratorio attivo';
 
 export interface PortfolioRepository {
   readonly label: string;
@@ -21,6 +21,23 @@ export interface PortfolioProject {
 }
 
 export const PROJECTS = [
+  {
+    id: 'jobflow',
+    title: 'JobFlow',
+    icon: 'fas fa-diagram-project',
+    focus: 'Progetto principale · sistemi asincroni e realtime',
+    description:
+      'Nuovo progetto principale dedicato alla progettazione di un sistema di elaborazione job asincroni, con avanzamento realtime e architettura orientata a worker e code.',
+    highlights: [
+      'Job asincroni con ciclo di vita, gestione degli errori, retry e idempotenza',
+      'Concorrenza, worker e aggiornamenti realtime tramite WebSocket o SSE',
+      'Evoluzione prevista verso messaging, servizi separati e Spring AI con tool calling',
+    ],
+    technologies: ['Java', 'Spring Boot', 'Angular', 'WebSocket / SSE', 'Messaging', 'Spring AI'],
+    status: 'In sviluppo',
+    statusDetail:
+      'È il progetto principale del portfolio dopo Expense Tracker. La prima fase definirà dominio, architettura e un vertical slice minimo; code, microservizi e AI verranno introdotti progressivamente solo quando giustificati dal problema.',
+  },
   {
     id: 'gestionale-spese',
     title: 'Expense Tracker',
