@@ -1,6 +1,6 @@
 # Contesto tecnico — Portfolio
 
-Aggiornato: 2026-09-18
+Aggiornato: 2026-09-21
 
 ## Obiettivo
 Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come Junior Backend Developer con visione full stack, mantenendo allineati portfolio, progetti, CV e stato tecnico reale.
@@ -10,7 +10,9 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 - Deploy su Vercel.
 - CI GitHub Actions con controlli di formato, test e build.
 - Struttura con componenti standalone, routing lazy, dati tipizzati, attenzione a SEO, accessibilità e performance.
-- Gestionale Spese è il progetto principale full stack mostrato; LabTV è una release frontend stabile.
+- Expense Tracker è il progetto full stack concluso mostrato nel portfolio; le ultime modifiche Income/Dashboard sono dichiarate in attesa di verifica E2E completa.
+- LabTV è una release frontend conclusa basata sull'integrazione della TMDB API.
+- Il prossimo progetto principale non è ancora scelto: dovrà nascere da problem discovery e affrontare un problema reale, senza partire da una soluzione proposta dall'AI.
 
 ## Regole di mantenimento
 - Aggiornare il portfolio solo quando una competenza o un progetto è realmente dimostrabile.
