@@ -29,55 +29,56 @@
     <div class="c-hero__visual">
       <aside class="c-backend-map" aria-labelledby="backend-map-title">
         <div class="c-backend-map__header">
-          <p class="c-backend-map__eyebrow">Full stack in pratica</p>
-          <span class="c-backend-map__status">Concluso</span>
+          <p class="c-backend-map__eyebrow">Progetto principale</p>
+          <span class="c-backend-map__status">In sviluppo</span>
         </div>
 
-        <h2 id="backend-map-title">Expense Tracker</h2>
+        <h2 id="backend-map-title">JobFlow</h2>
         <p class="c-backend-map__intro">
-          Un progetto unico per mostrare il passaggio dai form Angular al contratto REST e alla
-          persistenza MySQL.
+          Sto progettando un vertical slice per elaborare job asincroni, rendendo visibili stato,
+          errori e avanzamento. Worker, realtime e messaging entreranno solo quando il problema
+          lo richiederà.
         </p>
 
-        <ol class="c-backend-map__flow" aria-label="Flusso architetturale del progetto">
+        <ol class="c-backend-map__flow" aria-label="Primo vertical slice di JobFlow">
           <li>
             <span class="c-backend-map__step">01</span>
             <div>
-              <strong>Angular UI</strong>
-              <span>Signals, Reactive Forms e validazione</span>
+              <strong>Dominio del job</strong>
+              <span>Stati, transizioni, errori e responsabilità esplicite</span>
             </div>
           </li>
           <li>
             <span class="c-backend-map__step">02</span>
             <div>
-              <strong>Client API</strong>
-              <span>Contratto HTTP tipizzato e stato applicativo</span>
+              <strong>API del vertical slice</strong>
+              <span>Creazione e consultazione del ciclo di vita del job</span>
             </div>
           </li>
           <li>
             <span class="c-backend-map__step">03</span>
             <div>
-              <strong>Spring Boot</strong>
-              <span>CRUD REST, autenticazione e logica applicativa</span>
+              <strong>Avanzamento realtime</strong>
+              <span>WebSocket o SSE, dopo aver consolidato il flusso base</span>
             </div>
           </li>
           <li>
             <span class="c-backend-map__step">04</span>
             <div>
-              <strong>JPA e MySQL</strong>
-              <span>Persistenza e mapping del dominio</span>
+              <strong>Scalabilità mirata</strong>
+              <span>Worker e code solo quando saranno giustificati dal dominio</span>
             </div>
           </li>
         </ol>
 
-        <ul class="c-backend-map__qualities" aria-label="Aspetti tecnici implementati">
-          <li>JWT e refresh token</li>
-          <li>DTO dedicati</li>
-          <li>CRUD REST</li>
+        <ul class="c-backend-map__qualities" aria-label="Principi di progettazione di JobFlow">
+          <li>Stati espliciti</li>
+          <li>Error handling</li>
+          <li>Evoluzione incrementale</li>
         </ul>
 
-        <a routerLink="/projects" fragment="gestionale-spese" class="c-backend-map__link">
-          Esamina stato e codice <span aria-hidden="true">→</span>
+        <a routerLink="/projects" fragment="jobflow" class="c-backend-map__link">
+          Segui il progetto <span aria-hidden="true">→</span>
         </a>
       </aside>
     </div>
@@ -88,12 +89,12 @@
   <div class="o-container">
     <div class="c-proof__header">
       <div>
-        <p class="c-proof__eyebrow">Prove concrete</p>
+        <p class="c-proof__eyebrow">Progetti in evidenza</p>
         <h2 id="featured-projects-title">Progetti con responsabilità e stato verificabili</h2>
       </div>
       <p>
-        Due progetti e un laboratorio di studio per mostrare sviluppo full stack, integrazione API e
-        apprendimento backend, con limiti e avanzamento dichiarati.
+        Code generation, sviluppo full stack e integrazione API: lavori con obiettivi, limiti e
+        avanzamento dichiarati.
       </p>
     </div>
 
