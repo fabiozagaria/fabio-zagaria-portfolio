@@ -39,6 +39,29 @@ export const PROJECTS = [
       'È il progetto principale del portfolio dopo Expense Tracker. La prima fase definirà dominio, architettura e un vertical slice minimo; code, microservizi e AI verranno introdotti progressivamente solo quando giustificati dal problema.',
   },
   {
+    id: 'spring-scaffold-cli',
+    title: 'Spring Scaffold CLI',
+    icon: 'fas fa-terminal',
+    focus: 'Tooling Java · code generation',
+    description:
+      'CLI Java per generare boilerplate Spring Boot leggibile e modificabile, partendo da DTO request/response.',
+    highlights: [
+      'Sottocomandi e opzioni CLI con Picocli',
+      'Generazione sicura di DTO con validazione del naming e protezione dalla sovrascrittura',
+      'Architettura separata tra parsing dei comandi, generator e template',
+    ],
+    technologies: ['Java 17', 'Maven', 'Picocli', 'CLI', 'Code generation'],
+    status: 'In sviluppo',
+    statusDetail:
+      'MVP disponibile: genera DTO simple, request, response o entrambi. I prossimi passi sono campi configurabili, test automatizzati e la generazione di una risorsa Spring completa.',
+    repositories: [
+      {
+        label: 'Repository',
+        url: 'https://github.com/fabiozagaria/spring-scaffold-cli',
+      },
+    ],
+  },
+  {
     id: 'gestionale-spese',
     title: 'Expense Tracker',
     icon: 'fas fa-wallet',
