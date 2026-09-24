@@ -45,7 +45,7 @@ describe('HomeComponent', () => {
     expect(element.textContent).toContain('Avanzamento realtime');
     expect(element.textContent).toContain('Scalabilità mirata');
     expect(architectureLink?.getAttribute('href')).toBe('/projects#jobflow');
-    expect(HomeComponent.prototype.featuredProjects).toBeUndefined();
+    expect(fixture.componentInstance.featuredProjects.map((project) => project.id)).not.toContain('jobflow');
   });
 
   it('keeps the home focused on role, projects and contact actions', () => {
