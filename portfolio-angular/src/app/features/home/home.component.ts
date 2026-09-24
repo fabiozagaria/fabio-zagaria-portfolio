@@ -11,5 +11,7 @@ import { PROJECTS, type PortfolioProject } from '../../data/projects.data';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  readonly featuredProjects: readonly PortfolioProject[] = PROJECTS;
+  readonly featuredProjects: readonly PortfolioProject[] = PROJECTS.filter(
+    (project) => project.id !== 'jobflow',
+  );
 }
