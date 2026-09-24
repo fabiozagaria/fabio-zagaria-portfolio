@@ -33,18 +33,19 @@ describe('HomeComponent', () => {
     expect(element.textContent).not.toContain('Fakeflix');
   });
 
-  it('uses the hero to explain the full stack flow of the main project', () => {
+  it('uses the hero to explain the current main project without duplicating it below', () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
     const architectureLink = element.querySelector<HTMLAnchorElement>('.c-backend-map__link');
 
-    expect(element.textContent).toContain('Full stack in pratica');
-    expect(element.textContent).toContain('Angular UI');
-    expect(element.textContent).toContain('Client API');
-    expect(element.textContent).toContain('Spring Boot');
-    expect(element.textContent).toContain('JPA e MySQL');
-    expect(architectureLink?.getAttribute('href')).toBe('/projects#gestionale-spese');
+    expect(element.textContent).toContain('Progetto principale');
+    expect(element.textContent).toContain('JobFlow');
+    expect(element.textContent).toContain('Dominio del job');
+    expect(element.textContent).toContain('Avanzamento realtime');
+    expect(element.textContent).toContain('Scalabilità mirata');
+    expect(architectureLink?.getAttribute('href')).toBe('/projects#jobflow');
+    expect(HomeComponent.prototype.featuredProjects).toBeUndefined();
   });
 
   it('keeps the home focused on role, projects and contact actions', () => {
