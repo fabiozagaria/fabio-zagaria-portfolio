@@ -1,10 +1,17 @@
 import { PROJECTS } from './projects.data';
 
 describe('portfolio projects', () => {
-  it('prioritizes the full stack expense tracker', () => {
-    expect(PROJECTS[0].title).toBe('Expense Tracker');
-    expect(PROJECTS[0].status).toBe('Concluso');
-    expect(PROJECTS[0].statusDetail).toContain('verifica end-to-end');
+  it('includes the active JobFlow project', () => {
+    expect(PROJECTS[0].title).toBe('JobFlow');
+    expect(PROJECTS[0].status).toBe('In sviluppo');
+  });
+
+  it('includes Spring Scaffold CLI as an in-progress Java tool', () => {
+    const springScaffold = PROJECTS.find((project) => project.id === 'spring-scaffold-cli');
+
+    expect(springScaffold?.status).toBe('In sviluppo');
+    expect(springScaffold?.technologies).toContain('Picocli');
+    expect(springScaffold?.repositories?.[0].url).toContain('spring-scaffold-cli');
   });
 
   it('links both repositories for the expense tracker', () => {
@@ -35,8 +42,10 @@ describe('portfolio projects', () => {
     expect(taskManager?.technologies).toContain('Hibernate');
   });
 
-  it('shows two recruiter-facing projects and one explicit study lab', () => {
+  it('keeps the project order intentional', () => {
     expect(PROJECTS.map((project) => project.id)).toEqual([
+      'jobflow',
+      'spring-scaffold-cli',
       'gestionale-spese',
       'labtv',
       'task-manager-security-lab',
