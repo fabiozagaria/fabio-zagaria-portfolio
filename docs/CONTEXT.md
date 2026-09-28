@@ -1,6 +1,6 @@
 # Contesto tecnico — Portfolio
 
-Aggiornato: 2026-09-21
+Aggiornato: 2026-09-28
 
 ## Obiettivo
 Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come Junior Backend Developer con visione full stack, mantenendo allineati portfolio, progetti, CV e stato tecnico reale.
@@ -12,7 +12,7 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 - Struttura con componenti standalone, routing lazy, dati tipizzati, attenzione a SEO, accessibilità e performance.
 - Expense Tracker è il progetto full stack concluso mostrato nel portfolio; le ultime modifiche Income/Dashboard sono dichiarate in attesa di verifica E2E completa.
 - LabTV è una release frontend conclusa basata sull'integrazione della TMDB API.
-- Il prossimo progetto principale non è ancora scelto: dovrà nascere da problem discovery e affrontare un problema reale, senza partire da una soluzione proposta dall'AI.
+- JobFlow è il progetto principale in sviluppo: esplora job asincroni, lifecycle, worker e processor partendo da un primo vertical slice di generazione PDF. Al momento sono modellati il dominio Job, gli stati e il primo Work; l'esecuzione asincrona reale deve ancora essere implementata.
 
 ## Regole di mantenimento
 - Aggiornare il portfolio solo quando una competenza o un progetto è realmente dimostrabile.

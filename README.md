@@ -39,15 +39,16 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 | **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                          |
 | **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026 |
 | **Apprendimento continuo** | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali       |
-| **Progetto full stack**    | Expense Tracker: Angular, Spring Boot, Security, JPA e MySQL            |
+| **Progetti principali**    | JobFlow in sviluppo; Expense Tracker concluso                           |
 | **Disponibilità**          | Roma · modalità ibrida · remoto in Italia                               |
 
 ## Progetti in evidenza
 
-| Progetto | Stato | Cosa dimostra |
-| --- | --- | --- |
-| Expense Tracker: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | Concluso — verifica E2E finale ancora da eseguire | Angular, Spring Boot, Spring Security, JWT/refresh token, JPA/MySQL, spese, entrate e dashboard |
-| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular) | Concluso | Applicazione Angular frontend con integrazione TMDB API, HttpClient, RxJS, modelli tipizzati e routing parametrico |
+| Progetto                                                                                                                                                                                             | Stato                                             | Cosa dimostra                                                                                                                                                                                                     |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JobFlow: [repository](https://github.com/fabiozagaria/job-flow)                                                                                                                                      | In sviluppo                                       | Modellazione di job asincroni: dominio Job, lifecycle `CREATED → PROCESSING → COMPLETED/FAILED` e primo Work per generazione PDF. Worker, processor ed esecuzione asincrona reale sono i prossimi vertical slice. |
+| Expense Tracker: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | Concluso — verifica E2E finale ancora da eseguire | Angular, Spring Boot, Spring Security, JWT/refresh token, JPA/MySQL, spese, entrate e dashboard                                                                                                                   |
+| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                      | Concluso                                          | Applicazione Angular frontend con integrazione TMDB API, HttpClient, RxJS, modelli tipizzati e routing parametrico                                                                                                |
 
 Student Management API, Fakeflix e gli esercizi formativi restano consultabili dal
 [profilo GitHub](https://github.com/fabiozagaria?tab=repositories), ma non sono presentati

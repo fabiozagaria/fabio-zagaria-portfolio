@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from reportlab.pdfgen import canvas
 from reportlab.pdfbase.pdfmetrics import stringWidth
 
 PROJECT_DIR = Path(__file__).resolve().parents[1]
@@ -10,19 +11,6 @@ LEFT, RIGHT, TOP = 44, 44, 42
 BLUE = (0.075, 0.266, 0.459)
 INK = (0.08, 0.10, 0.13)
 MUTED = (0.34, 0.38, 0.42)
-
-
-def pdf_escape(text: str) -> str:
-    data = text.encode("cp1252", errors="replace")
-    result = []
-    for value in data:
-        if value in (40, 41, 92):
-            result.append("\\" + chr(value))
-        elif 32 <= value <= 126:
-            result.append(chr(value))
-        else:
-            result.append(f"\\{value:03o}")
-    return "".join(result)
 
 
 def wrap(text: str, font: str, size: float, max_width: float) -> list[str]:
@@ -43,16 +31,17 @@ def wrap(text: str, font: str, size: float, max_width: float) -> list[str]:
 
 
 def build_cv() -> None:
-    output: list[str] = []
-
-    def fill(rgb: tuple[float, float, float]) -> None:
-        output.append(f"{rgb[0]:.3f} {rgb[1]:.3f} {rgb[2]:.3f} rg")
+    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    pdf = canvas.Canvas(str(OUTPUT_PATH), pagesize=(W, H))
+    pdf.setTitle("CV Fabio Zagaria - Junior Backend Developer")
+    pdf.setAuthor("Fabio Zagaria")
+    pdf.setSubject("Curriculum Vitae")
+    pdf.setKeywords("Java, Spring Boot, Angular, MySQL, Junior Backend Developer")
 
     def text(x: float, y: float, value: str, font: str = "F1", size: float = 9, rgb=INK) -> None:
-        fill(rgb)
-        output.append(
-            f"BT /{font} {size:.2f} Tf {x:.2f} {y:.2f} Td ({pdf_escape(value)}) Tj ET"
-        )
+        pdf.setFillColorRGB(*rgb)
+        pdf.setFont(font_names[font], size)
+        pdf.drawString(x, y, value)
 
     font_names = {
         "F1": "Helvetica",
@@ -133,7 +122,7 @@ def build_cv() -> None:
     )
 
     section("COMPETENZE TECNICHE")
-    skill_line("Backend", "Java 21, Spring Boot, Spring MVC, Spring Security, API REST, Maven")
+    skill_line("Backend", "Java 21, Spring Boot, Spring MVC, Spring Security, JWT, API REST, Maven")
     skill_line("Database", "MySQL, JPA/Hibernate, Spring Data JPA, EntityManager, transazioni")
     skill_line("Frontend", "TypeScript, JavaScript, Angular 21, Signals, Reactive Forms, HTML5, CSS3")
     skill_line("Pratiche e strumenti", "Git, GitHub, Postman, DTO, Bean Validation, exception handling, architettura a layer")
@@ -151,10 +140,10 @@ def build_cv() -> None:
     )
     y -= 11
     bullet(
-        "Nuovo progetto principale dedicato allo studio di elaborazioni asincrone e architetture backend oltre il tradizionale CRUD."
+        "Progetto principale in sviluppo per elaborare job asincroni e approfondire architetture backend oltre il CRUD tradizionale."
     )
     bullet(
-        "Roadmap tecnica: ciclo di vita dei job e worker; successivamente concorrenza, realtime, messaging e integrazione AI, introdotti progressivamente durante lo sviluppo."
+        "Modellati il dominio Job, il lifecycle CREATED -> PROCESSING -> COMPLETED o FAILED e il primo Work GeneratePDFWork; Worker, processor e persistenza saranno introdotti per vertical slice."
     )
 
     segments(
@@ -249,42 +238,7 @@ def build_cv() -> None:
     if y < 34:
         raise RuntimeError(f"Il contenuto supera la pagina: y={y:.2f}")
 
-    content = "\n".join(output) + "\n"
-    objects = [
-        "<< /Type /Catalog /Pages 2 0 R >>",
-        "<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
-        "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.276 841.89] /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R /F4 7 0 R >> >> /Contents 8 0 R >>",
-        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>",
-        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>",
-        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>",
-        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-BoldOblique /Encoding /WinAnsiEncoding >>",
-        f"<< /Length {len(content.encode('ascii'))} >>\nstream\n{content}endstream",
-        "<< /Title (CV Fabio Zagaria - Junior Backend Developer) /Author (Fabio Zagaria) /Subject (Curriculum Vitae) /Keywords (Java, Spring Boot, Angular, MySQL, Junior Backend Developer) >>",
-    ]
-
-    parts = ["%PDF-1.4\n%ASCII\n"]
-    offsets = [0]
-    position = len(parts[0].encode("ascii"))
-    for index, obj in enumerate(objects, 1):
-        offsets.append(position)
-        block = f"{index} 0 obj\n{obj}\nendobj\n"
-        parts.append(block)
-        position += len(block.encode("ascii"))
-
-    xref_position = position
-    xref = ["xref\n0 10\n", "0000000000 65535 f \n"]
-    xref.extend(f"{offset:010d} 00000 n \n" for offset in offsets[1:])
-    trailer = (
-        f"trailer\n<< /Size 10 /Root 1 0 R /Info 9 0 R >>\n"
-        f"startxref\n{xref_position}\n%%EOF\n"
-    )
-
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(
-        "".join(parts) + "".join(xref) + trailer,
-        encoding="ascii",
-        newline="\n",
-    )
+    pdf.save()
 
 
 if __name__ == "__main__":
