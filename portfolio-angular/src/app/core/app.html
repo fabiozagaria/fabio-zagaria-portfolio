@@ -67,6 +67,16 @@
       </li>
     </ul>
     <button
+      type="button"
+      class="theme-toggle"
+      (click)="theme.toggle()"
+      [attr.aria-pressed]="theme.dark()"
+      [attr.aria-label]="theme.dark() ? 'Attiva tema chiaro' : 'Attiva tema scuro'"
+      [title]="theme.dark() ? 'Attiva tema chiaro' : 'Attiva tema scuro'"
+    >
+      <span aria-hidden="true">{{ theme.dark() ? '☀' : '☾' }}</span>
+    </button>
+    <button
       class="c-nav__toggle"
       [class.c-nav__toggle--active]="isMenuOpen"
       (click)="toggleMenu()"

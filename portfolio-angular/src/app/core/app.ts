@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, HostListener, OnDestroy } from '@angular/core';
+import { ThemeService } from './theme.service';
+import { ChangeDetectionStrategy, Component, inject, HostListener, OnDestroy } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { getAvailabilityStatus } from './availability-status';
 
@@ -11,6 +12,7 @@ import { getAvailabilityStatus } from './availability-status';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App implements OnDestroy {
+  readonly theme = inject(ThemeService);
   isMenuOpen = false;
   readonly currentYear = new Date().getFullYear();
   readonly availabilityStatus = getAvailabilityStatus();

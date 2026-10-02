@@ -4,7 +4,7 @@
 
 .c-proof {
   padding-block: var(--space-3xl);
-  background: rgba(251, 252, 248, 0.7);
+  background: var(--home-surface, rgba(251, 252, 248, 0.7));
   border-top: 1px solid rgba(59, 130, 246, 0.14);
 }
 
@@ -84,13 +84,13 @@
 }
 
 .c-proof__status[data-status='In sviluppo'] {
-  color: #9a5b00;
+  color: var(--status-wip, #9a5b00);
   background: rgba(244, 184, 96, 0.16);
   border-color: rgba(154, 91, 0, 0.22);
 }
 
 .c-proof__status[data-status='Laboratorio attivo'] {
-  color: #0f766e;
+  color: var(--status-stable, #0f766e);
   background: rgba(20, 184, 166, 0.14);
   border-color: rgba(15, 118, 110, 0.24);
 }

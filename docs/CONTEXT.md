@@ -31,3 +31,7 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 
 ## Punto di attenzione
 Quando cambiano versione, stato o focus di un progetto pubblico collegato, verificare se il portfolio necessita di sincronizzazione.
+
+
+## Tema UI — 2026-10-02
+Pulsante sole/luna accessibile nell’intestazione, tema coerente con i colori esistenti e scelta ricordata nel browser.

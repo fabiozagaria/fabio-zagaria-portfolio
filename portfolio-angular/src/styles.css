@@ -1511,3 +1511,70 @@ main {
     scroll-behavior: auto !important;
   }
 }
+
+/* Accessible theme switch, available outside the mobile navigation. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  flex-shrink: 0;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-inline: 0.5rem;
+}
+.theme-toggle:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 3px;
+}
+
+html[data-theme='dark'] {
+  --clr-black: #0d1422;
+  --clr-black-soft: #131e30;
+  --clr-black-lighter: #1c2a40;
+  --clr-black-lightest: #30425b;
+  --clr-white: #edf3fc;
+  --clr-white-dim: #ccd8e9;
+  --clr-white-subtle: #a9b9d0;
+  --clr-white-faint: #94a8c3;
+  --clr-logo-fill: #1c2a40;
+  --clr-cyber-green-dark: #93c5fd;
+  --shadow-sm: 0 2px 8px #0004;
+  --shadow-md: 0 8px 20px #0005;
+  --shadow-lg: 0 18px 45px #0006;
+}
+html[data-theme='dark'] body {
+  background: linear-gradient(180deg, #0d1422, #131e30 46%, #102335);
+}
+html[data-theme='dark'] .c-nav,
+html[data-theme='dark'] .c-nav__menu {
+  background: rgba(13, 20, 34, 0.97);
+}
+html[data-theme='dark'] :is(.c-backend-map, .c-experience__current, .c-contact__info) {
+  background: var(--clr-black-soft);
+}
+html[data-theme='dark'] .c-backend-map__step {
+  background: #1c2a40;
+}
+html[data-theme='dark'] .c-card__status[data-status='In sviluppo'] {
+  color: #f4b860;
+}
+.theme-toggle {
+  color: var(--clr-white);
+}
+@media (max-width: 480px) {
+  .c-nav__logo-text {
+    display: none;
+  }
+}
+
+html[data-theme='dark'] {
+  --home-surface: #131e30;
+  --status-wip: #f4b860;
+  --status-stable: #5eead4;
+}

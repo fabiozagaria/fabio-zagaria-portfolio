@@ -50,6 +50,21 @@
         "knowsAbout": ["Java", "Spring Boot", "REST API", "MySQL", "Angular", "TypeScript"]
       }
     </script>
+    <script>
+      (() => {
+        let saved;
+        try {
+          saved = localStorage.getItem('color-theme');
+        } catch {}
+        const dark =
+          saved === 'dark' ||
+          (saved !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        const theme = dark ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.bsTheme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
   </head>
   <body>
     <app-root></app-root>

@@ -32,25 +32,25 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 
 ## Profilo in 30 secondi
 
-|                            |                                                                           |
-| -------------------------- | ------------------------------------------------------------------------- |
-| **Ruoli di interesse**     | Junior Backend Developer · Junior Full Stack Developer                    |
-| **Focus backend**          | Java · Spring Boot · Spring Security · Spring Data JPA · REST API · MySQL |
-| **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                            |
-| **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026   |
-| **Apprendimento continuo** | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali         |
-| **Progetti principali** | Expense Tracker come prodotto full stack; Transport Tickets come laboratorio dati; JobFlow come backend asincrono in costruzione |
-| **Disponibilità**          | Roma · modalità ibrida · remoto in Italia                                 |
+|                            |                                                                                                                                  |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **Ruoli di interesse**     | Junior Backend Developer · Junior Full Stack Developer                                                                           |
+| **Focus backend**          | Java · Spring Boot · Spring Security · Spring Data JPA · REST API · MySQL                                                        |
+| **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                                                                                   |
+| **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026                                                          |
+| **Apprendimento continuo** | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali                                                                |
+| **Progetti principali**    | Expense Tracker come prodotto full stack; Transport Tickets come laboratorio dati; JobFlow come backend asincrono in costruzione |
+| **Disponibilità**          | Roma · modalità ibrida · remoto in Italia                                                                                        |
 
 ## Progetti in evidenza
 
-| Progetto                                                                                                                                                                                             | Stato                                        | Cosa dimostra                                                                                                                                                         |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Expense Tracker: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo — integrazione E2E da verificare | Angular, Spring Boot, Spring Security, JWT/refresh token, JPA/MySQL, spese, entrate e dashboard                                                                       |
-| Spring Scaffold CLI: [repository](https://github.com/fabiozagaria/spring-scaffold-cli) | MVP DTO presente — nuove funzionalità sospese | CLI Java 17 con Picocli, record DTO vuoti, validazione del naming e controllo dei file esistenti. |
-| JobFlow: [repository](https://github.com/fabiozagaria/job-flow) | Backend in costruzione — v0.1 delimitata | `POST /jobs`, dominio e persistenza JPA/MySQL presenti; GET, processor, worker e successo/fallimento sono il prossimo traguardo. |
-| Transport Tickets: [branch backend](https://github.com/fabiozagaria/transport-tickets/tree/study/backend-jpa-snapshot) | Laboratorio backend di studio | Relazioni JPA, storico, transazioni, lock, Flyway, Redis e autorizzazione con sessioni/CSRF. `main` conserva la demo Java in memoria. |
-| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                      | Concluso                                     | Applicazione Angular frontend con integrazione TMDB API, HttpClient, RxJS, modelli tipizzati e routing parametrico                                                    |
+| Progetto                                                                                                                                                                                             | Stato                                         | Cosa dimostra                                                                                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Expense Tracker: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo — integrazione E2E da verificare  | Angular, Spring Boot, Spring Security, JWT/refresh token, JPA/MySQL, spese, entrate e dashboard                                       |
+| Spring Scaffold CLI: [repository](https://github.com/fabiozagaria/spring-scaffold-cli)                                                                                                               | MVP DTO presente — nuove funzionalità sospese | CLI Java 17 con Picocli, record DTO vuoti, validazione del naming e controllo dei file esistenti.                                     |
+| JobFlow: [repository](https://github.com/fabiozagaria/job-flow)                                                                                                                                      | Backend in costruzione — v0.1 delimitata      | `POST /jobs`, dominio e persistenza JPA/MySQL presenti; GET, processor, worker e successo/fallimento sono il prossimo traguardo.      |
+| Transport Tickets: [branch backend](https://github.com/fabiozagaria/transport-tickets/tree/study/backend-jpa-snapshot)                                                                               | Laboratorio backend di studio                 | Relazioni JPA, storico, transazioni, lock, Flyway, Redis e autorizzazione con sessioni/CSRF. `main` conserva la demo Java in memoria. |
+| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                      | Concluso                                      | Applicazione Angular frontend con integrazione TMDB API, HttpClient, RxJS, modelli tipizzati e routing parametrico                    |
 
 La demo di Expense Tracker espone il frontend; le operazioni persistenti richiedono il backend locale. Entrate e dashboard sono nel codice, ma la verifica completa resta aperta.
 
@@ -140,3 +140,7 @@ La stessa sequenza viene eseguita automaticamente sulle pull request e sui push 
 - Email: [fabiozagaria@proton.me](mailto:fabiozagaria@proton.me)
 - LinkedIn: [linkedin.com/in/fabiozagaria](https://www.linkedin.com/in/fabiozagaria)
 - GitHub: [github.com/fabiozagaria](https://github.com/fabiozagaria)
+
+## Tema della pagina
+
+Il pulsante sole/luna nella navigazione alterna tema chiaro e scuro. Al primo accesso segue il dispositivo; la scelta manuale viene ricordata nel browser.
