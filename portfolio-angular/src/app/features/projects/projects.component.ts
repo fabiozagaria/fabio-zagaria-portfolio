@@ -8,5 +8,10 @@ import { PortfolioProject, PROJECTS } from '../../data/projects.data';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent {
-  readonly projects: readonly PortfolioProject[] = PROJECTS;
+  readonly projects: readonly PortfolioProject[] = PROJECTS.filter(
+    (project) => project.status !== 'Laboratorio attivo',
+  );
+  readonly labs: readonly PortfolioProject[] = PROJECTS.filter(
+    (project) => project.status === 'Laboratorio attivo',
+  );
 }

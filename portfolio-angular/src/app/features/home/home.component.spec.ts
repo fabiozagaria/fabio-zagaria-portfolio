@@ -20,7 +20,7 @@ describe('HomeComponent', () => {
     expect(downloadLink?.getAttribute('download')).toBe('CV_Fabio_Zagaria.pdf');
   });
 
-  it('shows three selected projects without repeating JobFlow', () => {
+  it('shows three selected projects without repeating Expense Tracker', () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
@@ -40,14 +40,14 @@ describe('HomeComponent', () => {
     const element = fixture.nativeElement as HTMLElement;
     const architectureLink = element.querySelector<HTMLAnchorElement>('.c-backend-map__link');
 
-    expect(element.textContent).toContain('Progetto principale');
+    expect(element.textContent).toContain('Progetto in primo piano');
     expect(element.textContent).toContain('JobFlow');
-    expect(element.textContent).toContain('Dominio del job');
-    expect(element.textContent).toContain('Avanzamento realtime');
-    expect(element.textContent).toContain('Scalabilità mirata');
-    expect(architectureLink?.getAttribute('href')).toBe('/projects#jobflow');
+    expect(element.textContent).toContain('Interfaccia Angular');
+    expect(element.textContent).toContain('Autenticazione');
+    expect(element.textContent).toContain('Persistenza MySQL');
+    expect(architectureLink?.getAttribute('href')).toBe('/projects#gestionale-spese');
     expect(fixture.componentInstance.featuredProjects.map((project) => project.id)).not.toContain(
-      'jobflow',
+      'gestionale-spese',
     );
   });
 

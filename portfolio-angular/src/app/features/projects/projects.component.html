@@ -4,8 +4,8 @@
       <span class="c-section-title__number" aria-hidden="true">03</span>PROGETTI
     </h1>
     <p class="c-section-subtitle">
-      Quattro progetti e un laboratorio guidato, con codice, scelte tecniche e stato reale. Le
-      funzionalità implementate sono distinte dai prossimi sviluppi.
+      Dal flusso full stack di Expense Tracker al tooling Java: quattro progetti con scelte tecniche
+      concrete. Il laboratorio di studio è raccolto a fondo pagina.
     </p>
 
     <div class="c-projects__grid">
@@ -29,6 +29,34 @@
               }
             </ul>
 
+            @if (project.decision; as decision) {
+              <div class="c-card__decision">
+                <h3>Una scelta tecnica</h3>
+                <dl>
+                  <div>
+                    <dt>Problema</dt>
+                    <dd>{{ decision.problem }}</dd>
+                  </div>
+                  <div>
+                    <dt>Soluzione</dt>
+                    <dd>{{ decision.solution }}</dd>
+                  </div>
+                  <div>
+                    <dt>Compromesso</dt>
+                    <dd>{{ decision.tradeoff }}</dd>
+                  </div>
+                </dl>
+              </div>
+            }
+            @if (project.example; as example) {
+              <div class="c-card__example">
+                <h3>Dal comando al codice</h3>
+                <p>Comando</p>
+                <pre><code>{{ example.command }}</code></pre>
+                <p>File generati</p>
+                <pre><code>{{ example.output }}</code></pre>
+              </div>
+            }
             <p class="c-card__status-detail">
               <strong>Stato reale</strong>
               <span>{{ project.statusDetail }}</span>
@@ -85,6 +113,28 @@
       }
     </div>
 
+    <aside class="c-projects__labs" aria-labelledby="labs-title">
+      <h2 id="labs-title">Laboratorio di studio</h2>
+      <p>Un esercizio guidato per approfondire i meccanismi usati nei progetti.</p>
+      @for (lab of labs; track lab.id) {
+        <details class="c-projects__lab" [id]="lab.id">
+          <summary>
+            {{ lab.title }} <span>{{ lab.status }}</span>
+          </summary>
+          <p>{{ lab.statusDetail }}</p>
+          <ul>
+            @for (highlight of lab.highlights; track highlight) {
+              <li>{{ highlight }}</li>
+            }
+          </ul>
+          @for (repository of lab.repositories ?? []; track repository.url) {
+            <a [href]="repository.url" target="_blank" rel="noopener noreferrer"
+              >{{ repository.label }} <span aria-hidden="true">↗</span></a
+            >
+          }
+        </details>
+      }
+    </aside>
     <div class="c-projects__github-cta">
       <p>Vuoi vedere anche esercizi, esperimenti e progetti ancora in evoluzione?</p>
       <a

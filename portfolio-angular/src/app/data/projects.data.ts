@@ -15,60 +15,21 @@ export interface PortfolioProject {
   readonly technologies: readonly string[];
   readonly status: ProjectStatus;
   readonly statusDetail: string;
+  readonly decision?: {
+    readonly problem: string;
+    readonly solution: string;
+    readonly tradeoff: string;
+  };
+  readonly example?: {
+    readonly command: string;
+    readonly output: string;
+  };
   readonly liveLink?: string;
   readonly liveLabel?: string;
   readonly repositories?: readonly PortfolioRepository[];
 }
 
 export const PROJECTS = [
-  {
-    id: 'jobflow',
-    title: 'JobFlow',
-    icon: 'fas fa-diagram-project',
-    focus: 'Progetto principale · modellazione e persistenza dei job',
-    description:
-      'Backend per un sistema di job asincroni: il primo slice crea e persiste un job per la futura generazione di un documento PDF.',
-    highlights: [
-      'Dominio Job con stati CREATED, PROCESSING, COMPLETED e FAILED',
-      'POST /jobs con DTO validato, risposta 201 Created e header Location',
-      'Persistenza JPA/MySQL di Job e GeneratePdfWork con cascade PERSIST',
-    ],
-    technologies: [
-      'Java',
-      'Spring Boot',
-      'REST API',
-      'Spring Data JPA',
-      'MySQL',
-      'Bean Validation',
-    ],
-    status: 'In sviluppo',
-    statusDetail:
-      'Creazione e persistenza verificate manualmente con Postman e MySQL. Lettura del job, worker e generazione PDF sono i prossimi passi; esecuzione asincrona, realtime, retry, messaging e AI restano obiettivi futuri.',
-    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/job-flow' }],
-  },
-  {
-    id: 'spring-scaffold-cli',
-    title: 'Spring Scaffold CLI',
-    icon: 'fas fa-terminal',
-    focus: 'Tooling Java · code generation',
-    description:
-      'CLI Java per generare boilerplate Spring Boot leggibile e modificabile, partendo da DTO request/response.',
-    highlights: [
-      'Sottocomandi e opzioni CLI con Picocli',
-      'Generazione sicura di DTO con validazione del naming e protezione dalla sovrascrittura',
-      'Architettura separata tra parsing dei comandi, generator e template',
-    ],
-    technologies: ['Java 17', 'Maven', 'Picocli', 'CLI', 'Code generation'],
-    status: 'In sviluppo',
-    statusDetail:
-      'MVP disponibile: genera DTO simple, request, response o entrambi. I prossimi passi sono campi configurabili, test automatizzati e la generazione di una risorsa Spring completa.',
-    repositories: [
-      {
-        label: 'Repository',
-        url: 'https://github.com/fabiozagaria/spring-scaffold-cli',
-      },
-    ],
-  },
   {
     id: 'gestionale-spese',
     title: 'Expense Tracker',
@@ -93,6 +54,13 @@ export const PROJECTS = [
     status: 'In sviluppo',
     statusDetail:
       'Autenticazione e spese personali sono implementate; entrate e dashboard sono presenti nel codice, ma la verifica end-to-end completa resta aperta. La demo pubblica è frontend: le operazioni persistenti richiedono il backend locale.',
+    decision: {
+      problem: 'Garantire che ogni utente possa consultare e modificare soltanto le proprie spese.',
+      solution:
+        'API protette da JWT e controllo del proprietario sul backend, con refresh token in cookie HttpOnly.',
+      tradeoff:
+        'La sessione richiede configurazione coerente di cookie, CORS e URL; la demo frontend non sostituisce il backend locale.',
+    },
     liveLink: 'https://gestionale-spese.vercel.app/',
     liveLabel: 'Demo frontend',
     repositories: [
@@ -105,6 +73,74 @@ export const PROJECTS = [
         url: 'https://github.com/fabiozagaria/expense-tracker-api',
       },
     ],
+  },
+  {
+    id: 'spring-scaffold-cli',
+    title: 'Spring Scaffold CLI',
+    icon: 'fas fa-terminal',
+    focus: 'Tooling Java · code generation',
+    description:
+      'CLI Java per generare boilerplate Spring Boot leggibile e modificabile, partendo da DTO request/response.',
+    highlights: [
+      'Sottocomandi e opzioni CLI con Picocli',
+      'Generazione sicura di DTO con validazione del naming e protezione dalla sovrascrittura',
+      'Architettura separata tra parsing dei comandi, generator e template',
+    ],
+    decision: {
+      problem:
+        'Ridurre il lavoro ripetitivo sui DTO senza perdere il controllo del codice prodotto.',
+      solution:
+        'La CLI genera record Java leggibili e rifiuta la sovrascrittura di file esistenti.',
+      tradeoff:
+        'Il primo MVP genera record vuoti: campi e risorse Spring complete restano da implementare.',
+    },
+    example: {
+      command: 'java -jar target/spring-scaffold-cli-0.1.0-SNAPSHOT.jar generate dto Expense',
+      output:
+        'ExpenseRequest.java\npublic record ExpenseRequest() {\n}\n\nExpenseResponse.java\npublic record ExpenseResponse() {\n}',
+    },
+    technologies: ['Java 17', 'Maven', 'Picocli', 'CLI', 'Code generation'],
+    status: 'In sviluppo',
+    statusDetail:
+      'MVP disponibile con test del generator: genera DTO simple, request, response o entrambi. Campi configurabili e generazione di una risorsa Spring completa sono i prossimi sviluppi.',
+    repositories: [
+      {
+        label: 'Repository',
+        url: 'https://github.com/fabiozagaria/spring-scaffold-cli',
+      },
+    ],
+  },
+  {
+    id: 'jobflow',
+    title: 'JobFlow',
+    icon: 'fas fa-diagram-project',
+    focus: 'Backend in evoluzione · modellazione dei job',
+    description:
+      'Backend per un sistema di job asincroni: il primo slice crea e persiste un job per la futura generazione di un documento PDF.',
+    highlights: [
+      'Dominio Job con stati CREATED, PROCESSING, COMPLETED e FAILED',
+      'POST /jobs con DTO validato, risposta 201 Created e header Location',
+      'Persistenza JPA/MySQL di Job e GeneratePdfWork con cascade PERSIST',
+    ],
+    technologies: [
+      'Java',
+      'Spring Boot',
+      'REST API',
+      'Spring Data JPA',
+      'MySQL',
+      'Bean Validation',
+    ],
+    status: 'In sviluppo',
+    statusDetail:
+      'Creazione e persistenza verificate manualmente con Postman e MySQL. Lettura del job, worker e generazione PDF sono i prossimi passi; esecuzione asincrona, realtime, retry, messaging e AI restano obiettivi futuri.',
+    decision: {
+      problem:
+        'Salvare un nuovo job insieme al lavoro che descrive, mantenendo distinte le responsabilità.',
+      solution: 'Job possiede GeneratePdfWork; cascade PERSIST salva il nuovo Work insieme al Job.',
+      tradeoff:
+        'Il cascade è limitato alla creazione: aggiornamenti e rimozioni richiedono una gestione esplicita.',
+    },
+    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/job-flow' }],
   },
   {
     id: 'labtv',
@@ -122,6 +158,14 @@ export const PROJECTS = [
     status: 'Concluso',
     statusDetail:
       'Release frontend conclusa: applicazione Angular che integra la TMDB API per catalogo e dettaglio. Non sono previsti backend proprietario, autenticazione o persistenza utente.',
+    decision: {
+      problem:
+        'Integrare catalogo e dettagli TMDB senza distribuire le chiamate HTTP nei componenti.',
+      solution:
+        'MovieService centralizza le richieste e restituisce Observable con modelli TypeScript.',
+      tradeoff:
+        'La SPA dipende dalla API esterna; credenziali riservate richiederebbero un backend dedicato.',
+    },
     liveLink: 'https://lab-tv.vercel.app/',
     liveLabel: 'Demo online',
     repositories: [

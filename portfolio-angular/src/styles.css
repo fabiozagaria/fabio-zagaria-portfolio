@@ -1027,6 +1027,106 @@ main {
   color: var(--clr-cyber-green);
 }
 
+.c-card__decision,
+.c-card__example {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: var(--radius-md);
+  background: var(--clr-cyber-green-subtle);
+}
+
+.c-card__decision h3,
+.c-card__example h3 {
+  margin-bottom: var(--space-md);
+  font-size: var(--fs-400);
+  color: var(--clr-white);
+}
+
+.c-card__decision dl {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.c-card__decision dt,
+.c-card__example p {
+  margin-bottom: var(--space-xs);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-bold);
+  color: var(--clr-cyber-green-bright);
+}
+
+.c-card__decision dd {
+  margin: 0;
+  line-height: 1.65;
+  color: var(--clr-white-subtle);
+}
+
+.c-card__example pre {
+  margin-bottom: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  background: var(--clr-black);
+  color: var(--clr-white-subtle);
+  font-family: var(--ff-mono);
+  font-size: 0.8rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.c-card__example pre:last-child {
+  margin-bottom: 0;
+}
+
+.c-projects__labs {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid rgba(59, 130, 246, 0.18);
+}
+
+.c-projects__labs > h2 {
+  font-size: var(--fs-500);
+  margin-bottom: var(--space-sm);
+}
+
+.c-projects__labs > p {
+  color: var(--clr-white-subtle);
+  margin-bottom: var(--space-md);
+}
+
+.c-projects__lab {
+  padding: var(--space-md) var(--space-lg);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: var(--radius-md);
+  background: var(--clr-black);
+}
+
+.c-projects__lab summary {
+  cursor: pointer;
+  font-weight: var(--fw-bold);
+  color: var(--clr-cyber-green-bright);
+}
+
+.c-projects__lab summary span {
+  display: inline-block;
+  margin-left: var(--space-sm);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-normal);
+  color: var(--clr-white-subtle);
+}
+
+.c-projects__lab > p,
+.c-projects__lab > ul {
+  margin-block: var(--space-md);
+  color: var(--clr-white-subtle);
+  line-height: 1.65;
+}
+
+.c-projects__lab > ul {
+  padding-left: var(--space-lg);
+}
+
 .c-projects__github-cta {
   display: flex;
   flex-direction: column;

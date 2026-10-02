@@ -29,56 +29,50 @@
     <div class="c-hero__visual">
       <aside class="c-backend-map" aria-labelledby="backend-map-title">
         <div class="c-backend-map__header">
-          <p class="c-backend-map__eyebrow">Progetto principale</p>
-          <span class="c-backend-map__status">In sviluppo</span>
+          <p class="c-backend-map__eyebrow">Progetto in primo piano</p>
+          <span class="c-backend-map__status">In verifica</span>
         </div>
-
-        <h2 id="backend-map-title">JobFlow</h2>
+        <h2 id="backend-map-title">{{ mainProject.title }}</h2>
         <p class="c-backend-map__intro">
-          Il primo slice crea e persiste un job per la futura generazione PDF, con API REST,
-          validazione e JPA/MySQL. Worker, elaborazione asincrona e realtime sono i prossimi
-          sviluppi, da introdurre progressivamente.
+          Angular, API Spring Boot e MySQL nello stesso flusso: autenticazione, spese personali e
+          persistenza. Entrate e dashboard sono nel codice; la verifica completa resta aperta.
         </p>
-
-        <ol class="c-backend-map__flow" aria-label="Primo vertical slice di JobFlow">
+        <ol class="c-backend-map__flow" aria-label="Flusso full stack di Expense Tracker">
           <li>
             <span class="c-backend-map__step">01</span>
             <div>
-              <strong>Dominio del job</strong>
-              <span>Implementato: modello Job, stati e GeneratePdfWork</span>
+              <strong>Interfaccia Angular</strong
+              ><span>Signals, Reactive Forms e client HTTP tipizzato</span>
             </div>
           </li>
           <li>
             <span class="c-backend-map__step">02</span>
             <div>
-              <strong>API del vertical slice</strong>
-              <span>Implementato: POST /jobs e persistenza; lettura da completare</span>
+              <strong>Autenticazione</strong
+              ><span>Verifica email, JWT e refresh token HttpOnly</span>
             </div>
           </li>
           <li>
             <span class="c-backend-map__step">03</span>
             <div>
-              <strong>Avanzamento realtime</strong>
-              <span>Previsto: SSE o WebSocket dopo worker ed elaborazione asincrona</span>
+              <strong>API e dati personali</strong
+              ><span>DTO, validazione e controllo del proprietario</span>
             </div>
           </li>
           <li>
             <span class="c-backend-map__step">04</span>
             <div>
-              <strong>Scalabilità mirata</strong>
-              <span>Previsto: prima worker in-process, poi code se necessarie</span>
+              <strong>Persistenza MySQL</strong><span>Spring Data JPA e separazione dei layer</span>
             </div>
           </li>
         </ol>
-
-        <ul class="c-backend-map__qualities" aria-label="Principi di progettazione di JobFlow">
-          <li>Stati espliciti</li>
-          <li>Persistenza JPA</li>
-          <li>Evoluzione incrementale</li>
+        <ul class="c-backend-map__qualities" aria-label="Competenze dimostrate in Expense Tracker">
+          <li>API REST</li>
+          <li>Sicurezza</li>
+          <li>Integrazione full stack</li>
         </ul>
-
-        <a routerLink="/projects" fragment="jobflow" class="c-backend-map__link">
-          Segui il progetto <span aria-hidden="true">→</span>
+        <a routerLink="/projects" [fragment]="mainProject.id" class="c-backend-map__link">
+          Esamina scelte e codice <span aria-hidden="true">→</span>
         </a>
       </aside>
     </div>
@@ -90,11 +84,11 @@
     <div class="c-proof__header">
       <div>
         <p class="c-proof__eyebrow">Progetti in evidenza</p>
-        <h2 id="featured-projects-title">Progetti con responsabilità e stato verificabili</h2>
+        <h2 id="featured-projects-title">Altre prove del mio lavoro</h2>
       </div>
       <p>
-        Code generation, sviluppo full stack e integrazione API: lavori con obiettivi, limiti e
-        avanzamento dichiarati.
+        Tooling Java, un backend in evoluzione e una demo Angular: ogni progetto mostra un problema
+        concreto, una scelta tecnica e i limiti attuali.
       </p>
     </div>
 

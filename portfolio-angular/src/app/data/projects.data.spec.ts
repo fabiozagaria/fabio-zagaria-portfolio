@@ -2,8 +2,8 @@ import { PROJECTS } from './projects.data';
 
 describe('portfolio projects', () => {
   it('includes the active JobFlow project', () => {
-    expect(PROJECTS[0].title).toBe('JobFlow');
-    expect(PROJECTS[0].status).toBe('In sviluppo');
+    const jobFlow = PROJECTS.find((project) => project.id === 'jobflow');
+    expect(jobFlow?.status).toBe('In sviluppo');
   });
 
   it('includes Spring Scaffold CLI as an in-progress Java tool', () => {
@@ -44,9 +44,9 @@ describe('portfolio projects', () => {
 
   it('keeps the project order intentional', () => {
     expect(PROJECTS.map((project) => project.id)).toEqual([
-      'jobflow',
-      'spring-scaffold-cli',
       'gestionale-spese',
+      'spring-scaffold-cli',
+      'jobflow',
       'labtv',
       'task-manager-security-lab',
     ]);
