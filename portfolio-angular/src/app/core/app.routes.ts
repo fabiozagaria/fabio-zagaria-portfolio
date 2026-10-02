@@ -46,7 +46,7 @@ export const routes: Routes = [
       seo: {
         path: '/projects',
         description:
-          'Progetti e laboratori di Fabio Zagaria: Gestionale Spese, LabTV e Task Manager Security Lab con codice, tecnologie e stato reale.',
+          'Progetti e laboratori di Fabio Zagaria: JobFlow, Spring Scaffold CLI, Expense Tracker, LabTV e Task Manager Security Lab con codice, tecnologie e stato reale.',
       },
     },
     loadComponent: () =>

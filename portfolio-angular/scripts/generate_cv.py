@@ -133,24 +133,7 @@ def build_cv() -> None:
         LEFT,
         y,
         [
-            ("JobFlow - In sviluppo", "F2", BLUE),
-            (" | Java 21, Spring Boot", "F3", MUTED),
-        ],
-        9.95,
-    )
-    y -= 11
-    bullet(
-        "Progetto principale in sviluppo per elaborare job asincroni e approfondire architetture backend oltre il CRUD tradizionale."
-    )
-    bullet(
-        "Modellati il dominio Job, il lifecycle CREATED -> PROCESSING -> COMPLETED o FAILED e il primo Work GeneratePDFWork; Worker, processor e persistenza saranno introdotti per vertical slice."
-    )
-
-    segments(
-        LEFT,
-        y,
-        [
-            ("Expense Tracker - Gestionale Spese", "F2", BLUE),
+            ("Expense Tracker - In verifica", "F2", BLUE),
             (" | Java 21, Spring Boot, Angular 21, MySQL, JPA/Hibernate", "F3", MUTED),
         ],
         9.95,
@@ -166,6 +149,23 @@ def build_cv() -> None:
         "Frontend con Signals, Reactive Forms, validazioni personalizzate e sincronizzazione dello stato dopo le risposte HTTP."
     )
     y -= 1
+
+    segments(
+        LEFT,
+        y,
+        [
+            ("JobFlow - In sviluppo", "F2", BLUE),
+            (" | Java 21, Spring Boot", "F3", MUTED),
+        ],
+        9.95,
+    )
+    y -= 11
+    bullet(
+        "Progetto backend in sviluppo per elaborare job asincroni e approfondire architetture backend oltre il CRUD tradizionale."
+    )
+    bullet(
+        "Implementati dominio Job, stati e GeneratePdfWork; POST /jobs con validazione e persistenza JPA/MySQL. Worker, processor PDF ed esecuzione asincrona sono i prossimi slice."
+    )
 
     section("FORMAZIONE IT")
     segments(

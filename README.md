@@ -32,23 +32,26 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 
 ## Profilo in 30 secondi
 
-|                            |                                                                         |
-| -------------------------- | ----------------------------------------------------------------------- |
-| **Ruoli di interesse**     | Junior Backend Developer · Junior Full Stack Developer                  |
-| **Focus backend**          | Java · Spring Boot · Spring JDBC · REST API · MySQL                     |
-| **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                          |
-| **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026 |
-| **Apprendimento continuo** | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali       |
-| **Progetti principali**    | JobFlow in sviluppo; Expense Tracker concluso                           |
-| **Disponibilità**          | Roma · modalità ibrida · remoto in Italia                               |
+|                            |                                                                           |
+| -------------------------- | ------------------------------------------------------------------------- |
+| **Ruoli di interesse**     | Junior Backend Developer · Junior Full Stack Developer                    |
+| **Focus backend**          | Java · Spring Boot · Spring Security · Spring Data JPA · REST API · MySQL |
+| **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                            |
+| **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026   |
+| **Apprendimento continuo** | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali         |
+| **Progetti principali**    | Expense Tracker in primo piano; JobFlow in sviluppo                       |
+| **Disponibilità**          | Roma · modalità ibrida · remoto in Italia                                 |
 
 ## Progetti in evidenza
 
-| Progetto                                                                                                                                                                                             | Stato                                             | Cosa dimostra                                                                                                                                                                                                     |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| JobFlow: [repository](https://github.com/fabiozagaria/job-flow)                                                                                                                                      | In sviluppo                                       | Modellazione di job asincroni: dominio Job, lifecycle `CREATED → PROCESSING → COMPLETED/FAILED` e primo Work per generazione PDF. Worker, processor ed esecuzione asincrona reale sono i prossimi vertical slice. |
-| Expense Tracker: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | Concluso — verifica E2E finale ancora da eseguire | Angular, Spring Boot, Spring Security, JWT/refresh token, JPA/MySQL, spese, entrate e dashboard                                                                                                                   |
-| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                      | Concluso                                          | Applicazione Angular frontend con integrazione TMDB API, HttpClient, RxJS, modelli tipizzati e routing parametrico                                                                                                |
+| Progetto                                                                                                                                                                                             | Stato                                        | Cosa dimostra                                                                                                                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Expense Tracker: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo — integrazione E2E da verificare | Angular, Spring Boot, Spring Security, JWT/refresh token, JPA/MySQL, spese, entrate e dashboard                                                                       |
+| Spring Scaffold CLI: [repository](https://github.com/fabiozagaria/spring-scaffold-cli)                                                                                                               | In sviluppo — MVP DTO                        | CLI Java 17 con Picocli, DTO request/response, validazione del naming e protezione dalla sovrascrittura.                                                              |
+| JobFlow: [repository](https://github.com/fabiozagaria/job-flow)                                                                                                                                      | In sviluppo                                  | Dominio Job e GeneratePdfWork; `POST /jobs` con validazione, risposta 201 e persistenza JPA/MySQL. Lettura, worker, processor PDF e asincronia sono i prossimi slice. |
+| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                      | Concluso                                     | Applicazione Angular frontend con integrazione TMDB API, HttpClient, RxJS, modelli tipizzati e routing parametrico                                                    |
+
+La demo di Expense Tracker espone il frontend; le operazioni persistenti richiedono il backend locale. Entrate e dashboard sono nel codice, ma la verifica completa resta aperta.
 
 Student Management API, Fakeflix e gli esercizi formativi restano consultabili dal
 [profilo GitHub](https://github.com/fabiozagaria?tab=repositories), ma non sono presentati
@@ -56,31 +59,13 @@ come progetti principali. Task Manager con JPA e Spring Security resta un labora
 rotazione e revoca esplicita/logout dei refresh token sono implementati; cookie HttpOnly/Secure,
 test comportamentali e documentazione restano da completare prima di un'eventuale promozione.
 
-## Apprendimento continuo — Metodo CARAC
+## Come lavoro
 
-Dopo il percorso Full Stack continuo lo studio con un ciclo che ho chiamato **CARAC**:
-**Comprendi → Applica → Ricostruisci → Autonomizza → Consolida**.
-
-| Fase             | Cosa significa nella pratica                                                                            |
-| ---------------- | ------------------------------------------------------------------------------------------------------- |
-| **Comprendi**    | Studio il meccanismo, il flusso e il perché delle scelte prima di concentrarmi sulla sintassi.          |
-| **Applica**      | Uso il concetto in un laboratorio o in una prima implementazione guidata.                               |
-| **Ricostruisci** | Lo spiego a voce e ricostruisco i passaggi a libro chiuso.                                              |
-| **Autonomizza**  | Lo rifaccio in un esercizio separato, con primo tentativo autonomo e supporto progressivamente ridotto. |
-| **Consolida**    | Lo riprendo dopo un intervallo e lo trasferisco in scenari diversi o in un progetto reale.              |
-
-Gli esercizi di consolidamento possono restare **privati**: servono a verificare l'apprendimento, non a riempire il portfolio. I progetti pubblici hanno invece l'obiettivo di dimostrare progettazione, implementazione, testing, debugging e capacità di portare avanti software concreto.
-
-Uso strumenti AI come **tutor, interlocutore per il richiamo attivo, code reviewer e supporto di debugging mirato**. Negli esercizi il primo tentativo resta autonomo; nei progetti l'AI non sostituisce progettazione e implementazione.
-
-### Roadmap di studio
-
-| Orizzonte                   | Focus                                                                                                                                                             |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Attuale**                 | Spring Security: JWT access/refresh, ruoli e authorities, filter chain, CSRF/CORS, logout/revoca e conferma e-mail                                                |
-| **Prossimo**                | Testing con JUnit, Mockito e strumenti Spring; JPA/Spring Data avanzato; Docker                                                                                   |
-| **Successivo**              | Architettura backend, delivery/CI-CD, cloud fundamentals e sistemi distribuiti                                                                                    |
-| **Direzione professionale** | Diventare un backend developer solido, capace di progettare e spiegare le proprie scelte tecniche e crescere progressivamente verso responsabilità architetturali |
+Parto da vertical slice piccoli e verificabili, separo le responsabilità e uso test,
+debugging e revisione del codice per consolidare le scelte. Le schede dei progetti
+mostrano problema, soluzione, compromesso e stato reale; gli obiettivi futuri restano
+distinti dalle funzionalità implementate. Il laboratorio guidato ha uno spazio
+secondario rispetto ai progetti.
 
 ## Cosa dimostra questa repository
 
