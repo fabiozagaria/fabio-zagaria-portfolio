@@ -32,23 +32,26 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 
 ## Profilo in 30 secondi
 
-|                            |                                                                         |
-| -------------------------- | ----------------------------------------------------------------------- |
-| **Ruoli di interesse**     | Junior Backend Developer · Junior Full Stack Developer                  |
-| **Focus backend**          | Java · Spring Boot · Spring JDBC · REST API · MySQL                     |
-| **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                          |
-| **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026 |
-| **Apprendimento continuo** | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali       |
-| **Progetti principali**    | JobFlow in sviluppo; Expense Tracker concluso                           |
-| **Disponibilità**          | Roma · modalità ibrida · remoto in Italia                               |
+|                            |                                                                           |
+| -------------------------- | ------------------------------------------------------------------------- |
+| **Ruoli di interesse**     | Junior Backend Developer · Junior Full Stack Developer                    |
+| **Focus backend**          | Java · Spring Boot · Spring Security · Spring Data JPA · REST API · MySQL |
+| **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                            |
+| **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026   |
+| **Apprendimento continuo** | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali         |
+| **Progetti principali**    | JobFlow in sviluppo; Expense Tracker in verifica                          |
+| **Disponibilità**          | Roma · modalità ibrida · remoto in Italia                                 |
 
 ## Progetti in evidenza
 
-| Progetto                                                                                                                                                                                             | Stato                                             | Cosa dimostra                                                                                                                                                                                                     |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| JobFlow: [repository](https://github.com/fabiozagaria/job-flow)                                                                                                                                      | In sviluppo                                       | Modellazione di job asincroni: dominio Job, lifecycle `CREATED → PROCESSING → COMPLETED/FAILED` e primo Work per generazione PDF. Worker, processor ed esecuzione asincrona reale sono i prossimi vertical slice. |
-| Expense Tracker: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | Concluso — verifica E2E finale ancora da eseguire | Angular, Spring Boot, Spring Security, JWT/refresh token, JPA/MySQL, spese, entrate e dashboard                                                                                                                   |
-| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                      | Concluso                                          | Applicazione Angular frontend con integrazione TMDB API, HttpClient, RxJS, modelli tipizzati e routing parametrico                                                                                                |
+| Progetto                                                                                                                                                                                             | Stato                                        | Cosa dimostra                                                                                                                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| JobFlow: [repository](https://github.com/fabiozagaria/job-flow)                                                                                                                                      | In sviluppo                                  | Dominio Job e GeneratePdfWork; `POST /jobs` con validazione, risposta 201 e persistenza JPA/MySQL. Lettura, worker, processor PDF e asincronia sono i prossimi slice. |
+| Expense Tracker: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo — integrazione E2E da verificare | Angular, Spring Boot, Spring Security, JWT/refresh token, JPA/MySQL, spese, entrate e dashboard                                                                       |
+| Spring Scaffold CLI: [repository](https://github.com/fabiozagaria/spring-scaffold-cli)                                                                                                               | In sviluppo — MVP DTO                        | CLI Java 17 con Picocli, DTO request/response, validazione del naming e protezione dalla sovrascrittura.                                                              |
+| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                      | Concluso                                     | Applicazione Angular frontend con integrazione TMDB API, HttpClient, RxJS, modelli tipizzati e routing parametrico                                                    |
+
+La demo di Expense Tracker espone il frontend; le operazioni persistenti richiedono il backend locale. Entrate e dashboard sono nel codice, ma la verifica completa resta aperta.
 
 Student Management API, Fakeflix e gli esercizi formativi restano consultabili dal
 [profilo GitHub](https://github.com/fabiozagaria?tab=repositories), ma non sono presentati

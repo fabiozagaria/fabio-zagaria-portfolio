@@ -25,18 +25,26 @@ export const PROJECTS = [
     id: 'jobflow',
     title: 'JobFlow',
     icon: 'fas fa-diagram-project',
-    focus: 'Progetto principale · sistemi asincroni e realtime',
+    focus: 'Progetto principale · modellazione e persistenza dei job',
     description:
-      'Nuovo progetto principale dedicato alla progettazione di un sistema di elaborazione job asincroni, con avanzamento realtime e architettura orientata a worker e code.',
+      'Backend per un sistema di job asincroni: il primo slice crea e persiste un job per la futura generazione di un documento PDF.',
     highlights: [
-      'Job asincroni con ciclo di vita, gestione degli errori, retry e idempotenza',
-      'Concorrenza, worker e aggiornamenti realtime tramite WebSocket o SSE',
-      'Evoluzione prevista verso messaging, servizi separati e Spring AI con tool calling',
+      'Dominio Job con stati CREATED, PROCESSING, COMPLETED e FAILED',
+      'POST /jobs con DTO validato, risposta 201 Created e header Location',
+      'Persistenza JPA/MySQL di Job e GeneratePdfWork con cascade PERSIST',
     ],
-    technologies: ['Java', 'Spring Boot', 'Angular', 'WebSocket / SSE', 'Messaging', 'Spring AI'],
+    technologies: [
+      'Java',
+      'Spring Boot',
+      'REST API',
+      'Spring Data JPA',
+      'MySQL',
+      'Bean Validation',
+    ],
     status: 'In sviluppo',
     statusDetail:
-      'È il progetto principale del portfolio dopo Expense Tracker. La prima fase definirà dominio, architettura e un vertical slice minimo; code, microservizi e AI verranno introdotti progressivamente solo quando giustificati dal problema.',
+      'Creazione e persistenza verificate manualmente con Postman e MySQL. Lettura del job, worker e generazione PDF sono i prossimi passi; esecuzione asincrona, realtime, retry, messaging e AI restano obiettivi futuri.',
+    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/job-flow' }],
   },
   {
     id: 'spring-scaffold-cli',
@@ -65,7 +73,7 @@ export const PROJECTS = [
     id: 'gestionale-spese',
     title: 'Expense Tracker',
     icon: 'fas fa-wallet',
-    focus: 'Progetto full stack · concluso',
+    focus: 'Progetto full stack · integrazione in verifica',
     description:
       'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
     highlights: [
@@ -73,10 +81,18 @@ export const PROJECTS = [
       'CRUD REST, entrate e dashboard con DTO dedicati e persistenza JPA/MySQL',
       'Autenticazione JWT con verifica email, refresh token HttpOnly e dati isolati per utente',
     ],
-    technologies: ['Angular', 'TypeScript', 'Spring Boot', 'Spring Security', 'Spring Data JPA', 'MySQL', 'REST API'],
-    status: 'Concluso',
+    technologies: [
+      'Angular',
+      'TypeScript',
+      'Spring Boot',
+      'Spring Security',
+      'Spring Data JPA',
+      'MySQL',
+      'REST API',
+    ],
+    status: 'In sviluppo',
     statusDetail:
-      'Scope funzionale concluso. Il backend include autenticazione, spese, entrate e riepilogo; le ultime modifiche Income/Dashboard richiedono ancora una verifica end-to-end completa con backend locale attivo.',
+      'Autenticazione e spese personali sono implementate; entrate e dashboard sono presenti nel codice, ma la verifica end-to-end completa resta aperta. La demo pubblica è frontend: le operazioni persistenti richiedono il backend locale.',
     liveLink: 'https://gestionale-spese.vercel.app/',
     liveLabel: 'Demo frontend',
     repositories: [
@@ -125,7 +141,7 @@ export const PROJECTS = [
     highlights: [
       'Registrazione e login con password BCrypt e access token JWT',
       "CRUD dei task limitato all'utente autenticato tramite Spring Security",
-      'Refresh token casuale salvato come hash; flusso refresh e revoca ancora da completare',
+      'Refresh token opaco salvato come hash, rotazione one-time e revoca tramite logout',
     ],
     technologies: [
       'Java',
@@ -138,7 +154,7 @@ export const PROJECTS = [
     ],
     status: 'Laboratorio attivo',
     statusDetail:
-      'È un esercizio guidato di apprendimento, non un prodotto ideato autonomamente. Lo uso per comprendere Spring Security, JPA e Hibernate; documentazione, test e ciclo refresh/revoca sono ancora incompleti.',
+      'È un esercizio guidato di apprendimento, non un prodotto ideato autonomamente. Lo uso per comprendere Spring Security, JPA e Hibernate; refresh, rotazione e logout sono implementati. Documentazione, test comportamentali e cookie HttpOnly/Secure restano da completare.',
     repositories: [
       {
         label: 'Repository laboratorio',

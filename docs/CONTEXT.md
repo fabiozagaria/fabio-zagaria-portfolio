@@ -1,6 +1,6 @@
 # Contesto tecnico — Portfolio
 
-Aggiornato: 2026-09-28
+Aggiornato: 2026-10-02
 
 ## Obiettivo
 Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come Junior Backend Developer con visione full stack, mantenendo allineati portfolio, progetti, CV e stato tecnico reale.
@@ -10,9 +10,12 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 - Deploy su Vercel.
 - CI GitHub Actions con controlli di formato, test e build.
 - Struttura con componenti standalone, routing lazy, dati tipizzati, attenzione a SEO, accessibilità e performance.
-- Expense Tracker è il progetto full stack concluso mostrato nel portfolio; le ultime modifiche Income/Dashboard sono dichiarate in attesa di verifica E2E completa.
+- Expense Tracker è il progetto full stack in verifica: entrate e dashboard sono presenti nel codice, ma la verifica E2E completa resta aperta. La demo è frontend; la persistenza richiede il backend locale.
 - LabTV è una release frontend conclusa basata sull'integrazione della TMDB API.
-- JobFlow è il progetto principale in sviluppo: esplora job asincroni, lifecycle, worker e processor partendo da un primo vertical slice di generazione PDF. Al momento sono modellati il dominio Job, gli stati e il primo Work; l'esecuzione asincrona reale deve ancora essere implementata.
+- JobFlow è il progetto principale in sviluppo: esplora job asincroni, lifecycle, worker e processor partendo da un primo vertical slice di generazione PDF. Sono implementati dominio Job, stati, GeneratePdfWork e POST /jobs con validazione e persistenza JPA/MySQL; l'esecuzione asincrona reale deve ancora essere implementata.
+
+- Spring Scaffold CLI dimostra tooling Java e generazione DTO; la generazione di risorse complete è futura.
+- Task Manager resta un laboratorio guidato: refresh, rotazione e logout sono implementati; test comportamentali e documentazione sono da completare.
 
 ## Regole di mantenimento
 - Aggiornare il portfolio solo quando una competenza o un progetto è realmente dimostrabile.

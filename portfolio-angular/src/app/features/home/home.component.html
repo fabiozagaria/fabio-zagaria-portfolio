@@ -35,9 +35,9 @@
 
         <h2 id="backend-map-title">JobFlow</h2>
         <p class="c-backend-map__intro">
-          Sto progettando un vertical slice per elaborare job asincroni, rendendo visibili stato,
-          errori e avanzamento. Worker, realtime e messaging entreranno solo quando il problema
-          lo richiederà.
+          Il primo slice crea e persiste un job per la futura generazione PDF, con API REST,
+          validazione e JPA/MySQL. Worker, elaborazione asincrona e realtime sono i prossimi
+          sviluppi, da introdurre progressivamente.
         </p>
 
         <ol class="c-backend-map__flow" aria-label="Primo vertical slice di JobFlow">
@@ -45,35 +45,35 @@
             <span class="c-backend-map__step">01</span>
             <div>
               <strong>Dominio del job</strong>
-              <span>Stati, transizioni, errori e responsabilità esplicite</span>
+              <span>Implementato: modello Job, stati e GeneratePdfWork</span>
             </div>
           </li>
           <li>
             <span class="c-backend-map__step">02</span>
             <div>
               <strong>API del vertical slice</strong>
-              <span>Creazione e consultazione del ciclo di vita del job</span>
+              <span>Implementato: POST /jobs e persistenza; lettura da completare</span>
             </div>
           </li>
           <li>
             <span class="c-backend-map__step">03</span>
             <div>
               <strong>Avanzamento realtime</strong>
-              <span>WebSocket o SSE, dopo aver consolidato il flusso base</span>
+              <span>Previsto: SSE o WebSocket dopo worker ed elaborazione asincrona</span>
             </div>
           </li>
           <li>
             <span class="c-backend-map__step">04</span>
             <div>
               <strong>Scalabilità mirata</strong>
-              <span>Worker e code solo quando saranno giustificati dal dominio</span>
+              <span>Previsto: prima worker in-process, poi code se necessarie</span>
             </div>
           </li>
         </ol>
 
         <ul class="c-backend-map__qualities" aria-label="Principi di progettazione di JobFlow">
           <li>Stati espliciti</li>
-          <li>Error handling</li>
+          <li>Persistenza JPA</li>
           <li>Evoluzione incrementale</li>
         </ul>
 

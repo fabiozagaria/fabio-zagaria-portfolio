@@ -26,7 +26,7 @@ describe('HomeComponent', () => {
     const element = fixture.nativeElement as HTMLElement;
 
     expect(element.textContent).toContain('Spring Scaffold CLI');
-    expect(element.textContent).toContain('Gestionale Spese');
+    expect(element.textContent).toContain('Expense Tracker');
     expect(element.textContent).toContain('LabTV');
     expect(element.textContent).not.toContain('Task Manager Security Lab');
     expect(fixture.componentInstance.featuredProjects).toHaveLength(3);
@@ -46,7 +46,9 @@ describe('HomeComponent', () => {
     expect(element.textContent).toContain('Avanzamento realtime');
     expect(element.textContent).toContain('Scalabilità mirata');
     expect(architectureLink?.getAttribute('href')).toBe('/projects#jobflow');
-    expect(fixture.componentInstance.featuredProjects.map((project) => project.id)).not.toContain('jobflow');
+    expect(fixture.componentInstance.featuredProjects.map((project) => project.id)).not.toContain(
+      'jobflow',
+    );
   });
 
   it('keeps the home focused on role, projects and contact actions', () => {

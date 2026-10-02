@@ -143,14 +143,14 @@ def build_cv() -> None:
         "Progetto principale in sviluppo per elaborare job asincroni e approfondire architetture backend oltre il CRUD tradizionale."
     )
     bullet(
-        "Modellati il dominio Job, il lifecycle CREATED -> PROCESSING -> COMPLETED o FAILED e il primo Work GeneratePDFWork; Worker, processor e persistenza saranno introdotti per vertical slice."
+        "Implementati dominio Job, stati e GeneratePdfWork; POST /jobs con validazione e persistenza JPA/MySQL. Worker, processor PDF ed esecuzione asincrona sono i prossimi slice."
     )
 
     segments(
         LEFT,
         y,
         [
-            ("Expense Tracker - Gestionale Spese", "F2", BLUE),
+            ("Expense Tracker - In verifica", "F2", BLUE),
             (" | Java 21, Spring Boot, Angular 21, MySQL, JPA/Hibernate", "F3", MUTED),
         ],
         9.95,
