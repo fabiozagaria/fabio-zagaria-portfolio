@@ -133,20 +133,20 @@ def build_cv() -> None:
         LEFT,
         y,
         [
-            ("Expense Tracker - In verifica", "F2", BLUE),
+            ("Expense Tracker - In consolidamento", "F2", BLUE),
             (" | Java 21, Spring Boot, Angular 21, MySQL, JPA/Hibernate", "F3", MUTED),
         ],
         9.95,
     )
     y -= 11
     bullet(
-        "Applicazione full stack per gestire spese personali, con frontend Angular collegato alle API Spring Boot tramite HttpClient."
+        "Applicazione full stack per spese, entrate e dashboard; frontend Angular/PrimeNG e backend Spring Boot/MySQL, con demo Vercel/Render e account condiviso."
     )
     bullet(
-        "Backend REST con DTO, Bean Validation, gestione centralizzata degli errori, persistenza JPA e controllo di ownership; autenticazione con JWT, refresh token e verifica email."
+        "API REST con DTO, Bean Validation, errori centralizzati e ownership; persistenza JPA, JWT e refresh HttpOnly. Registrazione con verifica email disponibile in locale."
     )
     bullet(
-        "Frontend con Signals, Reactive Forms, validazioni personalizzate e sincronizzazione dello stato dopo le risposte HTTP."
+        "Signals e Reactive Forms; registrazione online disabilitata. Registrazione locale con email e creazione entrate restano da verificare nel flusso completo."
     )
     y -= 1
 
@@ -164,7 +164,7 @@ def build_cv() -> None:
         "Progetto backend in sviluppo per elaborare job asincroni e approfondire architetture backend oltre il CRUD tradizionale."
     )
     bullet(
-        "Implementati dominio Job, stati e GeneratePdfWork; POST /jobs con validazione e persistenza JPA/MySQL. Worker, processor PDF ed esecuzione asincrona sono i prossimi slice."
+        "Dominio Job e persistenza JPA/MySQL; POST /jobs e GET /jobs/{id} implementati, con verifica runtime del GET aperta. Worker, processor PDF ed esecuzione asincrona restano da realizzare."
     )
 
     section("FORMAZIONE IT")

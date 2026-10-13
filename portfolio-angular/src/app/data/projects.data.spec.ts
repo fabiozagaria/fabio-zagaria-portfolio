@@ -6,10 +6,10 @@ describe('portfolio projects', () => {
     expect(jobFlow?.status).toBe('In sviluppo');
   });
 
-  it('includes Spring Scaffold CLI as an in-progress Java tool', () => {
+  it('includes Spring Scaffold CLI as a paused Java tool with an available MVP', () => {
     const springScaffold = PROJECTS.find((project) => project.id === 'spring-scaffold-cli');
 
-    expect(springScaffold?.status).toBe('In sviluppo');
+    expect(springScaffold?.status).toBe('Sospeso');
     expect(springScaffold?.technologies).toContain('Picocli');
     expect(springScaffold?.repositories?.[0].url).toContain('spring-scaffold-cli');
   });
@@ -21,7 +21,7 @@ describe('portfolio projects', () => {
       'Frontend',
       'Backend',
     ]);
-    expect(expenseTracker?.liveLabel).toBe('Demo frontend');
+    expect(expenseTracker?.liveLabel).toBe('Prova la demo');
   });
 
   it('presents LabTV as a working API integration demo', () => {
@@ -49,6 +49,7 @@ describe('portfolio projects', () => {
       'jobflow',
       'labtv',
       'task-manager-security-lab',
+      'transport-tickets',
     ]);
   });
 });

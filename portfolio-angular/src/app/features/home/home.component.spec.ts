@@ -29,6 +29,7 @@ describe('HomeComponent', () => {
     expect(element.textContent).toContain('Expense Tracker');
     expect(element.textContent).toContain('LabTV');
     expect(element.textContent).not.toContain('Task Manager Security Lab');
+    expect(element.textContent).not.toContain('Transport Tickets');
     expect(fixture.componentInstance.featuredProjects).toHaveLength(3);
     expect(element.textContent).not.toContain('Student Management API');
     expect(element.textContent).not.toContain('Fakeflix');

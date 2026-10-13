@@ -95,6 +95,12 @@
   border-color: rgba(15, 118, 110, 0.24);
 }
 
+.c-proof__status[data-status='Sospeso'] {
+  color: var(--clr-white-subtle);
+  background: rgba(100, 116, 139, 0.12);
+  border-color: rgba(100, 116, 139, 0.3);
+}
+
 .c-proof__focus {
   margin-bottom: var(--space-xs);
 }
