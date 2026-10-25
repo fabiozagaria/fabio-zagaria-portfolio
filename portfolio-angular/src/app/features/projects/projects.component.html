@@ -121,31 +121,6 @@
             </article>
           }
         </div>
-
-        @if (group.category === 'Backend') {
-          <aside class="c-projects__labs" aria-labelledby="labs-title">
-            <h3 id="labs-title">Laboratorio di studio</h3>
-            <p>Un esercizio guidato per approfondire i meccanismi usati nei progetti.</p>
-            @for (lab of labs; track lab.id) {
-              <details class="c-projects__lab" [id]="lab.id">
-                <summary>
-                  {{ lab.title }} <span>{{ lab.status }}</span>
-                </summary>
-                <p>{{ lab.statusDetail }}</p>
-                <ul>
-                  @for (highlight of lab.highlights; track highlight) {
-                    <li>{{ highlight }}</li>
-                  }
-                </ul>
-                @for (repository of lab.repositories ?? []; track repository.url) {
-                  <a [href]="repository.url" target="_blank" rel="noopener noreferrer"
-                    >{{ repository.label }} <span aria-hidden="true">↗</span></a
-                  >
-                }
-              </details>
-            }
-          </aside>
-        }
       </section>
     }
     @for (group of supplementaryGroups; track group.id) {

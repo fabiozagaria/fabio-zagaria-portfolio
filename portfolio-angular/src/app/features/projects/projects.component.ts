@@ -22,12 +22,9 @@ export class ProjectsComponent {
   ).map((group) => ({
     ...group,
     projects: PROJECTS.filter(
-      (project) => project.category === group.category && project.status !== 'Laboratorio attivo',
+      (project) => project.category === group.category,
     ) as readonly PortfolioProject[],
   }));
-  readonly labs: readonly PortfolioProject[] = PROJECTS.filter(
-    (project) => project.category === 'Backend' && project.status === 'Laboratorio attivo',
-  );
   readonly supplementaryGroups: readonly {
     id: string;
     title: string;
@@ -37,7 +34,7 @@ export class ProjectsComponent {
     {
       id: 'sperimentale-ai',
       title: 'Sperimentale con AI',
-      description: 'Esplorazioni con strumenti e tecnologie esterni al mio stack web principale.',
+      description: 'Progetti esplorativi e strumenti di studio con il supporto dell’AI.',
       entries: EXPERIMENTAL_PROJECTS,
     },
     {

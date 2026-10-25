@@ -150,75 +150,6 @@ export const PROJECTS = [
     repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/accessdesk-api' }],
   },
   {
-    id: 'spring-scaffold-cli',
-    title: 'Spring Scaffold CLI',
-    category: 'Backend',
-    icon: 'fas fa-terminal',
-    focus: 'Backend · tooling Java e code generation',
-    description:
-      'CLI Java per generare boilerplate Spring Boot leggibile e modificabile, partendo da DTO request/response.',
-    highlights: [
-      'Sottocomandi e opzioni CLI con Picocli',
-      'Generazione sicura di DTO con validazione del naming e protezione dalla sovrascrittura',
-      'Architettura separata tra parsing dei comandi, generator e template',
-    ],
-    decision: {
-      problem:
-        'Ridurre il lavoro ripetitivo sui DTO senza perdere il controllo del codice prodotto.',
-      solution:
-        'La CLI genera record Java leggibili e rifiuta la sovrascrittura di file esistenti.',
-      tradeoff:
-        'Il primo MVP genera record vuoti: campi e risorse Spring complete restano da implementare.',
-    },
-    example: {
-      command: 'java -jar target/spring-scaffold-cli-0.1.0-SNAPSHOT.jar generate dto Expense',
-      output:
-        'ExpenseRequest.java\npublic record ExpenseRequest() {\n}\n\nExpenseResponse.java\npublic record ExpenseResponse() {\n}',
-    },
-    technologies: ['Java 17', 'Maven', 'Picocli', 'CLI', 'Code generation'],
-    status: 'In sviluppo',
-    statusDetail:
-      'MVP disponibile con test del generatore: genera record DTO vuoti simple, request, response o entrambi. Nuove funzionalità sospese; non genera risorse Spring complete.',
-    repositories: [
-      {
-        label: 'Repository',
-        url: 'https://github.com/fabiozagaria/spring-scaffold-cli',
-      },
-    ],
-  },
-  {
-    id: 'task-manager-security-lab',
-    title: 'Task Manager Security Lab',
-    category: 'Backend',
-    icon: 'fas fa-shield-halved',
-    focus: 'Laboratorio guidato · backend',
-    description:
-      'Laboratorio di studio usato per sperimentare autenticazione e persistenza in una semplice API CRUD di task.',
-    highlights: [
-      'Registrazione e login con password BCrypt e access token JWT',
-      "CRUD dei task limitato all'utente autenticato tramite Spring Security",
-      'Refresh token opaco salvato come hash, rotazione e revoca tramite logout',
-    ],
-    technologies: [
-      'Java',
-      'Spring Boot',
-      'Spring Security',
-      'Spring Data JPA',
-      'Hibernate',
-      'MySQL',
-      'JWT',
-    ],
-    status: 'Laboratorio attivo',
-    statusDetail:
-      'È un esercizio guidato di apprendimento, non un prodotto ideato autonomamente. Lo uso per comprendere Spring Security, JPA e Hibernate; refresh, rotazione e logout sono implementati. Documentazione, test comportamentali e cookie HttpOnly/Secure restano da completare.',
-    repositories: [
-      {
-        label: 'Repository laboratorio',
-        url: 'https://github.com/fabiozagaria/task-manager-api-jpa-security',
-      },
-    ],
-  },
-  {
     id: 'labtv',
     title: 'LabTV',
     category: 'Frontend',
@@ -276,6 +207,27 @@ export const PROJECTS = [
         label: 'Repository',
         url: 'https://github.com/fabiozagaria/fakeflix-vanilla-js',
       },
+    ],
+  },
+  {
+    id: 'portfolio',
+    title: 'Portfolio',
+    category: 'Frontend',
+    icon: 'fas fa-code',
+    focus: 'Frontend · progetto del corso',
+    description:
+      'Portfolio Angular con componenti standalone, routing lazy e contenuti tipizzati, con attenzione ad accessibilità e SEO.',
+    highlights: [
+      'Componenti standalone e routing lazy',
+      'Metadati specifici per route e dati tipizzati',
+    ],
+    technologies: ['Angular 21', 'TypeScript 5.9', 'HTML', 'CSS', 'Vercel'],
+    status: 'Demo frontend',
+    statusDetail: 'Progetto frontend del corso, evoluto nel portfolio professionale attuale.',
+    liveLink: 'https://fabio-zagaria-portfolio.vercel.app/',
+    liveLabel: 'Demo online',
+    repositories: [
+      { label: 'Repository', url: 'https://github.com/fabiozagaria/fabio-zagaria-portfolio' },
     ],
   },
 ] as const satisfies readonly PortfolioProject[];

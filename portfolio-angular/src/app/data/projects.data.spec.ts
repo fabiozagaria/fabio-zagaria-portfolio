@@ -1,4 +1,5 @@
 import { PROJECTS } from './projects.data';
+import { EXERCISE_COLLECTIONS, EXPERIMENTAL_PROJECTS } from './project-collections.data';
 
 describe('portfolio projects', () => {
   it('includes the active JobFlow project', () => {
@@ -6,10 +7,12 @@ describe('portfolio projects', () => {
     expect(jobFlow?.status).toBe('In sviluppo');
   });
 
-  it('includes Spring Scaffold CLI as an in-progress Java tool', () => {
-    const springScaffold = PROJECTS.find((project) => project.id === 'spring-scaffold-cli');
+  it('includes Spring Scaffold CLI among the experimental Java tools', () => {
+    const springScaffold = EXPERIMENTAL_PROJECTS.find(
+      (project) => project.id === 'spring-scaffold-cli',
+    );
 
-    expect(springScaffold?.status).toBe('In sviluppo');
+    expect(springScaffold?.note).toContain('MVP disponibile');
     expect(springScaffold?.technologies).toContain('Picocli');
     expect(springScaffold?.repositories?.[0].url).toContain('spring-scaffold-cli');
   });
@@ -34,11 +37,12 @@ describe('portfolio projects', () => {
   });
 
   it('labels Task Manager honestly as a guided learning lab', () => {
-    const taskManager = PROJECTS.find((project) => project.id === 'task-manager-security-lab');
+    const taskManager = EXERCISE_COLLECTIONS.find(
+      (project) => project.id === 'task-manager-security-lab',
+    );
 
-    expect(taskManager?.status).toBe('Laboratorio attivo');
-    expect(taskManager?.focus).toContain('Laboratorio guidato');
-    expect(taskManager?.statusDetail).toContain('non un prodotto ideato autonomamente');
+    expect(taskManager?.description).toContain('Laboratorio guidato');
+    expect(taskManager?.note).toContain('restano da completare');
     expect(taskManager?.technologies).toContain('Spring Security');
     expect(taskManager?.technologies).toContain('Hibernate');
   });
@@ -48,10 +52,9 @@ describe('portfolio projects', () => {
       'gestionale-spese',
       'jobflow',
       'accessdesk',
-      'spring-scaffold-cli',
-      'task-manager-security-lab',
       'labtv',
       'fakeflix',
+      'portfolio',
     ]);
   });
 });
