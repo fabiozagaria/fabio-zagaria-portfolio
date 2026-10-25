@@ -51,6 +51,7 @@ describe('portfolio projects', () => {
       'spring-scaffold-cli',
       'task-manager-security-lab',
       'labtv',
+      'fakeflix',
     ]);
   });
 });

@@ -31,6 +31,17 @@ export const EXPERIMENTAL_PROJECTS = [
     liveLink: 'https://filo-di-casa.fabiozagaria.chatgpt.site/',
     repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/mamy-site' }],
   },
+  {
+    id: 'studyflow-android',
+    title: 'StudyFlow Android',
+    description:
+      'Applicazione Android per pianificare lo studio, gestire sessioni Pomodoro e organizzare il ripasso con dati locali.',
+    technologies: ['Android', 'Java', 'Kotlin', 'XML', 'Jetpack Compose', 'Room/SQLite'],
+    note: 'Esperimento mobile con persistenza locale e valutazione manuale del ripasso.',
+    repositories: [
+      { label: 'Repository', url: 'https://github.com/fabiozagaria/study-flow-android' },
+    ],
+  },
 ] as const satisfies readonly PortfolioCollectionItem[];
 
 export const EXERCISE_COLLECTIONS = [

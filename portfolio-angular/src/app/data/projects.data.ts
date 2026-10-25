@@ -1,4 +1,4 @@
-export type ProjectStatus = 'Concluso' | 'In sviluppo' | 'Laboratorio attivo';
+export type ProjectStatus = 'Concluso' | 'In sviluppo' | 'Laboratorio attivo' | 'Demo frontend';
 export type ProjectCategory = 'Full stack' | 'Backend' | 'Frontend';
 
 export interface PortfolioRepository {
@@ -249,6 +249,32 @@ export const PROJECTS = [
       {
         label: 'Repository',
         url: 'https://github.com/fabiozagaria/labtv-angular',
+      },
+    ],
+  },
+  {
+    id: 'fakeflix',
+    title: 'Fakeflix',
+    category: 'Frontend',
+    icon: 'fas fa-film',
+    focus: 'Frontend · progetto del corso LabForWeb / Nerd Academy',
+    description:
+      'Landing page responsive dedicata a Stranger Things, realizzata con HTML, CSS e JavaScript vanilla. Include schede dinamiche di episodi e trailer e validazione del form email.',
+    highlights: [
+      'Manipolazione del DOM ed eventi con JavaScript nativo',
+      'Schede dinamiche per episodi, trailer e piani',
+      'Validazione email e modale trailer riutilizzabile',
+    ],
+    technologies: ['HTML5', 'CSS3', 'JavaScript ES6+', 'DOM API'],
+    status: 'Demo frontend',
+    statusDetail:
+      'Progetto realizzato durante il percorso LabForWeb / Nerd Academy per consolidare DOM, eventi e rendering in JavaScript vanilla. Demo frontend in manutenzione; la demo online è attualmente non disponibile.',
+    liveLink: 'https://fakeflix-lemon-six.vercel.app/',
+    liveLabel: 'Demo non disponibile',
+    repositories: [
+      {
+        label: 'Repository',
+        url: 'https://github.com/fabiozagaria/fakeflix-vanilla-js',
       },
     ],
   },
