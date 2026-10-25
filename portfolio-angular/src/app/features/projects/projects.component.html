@@ -5,8 +5,8 @@
     </h1>
     <p class="c-section-subtitle">
       Expense Tracker, JobFlow e Access Desk in primo piano: un progetto full stack concluso e due
-      backend con API REST, persistenza e sicurezza. Seguono il tooling Java e il laboratorio di
-      studio; i progetti frontend del corso sono raccolti in fondo.
+      backend con API REST, persistenza e sicurezza. Seguono i progetti frontend del corso, gli
+      esperimenti con AI e le raccolte di esercizi.
     </p>
 
     @for (group of groups; track group.id) {
@@ -146,6 +146,62 @@
             }
           </aside>
         }
+      </section>
+    }
+    @for (group of supplementaryGroups; track group.id) {
+      <section class="c-projects__group" [attr.aria-labelledby]="group.id + '-title'">
+        <h2 class="c-projects__group-title" [id]="group.id + '-title'">{{ group.title }}</h2>
+        <p class="c-projects__group-description">{{ group.description }}</p>
+        <div class="c-projects__grid">
+          @for (entry of group.entries; track entry.id) {
+            <article class="c-card" [id]="entry.id">
+              <div class="c-card__content">
+                <div class="c-card__heading">
+                  <h3 class="c-card__title">{{ entry.title }}</h3>
+                </div>
+                <p class="c-card__description">{{ entry.description }}</p>
+                @if (entry.note) {
+                  <p class="c-card__status-detail">{{ entry.note }}</p>
+                }
+                <div class="c-card__tags" aria-label="Tecnologie utilizzate">
+                  @for (tech of entry.technologies; track tech) {
+                    <span class="c-card__tag">{{ tech }}</span>
+                  }
+                </div>
+                <div class="c-card__actions">
+                  @if (entry.liveLink) {
+                    <a
+                      [href]="entry.liveLink"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="c-card__action"
+                      [attr.aria-label]="'Apri la demo di ' + entry.title + ' in una nuova scheda'"
+                    >
+                      <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo online
+                    </a>
+                  }
+                  @for (repository of entry.repositories; track repository.url) {
+                    <a
+                      [href]="repository.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="c-card__action"
+                      [attr.aria-label]="
+                        'Apri ' +
+                        repository.label +
+                        ' di ' +
+                        entry.title +
+                        ' su GitHub in una nuova scheda'
+                      "
+                    >
+                      <i class="fab fa-github" aria-hidden="true"></i> {{ repository.label }}
+                    </a>
+                  }
+                </div>
+              </div>
+            </article>
+          }
+        </div>
       </section>
     }
     <div class="c-projects__github-cta">

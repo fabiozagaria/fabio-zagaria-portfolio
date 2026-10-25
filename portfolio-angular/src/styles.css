@@ -850,6 +850,12 @@ main {
   font-size: var(--fs-500);
 }
 
+.c-projects__group-description {
+  max-width: 1000px;
+  margin: 0 auto var(--space-lg);
+  color: var(--clr-white-subtle);
+}
+
 .c-projects__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
