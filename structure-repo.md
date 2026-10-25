@@ -8,15 +8,15 @@ Le categorie seguono le scelte del proprietario. La presenza di una tecnologia, 
 
 ## Ordine delle sezioni
 
-1. Full stack
+1. Full Stack
 2. Backend
-3. Progetti frontend del corso
+3. Progetti Frontend del Corso
 4. Sperimentale con AI
 5. Esercizi
 
 I tre progetti principali restano, nell’ordine: **Expense Tracker**, **JobFlow**, **Access Desk**.
 
-## Full stack
+## Full Stack
 
 | Progetto        | Repository                                                                                                                                                      |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -31,7 +31,7 @@ Expense Tracker ha una sola scheda, con collegamenti distinti a frontend e backe
 | JobFlow     | [job-flow](https://github.com/fabiozagaria/job-flow)             |
 | Access Desk | [accessdesk-api](https://github.com/fabiozagaria/accessdesk-api) |
 
-## Progetti frontend del corso
+## Progetti Frontend del Corso
 
 | Progetto  | Repository                                                                         |
 | --------- | ---------------------------------------------------------------------------------- |

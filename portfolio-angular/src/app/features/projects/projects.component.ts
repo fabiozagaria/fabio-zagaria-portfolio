@@ -15,9 +15,9 @@ import {
 export class ProjectsComponent {
   readonly groups = (
     [
-      { category: 'Full stack', title: 'Full stack', id: 'full-stack' },
+      { category: 'Full stack', title: 'Full Stack', id: 'full-stack' },
       { category: 'Backend', title: 'Backend', id: 'backend' },
-      { category: 'Frontend', title: 'Progetti frontend del corso', id: 'frontend' },
+      { category: 'Frontend', title: 'Progetti Frontend del Corso', id: 'frontend' },
     ] as const satisfies readonly { category: ProjectCategory; title: string; id: string }[]
   ).map((group) => ({
     ...group,
