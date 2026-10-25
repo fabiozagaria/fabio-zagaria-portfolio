@@ -160,15 +160,6 @@ body {
   border-color: rgba(15, 118, 110, 0.24);
 }
 
-#task-manager-security-lab {
-  grid-column: 1 / -1;
-}
-
-#task-manager-security-lab .c-card__content {
-  width: min(100%, 52rem);
-  margin-inline: auto;
-}
-
 @keyframes portfolio-route-out {
   to {
     opacity: 0;

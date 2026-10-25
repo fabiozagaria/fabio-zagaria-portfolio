@@ -66,6 +66,8 @@ test comportamentali e documentazione restano da completare prima di un'eventual
 
 ## Ruolo dei repository
 
+La classificazione corrente, i repository esclusi e le indicazioni per mantenerla aggiornata sono raccolti in [structure-repo.md](./structure-repo.md).
+
 Expense Tracker consolida il prodotto full stack; Transport Tickets affronta dati, concorrenza e accesso alle risorse; JobFlow introduce l'elaborazione asincrona. I CRUD didattici e i laboratori Security restano consultabili senza essere tutti promossi a prodotti paralleli.
 
 Questa descrizione documenta i repository collegati. Le schede del sito sono contenuti separati e possono richiedere un aggiornamento dedicato; una modifica al README non aggiorna automaticamente UI o PDF del CV.

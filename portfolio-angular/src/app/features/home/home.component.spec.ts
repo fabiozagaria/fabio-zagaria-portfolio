@@ -20,17 +20,20 @@ describe('HomeComponent', () => {
     expect(downloadLink?.getAttribute('download')).toBe('CV_Fabio_Zagaria.pdf');
   });
 
-  it('shows three selected projects without repeating Expense Tracker', () => {
+  it('features the two backends after Expense Tracker and keeps coursework on the projects page', () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
 
-    expect(element.textContent).toContain('AccessDesk');
+    expect(element.textContent).toContain('Access Desk');
     expect(element.textContent).not.toContain('Spring Scaffold CLI');
     expect(element.textContent).toContain('Expense Tracker');
-    expect(element.textContent).toContain('LabTV');
+    expect(element.textContent).not.toContain('LabTV');
     expect(element.textContent).not.toContain('Task Manager Security Lab');
-    expect(fixture.componentInstance.featuredProjects).toHaveLength(3);
+    expect(fixture.componentInstance.featuredProjects.map((project) => project.id)).toEqual([
+      'jobflow',
+      'accessdesk',
+    ]);
     expect(element.textContent).not.toContain('Student Management API');
     expect(element.textContent).not.toContain('Fakeflix');
   });
