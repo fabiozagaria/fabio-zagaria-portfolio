@@ -34,13 +34,13 @@ export const PROJECTS = [
     id: 'gestionale-spese',
     title: 'Expense Tracker',
     icon: 'fas fa-wallet',
-    focus: 'Progetto full stack · integrazione in verifica',
+    focus: 'Progetto full stack · versione base conclusa',
     description:
       'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
     highlights: [
       'Frontend Angular con Signals, Reactive Forms e test di componenti e servizi',
-      'CRUD REST, entrate e dashboard con DTO dedicati e persistenza JPA/MySQL',
-      'Autenticazione JWT con verifica email, refresh token HttpOnly e dati isolati per utente',
+      'CRUD spese, inserimento e lettura entrate, dashboard e persistenza JPA/MySQL',
+      'Registrazione online con verifica email tramite API Brevo HTTPS, JWT e refresh token HttpOnly',
     ],
     technologies: [
       'Angular',
@@ -51,18 +51,18 @@ export const PROJECTS = [
       'MySQL',
       'REST API',
     ],
-    status: 'In sviluppo',
+    status: 'Concluso',
     statusDetail:
-      'Autenticazione e spese personali sono implementate; entrate e dashboard sono presenti nel codice, ma la verifica end-to-end completa resta aperta. La demo pubblica è frontend: le operazioni persistenti richiedono il backend locale.',
+      'Versione base conclusa e online: registrazione con verifica email, sessione, CRUD spese, inserimento e lettura entrate e dashboard. Frontend Vercel, API Render e database MySQL Aiven. CRUD completo delle entrate e filtri sono ampliamenti in lavorazione.',
     decision: {
-      problem: 'Garantire che ogni utente possa consultare e modificare soltanto le proprie spese.',
+      problem: 'Garantire che ogni utente possa accedere soltanto ai propri movimenti.',
       solution:
         'API protette da JWT e controllo del proprietario sul backend, con refresh token in cookie HttpOnly.',
       tradeoff:
-        'La sessione richiede configurazione coerente di cookie, CORS e URL; la demo frontend non sostituisce il backend locale.',
+        'Cookie, CORS e proxy devono essere coerenti tra frontend e API; il piano gratuito del backend può richiedere attesa al primo accesso.',
     },
     liveLink: 'https://gestionale-spese.vercel.app/',
-    liveLabel: 'Demo frontend',
+    liveLabel: 'Demo full stack',
     repositories: [
       {
         label: 'Frontend',
@@ -73,6 +73,41 @@ export const PROJECTS = [
         url: 'https://github.com/fabiozagaria/expense-tracker-api',
       },
     ],
+  },
+  {
+    id: 'accessdesk',
+    title: 'AccessDesk',
+    icon: 'fas fa-user-shield',
+    focus: 'Progetto autonomo · sicurezza e autorizzazione backend',
+    description:
+      'API REST per richieste di accesso software: i dipendenti creano e consultano le proprie richieste, i manager le approvano o le rifiutano.',
+    highlights: [
+      'Login con JWT HS256 e filtro personalizzato OncePerRequestFilter per il Bearer token',
+      'Spring Security stateless, ruoli e permessi, autorizzazione con @PreAuthorize',
+      'Errori del filtro delegati a HandlerExceptionResolver e gestione globale delle eccezioni',
+      'JPA/Hibernate, MapStruct, transazioni, locking ottimistico e paginazione Page/Pageable',
+    ],
+    technologies: [
+      'Java 21',
+      'Spring Boot',
+      'Spring Security',
+      'JWT',
+      'Spring Data JPA',
+      'PostgreSQL',
+      'MapStruct',
+    ],
+    status: 'In sviluppo',
+    statusDetail:
+      'Prova autonoma ancora da completare. Login JWT, filtro e autorizzazioni sono presenti nel codice; PostgreSQL è il database predefinito, con MySQL alternativo. Restano verifiche del flusso JWT, test automatici e chiusura della consegna.',
+    decision: {
+      problem:
+        'Gestire gli errori del token nel filtro, prima che la richiesta raggiunga Spring MVC.',
+      solution:
+        'Il filtro pulisce il SecurityContext e delega le eccezioni a HandlerExceptionResolver per riutilizzare la gestione globale.',
+      tradeoff:
+        'Il filtro deve interrompere il flusso dopo un errore; autenticazione e autorizzazione richiedono verifiche dedicate.',
+    },
+    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/accessdesk-api' }],
   },
   {
     id: 'spring-scaffold-cli',
@@ -102,7 +137,7 @@ export const PROJECTS = [
     technologies: ['Java 17', 'Maven', 'Picocli', 'CLI', 'Code generation'],
     status: 'In sviluppo',
     statusDetail:
-      'MVP disponibile con test del generator: genera DTO simple, request, response o entrambi. Campi configurabili e generazione di una risorsa Spring completa sono i prossimi sviluppi.',
+      'MVP disponibile con test del generatore: genera record DTO vuoti simple, request, response o entrambi. Nuove funzionalità sospese; non genera risorse Spring complete.',
     repositories: [
       {
         label: 'Repository',
@@ -132,7 +167,7 @@ export const PROJECTS = [
     ],
     status: 'In sviluppo',
     statusDetail:
-      'Creazione e persistenza verificate manualmente con Postman e MySQL. Lettura del job, worker e generazione PDF sono i prossimi passi; esecuzione asincrona, realtime, retry, messaging e AI restano obiettivi futuri.',
+      'Creazione e persistenza verificate manualmente con Postman e MySQL. GET /jobs/{id} è implementato e da verificare a runtime; worker, esecuzione asincrona e generazione PDF restano da completare.',
     decision: {
       problem:
         'Salvare un nuovo job insieme al lavoro che descrive, mantenendo distinte le responsabilità.',

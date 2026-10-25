@@ -21,7 +21,8 @@ describe('portfolio projects', () => {
       'Frontend',
       'Backend',
     ]);
-    expect(expenseTracker?.liveLabel).toBe('Demo frontend');
+    expect(expenseTracker?.liveLabel).toBe('Demo full stack');
+    expect(expenseTracker?.status).toBe('Concluso');
   });
 
   it('presents LabTV as a working API integration demo', () => {
@@ -45,6 +46,7 @@ describe('portfolio projects', () => {
   it('keeps the project order intentional', () => {
     expect(PROJECTS.map((project) => project.id)).toEqual([
       'gestionale-spese',
+      'accessdesk',
       'spring-scaffold-cli',
       'jobflow',
       'labtv',

@@ -46,7 +46,7 @@ export const routes: Routes = [
       seo: {
         path: '/projects',
         description:
-          'Progetti e laboratori di Fabio Zagaria: JobFlow, Spring Scaffold CLI, Expense Tracker, LabTV e Task Manager Security Lab con codice, tecnologie e stato reale.',
+          'Expense Tracker e AccessDesk: progetti full stack e backend di Fabio Zagaria con Java, Spring Security, JWT, PostgreSQL, Angular e codice su GitHub.',
       },
     },
     loadComponent: () =>

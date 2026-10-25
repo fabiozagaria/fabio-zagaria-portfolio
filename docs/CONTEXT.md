@@ -1,6 +1,6 @@
 # Contesto tecnico — Portfolio
 
-Aggiornato: 2026-10-02
+Aggiornato: 2026-10-25
 
 ## Obiettivo
 Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come Junior Backend Developer con visione full stack, mantenendo allineati portfolio, progetti, CV e stato tecnico reale.
@@ -10,13 +10,16 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 - Deploy su Vercel.
 - CI GitHub Actions con controlli di formato, test e build.
 - Struttura con componenti standalone, routing lazy, dati tipizzati, attenzione a SEO, accessibilità e performance.
-- Expense Tracker è il progetto full stack in verifica: entrate e dashboard sono presenti nel codice, ma la verifica E2E completa resta aperta. La demo è frontend; la persistenza richiede il backend locale.
-- LabTV è una release frontend conclusa basata sull'integrazione della TMDB API.
-- Expense Tracker è in primo piano nella home; Spring Scaffold CLI, JobFlow e LabTV completano la selezione. Task Manager è presentato in un blocco compatto separato.
-- JobFlow è il progetto backend in evoluzione: esplora job asincroni, lifecycle, worker e processor partendo da un primo vertical slice di generazione PDF. Sono implementati dominio Job, stati, GeneratePdfWork e POST /jobs con validazione e persistenza JPA/MySQL; l'esecuzione asincrona reale deve ancora essere implementata.
-
-- Spring Scaffold CLI dimostra tooling Java e generazione DTO; la generazione di risorse complete è futura.
-- Task Manager resta un laboratorio guidato: refresh, rotazione e logout sono implementati; test comportamentali e documentazione sono da completare.
+- Expense Tracker: versione base conclusa per decisione del proprietario; frontend Vercel, API Render e MySQL Aiven/TLS. Registrazione pubblica e verifica email tramite API Brevo HTTPS attive. CRUD spese, inserimento/lettura entrate e dashboard presenti.
+- Il proprietario ha chiarito che CRUD completo delle entrate e filtri sono ancora in lavorazione nell'altra attività: non presentarli come già implementati o verificati. I README remoti non riflettono ancora questi ampliamenti.
+- AccessDesk è il secondo progetto in evidenza, ancora in sviluppo. Sorgenti verificati: login JWT HS256, filtro OncePerRequestFilter, HandlerExceptionResolver, ruoli/permessi e @PreAuthorize. PostgreSQL predefinito, MySQL alternativo, MapStruct e JPA. README ancora parzialmente fermo a HTTP Basic; non considerarlo aggiornato sul JWT.
+- PostgreSQL è indicato come studio autodidatta in corso, alternativa a MySQL applicata in AccessDesk; non come competenza del corso LabForWeb.
+- Home: Expense Tracker nel blocco principale; AccessDesk, JobFlow e LabTV nelle tre schede successive. Spring Scaffold CLI resta nella pagina progetti. Task Manager è nel laboratorio separato.
+- LabTV: release frontend conclusa con TMDB API.
+- JobFlow: POST e GET dei job presenti; creazione/persistenza verificate manualmente, GET da verificare a runtime. Worker ed esecuzione asincrona non completati.
+- Spring Scaffold CLI: MVP per record DTO vuoti; nuove funzionalità sospese.
+- Task Manager: laboratorio guidato; refresh, rotazione e logout implementati, test comportamentali e cookie HttpOnly/Secure da completare.
+- Aggiornamento limitato ai contenuti del sito e alla documentazione del portfolio. Il PDF del CV e il suo generatore non sono stati modificati in questa attività.
 
 ## Regole di mantenimento
 - Aggiornare il portfolio solo quando una competenza o un progetto è realmente dimostrabile.

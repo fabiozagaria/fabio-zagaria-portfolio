@@ -25,7 +25,8 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
 
-    expect(element.textContent).toContain('Spring Scaffold CLI');
+    expect(element.textContent).toContain('AccessDesk');
+    expect(element.textContent).not.toContain('Spring Scaffold CLI');
     expect(element.textContent).toContain('Expense Tracker');
     expect(element.textContent).toContain('LabTV');
     expect(element.textContent).not.toContain('Task Manager Security Lab');

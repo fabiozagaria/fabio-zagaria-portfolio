@@ -12,7 +12,7 @@ import { PROJECTS, type PortfolioProject } from '../../data/projects.data';
 })
 export class HomeComponent {
   readonly mainProject: PortfolioProject = PROJECTS[0];
-  readonly featuredProjects: readonly PortfolioProject[] = PROJECTS.filter(
-    (project) => project.id !== this.mainProject.id && project.status !== 'Laboratorio attivo',
+  readonly featuredProjects: readonly PortfolioProject[] = PROJECTS.filter((project) =>
+    ['accessdesk', 'jobflow', 'labtv'].includes(project.id),
   );
 }
