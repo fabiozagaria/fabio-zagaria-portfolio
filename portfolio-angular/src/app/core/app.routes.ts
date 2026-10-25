@@ -46,7 +46,7 @@ export const routes: Routes = [
       seo: {
         path: '/projects',
         description:
-          'Expense Tracker e AccessDesk: progetti full stack e backend di Fabio Zagaria con Java, Spring Security, JWT, PostgreSQL, Angular e codice su GitHub.',
+          'Expense Tracker, JobFlow e Access Desk: progetti full stack e backend di Fabio Zagaria con Angular, Spring Boot, JWT, MySQL, PostgreSQL e codice su GitHub.',
       },
     },
     loadComponent: () =>

@@ -46,11 +46,11 @@ describe('portfolio projects', () => {
   it('keeps the project order intentional', () => {
     expect(PROJECTS.map((project) => project.id)).toEqual([
       'gestionale-spese',
+      'jobflow',
       'accessdesk',
       'spring-scaffold-cli',
-      'jobflow',
-      'labtv',
       'task-manager-security-lab',
+      'labtv',
     ]);
   });
 });

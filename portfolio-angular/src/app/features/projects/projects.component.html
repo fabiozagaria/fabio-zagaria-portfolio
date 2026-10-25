@@ -4,138 +4,150 @@
       <span class="c-section-title__number" aria-hidden="true">03</span>PROGETTI
     </h1>
     <p class="c-section-subtitle">
-      Expense Tracker e AccessDesk in primo piano: integrazione full stack, sicurezza e
-      autorizzazione. Seguono tooling Java, backend asincrono e integrazione API. Il laboratorio di
-      studio è raccolto a fondo pagina.
+      Expense Tracker, JobFlow e Access Desk in primo piano: un progetto full stack concluso e due
+      backend con API REST, persistenza e sicurezza. Seguono il tooling Java e il laboratorio di
+      studio; i progetti frontend del corso sono raccolti in fondo.
     </p>
 
-    <div class="c-projects__grid">
-      @for (project of projects; track project.id) {
-        <article class="c-card" [id]="project.id">
-          <div class="c-card__content">
-            <p class="c-card__focus">{{ project.focus }}</p>
-            <div class="c-card__heading">
-              <h2 class="c-card__title">{{ project.title }}</h2>
-              <span class="c-card__status" [attr.data-status]="project.status">
-                {{ project.status }}
-              </span>
-            </div>
+    @for (group of groups; track group.id) {
+      <section class="c-projects__group" [attr.aria-labelledby]="group.id + '-title'">
+        <h2 class="c-projects__group-title" [id]="group.id + '-title'">{{ group.title }}</h2>
+        <div
+          class="c-projects__grid"
+          [class.c-projects__grid--single]="group.category !== 'Backend'"
+        >
+          @for (project of group.projects; track project.id) {
+            <article class="c-card" [id]="project.id">
+              <div class="c-card__content">
+                <p class="c-card__focus">{{ project.focus }}</p>
+                <div class="c-card__heading">
+                  <h3 class="c-card__title">{{ project.title }}</h3>
+                  <span class="c-card__status" [attr.data-status]="project.status">
+                    {{ project.status }}
+                  </span>
+                </div>
 
-            <p class="c-card__description">{{ project.description }}</p>
+                <p class="c-card__description">{{ project.description }}</p>
 
-            <p class="c-card__section-label">Responsabilità e scelte tecniche</p>
-            <ul class="c-card__highlights">
-              @for (highlight of project.highlights; track highlight) {
-                <li>{{ highlight }}</li>
-              }
-            </ul>
+                @if (group.category !== 'Frontend') {
+                  <p class="c-card__section-label">Responsabilità e scelte tecniche</p>
+                  <ul class="c-card__highlights">
+                    @for (highlight of project.highlights; track highlight) {
+                      <li>{{ highlight }}</li>
+                    }
+                  </ul>
 
-            @if (project.decision; as decision) {
-              <div class="c-card__decision">
-                <h3>Una scelta tecnica</h3>
-                <dl>
-                  <div>
-                    <dt>Problema</dt>
-                    <dd>{{ decision.problem }}</dd>
-                  </div>
-                  <div>
-                    <dt>Soluzione</dt>
-                    <dd>{{ decision.solution }}</dd>
-                  </div>
-                  <div>
-                    <dt>Compromesso</dt>
-                    <dd>{{ decision.tradeoff }}</dd>
-                  </div>
-                </dl>
-              </div>
-            }
-            @if (project.example; as example) {
-              <div class="c-card__example">
-                <h3>Dal comando al codice</h3>
-                <p>Comando</p>
-                <pre><code>{{ example.command }}</code></pre>
-                <p>File generati</p>
-                <pre><code>{{ example.output }}</code></pre>
-              </div>
-            }
-            <p class="c-card__status-detail">
-              <strong>Stato reale</strong>
-              <span>{{ project.statusDetail }}</span>
-            </p>
-
-            <div class="c-card__tags" aria-label="Tecnologie utilizzate">
-              @for (tech of project.technologies; track tech) {
-                <span class="c-card__tag">{{ tech }}</span>
-              }
-            </div>
-
-            @if (project.liveLink || project.repositories?.length) {
-              <div class="c-card__actions">
-                @if (project.liveLink) {
-                  <a
-                    [href]="project.liveLink"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="c-card__action"
-                    [attr.aria-label]="
-                      'Apri ' +
-                      (project.liveLabel ?? 'la demo') +
-                      ' di ' +
-                      project.title +
-                      ' in una nuova scheda'
-                    "
-                  >
-                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                    {{ project.liveLabel ?? 'Demo' }}
-                  </a>
+                  @if (project.decision; as decision) {
+                    <div class="c-card__decision">
+                      <h4>Una scelta tecnica</h4>
+                      <dl>
+                        <div>
+                          <dt>Problema</dt>
+                          <dd>{{ decision.problem }}</dd>
+                        </div>
+                        <div>
+                          <dt>Soluzione</dt>
+                          <dd>{{ decision.solution }}</dd>
+                        </div>
+                        <div>
+                          <dt>Compromesso</dt>
+                          <dd>{{ decision.tradeoff }}</dd>
+                        </div>
+                      </dl>
+                    </div>
+                  }
+                  @if (project.example; as example) {
+                    <div class="c-card__example">
+                      <h4>Dal comando al codice</h4>
+                      <p>Comando</p>
+                      <pre><code>{{ example.command }}</code></pre>
+                      <p>File generati</p>
+                      <pre><code>{{ example.output }}</code></pre>
+                    </div>
+                  }
                 }
-                @for (repository of project.repositories ?? []; track repository.url) {
-                  <a
-                    [href]="repository.url"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="c-card__action"
-                    [attr.aria-label]="
-                      'Apri ' +
-                      repository.label +
-                      ' di ' +
-                      project.title +
-                      ' su GitHub in una nuova scheda'
-                    "
-                  >
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                    {{ repository.label }}
-                  </a>
+                <p class="c-card__status-detail">
+                  <strong>Stato reale</strong>
+                  <span>{{ project.statusDetail }}</span>
+                </p>
+
+                <div class="c-card__tags" aria-label="Tecnologie utilizzate">
+                  @for (tech of project.technologies; track tech) {
+                    <span class="c-card__tag">{{ tech }}</span>
+                  }
+                </div>
+
+                @if (project.liveLink || project.repositories?.length) {
+                  <div class="c-card__actions">
+                    @if (project.liveLink) {
+                      <a
+                        [href]="project.liveLink"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="c-card__action"
+                        [attr.aria-label]="
+                          'Apri ' +
+                          (project.liveLabel ?? 'la demo') +
+                          ' di ' +
+                          project.title +
+                          ' in una nuova scheda'
+                        "
+                      >
+                        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        {{ project.liveLabel ?? 'Demo' }}
+                      </a>
+                    }
+                    @for (repository of project.repositories ?? []; track repository.url) {
+                      <a
+                        [href]="repository.url"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="c-card__action"
+                        [attr.aria-label]="
+                          'Apri ' +
+                          repository.label +
+                          ' di ' +
+                          project.title +
+                          ' su GitHub in una nuova scheda'
+                        "
+                      >
+                        <i class="fab fa-github" aria-hidden="true"></i>
+                        {{ repository.label }}
+                      </a>
+                    }
+                  </div>
                 }
               </div>
-            }
-          </div>
-        </article>
-      }
-    </div>
-
-    <aside class="c-projects__labs" aria-labelledby="labs-title">
-      <h2 id="labs-title">Laboratorio di studio</h2>
-      <p>Un esercizio guidato per approfondire i meccanismi usati nei progetti.</p>
-      @for (lab of labs; track lab.id) {
-        <details class="c-projects__lab" [id]="lab.id">
-          <summary>
-            {{ lab.title }} <span>{{ lab.status }}</span>
-          </summary>
-          <p>{{ lab.statusDetail }}</p>
-          <ul>
-            @for (highlight of lab.highlights; track highlight) {
-              <li>{{ highlight }}</li>
-            }
-          </ul>
-          @for (repository of lab.repositories ?? []; track repository.url) {
-            <a [href]="repository.url" target="_blank" rel="noopener noreferrer"
-              >{{ repository.label }} <span aria-hidden="true">↗</span></a
-            >
+            </article>
           }
-        </details>
-      }
-    </aside>
+        </div>
+
+        @if (group.category === 'Backend') {
+          <aside class="c-projects__labs" aria-labelledby="labs-title">
+            <h3 id="labs-title">Laboratorio di studio</h3>
+            <p>Un esercizio guidato per approfondire i meccanismi usati nei progetti.</p>
+            @for (lab of labs; track lab.id) {
+              <details class="c-projects__lab" [id]="lab.id">
+                <summary>
+                  {{ lab.title }} <span>{{ lab.status }}</span>
+                </summary>
+                <p>{{ lab.statusDetail }}</p>
+                <ul>
+                  @for (highlight of lab.highlights; track highlight) {
+                    <li>{{ highlight }}</li>
+                  }
+                </ul>
+                @for (repository of lab.repositories ?? []; track repository.url) {
+                  <a [href]="repository.url" target="_blank" rel="noopener noreferrer"
+                    >{{ repository.label }} <span aria-hidden="true">↗</span></a
+                  >
+                }
+              </details>
+            }
+          </aside>
+        }
+      </section>
+    }
     <div class="c-projects__github-cta">
       <p>Vuoi vedere anche esercizi, esperimenti e progetti ancora in evoluzione?</p>
       <a

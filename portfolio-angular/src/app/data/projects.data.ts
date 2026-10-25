@@ -1,4 +1,5 @@
 export type ProjectStatus = 'Concluso' | 'In sviluppo' | 'Laboratorio attivo';
+export type ProjectCategory = 'Full stack' | 'Backend' | 'Frontend';
 
 export interface PortfolioRepository {
   readonly label: string;
@@ -8,6 +9,7 @@ export interface PortfolioRepository {
 export interface PortfolioProject {
   readonly id: string;
   readonly title: string;
+  readonly category: ProjectCategory;
   readonly icon: string;
   readonly focus: string;
   readonly description: string;
@@ -33,8 +35,9 @@ export const PROJECTS = [
   {
     id: 'gestionale-spese',
     title: 'Expense Tracker',
+    category: 'Full stack',
     icon: 'fas fa-wallet',
-    focus: 'Progetto full stack · scope attuale concluso',
+    focus: 'Full stack · v1.0.0',
     description:
       'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
     highlights: [
@@ -47,13 +50,15 @@ export const PROJECTS = [
       'TypeScript',
       'Spring Boot',
       'Spring Security',
+      'JWT',
+      'Refresh token',
       'Spring Data JPA',
       'MySQL',
       'REST API',
     ],
     status: 'Concluso',
     statusDetail:
-      'Scope funzionale attuale concluso: CRUD spese ed entrate, dashboard, grafici, ricerca, filtro mensile, ordinamento e paginazione. Registrazione e verifica email Brevo HTTPS operative. Ultimi ampliamenti integrati su master; verifica del deploy e regressioni ancora da completare.',
+      'Versione 1.0.0 conclusa il 25 ottobre 2026: CRUD spese ed entrate, dashboard, grafici, ricerca, filtro mensile, ordinamento e paginazione. Registrazione online con verifica email tramite Brevo HTTPS, autenticazione JWT e refresh token.',
     decision: {
       problem: 'Garantire che ogni utente possa accedere soltanto ai propri movimenti.',
       solution:
@@ -75,12 +80,46 @@ export const PROJECTS = [
     ],
   },
   {
-    id: 'accessdesk',
-    title: 'AccessDesk',
-    icon: 'fas fa-user-shield',
-    focus: 'Progetto autonomo · sicurezza e autorizzazione backend',
+    id: 'jobflow',
+    title: 'JobFlow',
+    category: 'Backend',
+    icon: 'fas fa-diagram-project',
+    focus: 'Backend · API e persistenza dei job',
     description:
-      'API REST per richieste di accesso software: i dipendenti creano e consultano le proprie richieste, i manager le approvano o le rifiutano.',
+      'Backend per creare e consultare job tramite API REST, con validazione e persistenza JPA su MySQL. Il lavoro associato descrive una futura generazione di PDF.',
+    highlights: [
+      'Dominio Job con stati CREATED, PROCESSING, COMPLETED e FAILED',
+      'POST /jobs con DTO validato, risposta 201 Created e header Location; GET /jobs/{id} per la consultazione',
+      'Persistenza JPA/MySQL di Job e GeneratePdfWork con cascade PERSIST',
+    ],
+    technologies: [
+      'Java',
+      'Spring Boot',
+      'REST API',
+      'Spring Data JPA',
+      'MySQL',
+      'Bean Validation',
+    ],
+    status: 'In sviluppo',
+    statusDetail:
+      'Creazione e persistenza verificate manualmente con Postman e MySQL. GET /jobs/{id} è implementato e da verificare a runtime; worker, esecuzione asincrona e generazione PDF restano da completare.',
+    decision: {
+      problem:
+        'Salvare un nuovo job insieme al lavoro che descrive, mantenendo distinte le responsabilità.',
+      solution: 'Job possiede GeneratePdfWork; cascade PERSIST salva il nuovo Work insieme al Job.',
+      tradeoff:
+        'Il cascade è limitato alla creazione: aggiornamenti e rimozioni richiedono una gestione esplicita.',
+    },
+    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/job-flow' }],
+  },
+  {
+    id: 'accessdesk',
+    title: 'Access Desk',
+    category: 'Backend',
+    icon: 'fas fa-user-shield',
+    focus: 'Backend · sicurezza e autorizzazione',
+    description:
+      'API REST per richieste di accesso software: i dipendenti creano e consultano le proprie richieste, i manager le approvano o le rifiutano. PostgreSQL è il database predefinito; MySQL è disponibile come alternativa configurabile.',
     highlights: [
       'Login con JWT HS256 e filtro personalizzato OncePerRequestFilter per il Bearer token',
       'Spring Security stateless, ruoli e permessi, autorizzazione con @PreAuthorize',
@@ -92,9 +131,10 @@ export const PROJECTS = [
       'Spring Boot',
       'Spring Security',
       'JWT',
-      'Spring Data JPA',
       'PostgreSQL',
+      'Spring Data JPA',
       'MapStruct',
+      'MySQL (alternativa)',
     ],
     status: 'In sviluppo',
     statusDetail:
@@ -112,8 +152,9 @@ export const PROJECTS = [
   {
     id: 'spring-scaffold-cli',
     title: 'Spring Scaffold CLI',
+    category: 'Backend',
     icon: 'fas fa-terminal',
-    focus: 'Tooling Java · code generation',
+    focus: 'Backend · tooling Java e code generation',
     description:
       'CLI Java per generare boilerplate Spring Boot leggibile e modificabile, partendo da DTO request/response.',
     highlights: [
@@ -146,73 +187,9 @@ export const PROJECTS = [
     ],
   },
   {
-    id: 'jobflow',
-    title: 'JobFlow',
-    icon: 'fas fa-diagram-project',
-    focus: 'Backend in evoluzione · modellazione dei job',
-    description:
-      'Backend per un sistema di job asincroni: il primo slice crea e persiste un job per la futura generazione di un documento PDF.',
-    highlights: [
-      'Dominio Job con stati CREATED, PROCESSING, COMPLETED e FAILED',
-      'POST /jobs con DTO validato, risposta 201 Created e header Location',
-      'Persistenza JPA/MySQL di Job e GeneratePdfWork con cascade PERSIST',
-    ],
-    technologies: [
-      'Java',
-      'Spring Boot',
-      'REST API',
-      'Spring Data JPA',
-      'MySQL',
-      'Bean Validation',
-    ],
-    status: 'In sviluppo',
-    statusDetail:
-      'Creazione e persistenza verificate manualmente con Postman e MySQL. GET /jobs/{id} è implementato e da verificare a runtime; worker, esecuzione asincrona e generazione PDF restano da completare.',
-    decision: {
-      problem:
-        'Salvare un nuovo job insieme al lavoro che descrive, mantenendo distinte le responsabilità.',
-      solution: 'Job possiede GeneratePdfWork; cascade PERSIST salva il nuovo Work insieme al Job.',
-      tradeoff:
-        'Il cascade è limitato alla creazione: aggiornamenti e rimozioni richiedono una gestione esplicita.',
-    },
-    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/job-flow' }],
-  },
-  {
-    id: 'labtv',
-    title: 'LabTV',
-    icon: 'fas fa-film',
-    focus: 'Integrazione API esterna',
-    description:
-      'Applicazione Angular per esplorare film, cast e titoli simili attraverso i dati della TMDB API.',
-    highlights: [
-      'Catalogo dinamico con HttpClient, RxJS e modelli TypeScript',
-      'Routing parametrico per dettaglio, cast, regista e film simili',
-      'Stati di caricamento ed errore gestiti nei flussi asincroni',
-    ],
-    technologies: ['Angular', 'TypeScript', 'RxJS', 'Signals', 'TMDB API', 'Bootstrap'],
-    status: 'Concluso',
-    statusDetail:
-      'Release frontend conclusa: applicazione Angular che integra la TMDB API per catalogo e dettaglio. Non sono previsti backend proprietario, autenticazione o persistenza utente.',
-    decision: {
-      problem:
-        'Integrare catalogo e dettagli TMDB senza distribuire le chiamate HTTP nei componenti.',
-      solution:
-        'MovieService centralizza le richieste e restituisce Observable con modelli TypeScript.',
-      tradeoff:
-        'La SPA dipende dalla API esterna; credenziali riservate richiederebbero un backend dedicato.',
-    },
-    liveLink: 'https://lab-tv.vercel.app/',
-    liveLabel: 'Demo online',
-    repositories: [
-      {
-        label: 'Repository',
-        url: 'https://github.com/fabiozagaria/labtv-angular',
-      },
-    ],
-  },
-  {
     id: 'task-manager-security-lab',
     title: 'Task Manager Security Lab',
+    category: 'Backend',
     icon: 'fas fa-shield-halved',
     focus: 'Laboratorio guidato · backend',
     description:
@@ -220,7 +197,7 @@ export const PROJECTS = [
     highlights: [
       'Registrazione e login con password BCrypt e access token JWT',
       "CRUD dei task limitato all'utente autenticato tramite Spring Security",
-      'Refresh token opaco salvato come hash, rotazione one-time e revoca tramite logout',
+      'Refresh token opaco salvato come hash, rotazione e revoca tramite logout',
     ],
     technologies: [
       'Java',
@@ -238,6 +215,40 @@ export const PROJECTS = [
       {
         label: 'Repository laboratorio',
         url: 'https://github.com/fabiozagaria/task-manager-api-jpa-security',
+      },
+    ],
+  },
+  {
+    id: 'labtv',
+    title: 'LabTV',
+    category: 'Frontend',
+    icon: 'fas fa-film',
+    focus: 'Frontend · progetto del corso LabForWeb',
+    description:
+      'Applicazione Angular per esplorare film, cast e titoli simili attraverso i dati della TMDB API.',
+    highlights: [
+      'Catalogo dinamico con HttpClient, RxJS e modelli TypeScript',
+      'Routing parametrico per dettaglio, cast, regista e film simili',
+      'Stati di caricamento ed errore gestiti nei flussi asincroni',
+    ],
+    technologies: ['Angular', 'TypeScript', 'RxJS', 'Signals', 'TMDB API', 'Bootstrap'],
+    status: 'Concluso',
+    statusDetail:
+      'Release frontend conclusa, realizzata durante il percorso LabForWeb: applicazione Angular che integra la TMDB API per catalogo e dettaglio.',
+    decision: {
+      problem:
+        'Integrare catalogo e dettagli TMDB senza distribuire le chiamate HTTP nei componenti.',
+      solution:
+        'MovieService centralizza le richieste e restituisce Observable con modelli TypeScript.',
+      tradeoff:
+        'La SPA dipende dalla API esterna; credenziali riservate richiederebbero un backend dedicato.',
+    },
+    liveLink: 'https://lab-tv.vercel.app/',
+    liveLabel: 'Demo online',
+    repositories: [
+      {
+        label: 'Repository',
+        url: 'https://github.com/fabiozagaria/labtv-angular',
       },
     ],
   },
