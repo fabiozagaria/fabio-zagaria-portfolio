@@ -34,12 +34,12 @@ export const PROJECTS = [
     id: 'gestionale-spese',
     title: 'Expense Tracker',
     icon: 'fas fa-wallet',
-    focus: 'Progetto full stack · versione base conclusa',
+    focus: 'Progetto full stack · scope attuale concluso',
     description:
       'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
     highlights: [
-      'Frontend Angular con Signals, Reactive Forms e test di componenti e servizi',
-      'CRUD spese, inserimento e lettura entrate, dashboard e persistenza JPA/MySQL',
+      'Frontend Angular con Signals, Reactive Forms, ricerca, filtro mensile e liste paginate',
+      'CRUD completo di spese ed entrate, dashboard e grafici con persistenza JPA/MySQL',
       'Registrazione online con verifica email tramite API Brevo HTTPS, JWT e refresh token HttpOnly',
     ],
     technologies: [
@@ -53,7 +53,7 @@ export const PROJECTS = [
     ],
     status: 'Concluso',
     statusDetail:
-      'Versione base conclusa e online: registrazione con verifica email, sessione, CRUD spese, inserimento e lettura entrate e dashboard. Frontend Vercel, API Render e database MySQL Aiven. CRUD completo delle entrate e filtri sono ampliamenti in lavorazione.',
+      'Scope funzionale attuale concluso: CRUD spese ed entrate, dashboard, grafici, ricerca, filtro mensile, ordinamento e paginazione. Registrazione e verifica email Brevo HTTPS operative. Ultimi ampliamenti integrati su master; verifica del deploy e regressioni ancora da completare.',
     decision: {
       problem: 'Garantire che ogni utente possa accedere soltanto ai propri movimenti.',
       solution:
