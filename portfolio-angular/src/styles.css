@@ -1512,25 +1512,53 @@ main {
   }
 }
 
-/* Accessible theme switch, available outside the mobile navigation. */
+/* Theme control stays available beside the navigation on every screen. */
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
-  min-height: 44px;
-  flex-shrink: 0;
-  border: 1px solid currentColor;
-  border-radius: 50%;
-  background: transparent;
-  color: inherit;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-inline: 0.5rem;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  flex: 0 0 44px;
+  margin-left: var(--space-md);
+  border: 1px solid var(--clr-black-lightest);
+  border-radius: var(--radius-md);
+  background: var(--clr-black);
+  color: var(--clr-white-subtle);
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
 }
+
+.theme-toggle:hover {
+  color: var(--clr-cyber-green);
+  background: var(--clr-black-soft);
+  border-color: var(--clr-cyber-green);
+}
+
+.theme-toggle:active {
+  background: var(--clr-black-lighter);
+}
+
 .theme-toggle:focus-visible {
-  outline: 3px solid #38bdf8;
+  outline: 3px solid var(--clr-cyber-green);
   outline-offset: 3px;
+}
+
+.theme-toggle__icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+@media (max-width: 48em) {
+  .theme-toggle {
+    margin-left: auto;
+    margin-right: var(--space-xs);
+  }
 }
 
 html[data-theme='dark'] {
@@ -1563,9 +1591,6 @@ html[data-theme='dark'] .c-backend-map__step {
 }
 html[data-theme='dark'] .c-card__status[data-status='In sviluppo'] {
   color: #f4b860;
-}
-.theme-toggle {
-  color: var(--clr-white);
 }
 @media (max-width: 480px) {
   .c-nav__logo-text {
