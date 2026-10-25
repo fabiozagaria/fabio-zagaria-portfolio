@@ -47,9 +47,18 @@ export const EXPERIMENTAL_PROJECTS = [
     id: 'transport-tickets',
     title: 'Transport Tickets',
     description:
-      'API locale Java per gestire ticket di trasporto, assegnazioni, avanzamento degli stati e storico. Il branch principale usa il server HTTP del JDK e un archivio in memoria.',
-    technologies: ['Java 17', 'HTTP API', 'In memoria'],
-    note: 'Esperimento di sviluppo e studio con assistenza AI. La scheda descrive il branch principale del repository.',
+      'Backend per gestire trasporti, assegnazioni e storico. Spring Boot con autenticazione a sessione, ruoli e CSRF; persistenza JPA/MySQL e cache Redis opzionale.',
+    technologies: [
+      'Java 17',
+      'Spring Boot',
+      'Spring Security',
+      'Spring Data JPA',
+      'MySQL',
+      'Flyway',
+      'Redis (opzionale)',
+      'Docker',
+    ],
+    note: 'Backend sperimentale in studio, sviluppato anche con strumenti AI. Il ramo Spring Boot/JPA è integrato in main, con migrazioni Flyway e transazioni con lock sui ticket.',
     repositories: [
       { label: 'Repository', url: 'https://github.com/fabiozagaria/transport-tickets' },
     ],
