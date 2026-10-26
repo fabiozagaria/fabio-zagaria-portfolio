@@ -1,6 +1,9 @@
 from pathlib import Path
 
+import reportlab
 from reportlab.pdfgen import canvas
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase.pdfmetrics import stringWidth
 
 PROJECT_DIR = Path(__file__).resolve().parents[1]
@@ -31,12 +34,16 @@ def wrap(text: str, font: str, size: float, max_width: float) -> list[str]:
 
 
 def build_cv() -> None:
+    font_dir = Path(reportlab.__file__).parent / "fonts"
+    for name, filename in [("CVSans", "Vera.ttf"), ("CVSans-Bold", "VeraBd.ttf"),
+                           ("CVSans-Italic", "VeraIt.ttf"), ("CVSans-BoldItalic", "VeraBI.ttf")]:
+        pdfmetrics.registerFont(TTFont(name, str(font_dir / filename)))
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     pdf = canvas.Canvas(str(OUTPUT_PATH), pagesize=(W, H))
     pdf.setTitle("CV Fabio Zagaria - Junior Backend Developer")
     pdf.setAuthor("Fabio Zagaria")
     pdf.setSubject("Curriculum Vitae")
-    pdf.setKeywords("Java, Spring Boot, Angular, MySQL, Junior Backend Developer")
+    pdf.setKeywords("Java, Spring Boot, Angular, MySQL, PostgreSQL, Spring Security, Junior Backend Developer")
 
     def text(x: float, y: float, value: str, font: str = "F1", size: float = 9, rgb=INK) -> None:
         pdf.setFillColorRGB(*rgb)
@@ -44,10 +51,10 @@ def build_cv() -> None:
         pdf.drawString(x, y, value)
 
     font_names = {
-        "F1": "Helvetica",
-        "F2": "Helvetica-Bold",
-        "F3": "Helvetica-Oblique",
-        "F4": "Helvetica-BoldOblique",
+        "F1": "CVSans",
+        "F2": "CVSans-Bold",
+        "F3": "CVSans-Italic",
+        "F4": "CVSans-BoldItalic",
     }
 
     def centered(y: float, value: str, font: str, size: float, rgb) -> None:
@@ -89,14 +96,14 @@ def build_cv() -> None:
 
     def paragraph(value: str, size: float = 10.2, leading: float = 12.2) -> None:
         nonlocal y
-        for current in wrap(value, "Helvetica", size, W - LEFT - RIGHT):
+        for current in wrap(value, "CVSans", size, W - LEFT - RIGHT):
             text(LEFT, y, current, "F1", size, INK)
             y -= leading
         y -= 2.0
 
     def bullet(value: str, size: float = 9.75, leading: float = 11.7) -> None:
         nonlocal y
-        lines = wrap(value, "Helvetica", size, W - LEFT - RIGHT - 12)
+        lines = wrap(value, "CVSans", size, W - LEFT - RIGHT - 12)
         for index, current in enumerate(lines):
             prefix = "- " if index == 0 else "  "
             text(LEFT + 2, y, prefix + current, "F1", size, INK)
@@ -105,20 +112,20 @@ def build_cv() -> None:
 
     def skill_line(label: str, value: str) -> None:
         nonlocal y
-        segments(
-            LEFT,
-            y,
-            [(label + ":", "F2", INK), (" " + value, "F1", INK)],
-            9.9,
-        )
+        label_text = label + ": "
+        label_width = stringWidth(label_text, font_names["F2"], 9.9)
+        lines = wrap(value, font_names["F1"], 9.9, W - LEFT - RIGHT - label_width)
+        segments(LEFT, y, [(label_text, "F2", INK), (lines[0], "F1", INK)], 9.9)
         y -= 12.0
+        for line in lines[1:]:
+            text(LEFT + label_width, y, line, "F1", 9.9, INK)
+            y -= 12.0
 
     section("PROFILO PROFESSIONALE")
     paragraph(
-        "Junior Backend Developer con formazione Full Stack Web di 650 ore, orientato a Java e Spring Boot. "
-        "Sviluppo API REST e applicazioni full stack con MySQL, JPA/Hibernate, Angular e TypeScript, con attenzione "
-        "a validazione, sicurezza, gestione degli errori e separazione dei layer. Porto inoltre oltre cinque anni "
-        "di esperienza operativa al Policlinico Gemelli, in un contesto con priorità variabili e lavoro sotto pressione."
+        "Junior Backend Developer con formazione Full Stack Web di 650 ore. Sviluppo API REST e applicazioni "
+        "con Java, Spring Boot, JPA/Hibernate, MySQL, Angular e TypeScript. Approfondisco sicurezza e PostgreSQL "
+        "da autodidatta, con progetti personali su autenticazione, autorizzazione e persistenza dei dati."
     )
 
     section("COMPETENZE TECNICHE")
@@ -126,45 +133,49 @@ def build_cv() -> None:
     skill_line("Database", "MySQL, JPA/Hibernate, Spring Data JPA, EntityManager, transazioni")
     skill_line("Frontend", "TypeScript, JavaScript, Angular 21, Signals, Reactive Forms, HTML5, CSS3")
     skill_line("Pratiche e strumenti", "Git, GitHub, Postman, DTO, Bean Validation, exception handling, architettura a layer")
+    skill_line("Studio autodidatta", "PostgreSQL come alternativa a MySQL, applicato in AccessDesk")
     y -= 2
 
     section("PROGETTI")
     segments(
-        LEFT,
-        y,
-        [
-            ("Expense Tracker - In consolidamento", "F2", BLUE),
-            (" | Java 21, Spring Boot, Angular 21, MySQL, JPA/Hibernate", "F3", MUTED),
-        ],
+        LEFT, y,
+        [("Expense Tracker - Scope attuale concluso", "F2", BLUE),
+         (" | Angular, Spring Boot, MySQL", "F3", MUTED)],
         9.95,
     )
-    y -= 11
+    y -= 12
     bullet(
-        "Applicazione full stack per spese, entrate e dashboard; frontend Angular/PrimeNG e backend Spring Boot/MySQL, con demo Vercel/Render e account condiviso."
+        "Applicazione full stack con CRUD di spese ed entrate, dashboard e grafici; ricerca, filtro mensile, ordinamento e liste paginate. Frontend su Vercel, API su Render e MySQL Aiven."
     )
     bullet(
-        "API REST con DTO, Bean Validation, errori centralizzati e ownership; persistenza JPA, JWT e refresh HttpOnly. Registrazione con verifica email disponibile in locale."
+        "Registrazione online e verifica email tramite API Brevo HTTPS; JWT, refresh token HttpOnly e controllo del proprietario. DTO, validazione, gestione errori e stato Angular con Signals."
     )
-    bullet(
-        "Signals e Reactive Forms; registrazione online disabilitata. Registrazione locale con email e creazione entrate restano da verificare nel flusso completo."
-    )
-    y -= 1
+    y -= 2
 
     segments(
-        LEFT,
-        y,
-        [
-            ("JobFlow - In sviluppo", "F2", BLUE),
-            (" | Java 21, Spring Boot", "F3", MUTED),
-        ],
+        LEFT, y,
+        [("AccessDesk - Progetto autonomo in sviluppo", "F2", BLUE),
+         (" | Java 21, Spring Boot, PostgreSQL", "F3", MUTED)],
         9.95,
     )
-    y -= 11
+    y -= 12
     bullet(
-        "Progetto backend in sviluppo per elaborare job asincroni e approfondire architetture backend oltre il CRUD tradizionale."
+        "API per richieste di accesso software e decisioni dei manager. Login JWT e filtro personalizzato OncePerRequestFilter; ruoli, permessi e autorizzazioni con Spring Security e @PreAuthorize."
     )
     bullet(
-        "Dominio Job e persistenza JPA/MySQL; POST /jobs e GET /jobs/{id} implementati, con verifica runtime del GET aperta. Worker, processor PDF ed esecuzione asincrona restano da realizzare."
+        "Errori del filtro delegati a HandlerExceptionResolver; JPA/Hibernate, MapStruct, transazioni, locking ottimistico e Page/Pageable. Test e chiusura della consegna ancora da completare."
+    )
+    y -= 2
+
+    segments(
+        LEFT, y,
+        [("JobFlow - In sviluppo", "F2", BLUE),
+         (" | Java 21, Spring Boot, JPA/MySQL", "F3", MUTED)],
+        9.95,
+    )
+    y -= 12
+    bullet(
+        "Backend per job: dominio, creazione e lettura implementati, persistenza verificata manualmente. Worker, processor PDF ed esecuzione asincrona da completare."
     )
 
     section("FORMAZIONE IT")

@@ -32,63 +32,52 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 
 ## Profilo in 30 secondi
 
-|                            |                                                                                                                  |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| **Ruoli di interesse**     | Junior Backend Developer · Junior Full Stack Developer                                                           |
-| **Focus backend**          | Java · Spring Boot · Spring Security · Spring Data JPA · REST API · MySQL                                        |
-| **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                                                                   |
-| **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026                                          |
-| **Apprendimento continuo** | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali                                                |
-| **Progetti principali**    | Expense Tracker, Spring Scaffold CLI, JobFlow e LabTV; Task Manager e Transport Tickets nei laboratori di studio |
-| **Disponibilità**          | Roma · modalità ibrida · remoto in Italia                                                                        |
+|                            |                                                                                                                                                   |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Ruoli di interesse**     | Junior Backend Developer · Junior Full Stack Developer                                                                                            |
+| **Focus backend**          | Java · Spring Boot · Spring Security · Spring Data JPA · REST API · MySQL                                                                         |
+| **PostgreSQL**             | Studio autodidatta come alternativa a MySQL, applicato in AccessDesk                                                                              |
+| **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                                                                                                    |
+| **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026                                                                           |
+| **Apprendimento continuo** | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali                                                                                 |
+| **Progetti principali**    | Expense Tracker come prodotto full stack; AccessDesk come prova autonoma su sicurezza e PostgreSQL; JobFlow come backend asincrono in costruzione |
+| **Disponibilità**          | Roma · modalità ibrida · remoto in Italia                                                                                                         |
 
 ## Progetti in evidenza
 
-| Progetto                                                                                                                                                                                                     | Stato                                         | Cosa dimostra                                                                                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Expense Tracker `0.3.0`: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | In sviluppo — demo pubblica in consolidamento | Angular 21, PrimeNG/Aura, Spring Boot, JWT/refresh HttpOnly, JPA/MySQL, CRUD spese, creazione e lettura entrate e dashboard.                                            |
-| Spring Scaffold CLI: [repository](https://github.com/fabiozagaria/spring-scaffold-cli)                                                                                                                       | Sospeso — MVP DTO disponibile                 | CLI Java 17 con Picocli, record DTO vuoti, naming e controllo dei file esistenti. Nuove funzionalità sospese.                                                           |
-| JobFlow: [repository](https://github.com/fabiozagaria/job-flow)                                                                                                                                              | In sviluppo — v0.1 delimitata                 | `POST /jobs` e `GET /jobs/{id}`, dominio e persistenza JPA/MySQL presenti; verifica runtime del GET, processor PDF, worker e successo/fallimento restano da completare. |
-| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                              | Concluso — manutenzione mirata                | SPA Angular con TMDB API, ricerca locale sul catalogo caricato, HttpClient, RxJS, modelli tipizzati e dettaglio con routing parametrico.                                |
+| Progetto                                                                                                                                                                                             | Stato                                         | Cosa dimostra                                                                                                                                                       |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Expense Tracker: [demo](https://gestionale-spese.vercel.app/) · [frontend](https://github.com/fabiozagaria/expense-tracker-angular) · [backend](https://github.com/fabiozagaria/expense-tracker-api) | Scope attuale concluso                        | Angular 21, PrimeNG/Aura, Spring Boot, JWT/refresh token, JPA/MySQL, CRUD spese/entrate, dashboard, ricerca, filtri e paginazione                                   |
+| AccessDesk: [repository](https://github.com/fabiozagaria/accessdesk-api)                                                                                                                             | In sviluppo — prova autonoma                  | JWT, filtro personalizzato, Spring Security, autorizzazioni, JPA, MapStruct e PostgreSQL                                                                            |
+| Spring Scaffold CLI: [repository](https://github.com/fabiozagaria/spring-scaffold-cli)                                                                                                               | MVP DTO presente — nuove funzionalità sospese | CLI Java 17 con Picocli, record DTO vuoti, validazione del naming e controllo dei file esistenti.                                                                   |
+| JobFlow: [repository](https://github.com/fabiozagaria/job-flow)                                                                                                                                      | Backend in costruzione — v0.1 delimitata      | `POST /jobs` e `GET /jobs/{id}`, dominio e persistenza JPA/MySQL presenti; verifica runtime del GET, processor, worker e successo/fallimento restano da completare. |
+| Transport Tickets: [repository](https://github.com/fabiozagaria/transport-tickets)                                                                                                                   | Backend sperimentale in studio                | Spring Boot, JPA/MySQL, Flyway, Redis opzionale, transazioni con lock e autenticazione a sessione con CSRF. Backend integrato su `main`.                            |
+| LabTV `1.0.0`: [demo](https://lab-tv.vercel.app/) · [repository](https://github.com/fabiozagaria/labtv-angular)                                                                                      | Concluso                                      | Applicazione Angular frontend con integrazione TMDB API, HttpClient, RxJS, modelli tipizzati e routing parametrico                                                  |
 
-La demo di Expense Tracker collega il frontend Vercel al backend Render e a MySQL.
-**Prova la demo** apre un account condiviso: le modifiche sono visibili agli altri
-visitatori e vanno usati solo dati fittizi. Il backend può richiedere 2–3 minuti
-per riattivarsi. La [documentazione del progetto](https://github.com/fabiozagaria/expense-tracker-angular/blob/master/README.md)
-riporta verifiche nel browser per login demo, sessione, dashboard e CRUD spese.
-La registrazione online è disabilitata in attesa del servizio email HTTPS;
-registrazione locale con Mailpit e creazione di entrate nel database condiviso
-restano da verificare nel percorso completo.
+Lo scope funzionale attuale di Expense Tracker è concluso: CRUD completo di spese ed entrate, dashboard e grafici, ricerca, filtro mensile, ordinamento e liste paginate. Registrazione pubblica e verifica email tramite API Brevo HTTPS sono operative. Il frontend è su Vercel, il backend su Render e MySQL su Aiven. Gli ultimi ampliamenti sono integrati su `master`; collaudo del deploy e regressioni restano distinti dal completamento funzionale.
 
-LabTV è una release frontend: il login è dimostrativo e non è presente persistenza
-utente. Un'eventuale evoluzione con backend e profili sarebbe una fase separata 2.x.
-
-## Laboratori di studio
-
-| Progetto                                                                                                               | Stato                                   | Cosa è presente e cosa resta da verificare                                                                                                                                                                                                                |
-| ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Task Manager Security Lab: [repository](https://github.com/fabiozagaria/task-manager-api-jpa-security)                 | Laboratorio attivo — esercizio guidato  | CRUD per proprietario, JWT, hash dei refresh token, rotazione e logout. Refresh nel JSON, senza cookie HttpOnly; concorrenza nella rotazione, CSRF e test comportamentali richiedono verifiche mirate.                                                    |
-| Transport Tickets: [branch backend](https://github.com/fabiozagaria/transport-tickets/tree/study/backend-jpa-snapshot) | Laboratorio attivo — dati e concorrenza | JPA/MySQL, storico, transazioni, lock, Flyway, cache Redis opzionale, sessioni e CSRF, con test dedicati. Codice sviluppato anche con strumenti AI; comprensione e verifiche restano il traguardo corrente. `main` conserva la demo HTTP Java in memoria. |
+AccessDesk è il secondo progetto in evidenza: una prova autonoma backend ancora in sviluppo con login JWT, filtro personalizzato `OncePerRequestFilter`, ruoli/permessi e `@PreAuthorize`. Gli errori del filtro vengono delegati a `HandlerExceptionResolver`. Usa JPA/Hibernate, MapStruct, paginazione e PostgreSQL predefinito; test e chiusura della consegna restano aperti.
 
 Student Management API, Fakeflix e gli esercizi formativi restano consultabili dal
 [profilo GitHub](https://github.com/fabiozagaria?tab=repositories), ma non sono presentati
-come progetti principali.
+come progetti principali. Task Manager con JPA e Spring Security resta un laboratorio: rinnovo,
+rotazione e revoca esplicita/logout dei refresh token sono implementati; cookie HttpOnly/Secure,
+test comportamentali e documentazione restano da completare prima di un'eventuale promozione.
 
 ## Ruolo dei repository
 
-Expense Tracker consolida il prodotto full stack; Spring Scaffold CLI documenta il MVP di tooling Java; JobFlow costruisce le basi per l'elaborazione asincrona, ancora da implementare; LabTV dimostra l'integrazione di una API esterna. Task Manager e Transport Tickets approfondiscono sicurezza, dati, concorrenza e accesso alle risorse nella sezione dei laboratori.
+La classificazione corrente, i repository esclusi e le indicazioni per mantenerla aggiornata sono raccolti in [structure-repo.md](./structure-repo.md).
 
-Le schede del sito sono centralizzate in `portfolio-angular/src/app/data/projects.data.ts`.
-README, home e CV riflettono lo stesso stato dei progetti; le fonti consultate sono
-riportate in [docs/CONTEXT.md](docs/CONTEXT.md). Le verifiche documentate dai progetti
-collegati sono distinte dai controlli eseguiti sul portfolio.
+Expense Tracker consolida il prodotto full stack; Transport Tickets affronta dati, concorrenza e accesso alle risorse; JobFlow introduce l'elaborazione asincrona. I CRUD didattici e i laboratori Security restano consultabili senza essere tutti promossi a prodotti paralleli.
+
+Questa descrizione documenta i repository collegati. Le schede del sito sono contenuti separati e possono richiedere un aggiornamento dedicato; una modifica al README non aggiorna automaticamente UI o PDF del CV.
 
 ## Come lavoro
 
 Parto da vertical slice piccoli e verificabili, separo le responsabilità e uso test,
 debugging e revisione del codice per consolidare le scelte. Le schede dei progetti
 mostrano problema, soluzione, compromesso e stato reale; gli obiettivi futuri restano
-distinti dalle funzionalità implementate. I laboratori di studio hanno uno spazio
+distinti dalle funzionalità implementate. Il laboratorio guidato ha uno spazio
 secondario rispetto ai progetti.
 
 ## Cosa dimostra questa repository
@@ -98,7 +87,7 @@ secondario rispetto ai progetti.
 | **Architettura Angular** | Componenti standalone, route caricate in modo lazy e dati dei progetti centralizzati e tipizzati      |
 | **Qualità del codice**   | TypeScript strict, `ChangeDetectionStrategy.OnPush`, Prettier e test Vitest                           |
 | **Accessibilità**        | HTML semantico, gerarchia dei titoli, focus visibile, skip link e menu mobile accessibile da tastiera |
-| **Performance**          | Immagini WebP, copia selettiva degli asset e bundle iniziale stimato in circa 73 kB trasferiti        |
+| **Performance**          | Immagini WebP, copia selettiva degli asset e bundle iniziale stimato in circa 69 kB trasferiti        |
 | **SEO**                  | Metadati e canonical specifici per route, Open Graph e dati strutturati Schema.org                    |
 | **Delivery**             | CI su GitHub Actions e deploy automatico su Vercel                                                    |
 
@@ -161,3 +150,7 @@ La stessa sequenza viene eseguita automaticamente sulle pull request e sui push 
 ## Tema della pagina
 
 Il pulsante sole/luna nella navigazione alterna tema chiaro e scuro. Al primo accesso segue il dispositivo; la scelta manuale viene ricordata nel browser.
+
+## Curriculum aggiornato — 25 ottobre 2026
+
+CV a pagina singola allineato a Expense Tracker, AccessDesk e studio autodidatta di PostgreSQL. Il generatore rimane la sorgente autorevole; lo stesso PDF è distribuito dal sito e dal repository curriculum.

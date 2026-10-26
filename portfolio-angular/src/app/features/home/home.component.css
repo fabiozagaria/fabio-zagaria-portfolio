@@ -42,7 +42,7 @@
 
 .c-proof__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-lg);
 }
 
@@ -93,12 +93,6 @@
   color: var(--status-stable, #0f766e);
   background: rgba(20, 184, 166, 0.14);
   border-color: rgba(15, 118, 110, 0.24);
-}
-
-.c-proof__status[data-status='Sospeso'] {
-  color: var(--clr-white-subtle);
-  background: rgba(100, 116, 139, 0.12);
-  border-color: rgba(100, 116, 139, 0.3);
 }
 
 .c-proof__focus {

@@ -1,4 +1,5 @@
-export type ProjectStatus = 'Concluso' | 'In sviluppo' | 'Sospeso' | 'Laboratorio attivo';
+export type ProjectStatus = 'Concluso' | 'In sviluppo' | 'Laboratorio attivo' | 'Demo frontend';
+export type ProjectCategory = 'Full stack' | 'Backend' | 'Frontend';
 
 export interface PortfolioRepository {
   readonly label: string;
@@ -8,6 +9,7 @@ export interface PortfolioRepository {
 export interface PortfolioProject {
   readonly id: string;
   readonly title: string;
+  readonly category: ProjectCategory;
   readonly icon: string;
   readonly focus: string;
   readonly description: string;
@@ -33,38 +35,39 @@ export const PROJECTS = [
   {
     id: 'gestionale-spese',
     title: 'Expense Tracker',
+    category: 'Full stack',
     icon: 'fas fa-wallet',
-    focus: 'Progetto full stack · demo pubblica in consolidamento',
+    focus: 'Full stack · v1.0.0',
     description:
       'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
     highlights: [
-      'Angular 21 con PrimeNG/Aura, Signals, Reactive Forms e test di componenti e servizi',
-      'CRUD spese, creazione e lettura entrate e dashboard con DTO e persistenza JPA/MySQL',
-      'JWT, refresh token HttpOnly e controllo del proprietario; verifica email disponibile in locale',
+      'Frontend Angular con Signals, Reactive Forms, ricerca, filtro mensile e liste paginate',
+      'CRUD completo di spese ed entrate, dashboard e grafici con persistenza JPA/MySQL',
+      'Registrazione online con verifica email tramite API Brevo HTTPS, JWT e refresh token HttpOnly',
     ],
     technologies: [
       'Angular',
       'TypeScript',
-      'PrimeNG',
-      'Aura',
       'Spring Boot',
       'Spring Security',
+      'JWT',
+      'Refresh token',
       'Spring Data JPA',
       'MySQL',
       'REST API',
     ],
-    status: 'In sviluppo',
+    status: 'Concluso',
     statusDetail:
-      'Versione 0.3.0 in consolidamento: frontend Vercel collegato al backend Render con MySQL. La demo usa un account condiviso e dati fittizi; login, sessione, dashboard e CRUD spese sono verificati nel browser secondo la documentazione del progetto. La registrazione online è disabilitata in attesa del servizio email HTTPS. Registrazione locale con Mailpit e creazione di entrate nel database condiviso restano da verificare nel flusso completo.',
+      'Versione 1.0.0 conclusa il 25 ottobre 2026: CRUD spese ed entrate, dashboard, grafici, ricerca, filtro mensile, ordinamento e paginazione. Registrazione online con verifica email tramite Brevo HTTPS, autenticazione JWT e refresh token.',
     decision: {
-      problem: 'Garantire che ogni utente possa consultare e modificare soltanto le proprie spese.',
+      problem: 'Garantire che ogni utente possa accedere soltanto ai propri movimenti.',
       solution:
         'API protette da JWT e controllo del proprietario sul backend, con refresh token in cookie HttpOnly.',
       tradeoff:
-        'La demo usa un account condiviso: le modifiche sono visibili agli altri visitatori. Usare solo dati fittizi; il backend Render può richiedere 2–3 minuti per riattivarsi.',
+        'Cookie, CORS e proxy devono essere coerenti tra frontend e API; il piano gratuito del backend può richiedere attesa al primo accesso.',
     },
     liveLink: 'https://gestionale-spese.vercel.app/',
-    liveLabel: 'Prova la demo',
+    liveLabel: 'Demo full stack',
     repositories: [
       {
         label: 'Frontend',
@@ -77,56 +80,20 @@ export const PROJECTS = [
     ],
   },
   {
-    id: 'spring-scaffold-cli',
-    title: 'Spring Scaffold CLI',
-    icon: 'fas fa-terminal',
-    focus: 'Tooling Java · MVP DTO disponibile',
-    description:
-      'CLI Java 17 per generare record DTO vuoti, leggibili e modificabili, con tipo e directory di output selezionabili.',
-    highlights: [
-      'Sottocomandi e opzioni CLI con Picocli',
-      'Validazione del naming e controllo dei file di destinazione già esistenti',
-      'Parsing dei comandi separato dal generatore, con test JUnit dedicati',
-    ],
-    decision: {
-      problem:
-        'Ridurre il lavoro ripetitivo sui DTO senza perdere il controllo del codice prodotto.',
-      solution:
-        'La CLI genera record Java leggibili e rifiuta la sovrascrittura di file esistenti.',
-      tradeoff:
-        'Il MVP genera record vuoti e non garantisce scritture atomiche concorrenti. Campi e risorse Spring complete sono fuori dallo scope attuale.',
-    },
-    example: {
-      command: 'java -jar target/spring-scaffold-cli-0.1.0-SNAPSHOT.jar generate dto Expense',
-      output:
-        'ExpenseRequest.java\npublic record ExpenseRequest() {\n}\n\nExpenseResponse.java\npublic record ExpenseResponse() {\n}',
-    },
-    technologies: ['Java 17', 'Maven', 'Picocli', 'CLI', 'Code generation'],
-    status: 'Sospeso',
-    statusDetail:
-      'MVP DTO disponibile con test del generatore: genera DTO simple, request, response o entrambi. Le nuove funzionalità sono sospese; campi configurabili e generazione di entity, repository, service e controller non sono implementati né attività correnti.',
-    repositories: [
-      {
-        label: 'Repository',
-        url: 'https://github.com/fabiozagaria/spring-scaffold-cli',
-      },
-    ],
-  },
-  {
     id: 'jobflow',
     title: 'JobFlow',
+    category: 'Backend',
     icon: 'fas fa-diagram-project',
-    focus: 'Backend in evoluzione · modellazione dei job',
+    focus: 'Backend · API e persistenza dei job',
     description:
-      'Backend per un sistema di job asincroni: il primo slice crea e persiste un job per la futura generazione di un documento PDF.',
+      'Backend per creare e consultare job tramite API REST, con validazione e persistenza JPA su MySQL. Il lavoro associato descrive una futura generazione di PDF.',
     highlights: [
       'Dominio Job con stati CREATED, PROCESSING, COMPLETED e FAILED',
-      'POST /jobs con DTO validato, risposta 201 Created e header Location',
-      'GET /jobs/{id} con JobResponse e gestione del job assente nel service',
+      'POST /jobs con DTO validato, risposta 201 Created e header Location; GET /jobs/{id} per la consultazione',
       'Persistenza JPA/MySQL di Job e GeneratePdfWork con cascade PERSIST',
     ],
     technologies: [
-      'Java 21',
+      'Java',
       'Spring Boot',
       'REST API',
       'Spring Data JPA',
@@ -135,7 +102,7 @@ export const PROJECTS = [
     ],
     status: 'In sviluppo',
     statusDetail:
-      'Creazione e persistenza verificate manualmente con Postman e MySQL secondo il README. GET /jobs/{id} è implementato: risposte 200, 404 e formato dell’errore restano da verificare a runtime. JobWorker non esegue ancora lavori; processor PDF, Executor e gestione di successo/fallimento sono i prossimi passi della v0.1. GeneratedPDFResult è un modello persistente, non un PDF già generato.',
+      'Creazione e persistenza verificate manualmente con Postman e MySQL. GET /jobs/{id} è implementato e da verificare a runtime; worker, esecuzione asincrona e generazione PDF restano da completare.',
     decision: {
       problem:
         'Salvare un nuovo job insieme al lavoro che descrive, mantenendo distinte le responsabilità.',
@@ -146,21 +113,59 @@ export const PROJECTS = [
     repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/job-flow' }],
   },
   {
+    id: 'accessdesk',
+    title: 'Access Desk',
+    category: 'Backend',
+    icon: 'fas fa-user-shield',
+    focus: 'Backend · sicurezza e autorizzazione',
+    description:
+      'API REST per richieste di accesso software: i dipendenti creano e consultano le proprie richieste, i manager le approvano o le rifiutano. PostgreSQL è il database predefinito; MySQL è disponibile come alternativa configurabile.',
+    highlights: [
+      'Login con JWT HS256 e filtro personalizzato OncePerRequestFilter per il Bearer token',
+      'Spring Security stateless, ruoli e permessi, autorizzazione con @PreAuthorize',
+      'Errori del filtro delegati a HandlerExceptionResolver e gestione globale delle eccezioni',
+      'JPA/Hibernate, MapStruct, transazioni, locking ottimistico e paginazione Page/Pageable',
+    ],
+    technologies: [
+      'Java 21',
+      'Spring Boot',
+      'Spring Security',
+      'JWT',
+      'PostgreSQL',
+      'Spring Data JPA',
+      'MapStruct',
+      'MySQL (alternativa)',
+    ],
+    status: 'In sviluppo',
+    statusDetail:
+      'Prova autonoma ancora da completare. Login JWT, filtro e autorizzazioni sono presenti nel codice; PostgreSQL è il database predefinito, con MySQL alternativo. Restano verifiche del flusso JWT, test automatici e chiusura della consegna.',
+    decision: {
+      problem:
+        'Gestire gli errori del token nel filtro, prima che la richiesta raggiunga Spring MVC.',
+      solution:
+        'Il filtro pulisce il SecurityContext e delega le eccezioni a HandlerExceptionResolver per riutilizzare la gestione globale.',
+      tradeoff:
+        'Il filtro deve interrompere il flusso dopo un errore; autenticazione e autorizzazione richiedono verifiche dedicate.',
+    },
+    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/accessdesk-api' }],
+  },
+  {
     id: 'labtv',
     title: 'LabTV',
+    category: 'Frontend',
     icon: 'fas fa-film',
-    focus: 'Integrazione API esterna · release frontend 1.0.0',
+    focus: 'Frontend · progetto del corso LabForWeb',
     description:
-      'Applicazione Angular per esplorare film, cast e titoli simili dalla TMDB API, con ricerca locale per titolo sul catalogo caricato.',
+      'Applicazione Angular per esplorare film, cast e titoli simili attraverso i dati della TMDB API.',
     highlights: [
       'Catalogo dinamico con HttpClient, RxJS e modelli TypeScript',
-      'Routing parametrico per il dettaglio, con cast, regista e film simili',
+      'Routing parametrico per dettaglio, cast, regista e film simili',
       'Stati di caricamento ed errore gestiti nei flussi asincroni',
     ],
     technologies: ['Angular', 'TypeScript', 'RxJS', 'Signals', 'TMDB API', 'Bootstrap'],
     status: 'Concluso',
     statusDetail:
-      'Release frontend 1.0.0 conclusa; demo disponibile e manutenzione mirata. Catalogo, ricerca locale e dettaglio sono nello scope attuale; login dimostrativo, senza autenticazione reale o persistenza utente. Un’eventuale evoluzione con backend e profili sarebbe una fase separata LabTV 2.x.',
+      'Release frontend conclusa, realizzata durante il percorso LabForWeb: applicazione Angular che integra la TMDB API per catalogo e dettaglio.',
     decision: {
       problem:
         'Integrare catalogo e dettagli TMDB senza distribuire le chiamate HTTP nei componenti.',
@@ -179,65 +184,50 @@ export const PROJECTS = [
     ],
   },
   {
-    id: 'task-manager-security-lab',
-    title: 'Task Manager Security Lab',
-    icon: 'fas fa-shield-halved',
-    focus: 'Laboratorio guidato · backend',
+    id: 'fakeflix',
+    title: 'Fakeflix',
+    category: 'Frontend',
+    icon: 'fas fa-film',
+    focus: 'Frontend · progetto del corso LabForWeb / Nerd Academy',
     description:
-      'Laboratorio di studio usato per sperimentare autenticazione e persistenza in una semplice API CRUD di task.',
+      'Landing page responsive dedicata a Stranger Things, realizzata con HTML, CSS e JavaScript vanilla. Include schede dinamiche di episodi e trailer e validazione del form email.',
     highlights: [
-      'Registrazione e login con password BCrypt e access token JWT',
-      "CRUD dei task limitato all'utente autenticato tramite Spring Security",
-      'Refresh token opaco con hash SHA-256 persistito, rotazione e revoca tramite logout',
+      'Manipolazione del DOM ed eventi con JavaScript nativo',
+      'Schede dinamiche per episodi, trailer e piani',
+      'Validazione email e modale trailer riutilizzabile',
     ],
-    technologies: [
-      'Java',
-      'Spring Boot',
-      'Spring Security',
-      'Spring Data JPA',
-      'Hibernate',
-      'MySQL',
-      'JWT',
-    ],
-    status: 'Laboratorio attivo',
+    technologies: ['HTML5', 'CSS3', 'JavaScript ES6+', 'DOM API'],
+    status: 'Demo frontend',
     statusDetail:
-      'È un esercizio guidato di apprendimento, non un prodotto ideato autonomamente. Refresh, rotazione e logout sono presenti; il refresh viaggia nel JSON, senza cookie HttpOnly. La rotazione concorrente e il flusso CSRF delle operazioni mutative richiedono verifiche mirate. La suite include il test del contesto, senza copertura comportamentale completa.',
+      'Progetto realizzato durante il percorso LabForWeb / Nerd Academy per consolidare DOM, eventi e rendering in JavaScript vanilla. Demo frontend in manutenzione; la demo online è attualmente non disponibile.',
+    liveLink: 'https://fakeflix-lemon-six.vercel.app/',
+    liveLabel: 'Demo non disponibile',
     repositories: [
       {
-        label: 'Repository laboratorio',
-        url: 'https://github.com/fabiozagaria/task-manager-api-jpa-security',
+        label: 'Repository',
+        url: 'https://github.com/fabiozagaria/fakeflix-vanilla-js',
       },
     ],
   },
   {
-    id: 'transport-tickets',
-    title: 'Transport Tickets',
-    icon: 'fas fa-route',
-    focus: 'Laboratorio di studio · dati e concorrenza',
+    id: 'portfolio',
+    title: 'Portfolio',
+    category: 'Frontend',
+    icon: 'fas fa-code',
+    focus: 'Frontend · progetto del corso',
     description:
-      'Backend di studio ispirato ai flussi dei trasporti ospedalieri, con regole di dominio, storico e accesso alle risorse.',
+      'Portfolio Angular con componenti standalone, routing lazy e contenuti tipizzati, con attenzione ad accessibilità e SEO.',
     highlights: [
-      'Dominio separato dalle entità JPA, con ticket e storico degli eventi in MySQL',
-      'Migrazioni Flyway, transazioni e lock sul ticket; cache Redis opzionale con fallback',
-      'Spring Security con sessioni, CSRF, ruoli e controlli di accesso al singolo ticket',
+      'Componenti standalone e routing lazy',
+      'Metadati specifici per route e dati tipizzati',
     ],
-    technologies: [
-      'Java 17',
-      'Spring Boot',
-      'Spring Security',
-      'Spring Data JPA',
-      'MySQL',
-      'Flyway',
-      'Redis',
-    ],
-    status: 'Laboratorio attivo',
-    statusDetail:
-      'Backend di studio nel branch study/backend-jpa-snapshot, sviluppato anche con strumenti AI. Persistenza, storico, transazioni, lock, cache e autorizzazione sono presenti con test dedicati; il traguardo corrente è consolidarne comprensione e verifiche. Main conserva la demo HTTP Java in memoria. Non è presente un frontend; usare solo dati fittizi.',
+    technologies: ['Angular 21', 'TypeScript 5.9', 'HTML', 'CSS', 'Vercel'],
+    status: 'Demo frontend',
+    statusDetail: 'Progetto frontend del corso, evoluto nel portfolio professionale attuale.',
+    liveLink: 'https://fabio-zagaria-portfolio.vercel.app/',
+    liveLabel: 'Demo online',
     repositories: [
-      {
-        label: 'Branch backend di studio',
-        url: 'https://github.com/fabiozagaria/transport-tickets/tree/study/backend-jpa-snapshot',
-      },
+      { label: 'Repository', url: 'https://github.com/fabiozagaria/fabio-zagaria-portfolio' },
     ],
   },
 ] as const satisfies readonly PortfolioProject[];
