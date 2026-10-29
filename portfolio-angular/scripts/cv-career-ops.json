@@ -77,7 +77,7 @@
   "skills": [
     {
       "category": "Backend e dati",
-      "items": "Java 21, Spring Boot, Spring MVC, Spring Security, JWT, REST API, MySQL, SQL, JPA/Hibernate, Spring Data JPA"
+      "items": "Java 21, Spring Boot, Spring MVC, Spring Security, JWT, REST API, MySQL, Redis, SQL, JPA/Hibernate, Spring Data JPA"
     },
     {
       "category": "Frontend",
@@ -85,7 +85,7 @@
     },
     {
       "category": "Strumenti",
-      "items": "Git, GitHub, Maven, Postman"
+      "items": "Git, GitHub, Maven, Docker, Postman"
     },
     {
       "category": "Studio autonomo",
