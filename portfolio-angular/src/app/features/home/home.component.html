@@ -1,82 +1,53 @@
 <section id="home" class="c-hero o-section">
-  <div class="c-hero__bg">
-    <div class="c-hero__matrix"></div>
-    <div class="c-hero__grid"></div>
-  </div>
-  <div class="c-hero__content o-container">
-    <div class="c-hero__text">
-      <p class="c-hero__eyebrow">
-        <span aria-hidden="true"></span> Obiettivo professionale · Junior Backend
-      </p>
-      <h1 class="c-hero__title">
-        Junior Backend Developer
-        <span>con visione full stack.</span>
-      </h1>
+  <div class="o-container">
+    <h1 class="c-hero__title">Fabio Zagaria</h1>
+    <p class="c-hero__role">Junior Backend Developer<br />con visione full stack.</p>
+    <div class="c-hero__intro">
       <p class="c-hero__description">
-        Ho completato 650 ore di formazione Full Stack Web e sviluppo API REST con Java, Spring Boot
-        e MySQL. Uso Angular e TypeScript per comprendere e costruire il flusso completo,
-        dall'interfaccia alla persistenza. Studio inoltre PostgreSQL da autodidatta come alternativa
-        a MySQL.
+        Sviluppo API REST con Java, Spring Boot e MySQL. Con Angular e TypeScript collego
+        interfaccia, logica applicativa e dati.
       </p>
       <div class="c-hero__actions">
-        <a routerLink="/projects" class="c-btn c-btn--primary">
-          <i class="fas fa-code" aria-hidden="true"></i> Vedi i progetti
-        </a>
-        <a href="/downloads/CV.pdf" download="CV_Fabio_Zagaria.pdf" class="c-btn c-btn--secondary">
-          <i class="fas fa-download" aria-hidden="true"></i> Scarica il CV
-        </a>
+        <a routerLink="/projects" class="c-btn c-btn--primary">Vedi i progetti</a>
+        <a href="/downloads/CV.pdf" download="CV_Fabio_Zagaria.pdf" class="c-hero__cv"
+          >Scarica il CV</a
+        >
       </div>
     </div>
-    <div class="c-hero__visual">
-      <aside class="c-backend-map" aria-labelledby="backend-map-title">
-        <div class="c-backend-map__header">
-          <p class="c-backend-map__eyebrow">Progetto in primo piano</p>
-          <span class="c-backend-map__status">v1.0.0 · Concluso</span>
-        </div>
-        <h2 id="backend-map-title">{{ mainProject.title }}</h2>
-        <p class="c-backend-map__intro">
-          Applicazione full stack online: spese, entrate e dashboard, con registrazione pubblica e
-          verifica email tramite API Brevo HTTPS. CRUD completo di spese ed entrate, ricerca, filtro
-          mensile e paginazione sono integrati nella versione 1.0.0, conclusa il 25 ottobre 2026.
-        </p>
-        <ol class="c-backend-map__flow" aria-label="Flusso full stack di Expense Tracker">
-          <li>
-            <span class="c-backend-map__step">01</span>
-            <div>
-              <strong>Interfaccia Angular</strong
-              ><span>Signals, Reactive Forms e client HTTP tipizzato</span>
-            </div>
-          </li>
-          <li>
-            <span class="c-backend-map__step">02</span>
-            <div>
-              <strong>Autenticazione</strong
-              ><span>Brevo HTTPS, verifica email, JWT e refresh token HttpOnly</span>
-            </div>
-          </li>
-          <li>
-            <span class="c-backend-map__step">03</span>
-            <div>
-              <strong>API e dati personali</strong
-              ><span>DTO, validazione e controllo del proprietario</span>
-            </div>
-          </li>
-          <li>
-            <span class="c-backend-map__step">04</span>
-            <div>
-              <strong>Persistenza MySQL</strong><span>Spring Data JPA e separazione dei layer</span>
-            </div>
-          </li>
-        </ol>
-        <ul class="c-backend-map__qualities" aria-label="Competenze dimostrate in Expense Tracker">
-          <li>API REST</li>
-          <li>Sicurezza</li>
-          <li>Integrazione full stack</li>
-        </ul>
-        <a routerLink="/projects" [fragment]="mainProject.id" class="c-backend-map__link">
-          Esamina scelte e codice <span aria-hidden="true">→</span>
-        </a>
-      </aside>
+  </div>
+</section>
+
+<section class="c-featured" aria-labelledby="backend-map-title">
+  <div class="o-container c-featured__layout">
+    <div class="c-featured__overview">
+      <h2 id="backend-map-title">{{ mainProject.title }}</h2>
+      <p class="c-featured__description">{{ mainProject.description }}</p>
+      <p class="c-featured__status">
+        Progetto in primo piano. Scope funzionale concluso, versione 1.0.0.
+      </p>
+      <a routerLink="/projects" [fragment]="mainProject.id" class="c-backend-map__link"
+        >Esamina scelte e codice</a
+      >
+    </div>
+    <div class="c-backend-map">
+      <h3>Dal browser al database</h3>
+      <ol class="c-backend-map__flow" aria-label="Flusso full stack di Expense Tracker">
+        <li>
+          <strong>Interfaccia Angular</strong
+          ><span>Signals, Reactive Forms e client HTTP tipizzato</span>
+        </li>
+        <li>
+          <strong>Autenticazione</strong><span>Verifica email, JWT e refresh token HttpOnly</span>
+        </li>
+        <li><strong>API REST</strong><span>DTO, validazione e controllo del proprietario</span></li>
+        <li>
+          <strong>Persistenza MySQL</strong><span>Spring Data JPA e separazione dei layer</span>
+        </li>
+      </ol>
+      <p class="c-featured__note">
+        Il codice racconta le scelte. La scheda distingue le funzionalità concluse dalle verifiche
+        ancora aperte.
+      </p>
     </div>
   </div>
 </section>
@@ -84,40 +55,47 @@
 <section class="c-proof" aria-labelledby="featured-projects-title">
   <div class="o-container">
     <div class="c-proof__header">
-      <div>
-        <p class="c-proof__eyebrow">Progetti in evidenza</p>
-        <h2 id="featured-projects-title">Altre prove del mio lavoro</h2>
-      </div>
+      <h2 id="featured-projects-title">Backend in costruzione</h2>
       <p>
-        JobFlow implementa API REST e persistenza dei job. Access Desk mette in pratica JWT e
-        autorizzazioni, con PostgreSQL predefinito e MySQL come alternativa configurabile.
+        Due progetti per approfondire persistenza e sicurezza. Stato e limiti sono documentati nelle
+        rispettive schede.
       </p>
     </div>
-
     <div class="c-proof__grid">
-      @for (project of featuredProjects; track project.id; let index = $index) {
+      @for (project of featuredProjects; track project.id) {
         <article class="c-proof__card">
-          <div class="c-proof__card-heading">
-            <span class="c-proof__number" aria-hidden="true">0{{ index + 1 }}</span>
-            <span class="c-proof__status" [attr.data-status]="project.status">
-              {{ project.status }}
-            </span>
+          <div class="c-proof__heading">
+            <h3>{{ project.title }}</h3>
+            <span class="c-proof__status">{{ project.status }}</span>
           </div>
-          <p class="c-proof__focus">{{ project.focus }}</p>
-          <h3>{{ project.title }}</h3>
           <p>{{ project.description }}</p>
-          <a routerLink="/projects" [fragment]="project.id">
-            Dettagli e codice <span aria-hidden="true">→</span>
-          </a>
+          <a routerLink="/projects" [fragment]="project.id"
+            >Dettagli e codice di {{ project.title }}</a
+          >
         </article>
       }
     </div>
-
     <div class="c-proof__actions">
-      <a routerLink="/projects" class="c-btn c-btn--secondary">
-        Esamina i progetti
-        <span aria-hidden="true">→</span>
-      </a>
+      <a routerLink="/projects">Tutti i progetti</a
+      ><a routerLink="/about">Il mio percorso e lo stack</a>
+    </div>
+  </div>
+</section>
+
+<section class="c-resume" aria-labelledby="resume-title">
+  <div class="o-container c-resume__layout">
+    <div>
+      <h2 id="resume-title">Parliamo del prossimo passo.</h2>
+      <p>
+        Cerco un’opportunità Junior Backend o Full Stack. Nel CV trovi progetti, formazione e
+        percorso professionale.
+      </p>
+    </div>
+    <div class="c-resume__actions">
+      <a routerLink="/contact" class="c-btn c-btn--primary">Contattami</a
+      ><a href="/assets/documents/CV.pdf" target="_blank" rel="noopener noreferrer"
+        >Leggi il CV (PDF)</a
+      >
     </div>
   </div>
 </section>

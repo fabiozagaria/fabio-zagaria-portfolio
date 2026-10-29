@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-29T20:50:00Z",
+  "title": "Design System: Fabio Zagaria",
+  "extensions": {
+    "shadows": [],
+    "motion": [
+      {
+        "name": "state",
+        "value": "160ms ease",
+        "purpose": "Hover e stati"
+      },
+      {
+        "name": "route-in",
+        "value": "220ms ease-out",
+        "purpose": "Orientamento tra route; reduced motion disattiva"
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet",
+        "value": "60em"
+      },
+      {
+        "name": "mobile",
+        "value": "48em"
+      },
+      {
+        "name": "small",
+        "value": "30em"
+      }
+    ]
+  },
+  "components": [],
+  "narrative": {
+    "northStar": "Portfolio tecnico minimale",
+    "overview": "Nome e ruolo immediati, prove tecniche vere, antracite e teal.",
+    "keyCharacteristics": [
+      "Tipografia locale",
+      "Superfici piatte",
+      "Contenuti verificabili"
+    ]
+  }
+}

@@ -1,18 +1,28 @@
 <a class="c-skip-link" href="#main-content">Vai al contenuto principale</a>
 
-<nav class="c-nav" id="navbar" aria-label="Navigazione principale">
+<nav
+  (focusout)="onNavFocusOut($event)"
+  class="c-nav"
+  id="navbar"
+  aria-label="Navigazione principale"
+>
   <div class="c-nav__container o-container">
     <a class="c-nav__logo" routerLink="/" aria-label="Fabio Zagaria — home">
-      <img
-        src="assets/img/io-640.webp"
-        alt=""
-        aria-hidden="true"
-        width="160"
-        height="160"
-        class="c-nav__logo-img"
-      />
+      <span class="c-nav__logo-mark" aria-hidden="true">FZ</span>
       <span class="c-nav__logo-text">Fabio Zagaria</span>
     </a>
+    <button
+      #menuToggle
+      class="c-nav__toggle"
+      [class.c-nav__toggle--active]="isMenuOpen"
+      (click)="toggleMenu()"
+      type="button"
+      aria-controls="nav-menu"
+      [attr.aria-expanded]="isMenuOpen"
+      [attr.aria-label]="isMenuOpen ? 'Chiudi il menu' : 'Apri il menu'"
+    >
+      <span>{{ isMenuOpen ? 'Chiudi' : 'Menu' }}</span>
+    </button>
     <ul class="c-nav__menu" [class.c-nav__menu--active]="isMenuOpen" id="nav-menu">
       <li>
         <a
@@ -42,7 +52,7 @@
           ariaCurrentWhenActive="page"
           class="c-nav__link"
           (click)="closeMenu()"
-          >Esperienza</a
+          >Percorso</a
         >
       </li>
       <li>
@@ -95,19 +105,6 @@
         }
       </svg>
     </button>
-    <button
-      class="c-nav__toggle"
-      [class.c-nav__toggle--active]="isMenuOpen"
-      (click)="toggleMenu()"
-      type="button"
-      aria-controls="nav-menu"
-      [attr.aria-expanded]="isMenuOpen"
-      [attr.aria-label]="isMenuOpen ? 'Chiudi il menu' : 'Apri il menu'"
-    >
-      <span class="c-nav__toggle-line"></span>
-      <span class="c-nav__toggle-line"></span>
-      <span class="c-nav__toggle-line"></span>
-    </button>
   </div>
 </nav>
 
@@ -140,6 +137,15 @@
     <div class="c-footer__content">
       <div class="c-footer__text">
         <p>&copy; {{ currentYear }} Fabio Zagaria. Sviluppato con Angular.</p>
+      </div>
+      <div class="c-footer__links" aria-label="Collegamenti professionali">
+        <a href="https://github.com/fabiozagaria" target="_blank" rel="noopener noreferrer"
+          >GitHub</a
+        >
+        <a href="https://linkedin.com/in/fabiozagaria" target="_blank" rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+        <a routerLink="/contact">Contatti e CV</a>
       </div>
     </div>
   </div>
