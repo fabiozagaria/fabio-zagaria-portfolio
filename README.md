@@ -153,4 +153,4 @@ Il pulsante sole/luna nella navigazione alterna tema chiaro e scuro. Al primo ac
 
 ## Curriculum aggiornato — 29 ottobre 2026
 
-CV a pagina singola allineato a Expense Tracker, AccessDesk e studio autodidatta di PostgreSQL. La versione pubblicata è generata con il template nativo Career Ops dal payload `portfolio-angular/scripts/cv-career-ops.json`. Il precedente generatore Python conserva il layout storico e non rigenera il PDF corrente. La copia nel repository curriculum richiede una sincronizzazione separata.
+CV a pagina singola allineato a Expense Tracker, AccessDesk e studio autodidatta di PostgreSQL. La versione pubblicata è generata con il template nativo Career Ops dal payload `portfolio-angular/scripts/cv-career-ops.json`. Il flusso di installazione, generazione e verifica è documentato in `AGENTS.md`. La copia nel repository curriculum richiede una sincronizzazione separata.

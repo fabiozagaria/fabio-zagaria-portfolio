@@ -26,7 +26,7 @@ La versione Node consigliata per sviluppo e CI è indicata nel file [`.nvmrc`](.
 - `src/app/features`: pagine standalone caricate in modo lazy.
 - `src/assets/documents`: CV e attestato distribuiti con il sito.
 - `src/assets/img`: immagini sorgente e versioni WebP ottimizzate.
-- `scripts/generate_cv.py`: generazione del curriculum PDF.
+- `scripts/cv-career-ops.json`: contenuti del CV generato con Career Ops; seguire il flusso in `../AGENTS.md`.
 
 ## Asset di produzione
 

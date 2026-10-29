@@ -30,7 +30,7 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 ## Curriculum pubblico
 - `portfolio-angular/src/assets/documents/CV.pdf` è l'unico curriculum distribuito dal sito.
 - Il layout è a colonna singola, testuale, leggibile e compatibile con i sistemi ATS.
-- Dal 29 ottobre 2026 il PDF pubblico usa il template nativo Career Ops. Dati: `portfolio-angular/scripts/cv-career-ops.json`. `generate_cv.py` conserva il layout precedente e non va eseguito per rigenerare il CV attuale.
+- Dal 29 ottobre 2026 il PDF pubblico usa il template nativo Career Ops. Dati: `portfolio-angular/scripts/cv-career-ops.json`. Il generatore Python precedente è stato rimosso; seguire il flusso Career Ops descritto in `AGENTS.md`.
 
 ## Punto di attenzione
 Quando cambiano versione, stato o focus di un progetto pubblico collegato, verificare se il portfolio necessita di sincronizzazione.
