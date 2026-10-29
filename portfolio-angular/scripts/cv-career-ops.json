@@ -1,0 +1,99 @@
+{
+  "lang": "it",
+  "page_format": "a4",
+  "candidate": {
+    "name": "Fabio Zagaria",
+    "title": "Junior Java Backend Developer",
+    "location": "Roma",
+    "phone": "+39 366 719 1008",
+    "email": "zagariafabio1999@gmail.com",
+    "github": {
+      "url": "https://github.com/fabiozagaria",
+      "display": "github.com/fabiozagaria"
+    },
+    "linkedin": {
+      "url": "https://linkedin.com/in/fabiozagaria",
+      "display": "linkedin.com/in/fabiozagaria"
+    },
+    "portfolio": {
+      "url": "https://fabio-zagaria-portfolio.vercel.app/",
+      "display": "Portfolio e demo"
+    }
+  },
+  "sections": {
+    "summary": "Profilo professionale",
+    "experience": "Esperienza professionale",
+    "projects": "Progetti",
+    "education": "Istruzione e formazione",
+    "skills": "Competenze tecniche e lingue"
+  },
+  "summary": "Junior Java Backend Developer con formazione Full Stack Web di 650 ore. Sviluppo API REST con Java, Spring Boot e MySQL e interfacce Angular/TypeScript. Nei progetti personali applico autenticazione, autorizzazione e persistenza; approfondisco PostgreSQL da autodidatta.",
+  "experience": [
+    {
+      "company": "Eraclya, Policlinico Gemelli",
+      "role": "Portantino",
+      "location": "Roma",
+      "dates": "Giu 2021 - in corso",
+      "bullets": [
+        "Trasporto pazienti e supporto operativo nel rispetto di procedure, urgenze e priorità variabili; coordinamento quotidiano con personale sanitario, tecnico e amministrativo."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Expense Tracker",
+      "url": "https://gestionale-spese.vercel.app/",
+      "tech": "Angular, Spring Boot, MySQL",
+      "description": "Applicazione full stack per spese ed entrate personali: dashboard, ricerca, filtro mensile e paginazione. API con JWT, refresh token HttpOnly e controllo del proprietario; registrazione e verifica email."
+    },
+    {
+      "name": "AccessDesk",
+      "url": "https://github.com/fabiozagaria/accessdesk-api",
+      "badge": "Autonomo, in sviluppo",
+      "tech": "Java 21, Spring Boot, PostgreSQL",
+      "description": "API REST per richieste di accesso software con ruoli dipendente e manager. Autenticazione JWT e autorizzazioni Spring Security; JPA/Hibernate, transazioni, locking ottimistico, DTO, validazione e gestione centralizzata degli errori."
+    }
+  ],
+  "education": [
+    {
+      "title": "Developer Full Stack Web",
+      "org": "LabForWeb",
+      "year": "Gen 2026 - Ago 2026",
+      "description": "650 ore. Java, Spring Boot, API REST, Angular, TypeScript e MySQL."
+    },
+    {
+      "title": "Master Java",
+      "org": "PC Academy",
+      "year": "Set 2019 - Apr 2020",
+      "description": "300 ore. Java 8, SQL e sviluppo Android."
+    },
+    {
+      "title": "Diploma",
+      "org": "ITIS A. Einstein",
+      "year": "2018",
+      "description": "Informatica e Telecomunicazioni. 75/100. Telecomunicazioni."
+    }
+  ],
+  "skills": [
+    {
+      "category": "Backend e dati",
+      "items": "Java 21, Spring Boot, Spring MVC, Spring Security, JWT, REST API, MySQL, SQL, JPA/Hibernate, Spring Data JPA"
+    },
+    {
+      "category": "Frontend",
+      "items": "Angular 21, TypeScript, JavaScript, Signals, Reactive Forms, HTML5, CSS3"
+    },
+    {
+      "category": "Strumenti",
+      "items": "Git, GitHub, Maven, Postman"
+    },
+    {
+      "category": "Studio autonomo",
+      "items": "PostgreSQL, applicato in AccessDesk"
+    },
+    {
+      "category": "Lingue",
+      "items": "Italiano madrelingua; inglese: comprensione B2, produzione e interazione B1"
+    }
+  ]
+}

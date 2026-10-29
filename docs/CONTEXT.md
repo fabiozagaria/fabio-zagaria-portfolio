@@ -24,13 +24,13 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 ## Regole di mantenimento
 - Aggiornare il portfolio solo quando una competenza o un progetto è realmente dimostrabile.
 - Mantenere allineati README, contenuti del sito e CV.
-- Il generatore del CV nel portfolio è la sorgente autorevole del curriculum.
+- Il payload `portfolio-angular/scripts/cv-career-ops.json` contiene i dati del CV corrente; il PDF è generato con Career Ops.
 - Non riportare qui voti, ripassi o cronologia didattica: restano in Notion.
 
 ## Curriculum pubblico
 - `portfolio-angular/src/assets/documents/CV.pdf` è l'unico curriculum distribuito dal sito.
 - Il layout è a colonna singola, testuale, leggibile e compatibile con i sistemi ATS.
-- Il generatore `portfolio-angular/scripts/generate_cv.py` resta la sorgente autorevole; le copie da colloquio modificabili restano fuori dal repository pubblico.
+- Dal 29 ottobre 2026 il PDF pubblico usa il template nativo Career Ops. Dati: `portfolio-angular/scripts/cv-career-ops.json`. `generate_cv.py` conserva il layout precedente e non va eseguito per rigenerare il CV attuale.
 
 ## Punto di attenzione
 Quando cambiano versione, stato o focus di un progetto pubblico collegato, verificare se il portfolio necessita di sincronizzazione.

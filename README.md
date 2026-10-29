@@ -115,7 +115,7 @@ secondario rispetto ai progetti.
 - `portfolio-angular/src/app/data`: modelli e contenuti tipizzati dei progetti.
 - `portfolio-angular/src/app/features`: pagine standalone del portfolio.
 - `portfolio-angular/src/assets`: documenti e immagini ottimizzate.
-- `portfolio-angular/scripts/generate_cv.py`: sorgente autorevole e generazione riproducibile del curriculum.
+- `portfolio-angular/scripts/cv-career-ops.json`: contenuti del curriculum pubblicato, impaginato con Career Ops.
 - `.github/workflows/ci.yml`: controlli automatici di qualità, test e build.
 
 ## Avvio locale
@@ -151,6 +151,6 @@ La stessa sequenza viene eseguita automaticamente sulle pull request e sui push 
 
 Il pulsante sole/luna nella navigazione alterna tema chiaro e scuro. Al primo accesso segue il dispositivo; la scelta manuale viene ricordata nel browser.
 
-## Curriculum aggiornato — 25 ottobre 2026
+## Curriculum aggiornato — 29 ottobre 2026
 
-CV a pagina singola allineato a Expense Tracker, AccessDesk e studio autodidatta di PostgreSQL. Il generatore rimane la sorgente autorevole; lo stesso PDF è distribuito dal sito e dal repository curriculum.
+CV a pagina singola allineato a Expense Tracker, AccessDesk e studio autodidatta di PostgreSQL. La versione pubblicata è generata con il template nativo Career Ops dal payload `portfolio-angular/scripts/cv-career-ops.json`. Il precedente generatore Python conserva il layout storico e non rigenera il PDF corrente. La copia nel repository curriculum richiede una sincronizzazione separata.
