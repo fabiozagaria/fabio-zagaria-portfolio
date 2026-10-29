@@ -77,15 +77,19 @@
   "skills": [
     {
       "category": "Backend e dati",
-      "items": "Java 21, Spring Boot, Spring MVC, Spring Security, JWT, REST API, MySQL, Redis, SQL, JPA/Hibernate, Spring Data JPA"
+      "items": "Java 21, Spring Boot, Spring MVC, Spring Security, JWT, REST API, MySQL, Redis (caching in memoria), SQL, JPA/Hibernate, Spring Data JPA"
     },
     {
       "category": "Frontend",
       "items": "Angular 21, TypeScript, JavaScript, Signals, Reactive Forms, HTML5, CSS3"
     },
     {
-      "category": "Strumenti",
-      "items": "Git, GitHub, Maven, Docker, Postman"
+      "category": "Strumenti di sviluppo e DevOps",
+      "items": "Git, GitHub, Maven, Docker (containerizzazione e ambienti di sviluppo), Postman"
+    },
+    {
+      "category": "AI e sviluppo assistito",
+      "items": "ChatGPT; OpenAI Codex Desktop (strumento principale); Claude / Claude Code; Codex Skills; MCP (Model Context Protocol); coding agent per sviluppo, debugging, code review e analisi del codice."
     },
     {
       "category": "Studio autonomo",
