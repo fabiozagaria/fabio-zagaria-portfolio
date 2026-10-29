@@ -74,7 +74,7 @@ def build_cv() -> None:
     y -= 14
     centered(
         y,
-        "Roma | +39 366 719 1008 | fabiozagaria@proton.me | Patente B",
+        "Roma | +39 366 719 1008 | zagariafabio1999@gmail.com | Patente B",
         "F1",
         8.8,
         INK,
