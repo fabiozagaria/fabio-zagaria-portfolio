@@ -1,8 +1,6 @@
 <section id="projects" class="c-projects o-section">
   <div class="c-projects__container o-container">
-    <h1 class="c-section-title">
-      <span class="c-section-title__number" aria-hidden="true">03</span>Progetti
-    </h1>
+    <h1 class="c-section-title">Progetti</h1>
     <p class="c-section-subtitle">
       Expense Tracker, JobFlow e Access Desk in primo piano: un progetto full stack concluso e due
       backend con API REST, persistenza e sicurezza. Seguono i progetti frontend del corso, gli
@@ -19,7 +17,6 @@
           @for (project of group.projects; track project.id) {
             <article class="c-card" [id]="project.id">
               <div class="c-card__content">
-                <p class="c-card__focus">{{ project.focus }}</p>
                 <div class="c-card__heading">
                   <h3 class="c-card__title">{{ project.title }}</h3>
                   <span class="c-card__status" [attr.data-status]="project.status">
@@ -27,6 +24,7 @@
                   </span>
                 </div>
 
+                <p class="c-card__focus">{{ project.focus }}</p>
                 <p class="c-card__description">{{ project.description }}</p>
 
                 @if (group.category !== 'Frontend') {
@@ -93,7 +91,6 @@
                           ' in una nuova scheda'
                         "
                       >
-                        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                         {{ project.liveLabel ?? 'Demo' }}
                       </a>
                     }
@@ -111,7 +108,6 @@
                           ' su GitHub in una nuova scheda'
                         "
                       >
-                        <i class="fab fa-github" aria-hidden="true"></i>
                         {{ repository.label }}
                       </a>
                     }
@@ -152,7 +148,7 @@
                       class="c-card__action"
                       [attr.aria-label]="'Apri la demo di ' + entry.title + ' in una nuova scheda'"
                     >
-                      <i class="fas fa-external-link-alt" aria-hidden="true"></i> Demo online
+                      Demo online
                     </a>
                   }
                   @for (repository of entry.repositories; track repository.url) {
@@ -169,7 +165,7 @@
                         ' su GitHub in una nuova scheda'
                       "
                     >
-                      <i class="fab fa-github" aria-hidden="true"></i> {{ repository.label }}
+                      {{ repository.label }}
                     </a>
                   }
                 </div>
@@ -188,7 +184,6 @@
         class="c-btn c-btn--secondary c-projects__github-link"
         aria-label="Apri tutti i repository GitHub di Fabio Zagaria in una nuova scheda"
       >
-        <i class="fab fa-github" aria-hidden="true"></i>
         Tutti i repository su GitHub
       </a>
     </div>

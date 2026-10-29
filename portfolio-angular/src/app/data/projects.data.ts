@@ -58,7 +58,7 @@ export const PROJECTS = [
     ],
     status: 'Concluso',
     statusDetail:
-      'Versione 1.0.0 conclusa il 25 ottobre 2026: CRUD spese ed entrate, dashboard, grafici, ricerca, filtro mensile, ordinamento e paginazione. Registrazione online con verifica email tramite Brevo HTTPS, autenticazione JWT e refresh token.',
+      'Versione 1.0.0 conclusa il 25 ottobre 2026: CRUD spese ed entrate, dashboard, grafici, ricerca, filtro mensile, ordinamento e paginazione. Registrazione online con verifica email tramite Brevo HTTPS, autenticazione JWT e refresh token. Collaudo del deploy e regressioni degli ultimi ampliamenti restano da completare.',
     decision: {
       problem: 'Garantire che ogni utente possa accedere soltanto ai propri movimenti.',
       solution:

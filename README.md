@@ -82,14 +82,14 @@ secondario rispetto ai progetti.
 
 ## Cosa dimostra questa repository
 
-| Area                     | Implementazione                                                                                       |
-| ------------------------ | ----------------------------------------------------------------------------------------------------- |
-| **Architettura Angular** | Componenti standalone, route caricate in modo lazy e dati dei progetti centralizzati e tipizzati      |
-| **Qualità del codice**   | TypeScript strict, `ChangeDetectionStrategy.OnPush`, Prettier e test Vitest                           |
-| **Accessibilità**        | HTML semantico, gerarchia dei titoli, focus visibile, skip link e menu mobile accessibile da tastiera |
-| **Performance**          | Immagini WebP, copia selettiva degli asset e bundle iniziale stimato in circa 69 kB trasferiti        |
-| **SEO**                  | Metadati e canonical specifici per route, Open Graph e dati strutturati Schema.org                    |
-| **Delivery**             | CI su GitHub Actions e deploy automatico su Vercel                                                    |
+| Area                     | Implementazione                                                                                                                           |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **Architettura Angular** | Componenti standalone, route caricate in modo lazy e dati dei progetti centralizzati e tipizzati                                          |
+| **Qualità del codice**   | TypeScript strict, `ChangeDetectionStrategy.OnPush`, Prettier e test Vitest                                                               |
+| **Accessibilità**        | HTML semantico, gerarchia dei titoli, focus visibile, skip link e menu mobile accessibile da tastiera                                     |
+| **Performance**          | Immagini WebP, copia selettiva degli asset e bundle iniziale stimato in circa 71 kB trasferiti (JS/CSS iniziali; font e immagini esclusi) |
+| **SEO**                  | Metadati e canonical specifici per route, Open Graph e dati strutturati Schema.org                                                        |
+| **Delivery**             | CI su GitHub Actions e deploy automatico su Vercel                                                                                        |
 
 ## Scelte tecniche principali
 
