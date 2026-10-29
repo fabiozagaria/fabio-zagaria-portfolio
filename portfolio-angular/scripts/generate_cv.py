@@ -11,7 +11,7 @@ OUTPUT_PATH = PROJECT_DIR / "src" / "assets" / "documents" / "CV.pdf"
 
 W, H = 595.276, 841.89
 LEFT, RIGHT, TOP = 44, 44, 42
-BLUE = (0.075, 0.266, 0.459)
+BLUE = (0.0, 0.34, 0.28)
 INK = (0.08, 0.10, 0.13)
 MUTED = (0.34, 0.38, 0.42)
 
@@ -40,12 +40,12 @@ def build_cv() -> None:
         pdfmetrics.registerFont(TTFont(name, str(font_dir / filename)))
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     pdf = canvas.Canvas(str(OUTPUT_PATH), pagesize=(W, H))
-    pdf.setTitle("CV Fabio Zagaria - Junior Backend Developer")
+    pdf.setTitle("CV Fabio Zagaria - Junior Java Backend Developer")
     pdf.setAuthor("Fabio Zagaria")
     pdf.setSubject("Curriculum Vitae")
     pdf.setKeywords("Java, Spring Boot, Angular, MySQL, PostgreSQL, Spring Security, Junior Backend Developer")
 
-    def text(x: float, y: float, value: str, font: str = "F1", size: float = 9, rgb=INK) -> None:
+    def text(x: float, y: float, value: str, font: str = "F1", size: float = 10, rgb=INK) -> None:
         pdf.setFillColorRGB(*rgb)
         pdf.setFont(font_names[font], size)
         pdf.drawString(x, y, value)
@@ -70,7 +70,7 @@ def build_cv() -> None:
     y = H - TOP
     centered(y, "Fabio Zagaria", "F2", 21.0, INK)
     y -= 21
-    centered(y, "Junior Backend Developer | Full Stack Developer", "F2", 11.6, BLUE)
+    centered(y, "Junior Java Backend Developer", "F2", 11.6, BLUE)
     y -= 14
     centered(
         y,
@@ -87,21 +87,32 @@ def build_cv() -> None:
         7.9,
         BLUE,
     )
+    contact_links = [
+        ("fabio-zagaria-portfolio.vercel.app", "https://fabio-zagaria-portfolio.vercel.app/"),
+        ("github.com/fabiozagaria", "https://github.com/fabiozagaria"),
+        ("linkedin.com/in/fabiozagaria", "https://linkedin.com/in/fabiozagaria"),
+    ]
+    line = " | ".join(label for label, _ in contact_links)
+    link_x = (W - stringWidth(line, "CVSans", 7.9)) / 2
+    for label, url in contact_links:
+        link_width = stringWidth(label, "CVSans", 7.9)
+        pdf.linkURL(url, (link_x, y - 2, link_x + link_width, y + 9), relative=0)
+        link_x += link_width + stringWidth(" | ", "CVSans", 7.9)
     y -= 19
 
     def section(title: str) -> None:
         nonlocal y
         text(LEFT, y, title, "F2", 11.7, BLUE)
-        y -= 16.5
+        y -= 18.5
 
-    def paragraph(value: str, size: float = 10.2, leading: float = 12.2) -> None:
+    def paragraph(value: str, size: float = 10.7, leading: float = 13.2) -> None:
         nonlocal y
         for current in wrap(value, "CVSans", size, W - LEFT - RIGHT):
             text(LEFT, y, current, "F1", size, INK)
             y -= leading
         y -= 2.0
 
-    def bullet(value: str, size: float = 9.75, leading: float = 11.7) -> None:
+    def bullet(value: str, size: float = 10.7, leading: float = 14.0) -> None:
         nonlocal y
         lines = wrap(value, "CVSans", size, W - LEFT - RIGHT - 12)
         for index, current in enumerate(lines):
@@ -121,36 +132,50 @@ def build_cv() -> None:
             text(LEFT + label_width, y, line, "F1", 9.9, INK)
             y -= 12.0
 
+    def project_links(items: list[tuple[str, str]]) -> None:
+        nonlocal y
+        x = LEFT + 2
+        for label, url in items:
+            text(x, y, label, "F1", 8.7, BLUE)
+            width = stringWidth(label, "CVSans", 8.7)
+            pdf.linkURL(url, (x, y - 2, x + width, y + 9), relative=0)
+            x += width + 18
+        y -= 14
+
     section("PROFILO PROFESSIONALE")
     paragraph(
-        "Junior Backend Developer con formazione Full Stack Web di 650 ore. Sviluppo API REST e applicazioni "
-        "con Java, Spring Boot, JPA/Hibernate, MySQL, Angular e TypeScript. Approfondisco sicurezza e PostgreSQL "
-        "da autodidatta, con progetti personali su autenticazione, autorizzazione e persistenza dei dati."
+        "Junior Java Backend Developer con formazione Full Stack Web di 650 ore. Sviluppo API REST "
+        "con Java, Spring Boot e MySQL e interfacce Angular/TypeScript. Nei progetti personali applico "
+        "autenticazione, autorizzazione e persistenza; approfondisco PostgreSQL da autodidatta."
     )
 
     section("COMPETENZE TECNICHE")
     skill_line("Backend", "Java 21, Spring Boot, Spring MVC, Spring Security, JWT, API REST, Maven")
-    skill_line("Database", "MySQL, JPA/Hibernate, Spring Data JPA, EntityManager, transazioni")
+    skill_line("Database", "MySQL, JPA/Hibernate, Spring Data JPA, SQL, transazioni")
     skill_line("Frontend", "TypeScript, JavaScript, Angular 21, Signals, Reactive Forms, HTML5, CSS3")
-    skill_line("Pratiche e strumenti", "Git, GitHub, Postman, DTO, Bean Validation, exception handling, architettura a layer")
+    skill_line("Strumenti", "Git, GitHub, Maven, Postman")
     skill_line("Studio autodidatta", "PostgreSQL come alternativa a MySQL, applicato in AccessDesk")
     y -= 2
 
     section("PROGETTI")
     segments(
         LEFT, y,
-        [("Expense Tracker - Scope attuale concluso", "F2", BLUE),
+        [("Expense Tracker - Full stack", "F2", BLUE),
          (" | Angular, Spring Boot, MySQL", "F3", MUTED)],
         9.95,
     )
     y -= 12
     bullet(
-        "Applicazione full stack con CRUD di spese ed entrate, dashboard e grafici; ricerca, filtro mensile, ordinamento e liste paginate. Frontend su Vercel, API su Render e MySQL Aiven."
+        "Applicazione full stack per gestire spese ed entrate personali, con dashboard, ricerca, filtro mensile e paginazione. Interfaccia Angular collegata ad API Spring Boot e persistenza MySQL."
     )
     bullet(
-        "Registrazione online e verifica email tramite API Brevo HTTPS; JWT, refresh token HttpOnly e controllo del proprietario. DTO, validazione, gestione errori e stato Angular con Signals."
+        "Accesso ai soli movimenti del proprio utente: JWT, refresh token HttpOnly e controllo del proprietario sul backend. Registrazione e verifica email; DTO, validazione e stato Angular con Signals."
     )
-    y -= 2
+    project_links([
+        ("Demo", "https://gestionale-spese.vercel.app/"),
+        ("Codice frontend", "https://github.com/fabiozagaria/expense-tracker-angular"),
+        ("Codice backend", "https://github.com/fabiozagaria/expense-tracker-api"),
+    ])
 
     segments(
         LEFT, y,
@@ -160,23 +185,12 @@ def build_cv() -> None:
     )
     y -= 12
     bullet(
-        "API per richieste di accesso software e decisioni dei manager. Login JWT e filtro personalizzato OncePerRequestFilter; ruoli, permessi e autorizzazioni con Spring Security e @PreAuthorize."
+        "API REST per richieste di accesso software: i dipendenti gestiscono le proprie richieste e i manager le approvano o le rifiutano. Autenticazione JWT e autorizzazioni con Spring Security."
     )
     bullet(
-        "Errori del filtro delegati a HandlerExceptionResolver; JPA/Hibernate, MapStruct, transazioni, locking ottimistico e Page/Pageable. Test e chiusura della consegna ancora da completare."
+        "Persistenza PostgreSQL con JPA/Hibernate, transazioni e locking ottimistico; DTO, validazione, paginazione e gestione centralizzata degli errori. Progetto autonomo in sviluppo."
     )
-    y -= 2
-
-    segments(
-        LEFT, y,
-        [("JobFlow - In sviluppo", "F2", BLUE),
-         (" | Java 21, Spring Boot, JPA/MySQL", "F3", MUTED)],
-        9.95,
-    )
-    y -= 12
-    bullet(
-        "Backend per job: dominio, creazione e lettura implementati, persistenza verificata manualmente. Worker, processor PDF ed esecuzione asincrona da completare."
-    )
+    project_links([("Codice AccessDesk", "https://github.com/fabiozagaria/accessdesk-api")])
 
     section("FORMAZIONE IT")
     segments(
@@ -190,8 +204,7 @@ def build_cv() -> None:
     )
     y -= 11
     paragraph(
-        "HTML, CSS, JavaScript, TypeScript, Angular, MySQL, Java, Java EE/Jakarta EE, Spring, Spring Boot e Git. "
-        "Percorso pratico su CRUD, API REST, SPA, database e sicurezza applicativa.",
+        "Percorso pratico su Java, Spring Boot, API REST, Angular, TypeScript e MySQL.",
         9.7,
         11.6,
     )
@@ -206,7 +219,7 @@ def build_cv() -> None:
     )
     y -= 11
     paragraph(
-        "Java 8, OOP, REST, SQL, Android, Clean Code e principi di architettura software.",
+        "Java 8, SQL e sviluppo Android.",
         9.7,
         11.6,
     )
@@ -250,6 +263,7 @@ def build_cv() -> None:
         raise RuntimeError(f"Il contenuto supera la pagina: y={y:.2f}")
 
     pdf.save()
+    print(f"CV generato: {OUTPUT_PATH}; margine inferiore del testo: {y:.1f} pt")
 
 
 if __name__ == "__main__":
