@@ -111,7 +111,8 @@
                         {{ repository.label }}
                       </a>
                     }
-                  </div>                @if (project.latestUpdate; as update) {
+                  </div>
+                }                @if (project.latestUpdate; as update) {
                   <section class="c-project-update" aria-label="Ultimo aggiornamento">
                     <p class="c-project-update__meta">
                       <strong>Ultimo aggiornamento</strong>
@@ -131,7 +132,6 @@
                   </section>
                 }
 
-                }
               </div>
             </article>
           }
@@ -186,7 +186,8 @@
                     >
                       {{ repository.label }}
                     </a>
-                  }                @if (entry.latestUpdate; as update) {
+                  }
+                </div>                @if (entry.latestUpdate; as update) {
                   <section class="c-project-update" aria-label="Ultimo aggiornamento">
                     <p class="c-project-update__meta">
                       <strong>Ultimo aggiornamento</strong>
@@ -206,7 +207,6 @@
                   </section>
                 }
 
-                </div>
               </div>
             </article>
           }
