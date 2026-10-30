@@ -35,13 +35,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Format template diagnostics
-        run: |
-          npx prettier --write src/app/features/about/about.component.html src/app/features/home/home.component.html src/app/features/projects/projects.component.html
-          cat src/app/features/about/about.component.html
-          cat src/app/features/home/home.component.html
-          cat src/app/features/projects/projects.component.html
-
       - name: Check formatting
         run: npm run format:check
 
