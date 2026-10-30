@@ -6,6 +6,19 @@ export interface PortfolioRepository {
   readonly url: string;
 }
 
+export interface PortfolioUpdateSource {
+  readonly label: string;
+  readonly url: string;
+}
+
+export interface PortfolioLatestUpdate {
+  readonly dateLabel: string;
+  readonly datetime: string;
+  readonly version?: string;
+  readonly summary: string;
+  readonly sources: readonly PortfolioUpdateSource[];
+}
+
 export interface PortfolioProject {
   readonly id: string;
   readonly title: string;
@@ -17,6 +30,7 @@ export interface PortfolioProject {
   readonly technologies: readonly string[];
   readonly status: ProjectStatus;
   readonly statusDetail: string;
+  readonly latestUpdate?: PortfolioLatestUpdate;
   readonly decision?: {
     readonly problem: string;
     readonly solution: string;
@@ -37,13 +51,14 @@ export const PROJECTS = [
     title: 'Expense Tracker',
     category: 'Full stack',
     icon: 'fas fa-wallet',
-    focus: 'Full stack · v1.0.0',
+    focus: 'Full stack · v1.0.1',
     description:
       'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
     highlights: [
       'Frontend Angular con Signals, Reactive Forms, ricerca, filtro mensile e liste paginate',
       'CRUD completo di spese ed entrate, dashboard e grafici con persistenza JPA/MySQL',
       'Registrazione online con verifica email tramite API Brevo HTTPS, JWT e refresh token HttpOnly',
+      'Cache Redis delle liste e della ricerca spese, separata per utente e invalidata dopo le scritture',
     ],
     technologies: [
       'Angular',
@@ -54,11 +69,29 @@ export const PROJECTS = [
       'Refresh token',
       'Spring Data JPA',
       'MySQL',
+      'Redis',
       'REST API',
     ],
     status: 'Concluso',
     statusDetail:
-      'Versione 1.0.0 conclusa il 25 ottobre 2026: CRUD spese ed entrate, dashboard, grafici, ricerca, filtro mensile, ordinamento e paginazione. Registrazione online con verifica email tramite Brevo HTTPS, autenticazione JWT e refresh token. Collaudo del deploy e regressioni degli ultimi ampliamenti restano da completare.',
+      'Versione 1.0.0 conclusa il 25 ottobre 2026; la 1.0.1 aggiunge la cache Redis per le liste e la ricerca delle spese e letture paginate nella dashboard. La cache Redis remota resta da configurare prima di attivarla nel deploy. Collaudo del deploy e regressioni degli ultimi ampliamenti restano da completare.',
+    latestUpdate: {
+      dateLabel: '30 ottobre 2026',
+      datetime: '2026-10-30',
+      version: '1.0.1',
+      summary:
+        'Aggiunta la cache Redis per gli elenchi e la ricerca delle spese; la dashboard usa letture paginate.',
+      sources: [
+        {
+          label: 'Frontend',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/8d22f0143fd86591c248085b6d71ca122e909de0',
+        },
+        {
+          label: 'Backend',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/507d4d8a998d2fa844472a08d608a254e7f473c8',
+        },
+      ],
+    },
     decision: {
       problem: 'Garantire che ogni utente possa accedere soltanto ai propri movimenti.',
       solution:
@@ -103,6 +136,18 @@ export const PROJECTS = [
     status: 'In sviluppo',
     statusDetail:
       'Creazione e persistenza verificate manualmente con Postman e MySQL. GET /jobs/{id} è implementato e da verificare a runtime; worker, esecuzione asincrona e generazione PDF restano da completare.',
+    latestUpdate: {
+      dateLabel: '6 ottobre 2026',
+      datetime: '2026-10-06',
+      summary:
+        'Aggiunto GET /jobs/{id} con risposta tipizzata e gestione dell’ID inesistente; la verifica runtime resta aperta.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/a8b2a9104274ff1f8d7f1b46ec2e61c4c42af487',
+        },
+      ],
+    },
     decision: {
       problem:
         'Salvare un nuovo job insieme al lavoro che descrive, mantenendo distinte le responsabilità.',
@@ -139,6 +184,22 @@ export const PROJECTS = [
     status: 'In sviluppo',
     statusDetail:
       'Prova autonoma ancora da completare. Login JWT, filtro e autorizzazioni sono presenti nel codice; PostgreSQL è il database predefinito, con MySQL alternativo. Restano verifiche del flusso JWT, test automatici e chiusura della consegna.',
+    latestUpdate: {
+      dateLabel: '25 ottobre 2026',
+      datetime: '2026-10-25',
+      summary:
+        'Implementato il login JWT Bearer HS256 con filtro personalizzato; PostgreSQL è diventato il database predefinito.',
+      sources: [
+        {
+          label: 'JWT',
+          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/c6984ef4f3e7cf8dc8bad072606026f0a259fd55',
+        },
+        {
+          label: 'PostgreSQL',
+          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/6a1fbdb692b22ef1a16e6114304ab7585555f90a',
+        },
+      ],
+    },
     decision: {
       problem:
         'Gestire gli errori del token nel filtro, prima che la richiesta raggiunga Spring MVC.',
@@ -166,6 +227,18 @@ export const PROJECTS = [
     status: 'Concluso',
     statusDetail:
       'Release frontend conclusa, realizzata durante il percorso LabForWeb: applicazione Angular che integra la TMDB API per catalogo e dettaglio.',
+    latestUpdate: {
+      dateLabel: '2 ottobre 2026',
+      datetime: '2026-10-02',
+      summary:
+        'Aggiunto un selettore accessibile per il tema chiaro e scuro, con preferenza salvata nel browser.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/labtv-angular/commit/ced103c01b7edf4cd4ae740e6b8a8a5608dddcff',
+        },
+      ],
+    },
     decision: {
       problem:
         'Integrare catalogo e dettagli TMDB senza distribuire le chiamate HTTP nei componenti.',
@@ -200,6 +273,18 @@ export const PROJECTS = [
     status: 'Demo frontend',
     statusDetail:
       'Progetto realizzato durante il percorso LabForWeb / Nerd Academy per consolidare DOM, eventi e rendering in JavaScript vanilla. Demo frontend in manutenzione; la demo online è attualmente non disponibile.',
+    latestUpdate: {
+      dateLabel: '2 ottobre 2026',
+      datetime: '2026-10-02',
+      summary:
+        'Aggiunto un selettore accessibile per il tema chiaro e scuro, con preferenza salvata nel browser.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/fakeflix-vanilla-js/commit/4a305ca7eba361f56d666dd5d79e0fb0b12bbb0a',
+        },
+      ],
+    },
     liveLink: 'https://fakeflix-lemon-six.vercel.app/',
     liveLabel: 'Demo non disponibile',
     repositories: [
