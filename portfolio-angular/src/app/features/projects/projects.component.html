@@ -113,6 +113,26 @@
                     }
                   </div>
                 }
+
+                @if (project.latestUpdate; as update) {
+                  <section class="c-project-update" aria-label="Ultimo aggiornamento">
+                    <p class="c-project-update__meta">
+                      <strong>Ultimo aggiornamento</strong>
+                      <time [attr.datetime]="update.datetime">{{ update.dateLabel }}</time>
+                      @if (update.version) {
+                        <span>v{{ update.version }}</span>
+                      }
+                    </p>
+                    <p class="c-project-update__summary">{{ update.summary }}</p>
+                    <div class="c-project-update__sources" aria-label="Fonti dell’aggiornamento">
+                      @for (source of update.sources; track source.url) {
+                        <a [href]="source.url" target="_blank" rel="noopener noreferrer">
+                          {{ source.label }}
+                        </a>
+                      }
+                    </div>
+                  </section>
+                }
               </div>
             </article>
           }
@@ -169,6 +189,26 @@
                     </a>
                   }
                 </div>
+
+                @if (entry.latestUpdate; as update) {
+                  <section class="c-project-update" aria-label="Ultimo aggiornamento">
+                    <p class="c-project-update__meta">
+                      <strong>Ultimo aggiornamento</strong>
+                      <time [attr.datetime]="update.datetime">{{ update.dateLabel }}</time>
+                      @if (update.version) {
+                        <span>v{{ update.version }}</span>
+                      }
+                    </p>
+                    <p class="c-project-update__summary">{{ update.summary }}</p>
+                    <div class="c-project-update__sources" aria-label="Fonti dell’aggiornamento">
+                      @for (source of update.sources; track source.url) {
+                        <a [href]="source.url" target="_blank" rel="noopener noreferrer">
+                          {{ source.label }}
+                        </a>
+                      }
+                    </div>
+                  </section>
+                }
               </div>
             </article>
           }

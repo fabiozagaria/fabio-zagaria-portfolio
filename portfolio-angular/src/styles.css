@@ -548,6 +548,39 @@ main:focus {
   min-height: 44px;
   font-weight: 600;
 }
+.c-project-update {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--clr-black-lighter);
+  color: var(--clr-white-subtle);
+  font-size: var(--fs-300);
+}
+.c-project-update__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  align-items: baseline;
+  margin: 0;
+}
+.c-project-update__meta strong {
+  color: var(--clr-white);
+}
+.c-project-update__summary {
+  margin: 0;
+}
+.c-project-update__sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+.c-project-update__sources a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  font-weight: 600;
+}
 .c-projects__github-cta {
   display: grid;
   justify-items: start;

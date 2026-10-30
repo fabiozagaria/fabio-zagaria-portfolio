@@ -1,4 +1,4 @@
-import type { PortfolioRepository } from './projects.data';
+import type { PortfolioLatestUpdate, PortfolioRepository } from './projects.data';
 
 export interface PortfolioCollectionItem {
   readonly id: string;
@@ -6,6 +6,7 @@ export interface PortfolioCollectionItem {
   readonly description: string;
   readonly technologies: readonly string[];
   readonly note?: string;
+  readonly latestUpdate?: PortfolioLatestUpdate;
   readonly liveLink?: string;
   readonly repositories: readonly PortfolioRepository[];
 }
@@ -35,6 +36,18 @@ export const EXPERIMENTAL_PROJECTS = [
   {
     id: 'studyflow-android',
     title: 'StudyFlow Android',
+    latestUpdate: {
+      dateLabel: '10 ottobre 2026',
+      datetime: '2026-10-10',
+      summary:
+        'Aggiunta la sezione Studio offline Java/Spring con 67 argomenti, 268 quiz e tentativi salvati con Room.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/study-flow-android/commit/823bc3331c1a3a86e70e4d546ca9b2e03fb5bd2a',
+        },
+      ],
+    },
     description:
       'Applicazione Android per pianificare lo studio, gestire sessioni Pomodoro e organizzare il ripasso con dati locali.',
     technologies: ['Android', 'Java', 'Kotlin', 'XML', 'Jetpack Compose', 'Room/SQLite'],
@@ -46,6 +59,18 @@ export const EXPERIMENTAL_PROJECTS = [
   {
     id: 'transport-tickets',
     title: 'Transport Tickets',
+    latestUpdate: {
+      dateLabel: '25 ottobre 2026',
+      datetime: '2026-10-25',
+      summary:
+        'Integrato in main il backend Spring Boot/JPA con Flyway, sessioni e CSRF, Redis opzionale e transazioni con lock.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/transport-tickets/commit/e74e8c2eed01216534912c8a4b56a7216fc168d8',
+        },
+      ],
+    },
     description:
       'Backend per gestire trasporti, assegnazioni e storico. Spring Boot con autenticazione a sessione, ruoli e CSRF; persistenza JPA/MySQL e cache Redis opzionale.',
     technologies: [

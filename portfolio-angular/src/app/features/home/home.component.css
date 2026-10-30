@@ -136,6 +136,9 @@
 .c-proof__card p {
   color: var(--clr-white-subtle);
 }
+.c-proof__card .c-project-update {
+  grid-column: 1 / -1;
+}
 .c-proof__card > a {
   min-height: 44px;
   display: inline-flex;
