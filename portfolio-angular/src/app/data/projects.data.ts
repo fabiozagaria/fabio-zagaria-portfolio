@@ -51,7 +51,7 @@ export const PROJECTS = [
     title: 'Expense Tracker',
     category: 'Full stack',
     icon: 'fas fa-wallet',
-    focus: 'Full stack · v1.0.1',
+    focus: 'Full stack · frontend 1.0.2 · backend 1.0.1',
     description:
       'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
     highlights: [
@@ -74,17 +74,17 @@ export const PROJECTS = [
     ],
     status: 'Concluso',
     statusDetail:
-      'Versione 1.0.0 conclusa il 25 ottobre 2026; la 1.0.1 aggiunge la cache Redis per le liste e la ricerca delle spese e letture paginate nella dashboard. La cache Redis remota resta da configurare prima di attivarla nel deploy. Collaudo del deploy e regressioni degli ultimi ampliamenti restano da completare.',
+      'Versione 1.0.0 conclusa il 25 ottobre 2026; il backend 1.0.1 aggiunge la cache Redis per le liste e la ricerca delle spese. Il frontend 1.0.2 include letture paginate nella dashboard, controllo mostra/nascondi password e correzioni del tema scuro. La cache Redis remota resta da configurare prima di attivarla nel deploy. Collaudo del deploy e regressioni degli ultimi ampliamenti restano da completare.',
     latestUpdate: {
       dateLabel: '30 ottobre 2026',
       datetime: '2026-10-30',
-      version: '1.0.1',
+      version: 'Frontend 1.0.2 · Backend 1.0.1',
       summary:
-        'Aggiunta la cache Redis per gli elenchi e la ricerca delle spese; la dashboard usa letture paginate.',
+        'Backend 1.0.1: cache Redis delle spese. Frontend 1.0.2: dashboard con letture paginate, controllo mostra/nascondi password e correzioni del tema scuro.',
       sources: [
         {
           label: 'Frontend',
-          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/8d22f0143fd86591c248085b6d71ca122e909de0',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/b02566352384cccb32c698328fe12e9a48bf1bef',
         },
         {
           label: 'Backend',
