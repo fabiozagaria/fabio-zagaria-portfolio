@@ -90,7 +90,7 @@ export const PROJECTS = [
       datetime: '2026-10-31',
       version: 'frontend 1.0.2 · API 1.0.2',
       summary:
-        'API 1.0.2: mapping MapStruct di request, entity e response. Frontend 1.0.2: dashboard con letture paginate, controllo mostra/nascondi password e correzioni del tema scuro.',
+        'API 1.0.2: introdotti mapper MapStruct per spese ed entrate. Frontend 1.0.2: migliorato il tema scuro nei campi di registrazione.',
       sources: [
         {
           label: 'Frontend',
@@ -98,7 +98,7 @@ export const PROJECTS = [
         },
         {
           label: 'Backend',
-          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/bc04ed326a90a5549bcefe4aefa83e07cb5d8c86',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/d22fc6fc19a4e3d9b57dcd308a4059939da3cddd',
         },
       ],
     },
