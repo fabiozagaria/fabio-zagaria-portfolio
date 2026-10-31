@@ -84,7 +84,7 @@ export const PROJECTS = [
     ],
     status: 'Concluso',
     statusDetail:
-      Versione 1.0.0 conclusa il 25 ottobre 2026; l’API 1.0.2 introduce il mapping MapStruct per spese ed entrate. Il frontend 1.0.2 include letture paginate nella dashboard, controllo mostra/nascondi password e correzioni del tema scuro. La cache Redis remota resta da configurare prima di attivarla nel deploy. Collaudo del deploy e regressioni degli ultimi ampliamenti restano da completare.',
+      'Versione 1.0.0 conclusa il 25 ottobre 2026; l’API 1.0.2 introduce il mapping MapStruct per spese ed entrate. Il frontend 1.0.2 include letture paginate nella dashboard, controllo mostra/nascondi password e correzioni del tema scuro. La cache Redis remota resta da configurare prima di attivarla nel deploy. Collaudo del deploy e regressioni degli ultimi ampliamenti restano da completare.',
     latestUpdate: {
       dateLabel: '31 ottobre 2026',
       datetime: '2026-10-31',
