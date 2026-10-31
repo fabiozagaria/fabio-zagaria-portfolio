@@ -11,6 +11,11 @@ export interface PortfolioUpdateSource {
   readonly url: string;
 }
 
+export interface PortfolioVersionTag {
+  readonly label: string;
+  readonly tag: string;
+}
+
 export interface PortfolioLatestUpdate {
   readonly dateLabel: string;
   readonly datetime: string;
@@ -31,6 +36,7 @@ export interface PortfolioProject {
   readonly status: ProjectStatus;
   readonly statusDetail: string;
   readonly latestUpdate?: PortfolioLatestUpdate;
+  readonly versionTags?: readonly PortfolioVersionTag[];
   readonly decision?: {
     readonly problem: string;
     readonly solution: string;
@@ -51,7 +57,11 @@ export const PROJECTS = [
     title: 'Expense Tracker',
     category: 'Full stack',
     icon: 'fas fa-wallet',
-    focus: 'Full stack · frontend 1.0.2 · backend 1.0.1',
+    focus: 'Full stack · frontend v1.0.2 · API v1.0.2',
+    versionTags: [
+      { label: 'Frontend', tag: 'v1.0.2' },
+      { label: 'API', tag: 'v1.0.2' },
+    ],
     description:
       'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
     highlights: [
@@ -74,13 +84,13 @@ export const PROJECTS = [
     ],
     status: 'Concluso',
     statusDetail:
-      'Versione 1.0.0 conclusa il 25 ottobre 2026; il backend 1.0.1 aggiunge la cache Redis per le liste e la ricerca delle spese. Il frontend 1.0.2 include letture paginate nella dashboard, controllo mostra/nascondi password e correzioni del tema scuro. La cache Redis remota resta da configurare prima di attivarla nel deploy. Collaudo del deploy e regressioni degli ultimi ampliamenti restano da completare.',
+      Versione 1.0.0 conclusa il 25 ottobre 2026; l’API 1.0.2 introduce il mapping MapStruct per spese ed entrate. Il frontend 1.0.2 include letture paginate nella dashboard, controllo mostra/nascondi password e correzioni del tema scuro. La cache Redis remota resta da configurare prima di attivarla nel deploy. Collaudo del deploy e regressioni degli ultimi ampliamenti restano da completare.',
     latestUpdate: {
-      dateLabel: '30 ottobre 2026',
-      datetime: '2026-10-30',
-      version: '1.0.2 frontend · 1.0.1 backend',
+      dateLabel: '31 ottobre 2026',
+      datetime: '2026-10-31',
+      version: 'frontend 1.0.2 · API 1.0.2',
       summary:
-        'Backend 1.0.1: cache Redis delle spese. Frontend 1.0.2: dashboard con letture paginate, controllo mostra/nascondi password e correzioni del tema scuro.',
+        'API 1.0.2: mapping MapStruct di request, entity e response. Frontend 1.0.2: dashboard con letture paginate, controllo mostra/nascondi password e correzioni del tema scuro.',
       sources: [
         {
           label: 'Frontend',
@@ -88,7 +98,7 @@ export const PROJECTS = [
         },
         {
           label: 'Backend',
-          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/507d4d8a998d2fa844472a08d608a254e7f473c8',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/bc04ed326a90a5549bcefe4aefa83e07cb5d8c86',
         },
       ],
     },
@@ -118,6 +128,7 @@ export const PROJECTS = [
     category: 'Backend',
     icon: 'fas fa-diagram-project',
     focus: 'Backend · API e persistenza dei job',
+    versionTags: [{ label: 'Tag', tag: 'v0.1.0-alpha.1' }],
     description:
       'Backend per creare e consultare job tramite API REST, con validazione e persistenza JPA su MySQL. Il lavoro associato descrive una futura generazione di PDF.',
     highlights: [
@@ -137,14 +148,15 @@ export const PROJECTS = [
     statusDetail:
       'Creazione e persistenza verificate manualmente con Postman e MySQL. GET /jobs/{id} è implementato e da verificare a runtime; worker, esecuzione asincrona e generazione PDF restano da completare.',
     latestUpdate: {
-      dateLabel: '6 ottobre 2026',
-      datetime: '2026-10-06',
+      dateLabel: '31 ottobre 2026',
+      datetime: '2026-10-31',
+      version: '0.1.0-alpha.1',
       summary:
-        'Aggiunto GET /jobs/{id} con risposta tipizzata e gestione dell’ID inesistente; la verifica runtime resta aperta.',
+        'Prima prerelease del backend: creazione e persistenza dei job sono presenti; worker, esecuzione asincrona e generazione PDF restano da completare.',
       sources: [
         {
           label: 'Commit',
-          url: 'https://github.com/fabiozagaria/job-flow/commit/a8b2a9104274ff1f8d7f1b46ec2e61c4c42af487',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/a58c3622a2cc74e0d787736a05e4915825a8ea22',
         },
       ],
     },
@@ -163,6 +175,7 @@ export const PROJECTS = [
     category: 'Backend',
     icon: 'fas fa-user-shield',
     focus: 'Backend · sicurezza e autorizzazione',
+    versionTags: [{ label: 'Tag', tag: 'v0.1.0-alpha.1' }],
     description:
       'API REST per richieste di accesso software: i dipendenti creano e consultano le proprie richieste, i manager le approvano o le rifiutano. PostgreSQL è il database predefinito; MySQL è disponibile come alternativa configurabile.',
     highlights: [
@@ -185,10 +198,11 @@ export const PROJECTS = [
     statusDetail:
       'Prova autonoma ancora da completare. Login JWT, filtro e autorizzazioni sono presenti nel codice; PostgreSQL è il database predefinito, con MySQL alternativo. Restano verifiche del flusso JWT, test automatici e chiusura della consegna.',
     latestUpdate: {
-      dateLabel: '25 ottobre 2026',
-      datetime: '2026-10-25',
+      dateLabel: '31 ottobre 2026',
+      datetime: '2026-10-31',
+      version: '0.1.0-alpha.1',
       summary:
-        'Implementato il login JWT Bearer HS256 con filtro personalizzato; PostgreSQL è diventato il database predefinito.',
+        'Prima prerelease: JWT Bearer, autorizzazioni e PostgreSQL predefinito sono documentati; verifiche del flusso JWT e chiusura della consegna restano aperte.',
       sources: [
         {
           label: 'JWT',
@@ -196,7 +210,7 @@ export const PROJECTS = [
         },
         {
           label: 'PostgreSQL',
-          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/6a1fbdb692b22ef1a16e6114304ab7585555f90a',
+          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/a4609198c9b74695a11f7d2f0d88651c8f3ced79',
         },
       ],
     },

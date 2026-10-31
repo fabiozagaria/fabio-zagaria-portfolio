@@ -25,6 +25,16 @@
                 </div>
 
                 <p class="c-card__focus">{{ project.focus }}</p>
+                @if (project.versionTags?.length) {
+                  <div class="c-project-versions" aria-label="Tag di versione">
+                    @for (version of project.versionTags ?? []; track version.label) {
+                      <span class="c-project-version">
+                        <span class="c-project-version__label">{{ version.label }}</span>
+                        <code class="c-project-version__tag">{{ version.tag }}</code>
+                      </span>
+                    }
+                  </div>
+                }
                 <p class="c-card__description">{{ project.description }}</p>
 
                 @if (group.category !== 'Frontend') {

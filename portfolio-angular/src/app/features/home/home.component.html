@@ -23,6 +23,16 @@
       <h2 id="backend-map-title">{{ mainProject.title }}</h2>
       <p class="c-featured__description">{{ mainProject.description }}</p>
       <p class="c-featured__status">Progetto in primo piano · {{ mainProject.focus }}.</p>
+      @if (mainProject.versionTags?.length) {
+        <div class="c-project-versions" aria-label="Tag di versione">
+          @for (version of mainProject.versionTags ?? []; track version.label) {
+            <span class="c-project-version">
+              <span class="c-project-version__label">{{ version.label }}</span>
+              <code class="c-project-version__tag">{{ version.tag }}</code>
+            </span>
+          }
+        </div>
+      }
       <a routerLink="/projects" [fragment]="mainProject.id" class="c-backend-map__link"
         >Esamina scelte e codice</a
       >
@@ -86,6 +96,16 @@
             <h3>{{ project.title }}</h3>
             <span class="c-proof__status">{{ project.status }}</span>
           </div>
+          @if (project.versionTags?.length) {
+        <div class="c-project-versions" aria-label="Tag di versione">
+          @for (version of project.versionTags ?? []; track version.label) {
+            <span class="c-project-version">
+              <span class="c-project-version__label">{{ version.label }}</span>
+              <code class="c-project-version__tag">{{ version.tag }}</code>
+            </span>
+          }
+        </div>
+      }
           <p>{{ project.description }}</p>
           <a routerLink="/projects" [fragment]="project.id"
             >Dettagli e codice di {{ project.title }}</a

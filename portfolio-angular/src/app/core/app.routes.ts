@@ -1,4 +1,14 @@
 import { Routes } from '@angular/router';
+import { PROJECTS } from '../data/projects.data';
+
+const projectVersionSummary = PROJECTS.filter((project) =>
+  ['gestionale-spese', 'jobflow', 'accessdesk'].includes(project.id),
+)
+  .map(
+    (project) =>
+      `${project.title} ${project.versionTags?.map((version) => version.tag).join(' / ') ?? ''}`,
+  )
+  .join(' · ');
 
 export const routes: Routes = [
   {
@@ -46,7 +56,7 @@ export const routes: Routes = [
       seo: {
         path: '/projects',
         description:
-          'Expense Tracker, JobFlow e Access Desk: progetti full stack e backend di Fabio Zagaria con Angular, Spring Boot, JWT, MySQL, PostgreSQL e codice su GitHub.',
+          `Expense Tracker, JobFlow e Access Desk (${projectVersionSummary}): progetti full stack e backend di Fabio Zagaria con Angular, Spring Boot, JWT e database SQL.`
       },
     },
     loadComponent: () =>
