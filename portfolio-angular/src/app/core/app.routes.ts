@@ -6,7 +6,7 @@ const projectVersionSummary = PROJECTS.filter((project) =>
 )
   .map(
     (project) =>
-      `${project.title} ${project.versionTags?.map((version) => version.tag).join(' / ') ?? ''}`,
+      `${project.title} ${'versionTags' in project ? project.versionTags.map((version) => version.tag).join(' / ') : ''}`,
   )
   .join(' · ');
 
