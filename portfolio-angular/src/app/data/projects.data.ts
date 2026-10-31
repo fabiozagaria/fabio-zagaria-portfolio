@@ -78,7 +78,7 @@ export const PROJECTS = [
     latestUpdate: {
       dateLabel: '30 ottobre 2026',
       datetime: '2026-10-30',
-      version: 'Frontend 1.0.2 · Backend 1.0.1',
+      version: '1.0.2 frontend · 1.0.1 backend',
       summary:
         'Backend 1.0.1: cache Redis delle spese. Frontend 1.0.2: dashboard con letture paginate, controllo mostra/nascondi password e correzioni del tema scuro.',
       sources: [
