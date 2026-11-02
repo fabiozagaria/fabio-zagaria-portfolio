@@ -1218,3 +1218,16 @@ button,
 .c-flow__step[data-pending='true'] span {
   color: var(--clr-white-subtle);
 }
+.c-footer__note {
+  max-width: 70ch;
+  margin-top: 0.5rem;
+  color: #b9c8e8;
+  font-size: var(--fs-300);
+  line-height: 1.5;
+}
+.c-footer__note a {
+  color: #eef3fc;
+  text-decoration: underline;
+  text-decoration-color: var(--mark);
+  text-underline-offset: 0.3em;
+}
