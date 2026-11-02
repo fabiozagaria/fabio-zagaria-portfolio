@@ -2,41 +2,146 @@
   display: block;
 }
 .c-hero {
-  padding-bottom: 4rem;
+  --sheet: #17306b;
+  --line: rgb(220 230 250 / 0.18);
+  --ink: #eef3fc;
+  --soft: #b9c8e8;
+  --mark: #f5b642;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 100% 2.5rem,
+    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 2.5rem 100%,
+    var(--sheet);
+  color: var(--ink);
+}
+:root[data-theme='dark'] .c-hero {
+  --sheet: #0f2150;
+}
+.c-hero.o-section {
+  padding-block: calc(var(--header-height) + clamp(2rem, 5vw, 3.5rem)) clamp(2.5rem, 5vw, 4rem);
+}
+.c-hero__name {
+  width: fit-content;
+  max-width: 100%;
+}
+.c-hero__sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
 }
 .c-hero__title {
-  margin-bottom: 2rem;
-  font-size: var(--fs-900);
-  line-height: 1.04;
-  letter-spacing: -0.04em;
+  display: grid;
+  margin: 0;
+  color: var(--ink);
+  font:
+    800 clamp(4.5rem, 15vw, 12rem) / 0.86 'Bricolage Grotesque',
+    var(--ff-primary);
+  font-stretch: 75%;
+  letter-spacing: -0.035em;
+}
+.c-hero__dimension {
+  display: flex;
+  align-items: center;
+  margin: 1.25rem 0 1.75rem;
+  color: var(--mark);
+  font-size: var(--fs-300);
+  font-weight: 500;
+  transform-origin: left;
+}
+.c-hero__dimension::before,
+.c-hero__dimension::after {
+  content: '';
+  flex: 1;
+  height: 0.9rem;
+  border: 1px solid var(--mark);
+  border-block-start: 0;
+}
+.c-hero__dimension::before {
+  margin-inline-end: 0.75rem;
+}
+.c-hero__dimension::after {
+  margin-inline-start: 0.75rem;
+}
+.c-hero__dimension span {
+  text-align: center;
 }
 .c-hero__role {
-  font: 400 var(--fs-600)/1.3 var(--ff-primary);
-  color: var(--clr-cyber-green);
+  margin: 0;
+  max-width: 24ch;
+  font: 400 var(--fs-600) / 1.25 var(--ff-primary);
 }
-.c-hero__intro {
+.c-hero__side {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: 3rem;
-  align-items: end;
-  margin-top: 2rem;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--soft);
+  background: rgb(15 33 80 / 0.72);
 }
 .c-hero__description {
-  max-width: 48ch;
-  color: var(--clr-white-subtle);
+  max-width: 44ch;
+  margin: 0;
+}
+.c-hero__facts {
+  margin: 0;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-300);
+}
+.c-hero__facts > div {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 0.65rem;
+  border-bottom: 1px solid var(--line);
+}
+.c-hero__facts dt {
+  color: var(--soft);
+}
+.c-hero__facts dd {
+  margin: 0;
 }
 .c-hero__actions {
   display: flex;
   align-items: center;
-  justify-content: end;
   gap: 1.5rem;
   flex-wrap: wrap;
+}
+.c-hero .c-btn--primary,
+.c-hero .c-btn--primary:hover,
+.c-hero .c-btn--primary:focus-visible {
+  border-color: var(--mark);
+  background: var(--mark);
+  color: #1a1405;
+}
+.c-hero .c-btn--primary:hover {
+  filter: brightness(1.12);
 }
 .c-hero__cv {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
-  color: var(--clr-white);
+  color: var(--ink);
+  text-decoration-color: var(--mark);
+  text-underline-offset: 0.25em;
+}
+.c-hero a:focus-visible {
+  outline: 2px solid var(--mark);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .c-hero__dimension {
+    animation: draw-dimension 900ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both;
+  }
+  @keyframes draw-dimension {
+    from {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+  }
+}
+@media (max-width: 860px) {
+  .c-hero__sheet {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .c-featured {
   background: var(--clr-black-soft);
@@ -181,7 +286,6 @@
   flex-wrap: wrap;
 }
 @media (max-width: 60em) {
-  .c-hero__intro,
   .c-featured__layout,
   .c-proof__header,
   .c-resume__layout {
@@ -195,19 +299,14 @@
   }
 }
 @media (max-width: 48em) {
-  .c-hero__intro,
   .c-featured__layout,
   .c-proof__header,
   .c-proof__card,
   .c-resume__layout {
     grid-template-columns: 1fr;
   }
-  .c-hero__actions,
   .c-resume__actions {
     justify-content: start;
-  }
-  .c-hero__title {
-    max-width: 9ch;
   }
   .c-proof__card {
     gap: 1rem;
