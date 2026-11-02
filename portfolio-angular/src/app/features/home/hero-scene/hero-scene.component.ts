@@ -14,6 +14,20 @@ const SLAB_Y = [1.5, 0.5, -0.5, -1.5];
 const SLAB_SIZE = 2.8;
 const MODEL_HEIGHT_UNITS = 5.1; // slabs, footprint and the request path, in world units
 const ISO_VERTICAL = 0.87; // cos of the camera elevation: world Y to screen Y
+
+/** The scene is a desktop enhancement: skip it on small screens and on devices that would struggle. */
+function canRenderScene(): boolean {
+  const nav = navigator as Navigator & {
+    deviceMemory?: number;
+    connection?: { saveData?: boolean };
+  };
+  return (
+    matchMedia('(min-width: 861px)').matches &&
+    !nav.connection?.saveData &&
+    (nav.deviceMemory ?? 8) >= 4 &&
+    (nav.hardwareConcurrency ?? 8) >= 4
+  );
+}
 const CYCLE_SECONDS = 5.2;
 
 /**
@@ -50,7 +64,7 @@ export class HeroSceneComponent {
 
   constructor() {
     afterNextRender(() => {
-      if (typeof WebGLRenderingContext === 'undefined') return;
+      if (typeof WebGLRenderingContext === 'undefined' || !canRenderScene()) return;
       const start = (): void => void this.mount();
       if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 1500 });
       else setTimeout(start, 300);
@@ -138,7 +152,7 @@ export class HeroSceneComponent {
     const labelItems = Array.from(this.labels().nativeElement.children) as HTMLElement[];
     const placement = { centerX: 0, pixelsPerUnit: 1, width: 0, height: 0, labels: false };
 
-    /** Fits the model into the free area above the info panel (or the whole box on mobile). */
+    /** Fits the model into the free area above the info panel. */
     const resize = (): void => {
       const hostBox = this.host.nativeElement.getBoundingClientRect();
       const { width, height } = hostBox;
@@ -147,12 +161,9 @@ export class HeroSceneComponent {
 
       const panel = document.querySelector<HTMLElement>('.c-hero__side');
       const nav = document.querySelector<HTMLElement>('.c-nav');
-      const stacked = matchMedia('(max-width: 860px)').matches;
-      const freeTop = stacked
-        ? 0
-        : Math.max(0, (nav?.getBoundingClientRect().bottom ?? 0) - hostBox.top);
+      const freeTop = Math.max(0, (nav?.getBoundingClientRect().bottom ?? 0) - hostBox.top);
       const panelTop = panel ? panel.getBoundingClientRect().top - hostBox.top : height;
-      const freeBottom = stacked ? height : Math.min(height, panelTop - 36);
+      const freeBottom = Math.min(height, panelTop - 36);
       const freeHeight = Math.max(120, freeBottom - freeTop);
 
       const pixelsPerUnit = Math.min(60, freeHeight / MODEL_HEIGHT_UNITS);
@@ -170,7 +181,7 @@ export class HeroSceneComponent {
       placement.pixelsPerUnit = pixelsPerUnit;
       placement.width = width;
       placement.height = height;
-      placement.labels = !stacked && width > 480;
+      placement.labels = width > 480;
     };
 
     const projected = new THREE.Vector3();

@@ -230,9 +230,9 @@
       animation-timeline: view();
       animation-range: entry 0px entry 300px;
     }
+    /* Movement only: content is never hidden, so crawlers, print and full-page captures see it. */
     @keyframes reveal-lift {
       from {
-        opacity: 0;
         transform: translateY(28px);
       }
     }
@@ -252,7 +252,7 @@
     }
     @keyframes reveal-wipe {
       from {
-        clip-path: inset(100% 0 0 0);
+        clip-path: inset(35% 0 0 0);
       }
       to {
         clip-path: inset(0);

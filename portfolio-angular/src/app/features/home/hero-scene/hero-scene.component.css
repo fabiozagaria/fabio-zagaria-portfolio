@@ -56,14 +56,8 @@ canvas.is-ready {
     display: none;
   }
 }
-/* Stacked layout: the scene becomes a band above the name. */
 @media (max-width: 860px) {
   :host {
-    position: relative;
-    inset: auto;
-    display: block;
-    width: auto;
-    height: 12.5rem;
-    margin: 0 var(--container-padding) 1.5rem;
+    display: none;
   }
 }
