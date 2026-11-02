@@ -157,7 +157,7 @@ img {
   outline-offset: 5px;
 }
 main {
-  min-height: calc(100svh - var(--header-height));
+  min-height: 100svh;
 }
 main:focus {
   outline: none;

@@ -130,7 +130,7 @@
                 }
 
                 @if (project.latestUpdate; as update) {
-                  <section class="c-project-update" aria-label="Ultimo aggiornamento">
+                  <div class="c-project-update" role="group" aria-label="Ultimo aggiornamento">
                     <p class="c-project-update__meta">
                       <strong>Ultimo aggiornamento</strong>
                       <time [attr.datetime]="update.datetime">{{ update.dateLabel }}</time>
@@ -146,7 +146,7 @@
                         </a>
                       }
                     </div>
-                  </section>
+                  </div>
                 }
 
                 @let entries = history(project.id);
@@ -215,7 +215,9 @@
                       target="_blank"
                       rel="noopener noreferrer"
                       class="c-card__action"
-                      [attr.aria-label]="'Apri la demo di ' + entry.title + ' in una nuova scheda'"
+                      [attr.aria-label]="
+                        'Demo online di ' + entry.title + ' (apre una nuova scheda)'
+                      "
                     >
                       Demo online
                     </a>
@@ -240,7 +242,7 @@
                 </div>
 
                 @if (entry.latestUpdate; as update) {
-                  <section class="c-project-update" aria-label="Ultimo aggiornamento">
+                  <div class="c-project-update" role="group" aria-label="Ultimo aggiornamento">
                     <p class="c-project-update__meta">
                       <strong>Ultimo aggiornamento</strong>
                       <time [attr.datetime]="update.datetime">{{ update.dateLabel }}</time>
@@ -256,7 +258,7 @@
                         </a>
                       }
                     </div>
-                  </section>
+                  </div>
                 }
               </div>
             </article>
@@ -271,7 +273,7 @@
         target="_blank"
         rel="noopener noreferrer"
         class="c-btn c-btn--secondary c-projects__github-link"
-        aria-label="Apri tutti i repository GitHub di Fabio Zagaria in una nuova scheda"
+        aria-label="Tutti i repository su GitHub (apre una nuova scheda)"
       >
         Tutti i repository su GitHub
       </a>
