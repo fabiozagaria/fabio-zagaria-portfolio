@@ -137,3 +137,136 @@
     }
   }
 }
+
+/* ---- Route sections: drawn rules, plotted headings and scroll reveals ---- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Page titles rise from a mask; their dimension line is drawn right after. */
+  .c-section-title {
+    animation: title-rise 850ms cubic-bezier(0.19, 1, 0.22, 1) backwards;
+  }
+  .c-section-title::after {
+    transform-origin: left;
+    animation: hero-grow 900ms cubic-bezier(0.19, 1, 0.22, 1) 280ms backwards;
+  }
+  @keyframes title-rise {
+    from {
+      transform: translateY(0.6em);
+      clip-path: inset(0 -1rem 100% -1rem);
+    }
+    to {
+      clip-path: inset(-0.25em -1rem -2.5rem -1rem);
+    }
+  }
+
+  /* Touch-free hover details. */
+  @media (hover: hover) and (pointer: fine) {
+    .c-card,
+    .c-proof__card,
+    .c-contact__document {
+      transition: translate 220ms ease-out;
+    }
+    .c-card:hover,
+    .c-proof__card:hover,
+    .c-contact__document:hover {
+      translate: 0 -3px;
+    }
+    .c-contact__item a,
+    .c-card__action {
+      background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+      transition: background-size 260ms cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .c-contact__item a:hover,
+    .c-card__action:hover {
+      background-size: 100% 1px;
+      text-decoration: none;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    /* Text blocks lift in as they enter the viewport. */
+    .c-about__text-block,
+    .c-about__stat-item,
+    .c-experience__content > .c-experience__item,
+    .c-contact__info > *,
+    .c-contact__item,
+    .c-contact__documents h3,
+    .c-projects__group-title,
+    .c-featured__overview,
+    .c-backend-map,
+    .c-proof__header,
+    .c-resume__layout,
+    .c-projects__github-cta {
+      animation: reveal-lift linear both;
+      animation-timeline: view();
+      animation-range: entry 0px entry 200px;
+    }
+    /* Cards: the whole card lifts, and its top rule is plotted in amber. */
+    .c-card,
+    .c-proof__card,
+    .c-experience__current,
+    .c-contact__document {
+      animation: reveal-lift linear both;
+      animation-timeline: view();
+      animation-range: entry 0px entry 240px;
+    }
+    .c-card::before,
+    .c-proof__card::before,
+    .c-experience__current::before,
+    .c-contact__document::before {
+      animation: plot-rule linear both;
+      animation-timeline: view();
+      animation-range: entry 0px entry 300px;
+    }
+    /* Timeline items draw their hairline from the left. */
+    .c-experience__content > .c-experience__item::before,
+    .c-experience__content > .c-experience__item::after {
+      animation: plot-line linear both;
+      animation-timeline: view();
+      animation-range: entry 0px entry 240px;
+    }
+    /* The portrait is uncovered from the bottom edge up. */
+    .c-about__portrait-img {
+      animation: reveal-wipe linear both;
+      animation-timeline: view();
+      animation-range: entry 0px entry 300px;
+    }
+    @keyframes reveal-lift {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+    }
+    @keyframes plot-rule {
+      from {
+        transform: scaleX(0);
+        background: var(--mark);
+      }
+      60% {
+        background: var(--mark);
+      }
+    }
+    @keyframes plot-line {
+      from {
+        transform: scaleX(0);
+      }
+    }
+    @keyframes reveal-wipe {
+      from {
+        clip-path: inset(100% 0 0 0);
+      }
+      to {
+        clip-path: inset(0);
+      }
+    }
+  }
+}
+
+/* Printing and "save as PDF" never scroll, so nothing may wait for a reveal. */
+@media print {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

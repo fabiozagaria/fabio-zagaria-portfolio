@@ -1026,3 +1026,46 @@ button,
 .c-btn {
   touch-action: manipulation;
 }
+
+/* Base for the drawn rules used by the scroll reveals (see motion.css). */
+.c-card,
+.c-proof__card,
+.c-experience__current,
+.c-contact__document {
+  position: relative;
+}
+.c-card::before,
+.c-proof__card::before,
+.c-experience__current::before,
+.c-contact__document::before {
+  content: '';
+  position: absolute;
+  inset: -3px -1px auto;
+  height: 3px;
+  background: var(--clr-cyber-green);
+  transform-origin: left;
+  pointer-events: none;
+}
+.c-experience__content > .c-experience__item {
+  position: relative;
+  padding-top: 1.5rem;
+}
+.c-experience__content > .c-experience__item::before,
+.c-experience__content > .c-experience__item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: left;
+}
+.c-experience__content > .c-experience__item::before {
+  right: 0;
+  height: 1px;
+  background: var(--clr-black-lightest);
+}
+.c-experience__content > .c-experience__item::after {
+  width: 3rem;
+  height: 3px;
+  margin-top: -1px;
+  background: var(--clr-cyber-green);
+}
