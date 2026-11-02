@@ -14,7 +14,7 @@ Le categorie seguono le scelte del proprietario. La presenza di una tecnologia, 
 4. Sperimentale con AI
 5. Esercizi
 
-I tre progetti principali restano, nell’ordine: **Expense Tracker**, **JobFlow**, **Access Desk**.
+I tre progetti principali restano, nell’ordine: **Expense Tracker**, **JobFlow**, **AccessDesk**.
 
 ## Full Stack
 
@@ -29,7 +29,7 @@ Expense Tracker ha una sola scheda, con collegamenti distinti a frontend e backe
 | Progetto    | Repository                                                       |
 | ----------- | ---------------------------------------------------------------- |
 | JobFlow     | [job-flow](https://github.com/fabiozagaria/job-flow)             |
-| Access Desk | [accessdesk-api](https://github.com/fabiozagaria/accessdesk-api) |
+| AccessDesk | [accessdesk-api](https://github.com/fabiozagaria/accessdesk-api) |
 
 ## Progetti Frontend del Corso
 

@@ -55,7 +55,7 @@ export const routes: Routes = [
     data: {
       seo: {
         path: '/projects',
-        description: `Expense Tracker, JobFlow e Access Desk (${projectVersionSummary}): progetti full stack e backend di Fabio Zagaria con Angular, Spring Boot, JWT e database SQL.`,
+        description: `Expense Tracker, JobFlow e AccessDesk (${projectVersionSummary}): progetti full stack e backend di Fabio Zagaria con Angular, Spring Boot, JWT e database SQL.`,
       },
     },
     loadComponent: () =>
