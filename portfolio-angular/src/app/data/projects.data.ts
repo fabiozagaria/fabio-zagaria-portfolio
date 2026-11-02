@@ -354,7 +354,7 @@ export const PROJECTS = [
     technologies: ['HTML5', 'CSS3', 'JavaScript ES6+', 'DOM API'],
     status: 'Demo frontend',
     statusDetail:
-      'Progetto realizzato durante il percorso LabForWeb / Nerd Academy per consolidare DOM, eventi e rendering in JavaScript vanilla. Demo frontend in manutenzione; la demo online è attualmente non disponibile.',
+      'Progetto realizzato durante il percorso LabForWeb / Nerd Academy per consolidare DOM, eventi e rendering in JavaScript vanilla.',
     latestUpdate: {
       dateLabel: '2 ottobre 2026',
       datetime: '2026-10-02',
@@ -367,8 +367,8 @@ export const PROJECTS = [
         },
       ],
     },
-    liveLink: 'https://fakeflix-lemon-six.vercel.app/',
-    liveLabel: 'Demo non disponibile',
+    liveLink: 'https://fakeflix-vanilla-js.vercel.app/',
+    liveLabel: 'Demo online',
     repositories: [
       {
         label: 'Repository',
