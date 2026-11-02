@@ -1070,14 +1070,112 @@ button,
   background: var(--clr-cyber-green);
 }
 
-/* Project screenshots: framed like a drawing, sized by their own width and height to avoid layout shift. */
+/* Project visuals: a browser-like window around each screenshot, and flow diagrams for backends. */
 .c-card__shot {
   margin: 0 0 1.5rem;
+}
+.c-shot {
+  overflow: hidden;
   border: 1px solid var(--clr-black-lightest);
   background: var(--clr-black-soft);
+  box-shadow:
+    0 1px 2px rgb(18 36 79 / 0.1),
+    0 18px 36px -18px rgb(18 36 79 / 0.35);
 }
-.c-card__shot img {
+.c-shot__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2rem;
+  padding-inline: 0.75rem;
+  border-bottom: 1px solid var(--clr-black-lightest);
+  background: var(--clr-black-lighter);
+}
+.c-shot__dots {
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--clr-white-faint);
+  box-shadow:
+    0.8rem 0 0 var(--clr-white-faint),
+    1.6rem 0 0 var(--clr-white-faint);
+  margin-right: 1.6rem;
+}
+.c-shot__url {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--clr-white-subtle);
+  font: 0.75rem/1 var(--ff-mono);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.c-shot__frame {
+  overflow: hidden;
+}
+.c-shot__frame img {
   display: block;
   width: 100%;
   height: auto;
+  transition: scale 700ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .c-shot:hover .c-shot__frame img {
+    scale: 1.035;
+  }
+}
+.c-shot__note {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--clr-black-lightest);
+  color: var(--clr-white-subtle);
+  font-size: var(--fs-300);
+}
+.c-flow {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 1.5rem 1rem 1.25rem;
+  counter-reset: flow;
+  list-style: none;
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 100% 1.5rem,
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 1.5rem 100%;
+}
+.c-flow__step {
+  position: relative;
+  display: grid;
+  gap: 0.25rem;
+  align-content: start;
+  padding: 0.75rem;
+  border: 1px solid var(--clr-cyber-green);
+  background: var(--card);
+  font-size: var(--fs-300);
+  line-height: 1.35;
+}
+.c-flow__step strong {
+  color: var(--clr-white);
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+  overflow-wrap: anywhere;
+}
+.c-flow__step span {
+  color: var(--clr-white-subtle);
+}
+.c-flow__step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 1.5rem;
+  width: 1px;
+  height: 1.25rem;
+  background: var(--clr-cyber-green);
+}
+.c-flow__step[data-pending='true'] {
+  border-style: dashed;
+  border-color: var(--clr-white-faint);
+  background: transparent;
+}
+.c-flow__step[data-pending='true'] strong,
+.c-flow__step[data-pending='true'] span {
+  color: var(--clr-white-subtle);
 }

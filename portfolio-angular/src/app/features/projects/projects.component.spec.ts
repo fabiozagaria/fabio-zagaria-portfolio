@@ -69,4 +69,29 @@ describe('ProjectsComponent', () => {
       expect(shot.getAttribute('loading')).toBe('lazy');
     }
   });
+
+  it('frames each screenshot as a window that shows the demo domain', () => {
+    const element = render('2026-11-03T10:00:00+01:00');
+    const urls = Array.from(
+      element.querySelectorAll('.c-shot:not(.c-shot--flow) .c-shot__url'),
+    ).map((url) => url.textContent?.trim());
+
+    expect(urls).toEqual(
+      expect.arrayContaining(['gestionale-spese.vercel.app', 'lab-tv.vercel.app']),
+    );
+  });
+
+  it('draws a flow diagram for the backend projects, marking unfinished steps', () => {
+    const element = render('2026-11-03T10:00:00+01:00');
+    const jobflow = element.querySelectorAll('#jobflow .c-flow__step');
+    const accessdesk = element.querySelectorAll('#accessdesk .c-flow__step');
+
+    expect(jobflow).toHaveLength(6);
+    expect(element.querySelectorAll('#jobflow .c-flow__step[data-pending="true"]')).toHaveLength(1);
+    expect(jobflow[4].textContent).toContain('PROCESSING');
+    expect(accessdesk).toHaveLength(5);
+    expect(element.querySelector('#accessdesk .c-shot__note')?.textContent).toContain(
+      'restano da completare',
+    );
+  });
 });

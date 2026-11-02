@@ -58,6 +58,18 @@ export class ProjectsComponent {
     },
   ];
 
+  /** Dominio della demo online, mostrato nella barra della cornice dello screenshot. */
+  hostOf(project: PortfolioProject): string {
+    if (!project.liveLink) {
+      return '';
+    }
+    try {
+      return new URL(project.liveLink).hostname;
+    } catch {
+      return '';
+    }
+  }
+
   /** Implementazioni importanti del progetto, dalla più recente. */
   history(projectId: string): readonly PortfolioHistoryEntry[] {
     return PROJECT_HISTORY[projectId] ?? [];

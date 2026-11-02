@@ -31,6 +31,20 @@ export interface PortfolioScreenshot {
   readonly height: number;
 }
 
+export interface PortfolioFlowStep {
+  readonly label: string;
+  readonly detail: string;
+  /** Passaggio non ancora realizzato: viene disegnato tratteggiato. */
+  readonly pending?: boolean;
+}
+
+/** Schema del flusso, per i progetti senza interfaccia da fotografare. */
+export interface PortfolioFlow {
+  readonly title: string;
+  readonly steps: readonly PortfolioFlowStep[];
+  readonly note: string;
+}
+
 export interface PortfolioProject {
   readonly id: string;
   readonly title: string;
@@ -54,6 +68,7 @@ export interface PortfolioProject {
     readonly output: string;
   };
   readonly screenshot?: PortfolioScreenshot;
+  readonly flow?: PortfolioFlow;
   readonly liveLink?: string;
   readonly liveLabel?: string;
   readonly repositories?: readonly PortfolioRepository[];
@@ -161,6 +176,18 @@ export const PROJECTS = [
       'Bean Validation',
       'MapStruct',
     ],
+    flow: {
+      title: 'Dal POST al worker',
+      steps: [
+        { label: 'POST /jobs', detail: 'DTO validato, 201 Created' },
+        { label: 'Job CREATED', detail: 'Persistenza JPA/MySQL' },
+        { label: 'JobCreatedEvent', detail: 'Pubblicato dopo il salvataggio' },
+        { label: 'JobWorker', detail: '@Async con @TransactionalEventListener' },
+        { label: 'PROCESSING', detail: 'Verificato a runtime' },
+        { label: 'COMPLETED · FAILED', detail: 'Da realizzare', pending: true },
+      ],
+      note: 'Schema ricavato dal codice. Il passaggio a PROCESSING è verificato a runtime; COMPLETED e FAILED restano da realizzare.',
+    },
     status: 'In sviluppo',
     statusDetail:
       'Creazione e persistenza verificate con Postman e MySQL; il passaggio asincrono da CREATED a PROCESSING è verificato a runtime. GET /jobs/{id} è coperto da test ma resta da provare a runtime. Completamento fino a COMPLETED o FAILED, ProcessorRegistry e generazione PDF restano da fare.',
@@ -218,6 +245,17 @@ export const PROJECTS = [
       'MapStruct',
       'MySQL (alternativa)',
     ],
+    flow: {
+      title: 'Dal login ai dati',
+      steps: [
+        { label: 'Login', detail: 'JWT HS256' },
+        { label: 'OncePerRequestFilter', detail: 'Bearer token' },
+        { label: 'Spring Security', detail: 'Stateless, ruoli e permessi' },
+        { label: '@PreAuthorize', detail: 'Autorizzazione per metodo' },
+        { label: 'JPA · PostgreSQL', detail: 'Database predefinito' },
+      ],
+      note: 'Schema ricavato dal codice. Le verifiche del flusso JWT e i test automatici restano da completare.',
+    },
     status: 'In sviluppo',
     statusDetail:
       'Prova autonoma ancora da completare. Login JWT, filtro e autorizzazioni sono presenti nel codice; PostgreSQL è il database predefinito, con MySQL alternativo. Restano verifiche del flusso JWT, test automatici e chiusura della consegna.',
