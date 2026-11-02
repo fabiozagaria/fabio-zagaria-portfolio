@@ -17,7 +17,7 @@
   --sheet: #0f2150;
 }
 .c-hero.o-section {
-  padding-block: calc(var(--header-height) + clamp(2rem, 5vw, 3.5rem)) clamp(2.5rem, 5vw, 4rem);
+  padding-block: calc(var(--header-height) + clamp(1.25rem, 3vw, 2.5rem)) clamp(2.5rem, 5vw, 4rem);
 }
 .c-hero__name {
   width: fit-content;
@@ -42,7 +42,7 @@
 }
 .c-hero__sheet {
   position: relative;
-  min-height: min(calc(100svh - var(--header-height) - 6rem), 42rem);
+  min-height: 41rem;
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 5rem);
@@ -164,7 +164,7 @@
 }
 .c-featured {
   background: var(--clr-black-soft);
-  padding-block: 4rem;
+  padding-block: 5rem;
 }
 .c-featured__layout {
   display: grid;
@@ -188,7 +188,7 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   font-weight: 600;
 }
 .c-backend-map h3 {
@@ -287,7 +287,7 @@
 }
 .c-resume {
   background: var(--clr-black-soft);
-  padding-block: 4rem;
+  padding-block: 5rem;
 }
 .c-resume__layout {
   display: grid;

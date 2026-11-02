@@ -1021,3 +1021,8 @@ h4 {
 html[data-theme='dark'] .c-hero {
   --sheet: #17306b;
 }
+a,
+button,
+.c-btn {
+  touch-action: manipulation;
+}
