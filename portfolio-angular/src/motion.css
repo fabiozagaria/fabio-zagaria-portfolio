@@ -24,3 +24,116 @@
     animation: none;
   }
 }
+
+/* Hero: one entrance sequence on load, then a light scroll parallax. */
+@media (prefers-reduced-motion: no-preference) {
+  .c-hero {
+    --ease-out: cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .c-hero__word {
+    animation: hero-rise 1000ms var(--ease-out) both;
+  }
+  .c-hero__last .c-hero__word {
+    animation-delay: 110ms;
+  }
+  .c-hero__dimension > span {
+    animation: hero-fade 500ms ease-out 650ms both;
+  }
+  .c-hero__dimension::before,
+  .c-hero__dimension::after {
+    animation: hero-grow 900ms var(--ease-out) 450ms both;
+  }
+  .c-hero__dimension::before {
+    transform-origin: right;
+  }
+  .c-hero__dimension::after {
+    transform-origin: left;
+  }
+  .c-hero__role {
+    animation: hero-lift 800ms var(--ease-out) 700ms both;
+  }
+  .c-hero__side {
+    animation: hero-lift 900ms var(--ease-out) 350ms both;
+  }
+  .c-hero__facts > div {
+    animation: hero-lift 700ms var(--ease-out) both;
+  }
+  .c-hero__facts > div:nth-child(1) {
+    animation-delay: 650ms;
+  }
+  .c-hero__facts > div:nth-child(2) {
+    animation-delay: 720ms;
+  }
+  .c-hero__facts > div:nth-child(3) {
+    animation-delay: 790ms;
+  }
+  .c-hero__actions {
+    animation: hero-lift 700ms var(--ease-out) 880ms both;
+  }
+  .c-hero .c-btn--primary {
+    transition:
+      transform 160ms ease-out,
+      filter 160ms ease-out;
+  }
+  .c-hero .c-btn--primary:active {
+    transform: scale(0.97);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .c-hero .c-btn--primary:hover {
+      transform: translateY(-2px);
+    }
+    .c-hero .c-btn--primary:active {
+      transform: scale(0.97);
+    }
+  }
+  @keyframes hero-rise {
+    from {
+      transform: translateY(105%);
+    }
+  }
+  @keyframes hero-lift {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
+  @keyframes hero-fade {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes hero-grow {
+    from {
+      transform: scaleX(0);
+    }
+  }
+  /* Scroll-linked parallax runs on the compositor. It uses the independent
+     `translate` property so it never fights the entrance `transform`. */
+  @supports (animation-timeline: scroll()) {
+    .c-hero__name {
+      animation: hero-drift-name linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 70vh;
+    }
+    .c-hero__side {
+      animation:
+        hero-lift 900ms var(--ease-out) 350ms both,
+        hero-drift-side linear both;
+      animation-timeline: auto, scroll(root);
+      animation-range:
+        normal,
+        0 70vh;
+    }
+    @keyframes hero-drift-name {
+      to {
+        translate: 0 -9vh;
+        opacity: 0.35;
+      }
+    }
+    @keyframes hero-drift-side {
+      to {
+        translate: 0 -3vh;
+      }
+    }
+  }
+}

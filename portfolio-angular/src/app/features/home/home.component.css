@@ -39,6 +39,16 @@
   font-stretch: 75%;
   letter-spacing: -0.035em;
 }
+.c-hero__first,
+.c-hero__last {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+.c-hero__word {
+  display: block;
+}
 .c-hero__dimension {
   display: flex;
   align-items: center;
@@ -46,7 +56,6 @@
   color: var(--mark);
   font-size: var(--fs-300);
   font-weight: 500;
-  transform-origin: left;
 }
 .c-hero__dimension::before,
 .c-hero__dimension::after {
@@ -126,17 +135,6 @@
 .c-hero a:focus-visible {
   outline: 2px solid var(--mark);
   outline-offset: 3px;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .c-hero__dimension {
-    animation: draw-dimension 900ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both;
-  }
-  @keyframes draw-dimension {
-    from {
-      transform: scaleX(0);
-      opacity: 0;
-    }
-  }
 }
 @media (max-width: 860px) {
   .c-hero__sheet {
