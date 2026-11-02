@@ -117,6 +117,12 @@ export const PROJECTS = [
       tradeoff:
         'Cookie, CORS e proxy devono essere coerenti tra frontend e API; il piano gratuito del backend può richiedere attesa al primo accesso.',
     },
+    screenshot: {
+      src: '/assets/img/project-expense-tracker.webp',
+      alt: 'Dashboard di Expense Tracker: saldo disponibile 1197,00 €, entrate totali 1200,00 € e spese totali 3,00 €, con il riepilogo dei movimenti e la tabella degli ultimi movimenti.',
+      width: 1400,
+      height: 640,
+    },
     liveLink: 'https://gestionale-spese.vercel.app/',
     liveLabel: 'Demo full stack',
     repositories: [
