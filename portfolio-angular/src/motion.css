@@ -266,10 +266,8 @@
    scrolls. The window therefore publishes its own named view timeline and its children follow that one. */
 @media (prefers-reduced-motion: no-preference) {
   @supports (animation-timeline: view()) and (timeline-scope: --shot) {
-    .c-card {
-      timeline-scope: --shot;
-    }
     .c-shot {
+      timeline-scope: --shot;
       view-timeline: --shot block;
     }
     .c-shot__frame img {

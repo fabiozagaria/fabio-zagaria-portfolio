@@ -70,15 +70,35 @@ describe('ProjectsComponent', () => {
     }
   });
 
-  it('frames each screenshot as a window that shows the demo domain', () => {
+  it('frames each screenshot as a window that shows the demo domain and page', () => {
     const element = render('2026-11-03T10:00:00+01:00');
     const urls = Array.from(
       element.querySelectorAll('.c-shot:not(.c-shot--flow) .c-shot__url'),
     ).map((url) => url.textContent?.trim());
 
     expect(urls).toEqual(
-      expect.arrayContaining(['gestionale-spese.vercel.app', 'lab-tv.vercel.app']),
+      expect.arrayContaining([
+        'gestionale-spese.vercel.app/dashboard',
+        'gestionale-spese.vercel.app/login',
+        'lab-tv.vercel.app/catalogo',
+        'lab-tv.vercel.app/ricerca',
+      ]),
     );
+  });
+
+  it('shows every supplied screenshot, each one opening the full image', () => {
+    const element = render('2026-11-03T10:00:00+01:00');
+    const count = (id: string): number => element.querySelectorAll(`#${id} .c-shot__frame`).length;
+
+    expect(count('gestionale-spese')).toBe(4);
+    expect(count('labtv')).toBe(3);
+    expect(count('fakeflix')).toBe(2);
+    expect(count('portfolio')).toBe(1);
+    for (const link of Array.from(element.querySelectorAll<HTMLAnchorElement>('.c-shot__frame'))) {
+      expect(link.getAttribute('target')).toBe('_blank');
+      expect(link.getAttribute('rel')).toContain('noopener');
+      expect(link.querySelector('.u-visually-hidden')?.textContent).toContain('nuova scheda');
+    }
   });
 
   it('draws a flow diagram for the backend projects, marking unfinished steps', () => {

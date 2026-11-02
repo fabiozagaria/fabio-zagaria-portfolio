@@ -26,6 +26,8 @@ export interface PortfolioLatestUpdate {
 
 export interface PortfolioScreenshot {
   readonly src: string;
+  /** Percorso della pagina fotografata, mostrato dopo il dominio nella barra della cornice. */
+  readonly path?: string;
   readonly alt: string;
   readonly width: number;
   readonly height: number;
@@ -67,7 +69,7 @@ export interface PortfolioProject {
     readonly command: string;
     readonly output: string;
   };
-  readonly screenshot?: PortfolioScreenshot;
+  readonly screenshots?: readonly PortfolioScreenshot[];
   readonly flow?: PortfolioFlow;
   readonly liveLink?: string;
   readonly liveLabel?: string;
@@ -132,12 +134,36 @@ export const PROJECTS = [
       tradeoff:
         'Cookie, CORS e proxy devono essere coerenti tra frontend e API; il piano gratuito del backend può richiedere attesa al primo accesso.',
     },
-    screenshot: {
-      src: '/assets/img/project-expense-tracker.webp',
-      alt: 'Dashboard di Expense Tracker: saldo disponibile 1197,00 €, entrate totali 1200,00 € e spese totali 3,00 €, con il riepilogo dei movimenti e la tabella degli ultimi movimenti.',
-      width: 1400,
-      height: 640,
-    },
+    screenshots: [
+      {
+        src: '/assets/img/project-expense-tracker.webp',
+        path: '/dashboard',
+        alt: 'Dashboard di Expense Tracker: saldo disponibile 1197,00 €, entrate totali 1200,00 € e spese totali 3,00 €, con il riepilogo dei movimenti e la tabella degli ultimi movimenti.',
+        width: 1400,
+        height: 640,
+      },
+      {
+        src: '/assets/img/project-expense-tracker-home.webp',
+        path: '/dashboard',
+        alt: 'Home di Expense Tracker nel tema scuro: titolo «Le tue finanze, al posto giusto.», pulsanti Accedi al tuo spazio e Registrati e riquadro con entrate, spese e saldo.',
+        width: 1400,
+        height: 640,
+      },
+      {
+        src: '/assets/img/project-expense-tracker-login-scuro.webp',
+        path: '/login',
+        alt: 'Pagina di accesso di Expense Tracker nel tema scuro, con il pulsante Prova la demo, l’avviso sul primo avvio del server e il grafico a barre delle finanze.',
+        width: 1400,
+        height: 652,
+      },
+      {
+        src: '/assets/img/project-expense-tracker-login-chiaro.webp',
+        path: '/login',
+        alt: 'Pagina di accesso di Expense Tracker nel tema chiaro, con il pulsante Prova la demo, l’avviso sul primo avvio del server e il grafico a barre delle finanze.',
+        width: 1400,
+        height: 652,
+      },
+    ],
     liveLink: 'https://gestionale-spese.vercel.app/',
     liveLabel: 'Demo full stack',
     repositories: [
@@ -323,12 +349,29 @@ export const PROJECTS = [
       tradeoff:
         'La SPA dipende dalla API esterna; credenziali riservate richiederebbero un backend dedicato.',
     },
-    screenshot: {
-      src: '/assets/img/project-labtv.webp',
-      alt: 'Catalogo film di LabTV con la navigazione Home, Catalogo, Ricerca e Contatti e una griglia di locandine, tra cui The Dark Knight, Wildwood, Hope e Spider-Man: Brand New Day.',
-      width: 1400,
-      height: 640,
-    },
+    screenshots: [
+      {
+        src: '/assets/img/project-labtv.webp',
+        path: '/catalogo',
+        alt: 'Catalogo film di LabTV con la navigazione Home, Catalogo, Ricerca e Contatti e una griglia di locandine, tra cui The Dark Knight, Wildwood, Hope e Spider-Man: Brand New Day.',
+        width: 1400,
+        height: 640,
+      },
+      {
+        src: '/assets/img/project-labtv-home.webp',
+        path: '/',
+        alt: 'Home di LabTV: logo, titolo Benvenuto su LabTV, pulsante Vai al catalogo e riquadro Film, dettagli e ricerca.',
+        width: 1400,
+        height: 640,
+      },
+      {
+        src: '/assets/img/project-labtv-ricerca.webp',
+        path: '/ricerca',
+        alt: 'Ricerca di LabTV: digitando «spi» nel campo di ricerca compare tra i risultati la locandina di Spider-Man: Brand New Day.',
+        width: 1400,
+        height: 640,
+      },
+    ],
     liveLink: 'https://lab-tv.vercel.app/',
     liveLabel: 'Demo online',
     repositories: [
@@ -367,12 +410,22 @@ export const PROJECTS = [
         },
       ],
     },
-    screenshot: {
-      src: '/assets/img/project-fakeflix.webp',
-      alt: 'Pagina di Fakeflix dedicata a Stranger Things: titolo della serie su uno sfondo di foresta scura, descrizione, campo email con il pulsante Inizia a guardare e menu con Info, Trailer, Episodi, Potrebbe piacerti e Piani.',
-      width: 1400,
-      height: 640,
-    },
+    screenshots: [
+      {
+        src: '/assets/img/project-fakeflix.webp',
+        path: '/',
+        alt: 'Pagina di Fakeflix dedicata a Stranger Things: titolo della serie su uno sfondo di foresta scura, descrizione, campo email con il pulsante Inizia a guardare e menu con Info, Trailer, Episodi, Potrebbe piacerti e Piani.',
+        width: 1400,
+        height: 640,
+      },
+      {
+        src: '/assets/img/project-fakeflix-pagina.webp',
+        path: '/',
+        alt: 'Fakeflix, sezioni Potrebbe piacerti e Scegli il tuo piano: carosello di serie con Dark, IT, Locke & Key e IT: Capitolo 2, e piani Base, Standard e Premium.',
+        width: 1400,
+        height: 639,
+      },
+    ],
     liveLink: 'https://fakeflix-vanilla-js.vercel.app/',
     liveLabel: 'Demo online',
     repositories: [
@@ -397,12 +450,14 @@ export const PROJECTS = [
     technologies: ['Angular 21', 'TypeScript 5.9', 'HTML', 'CSS', 'Vercel'],
     status: 'Demo frontend',
     statusDetail: 'Progetto frontend del corso, evoluto nel portfolio professionale attuale.',
-    screenshot: {
-      src: '/assets/img/project-portfolio.webp',
-      alt: 'Home del portfolio: nome, scena 3D dei quattro livelli di Expense Tracker e cartiglio con stack, sede e formazione.',
-      width: 1120,
-      height: 708,
-    },
+    screenshots: [
+      {
+        src: '/assets/img/project-portfolio.webp',
+        alt: 'Home del portfolio: nome, scena 3D dei quattro livelli di Expense Tracker e cartiglio con stack, sede e formazione.',
+        width: 1120,
+        height: 708,
+      },
+    ],
     liveLink: 'https://fabio-zagaria-portfolio.vercel.app/',
     liveLabel: 'Demo online',
     repositories: [

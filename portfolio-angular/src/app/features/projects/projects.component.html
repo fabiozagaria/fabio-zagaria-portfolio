@@ -40,25 +40,37 @@
                     }
                   </div>
                 }
-                @if (project.screenshot; as shot) {
-                  <figure class="c-card__shot c-shot">
-                    <div class="c-shot__bar" aria-hidden="true">
-                      <span class="c-shot__dots"></span>
-                      @if (hostOf(project); as host) {
-                        <span class="c-shot__url">{{ host }}</span>
-                      }
-                    </div>
-                    <div class="c-shot__frame">
-                      <img
-                        [src]="shot.src"
-                        [alt]="shot.alt"
-                        [attr.width]="shot.width"
-                        [attr.height]="shot.height"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                  </figure>
+                @if (project.screenshots; as shots) {
+                  <div class="c-shots" [class.c-shots--multi]="shots.length > 1">
+                    @for (shot of shots; track shot.src) {
+                      <figure class="c-card__shot c-shot">
+                        <div class="c-shot__bar" aria-hidden="true">
+                          <span class="c-shot__dots"></span>
+                          @if (hostOf(project); as host) {
+                            <span class="c-shot__url">{{ host }}{{ shot.path }}</span>
+                          }
+                        </div>
+                        <a
+                          class="c-shot__frame"
+                          [href]="shot.src"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <img
+                            [src]="shot.src"
+                            [alt]="shot.alt"
+                            [attr.width]="shot.width"
+                            [attr.height]="shot.height"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <span class="u-visually-hidden"
+                            >(apre l’immagine intera in una nuova scheda)</span
+                          >
+                        </a>
+                      </figure>
+                    }
+                  </div>
                 } @else if (project.flow; as flow) {
                   <figure class="c-card__shot c-shot c-shot--flow">
                     <div class="c-shot__bar" aria-hidden="true">
