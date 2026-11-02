@@ -40,6 +40,18 @@
                     }
                   </div>
                 }
+                @if (project.screenshot; as shot) {
+                  <figure class="c-card__shot">
+                    <img
+                      [src]="shot.src"
+                      [alt]="shot.alt"
+                      [attr.width]="shot.width"
+                      [attr.height]="shot.height"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                }
                 <p class="c-card__description">{{ project.description }}</p>
 
                 @if (group.category !== 'Frontend') {

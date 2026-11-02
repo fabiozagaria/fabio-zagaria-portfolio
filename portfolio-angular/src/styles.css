@@ -1069,3 +1069,15 @@ button,
   margin-top: -1px;
   background: var(--clr-cyber-green);
 }
+
+/* Project screenshots: framed like a drawing, sized by their own width and height to avoid layout shift. */
+.c-card__shot {
+  margin: 0 0 1.5rem;
+  border: 1px solid var(--clr-black-lightest);
+  background: var(--clr-black-soft);
+}
+.c-card__shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

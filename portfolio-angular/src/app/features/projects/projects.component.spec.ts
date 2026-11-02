@@ -56,4 +56,17 @@ describe('ProjectsComponent', () => {
 
     expect(flagged.sort()).toEqual(['gestionale-spese', 'jobflow']);
   });
+
+  it('renders a screenshot with its size and alternative text when a project has one', () => {
+    const element = render('2026-11-03T10:00:00+01:00');
+    const shots = Array.from(element.querySelectorAll<HTMLImageElement>('.c-card__shot img'));
+
+    expect(shots.length).toBeGreaterThan(0);
+    for (const shot of shots) {
+      expect(shot.getAttribute('alt')?.length).toBeGreaterThan(20);
+      expect(Number(shot.getAttribute('width'))).toBeGreaterThan(0);
+      expect(Number(shot.getAttribute('height'))).toBeGreaterThan(0);
+      expect(shot.getAttribute('loading')).toBe('lazy');
+    }
+  });
 });

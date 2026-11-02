@@ -24,6 +24,13 @@ export interface PortfolioLatestUpdate {
   readonly sources: readonly PortfolioUpdateSource[];
 }
 
+export interface PortfolioScreenshot {
+  readonly src: string;
+  readonly alt: string;
+  readonly width: number;
+  readonly height: number;
+}
+
 export interface PortfolioProject {
   readonly id: string;
   readonly title: string;
@@ -46,6 +53,7 @@ export interface PortfolioProject {
     readonly command: string;
     readonly output: string;
   };
+  readonly screenshot?: PortfolioScreenshot;
   readonly liveLink?: string;
   readonly liveLabel?: string;
   readonly repositories?: readonly PortfolioRepository[];
@@ -333,6 +341,12 @@ export const PROJECTS = [
     technologies: ['Angular 21', 'TypeScript 5.9', 'HTML', 'CSS', 'Vercel'],
     status: 'Demo frontend',
     statusDetail: 'Progetto frontend del corso, evoluto nel portfolio professionale attuale.',
+    screenshot: {
+      src: '/assets/img/project-portfolio.webp',
+      alt: 'Home del portfolio: nome, scena 3D dei quattro livelli di Expense Tracker e cartiglio con stack, sede e formazione.',
+      width: 1120,
+      height: 708,
+    },
     liveLink: 'https://fabio-zagaria-portfolio.vercel.app/',
     liveLabel: 'Demo online',
     repositories: [
