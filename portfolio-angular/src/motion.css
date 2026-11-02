@@ -261,6 +261,40 @@
   }
 }
 
+/* Project visuals: the screenshot settles into its window, flow steps are plotted one after the other.
+   The window clips its content (overflow), so a plain view() would attach to the window itself, which never
+   scrolls. The window therefore publishes its own named view timeline and its children follow that one. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) and (timeline-scope: --shot) {
+    .c-shot {
+      timeline-scope: --shot;
+      view-timeline: --shot block;
+    }
+    .c-shot__frame img {
+      animation: shot-settle linear both;
+      animation-timeline: --shot;
+      animation-range: entry 0px entry 360px;
+    }
+    .c-flow__step {
+      animation: step-plot linear both;
+      animation-timeline: --shot;
+      animation-range: entry calc(var(--i, 0) * 70px) entry calc(160px + var(--i, 0) * 70px);
+    }
+    @keyframes shot-settle {
+      from {
+        transform: scale(1.08) translateY(-3%);
+      }
+    }
+    /* Movement and colour only: the text is never hidden. */
+    @keyframes step-plot {
+      from {
+        transform: translateY(14px);
+        border-color: var(--mark);
+      }
+    }
+  }
+}
+
 /* Printing and "save as PDF" never scroll, so nothing may wait for a reveal. */
 @media print {
   *,

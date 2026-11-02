@@ -24,6 +24,29 @@ export interface PortfolioLatestUpdate {
   readonly sources: readonly PortfolioUpdateSource[];
 }
 
+export interface PortfolioScreenshot {
+  readonly src: string;
+  /** Percorso della pagina fotografata, mostrato dopo il dominio nella barra della cornice. */
+  readonly path?: string;
+  readonly alt: string;
+  readonly width: number;
+  readonly height: number;
+}
+
+export interface PortfolioFlowStep {
+  readonly label: string;
+  readonly detail: string;
+  /** Passaggio non ancora realizzato: viene disegnato tratteggiato. */
+  readonly pending?: boolean;
+}
+
+/** Schema del flusso, per i progetti senza interfaccia da fotografare. */
+export interface PortfolioFlow {
+  readonly title: string;
+  readonly steps: readonly PortfolioFlowStep[];
+  readonly note: string;
+}
+
 export interface PortfolioProject {
   readonly id: string;
   readonly title: string;
@@ -46,6 +69,8 @@ export interface PortfolioProject {
     readonly command: string;
     readonly output: string;
   };
+  readonly screenshots?: readonly PortfolioScreenshot[];
+  readonly flow?: PortfolioFlow;
   readonly liveLink?: string;
   readonly liveLabel?: string;
   readonly repositories?: readonly PortfolioRepository[];
@@ -109,6 +134,36 @@ export const PROJECTS = [
       tradeoff:
         'Cookie, CORS e proxy devono essere coerenti tra frontend e API; il piano gratuito del backend può richiedere attesa al primo accesso.',
     },
+    screenshots: [
+      {
+        src: '/assets/img/project-expense-tracker.webp',
+        path: '/dashboard',
+        alt: 'Dashboard di Expense Tracker: saldo disponibile 1197,00 €, entrate totali 1200,00 € e spese totali 3,00 €, con il riepilogo dei movimenti e la tabella degli ultimi movimenti.',
+        width: 1400,
+        height: 640,
+      },
+      {
+        src: '/assets/img/project-expense-tracker-home.webp',
+        path: '/dashboard',
+        alt: 'Home di Expense Tracker nel tema scuro: titolo «Le tue finanze, al posto giusto.», pulsanti Accedi al tuo spazio e Registrati e riquadro con entrate, spese e saldo.',
+        width: 1400,
+        height: 640,
+      },
+      {
+        src: '/assets/img/project-expense-tracker-login-scuro.webp',
+        path: '/login',
+        alt: 'Pagina di accesso di Expense Tracker nel tema scuro, con il pulsante Prova la demo, l’avviso sul primo avvio del server e il grafico a barre delle finanze.',
+        width: 1400,
+        height: 652,
+      },
+      {
+        src: '/assets/img/project-expense-tracker-login-chiaro.webp',
+        path: '/login',
+        alt: 'Pagina di accesso di Expense Tracker nel tema chiaro, con il pulsante Prova la demo, l’avviso sul primo avvio del server e il grafico a barre delle finanze.',
+        width: 1400,
+        height: 652,
+      },
+    ],
     liveLink: 'https://gestionale-spese.vercel.app/',
     liveLabel: 'Demo full stack',
     repositories: [
@@ -147,6 +202,18 @@ export const PROJECTS = [
       'Bean Validation',
       'MapStruct',
     ],
+    flow: {
+      title: 'Dal POST al worker',
+      steps: [
+        { label: 'POST /jobs', detail: 'DTO validato, 201 Created' },
+        { label: 'Job CREATED', detail: 'Persistenza JPA/MySQL' },
+        { label: 'JobCreatedEvent', detail: 'Pubblicato dopo il salvataggio' },
+        { label: 'JobWorker', detail: '@Async con @TransactionalEventListener' },
+        { label: 'PROCESSING', detail: 'Verificato a runtime' },
+        { label: 'COMPLETED · FAILED', detail: 'Da realizzare', pending: true },
+      ],
+      note: 'Schema ricavato dal codice. Il passaggio a PROCESSING è verificato a runtime; COMPLETED e FAILED restano da realizzare.',
+    },
     status: 'In sviluppo',
     statusDetail:
       'Creazione e persistenza verificate con Postman e MySQL; il passaggio asincrono da CREATED a PROCESSING è verificato a runtime. GET /jobs/{id} è coperto da test ma resta da provare a runtime. Completamento fino a COMPLETED o FAILED, ProcessorRegistry e generazione PDF restano da fare.',
@@ -204,6 +271,17 @@ export const PROJECTS = [
       'MapStruct',
       'MySQL (alternativa)',
     ],
+    flow: {
+      title: 'Dal login ai dati',
+      steps: [
+        { label: 'Login', detail: 'JWT HS256' },
+        { label: 'OncePerRequestFilter', detail: 'Bearer token' },
+        { label: 'Spring Security', detail: 'Stateless, ruoli e permessi' },
+        { label: '@PreAuthorize', detail: 'Autorizzazione per metodo' },
+        { label: 'JPA · PostgreSQL', detail: 'Database predefinito' },
+      ],
+      note: 'Schema ricavato dal codice. Le verifiche del flusso JWT e i test automatici restano da completare.',
+    },
     status: 'In sviluppo',
     statusDetail:
       'Prova autonoma ancora da completare. Login JWT, filtro e autorizzazioni sono presenti nel codice; PostgreSQL è il database predefinito, con MySQL alternativo. Restano verifiche del flusso JWT, test automatici e chiusura della consegna.',
@@ -271,6 +349,29 @@ export const PROJECTS = [
       tradeoff:
         'La SPA dipende dalla API esterna; credenziali riservate richiederebbero un backend dedicato.',
     },
+    screenshots: [
+      {
+        src: '/assets/img/project-labtv.webp',
+        path: '/catalogo',
+        alt: 'Catalogo film di LabTV con la navigazione Home, Catalogo, Ricerca e Contatti e una griglia di locandine, tra cui The Dark Knight, Wildwood, Hope e Spider-Man: Brand New Day.',
+        width: 1400,
+        height: 640,
+      },
+      {
+        src: '/assets/img/project-labtv-home.webp',
+        path: '/',
+        alt: 'Home di LabTV: logo, titolo Benvenuto su LabTV, pulsante Vai al catalogo e riquadro Film, dettagli e ricerca.',
+        width: 1400,
+        height: 640,
+      },
+      {
+        src: '/assets/img/project-labtv-ricerca.webp',
+        path: '/ricerca',
+        alt: 'Ricerca di LabTV: digitando «spi» nel campo di ricerca compare tra i risultati la locandina di Spider-Man: Brand New Day.',
+        width: 1400,
+        height: 640,
+      },
+    ],
     liveLink: 'https://lab-tv.vercel.app/',
     liveLabel: 'Demo online',
     repositories: [
@@ -296,7 +397,7 @@ export const PROJECTS = [
     technologies: ['HTML5', 'CSS3', 'JavaScript ES6+', 'DOM API'],
     status: 'Demo frontend',
     statusDetail:
-      'Progetto realizzato durante il percorso LabForWeb / Nerd Academy per consolidare DOM, eventi e rendering in JavaScript vanilla. Demo frontend in manutenzione; la demo online è attualmente non disponibile.',
+      'Progetto realizzato durante il percorso LabForWeb / Nerd Academy per consolidare DOM, eventi e rendering in JavaScript vanilla.',
     latestUpdate: {
       dateLabel: '2 ottobre 2026',
       datetime: '2026-10-02',
@@ -309,8 +410,24 @@ export const PROJECTS = [
         },
       ],
     },
-    liveLink: 'https://fakeflix-lemon-six.vercel.app/',
-    liveLabel: 'Demo non disponibile',
+    screenshots: [
+      {
+        src: '/assets/img/project-fakeflix.webp',
+        path: '/',
+        alt: 'Pagina di Fakeflix dedicata a Stranger Things: titolo della serie su uno sfondo di foresta scura, descrizione, campo email con il pulsante Inizia a guardare e menu con Info, Trailer, Episodi, Potrebbe piacerti e Piani.',
+        width: 1400,
+        height: 640,
+      },
+      {
+        src: '/assets/img/project-fakeflix-pagina.webp',
+        path: '/',
+        alt: 'Fakeflix, sezioni Potrebbe piacerti e Scegli il tuo piano: carosello di serie con Dark, IT, Locke & Key e IT: Capitolo 2, e piani Base, Standard e Premium.',
+        width: 1400,
+        height: 639,
+      },
+    ],
+    liveLink: 'https://fakeflix-vanilla-js.vercel.app/',
+    liveLabel: 'Demo online',
     repositories: [
       {
         label: 'Repository',
@@ -333,6 +450,14 @@ export const PROJECTS = [
     technologies: ['Angular 21', 'TypeScript 5.9', 'HTML', 'CSS', 'Vercel'],
     status: 'Demo frontend',
     statusDetail: 'Progetto frontend del corso, evoluto nel portfolio professionale attuale.',
+    screenshots: [
+      {
+        src: '/assets/img/project-portfolio.webp',
+        alt: 'Home del portfolio: nome, scena 3D dei quattro livelli di Expense Tracker e cartiglio con stack, sede e formazione.',
+        width: 1120,
+        height: 708,
+      },
+    ],
     liveLink: 'https://fabio-zagaria-portfolio.vercel.app/',
     liveLabel: 'Demo online',
     repositories: [
