@@ -39,5 +39,16 @@ Quando cambiano versione, stato o focus di un progetto pubblico collegato, verif
 ## Storico aggiornamenti e badge Novità — 2026-11-02
 Le card dei tre progetti principali hanno il pulsante "Implementazioni importanti" (dati in `src/app/data/project-history.data.ts`, ogni voce con data, ora e commit reali, dalla più recente) e il badge "Novità", che resta visibile 7 giorni dopo la data di `latestUpdate`. L'animazione del badge è breve (3 pulsazioni) e disattivata con reduced motion.
 
-## Tema UI — 2026-10-02
-Pulsante sole/luna accessibile nell’intestazione, tema coerente con i colori esistenti e scelta ricordata nel browser.
+## Interfaccia e animazioni — 2026-11-02
+Il tema chiaro/scuro (pulsante sole/luna accessibile nell’intestazione, scelta ricordata nel browser) usa dal 2 novembre 2026 l’identità «foglio di disegno tecnico»: solo template e stile, testi, link e route invariati.
+
+- **Palette**: cobalto come inchiostro e ambra come segno (pulsanti, linea attiva, badge Novità), con token per tema chiaro e scuro in `portfolio-angular/src/styles.css`. L’hero ha lo stesso cobalto in entrambi i temi.
+- **Tipografia**: titoli h1/h2 in Bricolage Grotesque (variabile, asse larghezza), self-hosted in `src/assets/fonts/` con licenza OFL e preload in `index.html`; corpo del testo in Space Grotesk.
+- **Hero della home**: nome grande, linea di quota con lo stack, cartiglio con dati presi dal README, ingresso orchestrato, parallax allo scroll e griglia che si illumina attorno al puntatore (solo puntatore preciso).
+- **Scena 3D** (`features/home/hero-scene`): quattro lastre isometriche a fil di ferro, una per livello di Expense Tracker, con una richiesta che le attraversa. Usa three.js 0.184, caricato in un chunk differito (circa 153 kB gzip) dopo l’idle del browser, quindi il caricamento iniziale non cambia. Si ferma fuori schermo e a tab nascosta, mostra un solo fotogramma con reduced motion, è una banda sopra il nome su mobile, è nascosta ad assistive technology; senza WebGL l’hero resta statico.
+- **Animazioni di sezione** (`src/motion.css`): titoli che salgono da una maschera, reveal allo scroll con scroll-driven animations CSS, filetti che si disegnano, hover solo con mouse. Disattivate con `prefers-reduced-motion` e in stampa; nei browser senza supporto le pagine restano statiche e complete. Gli elementi in fondo alla pagina devono restare a opacità piena: non animare il footer.
+- **Budget**: `anyComponentStyle` `maximumWarning` alzato da 4 kB a 6 kB in `angular.json`, perché il CSS del componente home supera i 4 kB.
+
+Da fare e limiti noti:
+- Prestazioni su GPU e dispositivi reali e Lighthouse non sono stati misurati.
+- La regola `:root[data-theme='dark'] .c-hero` in `home.component.css` non ha effetto (encapsulation del componente) e può essere rimossa.
