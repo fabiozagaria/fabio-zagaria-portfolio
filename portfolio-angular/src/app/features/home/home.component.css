@@ -2,45 +2,169 @@
   display: block;
 }
 .c-hero {
-  padding-bottom: 4rem;
+  --sheet: #17306b;
+  --line: rgb(220 230 250 / 0.18);
+  --ink: #eef3fc;
+  --soft: #b9c8e8;
+  --mark: #f5b642;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 100% 2.5rem,
+    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 2.5rem 100%,
+    var(--sheet);
+  color: var(--ink);
+}
+:root[data-theme='dark'] .c-hero {
+  --sheet: #0f2150;
+}
+.c-hero.o-section {
+  padding-block: calc(var(--header-height) + clamp(1.25rem, 3vw, 2.5rem)) clamp(2.5rem, 5vw, 4rem);
+}
+.c-hero__name {
+  width: fit-content;
+  max-width: 100%;
+}
+.c-hero {
+  position: relative;
+}
+.c-hero__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--mark) 1px, transparent 1px) 0 0 / 100% 2.5rem,
+    linear-gradient(90deg, var(--mark) 1px, transparent 1px) 0 0 / 2.5rem 100%;
+  mask-image: radial-gradient(circle 14rem at var(--mx, 50%) var(--my, 50%), #000, transparent);
+  transition: opacity 400ms ease-out;
+}
+.c-hero.is-tracking .c-hero__glow {
+  opacity: 0.95;
+}
+.c-hero__sheet {
+  position: relative;
+  min-height: 41rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
 }
 .c-hero__title {
-  margin-bottom: 2rem;
-  font-size: var(--fs-900);
-  line-height: 1.04;
-  letter-spacing: -0.04em;
+  display: grid;
+  margin: 0;
+  color: var(--ink);
+  font:
+    800 clamp(4.5rem, 15vw, 12rem) / 0.86 'Bricolage Grotesque',
+    var(--ff-primary);
+  font-stretch: 75%;
+  letter-spacing: -0.035em;
+}
+.c-hero__first,
+.c-hero__last {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+.c-hero__word {
+  display: block;
+}
+.c-hero__dimension {
+  display: flex;
+  align-items: center;
+  margin: 1.25rem 0 1.75rem;
+  color: var(--mark);
+  font-size: var(--fs-300);
+  font-weight: 500;
+}
+.c-hero__dimension::before,
+.c-hero__dimension::after {
+  content: '';
+  flex: 1;
+  height: 0.9rem;
+  border: 1px solid var(--mark);
+  border-block-start: 0;
+}
+.c-hero__dimension::before {
+  margin-inline-end: 0.75rem;
+}
+.c-hero__dimension::after {
+  margin-inline-start: 0.75rem;
+}
+.c-hero__dimension span {
+  text-align: center;
 }
 .c-hero__role {
-  font: 400 var(--fs-600)/1.3 var(--ff-primary);
-  color: var(--clr-cyber-green);
+  margin: 0;
+  max-width: 24ch;
+  font: 400 var(--fs-600) / 1.25 var(--ff-primary);
 }
-.c-hero__intro {
+.c-hero__side {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: 3rem;
-  align-items: end;
-  margin-top: 2rem;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--soft);
+  background: rgb(15 33 80 / 0.8);
+  backdrop-filter: blur(3px);
 }
 .c-hero__description {
-  max-width: 48ch;
-  color: var(--clr-white-subtle);
+  max-width: 44ch;
+  margin: 0;
+}
+.c-hero__facts {
+  margin: 0;
+  border-top: 1px solid var(--line);
+  font-size: var(--fs-300);
+}
+.c-hero__facts > div {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 0.65rem;
+  border-bottom: 1px solid var(--line);
+}
+.c-hero__facts dt {
+  color: var(--soft);
+}
+.c-hero__facts dd {
+  margin: 0;
 }
 .c-hero__actions {
   display: flex;
   align-items: center;
-  justify-content: end;
   gap: 1.5rem;
   flex-wrap: wrap;
+}
+.c-hero .c-btn--primary,
+.c-hero .c-btn--primary:hover,
+.c-hero .c-btn--primary:focus-visible {
+  border-color: var(--mark);
+  background: var(--mark);
+  color: #1a1405;
+}
+.c-hero .c-btn--primary:hover {
+  filter: brightness(1.12);
 }
 .c-hero__cv {
   display: inline-flex;
   min-height: 44px;
   align-items: center;
-  color: var(--clr-white);
+  color: var(--ink);
+  text-decoration-color: var(--mark);
+  text-underline-offset: 0.25em;
+}
+.c-hero a:focus-visible {
+  outline: 2px solid var(--mark);
+  outline-offset: 3px;
+}
+@media (max-width: 860px) {
+  .c-hero__sheet {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 .c-featured {
   background: var(--clr-black-soft);
-  padding-block: 4rem;
+  padding-block: 5rem;
 }
 .c-featured__layout {
   display: grid;
@@ -64,7 +188,7 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   font-weight: 600;
 }
 .c-backend-map h3 {
@@ -117,13 +241,18 @@
 }
 .c-proof__grid {
   display: grid;
-  gap: 3rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
 }
 .c-proof__card {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr) minmax(0, 0.65fr);
-  gap: 2rem;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--clr-black-lightest);
+  border-top: 3px solid var(--clr-cyber-green);
+  background: var(--card);
 }
 .c-proof__heading h3 {
   margin-bottom: 0.75rem;
@@ -137,7 +266,8 @@
   color: var(--clr-white-subtle);
 }
 .c-proof__card .c-project-update {
-  grid-column: 1 / -1;
+  align-self: stretch;
+  margin-top: auto;
 }
 .c-proof__card > a {
   min-height: 44px;
@@ -157,7 +287,7 @@
 }
 .c-resume {
   background: var(--clr-black-soft);
-  padding-block: 4rem;
+  padding-block: 5rem;
 }
 .c-resume__layout {
   display: grid;
@@ -181,39 +311,21 @@
   flex-wrap: wrap;
 }
 @media (max-width: 60em) {
-  .c-hero__intro,
   .c-featured__layout,
   .c-proof__header,
   .c-resume__layout {
     gap: 2rem;
   }
-  .c-proof__card {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  }
-  .c-proof__card > a {
-    grid-column: 2;
-  }
 }
 @media (max-width: 48em) {
-  .c-hero__intro,
   .c-featured__layout,
   .c-proof__header,
-  .c-proof__card,
+  .c-proof__grid,
   .c-resume__layout {
     grid-template-columns: 1fr;
   }
-  .c-hero__actions,
   .c-resume__actions {
     justify-content: start;
-  }
-  .c-hero__title {
-    max-width: 9ch;
-  }
-  .c-proof__card {
-    gap: 1rem;
-  }
-  .c-proof__card > a {
-    grid-column: auto;
   }
   .c-proof__header {
     gap: 1.5rem;

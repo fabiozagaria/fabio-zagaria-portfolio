@@ -1,12 +1,38 @@
-<section id="home" class="c-hero o-section">
-  <div class="o-container">
-    <h1 class="c-hero__title">Fabio Zagaria</h1>
-    <p class="c-hero__role">Junior Backend Developer<br />con visione full stack.</p>
-    <div class="c-hero__intro">
+<section id="home" class="c-hero o-section" aria-labelledby="hero-title">
+  <app-hero-scene />
+  <div class="c-hero__glow" aria-hidden="true"></div>
+  <div class="o-container c-hero__sheet">
+    <div class="c-hero__main">
+      <div class="c-hero__name">
+        <h1 id="hero-title" class="c-hero__title">
+          <span class="c-hero__first"><span class="c-hero__word">Fabio</span></span>
+          <span class="c-hero__last"><span class="c-hero__word">Zagaria</span></span>
+        </h1>
+        <p class="c-hero__dimension">
+          <span>Java · Spring Boot · REST API · MySQL</span>
+        </p>
+      </div>
+      <p class="c-hero__role">Junior Backend Developer<br />con visione full stack.</p>
+    </div>
+    <div class="c-hero__side">
       <p class="c-hero__description">
         Sviluppo API REST con Java, Spring Boot e MySQL. Con Angular e TypeScript collego
         interfaccia, logica applicativa e dati.
       </p>
+      <dl class="c-hero__facts">
+        <div>
+          <dt>Frontend</dt>
+          <dd>Angular, TypeScript</dd>
+        </div>
+        <div>
+          <dt>Sede</dt>
+          <dd>Roma, ibrido o remoto in Italia</dd>
+        </div>
+        <div>
+          <dt>Formazione</dt>
+          <dd>Full Stack Web LabForWeb, 650 ore, agosto 2026</dd>
+        </div>
+      </dl>
       <div class="c-hero__actions">
         <a routerLink="/projects" class="c-btn c-btn--primary">Vedi i progetti</a>
         <a href="/downloads/CV.pdf?v=1360e5cb" download="CV_Fabio_Zagaria.pdf" class="c-hero__cv"
