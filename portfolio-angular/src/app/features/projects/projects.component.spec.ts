@@ -54,6 +54,6 @@ describe('ProjectsComponent', () => {
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged).toEqual(['jobflow']);
+    expect(flagged.sort()).toEqual(['gestionale-spese', 'jobflow']);
   });
 });
