@@ -367,6 +367,12 @@ export const PROJECTS = [
         },
       ],
     },
+    screenshot: {
+      src: '/assets/img/project-fakeflix.webp',
+      alt: 'Pagina di Fakeflix dedicata a Stranger Things: titolo della serie su uno sfondo di foresta scura, descrizione, campo email con il pulsante Inizia a guardare e menu con Info, Trailer, Episodi, Potrebbe piacerti e Piani.',
+      width: 1400,
+      height: 640,
+    },
     liveLink: 'https://fakeflix-vanilla-js.vercel.app/',
     liveLabel: 'Demo online',
     repositories: [
