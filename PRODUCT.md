@@ -19,7 +19,7 @@ Angular 21 e TypeScript 5.9 esistenti. Preservare route, tema chiaro/scuro, docu
 Testi italiani, identificatori tecnici inglesi. Portfolio minimalista, tecnologico e raffinato; dark mode curata, palette limitata, animazioni discrete. Il proprietario ha confermato la direzione tipografica antracite/teal con nome e ruolo immediati e progetti tecnici al centro.
 
 ## Evidence on Hand
-README.md, docs/CONTEXT.md, src/app/data sotto portfolio-angular, CV e attestato nei documenti pubblici. Expense Tracker ha scope funzionale concluso; Access Desk e JobFlow sono in sviluppo. Il collaudo dei progetti collegati non è attestato dal redesign.
+README.md, docs/CONTEXT.md, src/app/data sotto portfolio-angular, CV e attestato nei documenti pubblici. Expense Tracker ha scope funzionale concluso; AccessDesk e JobFlow sono in sviluppo. Il collaudo dei progetti collegati non è attestato dal redesign.
 
 ## Product Principles
 - Mostrare prove tecniche concrete e lo stato reale di ciascun progetto.

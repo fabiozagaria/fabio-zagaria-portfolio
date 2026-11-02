@@ -181,7 +181,7 @@ export const PROJECTS = [
   },
   {
     id: 'accessdesk',
-    title: 'Access Desk',
+    title: 'AccessDesk',
     category: 'Backend',
     icon: 'fas fa-user-shield',
     focus: 'Backend · sicurezza e autorizzazione',
