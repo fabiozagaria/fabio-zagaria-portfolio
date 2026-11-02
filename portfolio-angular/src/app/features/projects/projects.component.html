@@ -18,7 +18,12 @@
             <article class="c-card" [id]="project.id">
               <div class="c-card__content">
                 <div class="c-card__heading">
-                  <h3 class="c-card__title">{{ project.title }}</h3>
+                  <h3 class="c-card__title">
+                    {{ project.title }}
+                    @if (isNew(project.latestUpdate)) {
+                      <span class="c-badge-new">Novità</span>
+                    }
+                  </h3>
                   <span class="c-card__status" [attr.data-status]="project.status">
                     {{ project.status }}
                   </span>
@@ -142,6 +147,40 @@
                       }
                     </div>
                   </section>
+                }
+
+                @let entries = history(project.id);
+                @if (entries.length) {
+                  <details class="c-project-history">
+                    <summary class="c-project-history__toggle">
+                      Implementazioni importanti
+                      <span class="c-project-history__count">{{ entries.length }}</span>
+                    </summary>
+                    <ol class="c-project-history__list">
+                      @for (entry of entries; track entry.datetime + entry.title) {
+                        <li class="c-project-history__item">
+                          <p class="c-project-history__meta">
+                            <time [attr.datetime]="entry.datetime">{{ entry.dateLabel }}</time>
+                            @if (entry.version) {
+                              <span>{{ entry.version }}</span>
+                            }
+                          </p>
+                          <p class="c-project-history__title">{{ entry.title }}</p>
+                          <p class="c-project-history__summary">{{ entry.summary }}</p>
+                          <div
+                            class="c-project-update__sources"
+                            aria-label="Fonti dell’implementazione"
+                          >
+                            @for (source of entry.sources; track source.url) {
+                              <a [href]="source.url" target="_blank" rel="noopener noreferrer">
+                                {{ source.label }}
+                              </a>
+                            }
+                          </div>
+                        </li>
+                      }
+                    </ol>
+                  </details>
                 }
               </div>
             </article>

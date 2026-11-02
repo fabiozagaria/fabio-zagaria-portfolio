@@ -135,6 +135,8 @@ export const PROJECTS = [
       'Dominio Job con stati CREATED, PROCESSING, COMPLETED e FAILED',
       'POST /jobs con DTO validato, risposta 201 Created e header Location; GET /jobs/{id} per la consultazione',
       'Persistenza JPA/MySQL di Job e GeneratePdfWork con cascade PERSIST',
+      'JobCreatedEvent pubblicato dopo il salvataggio e JobWorker asincrono (@Async con @TransactionalEventListener) che porta il job da CREATED a PROCESSING',
+      'Mapping con MapStruct e test unitari di JobService e JobController',
     ],
     technologies: [
       'Java',
@@ -143,20 +145,28 @@ export const PROJECTS = [
       'Spring Data JPA',
       'MySQL',
       'Bean Validation',
+      'MapStruct',
     ],
     status: 'In sviluppo',
     statusDetail:
-      'Creazione e persistenza verificate manualmente con Postman e MySQL. GET /jobs/{id} è implementato e da verificare a runtime; worker, esecuzione asincrona e generazione PDF restano da completare.',
+      'Creazione e persistenza verificate con Postman e MySQL; il passaggio asincrono da CREATED a PROCESSING è verificato a runtime. GET /jobs/{id} è coperto da test ma resta da provare a runtime. Completamento fino a COMPLETED o FAILED, ProcessorRegistry e generazione PDF restano da fare.',
     latestUpdate: {
-      dateLabel: '31 ottobre 2026',
-      datetime: '2026-10-31',
-      version: '0.1.0-alpha.1',
+      dateLabel: '1 novembre 2026',
+      datetime: '2026-11-01',
       summary:
-        'Prima prerelease del backend: creazione e persistenza dei job sono presenti; worker, esecuzione asincrona e generazione PDF restano da completare.',
+        'Aggiunti JobMapper con MapStruct e test unitari, pubblicazione di JobCreatedEvent e JobWorker asincrono, che porta il job da CREATED a PROCESSING. Il tag resta v0.1.0-alpha.1.',
       sources: [
         {
-          label: 'Commit',
-          url: 'https://github.com/fabiozagaria/job-flow/commit/a58c3622a2cc74e0d787736a05e4915825a8ea22',
+          label: 'Worker asincrono',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/44a2527a70cc8020bdb948266445f7b7fd85dfbb',
+        },
+        {
+          label: 'JobCreatedEvent',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/5e0ddc3914893d74975b836f52cf857997bcf4b9',
+        },
+        {
+          label: 'JobMapper',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/ffb251cb5e13478c66e8cbd656842206d0a7e273',
         },
       ],
     },

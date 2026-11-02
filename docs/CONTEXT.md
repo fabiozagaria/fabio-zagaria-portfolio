@@ -1,6 +1,6 @@
 # Contesto tecnico — Portfolio
 
-Aggiornato: 2026-10-25
+Aggiornato: 2026-11-02
 
 ## Obiettivo
 Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come Junior Backend Developer con visione full stack, mantenendo allineati portfolio, progetti, CV e stato tecnico reale.
@@ -15,7 +15,7 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 - PostgreSQL è indicato come studio autodidatta in corso, alternativa a MySQL applicata in AccessDesk; non come competenza del corso LabForWeb.
 - Home: Expense Tracker nel blocco principale; AccessDesk, JobFlow e LabTV nelle tre schede successive. Spring Scaffold CLI resta nella pagina progetti. Task Manager è nel laboratorio separato.
 - LabTV: release frontend conclusa con TMDB API.
-- JobFlow: POST e GET dei job presenti; creazione/persistenza verificate manualmente, GET da verificare a runtime. Worker ed esecuzione asincrona non completati.
+- JobFlow: POST e GET dei job presenti; creazione/persistenza verificate manualmente, GET coperto da test ma da provare a runtime. Dal 1 novembre 2026 JobCreatedEvent e JobWorker asincrono portano il job da CREATED a PROCESSING (verificato a runtime); restano da fare COMPLETED/FAILED, ProcessorRegistry e generazione PDF.
 - Transport Tickets: backend sperimentale Spring Boot/JPA integrato su `main` con il merge `e74e8c2eed01216534912c8a4b56a7216fc168d8`. MySQL, Flyway, Redis come cache opzionale, transazioni con lock e autenticazione a sessione con ruoli/CSRF. Corretto il difetto delle liste JPA con ticket non visibili; verificati 10 test JUnit, storage MySQL/Redis e flusso HTTP. Resta nella categoria Sperimentale con AI.
 - Spring Scaffold CLI: MVP per record DTO vuoti; nuove funzionalità sospese.
 - Task Manager: laboratorio guidato; refresh, rotazione e logout implementati, test comportamentali e cookie HttpOnly/Secure da completare.
@@ -35,6 +35,9 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 ## Punto di attenzione
 Quando cambiano versione, stato o focus di un progetto pubblico collegato, verificare se il portfolio necessita di sincronizzazione.
 
+
+## Storico aggiornamenti e badge Novità — 2026-11-02
+Le card dei tre progetti principali hanno il pulsante "Implementazioni importanti" (dati in `src/app/data/project-history.data.ts`, ogni voce con data, ora e commit reali, dalla più recente) e il badge "Novità", che resta visibile 7 giorni dopo la data di `latestUpdate`. L'animazione del badge è breve (3 pulsazioni) e disattivata con reduced motion.
 
 ## Tema UI — 2026-10-02
 Pulsante sole/luna accessibile nell’intestazione, tema coerente con i colori esistenti e scelta ricordata nel browser.

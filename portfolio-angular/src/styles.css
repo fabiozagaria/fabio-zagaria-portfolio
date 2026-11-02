@@ -604,6 +604,97 @@ main:focus {
   min-height: 32px;
   font-weight: 600;
 }
+.c-badge-new {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.125rem 0.625rem;
+  border-radius: var(--radius-sm);
+  background: var(--clr-cyber-green);
+  color: var(--button-ink);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-bold);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+}
+/* Pulsazione breve e finita: richiama l'attenzione senza animazioni continue. */
+@media (prefers-reduced-motion: no-preference) {
+  .c-badge-new {
+    animation: badge-new-pulse 1.6s ease-out 3;
+  }
+  @keyframes badge-new-pulse {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--clr-cyber-green) 55%, transparent);
+    }
+    70%,
+    100% {
+      box-shadow: 0 0 0 0.75rem color-mix(in srgb, var(--clr-cyber-green) 0%, transparent);
+    }
+  }
+}
+.c-project-history {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--clr-black-lighter);
+  font-size: var(--fs-300);
+}
+.c-project-history__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0 1rem;
+  border: 1px solid var(--clr-cyber-green);
+  border-radius: var(--radius-sm);
+  color: var(--clr-cyber-green);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+  list-style: none;
+}
+.c-project-history__toggle::-webkit-details-marker {
+  display: none;
+}
+.c-project-history__toggle::after {
+  content: '+';
+}
+.c-project-history[open] > .c-project-history__toggle::after {
+  content: '−';
+}
+.c-project-history__toggle:hover {
+  background: var(--clr-cyber-green-subtle);
+}
+.c-project-history__count {
+  color: var(--clr-white-subtle);
+  font-weight: var(--fw-regular);
+}
+.c-project-history__list {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.c-project-history__item {
+  display: grid;
+  gap: 0.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--clr-black-lighter);
+  color: var(--clr-white-subtle);
+}
+.c-project-history__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
+}
+.c-project-history__title {
+  margin: 0;
+  color: var(--clr-white);
+  font-weight: var(--fw-bold);
+}
+.c-project-history__summary {
+  margin: 0;
+}
 .c-projects__github-cta {
   display: grid;
   justify-items: start;

@@ -59,7 +59,7 @@ Superfici piatte e separazione tonale; nessun bagliore o ombra decorativa a ripo
 Azioni con raggio 4px; superfici di lettura con raggio 12px. Nessun bordo laterale decorativo.
 
 ## Components
-Pulsanti alti almeno 48px. Navigazione e toggle almeno 44px; focus con outline teal di 3px e offset 5px. Menu mobile disclosure nello stesso ordine del DOM, Escape ripristina il focus, scorrimento interno nei viewport bassi. Schede con titolo prima di focus e stato. Transizioni route 120/220ms, disattivate con reduced motion.
+Pulsanti alti almeno 48px. Navigazione e toggle almeno 44px; focus con outline teal di 3px e offset 5px. Menu mobile disclosure nello stesso ordine del DOM, Escape ripristina il focus, scorrimento interno nei viewport bassi. Schede con titolo prima di focus e stato. Transizioni route 120/220ms, disattivate con reduced motion. Badge "Novità" accanto al titolo con pulsazione finita (3 cicli, 1,6s), disattivata con reduced motion; "Implementazioni importanti" è un elemento details/summary alto almeno 44px.
 
 ## Do's and Don'ts
 Conservare contenuti reali, stato dei progetti, gerarchia semantica, focus e contrasto. Evitare eyebrow decorative, gradienti, icone senza etichetta, animazioni continue e competenze inventate. Non aggiungere immagini o video solo per soddisfare un detector stilistico.

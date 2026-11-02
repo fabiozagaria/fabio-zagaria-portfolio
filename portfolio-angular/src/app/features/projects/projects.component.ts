@@ -1,10 +1,20 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PortfolioProject, ProjectCategory, PROJECTS } from '../../data/projects.data';
+import {
+  PortfolioLatestUpdate,
+  PortfolioProject,
+  ProjectCategory,
+  PROJECTS,
+} from '../../data/projects.data';
 import {
   EXERCISE_COLLECTIONS,
   EXPERIMENTAL_PROJECTS,
   PortfolioCollectionItem,
 } from '../../data/project-collections.data';
+import { PortfolioHistoryEntry, PROJECT_HISTORY } from '../../data/project-history.data';
+
+const DAY_MS = 24 * 60 * 60 * 1000;
+/** Il badge "Novità" resta visibile per 7 giorni dopo la data dell'aggiornamento. */
+export const NEW_UPDATE_WINDOW_DAYS = 7;
 
 @Component({
   selector: 'app-projects',
@@ -13,6 +23,8 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent {
+  private readonly now = Date.now();
+
   readonly groups = (
     [
       { category: 'Full stack', title: 'Full Stack', id: 'full-stack' },
@@ -45,4 +57,21 @@ export class ProjectsComponent {
       entries: EXERCISE_COLLECTIONS,
     },
   ];
+
+  /** Implementazioni importanti del progetto, dalla più recente. */
+  history(projectId: string): readonly PortfolioHistoryEntry[] {
+    return PROJECT_HISTORY[projectId] ?? [];
+  }
+
+  /** Vero se l'ultimo aggiornamento è recente: mostra il badge "Novità". */
+  isNew(update: PortfolioLatestUpdate | undefined): boolean {
+    if (!update) {
+      return false;
+    }
+    const updatedAt = Date.parse(update.datetime);
+    if (Number.isNaN(updatedAt)) {
+      return false;
+    }
+    return this.now - updatedAt < (NEW_UPDATE_WINDOW_DAYS + 1) * DAY_MS;
+  }
 }

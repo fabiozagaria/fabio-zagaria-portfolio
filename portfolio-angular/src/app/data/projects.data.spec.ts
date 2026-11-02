@@ -1,5 +1,54 @@
-import { PROJECTS } from './projects.data';
+import { PortfolioProject, PROJECTS } from './projects.data';
 import { EXERCISE_COLLECTIONS, EXPERIMENTAL_PROJECTS } from './project-collections.data';
+import { PROJECT_HISTORY } from './project-history.data';
+
+describe('project history', () => {
+  const projects: readonly PortfolioProject[] = PROJECTS;
+  const mainProjects = ['gestionale-spese', 'jobflow', 'accessdesk'];
+
+  it('covers the three main projects only', () => {
+    expect(Object.keys(PROJECT_HISTORY).sort()).toEqual([...mainProjects].sort());
+  });
+
+  it('lists entries newest first with real commit links', () => {
+    for (const id of mainProjects) {
+      const entries = PROJECT_HISTORY[id];
+      const times = entries.map((entry) => Date.parse(entry.datetime));
+
+      expect(entries.length).toBeGreaterThan(0);
+      expect(times.every((time) => !Number.isNaN(time))).toBe(true);
+      expect(times).toEqual([...times].sort((a, b) => b - a));
+      for (const entry of entries) {
+        expect(entry.sources.length).toBeGreaterThan(0);
+        for (const source of entry.sources) {
+          expect(source.url).toMatch(
+            /^https:\/\/github\.com\/fabiozagaria\/[\w.-]+\/commit\/[0-9a-f]{40}$/,
+          );
+        }
+      }
+    }
+  });
+
+  it('keeps the history at least as recent as each latest update', () => {
+    for (const id of mainProjects) {
+      const project = projects.find((item) => item.id === id);
+      const newest = PROJECT_HISTORY[id][0];
+
+      expect(project?.latestUpdate?.datetime).toBeDefined();
+      expect(Date.parse(newest.datetime)).toBeGreaterThanOrEqual(
+        Date.parse(project?.latestUpdate?.datetime ?? ''),
+      );
+    }
+  });
+
+  it('records the asynchronous JobFlow worker as the latest JobFlow update', () => {
+    const jobFlow = projects.find((project) => project.id === 'jobflow');
+
+    expect(jobFlow?.latestUpdate?.datetime).toBe('2026-11-01');
+    expect(jobFlow?.latestUpdate?.sources[0].url).toContain('44a2527');
+    expect(PROJECT_HISTORY['jobflow'][0].sources[0].url).toContain('44a2527');
+  });
+});
 
 describe('portfolio projects', () => {
   it('includes the active JobFlow project', () => {
