@@ -23,7 +23,25 @@
   width: fit-content;
   max-width: 100%;
 }
+.c-hero {
+  position: relative;
+}
+.c-hero__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--mark) 1px, transparent 1px) 0 0 / 100% 2.5rem,
+    linear-gradient(90deg, var(--mark) 1px, transparent 1px) 0 0 / 2.5rem 100%;
+  mask-image: radial-gradient(circle 14rem at var(--mx, 50%) var(--my, 50%), #000, transparent);
+  transition: opacity 400ms ease-out;
+}
+.c-hero.is-tracking .c-hero__glow {
+  opacity: 0.95;
+}
 .c-hero__sheet {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 5rem);

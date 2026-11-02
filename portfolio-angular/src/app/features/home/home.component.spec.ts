@@ -63,4 +63,21 @@ describe('HomeComponent', () => {
     expect(element.textContent).not.toContain('Metodo CARAC');
     expect(element.textContent).not.toContain("Uso dell'AI");
   });
+
+  it('lights up the hero grid while a fine pointer moves over it', () => {
+    vi.stubGlobal('matchMedia', (query: string) => ({
+      matches: !query.includes('reduce'),
+    }));
+    const fixture = TestBed.createComponent(HomeComponent);
+    fixture.detectChanges();
+    TestBed.tick();
+    const hero = (fixture.nativeElement as HTMLElement).querySelector<HTMLElement>('.c-hero')!;
+
+    hero.dispatchEvent(new PointerEvent('pointermove', { clientX: 120, clientY: 90 }));
+    expect(hero.classList.contains('is-tracking')).toBe(true);
+
+    hero.dispatchEvent(new PointerEvent('pointerleave'));
+    expect(hero.classList.contains('is-tracking')).toBe(false);
+    vi.unstubAllGlobals();
+  });
 });
