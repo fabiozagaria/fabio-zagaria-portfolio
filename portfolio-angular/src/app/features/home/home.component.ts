@@ -7,6 +7,7 @@ import {
   inject,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { HeroSceneComponent } from './hero-scene/hero-scene.component';
 import { PROJECTS, type PortfolioProject } from '../../data/projects.data';
 
 const FOLLOW_EASING = 0.14;
@@ -14,7 +15,7 @@ const FOLLOW_EASING = 0.14;
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, HeroSceneComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
