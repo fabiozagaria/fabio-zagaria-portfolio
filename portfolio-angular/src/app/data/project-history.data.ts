@@ -194,6 +194,31 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
   ],
   'gestionale-spese': [
     {
+      datetime: '2026-11-02T18:31:10+01:00',
+      dateLabel: '2 novembre 2026, 18:31',
+      title: 'API: rotazione atomica del refresh token',
+      summary:
+        'Il refresh token viene ruotato in modo atomico per impedire il riutilizzo concorrente; il commit aggiunge test di concorrenza.',
+      sources: [
+        {
+          label: 'Backend',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/62598723af506071029495f3672c9b58f8fd4945',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-02T18:26:07+01:00',
+      dateLabel: '2 novembre 2026, 18:26',
+      title: 'API: controllo della lunghezza della chiave JWT',
+      summary: 'L’avvio dell’API fallisce subito se SECRET_KEY è più corta di 32 byte.',
+      sources: [
+        {
+          label: 'Backend',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/04fe79a4bd9cad8afe8d1b7817910ed20f4c973f',
+        },
+      ],
+    },
+    {
       datetime: '2026-10-31T09:09:19+01:00',
       dateLabel: '31 ottobre 2026, 09:09',
       title: 'API 1.0.2: mapping MapStruct',

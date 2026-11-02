@@ -86,11 +86,11 @@ export const PROJECTS = [
     statusDetail:
       'Versione 1.0.0 conclusa il 25 ottobre 2026; l’API 1.0.2 introduce il mapping MapStruct per spese ed entrate. Il frontend 1.0.2 include letture paginate nella dashboard, controllo mostra/nascondi password e correzioni del tema scuro. La cache Redis remota resta da configurare prima di attivarla nel deploy. Collaudo del deploy e regressioni degli ultimi ampliamenti restano da completare.',
     latestUpdate: {
-      dateLabel: '31 ottobre 2026',
-      datetime: '2026-10-31',
+      dateLabel: '2 novembre 2026',
+      datetime: '2026-11-02',
       version: 'frontend 1.0.2 · API 1.0.2',
       summary:
-        'API 1.0.2: mapping MapStruct di request, entity e response. Frontend 1.0.2: dashboard con letture paginate, controllo mostra/nascondi password e correzioni del tema scuro.',
+        'Ultimo commit API (6259872, 2 novembre 2026, 17:31 UTC): «fix: rotate refresh token atomically to prevent concurrent reuse». Prima: controllo di avvio sulla chiave JWT di almeno 32 byte e nuovi test. API 1.0.2: mapping MapStruct di request, entity e response. Frontend 1.0.2: dashboard con letture paginate, controllo mostra/nascondi password e correzioni del tema scuro.',
       sources: [
         {
           label: 'Frontend',
@@ -98,7 +98,7 @@ export const PROJECTS = [
         },
         {
           label: 'Backend',
-          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/bc04ed326a90a5549bcefe4aefa83e07cb5d8c86',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/62598723af506071029495f3672c9b58f8fd4945',
         },
       ],
     },
