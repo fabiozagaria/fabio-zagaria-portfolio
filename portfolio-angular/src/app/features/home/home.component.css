@@ -13,9 +13,6 @@
     var(--sheet);
   color: var(--ink);
 }
-:root[data-theme='dark'] .c-hero {
-  --sheet: #0f2150;
-}
 .c-hero.o-section {
   padding-block: calc(var(--header-height) + clamp(1.25rem, 3vw, 2.5rem)) clamp(2.5rem, 5vw, 4rem);
 }

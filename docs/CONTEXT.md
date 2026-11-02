@@ -51,4 +51,3 @@ Il tema chiaro/scuro (pulsante sole/luna accessibile nell’intestazione, scelta
 
 Da fare e limiti noti:
 - Prestazioni su GPU e dispositivi reali e Lighthouse non sono stati misurati.
-- La regola `:root[data-theme='dark'] .c-hero` in `home.component.css` non ha effetto (encapsulation del componente) e può essere rimossa.
