@@ -143,7 +143,7 @@ La stessa sequenza viene eseguita automaticamente sulle pull request e sui push 
 
 ## Contatti
 
-- Email: [fabiozagaria@proton.me](mailto:fabiozagaria@proton.me)
+- Email: [zagariafabio1999@gmail.com](mailto:zagariafabio1999@gmail.com)
 - LinkedIn: [linkedin.com/in/fabiozagaria](https://www.linkedin.com/in/fabiozagaria)
 - GitHub: [github.com/fabiozagaria](https://github.com/fabiozagaria)
 
