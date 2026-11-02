@@ -238,13 +238,18 @@
 }
 .c-proof__grid {
   display: grid;
-  gap: 3rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
 }
 .c-proof__card {
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr) minmax(0, 0.65fr);
-  gap: 2rem;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--clr-black-lightest);
+  border-top: 3px solid var(--clr-cyber-green);
+  background: var(--card);
 }
 .c-proof__heading h3 {
   margin-bottom: 0.75rem;
@@ -258,7 +263,8 @@
   color: var(--clr-white-subtle);
 }
 .c-proof__card .c-project-update {
-  grid-column: 1 / -1;
+  align-self: stretch;
+  margin-top: auto;
 }
 .c-proof__card > a {
   min-height: 44px;
@@ -307,28 +313,16 @@
   .c-resume__layout {
     gap: 2rem;
   }
-  .c-proof__card {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  }
-  .c-proof__card > a {
-    grid-column: 2;
-  }
 }
 @media (max-width: 48em) {
   .c-featured__layout,
   .c-proof__header,
-  .c-proof__card,
+  .c-proof__grid,
   .c-resume__layout {
     grid-template-columns: 1fr;
   }
   .c-resume__actions {
     justify-content: start;
-  }
-  .c-proof__card {
-    gap: 1rem;
-  }
-  .c-proof__card > a {
-    grid-column: auto;
   }
   .c-proof__header {
     gap: 1.5rem;
