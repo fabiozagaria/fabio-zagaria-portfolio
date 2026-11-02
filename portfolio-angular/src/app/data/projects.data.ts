@@ -285,6 +285,12 @@ export const PROJECTS = [
       tradeoff:
         'La SPA dipende dalla API esterna; credenziali riservate richiederebbero un backend dedicato.',
     },
+    screenshot: {
+      src: '/assets/img/project-labtv.webp',
+      alt: 'Catalogo film di LabTV con la navigazione Home, Catalogo, Ricerca e Contatti e una griglia di locandine, tra cui The Dark Knight, Wildwood, Hope e Spider-Man: Brand New Day.',
+      width: 1400,
+      height: 640,
+    },
     liveLink: 'https://lab-tv.vercel.app/',
     liveLabel: 'Demo online',
     repositories: [
