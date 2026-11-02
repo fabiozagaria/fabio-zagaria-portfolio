@@ -84,4 +84,17 @@ describe('App', () => {
     expect(fixture.componentInstance.isMenuOpen).toBe(false);
     expect(document.body.style.overflow).not.toBe('hidden');
   });
+
+  it('shows the TMDB attribution in the footer', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const note = (fixture.nativeElement as HTMLElement).querySelector('.c-footer__note');
+
+    expect(note?.textContent).toContain(
+      'This product uses the TMDB API but is not endorsed or certified by',
+    );
+    const link = note?.querySelector<HTMLAnchorElement>('a');
+    expect(link?.getAttribute('href')).toBe('https://www.themoviedb.org/');
+    expect(link?.getAttribute('rel')).toContain('noopener');
+  });
 });

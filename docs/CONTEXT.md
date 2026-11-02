@@ -58,6 +58,6 @@ Il tema chiaro/scuro (pulsante sole/luna accessibile nell’intestazione, scelta
 
 Da fare e limiti noti:
 - Lighthouse sul sito in produzione, prove su telefoni reali e con screen reader (VoiceOver, NVDA) non sono state fatte.
-- Le locandine nelle immagini di LabTV provengono da TMDB, i cui termini richiedono una nota di attribuzione visibile («This product uses the TMDB API but is not endorsed or certified by TMDB»): da controllare nell’app.
+- TMDB: il footer del portfolio mostra la nota di attribuzione richiesta dai termini d’uso (frase ufficiale in inglese, con link a themoviedb.org), che copre LabTV e le locandine nelle immagini della pagina Progetti. Il logo TMDB non è stato aggiunto. Resta da controllare che l’app LabTV mostri la stessa nota.
 - Le schede di «Sperimentale con AI» ed «Esercizi» non hanno immagini.
 - I link esterni (demo, repository, commit) non sono verificati automaticamente: l’ambiente di sviluppo non li raggiunge.
