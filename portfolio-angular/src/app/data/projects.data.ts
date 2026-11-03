@@ -115,11 +115,11 @@ export const PROJECTS = [
       datetime: '2026-11-02',
       version: 'frontend 1.0.2 · API 1.0.2',
       summary:
-        'Ultimo commit API (6259872, 2 novembre 2026, 17:31 UTC): «fix: rotate refresh token atomically to prevent concurrent reuse». Prima: controllo di avvio sulla chiave JWT di almeno 32 byte e nuovi test. API 1.0.2: mapping MapStruct di request, entity e response. Frontend 1.0.2: dashboard con letture paginate, controllo mostra/nascondi password e correzioni del tema scuro.',
+        'Ultimo commit API (6259872, 2 novembre 2026, 17:31 UTC): «fix: rotate refresh token atomically to prevent concurrent reuse». Ultimo commit frontend (5602796, 2 novembre 2026, 23:30 UTC): «Merge pull request #21 from fabiozagaria/docs/align-backend-version», solo documentazione sulla versione backend compatibile. Prima, nell’API: controllo di avvio sulla chiave JWT di almeno 32 byte e nuovi test. API 1.0.2: mapping MapStruct di request, entity e response. Frontend 1.0.2: dashboard con letture paginate, controllo mostra/nascondi password e correzioni del tema scuro.',
       sources: [
         {
           label: 'Frontend',
-          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/b02566352384cccb32c698328fe12e9a48bf1bef',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/560279611c1ea8c7ed02c11646f3ef563275e458',
         },
         {
           label: 'Backend',
@@ -221,7 +221,7 @@ export const PROJECTS = [
       dateLabel: '1 novembre 2026',
       datetime: '2026-11-01',
       summary:
-        'Aggiunti JobMapper con MapStruct e test unitari, pubblicazione di JobCreatedEvent e JobWorker asincrono, che porta il job da CREATED a PROCESSING. Il tag resta v0.1.0-alpha.1.',
+        'Ultimo commit (68f8c04, 1 novembre 2026, 22:23 UTC): «Merge branch ‘feat/job-mapper’». Aggiunti JobMapper con MapStruct e test unitari, pubblicazione di JobCreatedEvent e JobWorker asincrono, che porta il job da CREATED a PROCESSING. Il tag resta v0.1.0-alpha.1.',
       sources: [
         {
           label: 'Worker asincrono',
@@ -290,7 +290,7 @@ export const PROJECTS = [
       datetime: '2026-10-31',
       version: '0.1.0-alpha.1',
       summary:
-        'Prima prerelease: JWT Bearer, autorizzazioni e PostgreSQL predefinito sono documentati; verifiche del flusso JWT e chiusura della consegna restano aperte.',
+        'Ultimo commit (a460919, 31 ottobre 2026, 08:17 UTC): «docs: document version 0.1.0-alpha.1». Prima prerelease: JWT Bearer, autorizzazioni e PostgreSQL predefinito sono documentati; verifiche del flusso JWT e chiusura della consegna restano aperte.',
       sources: [
         {
           label: 'JWT',
