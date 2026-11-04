@@ -156,4 +156,21 @@ describe('ProjectsComponent', () => {
       element.querySelector<HTMLAnchorElement>('#spring-security-advisor .c-card__action')?.href,
     ).toContain('github.com/fabiozagaria/spring-security-advisor');
   });
+
+  it('shows each latest update as chips: API before frontend, backends and plugins with their own kind', () => {
+    const element = render('2026-11-04T10:00:00+01:00');
+    const kinds = (id: string) =>
+      Array.from(element.querySelectorAll<HTMLElement>(`#${id} .c-update-item`)).map(
+        (item) => item.dataset['kind'],
+      );
+
+    expect(kinds('gestionale-spese')).toEqual(['API', 'Frontend']);
+    expect(kinds('jobflow')).toEqual(['Backend']);
+    expect(kinds('accessdesk')).toEqual(['Backend']);
+    expect(kinds('learning-ledger')).toEqual(['Plugin']);
+    expect(kinds('spring-security-advisor')).toEqual(['Plugin']);
+    expect(element.querySelector('#jobflow .c-update-item__version')?.textContent).toContain(
+      'v0.1.0-alpha.1',
+    );
+  });
 });

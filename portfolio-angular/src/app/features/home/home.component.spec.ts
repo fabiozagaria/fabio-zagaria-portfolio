@@ -20,39 +20,73 @@ describe('HomeComponent', () => {
     expect(downloadLink?.getAttribute('download')).toBe('CV_Fabio_Zagaria.pdf');
   });
 
-  it('features the two backends after Expense Tracker and keeps coursework on the projects page', () => {
+  it('shows only the full stack project, with its demo and repositories, and no coursework', () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
+    const cards = Array.from(element.querySelectorAll('app-project-card article')).map(
+      (card) => card.id,
+    );
+    const actions = Array.from(
+      element.querySelectorAll<HTMLAnchorElement>('#gestionale-spese .c-card__action'),
+    );
 
-    expect(element.textContent).toContain('AccessDesk');
-    expect(element.textContent).not.toContain('Spring Scaffold CLI');
-    expect(element.textContent).toContain('Expense Tracker');
+    expect(cards).toEqual(['gestionale-spese']);
+    expect(element.textContent).toContain('Il progetto in primo piano');
+    expect(actions.map((link) => link.href)).toContain('https://gestionale-spese.vercel.app/');
+    expect(actions.map((link) => link.href).join(' ')).toContain('expense-tracker-api');
+    expect(actions.map((link) => link.href).join(' ')).toContain('expense-tracker-angular');
     expect(element.textContent).not.toContain('LabTV');
-    expect(element.textContent).not.toContain('Task Manager Security Lab');
-    expect(fixture.componentInstance.featuredProjects.map((project) => project.id)).toEqual([
-      'jobflow',
-      'accessdesk',
-    ]);
-    expect(element.textContent).not.toContain('Student Management API');
     expect(element.textContent).not.toContain('Fakeflix');
+    expect(element.textContent).not.toContain('Task Manager Security Lab');
   });
 
-  it('uses the hero to explain the current main project without duplicating it below', () => {
+  it('keeps the card compact: no technical decision and no history, only a link to the full card', () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
-    const architectureLink = element.querySelector<HTMLAnchorElement>('.c-backend-map__link');
+    const fullCard = element.querySelector<HTMLAnchorElement>('.c-showcase__more a');
 
-    expect(element.textContent).toContain('Progetto in primo piano');
-    expect(element.textContent).toContain('JobFlow');
-    expect(element.textContent).toContain('Interfaccia Angular');
-    expect(element.textContent).toContain('Autenticazione');
-    expect(element.textContent).toContain('Persistenza MySQL');
-    expect(architectureLink?.getAttribute('href')).toBe('/projects#gestionale-spese');
-    expect(fixture.componentInstance.featuredProjects.map((project) => project.id)).not.toContain(
-      'gestionale-spese',
+    expect(element.querySelector('.c-card__decision')).toBeNull();
+    expect(element.querySelector('details.c-project-history')).toBeNull();
+    expect(fullCard?.getAttribute('href')).toBe('/projects#gestionale-spese');
+  });
+
+  it('shows the API update before the frontend update, each with chip, tag, message and commit', () => {
+    const fixture = TestBed.createComponent(HomeComponent);
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+    const items = Array.from(
+      element.querySelectorAll<HTMLElement>('#gestionale-spese .c-update-item'),
     );
+
+    expect(items.map((item) => item.dataset['kind'])).toEqual(['API', 'Frontend']);
+    for (const item of items) {
+      expect(item.querySelector('.c-update-item__version')?.textContent).toContain('v1.0.2');
+      expect(
+        item.querySelector('.c-update-item__message code')?.textContent?.length,
+      ).toBeGreaterThan(5);
+      expect(item.querySelector<HTMLAnchorElement>('.c-update-item__commit')?.href).toMatch(
+        /github\.com\/fabiozagaria\/[\w.-]+\/commit\/[0-9a-f]{40}$/,
+      );
+    }
+  });
+
+  it('invites to the projects page with one entry per area, without presenting single projects', () => {
+    const fixture = TestBed.createComponent(HomeComponent);
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+    const links = Array.from(element.querySelectorAll<HTMLAnchorElement>('.c-explore__link')).map(
+      (link) => link.getAttribute('href'),
+    );
+
+    expect(links).toEqual([
+      '/projects#backend-title',
+      '/projects#plugin-skill-ai-title',
+      '/projects#frontend-title',
+    ]);
+    expect(element.querySelector('.c-explore')?.textContent).not.toContain('JobFlow');
+    expect(element.querySelector('.c-explore')?.textContent).not.toContain('AccessDesk');
   });
 
   it('keeps the home focused on role, projects and contact actions', () => {

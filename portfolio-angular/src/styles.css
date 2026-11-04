@@ -35,6 +35,9 @@
   --grid-line: rgb(18 36 79 / 0.05);
   --mark: #f5b642;
   --sheet: #17306b;
+  --kind-frontend: #1d44b0;
+  --kind-api: #805000;
+  --kind-plugin: #0b6b5d;
   --ff-primary: 'Space Grotesk', 'Segoe UI', sans-serif;
   --ff-secondary: 'Space Grotesk', 'Segoe UI', sans-serif;
   --ff-mono: Consolas, monospace;
@@ -87,6 +90,9 @@ html[data-theme='dark'] {
   --card: #0f1f49;
   --grid-line: rgb(157 184 255 / 0.07);
   --sheet: #17306b;
+  --kind-frontend: #9db8ff;
+  --kind-api: #f5b642;
+  --kind-plugin: #6fdcc8;
 }
 
 *,
@@ -445,6 +451,12 @@ main:focus {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
 }
+app-project-card {
+  display: block;
+}
+app-project-card > .c-card {
+  height: 100%;
+}
 .c-projects__grid--single {
   grid-template-columns: 1fr;
 }
@@ -618,6 +630,91 @@ main:focus {
   align-items: center;
   min-height: 32px;
   font-weight: 600;
+}
+/* Ultimo aggiornamento: una riga per repository, con chip colorato per tipo. */
+.c-update-items {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.c-update-item {
+  --kind: var(--kind-api);
+  position: relative;
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.75rem 0.9rem 0.75rem 1.2rem;
+  border: 1px solid color-mix(in srgb, var(--kind) 30%, transparent);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--kind) 7%, var(--card));
+}
+.c-update-item::before {
+  content: '';
+  position: absolute;
+  inset: -1px auto -1px -1px;
+  width: 4px;
+  background: var(--kind);
+}
+.c-update-item[data-kind='Frontend'] {
+  --kind: var(--kind-frontend);
+}
+.c-update-item[data-kind='API'],
+.c-update-item[data-kind='Backend'] {
+  --kind: var(--kind-api);
+}
+.c-update-item[data-kind='Plugin'] {
+  --kind: var(--kind-plugin);
+}
+.c-update-item__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.6rem;
+  align-items: center;
+}
+.c-update-item__chip {
+  padding: 0.1rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--kind);
+  color: var(--button-ink);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-bold);
+  line-height: 1.5;
+}
+.c-update-item__version {
+  padding: 0.05rem 0.45rem;
+  border: 1px solid var(--kind);
+  border-radius: var(--radius-sm);
+  color: var(--clr-white);
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+}
+.c-update-item__date {
+  margin-inline-start: auto;
+  color: var(--clr-white-subtle);
+}
+.c-update-item__message {
+  margin: 0;
+  color: var(--clr-white);
+}
+.c-update-item__message code {
+  font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+  overflow-wrap: anywhere;
+}
+.c-update-item__note {
+  margin: 0;
+}
+.c-update-item__commit {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  justify-self: start;
+  min-height: 32px;
+  font-weight: 600;
+}
+.c-update-item__commit code {
+  font-family: var(--ff-mono);
 }
 .c-badge-new {
   display: inline-block;

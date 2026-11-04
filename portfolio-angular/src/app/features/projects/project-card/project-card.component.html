@@ -1,0 +1,176 @@
+@let project = projectInput();
+<article class="c-card" [id]="project.id">
+  <div class="c-card__content">
+    <div class="c-card__heading">
+      <h3 class="c-card__title">
+        {{ project.title }}
+        @if (isNew(project.latestUpdate)) {
+          <span class="c-badge-new">Novità</span>
+        }
+      </h3>
+      <span class="c-card__status" [attr.data-status]="project.status">
+        {{ project.status }}
+      </span>
+    </div>
+
+    <p class="c-card__focus">{{ project.focus }}</p>
+    @if (project.versionTags?.length) {
+      <div class="c-project-versions" aria-label="Tag di versione">
+        @for (version of project.versionTags ?? []; track version.label) {
+          <span class="c-project-version">
+            <span class="c-project-version__label">{{ version.label }}</span>
+            <code class="c-project-version__tag">{{ version.tag }}</code>
+          </span>
+        }
+      </div>
+    }
+    @if (project.screenshots; as shots) {
+      <div class="c-shots" [class.c-shots--multi]="shots.length > 1">
+        @for (shot of shots; track shot.src) {
+          <figure class="c-card__shot c-shot">
+            <div class="c-shot__bar" aria-hidden="true">
+              <span class="c-shot__dots"></span>
+              @if (hostOf(project); as host) {
+                <span class="c-shot__url">{{ host }}{{ shot.path }}</span>
+              }
+            </div>
+            <a class="c-shot__frame" [href]="shot.src" target="_blank" rel="noopener noreferrer">
+              <img
+                [src]="shot.src"
+                [alt]="shot.alt"
+                [attr.width]="shot.width"
+                [attr.height]="shot.height"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="u-visually-hidden">(apre l’immagine intera in una nuova scheda)</span>
+            </a>
+          </figure>
+        }
+      </div>
+    } @else if (project.flow; as flow) {
+      <app-project-flow [flow]="flow" />
+    }
+    <p class="c-card__description">{{ project.description }}</p>
+
+    @if (project.category !== 'Frontend') {
+      <p class="c-card__section-label">Responsabilità e scelte tecniche</p>
+      <ul class="c-card__highlights">
+        @for (highlight of project.highlights; track highlight) {
+          <li>{{ highlight }}</li>
+        }
+      </ul>
+
+      @if (!compact()) {
+        @if (project.decision; as decision) {
+          <div class="c-card__decision">
+            <h4>Una scelta tecnica</h4>
+            <dl>
+              <div>
+                <dt>Problema</dt>
+                <dd>{{ decision.problem }}</dd>
+              </div>
+              <div>
+                <dt>Soluzione</dt>
+                <dd>{{ decision.solution }}</dd>
+              </div>
+              <div>
+                <dt>Compromesso</dt>
+                <dd>{{ decision.tradeoff }}</dd>
+              </div>
+            </dl>
+          </div>
+        }
+        @if (project.example; as example) {
+          <div class="c-card__example">
+            <h4>Dal comando al codice</h4>
+            <p>Comando</p>
+            <pre><code>{{ example.command }}</code></pre>
+            <p>File generati</p>
+            <pre><code>{{ example.output }}</code></pre>
+          </div>
+        }
+      }
+    }
+    <p class="c-card__status-detail">
+      <strong>Stato reale</strong>
+      <span>{{ project.statusDetail }}</span>
+    </p>
+
+    <div class="c-card__tags" aria-label="Tecnologie utilizzate">
+      @for (tech of project.technologies; track tech) {
+        <span class="c-card__tag">{{ tech }}</span>
+      }
+    </div>
+
+    @if (project.liveLink || project.repositories?.length) {
+      <div class="c-card__actions">
+        @if (project.liveLink) {
+          <a
+            [href]="project.liveLink"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="c-card__action"
+            [attr.aria-label]="
+              'Apri ' +
+              (project.liveLabel ?? 'la demo') +
+              ' di ' +
+              project.title +
+              ' in una nuova scheda'
+            "
+          >
+            {{ project.liveLabel ?? 'Demo' }}
+          </a>
+        }
+        @for (repository of project.repositories ?? []; track repository.url) {
+          <a
+            [href]="repository.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="c-card__action"
+            [attr.aria-label]="
+              'Apri ' + repository.label + ' di ' + project.title + ' su GitHub in una nuova scheda'
+            "
+          >
+            {{ repository.label }}
+          </a>
+        }
+      </div>
+    }
+
+    @if (project.latestUpdate; as update) {
+      <app-project-update [update]="update" />
+    }
+
+    @let entries = history(project.id);
+    @if (entries.length && !compact()) {
+      <details class="c-project-history">
+        <summary class="c-project-history__toggle">
+          Implementazioni importanti
+          <span class="c-project-history__count">{{ entries.length }}</span>
+        </summary>
+        <ol class="c-project-history__list">
+          @for (entry of entries; track entry.datetime + entry.title) {
+            <li class="c-project-history__item">
+              <p class="c-project-history__meta">
+                <time [attr.datetime]="entry.datetime">{{ entry.dateLabel }}</time>
+                @if (entry.version) {
+                  <span>{{ entry.version }}</span>
+                }
+              </p>
+              <p class="c-project-history__title">{{ entry.title }}</p>
+              <p class="c-project-history__summary">{{ entry.summary }}</p>
+              <div class="c-project-update__sources" aria-label="Fonti dell’implementazione">
+                @for (source of entry.sources; track source.url) {
+                  <a [href]="source.url" target="_blank" rel="noopener noreferrer">
+                    {{ source.label }}
+                  </a>
+                }
+              </div>
+            </li>
+          }
+        </ol>
+      </details>
+    }
+  </div>
+</article>

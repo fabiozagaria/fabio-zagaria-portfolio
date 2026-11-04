@@ -43,125 +43,49 @@
   </div>
 </section>
 
-<section class="c-featured" aria-labelledby="backend-map-title">
-  <div class="o-container c-featured__layout">
-    <div class="c-featured__overview">
-      <h2 id="backend-map-title">{{ mainProject.title }}</h2>
-      <p class="c-featured__description">{{ mainProject.description }}</p>
-      <p class="c-featured__status">Progetto in primo piano · {{ mainProject.focus }}.</p>
-      @if (mainProject.versionTags?.length) {
-        <div class="c-project-versions" aria-label="Tag di versione">
-          @for (version of mainProject.versionTags ?? []; track version.label) {
-            <span class="c-project-version">
-              <span class="c-project-version__label">{{ version.label }}</span>
-              <code class="c-project-version__tag">{{ version.tag }}</code>
-            </span>
-          }
-        </div>
-      }
-      <a routerLink="/projects" [fragment]="mainProject.id" class="c-backend-map__link"
-        >Esamina scelte e codice</a
-      >
-    </div>
-    <div class="c-backend-map">
-      <h3>Dal browser al database</h3>
-      <ol class="c-backend-map__flow" aria-label="Flusso full stack di Expense Tracker">
-        <li>
-          <strong>Interfaccia Angular</strong
-          ><span>Signals, Reactive Forms e client HTTP tipizzato</span>
-        </li>
-        <li>
-          <strong>Autenticazione</strong><span>Verifica email, JWT e refresh token HttpOnly</span>
-        </li>
-        <li><strong>API REST</strong><span>DTO, validazione e controllo del proprietario</span></li>
-        <li>
-          <strong>Persistenza MySQL</strong><span>Spring Data JPA e separazione dei layer</span>
-        </li>
-      </ol>
-      <p class="c-featured__note">
-        Il codice racconta le scelte. La scheda distingue le funzionalità concluse dalle verifiche
-        ancora aperte.
+<section class="c-showcase" aria-labelledby="showcase-title">
+  <div class="o-container">
+    <div class="c-showcase__header">
+      <h2 id="showcase-title">Il progetto in primo piano</h2>
+      <p>
+        Un progetto full stack dal browser al database, con demo online, codice e ultimi
+        aggiornamenti. Scelte tecniche, esempi e storico sono nella scheda completa.
       </p>
-
-      @if (mainProject.latestUpdate; as update) {
-        <div class="c-project-update" role="group" aria-label="Ultimo aggiornamento">
-          <p class="c-project-update__meta">
-            <strong>Ultimo aggiornamento</strong>
-            <time [attr.datetime]="update.datetime">{{ update.dateLabel }}</time>
-            @if (update.version) {
-              <span>v{{ update.version }}</span>
-            }
-          </p>
-          <p class="c-project-update__summary">{{ update.summary }}</p>
-          <div class="c-project-update__sources" aria-label="Fonti dell’aggiornamento">
-            @for (source of update.sources; track source.url) {
-              <a [href]="source.url" target="_blank" rel="noopener noreferrer">
-                {{ source.label }}
-              </a>
-            }
-          </div>
-        </div>
-      }
     </div>
+    <app-project-card [project]="mainProject" [compact]="true" />
+    <p class="c-showcase__more">
+      <a routerLink="/projects" [fragment]="mainProject.id"
+        >Scheda completa di {{ mainProject.title }}</a
+      >
+    </p>
   </div>
 </section>
 
-<section class="c-proof" aria-labelledby="featured-projects-title">
+<section class="c-explore" aria-labelledby="explore-title">
   <div class="o-container">
-    <div class="c-proof__header">
-      <h2 id="featured-projects-title">Backend in costruzione</h2>
+    <div class="c-explore__header">
+      <h2 id="explore-title">Il resto dei progetti</h2>
       <p>
-        Due progetti per approfondire persistenza e sicurezza. Stato e limiti sono documentati nelle
-        rispettive schede.
+        Nella pagina Progetti trovi tutto il lavoro, diviso per tipo. Ogni scheda dice che cosa è
+        stato fatto, a che punto è e quali verifiche mancano.
       </p>
     </div>
-    <div class="c-proof__grid">
-      @for (project of featuredProjects; track project.id) {
-        <article class="c-proof__card">
-          <div class="c-proof__heading">
-            <h3>{{ project.title }}</h3>
-            <span class="c-proof__status">{{ project.status }}</span>
-          </div>
-          @if (project.versionTags?.length) {
-            <div class="c-project-versions" aria-label="Tag di versione">
-              @for (version of project.versionTags ?? []; track version.label) {
-                <span class="c-project-version">
-                  <span class="c-project-version__label">{{ version.label }}</span>
-                  <code class="c-project-version__tag">{{ version.tag }}</code>
-                </span>
-              }
-            </div>
-          }
-          <p>{{ project.description }}</p>
-          <a routerLink="/projects" [fragment]="project.id"
-            >Dettagli e codice di {{ project.title }}</a
+    <ul class="c-explore__grid">
+      @for (area of areas; track area.id) {
+        <li class="c-explore__item">
+          <h3>{{ area.title }}</h3>
+          <p>{{ area.text }}</p>
+          <a routerLink="/projects" [fragment]="area.id + '-title'" class="c-explore__link"
+            >{{ area.count }} {{ area.count === 1 ? 'progetto' : 'progetti' }}: apri la sezione
+            <span class="u-visually-hidden">{{ area.title }}</span></a
           >
-          @if (project.latestUpdate; as update) {
-            <div class="c-project-update" role="group" aria-label="Ultimo aggiornamento">
-              <p class="c-project-update__meta">
-                <strong>Ultimo aggiornamento</strong>
-                <time [attr.datetime]="update.datetime">{{ update.dateLabel }}</time>
-                @if (update.version) {
-                  <span>v{{ update.version }}</span>
-                }
-              </p>
-              <p class="c-project-update__summary">{{ update.summary }}</p>
-              <div class="c-project-update__sources" aria-label="Fonti dell’aggiornamento">
-                @for (source of update.sources; track source.url) {
-                  <a [href]="source.url" target="_blank" rel="noopener noreferrer">
-                    {{ source.label }}
-                  </a>
-                }
-              </div>
-            </div>
-          }
-        </article>
+        </li>
       }
-    </div>
-    <div class="c-proof__actions">
-      <a routerLink="/projects">Tutti i progetti</a
-      ><a routerLink="/about">Il mio percorso e lo stack</a>
-    </div>
+    </ul>
+    <p class="c-explore__actions">
+      <a routerLink="/projects" class="c-btn c-btn--primary">Vedi tutti i progetti</a>
+      <a routerLink="/about">Il mio percorso e lo stack</a>
+    </p>
   </div>
 </section>
 

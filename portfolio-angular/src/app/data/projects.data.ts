@@ -16,12 +16,33 @@ export interface PortfolioVersionTag {
   readonly tag: string;
 }
 
+export type PortfolioUpdateKind = 'API' | 'Frontend' | 'Backend' | 'Plugin';
+
+/** Ultimo commit reale di un repository, mostrato come riga con chip colorato. */
+export interface PortfolioUpdateItem {
+  readonly kind: PortfolioUpdateKind;
+  /** Tag o versione del repository, per esempio «v1.0.2». */
+  readonly version?: string;
+  /** Hash abbreviato del commit. */
+  readonly hash: string;
+  /** Prima riga del messaggio del commit, così com'è su GitHub. */
+  readonly message: string;
+  readonly dateLabel: string;
+  /** Una frase in italiano su ciò che il commit porta. */
+  readonly note?: string;
+  /** Link al commit con l'hash completo. */
+  readonly url: string;
+}
+
 export interface PortfolioLatestUpdate {
   readonly dateLabel: string;
   readonly datetime: string;
   readonly version?: string;
-  readonly summary: string;
-  readonly sources: readonly PortfolioUpdateSource[];
+  /** Formato libero, per le card che non usano ancora `items`. */
+  readonly summary?: string;
+  readonly sources?: readonly PortfolioUpdateSource[];
+  /** Un elemento per repository: nei progetti full stack prima l'API, poi il frontend. */
+  readonly items?: readonly PortfolioUpdateItem[];
 }
 
 export interface PortfolioScreenshot {
@@ -113,17 +134,24 @@ export const PROJECTS = [
     latestUpdate: {
       dateLabel: '3 novembre 2026',
       datetime: '2026-11-03',
-      version: 'frontend 1.0.2 · API 1.0.2',
-      summary:
-        'Ultimo commit frontend (5602796, 3 novembre 2026, 00:30 ora di Roma): merge della pull request #21, che corregge nel README la versione backend compatibile (1.0.2). Ultimo commit API (6259872, 2 novembre 2026, 17:31 UTC): «fix: rotate refresh token atomically to prevent concurrent reuse». Prima: controllo di avvio sulla chiave JWT di almeno 32 byte e nuovi test. API 1.0.2: mapping MapStruct di request, entity e response. Frontend 1.0.2: dashboard con letture paginate, controllo mostra/nascondi password e correzioni del tema scuro.',
-      sources: [
+      items: [
         {
-          label: 'Frontend',
-          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/560279611c1ea8c7ed02c11646f3ef563275e458',
+          kind: 'API',
+          version: 'v1.0.2',
+          hash: '6259872',
+          message: 'fix: rotate refresh token atomically to prevent concurrent reuse',
+          dateLabel: '2 novembre 2026',
+          note: 'Rotazione atomica del refresh token, per impedirne il riuso concorrente.',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/62598723af506071029495f3672c9b58f8fd4945',
         },
         {
-          label: 'Backend',
-          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/62598723af506071029495f3672c9b58f8fd4945',
+          kind: 'Frontend',
+          version: 'v1.0.2',
+          hash: '5602796',
+          message: 'Merge pull request #21 from fabiozagaria/docs/align-backend-version',
+          dateLabel: '3 novembre 2026',
+          note: 'Il README indica la versione backend compatibile (1.0.2).',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/560279611c1ea8c7ed02c11646f3ef563275e458',
         },
       ],
     },
@@ -220,20 +248,15 @@ export const PROJECTS = [
     latestUpdate: {
       dateLabel: '1 novembre 2026',
       datetime: '2026-11-01',
-      summary:
-        'Aggiunti JobMapper con MapStruct e test unitari, pubblicazione di JobCreatedEvent e JobWorker asincrono, che porta il job da CREATED a PROCESSING. Il tag resta v0.1.0-alpha.1.',
-      sources: [
+      items: [
         {
-          label: 'Worker asincrono',
-          url: 'https://github.com/fabiozagaria/job-flow/commit/44a2527a70cc8020bdb948266445f7b7fd85dfbb',
-        },
-        {
-          label: 'JobCreatedEvent',
-          url: 'https://github.com/fabiozagaria/job-flow/commit/5e0ddc3914893d74975b836f52cf857997bcf4b9',
-        },
-        {
-          label: 'JobMapper',
-          url: 'https://github.com/fabiozagaria/job-flow/commit/ffb251cb5e13478c66e8cbd656842206d0a7e273',
+          kind: 'Backend',
+          version: 'v0.1.0-alpha.1',
+          hash: '68f8c04',
+          message: "Merge branch 'feat/job-mapper'",
+          dateLabel: '1 novembre 2026',
+          note: 'Con il ramo arrivano JobMapper (MapStruct) con test unitari, JobCreatedEvent e il JobWorker asincrono, che porta il job da CREATED a PROCESSING.',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/68f8c04c5c707054e63dc4dd680e52912c23dd5d',
         },
       ],
     },
@@ -288,16 +311,14 @@ export const PROJECTS = [
     latestUpdate: {
       dateLabel: '31 ottobre 2026',
       datetime: '2026-10-31',
-      version: '0.1.0-alpha.1',
-      summary:
-        'Prima prerelease: JWT Bearer, autorizzazioni e PostgreSQL predefinito sono documentati; verifiche del flusso JWT e chiusura della consegna restano aperte.',
-      sources: [
+      items: [
         {
-          label: 'JWT',
-          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/c6984ef4f3e7cf8dc8bad072606026f0a259fd55',
-        },
-        {
-          label: 'PostgreSQL',
+          kind: 'Backend',
+          version: 'v0.1.0-alpha.1',
+          hash: 'a460919',
+          message: 'docs: document version 0.1.0-alpha.1',
+          dateLabel: '31 ottobre 2026',
+          note: 'Prima prerelease documentata: JWT Bearer, autorizzazioni e PostgreSQL predefinito. Verifiche del flusso JWT e chiusura della consegna restano aperte.',
           url: 'https://github.com/fabiozagaria/accessdesk-api/commit/a4609198c9b74695a11f7d2f0d88651c8f3ced79',
         },
       ],

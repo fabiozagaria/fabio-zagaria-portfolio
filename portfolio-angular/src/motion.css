@@ -304,3 +304,41 @@
     transition: none !important;
   }
 }
+
+/* Ultimo aggiornamento: ogni riga entra scorrendo e la barra del colore si disegna. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .c-update-item {
+      animation: update-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    .c-update-item::before {
+      transform-origin: top;
+      animation: update-bar linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 90%;
+    }
+    /* Movement only: the text is never hidden. */
+    @keyframes update-in {
+      from {
+        transform: translateX(-14px);
+      }
+    }
+    @keyframes update-bar {
+      from {
+        transform: scaleY(0);
+      }
+    }
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .c-update-item {
+      transition:
+        transform 200ms ease-out,
+        border-color 200ms ease-out;
+    }
+    .c-update-item:hover {
+      border-color: var(--kind);
+    }
+  }
+}

@@ -19,12 +19,14 @@ export const AI_PLUGINS = [
     latestUpdate: {
       dateLabel: '4 novembre 2026',
       datetime: '2026-11-04',
-      version: '0.2.0',
-      summary:
-        'Aggiunti il comando report, la skill weekly-report, i pacchetti di argomenti (Java/Spring, Python, SQL, system design, DevOps), la CI e la documentazione.',
-      sources: [
+      items: [
         {
-          label: 'Commit',
+          kind: 'Plugin',
+          version: '0.2.0',
+          hash: '1ebc09c',
+          message: 'v0.2.0: report command, weekly-report skill, topic packs, CI and docs',
+          dateLabel: '4 novembre 2026',
+          note: 'Aggiunti il comando report, la skill weekly-report, i pacchetti di argomenti (Java/Spring, Python, SQL, system design, DevOps), la CI e la documentazione.',
           url: 'https://github.com/fabiozagaria/learning-ledger/commit/1ebc09c7ea6ee7f221f903e2a55263f534a7a795',
         },
       ],
@@ -62,12 +64,14 @@ export const AI_PLUGINS = [
     latestUpdate: {
       dateLabel: '4 novembre 2026',
       datetime: '2026-11-04',
-      version: '0.1.0',
-      summary:
-        'Prima versione: scanner con sei regole verificate sulla documentazione di Spring Security 7.0, skill review e map, fixture di prova e 19 test passati in locale.',
-      sources: [
+      items: [
         {
-          label: 'Commit',
+          kind: 'Plugin',
+          version: '0.1.0',
+          hash: 'f599534',
+          message: 'spring-security-advisor 0.1.0: scanner, review and map skills',
+          dateLabel: '4 novembre 2026',
+          note: 'Prima versione: scanner con sei regole verificate sulla documentazione di Spring Security 7.0, skill review e map, fixture di prova e 19 test passati in locale.',
           url: 'https://github.com/fabiozagaria/spring-security-advisor/commit/f59953410e9cc027790dab02c337b55255298a87',
         },
       ],
