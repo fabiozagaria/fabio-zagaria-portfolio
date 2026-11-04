@@ -12,8 +12,14 @@ export interface PortfolioUpdateSource {
 }
 
 export interface PortfolioVersionTag {
+  /** Testo del segmento colorato: «Frontend», «API», «Tag», «Versione». */
   readonly label: string;
+  /** Tag Git o versione, per esempio «v1.0.2». */
   readonly tag: string;
+  /** Colore del tag, lo stesso dei chip dell'ultimo aggiornamento. */
+  readonly kind?: PortfolioUpdateKind;
+  /** Link al codice di quella versione su GitHub. */
+  readonly url?: string;
 }
 
 export type PortfolioUpdateKind = 'API' | 'Frontend' | 'Backend' | 'Plugin';
@@ -105,8 +111,18 @@ export const PROJECTS = [
     icon: 'fas fa-wallet',
     focus: 'Full stack · frontend v1.0.2 · API v1.0.2',
     versionTags: [
-      { label: 'Frontend', tag: 'v1.0.2' },
-      { label: 'API', tag: 'v1.0.2' },
+      {
+        label: 'Frontend',
+        tag: 'v1.0.2',
+        kind: 'Frontend',
+        url: 'https://github.com/fabiozagaria/expense-tracker-angular/tree/v1.0.2',
+      },
+      {
+        label: 'API',
+        tag: 'v1.0.2',
+        kind: 'API',
+        url: 'https://github.com/fabiozagaria/expense-tracker-api/tree/v1.0.2',
+      },
     ],
     description:
       'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
@@ -211,7 +227,14 @@ export const PROJECTS = [
     category: 'Backend',
     icon: 'fas fa-diagram-project',
     focus: 'Backend · API e persistenza dei job',
-    versionTags: [{ label: 'Tag', tag: 'v0.1.0-alpha.1' }],
+    versionTags: [
+      {
+        label: 'Tag',
+        tag: 'v0.1.0-alpha.1',
+        kind: 'Backend',
+        url: 'https://github.com/fabiozagaria/job-flow/tree/v0.1.0-alpha.1',
+      },
+    ],
     description:
       'Backend per creare e consultare job tramite API REST, con validazione e persistenza JPA su MySQL. Il lavoro associato descrive una futura generazione di PDF.',
     highlights: [
@@ -275,7 +298,14 @@ export const PROJECTS = [
     category: 'Backend',
     icon: 'fas fa-user-shield',
     focus: 'Backend · sicurezza e autorizzazione',
-    versionTags: [{ label: 'Tag', tag: 'v0.1.0-alpha.1' }],
+    versionTags: [
+      {
+        label: 'Tag',
+        tag: 'v0.1.0-alpha.1',
+        kind: 'Backend',
+        url: 'https://github.com/fabiozagaria/accessdesk-api/tree/v0.1.0-alpha.1',
+      },
+    ],
     description:
       'API REST per richieste di accesso software: i dipendenti creano e consultano le proprie richieste, i manager le approvano o le rifiutano. PostgreSQL è il database predefinito; MySQL è disponibile come alternativa configurabile.',
     highlights: [

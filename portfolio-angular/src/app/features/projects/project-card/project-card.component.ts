@@ -3,6 +3,7 @@ import { PortfolioLatestUpdate, PortfolioProject } from '../../../data/projects.
 import { PortfolioHistoryEntry, PROJECT_HISTORY } from '../../../data/project-history.data';
 import { ProjectFlowComponent } from '../../../shared/project-flow/project-flow.component';
 import { ProjectUpdateComponent } from '../../../shared/project-update/project-update.component';
+import { VersionTagsComponent } from '../../../shared/version-tags/version-tags.component';
 import { isRecentUpdate } from '../../../shared/recent-update';
 
 /**
@@ -13,7 +14,7 @@ import { isRecentUpdate } from '../../../shared/recent-update';
 @Component({
   selector: 'app-project-card',
   standalone: true,
-  imports: [ProjectFlowComponent, ProjectUpdateComponent],
+  imports: [ProjectFlowComponent, ProjectUpdateComponent, VersionTagsComponent],
   templateUrl: './project-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

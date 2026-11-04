@@ -8,12 +8,18 @@ import {
 } from '../../data/project-collections.data';
 import { ProjectFlowComponent } from '../../shared/project-flow/project-flow.component';
 import { ProjectUpdateComponent } from '../../shared/project-update/project-update.component';
+import { VersionTagsComponent } from '../../shared/version-tags/version-tags.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [ProjectCardComponent, ProjectFlowComponent, ProjectUpdateComponent],
+  imports: [
+    ProjectCardComponent,
+    ProjectFlowComponent,
+    ProjectUpdateComponent,
+    VersionTagsComponent,
+  ],
   templateUrl: './projects.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

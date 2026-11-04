@@ -477,29 +477,6 @@ app-project-card > .c-card {
   font-size: var(--fs-300);
   color: var(--clr-white-subtle);
 }
-.c-project-versions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0 0 1rem;
-}
-.c-project-version {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.25rem 0.65rem;
-  border: 1px solid var(--clr-white-subtle);
-  border-radius: var(--radius-md);
-  background: var(--clr-black);
-}
-.c-project-version__label {
-  color: var(--clr-white-subtle);
-  font-size: var(--fs-300);
-}
-.c-project-version__tag {
-  color: var(--clr-cyber-green);
-  font: var(--fs-300) var(--ff-mono);
-}
 .c-card__heading {
   display: flex;
   align-items: start;
@@ -631,6 +608,58 @@ app-project-card > .c-card {
   min-height: 32px;
   font-weight: 600;
 }
+/* Tag e versioni: due segmenti, etichetta colorata con icona e versione in monospazio. */
+.c-vtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin: 1rem 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+.c-vtag {
+  --kind: var(--kind-api);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--kind);
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 0 0 color-mix(in srgb, var(--kind) 35%, transparent);
+}
+.c-vtag__body {
+  display: inline-flex;
+  align-items: stretch;
+  min-height: 44px;
+  color: inherit;
+  text-decoration: none;
+}
+.c-vtag__label {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  padding: 0 0.8rem;
+  background: var(--kind);
+  color: var(--button-ink);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-black);
+}
+.c-vtag__icon {
+  width: 1rem;
+  height: 1rem;
+}
+.c-vtag__value {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.9rem;
+  background: color-mix(in srgb, var(--kind) 12%, var(--card));
+  color: var(--clr-white);
+  font-family: var(--ff-mono);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-black);
+}
+.c-vtag:has(a:focus-visible) {
+  outline: 2px solid var(--kind);
+  outline-offset: 3px;
+}
 /* Ultimo aggiornamento: una riga per repository, con chip colorato per tipo. */
 .c-update-items {
   display: grid;
@@ -656,14 +685,18 @@ app-project-card > .c-card {
   width: 4px;
   background: var(--kind);
 }
-.c-update-item[data-kind='Frontend'] {
+.c-update-item[data-kind='Frontend'],
+.c-vtag[data-kind='Frontend'] {
   --kind: var(--kind-frontend);
 }
 .c-update-item[data-kind='API'],
-.c-update-item[data-kind='Backend'] {
+.c-update-item[data-kind='Backend'],
+.c-vtag[data-kind='API'],
+.c-vtag[data-kind='Backend'] {
   --kind: var(--kind-api);
 }
-.c-update-item[data-kind='Plugin'] {
+.c-update-item[data-kind='Plugin'],
+.c-vtag[data-kind='Plugin'] {
   --kind: var(--kind-plugin);
 }
 .c-update-item__head {
@@ -1065,10 +1098,6 @@ h4 {
   background: var(--card);
   border: 1px solid var(--clr-black-lightest);
   border-top: 3px solid var(--clr-cyber-green);
-}
-.c-project-version {
-  background: transparent;
-  border-color: var(--clr-black-lightest);
 }
 .c-card__example pre {
   background: var(--clr-black-soft);

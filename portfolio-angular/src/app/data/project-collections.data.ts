@@ -1,4 +1,9 @@
-import type { PortfolioFlow, PortfolioLatestUpdate, PortfolioRepository } from './projects.data';
+import type {
+  PortfolioFlow,
+  PortfolioLatestUpdate,
+  PortfolioRepository,
+  PortfolioVersionTag,
+} from './projects.data';
 
 export interface PortfolioCollectionItem {
   readonly id: string;
@@ -6,6 +11,7 @@ export interface PortfolioCollectionItem {
   readonly description: string;
   readonly technologies: readonly string[];
   readonly note?: string;
+  readonly versionTags?: readonly PortfolioVersionTag[];
   readonly latestUpdate?: PortfolioLatestUpdate;
   readonly flow?: PortfolioFlow;
   readonly liveLink?: string;
@@ -16,6 +22,14 @@ export const AI_PLUGINS = [
   {
     id: 'learning-ledger',
     title: 'learning-ledger',
+    versionTags: [
+      {
+        label: 'Versione',
+        tag: '0.2.0',
+        kind: 'Plugin',
+        url: 'https://github.com/fabiozagaria/learning-ledger/blob/main/plugins/learning-ledger/.claude-plugin/plugin.json',
+      },
+    ],
     latestUpdate: {
       dateLabel: '4 novembre 2026',
       datetime: '2026-11-04',
@@ -61,6 +75,14 @@ export const AI_PLUGINS = [
   {
     id: 'spring-security-advisor',
     title: 'spring-security-advisor',
+    versionTags: [
+      {
+        label: 'Versione',
+        tag: '0.1.0',
+        kind: 'Plugin',
+        url: 'https://github.com/fabiozagaria/spring-security-advisor/blob/main/plugins/spring-security-advisor/.claude-plugin/plugin.json',
+      },
+    ],
     latestUpdate: {
       dateLabel: '4 novembre 2026',
       datetime: '2026-11-04',
