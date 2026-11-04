@@ -4,7 +4,7 @@ import { PortfolioHistoryEntry, PROJECT_HISTORY } from '../../../data/project-hi
 import { ProjectFlowComponent } from '../../../shared/project-flow/project-flow.component';
 import { ProjectUpdateComponent } from '../../../shared/project-update/project-update.component';
 import { VersionTagsComponent } from '../../../shared/version-tags/version-tags.component';
-import { isRecentUpdate } from '../../../shared/recent-update';
+import { recentUpdateAge } from '../../../shared/recent-update';
 
 /**
  * Scheda di un progetto principale (full stack o backend, oppure frontend del corso).
@@ -41,8 +41,8 @@ export class ProjectCardComponent {
     return PROJECT_HISTORY[projectId] ?? [];
   }
 
-  /** Vero se l'ultimo aggiornamento è recente: mostra il badge "Novità". */
-  isNew(update: PortfolioLatestUpdate | undefined): boolean {
-    return isRecentUpdate(update, this.now);
+  /** «oggi», «ieri», «2 giorni fa» se l'ultimo aggiornamento è recente (badge «Commit recente»). */
+  recentAge(update: PortfolioLatestUpdate | undefined): string | null {
+    return recentUpdateAge(update, this.now);
   }
 }

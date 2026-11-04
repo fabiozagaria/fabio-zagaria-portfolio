@@ -787,17 +787,28 @@ app-project-card > .c-card {
   font-family: var(--ff-mono);
 }
 .c-badge-new {
-  display: inline-block;
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
   margin-left: 0.5rem;
-  padding: 0.125rem 0.625rem;
+  padding: 0.15rem 0.7rem 0.15rem 0.55rem;
   border-radius: var(--radius-sm);
   background: var(--clr-cyber-green);
   color: var(--button-ink);
   font-size: var(--fs-300);
   font-weight: var(--fw-bold);
   line-height: 1.5;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   vertical-align: middle;
+}
+.c-badge-new__icon {
+  width: 1.05em;
+  height: 1.05em;
+}
+.c-badge-new__when {
+  padding-inline-start: 0.45rem;
+  border-inline-start: 1px solid currentColor;
+  font-weight: var(--fw-regular);
 }
 /* Pulsazione breve e finita: richiama l'attenzione senza animazioni continue. */
 @media (prefers-reduced-motion: no-preference) {

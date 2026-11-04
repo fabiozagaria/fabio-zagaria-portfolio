@@ -4,8 +4,17 @@
     <div class="c-card__heading">
       <h3 class="c-card__title">
         {{ project.title }}
-        @if (isNew(project.latestUpdate)) {
-          <span class="c-badge-new">Novità</span>
+        @if (recentAge(project.latestUpdate); as when) {
+          <span class="c-badge-new">
+            <svg class="c-badge-new__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <path
+                fill="currentColor"
+                d="M8 5.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6zM0 7.2h4.2v1.6H0zm11.8 0H16v1.6h-4.2z"
+              />
+            </svg>
+            <span>Commit recente</span>{{ ' ' }}
+            <span class="c-badge-new__when">{{ when }}</span>
+          </span>
         }
       </h3>
       <span class="c-card__status" [attr.data-status]="project.status">
