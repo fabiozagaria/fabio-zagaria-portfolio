@@ -1,4 +1,4 @@
-import type { PortfolioLatestUpdate, PortfolioRepository } from './projects.data';
+import type { PortfolioFlow, PortfolioLatestUpdate, PortfolioRepository } from './projects.data';
 
 export interface PortfolioCollectionItem {
   readonly id: string;
@@ -7,6 +7,7 @@ export interface PortfolioCollectionItem {
   readonly technologies: readonly string[];
   readonly note?: string;
   readonly latestUpdate?: PortfolioLatestUpdate;
+  readonly flow?: PortfolioFlow;
   readonly liveLink?: string;
   readonly repositories: readonly PortfolioRepository[];
 }
@@ -87,6 +88,49 @@ export const EXPERIMENTAL_PROJECTS = [
     repositories: [
       { label: 'Repository', url: 'https://github.com/fabiozagaria/transport-tickets' },
     ],
+  },
+  {
+    id: 'learning-ledger',
+    title: 'learning-ledger',
+    latestUpdate: {
+      dateLabel: '4 novembre 2026',
+      datetime: '2026-11-04',
+      version: '0.2.0',
+      summary:
+        'Aggiunti il comando report, la skill weekly-report, i pacchetti di argomenti (Java/Spring, Python, SQL, system design, DevOps), la CI e la documentazione.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/learning-ledger/commit/1ebc09c7ea6ee7f221f903e2a55263f534a7a795',
+        },
+      ],
+    },
+    description:
+      'Plugin per Claude Code che tiene un registro locale delle prove di apprendimento. Claude conduce quiz ed esercizi; uno script Python senza dipendenze applica le regole sui livelli, così il giudizio del modello non può gonfiarli, e pianifica i ripassi nei giorni lavorativi.',
+    flow: {
+      title: 'Dalla sessione al registro',
+      steps: [
+        {
+          label: 'Quiz o esercizio',
+          detail: 'Claude conduce la sessione con le skill quiz e practice',
+        },
+        { label: 'log-session', detail: 'Raccoglie prove e livello di aiuto ricevuto' },
+        { label: 'ledger.py', detail: 'Applica le regole: con aiuti non si arriva ad autonomous' },
+        {
+          label: 'Simulazione',
+          detail: 'Mostra prima e dopo, motivi dei limiti, prossimo ripasso',
+        },
+        {
+          label: 'Conferma',
+          detail: 'Il registro viene scritto solo dopo la conferma dell’utente',
+        },
+        { label: 'File locali', detail: 'topics.json, sessions.jsonl e config.json' },
+      ],
+      note: 'Schema ricavato da README e skill del repository. Il registro resta in locale, senza account né rete.',
+    },
+    technologies: ['Python 3', 'Claude Code plugin', 'JSON', 'GitHub Actions'],
+    note: 'Versione 0.2.0 con test automatici e CI su Python 3.11–3.13 definiti nel repository; la loro esecuzione non è stata verificata qui. Progetto di tooling per lo studio, non un progetto del corso.',
+    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/learning-ledger' }],
   },
 ] as const satisfies readonly PortfolioCollectionItem[];
 

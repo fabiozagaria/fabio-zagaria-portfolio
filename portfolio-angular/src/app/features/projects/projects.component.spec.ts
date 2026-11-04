@@ -114,4 +114,18 @@ describe('ProjectsComponent', () => {
       'restano da completare',
     );
   });
+
+  it('draws the learning-ledger flow among the experiments, with its repository', () => {
+    const element = render('2026-11-03T10:00:00+01:00');
+    const steps = element.querySelectorAll('#learning-ledger .c-flow__step');
+
+    expect(steps).toHaveLength(6);
+    expect(steps[2].textContent).toContain('ledger.py');
+    expect(element.querySelector('#learning-ledger .c-shot__note')?.textContent).toContain(
+      'in locale',
+    );
+    expect(
+      element.querySelector<HTMLAnchorElement>('#learning-ledger .c-card__action')?.href,
+    ).toContain('github.com/fabiozagaria/learning-ledger');
+  });
 });

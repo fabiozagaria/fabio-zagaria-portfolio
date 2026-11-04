@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   PortfolioLatestUpdate,
@@ -19,6 +20,7 @@ export const NEW_UPDATE_WINDOW_DAYS = 7;
 @Component({
   selector: 'app-projects',
   standalone: true,
+  imports: [NgTemplateOutlet],
   templateUrl: './projects.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
