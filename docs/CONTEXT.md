@@ -18,6 +18,7 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 - JobFlow: POST e GET dei job presenti; creazione/persistenza verificate manualmente, GET coperto da test ma da provare a runtime. Dal 1 novembre 2026 JobCreatedEvent e JobWorker asincrono portano il job da CREATED a PROCESSING (verificato a runtime); restano da fare COMPLETED/FAILED, ProcessorRegistry e generazione PDF.
 - Transport Tickets: backend sperimentale Spring Boot/JPA integrato su `main` con il merge `e74e8c2eed01216534912c8a4b56a7216fc168d8`. MySQL, Flyway, Redis come cache opzionale, transazioni con lock e autenticazione a sessione con ruoli/CSRF. Corretto il difetto delle liste JPA con ticket non visibili; verificati 10 test JUnit, storage MySQL/Redis e flusso HTTP. Resta nella categoria Sperimentale con AI.
 - Spring Scaffold CLI: MVP per record DTO vuoti; nuove funzionalità sospese.
+- learning-ledger: plugin per Claude Code (Python 3 senza dipendenze) che tiene un registro locale delle prove di apprendimento e limita i livelli in base alle evidenze. Dal 4 novembre 2026 è nella pagina Progetti, gruppo «Sperimentale con AI», alla v0.2.0 (commit `1ebc09c7ea6ee7f221f903e2a55263f534a7a795`) con lo schema «Dalla sessione al registro». Test e CI (Python 3.11–3.13) sono definiti nel repository ma non sono stati eseguiti né controllati da qui; la scheda lo dichiara.
 - Task Manager: laboratorio guidato; refresh, rotazione e logout implementati, test comportamentali e cookie HttpOnly/Secure da completare.
 - Aggiornati anche generatore e PDF del CV: Expense Tracker, AccessDesk, PostgreSQL autodidatta; formato a pagina singola. Copia identica da sincronizzare nel repository curriculum.
 
@@ -60,5 +61,5 @@ Il tema chiaro/scuro (pulsante sole/luna accessibile nell’intestazione, scelta
 Da fare e limiti noti:
 - Lighthouse sul sito in produzione, prove su telefoni reali e con screen reader (VoiceOver, NVDA) non sono state fatte.
 - TMDB: il footer del portfolio mostra la nota di attribuzione richiesta dai termini d’uso (frase ufficiale in inglese, con link a themoviedb.org), che copre LabTV e le locandine nelle immagini della pagina Progetti. Il logo TMDB non è stato aggiunto. Resta da controllare che l’app LabTV mostri la stessa nota.
-- Le schede di «Sperimentale con AI» ed «Esercizi» non hanno immagini.
+- Le schede di «Sperimentale con AI» ed «Esercizi» non hanno immagini; solo learning-ledger ha uno schema di flusso (il campo `flow` è accettato anche da `PortfolioCollectionItem`, e il disegno è un `ng-template` condiviso con i progetti backend).
 - I link esterni (demo, repository, commit) non sono verificati automaticamente: l’ambiente di sviluppo non li raggiunge.
