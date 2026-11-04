@@ -194,6 +194,19 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
   ],
   'gestionale-spese': [
     {
+      datetime: '2026-11-03T00:30:21+01:00',
+      dateLabel: '3 novembre 2026, 00:30',
+      title: 'Frontend: README allineato alle versioni',
+      summary: 'Il README del frontend riporta la versione backend compatibile (1.0.2).',
+      version: 'frontend v1.0.2',
+      sources: [
+        {
+          label: 'Frontend',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/560279611c1ea8c7ed02c11646f3ef563275e458',
+        },
+      ],
+    },
+    {
       datetime: '2026-11-02T18:31:10+01:00',
       dateLabel: '2 novembre 2026, 18:31',
       title: 'API: rotazione atomica del refresh token',

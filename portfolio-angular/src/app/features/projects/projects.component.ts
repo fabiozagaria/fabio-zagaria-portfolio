@@ -15,8 +15,8 @@ import {
 import { PortfolioHistoryEntry, PROJECT_HISTORY } from '../../data/project-history.data';
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-/** Il badge "Novità" resta visibile per 7 giorni dopo la data dell'aggiornamento. */
-export const NEW_UPDATE_WINDOW_DAYS = 7;
+/** Il badge "Novità" resta visibile per 3 giorni dopo la data dell'aggiornamento. */
+export const NEW_UPDATE_WINDOW_DAYS = 3;
 
 @Component({
   selector: 'app-projects',

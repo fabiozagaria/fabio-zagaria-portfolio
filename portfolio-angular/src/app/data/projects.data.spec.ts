@@ -35,9 +35,8 @@ describe('project history', () => {
       const newest = PROJECT_HISTORY[id][0];
 
       expect(project?.latestUpdate?.datetime).toBeDefined();
-      expect(Date.parse(newest.datetime)).toBeGreaterThanOrEqual(
-        Date.parse(project?.latestUpdate?.datetime ?? ''),
-      );
+      // latestUpdate.datetime è una data (fuso Europe/Rome), la storia ha data e ora con offset.
+      expect(newest.datetime.slice(0, 10) >= (project?.latestUpdate?.datetime ?? '')).toBe(true);
     }
   });
 

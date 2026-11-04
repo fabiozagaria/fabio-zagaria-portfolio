@@ -39,7 +39,7 @@ Quando cambiano versione, stato o focus di un progetto pubblico collegato, verif
 
 
 ## Storico aggiornamenti e badge Novità — 2026-11-02
-Le card dei tre progetti principali hanno il pulsante "Implementazioni importanti" (dati in `src/app/data/project-history.data.ts`, ogni voce con data, ora e commit reali, dalla più recente) e il badge "Novità", che resta visibile 7 giorni dopo la data di `latestUpdate`. L'animazione del badge è breve (3 pulsazioni) e disattivata con reduced motion.
+Le card dei tre progetti principali hanno il pulsante "Implementazioni importanti" (dati in `src/app/data/project-history.data.ts`, ogni voce con data, ora e commit reali, dalla più recente) e il badge "Novità", che resta visibile 3 giorni dopo la data di `latestUpdate`. L'animazione del badge è breve (3 pulsazioni) e disattivata con reduced motion.
 
 ## Interfaccia e animazioni — 2026-11-02
 Il tema chiaro/scuro (pulsante sole/luna accessibile nell’intestazione, scelta ricordata nel browser) usa dal 2 novembre 2026 l’identità «foglio di disegno tecnico»: solo template e stile, testi, link e route invariati.
