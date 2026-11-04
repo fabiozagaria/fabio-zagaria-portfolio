@@ -156,4 +156,39 @@ describe('ProjectsComponent', () => {
       element.querySelector<HTMLAnchorElement>('#spring-security-advisor .c-card__action')?.href,
     ).toContain('github.com/fabiozagaria/spring-security-advisor');
   });
+
+  it('shows each latest update as chips: API before frontend, backends and plugins with their own kind', () => {
+    const element = render('2026-11-04T10:00:00+01:00');
+    const kinds = (id: string) =>
+      Array.from(element.querySelectorAll<HTMLElement>(`#${id} .c-update-item`)).map(
+        (item) => item.dataset['kind'],
+      );
+
+    expect(kinds('gestionale-spese')).toEqual(['API', 'Frontend']);
+    expect(kinds('jobflow')).toEqual(['Backend']);
+    expect(kinds('accessdesk')).toEqual(['Backend']);
+    expect(kinds('learning-ledger')).toEqual(['Plugin']);
+    expect(kinds('spring-security-advisor')).toEqual(['Plugin']);
+    expect(element.querySelector('#jobflow .c-update-item__version')?.textContent).toContain(
+      'v0.1.0-alpha.1',
+    );
+  });
+
+  it('shows every project tag as a two-segment badge with its colour and a link to that version', () => {
+    const element = render('2026-11-04T10:00:00+01:00');
+    const tags = (id: string) =>
+      Array.from(element.querySelectorAll<HTMLElement>(`#${id} .c-vtag`)).map(
+        (tag) => `${tag.dataset['kind']}:${tag.querySelector('.c-vtag__value')?.textContent}`,
+      );
+
+    expect(tags('gestionale-spese')).toEqual(['Frontend:v1.0.2', 'API:v1.0.2']);
+    expect(tags('jobflow')).toEqual(['Backend:v0.1.0-alpha.1']);
+    expect(tags('accessdesk')).toEqual(['Backend:v0.1.0-alpha.1']);
+    expect(tags('learning-ledger')).toEqual(['Plugin:0.2.0']);
+    expect(tags('spring-security-advisor')).toEqual(['Plugin:0.1.0']);
+    expect(tags('labtv')).toEqual([]);
+    const link = element.querySelector<HTMLAnchorElement>('#gestionale-spese .c-vtag a');
+    expect(link?.href).toBe('https://github.com/fabiozagaria/expense-tracker-angular/tree/v1.0.2');
+    expect(link?.getAttribute('aria-label')).toMatch(/^Frontend v1\.0\.2/);
+  });
 });

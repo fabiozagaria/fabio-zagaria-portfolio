@@ -304,3 +304,89 @@
     transition: none !important;
   }
 }
+
+/* Ultimo aggiornamento: ogni riga entra scorrendo e la barra del colore si disegna. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .c-update-item {
+      animation: update-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    .c-update-item::before {
+      transform-origin: top;
+      animation: update-bar linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 90%;
+    }
+    /* Movement only: the text is never hidden. */
+    @keyframes update-in {
+      from {
+        transform: translateX(-14px);
+      }
+    }
+    @keyframes update-bar {
+      from {
+        transform: scaleY(0);
+      }
+    }
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .c-update-item {
+      transition:
+        transform 200ms ease-out,
+        border-color 200ms ease-out;
+    }
+    .c-update-item:hover {
+      border-color: var(--kind);
+    }
+  }
+}
+
+/* Tag e versioni: il segmento si "timbra" entrando e un riflesso lo attraversa una volta. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .c-vtag {
+      animation: vtag-stamp linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+    .c-vtag::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        transparent 35%,
+        rgb(255 255 255 / 0.55) 50%,
+        transparent 65%
+      );
+      pointer-events: none;
+      transform: translateX(-130%);
+      animation: vtag-shine linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 45%;
+    }
+    @keyframes vtag-stamp {
+      from {
+        transform: scale(0.9);
+      }
+    }
+    @keyframes vtag-shine {
+      to {
+        transform: translateX(130%);
+      }
+    }
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .c-vtag {
+      transition:
+        translate 160ms ease-out,
+        box-shadow 160ms ease-out;
+    }
+    .c-vtag:hover {
+      translate: 0 -2px;
+      box-shadow: 0 4px 0 0 color-mix(in srgb, var(--kind) 45%, transparent);
+    }
+  }
+}

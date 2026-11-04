@@ -44,7 +44,7 @@ describe('project history', () => {
     const jobFlow = projects.find((project) => project.id === 'jobflow');
 
     expect(jobFlow?.latestUpdate?.datetime).toBe('2026-11-01');
-    expect(jobFlow?.latestUpdate?.sources[0].url).toContain('44a2527');
+    expect(jobFlow?.latestUpdate?.items?.[0].hash).toBe('68f8c04');
     expect(PROJECT_HISTORY['jobflow'][0].sources[0].url).toContain('44a2527');
   });
 });
