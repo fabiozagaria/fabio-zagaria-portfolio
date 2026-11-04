@@ -29,7 +29,10 @@
               <article class="c-card" [id]="entry.id">
                 <div class="c-card__content">
                   <div class="c-card__heading">
-                    <h3 class="c-card__title">{{ entry.title }}</h3>
+                    <h3 class="c-card__title">
+                      {{ entry.title }}
+                      <app-recent-badge [update]="entry.latestUpdate" />
+                    </h3>
                   </div>
                   @if (entry.versionTags; as tags) {
                     <app-version-tags [tags]="tags" />

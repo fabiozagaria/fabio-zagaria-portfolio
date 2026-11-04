@@ -8,6 +8,7 @@ import {
 } from '../../data/project-collections.data';
 import { ProjectFlowComponent } from '../../shared/project-flow/project-flow.component';
 import { ProjectUpdateComponent } from '../../shared/project-update/project-update.component';
+import { RecentBadgeComponent } from '../../shared/recent-badge/recent-badge.component';
 import { VersionTagsComponent } from '../../shared/version-tags/version-tags.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
 
@@ -34,6 +35,7 @@ type ProjectsSection =
     ProjectCardComponent,
     ProjectFlowComponent,
     ProjectUpdateComponent,
+    RecentBadgeComponent,
     VersionTagsComponent,
   ],
   templateUrl: './projects.component.html',
