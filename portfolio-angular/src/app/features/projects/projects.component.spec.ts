@@ -42,19 +42,19 @@ describe('ProjectsComponent', () => {
     expect(element.querySelector('.c-badge-new')?.textContent).toContain('Novità');
   });
 
-  it('removes the new badge once the update is older than a week', () => {
+  it('removes the new badge once the update is older than three days', () => {
     const element = render('2026-11-20T10:00:00+01:00');
 
     expect(element.querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
 
-  it('keeps the badge for a project updated a few days earlier but not for older ones', () => {
-    const element = render('2026-11-08T10:00:00+01:00');
+  it('keeps the badge for a project updated within three days but not for older ones', () => {
+    const element = render('2026-11-05T10:00:00+01:00');
     const flagged = Array.from(element.querySelectorAll('.c-badge-new')).map((badge) =>
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged.sort()).toEqual(['gestionale-spese', 'jobflow']);
+    expect(flagged.sort()).toEqual(['gestionale-spese']);
   });
 
   it('renders a screenshot with its size and alternative text when a project has one', () => {
