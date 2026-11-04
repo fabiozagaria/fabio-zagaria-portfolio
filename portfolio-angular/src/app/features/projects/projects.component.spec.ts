@@ -54,7 +54,11 @@ describe('ProjectsComponent', () => {
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged.sort()).toEqual(['gestionale-spese']);
+    expect(flagged.sort()).toEqual([
+      'gestionale-spese',
+      'learning-ledger',
+      'spring-security-advisor',
+    ]);
   });
 
   it('renders a screenshot with its size and alternative text when a project has one', () => {
@@ -209,12 +213,29 @@ describe('ProjectsComponent', () => {
   });
 
   it('says how long ago the latest commit was: today, yesterday, N days ago', () => {
-    const element = render('2026-11-02T12:00:00+01:00');
+    const element = render('2026-11-03T12:00:00+01:00');
     const badge = (id: string) =>
       element.querySelector(`#${id} .c-badge-new`)?.textContent?.replace(/\s+/g, ' ').trim();
 
     expect(badge('gestionale-spese')).toBe('Commit recente oggi');
-    expect(badge('jobflow')).toBe('Commit recente ieri');
-    expect(badge('accessdesk')).toBe('Commit recente 2 giorni fa');
+    expect(badge('jobflow')).toBe('Commit recente 2 giorni fa');
+    expect(badge('accessdesk')).toBe('Commit recente 3 giorni fa');
+  });
+
+  it('shows the recent commit badge on plugin cards too, with the same wording', () => {
+    const element = render('2026-11-04T10:00:00+01:00');
+    const badge = (id: string) =>
+      element.querySelector(`#${id} .c-badge-new`)?.textContent?.replace(/\s+/g, ' ').trim();
+
+    expect(badge('learning-ledger')).toBe('Commit recente oggi');
+    expect(badge('spring-security-advisor')).toBe('Commit recente oggi');
+    expect(badge('gestionale-spese')).toBe('Commit recente ieri');
+    expect(element.querySelector('#labtv .c-badge-new')).toBeNull();
+  });
+
+  it('does not flag an update dated in the future', () => {
+    const element = render('2026-11-02T10:00:00+01:00');
+
+    expect(element.querySelector('#learning-ledger .c-badge-new')).toBeNull();
   });
 });

@@ -22,10 +22,10 @@ export function recentUpdateAge(
     return null;
   }
   const days = Math.round((Date.parse(romeDay.format(now)) - updatedAt) / DAY_MS);
-  if (days > NEW_UPDATE_WINDOW_DAYS) {
+  if (days < 0 || days > NEW_UPDATE_WINDOW_DAYS) {
     return null;
   }
-  if (days <= 0) {
+  if (days === 0) {
     return 'oggi';
   }
   return days === 1 ? 'ieri' : `${days} giorni fa`;
