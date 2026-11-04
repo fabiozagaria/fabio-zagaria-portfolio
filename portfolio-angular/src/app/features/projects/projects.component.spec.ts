@@ -39,7 +39,7 @@ describe('ProjectsComponent', () => {
     );
 
     expect(flagged.sort()).toEqual(['accessdesk', 'gestionale-spese', 'jobflow']);
-    expect(element.querySelector('.c-badge-new')?.textContent).toContain('Novità');
+    expect(element.querySelector('.c-badge-new')?.textContent).toContain('Commit recente');
   });
 
   it('removes the new badge once the update is older than three days', () => {
@@ -206,5 +206,15 @@ describe('ProjectsComponent', () => {
       'Sperimentale con AI',
       'Esercizi',
     ]);
+  });
+
+  it('says how long ago the latest commit was: today, yesterday, N days ago', () => {
+    const element = render('2026-11-02T12:00:00+01:00');
+    const badge = (id: string) =>
+      element.querySelector(`#${id} .c-badge-new`)?.textContent?.replace(/\s+/g, ' ').trim();
+
+    expect(badge('gestionale-spese')).toBe('Commit recente oggi');
+    expect(badge('jobflow')).toBe('Commit recente ieri');
+    expect(badge('accessdesk')).toBe('Commit recente 2 giorni fa');
   });
 });
