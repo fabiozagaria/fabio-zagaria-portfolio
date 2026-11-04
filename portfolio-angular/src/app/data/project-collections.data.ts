@@ -12,6 +12,94 @@ export interface PortfolioCollectionItem {
   readonly repositories: readonly PortfolioRepository[];
 }
 
+export const AI_PLUGINS = [
+  {
+    id: 'learning-ledger',
+    title: 'learning-ledger',
+    latestUpdate: {
+      dateLabel: '4 novembre 2026',
+      datetime: '2026-11-04',
+      version: '0.2.0',
+      summary:
+        'Aggiunti il comando report, la skill weekly-report, i pacchetti di argomenti (Java/Spring, Python, SQL, system design, DevOps), la CI e la documentazione.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/learning-ledger/commit/1ebc09c7ea6ee7f221f903e2a55263f534a7a795',
+        },
+      ],
+    },
+    description:
+      'Plugin per Claude Code che tiene un registro locale delle prove di apprendimento. Claude conduce quiz ed esercizi; uno script Python senza dipendenze applica le regole sui livelli, così il giudizio del modello non può gonfiarli, e pianifica i ripassi nei giorni lavorativi.',
+    flow: {
+      title: 'Dalla sessione al registro',
+      steps: [
+        {
+          label: 'Quiz o esercizio',
+          detail: 'Claude conduce la sessione con le skill quiz e practice',
+        },
+        { label: 'log-session', detail: 'Raccoglie prove e livello di aiuto ricevuto' },
+        { label: 'ledger.py', detail: 'Applica le regole: con aiuti non si arriva ad autonomous' },
+        {
+          label: 'Simulazione',
+          detail: 'Mostra prima e dopo, motivi dei limiti, prossimo ripasso',
+        },
+        {
+          label: 'Conferma',
+          detail: 'Il registro viene scritto solo dopo la conferma dell’utente',
+        },
+        { label: 'File locali', detail: 'topics.json, sessions.jsonl e config.json' },
+      ],
+      note: 'Schema ricavato da README e skill del repository. Il registro resta in locale, senza account né rete.',
+    },
+    technologies: ['Python 3', 'Claude Code plugin', 'JSON', 'GitHub Actions'],
+    note: 'Versione 0.2.0 con test automatici e CI su Python 3.11–3.13 definiti nel repository; la loro esecuzione non è stata verificata qui. Progetto di tooling per lo studio, non un progetto del corso.',
+    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/learning-ledger' }],
+  },
+  {
+    id: 'spring-security-advisor',
+    title: 'spring-security-advisor',
+    latestUpdate: {
+      dateLabel: '4 novembre 2026',
+      datetime: '2026-11-04',
+      version: '0.1.0',
+      summary:
+        'Prima versione: scanner con sei regole verificate sulla documentazione di Spring Security 7.0, skill review e map, fixture di prova e 19 test passati in locale.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/spring-security-advisor/commit/f59953410e9cc027790dab02c337b55255298a87',
+        },
+      ],
+    },
+    description:
+      'Plugin per Claude Code che rivede la configurazione di Spring Security. Uno scanner Python senza dipendenze trova errori noti, per esempio regole di accesso irraggiungibili, CSRF disattivato o annotazioni @PreAuthorize senza method security. Le skill leggono il codice segnalato, scartano i falsi positivi e spiegano ogni rischio con correzione e fonte ufficiale; la skill map descrive filtri, provider e regole realmente presenti.',
+    flow: {
+      title: 'Dal progetto al report',
+      steps: [
+        { label: 'Progetto Spring', detail: 'Sorgenti Java, pom.xml o build.gradle' },
+        { label: 'scan.py', detail: 'Sei regole verificate sulla documentazione ufficiale' },
+        {
+          label: 'Verifica nel codice',
+          detail: 'Claude legge il codice segnalato e scarta i falsi positivi',
+        },
+        { label: 'Report', detail: 'Rischio, correzione, fonte, tipo di problema e confidenza' },
+        {
+          label: 'advise e apply',
+          detail: 'Guida alla scelta e modifiche con conferma',
+          pending: true,
+        },
+      ],
+      note: 'Schema ricavato da README e skill del repository. advise e apply sono pianificati, non realizzati.',
+    },
+    technologies: ['Python 3', 'Claude Code plugin', 'Spring Security', 'GitHub Actions'],
+    note: 'Versione 0.1.0 iniziale: copre solo lo stack servlet, non è stata ancora provata su progetti reali e non dimostra che un progetto sia sicuro. CI su Python 3.11–3.13 definita nel repository, esecuzione non verificata qui. Realizzato con assistenza AI (Claude Code); scelte di progetto e rilascio decise dal proprietario.',
+    repositories: [
+      { label: 'Repository', url: 'https://github.com/fabiozagaria/spring-security-advisor' },
+    ],
+  },
+] as const satisfies readonly PortfolioCollectionItem[];
+
 export const EXPERIMENTAL_PROJECTS = [
   {
     id: 'spring-scaffold-cli',
@@ -88,49 +176,6 @@ export const EXPERIMENTAL_PROJECTS = [
     repositories: [
       { label: 'Repository', url: 'https://github.com/fabiozagaria/transport-tickets' },
     ],
-  },
-  {
-    id: 'learning-ledger',
-    title: 'learning-ledger',
-    latestUpdate: {
-      dateLabel: '4 novembre 2026',
-      datetime: '2026-11-04',
-      version: '0.2.0',
-      summary:
-        'Aggiunti il comando report, la skill weekly-report, i pacchetti di argomenti (Java/Spring, Python, SQL, system design, DevOps), la CI e la documentazione.',
-      sources: [
-        {
-          label: 'Commit',
-          url: 'https://github.com/fabiozagaria/learning-ledger/commit/1ebc09c7ea6ee7f221f903e2a55263f534a7a795',
-        },
-      ],
-    },
-    description:
-      'Plugin per Claude Code che tiene un registro locale delle prove di apprendimento. Claude conduce quiz ed esercizi; uno script Python senza dipendenze applica le regole sui livelli, così il giudizio del modello non può gonfiarli, e pianifica i ripassi nei giorni lavorativi.',
-    flow: {
-      title: 'Dalla sessione al registro',
-      steps: [
-        {
-          label: 'Quiz o esercizio',
-          detail: 'Claude conduce la sessione con le skill quiz e practice',
-        },
-        { label: 'log-session', detail: 'Raccoglie prove e livello di aiuto ricevuto' },
-        { label: 'ledger.py', detail: 'Applica le regole: con aiuti non si arriva ad autonomous' },
-        {
-          label: 'Simulazione',
-          detail: 'Mostra prima e dopo, motivi dei limiti, prossimo ripasso',
-        },
-        {
-          label: 'Conferma',
-          detail: 'Il registro viene scritto solo dopo la conferma dell’utente',
-        },
-        { label: 'File locali', detail: 'topics.json, sessions.jsonl e config.json' },
-      ],
-      note: 'Schema ricavato da README e skill del repository. Il registro resta in locale, senza account né rete.',
-    },
-    technologies: ['Python 3', 'Claude Code plugin', 'JSON', 'GitHub Actions'],
-    note: 'Versione 0.2.0 con test automatici e CI su Python 3.11–3.13 definiti nel repository; la loro esecuzione non è stata verificata qui. Progetto di tooling per lo studio, non un progetto del corso.',
-    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/learning-ledger' }],
   },
 ] as const satisfies readonly PortfolioCollectionItem[];
 

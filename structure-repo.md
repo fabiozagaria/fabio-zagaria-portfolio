@@ -1,6 +1,6 @@
 # Struttura dei repository del portfolio
 
-Aggiornato: 25 ottobre 2026.
+Aggiornato: 4 novembre 2026.
 
 Mappa corrente dei repository e della loro collocazione nel portfolio. È un documento di riferimento da mantenere aggiornato insieme ai contenuti del sito.
 
@@ -11,8 +11,9 @@ Le categorie seguono le scelte del proprietario. La presenza di una tecnologia, 
 1. Full Stack
 2. Backend
 3. Progetti Frontend del Corso
-4. Sperimentale con AI
-5. Esercizi
+4. Plugin e Skill AI
+5. Sperimentale con AI
+6. Esercizi
 
 I tre progetti principali restano, nell’ordine: **Expense Tracker**, **JobFlow**, **AccessDesk**.
 
@@ -26,9 +27,9 @@ Expense Tracker ha una sola scheda, con collegamenti distinti a frontend e backe
 
 ## Backend
 
-| Progetto    | Repository                                                       |
-| ----------- | ---------------------------------------------------------------- |
-| JobFlow     | [job-flow](https://github.com/fabiozagaria/job-flow)             |
+| Progetto   | Repository                                                       |
+| ---------- | ---------------------------------------------------------------- |
+| JobFlow    | [job-flow](https://github.com/fabiozagaria/job-flow)             |
 | AccessDesk | [accessdesk-api](https://github.com/fabiozagaria/accessdesk-api) |
 
 ## Progetti Frontend del Corso
@@ -38,6 +39,15 @@ Expense Tracker ha una sola scheda, con collegamenti distinti a frontend e backe
 | LabTV     | [labtv-angular](https://github.com/fabiozagaria/labtv-angular)                     |
 | Fakeflix  | [fakeflix-vanilla-js](https://github.com/fabiozagaria/fakeflix-vanilla-js)         |
 | Portfolio | [fabio-zagaria-portfolio](https://github.com/fabiozagaria/fabio-zagaria-portfolio) |
+
+## Plugin e Skill AI
+
+| Progetto                | Repository                                                                         |
+| ----------------------- | ---------------------------------------------------------------------------------- |
+| learning-ledger         | [learning-ledger](https://github.com/fabiozagaria/learning-ledger)                 |
+| spring-security-advisor | [spring-security-advisor](https://github.com/fabiozagaria/spring-security-advisor) |
+
+Plugin per Claude Code pubblicati dal proprietario, con uno script Python che verifica e il modello che spiega. Le schede dichiarano versione, limiti e stato delle verifiche, come per gli altri progetti.
 
 ## Sperimentale con AI
 

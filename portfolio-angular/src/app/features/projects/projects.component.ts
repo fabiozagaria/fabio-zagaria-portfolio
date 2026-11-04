@@ -7,6 +7,7 @@ import {
   PROJECTS,
 } from '../../data/projects.data';
 import {
+  AI_PLUGINS,
   EXERCISE_COLLECTIONS,
   EXPERIMENTAL_PROJECTS,
   PortfolioCollectionItem,
@@ -45,6 +46,13 @@ export class ProjectsComponent {
     description: string;
     entries: readonly PortfolioCollectionItem[];
   }[] = [
+    {
+      id: 'plugin-skill-ai',
+      title: 'Plugin e Skill AI',
+      description:
+        'Plugin per Claude Code in cui il modello ragiona e uno script Python verifica, così i risultati si possono ripetere e controllare.',
+      entries: AI_PLUGINS,
+    },
     {
       id: 'sperimentale-ai',
       title: 'Sperimentale con AI',
