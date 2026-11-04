@@ -115,7 +115,7 @@ describe('ProjectsComponent', () => {
     );
   });
 
-  it('draws the learning-ledger flow among the experiments, with its repository', () => {
+  it('draws the learning-ledger flow in the AI plugins section, with its repository', () => {
     const element = render('2026-11-03T10:00:00+01:00');
     const steps = element.querySelectorAll('#learning-ledger .c-flow__step');
 
@@ -127,5 +127,33 @@ describe('ProjectsComponent', () => {
     expect(
       element.querySelector<HTMLAnchorElement>('#learning-ledger .c-card__action')?.href,
     ).toContain('github.com/fabiozagaria/learning-ledger');
+  });
+
+  it('groups the two Claude Code plugins in their own section, apart from the experiments', () => {
+    const element = render('2026-11-04T10:00:00+01:00');
+    const section = element.querySelector('[aria-labelledby="plugin-skill-ai-title"]');
+    const experiments = element.querySelector('[aria-labelledby="sperimentale-ai-title"]');
+
+    expect(section?.querySelector('h2')?.textContent).toContain('Plugin e Skill AI');
+    expect([...(section?.querySelectorAll('article') ?? [])].map((a) => a.id)).toEqual([
+      'learning-ledger',
+      'spring-security-advisor',
+    ]);
+    expect(experiments?.querySelector('#learning-ledger')).toBeNull();
+  });
+
+  it('draws the spring-security-advisor flow and marks the planned step', () => {
+    const element = render('2026-11-04T10:00:00+01:00');
+
+    expect(element.querySelectorAll('#spring-security-advisor .c-flow__step')).toHaveLength(5);
+    expect(
+      element.querySelectorAll('#spring-security-advisor .c-flow__step[data-pending="true"]'),
+    ).toHaveLength(1);
+    expect(element.querySelector('#spring-security-advisor .c-shot__note')?.textContent).toContain(
+      'pianificati, non realizzati',
+    );
+    expect(
+      element.querySelector<HTMLAnchorElement>('#spring-security-advisor .c-card__action')?.href,
+    ).toContain('github.com/fabiozagaria/spring-security-advisor');
   });
 });
