@@ -7,86 +7,87 @@
       e le skill per Claude Code, gli esperimenti con AI e le raccolte di esercizi.
     </p>
 
-    @for (group of groups; track group.id) {
-      <section class="c-projects__group" [attr.aria-labelledby]="group.id + '-title'">
-        <h2 class="c-projects__group-title" [id]="group.id + '-title'">{{ group.title }}</h2>
-        <div
-          class="c-projects__grid"
-          [class.c-projects__grid--single]="group.category !== 'Backend'"
-        >
-          @for (project of group.projects; track project.id) {
-            <app-project-card [project]="project" />
-          }
-        </div>
-      </section>
-    }
-    @for (group of supplementaryGroups; track group.id) {
-      <section class="c-projects__group" [attr.aria-labelledby]="group.id + '-title'">
-        <h2 class="c-projects__group-title" [id]="group.id + '-title'">{{ group.title }}</h2>
-        <p class="c-projects__group-description">{{ group.description }}</p>
-        <div class="c-projects__grid">
-          @for (entry of group.entries; track entry.id) {
-            <article class="c-card" [id]="entry.id">
-              <div class="c-card__content">
-                <div class="c-card__heading">
-                  <h3 class="c-card__title">{{ entry.title }}</h3>
-                </div>
-                @if (entry.versionTags; as tags) {
-                  <app-version-tags [tags]="tags" />
-                }
-                @if (entry.flow; as flow) {
-                  <app-project-flow [flow]="flow" />
-                }
-                <p class="c-card__description">{{ entry.description }}</p>
-                @if (entry.note) {
-                  <p class="c-card__status-detail">{{ entry.note }}</p>
-                }
-                <div class="c-card__tags" aria-label="Tecnologie utilizzate">
-                  @for (tech of entry.technologies; track tech) {
-                    <span class="c-card__tag">{{ tech }}</span>
+    @for (section of sections; track section.id) {
+      @if (section.type === 'projects') {
+        <section class="c-projects__group" [attr.aria-labelledby]="section.id + '-title'">
+          <h2 class="c-projects__group-title" [id]="section.id + '-title'">{{ section.title }}</h2>
+          <div
+            class="c-projects__grid"
+            [class.c-projects__grid--single]="section.category !== 'Backend'"
+          >
+            @for (project of section.projects; track project.id) {
+              <app-project-card [project]="project" />
+            }
+          </div>
+        </section>
+      } @else {
+        <section class="c-projects__group" [attr.aria-labelledby]="section.id + '-title'">
+          <h2 class="c-projects__group-title" [id]="section.id + '-title'">{{ section.title }}</h2>
+          <p class="c-projects__group-description">{{ section.description }}</p>
+          <div class="c-projects__grid">
+            @for (entry of section.entries; track entry.id) {
+              <article class="c-card" [id]="entry.id">
+                <div class="c-card__content">
+                  <div class="c-card__heading">
+                    <h3 class="c-card__title">{{ entry.title }}</h3>
+                  </div>
+                  @if (entry.versionTags; as tags) {
+                    <app-version-tags [tags]="tags" />
                   }
-                </div>
-                <div class="c-card__actions">
-                  @if (entry.liveLink) {
-                    <a
-                      [href]="entry.liveLink"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="c-card__action"
-                      [attr.aria-label]="
-                        'Demo online di ' + entry.title + ' (apre una nuova scheda)'
-                      "
-                    >
-                      Demo online
-                    </a>
+                  @if (entry.flow; as flow) {
+                    <app-project-flow [flow]="flow" />
                   }
-                  @for (repository of entry.repositories; track repository.url) {
-                    <a
-                      [href]="repository.url"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="c-card__action"
-                      [attr.aria-label]="
-                        'Apri ' +
-                        repository.label +
-                        ' di ' +
-                        entry.title +
-                        ' su GitHub in una nuova scheda'
-                      "
-                    >
-                      {{ repository.label }}
-                    </a>
+                  <p class="c-card__description">{{ entry.description }}</p>
+                  @if (entry.note) {
+                    <p class="c-card__status-detail">{{ entry.note }}</p>
                   }
-                </div>
+                  <div class="c-card__tags" aria-label="Tecnologie utilizzate">
+                    @for (tech of entry.technologies; track tech) {
+                      <span class="c-card__tag">{{ tech }}</span>
+                    }
+                  </div>
+                  <div class="c-card__actions">
+                    @if (entry.liveLink) {
+                      <a
+                        [href]="entry.liveLink"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="c-card__action"
+                        [attr.aria-label]="
+                          'Demo online di ' + entry.title + ' (apre una nuova scheda)'
+                        "
+                      >
+                        Demo online
+                      </a>
+                    }
+                    @for (repository of entry.repositories; track repository.url) {
+                      <a
+                        [href]="repository.url"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="c-card__action"
+                        [attr.aria-label]="
+                          'Apri ' +
+                          repository.label +
+                          ' di ' +
+                          entry.title +
+                          ' su GitHub in una nuova scheda'
+                        "
+                      >
+                        {{ repository.label }}
+                      </a>
+                    }
+                  </div>
 
-                @if (entry.latestUpdate; as update) {
-                  <app-project-update [update]="update" />
-                }
-              </div>
-            </article>
-          }
-        </div>
-      </section>
+                  @if (entry.latestUpdate; as update) {
+                    <app-project-update [update]="update" />
+                  }
+                </div>
+              </article>
+            }
+          </div>
+        </section>
+      }
     }
     <div class="c-projects__github-cta">
       <p>Vuoi vedere anche esercizi, esperimenti e progetti ancora in evoluzione?</p>

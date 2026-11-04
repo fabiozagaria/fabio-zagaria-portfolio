@@ -13,6 +13,13 @@
   font-display: swap;
   src: url('/assets/fonts/bricolage-grotesque-latin-wdth.woff2') format('woff2');
 }
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/instrument-serif-latin-400-italic.woff2') format('woff2');
+}
 
 :root {
   --clr-black: #f1f4fa;
@@ -442,9 +449,39 @@ main:focus {
 .c-projects__group + .c-projects__group {
   margin-top: 5rem;
 }
+/* Titoli delle sezioni della pagina Progetti: corsivo serif con un ghirigoro "firmato". */
+@property --sign {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 110%;
+}
 .c-projects__group-title {
-  margin-bottom: 2rem;
-  font-size: var(--fs-600);
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 1.25rem;
+  padding: 0 0.25em 0.55em 0;
+  font-family: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-stretch: 100%;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(var(--sign) - 6%), transparent var(--sign));
+  mask-image: linear-gradient(90deg, #000 calc(var(--sign) - 6%), transparent var(--sign));
+}
+.c-projects__group-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0.1em;
+  left: 0;
+  width: min(100%, 14rem);
+  height: 0.9rem;
+  background: var(--mark);
+  -webkit-mask: var(--swash) no-repeat left / 100% 100%;
+  mask: var(--swash) no-repeat left / 100% 100%;
+  --swash: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14'%3E%3Cpath d='M2 9C30 2 60 13 100 7S170 3 198 8' fill='none' stroke='black' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E");
 }
 .c-projects__grid {
   display: grid;

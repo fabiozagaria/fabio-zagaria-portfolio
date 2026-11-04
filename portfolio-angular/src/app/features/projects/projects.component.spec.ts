@@ -191,4 +191,20 @@ describe('ProjectsComponent', () => {
     expect(link?.href).toBe('https://github.com/fabiozagaria/expense-tracker-angular/tree/v1.0.2');
     expect(link?.getAttribute('aria-label')).toMatch(/^Frontend v1\.0\.2/);
   });
+
+  it('orders the sections: full stack, backend, plugins, course frontend, experiments, exercises', () => {
+    const element = render('2026-11-04T10:00:00+01:00');
+    const titles = Array.from(element.querySelectorAll('h2.c-projects__group-title')).map((title) =>
+      title.textContent?.trim(),
+    );
+
+    expect(titles).toEqual([
+      'Full Stack',
+      'Backend',
+      'Plugin e Skill AI',
+      'Progetti Frontend del Corso',
+      'Sperimentale con AI',
+      'Esercizi',
+    ]);
+  });
 });

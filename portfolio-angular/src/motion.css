@@ -190,7 +190,6 @@
     .c-contact__info > *,
     .c-contact__item,
     .c-contact__documents h3,
-    .c-projects__group-title,
     .c-featured__overview,
     .c-backend-map,
     .c-proof__header,
@@ -387,6 +386,22 @@
     .c-vtag:hover {
       translate: 0 -2px;
       box-shadow: 0 4px 0 0 color-mix(in srgb, var(--kind) 45%, transparent);
+    }
+  }
+}
+
+/* Titoli delle sezioni: si "scrivono" da sinistra a destra, ghirigoro compreso. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .c-projects__group-title {
+      animation: sign-write linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    @keyframes sign-write {
+      from {
+        --sign: 0%;
+      }
     }
   }
 }
