@@ -62,10 +62,10 @@
       "description": "650 ore. Java, Spring Boot, API REST, Angular, TypeScript e MySQL."
     },
     {
-      "title": "Master Java",
-      "org": "PC Academy",
-      "year": "Set 2019 - Apr 2020",
-      "description": "300 ore. Java 8, SQL e sviluppo Android."
+      "title": "Master in aula di Programmazione Java & Android",
+      "org": "P.C. Academy",
+      "year": "Nov 2019 - Mag 2020",
+      "description": "Logica di programmazione, Java 8, basi di dati SQL e Java per Android. Attestato di frequenza."
     },
     {
       "title": "Diploma",
@@ -89,11 +89,11 @@
     },
     {
       "category": "AI e sviluppo assistito",
-      "items": "ChatGPT; OpenAI Codex Desktop (strumento principale); Claude / Claude Code; Codex Skills; MCP (Model Context Protocol); coding agent per sviluppo, debugging, code review e analisi del codice."
+      "items": "Claude Code (strumento principale) con plugin e skill, anche sviluppati in proprio; MCP (Model Context Protocol); ChatGPT; OpenAI Codex Desktop e Codex Skills; coding agent per sviluppo, debugging, code review e analisi del codice."
     },
     {
       "category": "Studio autonomo",
-      "items": "PostgreSQL, applicato in AccessDesk"
+      "items": "PostgreSQL, applicato in AccessDesk; utilizzo dell'AI nello sviluppo; architettura software; prossimo approfondimento: C++"
     },
     {
       "category": "Lingue",

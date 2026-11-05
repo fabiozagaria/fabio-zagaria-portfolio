@@ -16,7 +16,7 @@ describe('HomeComponent', () => {
     const element = fixture.nativeElement as HTMLElement;
     const downloadLink = element.querySelector<HTMLAnchorElement>('a[download]');
 
-    expect(downloadLink?.getAttribute('href')).toBe('/downloads/CV.pdf?v=1360e5cb');
+    expect(downloadLink?.getAttribute('href')).toBe('/downloads/CV.pdf?v=51bac5bb');
     expect(downloadLink?.getAttribute('download')).toBe('CV_Fabio_Zagaria.pdf');
   });
 

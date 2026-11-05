@@ -16,6 +16,8 @@
   ·
   <a href="./portfolio-angular/src/assets/documents/Attestato_LabForWeb_Fabio_Zagaria.pdf">Attestato LabForWeb</a>
   ·
+  <a href="./portfolio-angular/src/assets/documents/Attestato_PCAcademy_Fabio_Zagaria.pdf">Attestato P.C. Academy</a>
+  ·
   <a href="https://www.linkedin.com/in/fabiozagaria">LinkedIn</a>
 </p>
 
@@ -37,6 +39,7 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 | **Ruoli di interesse**     | Junior Backend Developer · Junior Full Stack Developer                                                                                            |
 | **Focus backend**          | Java · Spring Boot · Spring Security · Spring Data JPA · REST API · MySQL                                                                         |
 | **PostgreSQL**             | Studio autodidatta come alternativa a MySQL, applicato in AccessDesk                                                                              |
+| **Altri studi autonomi**   | Utilizzo dell'AI nello sviluppo e architettura software; prossimo approfondimento: C++                                                            |
 | **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                                                                                                    |
 | **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026                                                                           |
 | **Apprendimento continuo** | Metodo CARAC: richiamo attivo, esercizi autonomi e progetti reali                                                                                 |
