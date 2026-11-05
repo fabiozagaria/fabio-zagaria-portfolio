@@ -84,6 +84,10 @@
       "items": "Angular 21, TypeScript, JavaScript, Signals, Reactive Forms, HTML5, CSS3"
     },
     {
+      "category": "Test",
+      "items": "JUnit, Mockito, test di integrazione con Spring Boot"
+    },
+    {
       "category": "Strumenti di sviluppo e DevOps",
       "items": "Git, GitHub, Maven, Docker (containerizzazione e ambienti di sviluppo), Postman"
     },

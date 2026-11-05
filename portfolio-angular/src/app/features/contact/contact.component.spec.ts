@@ -11,7 +11,7 @@ describe('ContactComponent', () => {
     const links = Array.from(element.querySelectorAll<HTMLAnchorElement>('a[download]'));
 
     expect(links.map((link) => link.getAttribute('href'))).toEqual([
-      '/downloads/CV.pdf?v=51bac5bb',
+      '/downloads/CV.pdf?v=8db4d300',
       '/downloads/Attestato_LabForWeb_Fabio_Zagaria.pdf',
     ]);
   });
