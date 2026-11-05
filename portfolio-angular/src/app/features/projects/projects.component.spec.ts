@@ -33,12 +33,18 @@ describe('ProjectsComponent', () => {
   });
 
   it('flags projects with a recent update as new', () => {
-    const element = render('2026-11-03T10:00:00+01:00');
+    const element = render('2026-11-04T22:00:00+01:00');
     const flagged = Array.from(element.querySelectorAll('.c-badge-new')).map((badge) =>
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged.sort()).toEqual(['accessdesk', 'gestionale-spese', 'jobflow']);
+    expect(flagged.sort()).toEqual([
+      'accessdesk',
+      'gestionale-spese',
+      'jobflow',
+      'learning-ledger',
+      'spring-security-advisor',
+    ]);
     expect(element.querySelector('.c-badge-new')?.textContent).toContain('Commit recente');
   });
 
@@ -48,17 +54,20 @@ describe('ProjectsComponent', () => {
     expect(element.querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
 
-  it('keeps the badge for a project updated a few days earlier but not for older ones', () => {
-    const element = render('2026-11-05T10:00:00+01:00');
+  it('keeps the badge until the third day after the latest commit', () => {
+    const element = render('2026-11-07T10:00:00+01:00');
     const flagged = Array.from(element.querySelectorAll('.c-badge-new')).map((badge) =>
       badge.closest('article')?.getAttribute('id'),
     );
 
     expect(flagged.sort()).toEqual([
+      'accessdesk',
       'gestionale-spese',
+      'jobflow',
       'learning-ledger',
       'spring-security-advisor',
     ]);
+    expect(render('2026-11-08T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
 
   it('renders a screenshot with its size and alternative text when a project has one', () => {
@@ -188,8 +197,8 @@ describe('ProjectsComponent', () => {
     expect(tags('gestionale-spese')).toEqual(['Frontend:v1.0.2', 'API:v1.0.2']);
     expect(tags('jobflow')).toEqual(['Backend:v0.1.0-alpha.1']);
     expect(tags('accessdesk')).toEqual(['Backend:v0.1.0-alpha.1']);
-    expect(tags('learning-ledger')).toEqual(['Plugin:0.2.0']);
-    expect(tags('spring-security-advisor')).toEqual(['Plugin:0.1.0']);
+    expect(tags('learning-ledger')).toEqual(['Plugin:0.2.2']);
+    expect(tags('spring-security-advisor')).toEqual(['Plugin:0.2.0']);
     expect(tags('labtv')).toEqual([]);
     const link = element.querySelector<HTMLAnchorElement>('#gestionale-spese .c-vtag a');
     expect(link?.href).toBe('https://github.com/fabiozagaria/expense-tracker-angular/tree/v1.0.2');
@@ -213,13 +222,16 @@ describe('ProjectsComponent', () => {
   });
 
   it('says how long ago the latest commit was: today, yesterday, N days ago', () => {
-    const element = render('2026-11-03T12:00:00+01:00');
-    const badge = (id: string) =>
-      element.querySelector(`#${id} .c-badge-new`)?.textContent?.replace(/\s+/g, ' ').trim();
+    const badge = (now: string) =>
+      render(now)
+        .querySelector('#gestionale-spese .c-badge-new')
+        ?.textContent?.replace(/\s+/g, ' ')
+        .trim();
 
-    expect(badge('gestionale-spese')).toBe('Commit recente oggi');
-    expect(badge('jobflow')).toBe('Commit recente 2 giorni fa');
-    expect(badge('accessdesk')).toBe('Commit recente 3 giorni fa');
+    expect(badge('2026-11-04T12:00:00+01:00')).toBe('Commit recente oggi');
+    expect(badge('2026-11-05T12:00:00+01:00')).toBe('Commit recente ieri');
+    expect(badge('2026-11-06T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
+    expect(badge('2026-11-07T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
   });
 
   it('shows the recent commit badge on plugin cards too, with the same wording', () => {
@@ -229,7 +241,7 @@ describe('ProjectsComponent', () => {
 
     expect(badge('learning-ledger')).toBe('Commit recente oggi');
     expect(badge('spring-security-advisor')).toBe('Commit recente oggi');
-    expect(badge('gestionale-spese')).toBe('Commit recente ieri');
+    expect(badge('gestionale-spese')).toBe('Commit recente oggi');
     expect(element.querySelector('#labtv .c-badge-new')).toBeNull();
   });
 

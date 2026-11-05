@@ -35,16 +35,24 @@ describe('project history', () => {
       const newest = PROJECT_HISTORY[id][0];
 
       expect(project?.latestUpdate?.datetime).toBeDefined();
+      // Un ultimo commit di sola licenza non è un'implementazione importante: non entra nello storico.
+      const licenseOnly = project?.latestUpdate?.items?.every((item) =>
+        item.message.startsWith('Add MIT license'),
+      );
       // latestUpdate.datetime è una data (fuso Europe/Rome), la storia ha data e ora con offset.
-      expect(newest.datetime.slice(0, 10) >= (project?.latestUpdate?.datetime ?? '')).toBe(true);
+      expect(
+        licenseOnly || newest.datetime.slice(0, 10) >= (project?.latestUpdate?.datetime ?? ''),
+      ).toBe(true);
     }
   });
 
   it('records the asynchronous JobFlow worker as the latest JobFlow update', () => {
     const jobFlow = projects.find((project) => project.id === 'jobflow');
 
-    expect(jobFlow?.latestUpdate?.datetime).toBe('2026-11-01');
-    expect(jobFlow?.latestUpdate?.items?.[0].hash).toBe('68f8c04');
+    // L'ultimo commit (4 novembre) aggiunge solo la licenza MIT; la modifica funzionale resta il worker.
+    expect(jobFlow?.latestUpdate?.datetime).toBe('2026-11-04');
+    expect(jobFlow?.latestUpdate?.items?.[0].hash).toBe('0370a82');
+    expect(PROJECT_HISTORY['jobflow'][0].datetime.slice(0, 10)).toBe('2026-11-01');
     expect(PROJECT_HISTORY['jobflow'][0].sources[0].url).toContain('44a2527');
   });
 });
