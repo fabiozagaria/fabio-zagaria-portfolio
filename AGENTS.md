@@ -9,6 +9,7 @@ Questo repository contiene il portfolio professionale di Fabio Zagaria. È un pr
 - Preferire modifiche piccole, verificabili e coerenti con il design e l'architettura esistenti.
 - Prima di dichiarare completata una modifica tecnica, verificare build/test pertinenti quando disponibili.
 - Non trasformare il portfolio in un laboratorio: gli esperimenti vanno nei repository dedicati.
+- Ogni volta che si modificano card, storico, versioni o stato di un progetto, aggiornare sempre anche il `README.md` (e, se cambia lo stato tecnico, `docs/CONTEXT.md`) in modo coerente.
 
 ## Fonti di verità
 - Il codice e la configurazione del repository sono la verità tecnica del portfolio.
