@@ -194,6 +194,34 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
   ],
   'gestionale-spese': [
     {
+      datetime: '2026-11-10T12:14:31+01:00',
+      dateLabel: '10 novembre 2026, 12:14',
+      title: 'Frontend 1.1.0: client allineato al contratto REST',
+      summary:
+        'Il frontend recupera la password, reinvia il link di verifica email, mostra il dettaglio delle entrate, applica i limiti della password del server e gestisce i messaggi sul limite di richieste.',
+      version: 'frontend v1.1.0',
+      sources: [
+        {
+          label: 'Frontend',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/4dc3098c1bd29c845ae6bc3a8036cd1d528339d8',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T12:10:17+01:00',
+      dateLabel: '10 novembre 2026, 12:10',
+      title: 'API 1.1.0: reset password, rate limiting e Swagger UI',
+      summary:
+        'Versione retrocompatibile: reinvio della verifica email e reset password, rate limiting per IP sugli endpoint pubblici, reuse detection dei refresh token, schema gestito da Flyway, Swagger UI e CI su GitHub Actions.',
+      version: 'API v1.1.0',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/6f40cbd29cc589cb43d620d2055c3e80f9284f86',
+        },
+      ],
+    },
+    {
       datetime: '2026-11-10T11:39:56+01:00',
       dateLabel: '10 novembre 2026, 11:39',
       title: 'API: Swagger UI utilizzabile dalla demo pubblica',
