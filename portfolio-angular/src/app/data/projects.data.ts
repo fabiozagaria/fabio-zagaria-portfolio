@@ -100,6 +100,8 @@ export interface PortfolioProject {
   readonly flow?: PortfolioFlow;
   readonly liveLink?: string;
   readonly liveLabel?: string;
+  /** Documentazione interattiva dell'API (Swagger UI), distinta dai link GitHub. */
+  readonly apiDocsLink?: string;
   readonly repositories?: readonly PortfolioRepository[];
 }
 
@@ -210,6 +212,7 @@ export const PROJECTS = [
     ],
     liveLink: 'https://gestionale-spese.vercel.app/',
     liveLabel: 'Demo full stack',
+    apiDocsLink: 'https://expense-tracker-api-demo-plb9.onrender.com/swagger-ui.html',
     repositories: [
       {
         label: 'Frontend',

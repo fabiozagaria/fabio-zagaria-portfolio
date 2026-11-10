@@ -81,6 +81,9 @@ describe('portfolio projects', () => {
       'Backend',
     ]);
     expect(expenseTracker?.liveLabel).toBe('Demo full stack');
+    expect(expenseTracker?.apiDocsLink).toBe(
+      'https://expense-tracker-api-demo-plb9.onrender.com/swagger-ui.html',
+    );
     expect(expenseTracker?.status).toBe('Concluso');
   });
 
