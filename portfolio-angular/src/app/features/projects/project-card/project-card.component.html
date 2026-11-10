@@ -94,7 +94,7 @@
       }
     </div>
 
-    @if (project.liveLink || project.repositories?.length) {
+    @if (project.liveLink || project.apiDocsLink || project.repositories?.length) {
       <div class="c-card__actions">
         @if (project.liveLink) {
           <a
@@ -111,6 +111,17 @@
             "
           >
             {{ project.liveLabel ?? 'Demo' }}
+          </a>
+        }
+        @if (project.apiDocsLink) {
+          <a
+            [href]="project.apiDocsLink"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="c-card__action"
+            [attr.aria-label]="'Apri Swagger UI di ' + project.title + ' in una nuova scheda'"
+          >
+            Swagger UI
           </a>
         }
         @for (repository of project.repositories ?? []; track repository.url) {
