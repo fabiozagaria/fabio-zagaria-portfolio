@@ -150,17 +150,18 @@ export const PROJECTS = [
     statusDetail:
       'Versione 1.0.0 conclusa il 25 ottobre 2026; l’API 1.0.2 introduce il mapping MapStruct per spese ed entrate. Il frontend 1.0.2 include letture paginate nella dashboard, controllo mostra/nascondi password e correzioni del tema scuro. La cache Redis remota resta da configurare prima di attivarla nel deploy. Collaudo del deploy e regressioni degli ultimi ampliamenti restano da completare.',
     latestUpdate: {
-      dateLabel: '4 novembre 2026',
-      datetime: '2026-11-04',
+      dateLabel: '10 novembre 2026',
+      datetime: '2026-11-10',
       items: [
         {
           kind: 'API',
           version: 'v1.0.2',
-          hash: '568b3a4',
-          message: 'Add MIT license (#16)',
-          dateLabel: '4 novembre 2026',
-          note: 'Aggiunta la licenza MIT al repository; nessuna modifica al codice dell’API.',
-          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/568b3a485fb1cd06cebe81c419350415fb230c98',
+          hash: '0639baa',
+          message:
+            'Merge pull request #19 from fabiozagaria/agent/backend-security-deploy-fixes-056779',
+          dateLabel: '10 novembre 2026',
+          note: 'Dopo il tag v1.0.2: documentazione OpenAPI con Swagger UI, rate limit sugli endpoint di autenticazione, rilevamento del riuso del refresh token e altre correzioni all’API.',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/0639baafdd7854816ad838b4fffa554a84a7915c',
         },
         {
           kind: 'Frontend',
