@@ -194,6 +194,58 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
   ],
   'gestionale-spese': [
     {
+      datetime: '2026-11-10T11:39:56+01:00',
+      dateLabel: '10 novembre 2026, 11:39',
+      title: 'API: Swagger UI utilizzabile dalla demo pubblica',
+      summary:
+        'L’URL pubblico dell’API è accettato come Origin per POST /auth/* e aggiunto ai CORS, così «Try it out» su /auth/demo funziona dalla pagina Swagger del backend.',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/3be1df247e946a94fa5396bed3828ce087d46523',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T11:25:35+01:00',
+      dateLabel: '10 novembre 2026, 11:25',
+      title: 'API: rate limit sugli endpoint di autenticazione',
+      summary:
+        'Token bucket in memoria per IP su POST /auth/*; i rifiuti rispondono 429 con Retry-After e corpo APIError.',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/1338e65bf88fd0acbdd3e7dbe47eaab779036360',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T11:25:09+01:00',
+      dateLabel: '10 novembre 2026, 11:25',
+      title: 'API: documentazione OpenAPI con Swagger UI',
+      summary:
+        'Aggiunta la specifica OpenAPI con Swagger UI pubblica; SWAGGER_ENABLED=false la disattiva.',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/0961f42992be1ff0e2ecaee4a0d3f57e4f574ce7',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T11:10:53+01:00',
+      dateLabel: '10 novembre 2026, 11:10',
+      title: 'API: rilevamento del riuso del refresh token',
+      summary:
+        'Il riuso di un refresh token già ruotato viene rilevato; i token scaduti vengono ripuliti.',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/14d38a98e3c9b0197c64b12fb85f71a1274e75e3',
+        },
+      ],
+    },
+    {
       datetime: '2026-11-03T00:30:21+01:00',
       dateLabel: '3 novembre 2026, 00:30',
       title: 'Frontend: README allineato alle versioni',
