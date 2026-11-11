@@ -194,6 +194,38 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
   ],
   'gestionale-spese': [
     {
+      datetime: '2026-11-10T19:10:57+01:00',
+      dateLabel: '10 novembre 2026, 19:10',
+      title: 'Frontend 1.2.0: pagina Impostazioni',
+      summary:
+        'L’utente loggato vede i dati dell’account e riceve il link per cambiare la password tramite GET /api/me; dopo l’invio il pulsante torna disponibile come «Invia di nuovo» al termine dell’attesa di 60 secondi e il focus passa alla conferma.',
+      version: 'frontend 1.2.0',
+      sources: [
+        {
+          label: 'Frontend',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/b49f7cc9e19e8afb87f86f0b9f3b31db145b1436',
+        },
+        {
+          label: 'Correzione',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/b7af09b5a524c67f2860af11ef6655c7e90b56d3',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T19:03:30+01:00',
+      dateLabel: '10 novembre 2026, 19:03',
+      title: 'API 1.2.0: GET /api/me',
+      summary:
+        'Versione retrocompatibile: nuovo endpoint con username ed email dell’utente autenticato, usato dalla pagina Impostazioni del frontend per inviare il link di cambio password senza riscrivere l’email.',
+      version: 'API 1.2.0',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/55b92d3230e908ceb63ce9c31f02a623d12401c1',
+        },
+      ],
+    },
+    {
       datetime: '2026-11-10T12:14:31+01:00',
       dateLabel: '10 novembre 2026, 12:14',
       title: 'Frontend 1.1.0: client allineato al contratto REST',

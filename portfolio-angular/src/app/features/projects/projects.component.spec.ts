@@ -203,7 +203,9 @@ describe('ProjectsComponent', () => {
     expect(tags('spring-security-advisor')).toEqual(['Plugin:0.2.0']);
     expect(tags('labtv')).toEqual([]);
     const link = element.querySelector<HTMLAnchorElement>('#gestionale-spese .c-vtag a');
-    expect(link?.href).toBe('https://github.com/fabiozagaria/expense-tracker-angular/tree/v1.1.0');
+    expect(link?.href).toBe(
+      'https://github.com/fabiozagaria/expense-tracker-angular/releases/tag/v1.1.0',
+    );
     expect(link?.getAttribute('aria-label')).toMatch(/^Frontend v1\.1\.0/);
   });
 
