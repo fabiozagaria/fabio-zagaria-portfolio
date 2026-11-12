@@ -48,7 +48,7 @@ describe('ProjectsComponent', () => {
   });
 
   it('removes the new badge once the update is older than three days', () => {
-    const element = render('2026-11-14T10:00:00+01:00');
+    const element = render('2026-11-16T10:00:00+01:00');
 
     expect(element.querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
@@ -67,9 +67,9 @@ describe('ProjectsComponent', () => {
     ]);
     expect(render('2026-11-08T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
     expect(
-      render('2026-11-13T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
+      render('2026-11-15T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
     ).not.toBeNull();
-    expect(render('2026-11-14T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
+    expect(render('2026-11-16T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
 
   it('renders a screenshot with its size and alternative text when a project has one', () => {
@@ -232,10 +232,10 @@ describe('ProjectsComponent', () => {
         ?.textContent?.replace(/\s+/g, ' ')
         .trim();
 
-    expect(badge('2026-11-10T12:00:00+01:00')).toBe('Commit recente oggi');
-    expect(badge('2026-11-11T12:00:00+01:00')).toBe('Commit recente ieri');
-    expect(badge('2026-11-12T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
-    expect(badge('2026-11-13T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
+    expect(badge('2026-11-12T12:00:00+01:00')).toBe('Commit recente oggi');
+    expect(badge('2026-11-13T12:00:00+01:00')).toBe('Commit recente ieri');
+    expect(badge('2026-11-14T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
+    expect(badge('2026-11-15T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
   });
 
   it('shows the recent commit badge on plugin cards too, with the same wording', () => {

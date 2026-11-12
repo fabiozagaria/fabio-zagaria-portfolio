@@ -194,6 +194,23 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
   ],
   'gestionale-spese': [
     {
+      datetime: '2026-11-12T08:01:56+01:00',
+      dateLabel: '12 novembre 2026, 08:01',
+      title: 'Frontend: modalità manutenzione per la demo sospesa',
+      summary:
+        'Il database MySQL Aiven della demo non è più disponibile. Con environment.maintenance attivo in produzione il sito mostra un avviso fisso, disattiva «Prova la demo», accesso, registrazione e gli altri form che usano il database, e le richieste di risveglio del server falliscono subito.',
+      sources: [
+        {
+          label: 'Avviso',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/4b7fde702e0ca2fbaed9762e87078458d3451ffe',
+        },
+        {
+          label: 'Form disattivati',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/58f34c9a841ae112446e42bc02ed90c632a1c129',
+        },
+      ],
+    },
+    {
       datetime: '2026-11-10T19:10:57+01:00',
       dateLabel: '10 novembre 2026, 19:10',
       title: 'Frontend 1.2.0: pagina Impostazioni',
