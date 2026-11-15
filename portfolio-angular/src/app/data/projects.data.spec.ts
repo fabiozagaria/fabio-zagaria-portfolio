@@ -2,6 +2,9 @@ import { PortfolioProject, PROJECTS } from './projects.data';
 import { EXERCISE_COLLECTIONS, EXPERIMENTAL_PROJECTS } from './project-collections.data';
 import { PROJECT_HISTORY } from './project-history.data';
 
+/** Ultimi commit noti che non entrano nello storico (documentazione o testi). */
+const MINOR_LATEST_COMMITS = ['f645156', '91c0c79'];
+
 describe('project history', () => {
   const projects: readonly PortfolioProject[] = PROJECTS;
   const mainProjects = ['gestionale-spese', 'jobflow', 'accessdesk'];
@@ -39,9 +42,16 @@ describe('project history', () => {
       const licenseOnly = project?.latestUpdate?.items?.every((item) =>
         item.message.startsWith('Add MIT license'),
       );
+      // Anche i commit di sola documentazione o testo dell'avviso (14 novembre, Expense Tracker)
+      // non sono implementazioni importanti: elencati per hash, così ogni eccezione resta esplicita.
+      const minorOnly = project?.latestUpdate?.items?.every((item) =>
+        MINOR_LATEST_COMMITS.includes(item.hash),
+      );
       // latestUpdate.datetime è una data (fuso Europe/Rome), la storia ha data e ora con offset.
       expect(
-        licenseOnly || newest.datetime.slice(0, 10) >= (project?.latestUpdate?.datetime ?? ''),
+        licenseOnly ||
+          minorOnly ||
+          newest.datetime.slice(0, 10) >= (project?.latestUpdate?.datetime ?? ''),
       ).toBe(true);
     }
   });
