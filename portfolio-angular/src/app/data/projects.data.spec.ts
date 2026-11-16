@@ -97,6 +97,12 @@ describe('portfolio projects', () => {
     expect(expenseTracker?.status).toBe('Concluso');
   });
 
+  it('links the AccessDesk Swagger UI demo', () => {
+    const accessDesk = PROJECTS.find((project) => project.id === 'accessdesk');
+
+    expect(accessDesk?.apiDocsLink).toBe('https://access-desk-api.onrender.com/swagger-ui.html');
+  });
+
   it('presents LabTV as a working API integration demo', () => {
     const labTv = PROJECTS.find((project) => project.id === 'labtv');
 
