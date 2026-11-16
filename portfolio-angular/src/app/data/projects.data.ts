@@ -364,6 +364,7 @@ export const PROJECTS = [
       tradeoff:
         'Il filtro deve interrompere il flusso dopo un errore; autenticazione e autorizzazione richiedono verifiche dedicate.',
     },
+    apiDocsLink: 'https://access-desk-api.onrender.com/swagger-ui.html',
     repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/accessdesk-api' }],
   },
   {
