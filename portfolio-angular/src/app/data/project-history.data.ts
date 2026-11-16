@@ -106,6 +106,19 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
   ],
   accessdesk: [
     {
+      datetime: '2026-11-15T19:54:53+01:00',
+      dateLabel: '15 novembre 2026, 19:54',
+      title: 'Migrazioni Flyway e avvio con Docker',
+      summary:
+        'Lo schema passa a migrazioni Flyway V1 separate per PostgreSQL e MySQL e Hibernate valida invece di aggiornare; Dockerfile multi-stage e docker-compose avviano PostgreSQL 18 e l’API. Secondo il README lo stack Docker è verificato fino a registrazione e login; migrazione MySQL e test automatici non sono verificati.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/e588b2974a66fa7bb9586b259fe9487fd2da3b0a',
+        },
+      ],
+    },
+    {
       datetime: '2026-10-31T09:17:38+01:00',
       dateLabel: '31 ottobre 2026, 09:17',
       title: 'Prima prerelease v0.1.0-alpha.1',
@@ -193,6 +206,37 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
     },
   ],
   'gestionale-spese': [
+    {
+      datetime: '2026-11-15T18:05:35+01:00',
+      dateLabel: '15 novembre 2026, 18:05',
+      title: 'API: tag e release v1.2.0',
+      summary:
+        'Pubblicata la release v1.2.0 dell’API, retrocompatibile: GET /api/me e demo su database H2 in memoria. Il frontend 1.2.0 non ha ancora un tag.',
+      version: 'API v1.2.0',
+      sources: [
+        {
+          label: 'Commit del tag',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/a0f51408be25d98898703e64cb0e6f1527b86a3e',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-15T17:47:51+01:00',
+      dateLabel: '15 novembre 2026, 17:47',
+      title: 'Demo riaperta su database H2 in memoria',
+      summary:
+        'Il profilo demo dell’API usa H2 in memoria al posto del MySQL Aiven non più disponibile: account condiviso e dati di esempio vengono ricreati a ogni avvio e la registrazione resta chiusa. Il frontend spegne la modalità manutenzione e spiega sulla pagina di registrazione che sulla demo non ci si può registrare.',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/1d1caa40815137078b8e01b1c6768ed645fdc4bf',
+        },
+        {
+          label: 'Frontend',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/8173c1a05b92e0e062b693710169e0279744eff2',
+        },
+      ],
+    },
     {
       datetime: '2026-11-12T08:01:56+01:00',
       dateLabel: '12 novembre 2026, 08:01',

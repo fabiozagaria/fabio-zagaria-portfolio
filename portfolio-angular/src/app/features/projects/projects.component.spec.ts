@@ -38,17 +38,12 @@ describe('ProjectsComponent', () => {
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged.sort()).toEqual([
-      'accessdesk',
-      'jobflow',
-      'learning-ledger',
-      'spring-security-advisor',
-    ]);
+    expect(flagged.sort()).toEqual(['jobflow', 'learning-ledger', 'spring-security-advisor']);
     expect(element.querySelector('.c-badge-new')?.textContent).toContain('Commit recente');
   });
 
   it('removes the new badge once the update is older than three days', () => {
-    const element = render('2026-11-18T10:00:00+01:00');
+    const element = render('2026-11-19T10:00:00+01:00');
 
     expect(element.querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
@@ -59,17 +54,12 @@ describe('ProjectsComponent', () => {
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged.sort()).toEqual([
-      'accessdesk',
-      'jobflow',
-      'learning-ledger',
-      'spring-security-advisor',
-    ]);
+    expect(flagged.sort()).toEqual(['jobflow', 'learning-ledger', 'spring-security-advisor']);
     expect(render('2026-11-08T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
     expect(
-      render('2026-11-17T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
+      render('2026-11-18T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
     ).not.toBeNull();
-    expect(render('2026-11-18T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
+    expect(render('2026-11-19T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
 
   it('renders a screenshot with its size and alternative text when a project has one', () => {
@@ -196,7 +186,7 @@ describe('ProjectsComponent', () => {
         (tag) => `${tag.dataset['kind']}:${tag.querySelector('.c-vtag__value')?.textContent}`,
       );
 
-    expect(tags('gestionale-spese')).toEqual(['Frontend:v1.1.0', 'API:v1.1.0']);
+    expect(tags('gestionale-spese')).toEqual(['Frontend:v1.1.0', 'API:v1.2.0']);
     expect(tags('jobflow')).toEqual(['Backend:v0.1.0-alpha.1']);
     expect(tags('accessdesk')).toEqual(['Backend:v0.1.0-alpha.1']);
     expect(tags('learning-ledger')).toEqual(['Plugin:0.2.2']);
@@ -232,10 +222,10 @@ describe('ProjectsComponent', () => {
         ?.textContent?.replace(/\s+/g, ' ')
         .trim();
 
-    expect(badge('2026-11-14T12:00:00+01:00')).toBe('Commit recente oggi');
-    expect(badge('2026-11-15T12:00:00+01:00')).toBe('Commit recente ieri');
-    expect(badge('2026-11-16T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
-    expect(badge('2026-11-17T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
+    expect(badge('2026-11-15T12:00:00+01:00')).toBe('Commit recente oggi');
+    expect(badge('2026-11-16T12:00:00+01:00')).toBe('Commit recente ieri');
+    expect(badge('2026-11-17T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
+    expect(badge('2026-11-18T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
   });
 
   it('shows the recent commit badge on plugin cards too, with the same wording', () => {
