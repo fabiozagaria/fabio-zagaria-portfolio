@@ -150,8 +150,8 @@ export const PROJECTS = [
     statusDetail:
       'Versione 1.0.0 conclusa il 25 ottobre 2026. Il 10 novembre 2026 API e frontend arrivano alla 1.1.0 (tag v1.1.0): l’API aggiunge reinvio della verifica email, reset password, rate limiting, reuse detection dei refresh token, Flyway e Swagger UI; il frontend allinea il client a questo contratto REST con recupero password, nuovo invio del link di verifica e dettaglio delle entrate. Lo stesso giorno la 1.2.0 aggiunge GET /api/me e la pagina Impostazioni con i dati dell’account e il link per cambiare la password; il proprietario ha confermato il percorso reale Impostazioni → email → nuova password → login sul sito pubblico. La cache Redis remota resta da configurare prima di attivarla nel deploy. Restano il controllo visivo sistematico desktop/mobile nei due temi e il percorso integrale in locale con Mailpit. Il 15 novembre 2026 l’API pubblica il tag e la release v1.2.0; il frontend 1.2.0 non ha ancora un tag (l’ultimo resta v1.1.0). Dal 12 al 15 novembre 2026 la demo online è rimasta sospesa perché il database MySQL Aiven non era più disponibile; dal 15 novembre, secondo README e commit, la demo usa un database H2 in memoria: account condiviso e dati di esempio vengono ricreati a ogni avvio, i dati aggiunti si perdono al riavvio e la registrazione sulla demo è chiusa. In locale il progetto resta su MySQL.',
     latestUpdate: {
-      dateLabel: '15 novembre 2026',
-      datetime: '2026-11-15',
+      dateLabel: '16 novembre 2026',
+      datetime: '2026-11-16',
       items: [
         {
           kind: 'API',
@@ -165,11 +165,11 @@ export const PROJECTS = [
         {
           kind: 'Frontend',
           version: '1.2.0',
-          hash: '8173c1a',
-          message: "Riapre la demo: spegne l'avviso di sospensione (#33)",
-          dateLabel: '15 novembre 2026',
-          note: 'Spenta la modalità manutenzione in produzione e tolti gli avvisi da README e docs; la pagina di registrazione spiega che sulla demo la registrazione è chiusa. Versione 1.2.0 invariata; nessun tag v1.2.0: l’ultimo tag resta v1.1.0.',
-          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/8173c1a05b92e0e062b693710169e0279744eff2',
+          hash: '2499618',
+          message: 'Merge pull request #36 from fabiozagaria/feat/auth-loading-panel',
+          dateLabel: '16 novembre 2026',
+          note: 'Il 16 novembre 2026 il frontend aggiunge skeleton e spinner negli stati di caricamento, centra lo spinner e uniforma il nome Expense Tracker; l’ultimo commit mostra lo spinner durante accesso, registrazione e risveglio della demo. package.json resta alla 1.2.0; nessun tag v1.2.0: l’ultimo tag resta v1.1.0.',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/2499618bb5ba8ed703d90790d3fffb006038b8ea',
         },
       ],
     },
@@ -342,17 +342,17 @@ export const PROJECTS = [
     statusDetail:
       'Prova autonoma ancora da completare. Login JWT, filtro e autorizzazioni sono presenti nel codice; PostgreSQL è il database predefinito, con MySQL alternativo. Dal 15 novembre 2026 lo schema è gestito da migrazioni Flyway (Hibernate in validate) e c’è un avvio con Docker Compose (PostgreSQL 18 e API): secondo il README, sullo stack Docker sono stati verificati build, migrazione V1, avvio, registrazione e login; migrazione MySQL, test automatici e gli altri endpoint non sono verificati. Restano verifiche del flusso JWT, test automatici e chiusura della consegna.',
     latestUpdate: {
-      dateLabel: '15 novembre 2026',
-      datetime: '2026-11-15',
+      dateLabel: '16 novembre 2026',
+      datetime: '2026-11-16',
       items: [
         {
           kind: 'Backend',
           version: 'v0.1.0-alpha.1',
-          hash: 'e588b29',
-          message: 'feat: add Flyway migrations and Docker setup (#3)',
-          dateLabel: '15 novembre 2026',
-          note: 'Aggiunte le migrazioni Flyway V1 per PostgreSQL e MySQL, con Hibernate passato da update a validate, più Dockerfile multi-stage e docker-compose; il README documenta avvio con Docker e migrazioni. Nessun nuovo tag: l’ultimo resta v0.1.0-alpha.1.',
-          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/e588b2974a66fa7bb9586b259fe9487fd2da3b0a',
+          hash: '4db5fe0',
+          message: 'feat: add roles claim to JWT access tokens (#4)',
+          dateLabel: '16 novembre 2026',
+          note: 'Il token JWT include un claim «roles» con i soli ruoli ROLE_*; i permessi restano sul server e il filtro ricarica le autorizzazioni dal database a ogni richiesta. Nello stesso giorno: Swagger UI e profilo demo pubblico con H2 in memoria, con link alla demo online nel README. Nessun nuovo tag: l’ultimo resta v0.1.0-alpha.1.',
+          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/4db5fe0c9218c2996e8f9dee61b65eaf1873a795',
         },
       ],
     },

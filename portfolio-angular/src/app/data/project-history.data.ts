@@ -106,6 +106,23 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
   ],
   accessdesk: [
     {
+      datetime: '2026-11-16T12:26:39+01:00',
+      dateLabel: '16 novembre 2026, 12:26',
+      title: 'Swagger UI, demo pubblica e claim dei ruoli nel JWT',
+      summary:
+        'Aggiunti Swagger UI (springdoc-openapi con schema Bearer JWT) e un profilo demo con database H2 in memoria, utenti e richieste di esempio e render.yaml per il deploy; il README riporta il link alla demo online. Il token JWT include inoltre un claim «roles» con i soli ruoli ROLE_*, a titolo informativo per i client: i permessi restano sul server.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/4db5fe0c9218c2996e8f9dee61b65eaf1873a795',
+        },
+        {
+          label: 'Swagger UI e demo',
+          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/be9a180b1291b5568279ae23db8a10bdfde439c9',
+        },
+      ],
+    },
+    {
       datetime: '2026-11-15T19:54:53+01:00',
       dateLabel: '15 novembre 2026, 19:54',
       title: 'Migrazioni Flyway e avvio con Docker',
@@ -206,6 +223,19 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
     },
   ],
   'gestionale-spese': [
+    {
+      datetime: '2026-11-16T16:19:22+01:00',
+      dateLabel: '16 novembre 2026, 16:19',
+      title: 'Frontend: skeleton e spinner negli stati di caricamento',
+      summary:
+        'Il frontend integra skeleton e spinner negli stati di caricamento, centra lo spinner, uniforma il nome Expense Tracker e mostra lo spinner durante accesso, registrazione e risveglio della demo. Nessun nuovo tag: l’ultimo del frontend resta v1.1.0.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/2499618bb5ba8ed703d90790d3fffb006038b8ea',
+        },
+      ],
+    },
     {
       datetime: '2026-11-15T18:05:35+01:00',
       dateLabel: '15 novembre 2026, 18:05',
