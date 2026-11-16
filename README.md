@@ -83,6 +83,12 @@ mostrano problema, soluzione, compromesso e stato reale; gli obiettivi futuri re
 distinti dalle funzionalità implementate. Il laboratorio guidato ha uno spazio
 secondario rispetto ai progetti.
 
+Uso agenti AI come **Claude Code e Codex**, con skill, plugin e integrazioni MCP, per
+**generare e verificare codice** quando lavoro su concetti già acquisiti.
+Quando apprendo un nuovo concetto, un’architettura o una specifica, non delego agli
+agenti la generazione e la verifica del codice: le svolgo in prima persona per
+costruire comprensione e autonomia.
+
 ## Cosa dimostra questa repository
 
 | Area                     | Implementazione                                                                                                                           |
