@@ -4,6 +4,7 @@
 Questo repository contiene il portfolio professionale di Fabio Zagaria. È un progetto pubblico e deve riflettere soltanto competenze, progetti e informazioni realmente verificabili.
 
 ## Regole operative
+- Il progetto full stack di gestione spese e il relativo sito/servizio si chiamano **Expense Tracker**. Usare sempre questa denominazione nei contenuti e nelle etichette; conservare gli URL e gli identificatori tecnici esistenti.
 - Leggere `README.md` e `docs/CONTEXT.md` prima di modifiche ampie.
 - Non inventare competenze, risultati, versioni, disponibilità o stato dei progetti.
 - Preferire modifiche piccole, verificabili e coerenti con il design e l'architettura esistenti.
