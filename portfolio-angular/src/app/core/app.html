@@ -128,11 +128,11 @@
   </aside>
 }
 
-<div class="c-route-status">
-  @if (router.currentNavigation()) {
-    <app-loading-spinner label="Caricamento pagina…" />
-  }
-</div>
+@if (router.currentNavigation()) {
+  <div class="c-route-status">
+    <app-loading-spinner size="lg" [showLabel]="true" label="Caricamento pagina…" />
+  </div>
+}
 @if (navigationError()) {
   <p class="o-container" role="alert">
     Impossibile aprire la pagina. Riprova dal menu di navigazione.
