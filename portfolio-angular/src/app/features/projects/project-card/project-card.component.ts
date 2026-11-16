@@ -1,3 +1,4 @@
+import { LoadingImageDirective } from '../../../shared/loading/loading-image.directive';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { PortfolioProject } from '../../../data/projects.data';
 import { PortfolioHistoryEntry, PROJECT_HISTORY } from '../../../data/project-history.data';
@@ -15,6 +16,7 @@ import { RecentBadgeComponent } from '../../../shared/recent-badge/recent-badge.
   selector: 'app-project-card',
   standalone: true,
   imports: [
+    LoadingImageDirective,
     ProjectFlowComponent,
     ProjectUpdateComponent,
     RecentBadgeComponent,
