@@ -1,3 +1,5 @@
+import { LoadingSpinnerComponent } from '../shared/loading/loading-spinner.component';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ViewportScroller } from '@angular/common';
 import { ThemeService } from './theme.service';
 import {
@@ -7,19 +9,29 @@ import {
   inject,
   HostListener,
   viewChild,
+  signal,
 } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {
+  NavigationError,
+  NavigationStart,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterOutlet,
+} from '@angular/router';
 import { getAvailabilityStatus } from './availability-status';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [LoadingSpinnerComponent, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
+  readonly router = inject(Router);
+  readonly navigationError = signal(false);
   readonly theme = inject(ThemeService);
   private readonly menuToggle = viewChild<ElementRef<HTMLButtonElement>>('menuToggle');
   private readonly navigation = viewChild<ElementRef<HTMLElement>>('navigation');
@@ -28,6 +40,10 @@ export class App {
   readonly availabilityStatus = getAvailabilityStatus();
 
   constructor() {
+    this.router.events.pipe(takeUntilDestroyed()).subscribe((event) => {
+      if (event instanceof NavigationStart) this.navigationError.set(false);
+      if (event instanceof NavigationError) this.navigationError.set(true);
+    });
     inject(ViewportScroller).setOffset(() => [
       0,
       (this.navigation()?.nativeElement.getBoundingClientRect().height ?? 80) + 16,

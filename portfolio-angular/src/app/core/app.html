@@ -128,7 +128,17 @@
   </aside>
 }
 
-<main id="main-content" tabindex="-1">
+<div class="c-route-status">
+  @if (router.currentNavigation()) {
+    <app-loading-spinner label="Caricamento pagina…" />
+  }
+</div>
+@if (navigationError()) {
+  <p class="o-container" role="alert">
+    Impossibile aprire la pagina. Riprova dal menu di navigazione.
+  </p>
+}
+<main id="main-content" tabindex="-1" [attr.aria-busy]="!!router.currentNavigation()">
   <router-outlet></router-outlet>
 </main>
 

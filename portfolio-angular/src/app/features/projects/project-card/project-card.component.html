@@ -25,7 +25,13 @@
                 <span class="c-shot__url">{{ host }}{{ shot.path }}</span>
               }
             </div>
-            <a class="c-shot__frame" [href]="shot.src" target="_blank" rel="noopener noreferrer">
+            <a
+              appLoadingImage
+              class="c-shot__frame"
+              [href]="shot.src"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img
                 [src]="shot.src"
                 [alt]="shot.alt"

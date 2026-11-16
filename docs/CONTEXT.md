@@ -72,3 +72,9 @@ Da fare e limiti noti:
 - TMDB: il footer del portfolio mostra la nota di attribuzione richiesta dai termini d’uso (frase ufficiale in inglese, con link a themoviedb.org), che copre LabTV e le locandine nelle immagini della pagina Progetti. Il logo TMDB non è stato aggiunto. Resta da controllare che l’app LabTV mostri la stessa nota.
 - Le schede di «Sperimentale con AI» ed «Esercizi» non hanno immagini; solo learning-ledger e spring-security-advisor (gruppo «Plugin e Skill AI») hanno uno schema di flusso (il campo `flow` è accettato anche da `PortfolioCollectionItem`, e il disegno è un `ng-template` condiviso con i progetti backend).
 - I link esterni (demo, repository, commit) non sono verificati automaticamente: l’ambiente di sviluppo non li raggiunge.
+
+## Indicatori di caricamento — 16 novembre 2026
+
+Il portfolio mantiene i dati statici: nessuna richiesta fittizia per mostrare skeleton. `LoadingImageDirective` (`shared/loading/`) copre le miniature nelle card condivise fra home e Progetti durante il caricamento reale, mantiene le dimensioni dell'immagine e termina su load, errore o risorsa già in cache. In caso di errore espone un'etichetta accessibile e conserva il link originale. `LoadingSpinnerComponent`, con dimensioni sm/md/lg, indica la navigazione lazy usando il signal `Router.currentNavigation`; fine, errore e annullamento seguono lo stato del router. Un errore di caricamento route viene comunicato con un alert. I token di tema esistenti guidano i colori; con movimento ridotto shimmer e rotazione sono disabilitati. Nessuna dipendenza o attesa artificiale aggiunta.
+
+Verifiche locali: test su immagini pendenti, cache, errore e navigazione lazy; Chromium a 390 e 1440 px, chiaro/scuro, movimento ridotto, dimensioni delle immagini stabili e assenza di overflow orizzontale. Controlli su anteprima locale, senza pubblicazione.
