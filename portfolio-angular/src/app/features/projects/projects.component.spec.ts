@@ -40,9 +40,7 @@ describe('ProjectsComponent', () => {
     );
 
     expect(flagged).toContain('jobflow');
-    expect(element.querySelector('#jobflow .c-badge-new')?.textContent).toContain(
-      'Commit recente',
-    );
+    expect(element.querySelector('#jobflow .c-badge-new')?.textContent).toContain('Commit recente');
   });
 
   it('removes the new badge once the update is older than three days', () => {
