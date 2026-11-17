@@ -56,14 +56,14 @@ describe('project history', () => {
     }
   });
 
-  it('records the asynchronous JobFlow worker as the latest JobFlow update', () => {
+  it('records the PostgreSQL and Render deploy as the latest JobFlow update', () => {
     const jobFlow = projects.find((project) => project.id === 'jobflow');
 
-    // L'ultimo commit (4 novembre) aggiunge solo la licenza MIT; la modifica funzionale resta il worker.
-    expect(jobFlow?.latestUpdate?.datetime).toBe('2026-11-04');
-    expect(jobFlow?.latestUpdate?.items?.[0].hash).toBe('0370a82');
-    expect(PROJECT_HISTORY['jobflow'][0].datetime.slice(0, 10)).toBe('2026-11-01');
-    expect(PROJECT_HISTORY['jobflow'][0].sources[0].url).toContain('44a2527');
+    expect(jobFlow?.latestUpdate?.datetime).toBe('2026-11-17');
+    expect(jobFlow?.latestUpdate?.items?.[0].hash).toBe('ce522a3');
+    expect(PROJECT_HISTORY['jobflow'][0].datetime.slice(0, 10)).toBe('2026-11-17');
+    expect(PROJECT_HISTORY['jobflow'][0].sources[0].url).toContain('bd51a42');
+    expect(PROJECT_HISTORY['jobflow'][1].sources[0].url).toContain('2c1c42d');
   });
 });
 
@@ -101,6 +101,14 @@ describe('portfolio projects', () => {
     const accessDesk = PROJECTS.find((project) => project.id === 'accessdesk');
 
     expect(accessDesk?.apiDocsLink).toBe('https://access-desk-api.onrender.com/swagger-ui.html');
+  });
+
+  it('links the JobFlow Swagger UI demo', () => {
+    const jobFlow = PROJECTS.find((project) => project.id === 'jobflow');
+
+    expect(jobFlow?.apiDocsLink).toBe('https://jobflow-dbnm.onrender.com/swagger-ui.html');
+    expect(jobFlow?.technologies).toContain('PostgreSQL');
+    expect(jobFlow?.technologies).not.toContain('MySQL');
   });
 
   it('presents LabTV as a working API integration demo', () => {
