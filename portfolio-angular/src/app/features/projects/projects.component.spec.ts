@@ -38,7 +38,7 @@ describe('ProjectsComponent', () => {
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged.sort()).toEqual(['jobflow', 'learning-ledger', 'spring-security-advisor']);
+    expect(flagged.sort()).toEqual(['jobflow']);
     expect(element.querySelector('.c-badge-new')?.textContent).toContain('Commit recente');
   });
 
@@ -54,7 +54,7 @@ describe('ProjectsComponent', () => {
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged.sort()).toEqual(['jobflow', 'learning-ledger', 'spring-security-advisor']);
+    expect(flagged.sort()).toEqual(['jobflow']);
     expect(render('2026-11-08T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
     expect(
       render('2026-11-19T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
@@ -189,8 +189,8 @@ describe('ProjectsComponent', () => {
     expect(tags('gestionale-spese')).toEqual(['Frontend:v1.1.0', 'API:v1.2.0']);
     expect(tags('jobflow')).toEqual(['Backend:v0.1.0-alpha.1']);
     expect(tags('accessdesk')).toEqual(['Backend:v0.1.0-alpha.1']);
-    expect(tags('learning-ledger')).toEqual(['Plugin:0.2.2']);
-    expect(tags('spring-security-advisor')).toEqual(['Plugin:0.2.0']);
+    expect(tags('learning-ledger')).toEqual(['Plugin:1.0.0']);
+    expect(tags('spring-security-advisor')).toEqual(['Plugin:1.0.0']);
     expect(tags('labtv')).toEqual([]);
     const link = element.querySelector<HTMLAnchorElement>('#gestionale-spese .c-vtag a');
     expect(link?.href).toBe(
@@ -229,13 +229,13 @@ describe('ProjectsComponent', () => {
   });
 
   it('shows the recent commit badge on plugin cards too, with the same wording', () => {
-    const element = render('2026-11-04T10:00:00+01:00');
+    const element = render('2026-11-16T10:00:00+01:00');
     const badge = (id: string) =>
       element.querySelector(`#${id} .c-badge-new`)?.textContent?.replace(/\s+/g, ' ').trim();
 
     expect(badge('learning-ledger')).toBe('Commit recente oggi');
     expect(badge('spring-security-advisor')).toBe('Commit recente oggi');
-    expect(badge('gestionale-spese')).toBeUndefined();
+    expect(badge('jobflow')).toBeUndefined();
     expect(element.querySelector('#labtv .c-badge-new')).toBeNull();
   });
 

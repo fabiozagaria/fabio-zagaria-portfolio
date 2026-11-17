@@ -25,23 +25,23 @@ export const AI_PLUGINS = [
     versionTags: [
       {
         label: 'Versione',
-        tag: '0.2.2',
+        tag: '1.0.0',
         kind: 'Plugin',
         url: 'https://github.com/fabiozagaria/learning-ledger/blob/main/plugins/learning-ledger/.claude-plugin/plugin.json',
       },
     ],
     latestUpdate: {
-      dateLabel: '4 novembre 2026',
-      datetime: '2026-11-04',
+      dateLabel: '16 novembre 2026',
+      datetime: '2026-11-16',
       items: [
         {
           kind: 'Plugin',
-          version: '0.2.2',
-          hash: '2918703',
-          message: 'v0.2.2: README note about Python 3 on Windows',
-          dateLabel: '4 novembre 2026',
-          note: 'Dopo la 0.2.0 (comando report, skill weekly-report, pacchetti di argomenti, CI): la 0.2.1 fa trovare alle skill un Python 3 funzionante, la 0.2.2 aggiunge una nota nel README su Python 3 su Windows.',
-          url: 'https://github.com/fabiozagaria/learning-ledger/commit/2918703e9c50cee017da2f046fc01363706ab9d6',
+          version: '1.0.0',
+          hash: '4fa759f',
+          message: 'Merge pull request #1 from fabiozagaria/ccr-8058e74e-hy0f34',
+          dateLabel: '16 novembre 2026',
+          note: 'Il manifest passa da 0.2.2 a 1.0.0: nuove skill explain e pair, pacchetto di argomenti per Spring Security (78 argomenti in totale) e, dal README, formati del registro stabili secondo il versionamento semantico. L’ultimo tag Git resta v0.2.2: per la 1.0.0 non c’è un tag.',
+          url: 'https://github.com/fabiozagaria/learning-ledger/commit/4fa759faeb643df0d6204357b4524f8269f9ca1d',
         },
       ],
     },
@@ -69,7 +69,7 @@ export const AI_PLUGINS = [
       note: 'Schema ricavato da README e skill del repository. Il registro resta in locale, senza account né rete.',
     },
     technologies: ['Python 3', 'Claude Code plugin', 'JSON', 'GitHub Actions'],
-    note: 'Versione 0.2.2 con test automatici e CI su Python 3.11–3.13 definiti nel repository; la loro esecuzione non è stata verificata qui. Progetto di tooling per lo studio, non un progetto del corso.',
+    note: 'Versione 1.0.0 con test automatici e CI su Python 3.11–3.13 definiti nel repository; la loro esecuzione non è stata verificata qui. Progetto di tooling per lo studio, non un progetto del corso.',
     repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/learning-ledger' }],
   },
   {
@@ -78,23 +78,23 @@ export const AI_PLUGINS = [
     versionTags: [
       {
         label: 'Versione',
-        tag: '0.2.0',
+        tag: '1.0.0',
         kind: 'Plugin',
         url: 'https://github.com/fabiozagaria/spring-security-advisor/blob/main/plugins/spring-security-advisor/.claude-plugin/plugin.json',
       },
     ],
     latestUpdate: {
-      dateLabel: '4 novembre 2026',
-      datetime: '2026-11-04',
+      dateLabel: '16 novembre 2026',
+      datetime: '2026-11-16',
       items: [
         {
           kind: 'Plugin',
-          version: '0.2.0',
-          hash: '7220fdb',
-          message: 'v0.2.0: SEC007 weak HMAC JWT key, README example and Windows note',
-          dateLabel: '4 novembre 2026',
-          note: 'Nuova regola SEC007 (chiave HMAC JWT da stringa letterale più corta del minimo dell’algoritmo), esempio di output nel README e nota su Python 3 su Windows; la 0.1.1 aveva fatto trovare alle skill un Python 3 funzionante.',
-          url: 'https://github.com/fabiozagaria/spring-security-advisor/commit/7220fdb556b4662be5b4d2ab1c05362e4b511c19',
+          version: '1.0.0',
+          hash: '4c8af62',
+          message: 'Merge pull request #1 from fabiozagaria/ccr-8058e74e-hy0f34',
+          dateLabel: '16 novembre 2026',
+          note: 'Il manifest passa da 0.2.0 a 1.0.0: nuova skill audit con checklist di 31 voci e punteggio da 0 a 100 calcolato da script, 23 regole dello scanner (erano 7) e segnali sui meccanismi presenti nel codice. L’ultimo tag Git resta v0.2.0: per la 1.0.0 non c’è un tag.',
+          url: 'https://github.com/fabiozagaria/spring-security-advisor/commit/4c8af6212a75ff9c90214b612865a40d063a6a62',
         },
       ],
     },
@@ -119,7 +119,7 @@ export const AI_PLUGINS = [
       note: 'Schema ricavato da README e skill del repository. advise e apply sono pianificati, non realizzati.',
     },
     technologies: ['Python 3', 'Claude Code plugin', 'Spring Security', 'GitHub Actions'],
-    note: 'Versione 0.2.0: copre solo lo stack servlet, non è stata ancora provata su progetti reali e non dimostra che un progetto sia sicuro. CI su Python 3.11–3.13 definita nel repository, esecuzione non verificata qui. Realizzato con assistenza AI (Claude Code); scelte di progetto e rilascio decise dal proprietario.',
+    note: 'Versione 1.0.0: copre solo lo stack servlet, non è stata ancora provata su progetti reali e non dimostra che un progetto sia sicuro. CI su Python 3.11–3.13 definita nel repository, esecuzione non verificata qui. Realizzato con assistenza AI (Claude Code); scelte di progetto e rilascio decise dal proprietario.',
     repositories: [
       { label: 'Repository', url: 'https://github.com/fabiozagaria/spring-security-advisor' },
     ],
