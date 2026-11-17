@@ -1034,9 +1034,12 @@ app-recent-badge {
   }
   .c-about__content,
   .c-experience__content,
-  .c-projects__grid,
   .c-contact__documents-grid {
     grid-template-columns: 1fr;
+  }
+  /* minmax(0, 1fr) e non 1fr: con 1fr il contenuto nowrap di una scheda (titolo dello schema) allarga la colonna oltre lo schermo. */
+  .c-projects__grid {
+    grid-template-columns: minmax(0, 1fr);
   }
   .c-about__aside {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
