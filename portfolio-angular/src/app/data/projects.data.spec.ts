@@ -73,6 +73,24 @@ describe('portfolio projects', () => {
     expect(jobFlow?.status).toBe('In sviluppo');
   });
 
+  it('lists MedTransit as a backend project still in design, without code claims', () => {
+    const medTransit = PROJECTS.find((project) => project.id === 'medtransit');
+
+    expect(medTransit?.category).toBe('Backend');
+    expect(medTransit?.status).toBe('In progettazione');
+    expect(medTransit?.flow?.steps.every((step) => step.pending)).toBe(true);
+    expect(medTransit?.technologies.every((tech) => tech.includes('(previsto)'))).toBe(true);
+    expect(medTransit?.repositories?.[0].url).toBe(
+      'https://github.com/fabiozagaria/med-transit-msa',
+    );
+  });
+
+  it('no longer lists Transport Tickets', () => {
+    const ids: readonly string[] = EXPERIMENTAL_PROJECTS.map((project) => project.id);
+
+    expect(ids).not.toContain('transport-tickets');
+  });
+
   it('includes Spring Scaffold CLI among the experimental Java tools', () => {
     const springScaffold = EXPERIMENTAL_PROJECTS.find(
       (project) => project.id === 'spring-scaffold-cli',
@@ -134,6 +152,7 @@ describe('portfolio projects', () => {
     expect(PROJECTS.map((project) => project.id)).toEqual([
       'gestionale-spese',
       'jobflow',
+      'medtransit',
       'accessdesk',
       'labtv',
       'fakeflix',
