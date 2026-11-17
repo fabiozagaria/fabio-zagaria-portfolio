@@ -1,4 +1,9 @@
-export type ProjectStatus = 'Concluso' | 'In sviluppo' | 'Laboratorio attivo' | 'Demo frontend';
+export type ProjectStatus =
+  | 'Concluso'
+  | 'In sviluppo'
+  | 'In progettazione'
+  | 'Laboratorio attivo'
+  | 'Demo frontend';
 export type ProjectCategory = 'Full stack' | 'Backend' | 'Frontend';
 
 export interface PortfolioRepository {
@@ -298,6 +303,63 @@ export const PROJECTS = [
     },
     apiDocsLink: 'https://jobflow-dbnm.onrender.com/swagger-ui.html',
     repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/job-flow' }],
+  },
+  {
+    id: 'medtransit',
+    title: 'MedTransit',
+    category: 'Backend',
+    icon: 'fas fa-truck-medical',
+    focus: 'Backend · microservizi ed eventi con Kafka',
+    description:
+      'Sistema a microservizi per le richieste di trasporto interno in un ospedale, con dati fittizi: un reparto chiede un trasporto, il sistema lo assegna a un operatore per priorità e turno e avvisa tutti a ogni cambio di stato. Il progetto è in fase di progettazione: il design è approvato, il codice non c’è ancora.',
+    highlights: [
+      'Design approvato: tre servizi indipendenti (richieste, assegnazione, notifiche), un database per servizio e nessun codice condiviso',
+      'Eventi previsti: richiesta creata, assegnata, presa in carico e completata, con una chiave per richiesta per mantenere l’ordine',
+      'Da dimostrare: outbox pattern, consumer idempotenti, dead-letter topic e tracciamento di una richiesta con correlationId',
+      'Test previsti su evento duplicato, consumer che si ferma e riparte, messaggio in dead-letter e assegnazione concorrente',
+    ],
+    technologies: [
+      'Java (previsto)',
+      'Spring Boot (previsto)',
+      'Kafka (previsto)',
+      'PostgreSQL (previsto)',
+      'Docker (previsto)',
+    ],
+    flow: {
+      title: 'Dalla richiesta al completamento',
+      steps: [
+        {
+          label: 'richiesta.creata',
+          detail: 'request-service, lato reparto',
+          pending: true,
+        },
+        {
+          label: 'richiesta.assegnata',
+          detail: 'dispatch-service: operatore libero e in turno, altrimenti coda per priorità',
+          pending: true,
+        },
+        {
+          label: 'richiesta.presa-in-carico',
+          detail: 'L’operatore agisce su dispatch-service',
+          pending: true,
+        },
+        {
+          label: 'richiesta.completata',
+          detail: 'Lo stato torna a request-service',
+          pending: true,
+        },
+        {
+          label: 'Notifiche',
+          detail: 'notification-service consuma gli eventi (simulate)',
+          pending: true,
+        },
+      ],
+      note: 'Schema ricavato dal design doc del repository. Nessun passaggio è ancora realizzato.',
+    },
+    status: 'In progettazione',
+    statusDetail:
+      'Dal 17 novembre 2026 il design è approvato e documentato nel repository. Non c’è ancora codice né test: l’implementazione parte dopo JobFlow. Autenticazione, interfaccia grafica e notifiche reali restano fuori dalla prima versione.',
+    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/med-transit-msa' }],
   },
   {
     id: 'accessdesk',

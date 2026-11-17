@@ -533,7 +533,8 @@ app-project-card > .c-card {
   color: var(--clr-cyber-green);
   font-size: var(--fs-300);
 }
-.c-card__status[data-status='In sviluppo'] {
+.c-card__status[data-status='In sviluppo'],
+.c-card__status[data-status='In progettazione'] {
   color: var(--clr-accent-yellow);
 }
 .c-card__description {

@@ -1,6 +1,6 @@
 # Struttura dei repository del portfolio
 
-Aggiornato: 4 novembre 2026.
+Aggiornato: 17 novembre 2026.
 
 Mappa corrente dei repository e della loro collocazione nel portfolio. È un documento di riferimento da mantenere aggiornato insieme ai contenuti del sito.
 
@@ -27,10 +27,11 @@ Expense Tracker ha una sola scheda, con collegamenti distinti a frontend e backe
 
 ## Backend
 
-| Progetto   | Repository                                                       |
-| ---------- | ---------------------------------------------------------------- |
-| JobFlow    | [job-flow](https://github.com/fabiozagaria/job-flow)             |
-| AccessDesk | [accessdesk-api](https://github.com/fabiozagaria/accessdesk-api) |
+| Progetto   | Repository                                                         |
+| ---------- | ------------------------------------------------------------------ |
+| JobFlow    | [job-flow](https://github.com/fabiozagaria/job-flow)               |
+| MedTransit | [med-transit-msa](https://github.com/fabiozagaria/med-transit-msa) |
+| AccessDesk | [accessdesk-api](https://github.com/fabiozagaria/accessdesk-api)   |
 
 ## Progetti Frontend del Corso
 
@@ -56,7 +57,6 @@ Plugin per Claude Code pubblicati dal proprietario, con uno script Python che ve
 | Spring Scaffold CLI | [spring-scaffold-cli](https://github.com/fabiozagaria/spring-scaffold-cli) |
 | PatchMe             | [patchme-game](https://github.com/fabiozagaria/patchme-game)               |
 | StudyFlow Android   | [study-flow-android](https://github.com/fabiozagaria/study-flow-android)   |
-| Transport Tickets   | [transport-tickets](https://github.com/fabiozagaria/transport-tickets)     |
 
 La categoria descrive il ruolo sperimentale e il supporto dell’AI nello sviluppo o nello studio. Eventuali funzionalità AI interne alle applicazioni vanno dichiarate soltanto se verificate nel codice.
 

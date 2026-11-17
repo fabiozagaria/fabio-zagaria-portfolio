@@ -171,38 +171,6 @@ export const EXPERIMENTAL_PROJECTS = [
       { label: 'Repository', url: 'https://github.com/fabiozagaria/study-flow-android' },
     ],
   },
-  {
-    id: 'transport-tickets',
-    title: 'Transport Tickets',
-    latestUpdate: {
-      dateLabel: '25 ottobre 2026',
-      datetime: '2026-10-25',
-      summary:
-        'Integrato in main il backend Spring Boot/JPA con Flyway, sessioni e CSRF, Redis opzionale e transazioni con lock.',
-      sources: [
-        {
-          label: 'Commit',
-          url: 'https://github.com/fabiozagaria/transport-tickets/commit/e74e8c2eed01216534912c8a4b56a7216fc168d8',
-        },
-      ],
-    },
-    description:
-      'Backend per gestire trasporti, assegnazioni e storico. Spring Boot con autenticazione a sessione, ruoli e CSRF; persistenza JPA/MySQL e cache Redis opzionale.',
-    technologies: [
-      'Java 17',
-      'Spring Boot',
-      'Spring Security',
-      'Spring Data JPA',
-      'MySQL',
-      'Flyway',
-      'Redis (opzionale)',
-      'Docker',
-    ],
-    note: 'Backend sperimentale in studio, sviluppato anche con strumenti AI. Il ramo Spring Boot/JPA è integrato in main, con migrazioni Flyway e transazioni con lock sui ticket.',
-    repositories: [
-      { label: 'Repository', url: 'https://github.com/fabiozagaria/transport-tickets' },
-    ],
-  },
 ] as const satisfies readonly PortfolioCollectionItem[];
 
 export const EXERCISE_COLLECTIONS = [
