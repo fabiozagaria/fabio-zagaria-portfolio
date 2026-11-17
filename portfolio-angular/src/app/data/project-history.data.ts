@@ -16,6 +16,32 @@ export interface PortfolioHistoryEntry {
 export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryEntry[]>> = {
   jobflow: [
     {
+      datetime: '2026-11-17T11:28:02+01:00',
+      dateLabel: '17 novembre 2026, 11:28',
+      title: 'Swagger UI descritta e header del proxy',
+      summary:
+        'OpenAPI con titolo, descrizione del ciclo di vita e licenza; server.forward-headers-strategy=framework fa usare https all’header Location dietro il proxy di Render.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/bd51a4265d64b3a37f9f0d2aa88aed517271b525',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-17T11:21:47+01:00',
+      dateLabel: '17 novembre 2026, 11:21',
+      title: 'PostgreSQL con Flyway, Swagger UI e deploy su Render',
+      summary:
+        'Passaggio da MySQL a PostgreSQL con migrazione Flyway V1 e Hibernate in validate; springdoc per Swagger UI; Dockerfile multi-stage, docker-compose e render.yaml con database PostgreSQL gestito.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/2c1c42de40cd81a5f109a1ab909a1eebe4ad67a7',
+        },
+      ],
+    },
+    {
       datetime: '2026-11-01T23:22:53+01:00',
       dateLabel: '1 novembre 2026, 23:22',
       title: 'JobWorker asincrono e passaggio a PROCESSING',

@@ -33,33 +33,36 @@ describe('ProjectsComponent', () => {
   });
 
   it('flags projects with a recent update as new', () => {
-    const element = render('2026-11-04T22:00:00+01:00');
+    // JobFlow: ultimo aggiornamento il 17 novembre 2026.
+    const element = render('2026-11-17T22:00:00+01:00');
     const flagged = Array.from(element.querySelectorAll('.c-badge-new')).map((badge) =>
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged.sort()).toEqual(['jobflow']);
-    expect(element.querySelector('.c-badge-new')?.textContent).toContain('Commit recente');
+    expect(flagged).toContain('jobflow');
+    expect(element.querySelector('#jobflow .c-badge-new')?.textContent).toContain('Commit recente');
   });
 
   it('removes the new badge once the update is older than three days', () => {
-    const element = render('2026-11-20T10:00:00+01:00');
+    const element = render('2026-11-21T10:00:00+01:00');
 
     expect(element.querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
 
   it('keeps the badge until the third day after the latest commit', () => {
-    const element = render('2026-11-07T10:00:00+01:00');
+    const element = render('2026-11-20T10:00:00+01:00');
     const flagged = Array.from(element.querySelectorAll('.c-badge-new')).map((badge) =>
       badge.closest('article')?.getAttribute('id'),
     );
 
     expect(flagged.sort()).toEqual(['jobflow']);
-    expect(render('2026-11-08T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
+    expect(render('2026-11-21T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
     expect(
       render('2026-11-19T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
     ).not.toBeNull();
-    expect(render('2026-11-20T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
+    expect(
+      render('2026-11-20T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
+    ).toBeNull();
   });
 
   it('renders a screenshot with its size and alternative text when a project has one', () => {

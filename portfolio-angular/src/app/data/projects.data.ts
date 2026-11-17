@@ -239,12 +239,13 @@ export const PROJECTS = [
       },
     ],
     description:
-      'Backend per creare e consultare job tramite API REST, con validazione e persistenza JPA su MySQL. Il lavoro associato descrive una futura generazione di PDF.',
+      'Backend per creare e consultare job tramite API REST, con validazione e persistenza JPA su PostgreSQL. Il lavoro associato descrive una futura generazione di PDF.',
     highlights: [
       'Dominio Job con stati CREATED, PROCESSING, COMPLETED e FAILED',
       'POST /jobs con DTO validato, risposta 201 Created e header Location; GET /jobs/{id} per la consultazione',
-      'Persistenza JPA/MySQL di Job e GeneratePdfWork con cascade PERSIST',
+      'Persistenza JPA/PostgreSQL di Job e GeneratePdfWork con cascade PERSIST; schema versionato con Flyway e Hibernate in validate',
       'JobCreatedEvent pubblicato dopo il salvataggio e JobWorker asincrono (@Async con @TransactionalEventListener) che porta il job da CREATED a PROCESSING',
+      'Immagine Docker pubblicata su Render con PostgreSQL gestito e documentazione Swagger UI',
       'Mapping con MapStruct e test unitari di JobService e JobController',
     ],
     technologies: [
@@ -252,7 +253,9 @@ export const PROJECTS = [
       'Spring Boot',
       'REST API',
       'Spring Data JPA',
-      'MySQL',
+      'PostgreSQL',
+      'Flyway',
+      'Docker',
       'Bean Validation',
       'MapStruct',
     ],
@@ -260,7 +263,7 @@ export const PROJECTS = [
       title: 'Dal POST al worker',
       steps: [
         { label: 'POST /jobs', detail: 'DTO validato, 201 Created' },
-        { label: 'Job CREATED', detail: 'Persistenza JPA/MySQL' },
+        { label: 'Job CREATED', detail: 'Persistenza JPA/PostgreSQL' },
         { label: 'JobCreatedEvent', detail: 'Pubblicato dopo il salvataggio' },
         { label: 'JobWorker', detail: '@Async con @TransactionalEventListener' },
         { label: 'PROCESSING', detail: 'Verificato a runtime' },
@@ -270,19 +273,19 @@ export const PROJECTS = [
     },
     status: 'In sviluppo',
     statusDetail:
-      'Creazione e persistenza verificate con Postman e MySQL; il passaggio asincrono da CREATED a PROCESSING è verificato a runtime. GET /jobs/{id} è coperto da test ma resta da provare a runtime. Completamento fino a COMPLETED o FAILED, ProcessorRegistry e generazione PDF restano da fare.',
+      'Dal 17 novembre 2026 il progetto usa PostgreSQL con migrazioni Flyway ed è pubblicato su Render con Swagger UI (piano gratuito: il primo accesso può richiedere attesa, il database gratuito scade dopo 30 giorni). Su PostgreSQL in locale sono verificati POST /jobs (201), GET /jobs/{id} (200 e 404) e il passaggio asincrono da CREATED a PROCESSING; online sono verificati Swagger UI e la risposta 404 di GET /jobs/{id}. Completamento fino a COMPLETED o FAILED, ProcessorRegistry e generazione PDF restano da fare.',
     latestUpdate: {
-      dateLabel: '4 novembre 2026',
-      datetime: '2026-11-04',
+      dateLabel: '17 novembre 2026',
+      datetime: '2026-11-17',
       items: [
         {
           kind: 'Backend',
           version: 'v0.1.0-alpha.1',
-          hash: '0370a82',
-          message: 'Add MIT license (#3)',
-          dateLabel: '4 novembre 2026',
-          note: 'Aggiunta la licenza MIT al repository; nessuna modifica al codice. L’ultima modifica funzionale resta il ramo feat/job-mapper del 1 novembre (JobMapper, JobCreatedEvent, JobWorker).',
-          url: 'https://github.com/fabiozagaria/job-flow/commit/0370a82d96a904caa46a44d418df953e2f89723b',
+          hash: 'ce522a3',
+          message: 'Merge pull request #5 from fabiozagaria/feat/swagger-docs',
+          dateLabel: '17 novembre 2026',
+          note: 'La PR #4 passa da MySQL a PostgreSQL con Flyway, aggiunge Swagger UI, Dockerfile, docker-compose e il Blueprint render.yaml; la PR #5 descrive l’API in Swagger UI e fa usare gli header del proxy (https). La versione nel pom resta 0.1.0-alpha.1 e non ci sono nuovi tag.',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/ce522a3769dd66cbfd2e39ece4427be78b4b582c',
         },
       ],
     },
@@ -293,6 +296,7 @@ export const PROJECTS = [
       tradeoff:
         'Il cascade è limitato alla creazione: aggiornamenti e rimozioni richiedono una gestione esplicita.',
     },
+    apiDocsLink: 'https://jobflow-dbnm.onrender.com/swagger-ui.html',
     repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/job-flow' }],
   },
   {
