@@ -46,13 +46,13 @@ export const AI_PLUGINS = [
       ],
     },
     description:
-      'Plugin per Claude Code che tiene un registro locale delle prove di apprendimento. Claude conduce quiz ed esercizi; uno script Python senza dipendenze applica le regole sui livelli, così il giudizio del modello non può gonfiarli, e pianifica i ripassi nei giorni lavorativi.',
+      'Plugin per Claude Code che tiene un registro locale delle prove di apprendimento. Claude conduce quiz ed esercizi, spiega codice esistente (explain) o ti affianca mentre scrivi tu il codice (pair); uno script Python senza dipendenze applica le regole sui livelli, così il giudizio del modello non può gonfiarli, e pianifica i ripassi nei giorni lavorativi.',
     flow: {
       title: 'Dalla sessione al registro',
       steps: [
         {
           label: 'Quiz o esercizio',
-          detail: 'Claude conduce la sessione con le skill quiz e practice',
+          detail: 'Claude conduce la sessione: quiz, practice, explain o pair',
         },
         { label: 'log-session', detail: 'Raccoglie prove e livello di aiuto ricevuto' },
         { label: 'ledger.py', detail: 'Applica le regole: con aiuti non si arriva ad autonomous' },
@@ -66,7 +66,7 @@ export const AI_PLUGINS = [
         },
         { label: 'File locali', detail: 'topics.json, sessions.jsonl e config.json' },
       ],
-      note: 'Schema ricavato da README e skill del repository. Il registro resta in locale, senza account né rete.',
+      note: 'Schema ricavato da README e skill del repository. Il registro resta in locale, senza account né rete. Una sessione explain conta come lavoro supportato: il livello arriva al massimo a with_support.',
     },
     technologies: ['Python 3', 'Claude Code plugin', 'JSON', 'GitHub Actions'],
     note: 'Versione 1.0.0 con test automatici e CI su Python 3.11–3.13 definiti nel repository; la loro esecuzione non è stata verificata qui. Progetto di tooling per lo studio, non un progetto del corso.',
@@ -99,17 +99,24 @@ export const AI_PLUGINS = [
       ],
     },
     description:
-      'Plugin per Claude Code che rivede la configurazione di Spring Security. Uno scanner Python senza dipendenze trova errori noti, per esempio regole di accesso irraggiungibili, CSRF disattivato o annotazioni @PreAuthorize senza method security. Le skill leggono il codice segnalato, scartano i falsi positivi e spiegano ogni rischio con correzione e fonte ufficiale; la skill map descrive filtri, provider e regole realmente presenti.',
+      'Plugin per Claude Code che esegue un audit di sicurezza su un progetto Spring Boot e dà un punteggio da 0 a 100 da seguire nel tempo. Uno scanner Python senza dipendenze applica 23 regole su errori noti, per esempio regole di accesso irraggiungibili, CSRF disattivato o chiavi JWT troppo corte. Il modello legge il codice segnalato e risponde a una checklist di 31 voci con evidenze file:line; uno script le convalida e calcola il punteggio, così il modello non può alzarlo con le parole. Le skill sono audit (analisi completa), review (solo le regole) e map (filtri, provider e regole realmente presenti).',
     flow: {
-      title: 'Dal progetto al report',
+      title: 'Dal progetto al punteggio',
       steps: [
         { label: 'Progetto Spring', detail: 'Sorgenti Java, pom.xml o build.gradle' },
-        { label: 'scan.py', detail: 'Sei regole verificate sulla documentazione ufficiale' },
         {
-          label: 'Verifica nel codice',
-          detail: 'Claude legge il codice segnalato e scarta i falsi positivi',
+          label: 'scan.py',
+          detail:
+            '23 regole verificate sulla documentazione ufficiale, più segnali su rate limit, refresh token e lock',
         },
-        { label: 'Report', detail: 'Rischio, correzione, fonte, tipo di problema e confidenza' },
+        {
+          label: 'Checklist',
+          detail: '31 voci: il modello legge il codice e risponde con evidenza file:line',
+        },
+        {
+          label: 'Punteggio',
+          detail: 'Lo script convalida le evidenze e calcola punteggio, voto e copertura',
+        },
         {
           label: 'advise e apply',
           detail: 'Guida alla scelta e modifiche con conferma',
@@ -119,7 +126,7 @@ export const AI_PLUGINS = [
       note: 'Schema ricavato da README e skill del repository. advise e apply sono pianificati, non realizzati.',
     },
     technologies: ['Python 3', 'Claude Code plugin', 'Spring Security', 'GitHub Actions'],
-    note: 'Versione 1.0.0: copre solo lo stack servlet, non è stata ancora provata su progetti reali e non dimostra che un progetto sia sicuro. CI su Python 3.11–3.13 definita nel repository, esecuzione non verificata qui. Realizzato con assistenza AI (Claude Code); scelte di progetto e rilascio decise dal proprietario.',
+    note: 'Versione 1.0.0: copre solo lo stack servlet, non è stata ancora provata su progetti reali e non dimostra che un progetto sia sicuro. Il punteggio misura solo ciò che è stato controllato: con meno del 70% della checklist valutata è provvisorio. CI su Python 3.11–3.13 definita nel repository, esecuzione non verificata qui. Realizzato con assistenza AI (Claude Code); scelte di progetto e rilascio decise dal proprietario.',
     repositories: [
       { label: 'Repository', url: 'https://github.com/fabiozagaria/spring-security-advisor' },
     ],

@@ -50,7 +50,7 @@ Accento teal su fondo antracite con tinta verde. Il tema chiaro usa fondo chiaro
 Space Grotesk locale WOFF2 con font-display swap, condivisa da titoli e corpo. Corpo 17px, informazioni secondarie almeno 14px. Monospace soltanto per codice letterale. Titoli bilanciati, tracking non inferiore a -0.04em.
 
 ## Layout
-Container massimo 1248px e padding clamp(1.25rem, 4vw, 4rem). Header 5rem. Breakpoint 60em, 48em e 30em. Le colonne diventano singole su smartphone. Identità iniziale, prova del progetto e elenco dei backend hanno composizioni distinte.
+Container massimo 1248px e padding clamp(1.25rem, 4vw, 4rem). Header 5rem. Breakpoint 60em, 48em e 30em. Le colonne diventano singole su smartphone; la griglia dei progetti usa `minmax(0, 1fr)`, così una scheda con contenuto largo non allarga la colonna oltre lo schermo. Identità iniziale, prova del progetto e elenco dei backend hanno composizioni distinte.
 
 ## Elevation & Depth
 Superfici piatte e separazione tonale; nessun bagliore o ombra decorativa a riposo.
