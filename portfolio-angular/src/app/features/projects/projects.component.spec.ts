@@ -55,13 +55,19 @@ describe('ProjectsComponent', () => {
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged.sort()).toEqual(['jobflow']);
+    expect(flagged.sort()).toEqual([
+      'accessdesk',
+      'gestionale-spese',
+      'jobflow',
+      'learning-ledger',
+      'spring-security-advisor',
+    ]);
     expect(render('2026-11-21T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
     expect(
       render('2026-11-19T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
     ).not.toBeNull();
     expect(
-      render('2026-11-20T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
+      render('2026-11-21T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
     ).toBeNull();
   });
 
@@ -225,20 +231,20 @@ describe('ProjectsComponent', () => {
         ?.textContent?.replace(/\s+/g, ' ')
         .trim();
 
-    expect(badge('2026-11-16T12:00:00+01:00')).toBe('Commit recente oggi');
-    expect(badge('2026-11-17T12:00:00+01:00')).toBe('Commit recente ieri');
-    expect(badge('2026-11-18T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
-    expect(badge('2026-11-19T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
+    expect(badge('2026-11-17T12:00:00+01:00')).toBe('Commit recente oggi');
+    expect(badge('2026-11-18T12:00:00+01:00')).toBe('Commit recente ieri');
+    expect(badge('2026-11-19T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
+    expect(badge('2026-11-20T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
   });
 
   it('shows the recent commit badge on plugin cards too, with the same wording', () => {
-    const element = render('2026-11-16T10:00:00+01:00');
+    const element = render('2026-11-17T10:00:00+01:00');
     const badge = (id: string) =>
       element.querySelector(`#${id} .c-badge-new`)?.textContent?.replace(/\s+/g, ' ').trim();
 
     expect(badge('learning-ledger')).toBe('Commit recente oggi');
     expect(badge('spring-security-advisor')).toBe('Commit recente oggi');
-    expect(badge('jobflow')).toBeUndefined();
+    expect(badge('jobflow')).toBe('Commit recente oggi');
     expect(element.querySelector('#labtv .c-badge-new')).toBeNull();
   });
 

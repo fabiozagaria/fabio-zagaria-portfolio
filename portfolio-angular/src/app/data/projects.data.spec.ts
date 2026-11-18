@@ -3,7 +3,7 @@ import { EXERCISE_COLLECTIONS, EXPERIMENTAL_PROJECTS } from './project-collectio
 import { PROJECT_HISTORY } from './project-history.data';
 
 /** Ultimi commit noti che non entrano nello storico (documentazione o testi). */
-const MINOR_LATEST_COMMITS = ['f645156', '91c0c79'];
+const MINOR_LATEST_COMMITS = ['f645156', '91c0c79', 'dde6338', '10c795b', '3696dcb'];
 
 describe('project history', () => {
   const projects: readonly PortfolioProject[] = PROJECTS;
@@ -60,7 +60,7 @@ describe('project history', () => {
     const jobFlow = projects.find((project) => project.id === 'jobflow');
 
     expect(jobFlow?.latestUpdate?.datetime).toBe('2026-11-17');
-    expect(jobFlow?.latestUpdate?.items?.[0].hash).toBe('ce522a3');
+    expect(jobFlow?.latestUpdate?.items?.[0].hash).toBe('2a547b2');
     expect(PROJECT_HISTORY['jobflow'][0].datetime.slice(0, 10)).toBe('2026-11-17');
     expect(PROJECT_HISTORY['jobflow'][0].sources[0].url).toContain('bd51a42');
     expect(PROJECT_HISTORY['jobflow'][1].sources[0].url).toContain('2c1c42d');
