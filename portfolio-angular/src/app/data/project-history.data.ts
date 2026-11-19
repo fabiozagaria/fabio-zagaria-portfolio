@@ -280,8 +280,8 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
       dateLabel: '19 novembre 2026, 21:54',
       title: 'Frontend: tag e release v1.2.0',
       summary:
-        'Pubblicati il tag v1.2.0 del frontend e la sua GitHub Release, sul commit del 10 novembre con la pagina Impostazioni. Gli sviluppi successivi (avviso di manutenzione, skeleton e spinner) restano per una prossima versione.',
-      version: 'frontend v1.2.0',
+        'Pubblicata la release v1.2.0 del frontend: pagina Impostazioni con i dati dell’account e il link per cambiare la password. Richiede il backend 1.2.0 o successivo. Il tag è sul commit del 10 novembre 2026 in cui package.json passa alla 1.2.0.',
+      version: 'Frontend v1.2.0',
       sources: [
         {
           label: 'Commit del tag',
@@ -290,11 +290,11 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
       ],
     },
     {
-      datetime: '2026-11-19T21:37:19+01:00',
-      dateLabel: '19 novembre 2026, 21:37',
-      title: 'API 1.3.0: PostgreSQL e demo su Neon',
+      datetime: '2026-11-19T21:54:21+01:00',
+      dateLabel: '19 novembre 2026, 21:54',
+      title: 'API: tag e release v1.3.0, demo su Neon',
       summary:
-        'Release 1.3.0 dell’API con tag e GitHub Release: raccoglie il passaggio da MySQL a PostgreSQL e la configurazione Neon, senza cambiare il contratto REST. La demo online usa il profilo neon: un login demo sul backend pubblico ha scritto il token nel database Neon.',
+        'Pubblicata la release v1.3.0 dell’API: database da MySQL a PostgreSQL su Neon, contratto REST invariato, frontend compatibile 1.2.0. Secondo il README la demo online usa il profilo neon: schema creato da Flyway e login demo che scrive il refresh token nel database Neon.',
       version: 'API v1.3.0',
       sources: [
         {
