@@ -16,6 +16,19 @@ export interface PortfolioHistoryEntry {
 export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryEntry[]>> = {
   jobflow: [
     {
+      datetime: '2026-11-19T20:18:10+01:00',
+      dateLabel: '19 novembre 2026, 20:18',
+      title: 'Database di produzione su Neon',
+      summary:
+        'Il database di produzione passa dal PostgreSQL Free di Render, che scadeva dopo 30 giorni, a PostgreSQL su Neon: profilo neon con TLS verify-full e al massimo 3 connessioni, docker-entrypoint.sh che ricava le credenziali da DATABASE_URL e ferma l’avvio con un URL JDBC. Connessione al database Neon reale e deploy su Render non ancora verificati.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/7d4e50ec001f2c3f001fbb701fb62584433a3cb0',
+        },
+      ],
+    },
+    {
       datetime: '2026-11-17T11:28:02+01:00',
       dateLabel: '17 novembre 2026, 11:28',
       title: 'Swagger UI descritta e header del proxy',
@@ -131,6 +144,19 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
     },
   ],
   accessdesk: [
+    {
+      datetime: '2026-11-19T09:29:05+01:00',
+      dateLabel: '19 novembre 2026, 09:29',
+      title: 'Solo PostgreSQL e profilo per la demo su Neon',
+      summary:
+        'Rimossi profilo, driver, flyway-mysql e migrazioni MySQL, mai eseguite su un server reale; nuovo profilo neon per una demo persistente su PostgreSQL Neon e DemoDataSeeder idempotente, con un nuovo test. Connessione al database Neon reale e deploy su Render non ancora verificati.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/c88fe30744599feab3704649df3390934a39f047',
+        },
+      ],
+    },
     {
       datetime: '2026-11-16T12:26:39+01:00',
       dateLabel: '16 novembre 2026, 12:26',
@@ -249,6 +275,19 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
     },
   ],
   'gestionale-spese': [
+    {
+      datetime: '2026-11-19T09:28:58+01:00',
+      dateLabel: '19 novembre 2026, 09:28',
+      title: 'API: migrazione da MySQL a PostgreSQL',
+      summary:
+        'Driver, Flyway, Docker Compose e Testcontainers passano a PostgreSQL; le migrazioni MySQL diventano un’unica V1 PostgreSQL. Username ed email restano unici senza distinguere maiuscole e minuscole tramite indici su lower(). Il profilo neon sostituisce aiven; la demo online resta su H2 finché il profilo non viene attivato su Render.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/d41d44d6c4d10e90a287dc75a957deece74f915f',
+        },
+      ],
+    },
     {
       datetime: '2026-11-16T16:19:22+01:00',
       dateLabel: '16 novembre 2026, 16:19',
