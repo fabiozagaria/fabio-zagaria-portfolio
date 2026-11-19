@@ -585,15 +585,33 @@ app-project-card > .c-card {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+/* Stato reale: una sintesi breve e un elenco di ciò che manca, non un paragrafo unico. */
 .c-card__status-detail {
-  display: grid;
-  gap: 0.5rem;
+  max-width: 65ch;
   margin-bottom: 1.5rem;
   color: var(--clr-white-subtle);
-  font-size: var(--fs-300);
+  line-height: 1.6;
 }
-.c-card__status-detail strong {
+.c-card__status-detail .c-card__section-label {
+  margin-bottom: 0.5rem;
   color: var(--clr-white);
+}
+.c-card__status-detail .c-card__section-label + p {
+  margin-top: 0;
+}
+.c-card__status-subtitle {
+  margin-top: 1rem;
+  color: var(--clr-white);
+  font-size: var(--fs-300);
+  font-weight: 600;
+}
+.c-card__status-list {
+  list-style: disc;
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+.c-card__status-list li + li {
+  margin-top: 0.5rem;
 }
 .c-card__tags {
   display: flex;
@@ -1071,6 +1089,10 @@ app-recent-badge {
   }
   .c-contact__document {
     padding: 1.5rem;
+  }
+  /* Su telefono il margine della pagina e quello della scheda si sommano: si riduce il secondo. */
+  .c-card__content {
+    padding: 1rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {
