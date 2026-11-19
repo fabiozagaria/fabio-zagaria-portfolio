@@ -56,14 +56,15 @@ describe('project history', () => {
     }
   });
 
-  it('records the PostgreSQL and Render deploy as the latest JobFlow update', () => {
+  it('records the move of the production database to Neon as the latest JobFlow update', () => {
     const jobFlow = projects.find((project) => project.id === 'jobflow');
 
-    expect(jobFlow?.latestUpdate?.datetime).toBe('2026-11-17');
-    expect(jobFlow?.latestUpdate?.items?.[0].hash).toBe('2a547b2');
-    expect(PROJECT_HISTORY['jobflow'][0].datetime.slice(0, 10)).toBe('2026-11-17');
-    expect(PROJECT_HISTORY['jobflow'][0].sources[0].url).toContain('bd51a42');
-    expect(PROJECT_HISTORY['jobflow'][1].sources[0].url).toContain('2c1c42d');
+    expect(jobFlow?.latestUpdate?.datetime).toBe('2026-11-19');
+    expect(jobFlow?.latestUpdate?.items?.[0].hash).toBe('7d4e50e');
+    expect(PROJECT_HISTORY['jobflow'][0].datetime.slice(0, 10)).toBe('2026-11-19');
+    expect(PROJECT_HISTORY['jobflow'][0].sources[0].url).toContain('7d4e50e');
+    expect(PROJECT_HISTORY['jobflow'][1].sources[0].url).toContain('bd51a42');
+    expect(PROJECT_HISTORY['jobflow'][2].sources[0].url).toContain('2c1c42d');
   });
 });
 

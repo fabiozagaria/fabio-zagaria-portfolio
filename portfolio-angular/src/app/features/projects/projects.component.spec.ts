@@ -33,8 +33,8 @@ describe('ProjectsComponent', () => {
   });
 
   it('flags projects with a recent update as new', () => {
-    // JobFlow: ultimo aggiornamento il 17 novembre 2026.
-    const element = render('2026-11-17T22:00:00+01:00');
+    // JobFlow: ultimo aggiornamento il 19 novembre 2026.
+    const element = render('2026-11-19T22:00:00+01:00');
     const flagged = Array.from(element.querySelectorAll('.c-badge-new')).map((badge) =>
       badge.closest('article')?.getAttribute('id'),
     );
@@ -44,30 +44,24 @@ describe('ProjectsComponent', () => {
   });
 
   it('removes the new badge once the update is older than three days', () => {
-    const element = render('2026-11-21T10:00:00+01:00');
+    const element = render('2026-11-23T10:00:00+01:00');
 
     expect(element.querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
 
   it('keeps the badge until the third day after the latest commit', () => {
-    const element = render('2026-11-20T10:00:00+01:00');
+    const element = render('2026-11-22T10:00:00+01:00');
     const flagged = Array.from(element.querySelectorAll('.c-badge-new')).map((badge) =>
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged.sort()).toEqual([
-      'accessdesk',
-      'gestionale-spese',
-      'jobflow',
-      'learning-ledger',
-      'spring-security-advisor',
-    ]);
-    expect(render('2026-11-21T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
-    expect(
-      render('2026-11-19T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
-    ).not.toBeNull();
+    expect(flagged.sort()).toEqual(['accessdesk', 'gestionale-spese', 'jobflow']);
+    expect(render('2026-11-23T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
     expect(
       render('2026-11-21T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
+    ).not.toBeNull();
+    expect(
+      render('2026-11-23T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
     ).toBeNull();
   });
 
@@ -231,19 +225,19 @@ describe('ProjectsComponent', () => {
         ?.textContent?.replace(/\s+/g, ' ')
         .trim();
 
-    expect(badge('2026-11-17T12:00:00+01:00')).toBe('Commit recente oggi');
-    expect(badge('2026-11-18T12:00:00+01:00')).toBe('Commit recente ieri');
-    expect(badge('2026-11-19T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
-    expect(badge('2026-11-20T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
+    expect(badge('2026-11-19T12:00:00+01:00')).toBe('Commit recente oggi');
+    expect(badge('2026-11-20T12:00:00+01:00')).toBe('Commit recente ieri');
+    expect(badge('2026-11-21T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
+    expect(badge('2026-11-22T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
   });
 
   it('shows the recent commit badge on plugin cards too, with the same wording', () => {
-    const element = render('2026-11-17T10:00:00+01:00');
+    const element = render('2026-11-19T10:00:00+01:00');
     const badge = (id: string) =>
       element.querySelector(`#${id} .c-badge-new`)?.textContent?.replace(/\s+/g, ' ').trim();
 
-    expect(badge('learning-ledger')).toBe('Commit recente oggi');
-    expect(badge('spring-security-advisor')).toBe('Commit recente oggi');
+    expect(badge('learning-ledger')).toBe('Commit recente 2 giorni fa');
+    expect(badge('spring-security-advisor')).toBe('Commit recente 2 giorni fa');
     expect(badge('jobflow')).toBe('Commit recente oggi');
     expect(element.querySelector('#labtv .c-badge-new')).toBeNull();
   });
