@@ -124,19 +124,19 @@ export const PROJECTS = [
     title: 'Expense Tracker',
     category: 'Full stack',
     icon: 'fas fa-wallet',
-    focus: 'Full stack · frontend 1.2.0 · API 1.2.0',
+    focus: 'Full stack · frontend 1.2.0 · API 1.3.0',
     versionTags: [
       {
         label: 'Frontend',
-        tag: 'v1.1.0',
+        tag: 'v1.2.0',
         kind: 'Frontend',
-        url: 'https://github.com/fabiozagaria/expense-tracker-angular/releases/tag/v1.1.0',
+        url: 'https://github.com/fabiozagaria/expense-tracker-angular/releases/tag/v1.2.0',
       },
       {
         label: 'API',
-        tag: 'v1.2.0',
+        tag: 'v1.3.0',
         kind: 'API',
-        url: 'https://github.com/fabiozagaria/expense-tracker-api/releases/tag/v1.2.0',
+        url: 'https://github.com/fabiozagaria/expense-tracker-api/releases/tag/v1.3.0',
       },
     ],
     description:
@@ -162,10 +162,8 @@ export const PROJECTS = [
     status: 'Concluso',
     statusDetail: {
       summary:
-        'API e frontend sono alla 1.2.0, con pagina Impostazioni e GET /api/me; il proprietario ha confermato il cambio password dal sito pubblico. Dal 19 novembre 2026 l’API usa PostgreSQL. La demo online gira su un database H2 in memoria: account condiviso e dati di esempio si ricreano a ogni avvio, i dati aggiunti si perdono al riavvio e la registrazione è chiusa.',
+        'Frontend 1.2.0 (release v1.2.0) con pagina Impostazioni e API 1.3.0 (release v1.3.0) con GET /api/me; il proprietario ha confermato il cambio password dal sito pubblico. Dal 19 novembre 2026 l’API usa PostgreSQL e, secondo il README del backend, la demo online usa il database Neon con il profilo neon: schema creato da Flyway e un login demo sul backend pubblico ha scritto il refresh token nel database, quindi i dati restano dopo un riavvio.',
       pending: [
-        'Attivare su Render il profilo neon e verificare la connessione al database PostgreSQL su Neon',
-        'Tag del frontend 1.2.0 non ancora pubblicato: l’ultimo resta v1.1.0',
         'Configurare la cache Redis remota prima di attivarla nel deploy',
         'Controllo visivo sistematico desktop e mobile nei due temi',
         'Percorso completo in locale con Mailpit',
@@ -177,20 +175,20 @@ export const PROJECTS = [
       items: [
         {
           kind: 'API',
-          version: 'v1.2.0',
-          hash: 'ef7d3c3',
-          message: 'Configurazione Neon come codice (neon.ts) (#32)',
+          version: 'v1.3.0',
+          hash: 'c53be2c',
+          message: 'Merge pull request #33 from fabiozagaria/ccr-086f78e2-uorltc',
           dateLabel: '19 novembre 2026',
-          note: 'Il 19 novembre 2026 il database passa da MySQL a PostgreSQL: driver, Flyway, Docker Compose e Testcontainers su PostgreSQL, un’unica migrazione V1 e il profilo neon al posto di aiven. L’ultimo commit aggiunge neon.ts e la documentazione della CLI Neon. La versione nel pom resta 1.2.0 e non ci sono nuovi tag.',
-          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/ef7d3c3bc239dde7955c7f57ec84d28caf8f7b82',
+          note: 'Porta la versione nel pom a 1.3.0 (database PostgreSQL con profilo neon, contratto REST invariato) e aggiorna la documentazione: la demo online usa il database Neon, verificato con lo schema creato da Flyway e un login demo che scrive il refresh token. Su questo commit sono pubblicati il tag e la release v1.3.0.',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/c53be2c391acd4991f7db85e345972e58e4429d8',
         },
         {
           kind: 'Frontend',
-          version: '1.2.0',
+          version: 'v1.2.0',
           hash: '74b574f',
           message: 'Documentazione: backend migrato a PostgreSQL (Neon) (#40)',
           dateLabel: '19 novembre 2026',
-          note: 'Aggiorna README, CONTEXT.md e DEPLOYMENT.md al passaggio del backend a PostgreSQL; nessuna modifica al codice e contratto REST invariato. package.json resta alla 1.2.0; l’ultimo tag resta v1.1.0.',
+          note: 'Aggiorna README, CONTEXT.md e DEPLOYMENT.md al passaggio del backend a PostgreSQL; nessuna modifica al codice e contratto REST invariato. Il 19 novembre 2026 è pubblicata la release v1.2.0 (pagina Impostazioni), con il tag sul commit del 10 novembre in cui package.json passa alla 1.2.0.',
           url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/74b574f3d3684ae7f364fb23096029ca57a5aa09',
         },
       ],

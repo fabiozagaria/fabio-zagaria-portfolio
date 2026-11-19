@@ -189,7 +189,7 @@ describe('ProjectsComponent', () => {
         (tag) => `${tag.dataset['kind']}:${tag.querySelector('.c-vtag__value')?.textContent}`,
       );
 
-    expect(tags('gestionale-spese')).toEqual(['Frontend:v1.1.0', 'API:v1.2.0']);
+    expect(tags('gestionale-spese')).toEqual(['Frontend:v1.2.0', 'API:v1.3.0']);
     expect(tags('jobflow')).toEqual(['Backend:v0.1.0-alpha.1']);
     expect(tags('accessdesk')).toEqual(['Backend:v0.1.0-alpha.1']);
     expect(tags('learning-ledger')).toEqual(['Plugin:1.0.0']);
@@ -197,9 +197,9 @@ describe('ProjectsComponent', () => {
     expect(tags('labtv')).toEqual([]);
     const link = element.querySelector<HTMLAnchorElement>('#gestionale-spese .c-vtag a');
     expect(link?.href).toBe(
-      'https://github.com/fabiozagaria/expense-tracker-angular/releases/tag/v1.1.0',
+      'https://github.com/fabiozagaria/expense-tracker-angular/releases/tag/v1.2.0',
     );
-    expect(link?.getAttribute('aria-label')).toMatch(/^Frontend v1\.1\.0/);
+    expect(link?.getAttribute('aria-label')).toMatch(/^Frontend v1\.2\.0/);
   });
 
   it('orders the sections: full stack, backend, plugins, course frontend, experiments, exercises', () => {
