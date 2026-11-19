@@ -276,6 +276,34 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
   ],
   'gestionale-spese': [
     {
+      datetime: '2026-11-19T21:54:53+01:00',
+      dateLabel: '19 novembre 2026, 21:54',
+      title: 'Frontend: tag e release v1.2.0',
+      summary:
+        'Pubblicata la release v1.2.0 del frontend: pagina Impostazioni con i dati dell’account e il link per cambiare la password. Richiede il backend 1.2.0 o successivo. Il tag è sul commit del 10 novembre 2026 in cui package.json passa alla 1.2.0.',
+      version: 'Frontend v1.2.0',
+      sources: [
+        {
+          label: 'Commit del tag',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/b323981375f8cdce56603c573c9e416237d00a87',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-19T21:54:21+01:00',
+      dateLabel: '19 novembre 2026, 21:54',
+      title: 'API: tag e release v1.3.0, demo su Neon',
+      summary:
+        'Pubblicata la release v1.3.0 dell’API: database da MySQL a PostgreSQL su Neon, contratto REST invariato, frontend compatibile 1.2.0. Secondo il README la demo online usa il profilo neon: schema creato da Flyway e login demo che scrive il refresh token nel database Neon.',
+      version: 'API v1.3.0',
+      sources: [
+        {
+          label: 'Commit del tag',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/c53be2c391acd4991f7db85e345972e58e4429d8',
+        },
+      ],
+    },
+    {
       datetime: '2026-11-19T09:28:58+01:00',
       dateLabel: '19 novembre 2026, 09:28',
       title: 'API: migrazione da MySQL a PostgreSQL',
