@@ -1,55 +1,72 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { PortfolioProject, ProjectCategory, PROJECTS } from '../../data/projects.data';
 import {
-  PortfolioLatestUpdate,
-  PortfolioProject,
-  ProjectCategory,
-  PROJECTS,
-} from '../../data/projects.data';
-import {
+  AI_PLUGINS,
   EXERCISE_COLLECTIONS,
   EXPERIMENTAL_PROJECTS,
   PortfolioCollectionItem,
 } from '../../data/project-collections.data';
-import { PortfolioHistoryEntry, PROJECT_HISTORY } from '../../data/project-history.data';
+import { ProjectFlowComponent } from '../../shared/project-flow/project-flow.component';
+import { ProjectUpdateComponent } from '../../shared/project-update/project-update.component';
+import { RecentBadgeComponent } from '../../shared/recent-badge/recent-badge.component';
+import { VersionTagsComponent } from '../../shared/version-tags/version-tags.component';
+import { ProjectCardComponent } from './project-card/project-card.component';
 
-const DAY_MS = 24 * 60 * 60 * 1000;
-/** Il badge "Novità" resta visibile per 7 giorni dopo la data dell'aggiornamento. */
-export const NEW_UPDATE_WINDOW_DAYS = 7;
+type ProjectsSection =
+  | {
+      readonly type: 'projects';
+      readonly id: string;
+      readonly title: string;
+      readonly category: ProjectCategory;
+      readonly projects: readonly PortfolioProject[];
+    }
+  | {
+      readonly type: 'collection';
+      readonly id: string;
+      readonly title: string;
+      readonly description: string;
+      readonly entries: readonly PortfolioCollectionItem[];
+    };
 
 @Component({
   selector: 'app-projects',
   standalone: true,
+  imports: [
+    ProjectCardComponent,
+    ProjectFlowComponent,
+    ProjectUpdateComponent,
+    RecentBadgeComponent,
+    VersionTagsComponent,
+  ],
   templateUrl: './projects.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent {
-  private readonly now = Date.now();
-
-  readonly groups = (
-    [
-      { category: 'Full stack', title: 'Full Stack', id: 'full-stack' },
-      { category: 'Backend', title: 'Backend', id: 'backend' },
-      { category: 'Frontend', title: 'Progetti Frontend del Corso', id: 'frontend' },
-    ] as const satisfies readonly { category: ProjectCategory; title: string; id: string }[]
-  ).map((group) => ({
-    ...group,
-    projects: PROJECTS.filter(
-      (project) => project.category === group.category,
-    ) as readonly PortfolioProject[],
-  }));
-  readonly supplementaryGroups: readonly {
-    id: string;
-    title: string;
-    description: string;
-    entries: readonly PortfolioCollectionItem[];
-  }[] = [
+  /**
+   * Ordine della pagina: Full Stack, Backend, Plugin e Skill AI, Progetti Frontend del Corso,
+   * Sperimentale con AI, Esercizi.
+   */
+  readonly sections: readonly ProjectsSection[] = [
+    this.projectsSection('full-stack', 'Full Stack', 'Full stack'),
+    this.projectsSection('backend', 'Backend', 'Backend'),
     {
+      type: 'collection',
+      id: 'plugin-skill-ai',
+      title: 'Plugin e Skill AI',
+      description:
+        'Plugin per Claude Code in cui il modello ragiona e uno script Python verifica, così i risultati si possono ripetere e controllare.',
+      entries: AI_PLUGINS,
+    },
+    this.projectsSection('frontend', 'Progetti Frontend del Corso', 'Frontend'),
+    {
+      type: 'collection',
       id: 'sperimentale-ai',
       title: 'Sperimentale con AI',
       description: 'Progetti esplorativi e strumenti di studio con il supporto dell’AI.',
       entries: EXPERIMENTAL_PROJECTS,
     },
     {
+      type: 'collection',
       id: 'esercizi',
       title: 'Esercizi',
       description:
@@ -58,32 +75,15 @@ export class ProjectsComponent {
     },
   ];
 
-  /** Dominio della demo online, mostrato nella barra della cornice dello screenshot. */
-  hostOf(project: PortfolioProject): string {
-    if (!project.liveLink) {
-      return '';
-    }
-    try {
-      return new URL(project.liveLink).hostname;
-    } catch {
-      return '';
-    }
-  }
-
-  /** Implementazioni importanti del progetto, dalla più recente. */
-  history(projectId: string): readonly PortfolioHistoryEntry[] {
-    return PROJECT_HISTORY[projectId] ?? [];
-  }
-
-  /** Vero se l'ultimo aggiornamento è recente: mostra il badge "Novità". */
-  isNew(update: PortfolioLatestUpdate | undefined): boolean {
-    if (!update) {
-      return false;
-    }
-    const updatedAt = Date.parse(update.datetime);
-    if (Number.isNaN(updatedAt)) {
-      return false;
-    }
-    return this.now - updatedAt < (NEW_UPDATE_WINDOW_DAYS + 1) * DAY_MS;
+  private projectsSection(id: string, title: string, category: ProjectCategory): ProjectsSection {
+    return {
+      type: 'projects',
+      id,
+      title,
+      category,
+      projects: PROJECTS.filter(
+        (project) => project.category === category,
+      ) as readonly PortfolioProject[],
+    };
   }
 }
