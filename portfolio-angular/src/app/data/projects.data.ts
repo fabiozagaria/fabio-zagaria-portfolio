@@ -609,8 +609,7 @@ export const PROJECTS = [
     technologies: ['Angular 21', 'TypeScript 5.9', 'HTML', 'CSS', 'Vercel'],
     status: 'Demo frontend',
     statusDetail: {
-      summary:
-        'Progetto frontend del corso, evoluto nel portfolio professionale attuale.',
+      summary: 'Progetto frontend del corso, evoluto nel portfolio professionale attuale.',
     },
     screenshots: [
       {
