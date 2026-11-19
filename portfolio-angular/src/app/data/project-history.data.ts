@@ -16,6 +16,32 @@ export interface PortfolioHistoryEntry {
 export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryEntry[]>> = {
   jobflow: [
     {
+      datetime: '2026-11-17T11:28:02+01:00',
+      dateLabel: '17 novembre 2026, 11:28',
+      title: 'Swagger UI descritta e header del proxy',
+      summary:
+        'OpenAPI con titolo, descrizione del ciclo di vita e licenza; server.forward-headers-strategy=framework fa usare https all’header Location dietro il proxy di Render.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/bd51a4265d64b3a37f9f0d2aa88aed517271b525',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-17T11:21:47+01:00',
+      dateLabel: '17 novembre 2026, 11:21',
+      title: 'PostgreSQL con Flyway, Swagger UI e deploy su Render',
+      summary:
+        'Passaggio da MySQL a PostgreSQL con migrazione Flyway V1 e Hibernate in validate; springdoc per Swagger UI; Dockerfile multi-stage, docker-compose e render.yaml con database PostgreSQL gestito.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/2c1c42de40cd81a5f109a1ab909a1eebe4ad67a7',
+        },
+      ],
+    },
+    {
       datetime: '2026-11-01T23:22:53+01:00',
       dateLabel: '1 novembre 2026, 23:22',
       title: 'JobWorker asincrono e passaggio a PROCESSING',
@@ -106,6 +132,36 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
   ],
   accessdesk: [
     {
+      datetime: '2026-11-16T12:26:39+01:00',
+      dateLabel: '16 novembre 2026, 12:26',
+      title: 'Swagger UI, demo pubblica e claim dei ruoli nel JWT',
+      summary:
+        'Aggiunti Swagger UI (springdoc-openapi con schema Bearer JWT) e un profilo demo con database H2 in memoria, utenti e richieste di esempio e render.yaml per il deploy; il README riporta il link alla demo online. Il token JWT include inoltre un claim «roles» con i soli ruoli ROLE_*, a titolo informativo per i client: i permessi restano sul server.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/4db5fe0c9218c2996e8f9dee61b65eaf1873a795',
+        },
+        {
+          label: 'Swagger UI e demo',
+          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/be9a180b1291b5568279ae23db8a10bdfde439c9',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-15T19:54:53+01:00',
+      dateLabel: '15 novembre 2026, 19:54',
+      title: 'Migrazioni Flyway e avvio con Docker',
+      summary:
+        'Lo schema passa a migrazioni Flyway V1 separate per PostgreSQL e MySQL e Hibernate valida invece di aggiornare; Dockerfile multi-stage e docker-compose avviano PostgreSQL 18 e l’API. Secondo il README lo stack Docker è verificato fino a registrazione e login; migrazione MySQL e test automatici non sono verificati.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/e588b2974a66fa7bb9586b259fe9487fd2da3b0a',
+        },
+      ],
+    },
+    {
       datetime: '2026-10-31T09:17:38+01:00',
       dateLabel: '31 ottobre 2026, 09:17',
       title: 'Prima prerelease v0.1.0-alpha.1',
@@ -193,6 +249,192 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
     },
   ],
   'gestionale-spese': [
+    {
+      datetime: '2026-11-16T16:19:22+01:00',
+      dateLabel: '16 novembre 2026, 16:19',
+      title: 'Frontend: skeleton e spinner negli stati di caricamento',
+      summary:
+        'Il frontend integra skeleton e spinner negli stati di caricamento, centra lo spinner, uniforma il nome Expense Tracker e mostra lo spinner durante accesso, registrazione e risveglio della demo. Nessun nuovo tag: l’ultimo del frontend resta v1.1.0.',
+      sources: [
+        {
+          label: 'Commit',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/2499618bb5ba8ed703d90790d3fffb006038b8ea',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-15T18:05:35+01:00',
+      dateLabel: '15 novembre 2026, 18:05',
+      title: 'API: tag e release v1.2.0',
+      summary:
+        'Pubblicata la release v1.2.0 dell’API, retrocompatibile: GET /api/me e demo su database H2 in memoria. Il frontend 1.2.0 non ha ancora un tag.',
+      version: 'API v1.2.0',
+      sources: [
+        {
+          label: 'Commit del tag',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/a0f51408be25d98898703e64cb0e6f1527b86a3e',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-15T17:47:51+01:00',
+      dateLabel: '15 novembre 2026, 17:47',
+      title: 'Demo riaperta su database H2 in memoria',
+      summary:
+        'Il profilo demo dell’API usa H2 in memoria al posto del MySQL Aiven non più disponibile: account condiviso e dati di esempio vengono ricreati a ogni avvio e la registrazione resta chiusa. Il frontend spegne la modalità manutenzione e spiega sulla pagina di registrazione che sulla demo non ci si può registrare.',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/1d1caa40815137078b8e01b1c6768ed645fdc4bf',
+        },
+        {
+          label: 'Frontend',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/8173c1a05b92e0e062b693710169e0279744eff2',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-12T08:01:56+01:00',
+      dateLabel: '12 novembre 2026, 08:01',
+      title: 'Frontend: modalità manutenzione per la demo sospesa',
+      summary:
+        'Il database MySQL Aiven della demo non è più disponibile. Con environment.maintenance attivo in produzione il sito mostra un avviso fisso, disattiva «Prova la demo», accesso, registrazione e gli altri form che usano il database, e le richieste di risveglio del server falliscono subito.',
+      sources: [
+        {
+          label: 'Avviso',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/4b7fde702e0ca2fbaed9762e87078458d3451ffe',
+        },
+        {
+          label: 'Form disattivati',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/58f34c9a841ae112446e42bc02ed90c632a1c129',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T19:10:57+01:00',
+      dateLabel: '10 novembre 2026, 19:10',
+      title: 'Frontend 1.2.0: pagina Impostazioni',
+      summary:
+        'L’utente loggato vede i dati dell’account e riceve il link per cambiare la password tramite GET /api/me; dopo l’invio il pulsante torna disponibile come «Invia di nuovo» al termine dell’attesa di 60 secondi e il focus passa alla conferma.',
+      version: 'frontend 1.2.0',
+      sources: [
+        {
+          label: 'Frontend',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/b49f7cc9e19e8afb87f86f0b9f3b31db145b1436',
+        },
+        {
+          label: 'Correzione',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/b7af09b5a524c67f2860af11ef6655c7e90b56d3',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T19:03:30+01:00',
+      dateLabel: '10 novembre 2026, 19:03',
+      title: 'API 1.2.0: GET /api/me',
+      summary:
+        'Versione retrocompatibile: nuovo endpoint con username ed email dell’utente autenticato, usato dalla pagina Impostazioni del frontend per inviare il link di cambio password senza riscrivere l’email.',
+      version: 'API 1.2.0',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/55b92d3230e908ceb63ce9c31f02a623d12401c1',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T12:14:31+01:00',
+      dateLabel: '10 novembre 2026, 12:14',
+      title: 'Frontend 1.1.0: client allineato al contratto REST',
+      summary:
+        'Il frontend recupera la password, reinvia il link di verifica email, mostra il dettaglio delle entrate, applica i limiti della password del server e gestisce i messaggi sul limite di richieste.',
+      version: 'frontend v1.1.0',
+      sources: [
+        {
+          label: 'Frontend',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/4dc3098c1bd29c845ae6bc3a8036cd1d528339d8',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T12:10:17+01:00',
+      dateLabel: '10 novembre 2026, 12:10',
+      title: 'API 1.1.0: reset password, rate limiting e Swagger UI',
+      summary:
+        'Versione retrocompatibile: reinvio della verifica email e reset password, rate limiting per IP sugli endpoint pubblici, reuse detection dei refresh token, schema gestito da Flyway, Swagger UI e CI su GitHub Actions.',
+      version: 'API v1.1.0',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/6f40cbd29cc589cb43d620d2055c3e80f9284f86',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T11:39:56+01:00',
+      dateLabel: '10 novembre 2026, 11:39',
+      title: 'API: Swagger UI utilizzabile dalla demo pubblica',
+      summary:
+        'L’URL pubblico dell’API è accettato come Origin per POST /auth/* e aggiunto ai CORS, così «Try it out» su /auth/demo funziona dalla pagina Swagger del backend.',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/3be1df247e946a94fa5396bed3828ce087d46523',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T11:25:35+01:00',
+      dateLabel: '10 novembre 2026, 11:25',
+      title: 'API: rate limit sugli endpoint di autenticazione',
+      summary:
+        'Token bucket in memoria per IP su POST /auth/*; i rifiuti rispondono 429 con Retry-After e corpo APIError.',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/1338e65bf88fd0acbdd3e7dbe47eaab779036360',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T11:25:09+01:00',
+      dateLabel: '10 novembre 2026, 11:25',
+      title: 'API: documentazione OpenAPI con Swagger UI',
+      summary:
+        'Aggiunta la specifica OpenAPI con Swagger UI pubblica; SWAGGER_ENABLED=false la disattiva.',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/0961f42992be1ff0e2ecaee4a0d3f57e4f574ce7',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-10T11:10:53+01:00',
+      dateLabel: '10 novembre 2026, 11:10',
+      title: 'API: rilevamento del riuso del refresh token',
+      summary:
+        'Il riuso di un refresh token già ruotato viene rilevato; i token scaduti vengono ripuliti.',
+      sources: [
+        {
+          label: 'API',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/14d38a98e3c9b0197c64b12fb85f71a1274e75e3',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-03T00:30:21+01:00',
+      dateLabel: '3 novembre 2026, 00:30',
+      title: 'Frontend: README allineato alle versioni',
+      summary: 'Il README del frontend riporta la versione backend compatibile (1.0.2).',
+      version: 'frontend v1.0.2',
+      sources: [
+        {
+          label: 'Frontend',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/560279611c1ea8c7ed02c11646f3ef563275e458',
+        },
+      ],
+    },
     {
       datetime: '2026-11-02T18:31:10+01:00',
       dateLabel: '2 novembre 2026, 18:31',

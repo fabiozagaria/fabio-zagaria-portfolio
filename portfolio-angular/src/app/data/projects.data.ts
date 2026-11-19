@@ -1,4 +1,9 @@
-export type ProjectStatus = 'Concluso' | 'In sviluppo' | 'Laboratorio attivo' | 'Demo frontend';
+export type ProjectStatus =
+  | 'Concluso'
+  | 'In sviluppo'
+  | 'In progettazione'
+  | 'Laboratorio attivo'
+  | 'Demo frontend';
 export type ProjectCategory = 'Full stack' | 'Backend' | 'Frontend';
 
 export interface PortfolioRepository {
@@ -12,16 +17,43 @@ export interface PortfolioUpdateSource {
 }
 
 export interface PortfolioVersionTag {
+  /** Testo del segmento colorato: «Frontend», «API», «Tag», «Versione». */
   readonly label: string;
+  /** Tag Git o versione, per esempio «v1.0.2». */
   readonly tag: string;
+  /** Colore del tag, lo stesso dei chip dell'ultimo aggiornamento. */
+  readonly kind?: PortfolioUpdateKind;
+  /** Link al codice di quella versione su GitHub. */
+  readonly url?: string;
+}
+
+export type PortfolioUpdateKind = 'API' | 'Frontend' | 'Backend' | 'Plugin';
+
+/** Ultimo commit reale di un repository, mostrato come riga con chip colorato. */
+export interface PortfolioUpdateItem {
+  readonly kind: PortfolioUpdateKind;
+  /** Tag o versione del repository, per esempio «v1.0.2». */
+  readonly version?: string;
+  /** Hash abbreviato del commit. */
+  readonly hash: string;
+  /** Prima riga del messaggio del commit, così com'è su GitHub. */
+  readonly message: string;
+  readonly dateLabel: string;
+  /** Una frase in italiano su ciò che il commit porta. */
+  readonly note?: string;
+  /** Link al commit con l'hash completo. */
+  readonly url: string;
 }
 
 export interface PortfolioLatestUpdate {
   readonly dateLabel: string;
   readonly datetime: string;
   readonly version?: string;
-  readonly summary: string;
-  readonly sources: readonly PortfolioUpdateSource[];
+  /** Formato libero, per le card che non usano ancora `items`. */
+  readonly summary?: string;
+  readonly sources?: readonly PortfolioUpdateSource[];
+  /** Un elemento per repository: nei progetti full stack prima l'API, poi il frontend. */
+  readonly items?: readonly PortfolioUpdateItem[];
 }
 
 export interface PortfolioScreenshot {
@@ -73,6 +105,8 @@ export interface PortfolioProject {
   readonly flow?: PortfolioFlow;
   readonly liveLink?: string;
   readonly liveLabel?: string;
+  /** Documentazione interattiva dell'API (Swagger UI), distinta dai link GitHub. */
+  readonly apiDocsLink?: string;
   readonly repositories?: readonly PortfolioRepository[];
 }
 
@@ -82,10 +116,20 @@ export const PROJECTS = [
     title: 'Expense Tracker',
     category: 'Full stack',
     icon: 'fas fa-wallet',
-    focus: 'Full stack · frontend v1.0.2 · API v1.0.2',
+    focus: 'Full stack · frontend 1.2.0 · API 1.2.0',
     versionTags: [
-      { label: 'Frontend', tag: 'v1.0.2' },
-      { label: 'API', tag: 'v1.0.2' },
+      {
+        label: 'Frontend',
+        tag: 'v1.1.0',
+        kind: 'Frontend',
+        url: 'https://github.com/fabiozagaria/expense-tracker-angular/releases/tag/v1.1.0',
+      },
+      {
+        label: 'API',
+        tag: 'v1.2.0',
+        kind: 'API',
+        url: 'https://github.com/fabiozagaria/expense-tracker-api/releases/tag/v1.2.0',
+      },
     ],
     description:
       'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
@@ -109,21 +153,28 @@ export const PROJECTS = [
     ],
     status: 'Concluso',
     statusDetail:
-      'Versione 1.0.0 conclusa il 25 ottobre 2026; l’API 1.0.2 introduce il mapping MapStruct per spese ed entrate. Il frontend 1.0.2 include letture paginate nella dashboard, controllo mostra/nascondi password e correzioni del tema scuro. La cache Redis remota resta da configurare prima di attivarla nel deploy. Collaudo del deploy e regressioni degli ultimi ampliamenti restano da completare.',
+      'Versione 1.0.0 conclusa il 25 ottobre 2026. Il 10 novembre 2026 API e frontend arrivano alla 1.1.0 (tag v1.1.0): l’API aggiunge reinvio della verifica email, reset password, rate limiting, reuse detection dei refresh token, Flyway e Swagger UI; il frontend allinea il client a questo contratto REST con recupero password, nuovo invio del link di verifica e dettaglio delle entrate. Lo stesso giorno la 1.2.0 aggiunge GET /api/me e la pagina Impostazioni con i dati dell’account e il link per cambiare la password; il proprietario ha confermato il percorso reale Impostazioni → email → nuova password → login sul sito pubblico. La cache Redis remota resta da configurare prima di attivarla nel deploy. Restano il controllo visivo sistematico desktop/mobile nei due temi e il percorso integrale in locale con Mailpit. Il 15 novembre 2026 l’API pubblica il tag e la release v1.2.0; il frontend 1.2.0 non ha ancora un tag (l’ultimo resta v1.1.0). Dal 12 al 15 novembre 2026 la demo online è rimasta sospesa perché il database MySQL Aiven non era più disponibile; dal 15 novembre, secondo README e commit, la demo usa un database H2 in memoria: account condiviso e dati di esempio vengono ricreati a ogni avvio, i dati aggiunti si perdono al riavvio e la registrazione sulla demo è chiusa. In locale il progetto resta su MySQL.',
     latestUpdate: {
-      dateLabel: '2 novembre 2026',
-      datetime: '2026-11-02',
-      version: 'frontend 1.0.2 · API 1.0.2',
-      summary:
-        'Ultimo commit API (6259872, 2 novembre 2026, 17:31 UTC): «fix: rotate refresh token atomically to prevent concurrent reuse». Prima: controllo di avvio sulla chiave JWT di almeno 32 byte e nuovi test. API 1.0.2: mapping MapStruct di request, entity e response. Frontend 1.0.2: dashboard con letture paginate, controllo mostra/nascondi password e correzioni del tema scuro.',
-      sources: [
+      dateLabel: '17 novembre 2026',
+      datetime: '2026-11-17',
+      items: [
         {
-          label: 'Frontend',
-          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/b02566352384cccb32c698328fe12e9a48bf1bef',
+          kind: 'API',
+          version: 'v1.2.0',
+          hash: 'dde6338',
+          message: 'Add documentation-sync rule and CLAUDE.md (#30)',
+          dateLabel: '17 novembre 2026',
+          note: 'Aggiunge ad AGENTS.md la regola di allineamento della documentazione e il file CLAUDE.md; nessuna modifica al codice. Il tag e la release v1.2.0 restano sul commit del 15 novembre (a0f5140, demo su H2 in memoria).',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/dde633895e5c9ba0945008fa19eca91358d9a8e7',
         },
         {
-          label: 'Backend',
-          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/62598723af506071029495f3672c9b58f8fd4945',
+          kind: 'Frontend',
+          version: '1.2.0',
+          hash: '10c795b',
+          message: 'Align status notes with the repository: test count and tags (#38)',
+          dateLabel: '17 novembre 2026',
+          note: 'Il 16 novembre 2026 il frontend aggiunge skeleton e spinner negli stati di caricamento e li mostra durante accesso, registrazione e risveglio della demo. Il 17 novembre l’ultimo commit aggiorna soltanto CONTEXT.md e DEPLOYMENT.md (120 test in 27 file dichiarati; v1.1.0 esiste, v1.2.0 no). package.json resta alla 1.2.0; l’ultimo tag resta v1.1.0.',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/10c795bd57495921681403a51aaddba15daee925',
         },
       ],
     },
@@ -166,6 +217,7 @@ export const PROJECTS = [
     ],
     liveLink: 'https://gestionale-spese.vercel.app/',
     liveLabel: 'Demo full stack',
+    apiDocsLink: 'https://expense-tracker-api-demo-plb9.onrender.com/swagger-ui.html',
     repositories: [
       {
         label: 'Frontend',
@@ -183,14 +235,22 @@ export const PROJECTS = [
     category: 'Backend',
     icon: 'fas fa-diagram-project',
     focus: 'Backend · API e persistenza dei job',
-    versionTags: [{ label: 'Tag', tag: 'v0.1.0-alpha.1' }],
+    versionTags: [
+      {
+        label: 'Tag',
+        tag: 'v0.1.0-alpha.1',
+        kind: 'Backend',
+        url: 'https://github.com/fabiozagaria/job-flow/releases/tag/v0.1.0-alpha.1',
+      },
+    ],
     description:
-      'Backend per creare e consultare job tramite API REST, con validazione e persistenza JPA su MySQL. Il lavoro associato descrive una futura generazione di PDF.',
+      'Backend per creare e consultare job tramite API REST, con validazione e persistenza JPA su PostgreSQL. Il lavoro associato descrive una futura generazione di PDF.',
     highlights: [
       'Dominio Job con stati CREATED, PROCESSING, COMPLETED e FAILED',
       'POST /jobs con DTO validato, risposta 201 Created e header Location; GET /jobs/{id} per la consultazione',
-      'Persistenza JPA/MySQL di Job e GeneratePdfWork con cascade PERSIST',
+      'Persistenza JPA/PostgreSQL di Job e GeneratePdfWork con cascade PERSIST; schema versionato con Flyway e Hibernate in validate',
       'JobCreatedEvent pubblicato dopo il salvataggio e JobWorker asincrono (@Async con @TransactionalEventListener) che porta il job da CREATED a PROCESSING',
+      'Immagine Docker pubblicata su Render con PostgreSQL gestito e documentazione Swagger UI',
       'Mapping con MapStruct e test unitari di JobService e JobController',
     ],
     technologies: [
@@ -198,7 +258,9 @@ export const PROJECTS = [
       'Spring Boot',
       'REST API',
       'Spring Data JPA',
-      'MySQL',
+      'PostgreSQL',
+      'Flyway',
+      'Docker',
       'Bean Validation',
       'MapStruct',
     ],
@@ -206,7 +268,7 @@ export const PROJECTS = [
       title: 'Dal POST al worker',
       steps: [
         { label: 'POST /jobs', detail: 'DTO validato, 201 Created' },
-        { label: 'Job CREATED', detail: 'Persistenza JPA/MySQL' },
+        { label: 'Job CREATED', detail: 'Persistenza JPA/PostgreSQL' },
         { label: 'JobCreatedEvent', detail: 'Pubblicato dopo il salvataggio' },
         { label: 'JobWorker', detail: '@Async con @TransactionalEventListener' },
         { label: 'PROCESSING', detail: 'Verificato a runtime' },
@@ -216,24 +278,19 @@ export const PROJECTS = [
     },
     status: 'In sviluppo',
     statusDetail:
-      'Creazione e persistenza verificate con Postman e MySQL; il passaggio asincrono da CREATED a PROCESSING è verificato a runtime. GET /jobs/{id} è coperto da test ma resta da provare a runtime. Completamento fino a COMPLETED o FAILED, ProcessorRegistry e generazione PDF restano da fare.',
+      'Dal 17 novembre 2026 il progetto usa PostgreSQL con migrazioni Flyway ed è pubblicato su Render con Swagger UI (piano gratuito: il primo accesso può richiedere attesa, il database gratuito scade dopo 30 giorni). Su PostgreSQL in locale sono verificati POST /jobs (201), GET /jobs/{id} (200 e 404) e il passaggio asincrono da CREATED a PROCESSING; online sono verificati Swagger UI e la risposta 404 di GET /jobs/{id}. Completamento fino a COMPLETED o FAILED, ProcessorRegistry e generazione PDF restano da fare.',
     latestUpdate: {
-      dateLabel: '1 novembre 2026',
-      datetime: '2026-11-01',
-      summary:
-        'Aggiunti JobMapper con MapStruct e test unitari, pubblicazione di JobCreatedEvent e JobWorker asincrono, che porta il job da CREATED a PROCESSING. Il tag resta v0.1.0-alpha.1.',
-      sources: [
+      dateLabel: '17 novembre 2026',
+      datetime: '2026-11-17',
+      items: [
         {
-          label: 'Worker asincrono',
-          url: 'https://github.com/fabiozagaria/job-flow/commit/44a2527a70cc8020bdb948266445f7b7fd85dfbb',
-        },
-        {
-          label: 'JobCreatedEvent',
-          url: 'https://github.com/fabiozagaria/job-flow/commit/5e0ddc3914893d74975b836f52cf857997bcf4b9',
-        },
-        {
-          label: 'JobMapper',
-          url: 'https://github.com/fabiozagaria/job-flow/commit/ffb251cb5e13478c66e8cbd656842206d0a7e273',
+          kind: 'Backend',
+          version: 'v0.1.0-alpha.1',
+          hash: '2a547b2',
+          message: 'Realign AGENTS.md, CONTEXT.md and README with the current code (#7)',
+          dateLabel: '17 novembre 2026',
+          note: 'Il 17 novembre 2026 passa a PostgreSQL con Flyway e aggiunge Swagger UI, Docker e Blueprint Render; l’ultimo commit riallinea AGENTS.md, CONTEXT.md e README a questo stato (11 test dichiarati, 10 verificati senza database). La versione nel pom resta 0.1.0-alpha.1 e non ci sono nuovi tag.',
+          url: 'https://github.com/fabiozagaria/job-flow/commit/2a547b267d491835736c9fc5b0e169294e13212b',
         },
       ],
     },
@@ -244,7 +301,65 @@ export const PROJECTS = [
       tradeoff:
         'Il cascade è limitato alla creazione: aggiornamenti e rimozioni richiedono una gestione esplicita.',
     },
+    apiDocsLink: 'https://jobflow-dbnm.onrender.com/swagger-ui.html',
     repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/job-flow' }],
+  },
+  {
+    id: 'medtransit',
+    title: 'MedTransit',
+    category: 'Backend',
+    icon: 'fas fa-truck-medical',
+    focus: 'Backend · microservizi ed eventi con Kafka',
+    description:
+      'Sistema a microservizi per le richieste di trasporto interno in un ospedale, con dati fittizi: un reparto chiede un trasporto, il sistema lo assegna a un operatore per priorità e turno e avvisa tutti a ogni cambio di stato. Il progetto è in fase di progettazione: il design è approvato, il codice non c’è ancora.',
+    highlights: [
+      'Design approvato: tre servizi indipendenti (richieste, assegnazione, notifiche), un database per servizio e nessun codice condiviso',
+      'Eventi previsti: richiesta creata, assegnata, presa in carico e completata, con una chiave per richiesta per mantenere l’ordine',
+      'Da dimostrare: outbox pattern, consumer idempotenti, dead-letter topic e tracciamento di una richiesta con correlationId',
+      'Test previsti su evento duplicato, consumer che si ferma e riparte, messaggio in dead-letter e assegnazione concorrente',
+    ],
+    technologies: [
+      'Java (previsto)',
+      'Spring Boot (previsto)',
+      'Kafka (previsto)',
+      'PostgreSQL (previsto)',
+      'Docker (previsto)',
+    ],
+    flow: {
+      title: 'Dalla richiesta al completamento',
+      steps: [
+        {
+          label: 'richiesta.creata',
+          detail: 'request-service, lato reparto',
+          pending: true,
+        },
+        {
+          label: 'richiesta.assegnata',
+          detail: 'dispatch-service: operatore libero e in turno, altrimenti coda per priorità',
+          pending: true,
+        },
+        {
+          label: 'richiesta.presa-in-carico',
+          detail: 'L’operatore agisce su dispatch-service',
+          pending: true,
+        },
+        {
+          label: 'richiesta.completata',
+          detail: 'Lo stato torna a request-service',
+          pending: true,
+        },
+        {
+          label: 'Notifiche',
+          detail: 'notification-service consuma gli eventi (simulate)',
+          pending: true,
+        },
+      ],
+      note: 'Schema ricavato dal design doc del repository. Nessun passaggio è ancora realizzato.',
+    },
+    status: 'In progettazione',
+    statusDetail:
+      'Dal 17 novembre 2026 il design è approvato e documentato nel repository. Non c’è ancora codice né test: l’implementazione parte dopo JobFlow. Autenticazione, interfaccia grafica e notifiche reali restano fuori dalla prima versione.',
+    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/med-transit-msa' }],
   },
   {
     id: 'accessdesk',
@@ -252,7 +367,14 @@ export const PROJECTS = [
     category: 'Backend',
     icon: 'fas fa-user-shield',
     focus: 'Backend · sicurezza e autorizzazione',
-    versionTags: [{ label: 'Tag', tag: 'v0.1.0-alpha.1' }],
+    versionTags: [
+      {
+        label: 'Tag',
+        tag: 'v0.1.0-alpha.1',
+        kind: 'Backend',
+        url: 'https://github.com/fabiozagaria/accessdesk-api/releases/tag/v0.1.0-alpha.1',
+      },
+    ],
     description:
       'API REST per richieste di accesso software: i dipendenti creano e consultano le proprie richieste, i manager le approvano o le rifiutano. PostgreSQL è il database predefinito; MySQL è disponibile come alternativa configurabile.',
     highlights: [
@@ -284,21 +406,19 @@ export const PROJECTS = [
     },
     status: 'In sviluppo',
     statusDetail:
-      'Prova autonoma ancora da completare. Login JWT, filtro e autorizzazioni sono presenti nel codice; PostgreSQL è il database predefinito, con MySQL alternativo. Restano verifiche del flusso JWT, test automatici e chiusura della consegna.',
+      'Prova autonoma ancora da completare. Login JWT, filtro e autorizzazioni sono presenti nel codice; PostgreSQL è il database predefinito, con MySQL alternativo. Dal 15 novembre 2026 lo schema è gestito da migrazioni Flyway (Hibernate in validate) e c’è un avvio con Docker Compose (PostgreSQL 18 e API): secondo il README, sullo stack Docker sono stati verificati build, migrazione V1, avvio, registrazione e login; migrazione MySQL, test automatici e gli altri endpoint non sono verificati. Restano verifiche del flusso JWT, test automatici e chiusura della consegna.',
     latestUpdate: {
-      dateLabel: '31 ottobre 2026',
-      datetime: '2026-10-31',
-      version: '0.1.0-alpha.1',
-      summary:
-        'Prima prerelease: JWT Bearer, autorizzazioni e PostgreSQL predefinito sono documentati; verifiche del flusso JWT e chiusura della consegna restano aperte.',
-      sources: [
+      dateLabel: '17 novembre 2026',
+      datetime: '2026-11-17',
+      items: [
         {
-          label: 'JWT',
-          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/c6984ef4f3e7cf8dc8bad072606026f0a259fd55',
-        },
-        {
-          label: 'PostgreSQL',
-          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/a4609198c9b74695a11f7d2f0d88651c8f3ced79',
+          kind: 'Backend',
+          version: 'v0.1.0-alpha.1',
+          hash: '3696dcb',
+          message: 'Add documentation-sync rule and CLAUDE.md (#7)',
+          dateLabel: '17 novembre 2026',
+          note: 'Il 16 novembre 2026 il token JWT include un claim «roles» con i soli ruoli ROLE_*, insieme a Swagger UI e al profilo demo con H2 in memoria; il 17 novembre l’ultimo commit aggiunge ad AGENTS.md la regola di allineamento della documentazione e CLAUDE.md, senza modifiche al codice. Nessun nuovo tag: l’ultimo resta v0.1.0-alpha.1.',
+          url: 'https://github.com/fabiozagaria/accessdesk-api/commit/3696dcb21447930eada52d2c49026e711ce3efd4',
         },
       ],
     },
@@ -310,6 +430,7 @@ export const PROJECTS = [
       tradeoff:
         'Il filtro deve interrompere il flusso dopo un errore; autenticazione e autorizzazione richiedono verifiche dedicate.',
     },
+    apiDocsLink: 'https://access-desk-api.onrender.com/swagger-ui.html',
     repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/accessdesk-api' }],
   },
   {

@@ -1,4 +1,9 @@
-import type { PortfolioLatestUpdate, PortfolioRepository } from './projects.data';
+import type {
+  PortfolioFlow,
+  PortfolioLatestUpdate,
+  PortfolioRepository,
+  PortfolioVersionTag,
+} from './projects.data';
 
 export interface PortfolioCollectionItem {
   readonly id: string;
@@ -6,10 +11,127 @@ export interface PortfolioCollectionItem {
   readonly description: string;
   readonly technologies: readonly string[];
   readonly note?: string;
+  readonly versionTags?: readonly PortfolioVersionTag[];
   readonly latestUpdate?: PortfolioLatestUpdate;
+  readonly flow?: PortfolioFlow;
   readonly liveLink?: string;
   readonly repositories: readonly PortfolioRepository[];
 }
+
+export const AI_PLUGINS = [
+  {
+    id: 'learning-ledger',
+    title: 'learning-ledger',
+    versionTags: [
+      {
+        label: 'Versione',
+        tag: '1.0.0',
+        kind: 'Plugin',
+        url: 'https://github.com/fabiozagaria/learning-ledger/blob/main/plugins/learning-ledger/.claude-plugin/plugin.json',
+      },
+    ],
+    latestUpdate: {
+      dateLabel: '17 novembre 2026',
+      datetime: '2026-11-17',
+      items: [
+        {
+          kind: 'Plugin',
+          version: '1.0.0',
+          hash: '0c733aa',
+          message: 'Add documentation-sync rule and CLAUDE.md (#2)',
+          dateLabel: '17 novembre 2026',
+          note: 'Il manifest passa da 0.2.2 a 1.0.0: nuove skill explain e pair, pacchetto di argomenti per Spring Security (78 argomenti in totale) e, dal README, formati del registro stabili secondo il versionamento semantico. L’ultimo tag Git resta v0.2.2: per la 1.0.0 non c’è un tag. Il 17 novembre l’ultimo commit aggiunge ad AGENTS.md la regola di allineamento della documentazione e CLAUDE.md, senza modifiche al codice.',
+          url: 'https://github.com/fabiozagaria/learning-ledger/commit/0c733aa9b0629aed7456b7973d6513400a4ed593',
+        },
+      ],
+    },
+    description:
+      'Plugin per Claude Code che tiene un registro locale delle prove di apprendimento. Claude conduce quiz ed esercizi, spiega codice esistente (explain) o ti affianca mentre scrivi tu il codice (pair); uno script Python senza dipendenze applica le regole sui livelli, così il giudizio del modello non può gonfiarli, e pianifica i ripassi nei giorni lavorativi.',
+    flow: {
+      title: 'Dalla sessione al registro',
+      steps: [
+        {
+          label: 'Quiz o esercizio',
+          detail: 'Claude conduce la sessione: quiz, practice, explain o pair',
+        },
+        { label: 'log-session', detail: 'Raccoglie prove e livello di aiuto ricevuto' },
+        { label: 'ledger.py', detail: 'Applica le regole: con aiuti non si arriva ad autonomous' },
+        {
+          label: 'Simulazione',
+          detail: 'Mostra prima e dopo, motivi dei limiti, prossimo ripasso',
+        },
+        {
+          label: 'Conferma',
+          detail: 'Il registro viene scritto solo dopo la conferma dell’utente',
+        },
+        { label: 'File locali', detail: 'topics.json, sessions.jsonl e config.json' },
+      ],
+      note: 'Schema ricavato da README e skill del repository. Il registro resta in locale, senza account né rete. Una sessione explain conta come lavoro supportato: il livello arriva al massimo a with_support.',
+    },
+    technologies: ['Python 3', 'Claude Code plugin', 'JSON', 'GitHub Actions'],
+    note: 'Versione 1.0.0 con test automatici e CI su Python 3.11–3.13 definiti nel repository; la loro esecuzione non è stata verificata qui. Progetto di tooling per lo studio, non un progetto del corso.',
+    repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/learning-ledger' }],
+  },
+  {
+    id: 'spring-security-advisor',
+    title: 'spring-security-advisor',
+    versionTags: [
+      {
+        label: 'Versione',
+        tag: '1.0.0',
+        kind: 'Plugin',
+        url: 'https://github.com/fabiozagaria/spring-security-advisor/blob/main/plugins/spring-security-advisor/.claude-plugin/plugin.json',
+      },
+    ],
+    latestUpdate: {
+      dateLabel: '17 novembre 2026',
+      datetime: '2026-11-17',
+      items: [
+        {
+          kind: 'Plugin',
+          version: '1.0.0',
+          hash: 'ea7ed69',
+          message: 'Add documentation-sync rule and CLAUDE.md (#2)',
+          dateLabel: '17 novembre 2026',
+          note: 'Il manifest passa da 0.2.0 a 1.0.0: nuova skill audit con checklist di 31 voci e punteggio da 0 a 100 calcolato da script, 23 regole dello scanner (erano 7) e segnali sui meccanismi presenti nel codice. L’ultimo tag Git resta v0.2.0: per la 1.0.0 non c’è un tag. Il 17 novembre l’ultimo commit aggiunge ad AGENTS.md la regola di allineamento della documentazione e CLAUDE.md, senza modifiche al codice.',
+          url: 'https://github.com/fabiozagaria/spring-security-advisor/commit/ea7ed695c42e1c3b8befc9172653cdffe2afd720',
+        },
+      ],
+    },
+    description:
+      'Plugin per Claude Code che esegue un audit di sicurezza su un progetto Spring Boot e dà un punteggio da 0 a 100 da seguire nel tempo. Uno scanner Python senza dipendenze applica 23 regole su errori noti, per esempio regole di accesso irraggiungibili, CSRF disattivato o chiavi JWT troppo corte. Il modello legge il codice segnalato e risponde a una checklist di 31 voci con evidenze file:line; uno script le convalida e calcola il punteggio, così il modello non può alzarlo con le parole. Le skill sono audit (analisi completa), review (solo le regole) e map (filtri, provider e regole realmente presenti).',
+    flow: {
+      title: 'Dal progetto al punteggio',
+      steps: [
+        { label: 'Progetto Spring', detail: 'Sorgenti Java, pom.xml o build.gradle' },
+        {
+          label: 'scan.py',
+          detail:
+            '23 regole verificate sulla documentazione ufficiale, più segnali su rate limit, refresh token e lock',
+        },
+        {
+          label: 'Checklist',
+          detail: '31 voci: il modello legge il codice e risponde con evidenza file:line',
+        },
+        {
+          label: 'Punteggio',
+          detail: 'Lo script convalida le evidenze e calcola punteggio, voto e copertura',
+        },
+        {
+          label: 'advise e apply',
+          detail: 'Guida alla scelta e modifiche con conferma',
+          pending: true,
+        },
+      ],
+      note: 'Schema ricavato da README e skill del repository. advise e apply sono pianificati, non realizzati.',
+    },
+    technologies: ['Python 3', 'Claude Code plugin', 'Spring Security', 'GitHub Actions'],
+    note: 'Versione 1.0.0: copre solo lo stack servlet, non è stata ancora provata su progetti reali e non dimostra che un progetto sia sicuro. Il punteggio misura solo ciò che è stato controllato: con meno del 70% della checklist valutata è provvisorio. CI su Python 3.11–3.13 definita nel repository, esecuzione non verificata qui. Realizzato con assistenza AI (Claude Code); scelte di progetto e rilascio decise dal proprietario.',
+    repositories: [
+      { label: 'Repository', url: 'https://github.com/fabiozagaria/spring-security-advisor' },
+    ],
+  },
+] as const satisfies readonly PortfolioCollectionItem[];
 
 export const EXPERIMENTAL_PROJECTS = [
   {
@@ -54,38 +176,6 @@ export const EXPERIMENTAL_PROJECTS = [
     note: 'Esperimento mobile con persistenza locale e valutazione manuale del ripasso.',
     repositories: [
       { label: 'Repository', url: 'https://github.com/fabiozagaria/study-flow-android' },
-    ],
-  },
-  {
-    id: 'transport-tickets',
-    title: 'Transport Tickets',
-    latestUpdate: {
-      dateLabel: '25 ottobre 2026',
-      datetime: '2026-10-25',
-      summary:
-        'Integrato in main il backend Spring Boot/JPA con Flyway, sessioni e CSRF, Redis opzionale e transazioni con lock.',
-      sources: [
-        {
-          label: 'Commit',
-          url: 'https://github.com/fabiozagaria/transport-tickets/commit/e74e8c2eed01216534912c8a4b56a7216fc168d8',
-        },
-      ],
-    },
-    description:
-      'Backend per gestire trasporti, assegnazioni e storico. Spring Boot con autenticazione a sessione, ruoli e CSRF; persistenza JPA/MySQL e cache Redis opzionale.',
-    technologies: [
-      'Java 17',
-      'Spring Boot',
-      'Spring Security',
-      'Spring Data JPA',
-      'MySQL',
-      'Flyway',
-      'Redis (opzionale)',
-      'Docker',
-    ],
-    note: 'Backend sperimentale in studio, sviluppato anche con strumenti AI. Il ramo Spring Boot/JPA è integrato in main, con migrazioni Flyway e transazioni con lock sui ticket.',
-    repositories: [
-      { label: 'Repository', url: 'https://github.com/fabiozagaria/transport-tickets' },
     ],
   },
 ] as const satisfies readonly PortfolioCollectionItem[];

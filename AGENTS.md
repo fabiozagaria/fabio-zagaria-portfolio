@@ -4,12 +4,13 @@
 Questo repository contiene il portfolio professionale di Fabio Zagaria. È un progetto pubblico e deve riflettere soltanto competenze, progetti e informazioni realmente verificabili.
 
 ## Regole operative
+- Il progetto full stack di gestione spese e il relativo sito/servizio si chiamano **Expense Tracker**. Usare sempre questa denominazione nei contenuti e nelle etichette; conservare gli URL e gli identificatori tecnici esistenti.
 - Leggere `README.md` e `docs/CONTEXT.md` prima di modifiche ampie.
 - Non inventare competenze, risultati, versioni, disponibilità o stato dei progetti.
 - Preferire modifiche piccole, verificabili e coerenti con il design e l'architettura esistenti.
 - Prima di dichiarare completata una modifica tecnica, verificare build/test pertinenti quando disponibili.
 - Non trasformare il portfolio in un laboratorio: gli esperimenti vanno nei repository dedicati.
-- Ogni volta che si modificano card, storico, versioni o stato di un progetto, aggiornare sempre anche il `README.md` (e, se cambia lo stato tecnico, `docs/CONTEXT.md`) in modo coerente.
+- **Documentazione sempre allineata.** Ogni modifica a dati, schede, struttura o stile aggiorna nella stessa PR tutti i documenti che la riguardano: `README.md`, `docs/CONTEXT.md`, `structure-repo.md`, `PRODUCT.md`, `DESIGN.md`, questo file e la scheda Notion del portfolio. Se cambia una scheda di progetto, verificare anche README e contesto di quel progetto. Prima di dichiarare finito un lavoro, passare in rassegna l'elenco e dire per ciascun documento se è stato aggiornato o perché non serve.
 
 ## Fonti di verità
 - Il codice e la configurazione del repository sono la verità tecnica del portfolio.

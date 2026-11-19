@@ -33,28 +33,42 @@ describe('ProjectsComponent', () => {
   });
 
   it('flags projects with a recent update as new', () => {
-    const element = render('2026-11-03T10:00:00+01:00');
+    // JobFlow: ultimo aggiornamento il 17 novembre 2026.
+    const element = render('2026-11-17T22:00:00+01:00');
     const flagged = Array.from(element.querySelectorAll('.c-badge-new')).map((badge) =>
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged.sort()).toEqual(['accessdesk', 'gestionale-spese', 'jobflow']);
-    expect(element.querySelector('.c-badge-new')?.textContent).toContain('Novità');
+    expect(flagged).toContain('jobflow');
+    expect(element.querySelector('#jobflow .c-badge-new')?.textContent).toContain('Commit recente');
   });
 
-  it('removes the new badge once the update is older than a week', () => {
-    const element = render('2026-11-20T10:00:00+01:00');
+  it('removes the new badge once the update is older than three days', () => {
+    const element = render('2026-11-21T10:00:00+01:00');
 
     expect(element.querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
 
-  it('keeps the badge for a project updated a few days earlier but not for older ones', () => {
-    const element = render('2026-11-08T10:00:00+01:00');
+  it('keeps the badge until the third day after the latest commit', () => {
+    const element = render('2026-11-20T10:00:00+01:00');
     const flagged = Array.from(element.querySelectorAll('.c-badge-new')).map((badge) =>
       badge.closest('article')?.getAttribute('id'),
     );
 
-    expect(flagged.sort()).toEqual(['gestionale-spese', 'jobflow']);
+    expect(flagged.sort()).toEqual([
+      'accessdesk',
+      'gestionale-spese',
+      'jobflow',
+      'learning-ledger',
+      'spring-security-advisor',
+    ]);
+    expect(render('2026-11-21T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
+    expect(
+      render('2026-11-19T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
+    ).not.toBeNull();
+    expect(
+      render('2026-11-21T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
+    ).toBeNull();
   });
 
   it('renders a screenshot with its size and alternative text when a project has one', () => {
@@ -113,5 +127,130 @@ describe('ProjectsComponent', () => {
     expect(element.querySelector('#accessdesk .c-shot__note')?.textContent).toContain(
       'restano da completare',
     );
+  });
+
+  it('draws the learning-ledger flow in the AI plugins section, with its repository', () => {
+    const element = render('2026-11-03T10:00:00+01:00');
+    const steps = element.querySelectorAll('#learning-ledger .c-flow__step');
+
+    expect(steps).toHaveLength(6);
+    expect(steps[2].textContent).toContain('ledger.py');
+    expect(element.querySelector('#learning-ledger .c-shot__note')?.textContent).toContain(
+      'in locale',
+    );
+    expect(
+      element.querySelector<HTMLAnchorElement>('#learning-ledger .c-card__action')?.href,
+    ).toContain('github.com/fabiozagaria/learning-ledger');
+  });
+
+  it('groups the two Claude Code plugins in their own section, apart from the experiments', () => {
+    const element = render('2026-11-04T10:00:00+01:00');
+    const section = element.querySelector('[aria-labelledby="plugin-skill-ai-title"]');
+    const experiments = element.querySelector('[aria-labelledby="sperimentale-ai-title"]');
+
+    expect(section?.querySelector('h2')?.textContent).toContain('Plugin e Skill AI');
+    expect([...(section?.querySelectorAll('article') ?? [])].map((a) => a.id)).toEqual([
+      'learning-ledger',
+      'spring-security-advisor',
+    ]);
+    expect(experiments?.querySelector('#learning-ledger')).toBeNull();
+  });
+
+  it('draws the spring-security-advisor flow and marks the planned step', () => {
+    const element = render('2026-11-04T10:00:00+01:00');
+
+    expect(element.querySelectorAll('#spring-security-advisor .c-flow__step')).toHaveLength(5);
+    expect(
+      element.querySelectorAll('#spring-security-advisor .c-flow__step[data-pending="true"]'),
+    ).toHaveLength(1);
+    expect(element.querySelector('#spring-security-advisor .c-shot__note')?.textContent).toContain(
+      'pianificati, non realizzati',
+    );
+    expect(
+      element.querySelector<HTMLAnchorElement>('#spring-security-advisor .c-card__action')?.href,
+    ).toContain('github.com/fabiozagaria/spring-security-advisor');
+  });
+
+  it('shows each latest update as chips: API before frontend, backends and plugins with their own kind', () => {
+    const element = render('2026-11-04T10:00:00+01:00');
+    const kinds = (id: string) =>
+      Array.from(element.querySelectorAll<HTMLElement>(`#${id} .c-update-item`)).map(
+        (item) => item.dataset['kind'],
+      );
+
+    expect(kinds('gestionale-spese')).toEqual(['API', 'Frontend']);
+    expect(kinds('jobflow')).toEqual(['Backend']);
+    expect(kinds('accessdesk')).toEqual(['Backend']);
+    expect(kinds('learning-ledger')).toEqual(['Plugin']);
+    expect(kinds('spring-security-advisor')).toEqual(['Plugin']);
+    expect(element.querySelector('#jobflow .c-update-item__version')?.textContent).toContain(
+      'v0.1.0-alpha.1',
+    );
+  });
+
+  it('shows every project tag as a two-segment badge with its colour and a link to that version', () => {
+    const element = render('2026-11-04T10:00:00+01:00');
+    const tags = (id: string) =>
+      Array.from(element.querySelectorAll<HTMLElement>(`#${id} .c-vtag`)).map(
+        (tag) => `${tag.dataset['kind']}:${tag.querySelector('.c-vtag__value')?.textContent}`,
+      );
+
+    expect(tags('gestionale-spese')).toEqual(['Frontend:v1.1.0', 'API:v1.2.0']);
+    expect(tags('jobflow')).toEqual(['Backend:v0.1.0-alpha.1']);
+    expect(tags('accessdesk')).toEqual(['Backend:v0.1.0-alpha.1']);
+    expect(tags('learning-ledger')).toEqual(['Plugin:1.0.0']);
+    expect(tags('spring-security-advisor')).toEqual(['Plugin:1.0.0']);
+    expect(tags('labtv')).toEqual([]);
+    const link = element.querySelector<HTMLAnchorElement>('#gestionale-spese .c-vtag a');
+    expect(link?.href).toBe(
+      'https://github.com/fabiozagaria/expense-tracker-angular/releases/tag/v1.1.0',
+    );
+    expect(link?.getAttribute('aria-label')).toMatch(/^Frontend v1\.1\.0/);
+  });
+
+  it('orders the sections: full stack, backend, plugins, course frontend, experiments, exercises', () => {
+    const element = render('2026-11-04T10:00:00+01:00');
+    const titles = Array.from(element.querySelectorAll('h2.c-projects__group-title')).map((title) =>
+      title.textContent?.trim(),
+    );
+
+    expect(titles).toEqual([
+      'Full Stack',
+      'Backend',
+      'Plugin e Skill AI',
+      'Progetti Frontend del Corso',
+      'Sperimentale con AI',
+      'Esercizi',
+    ]);
+  });
+
+  it('says how long ago the latest commit was: today, yesterday, N days ago', () => {
+    const badge = (now: string) =>
+      render(now)
+        .querySelector('#gestionale-spese .c-badge-new')
+        ?.textContent?.replace(/\s+/g, ' ')
+        .trim();
+
+    expect(badge('2026-11-17T12:00:00+01:00')).toBe('Commit recente oggi');
+    expect(badge('2026-11-18T12:00:00+01:00')).toBe('Commit recente ieri');
+    expect(badge('2026-11-19T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
+    expect(badge('2026-11-20T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
+  });
+
+  it('shows the recent commit badge on plugin cards too, with the same wording', () => {
+    const element = render('2026-11-17T10:00:00+01:00');
+    const badge = (id: string) =>
+      element.querySelector(`#${id} .c-badge-new`)?.textContent?.replace(/\s+/g, ' ').trim();
+
+    expect(badge('learning-ledger')).toBe('Commit recente oggi');
+    expect(badge('spring-security-advisor')).toBe('Commit recente oggi');
+    expect(badge('jobflow')).toBe('Commit recente oggi');
+    expect(element.querySelector('#labtv .c-badge-new')).toBeNull();
+  });
+
+  it('does not flag an update dated in the future', () => {
+    const element = render('2026-11-02T10:00:00+01:00');
+
+    expect(element.querySelector('#learning-ledger .c-badge-new')).toBeNull();
   });
 });

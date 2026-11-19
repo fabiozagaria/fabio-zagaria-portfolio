@@ -2,6 +2,9 @@ import { PortfolioProject, PROJECTS } from './projects.data';
 import { EXERCISE_COLLECTIONS, EXPERIMENTAL_PROJECTS } from './project-collections.data';
 import { PROJECT_HISTORY } from './project-history.data';
 
+/** Ultimi commit noti che non entrano nello storico (documentazione o testi). */
+const MINOR_LATEST_COMMITS = ['f645156', '91c0c79', 'dde6338', '10c795b', '3696dcb'];
+
 describe('project history', () => {
   const projects: readonly PortfolioProject[] = PROJECTS;
   const mainProjects = ['gestionale-spese', 'jobflow', 'accessdesk'];
@@ -35,18 +38,32 @@ describe('project history', () => {
       const newest = PROJECT_HISTORY[id][0];
 
       expect(project?.latestUpdate?.datetime).toBeDefined();
-      expect(Date.parse(newest.datetime)).toBeGreaterThanOrEqual(
-        Date.parse(project?.latestUpdate?.datetime ?? ''),
+      // Un ultimo commit di sola licenza non è un'implementazione importante: non entra nello storico.
+      const licenseOnly = project?.latestUpdate?.items?.every((item) =>
+        item.message.startsWith('Add MIT license'),
       );
+      // Anche i commit di sola documentazione o testo dell'avviso (14 novembre, Expense Tracker)
+      // non sono implementazioni importanti: elencati per hash, così ogni eccezione resta esplicita.
+      const minorOnly = project?.latestUpdate?.items?.every((item) =>
+        MINOR_LATEST_COMMITS.includes(item.hash),
+      );
+      // latestUpdate.datetime è una data (fuso Europe/Rome), la storia ha data e ora con offset.
+      expect(
+        licenseOnly ||
+          minorOnly ||
+          newest.datetime.slice(0, 10) >= (project?.latestUpdate?.datetime ?? ''),
+      ).toBe(true);
     }
   });
 
-  it('records the asynchronous JobFlow worker as the latest JobFlow update', () => {
+  it('records the PostgreSQL and Render deploy as the latest JobFlow update', () => {
     const jobFlow = projects.find((project) => project.id === 'jobflow');
 
-    expect(jobFlow?.latestUpdate?.datetime).toBe('2026-11-01');
-    expect(jobFlow?.latestUpdate?.sources[0].url).toContain('44a2527');
-    expect(PROJECT_HISTORY['jobflow'][0].sources[0].url).toContain('44a2527');
+    expect(jobFlow?.latestUpdate?.datetime).toBe('2026-11-17');
+    expect(jobFlow?.latestUpdate?.items?.[0].hash).toBe('2a547b2');
+    expect(PROJECT_HISTORY['jobflow'][0].datetime.slice(0, 10)).toBe('2026-11-17');
+    expect(PROJECT_HISTORY['jobflow'][0].sources[0].url).toContain('bd51a42');
+    expect(PROJECT_HISTORY['jobflow'][1].sources[0].url).toContain('2c1c42d');
   });
 });
 
@@ -54,6 +71,24 @@ describe('portfolio projects', () => {
   it('includes the active JobFlow project', () => {
     const jobFlow = PROJECTS.find((project) => project.id === 'jobflow');
     expect(jobFlow?.status).toBe('In sviluppo');
+  });
+
+  it('lists MedTransit as a backend project still in design, without code claims', () => {
+    const medTransit = PROJECTS.find((project) => project.id === 'medtransit');
+
+    expect(medTransit?.category).toBe('Backend');
+    expect(medTransit?.status).toBe('In progettazione');
+    expect(medTransit?.flow?.steps.every((step) => step.pending)).toBe(true);
+    expect(medTransit?.technologies.every((tech) => tech.includes('(previsto)'))).toBe(true);
+    expect(medTransit?.repositories?.[0].url).toBe(
+      'https://github.com/fabiozagaria/med-transit-msa',
+    );
+  });
+
+  it('no longer lists Transport Tickets', () => {
+    const ids: readonly string[] = EXPERIMENTAL_PROJECTS.map((project) => project.id);
+
+    expect(ids).not.toContain('transport-tickets');
   });
 
   it('includes Spring Scaffold CLI among the experimental Java tools', () => {
@@ -74,7 +109,24 @@ describe('portfolio projects', () => {
       'Backend',
     ]);
     expect(expenseTracker?.liveLabel).toBe('Demo full stack');
+    expect(expenseTracker?.apiDocsLink).toBe(
+      'https://expense-tracker-api-demo-plb9.onrender.com/swagger-ui.html',
+    );
     expect(expenseTracker?.status).toBe('Concluso');
+  });
+
+  it('links the AccessDesk Swagger UI demo', () => {
+    const accessDesk = PROJECTS.find((project) => project.id === 'accessdesk');
+
+    expect(accessDesk?.apiDocsLink).toBe('https://access-desk-api.onrender.com/swagger-ui.html');
+  });
+
+  it('links the JobFlow Swagger UI demo', () => {
+    const jobFlow = PROJECTS.find((project) => project.id === 'jobflow');
+
+    expect(jobFlow?.apiDocsLink).toBe('https://jobflow-dbnm.onrender.com/swagger-ui.html');
+    expect(jobFlow?.technologies).toContain('PostgreSQL');
+    expect(jobFlow?.technologies).not.toContain('MySQL');
   });
 
   it('presents LabTV as a working API integration demo', () => {
@@ -100,6 +152,7 @@ describe('portfolio projects', () => {
     expect(PROJECTS.map((project) => project.id)).toEqual([
       'gestionale-spese',
       'jobflow',
+      'medtransit',
       'accessdesk',
       'labtv',
       'fakeflix',

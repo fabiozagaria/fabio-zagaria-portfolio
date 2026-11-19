@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
 import { Meta } from '@angular/platform-browser';
@@ -5,6 +6,9 @@ import { provideRouter, Router, TitleStrategy } from '@angular/router';
 import { App } from './app';
 import { routes } from './app.routes';
 import { PortfolioSeoStrategy } from './portfolio-seo.strategy';
+
+@Component({ template: '<h1>Pagina di prova</h1>' })
+class TestPage {}
 
 describe('App', () => {
   beforeEach(async () => {
@@ -83,5 +87,63 @@ describe('App', () => {
     fixture.detectChanges();
     expect(fixture.componentInstance.isMenuOpen).toBe(false);
     expect(document.body.style.overflow).not.toBe('hidden');
+  });
+
+  it('shows the TMDB attribution in the footer', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const note = (fixture.nativeElement as HTMLElement).querySelector('.c-footer__note');
+
+    expect(note?.textContent).toContain(
+      'This product uses the TMDB API but is not endorsed or certified by',
+    );
+    const link = note?.querySelector<HTMLAnchorElement>('a');
+    expect(link?.getAttribute('href')).toBe('https://www.themoviedb.org/');
+    expect(link?.getAttribute('rel')).toContain('noopener');
+  });
+
+  it('shows the spinner only while a lazy route is pending', async () => {
+    let complete!: (page: typeof TestPage) => void;
+    let started!: () => void;
+    const loading = new Promise<void>((resolve) => (started = resolve));
+    const router = TestBed.inject(Router);
+    router.resetConfig([
+      {
+        path: 'slow-loader-test',
+        loadComponent: () => {
+          started();
+          return new Promise<typeof TestPage>((resolve) => (complete = resolve));
+        },
+      },
+      ...routes,
+    ]);
+    const fixture = TestBed.createComponent(App);
+    const navigation = router.navigateByUrl('/slow-loader-test');
+    await loading;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('app-loading-spinner')).toBeTruthy();
+    complete(TestPage);
+    await navigation;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('app-loading-spinner')).toBeNull();
+    expect(fixture.nativeElement.querySelector('main').getAttribute('aria-busy')).toBe('false');
+  });
+
+  it('clears the spinner and communicates a lazy chunk failure', async () => {
+    const router = TestBed.inject(Router);
+    router.resetConfig([
+      {
+        path: 'failed-loader-test',
+        loadComponent: () => Promise.reject(new Error('Chunk unavailable')),
+      },
+      ...routes,
+    ]);
+    const fixture = TestBed.createComponent(App);
+    await expect(router.navigateByUrl('/failed-loader-test')).rejects.toThrow('Chunk unavailable');
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('app-loading-spinner')).toBeNull();
+    expect(fixture.nativeElement.querySelector('[role="alert"]')?.textContent).toContain(
+      'Impossibile aprire la pagina',
+    );
   });
 });

@@ -128,7 +128,17 @@
   </aside>
 }
 
-<main id="main-content" tabindex="-1">
+@if (router.currentNavigation()) {
+  <div class="c-route-status">
+    <app-loading-spinner size="lg" [showLabel]="true" label="Caricamento pagina…" />
+  </div>
+}
+@if (navigationError()) {
+  <p class="o-container" role="alert">
+    Impossibile aprire la pagina. Riprova dal menu di navigazione.
+  </p>
+}
+<main id="main-content" tabindex="-1" [attr.aria-busy]="!!router.currentNavigation()">
   <router-outlet></router-outlet>
 </main>
 
@@ -148,5 +158,13 @@
         <a routerLink="/contact">Contatti e CV</a>
       </div>
     </div>
+    <p class="c-footer__note">
+      LabTV e le locandine mostrate nella pagina Progetti:
+      <span lang="en"
+        >This product uses the TMDB API but is not endorsed or certified by
+        <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a
+        >.</span
+      >
+    </p>
   </div>
 </footer>
