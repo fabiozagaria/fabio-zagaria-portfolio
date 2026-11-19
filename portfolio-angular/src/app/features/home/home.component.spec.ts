@@ -61,8 +61,10 @@ describe('HomeComponent', () => {
     );
 
     expect(items.map((item) => item.dataset['kind'])).toEqual(['API', 'Frontend']);
+    expect(
+      items.map((item) => item.querySelector('.c-update-item__version')?.textContent?.trim()),
+    ).toEqual(['v1.3.0', 'v1.2.0']);
     for (const item of items) {
-      expect(item.querySelector('.c-update-item__version')?.textContent).toContain('1.2.0');
       expect(
         item.querySelector('.c-update-item__message code')?.textContent?.length,
       ).toBeGreaterThan(5);

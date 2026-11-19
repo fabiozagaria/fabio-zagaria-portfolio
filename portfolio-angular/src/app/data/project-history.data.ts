@@ -276,11 +276,39 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
   ],
   'gestionale-spese': [
     {
+      datetime: '2026-11-19T21:54:53+01:00',
+      dateLabel: '19 novembre 2026, 21:54',
+      title: 'Frontend: tag e release v1.2.0',
+      summary:
+        'Pubblicati il tag v1.2.0 del frontend e la sua GitHub Release, sul commit del 10 novembre con la pagina Impostazioni. Gli sviluppi successivi (avviso di manutenzione, skeleton e spinner) restano per una prossima versione.',
+      version: 'frontend v1.2.0',
+      sources: [
+        {
+          label: 'Commit del tag',
+          url: 'https://github.com/fabiozagaria/expense-tracker-angular/commit/b323981375f8cdce56603c573c9e416237d00a87',
+        },
+      ],
+    },
+    {
+      datetime: '2026-11-19T21:37:19+01:00',
+      dateLabel: '19 novembre 2026, 21:37',
+      title: 'API 1.3.0: PostgreSQL e demo su Neon',
+      summary:
+        'Release 1.3.0 dell’API con tag e GitHub Release: raccoglie il passaggio da MySQL a PostgreSQL e la configurazione Neon, senza cambiare il contratto REST. La demo online usa il profilo neon: un login demo sul backend pubblico ha scritto il token nel database Neon.',
+      version: 'API v1.3.0',
+      sources: [
+        {
+          label: 'Commit del tag',
+          url: 'https://github.com/fabiozagaria/expense-tracker-api/commit/c53be2c391acd4991f7db85e345972e58e4429d8',
+        },
+      ],
+    },
+    {
       datetime: '2026-11-19T09:28:58+01:00',
       dateLabel: '19 novembre 2026, 09:28',
       title: 'API: migrazione da MySQL a PostgreSQL',
       summary:
-        'Driver, Flyway, Docker Compose e Testcontainers passano a PostgreSQL; le migrazioni MySQL diventano un’unica V1 PostgreSQL. Username ed email restano unici senza distinguere maiuscole e minuscole tramite indici su lower(). Il profilo neon sostituisce aiven; la demo online resta su H2 finché il profilo non viene attivato su Render.',
+        'Driver, Flyway, Docker Compose e Testcontainers passano a PostgreSQL; le migrazioni MySQL diventano un’unica V1 PostgreSQL. Username ed email restano unici senza distinguere maiuscole e minuscole tramite indici su lower(). Il profilo neon sostituisce aiven.',
       sources: [
         {
           label: 'Commit',
