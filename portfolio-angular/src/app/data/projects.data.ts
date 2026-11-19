@@ -79,6 +79,14 @@ export interface PortfolioFlow {
   readonly note: string;
 }
 
+/** Stato reale di un progetto: com'è oggi e cosa manca. La cronologia sta in project-history.data.ts. */
+export interface PortfolioStatusDetail {
+  /** Una o due frasi sullo stato attuale, solo fatti verificati. */
+  readonly summary: string;
+  /** Cosa manca o non è ancora verificato, una voce per punto. */
+  readonly pending?: readonly string[];
+}
+
 export interface PortfolioProject {
   readonly id: string;
   readonly title: string;
@@ -89,7 +97,7 @@ export interface PortfolioProject {
   readonly highlights: readonly string[];
   readonly technologies: readonly string[];
   readonly status: ProjectStatus;
-  readonly statusDetail: string;
+  readonly statusDetail: PortfolioStatusDetail;
   readonly latestUpdate?: PortfolioLatestUpdate;
   readonly versionTags?: readonly PortfolioVersionTag[];
   readonly decision?: {
@@ -152,8 +160,17 @@ export const PROJECTS = [
       'REST API',
     ],
     status: 'Concluso',
-    statusDetail:
-      'Versione 1.0.0 conclusa il 25 ottobre 2026. Il 10 novembre 2026 API e frontend arrivano alla 1.1.0 (tag v1.1.0): l’API aggiunge reinvio della verifica email, reset password, rate limiting, reuse detection dei refresh token, Flyway e Swagger UI; il frontend allinea il client a questo contratto REST con recupero password, nuovo invio del link di verifica e dettaglio delle entrate. Lo stesso giorno la 1.2.0 aggiunge GET /api/me e la pagina Impostazioni con i dati dell’account e il link per cambiare la password; il proprietario ha confermato il percorso reale Impostazioni → email → nuova password → login sul sito pubblico. La cache Redis remota resta da configurare prima di attivarla nel deploy. Restano il controllo visivo sistematico desktop/mobile nei due temi e il percorso integrale in locale con Mailpit. Il 15 novembre 2026 l’API pubblica il tag e la release v1.2.0; il frontend 1.2.0 non ha ancora un tag (l’ultimo resta v1.1.0). Dal 12 al 15 novembre 2026 la demo online è rimasta sospesa perché il database MySQL Aiven non era più disponibile; dal 15 novembre, secondo README e commit, la demo usa un database H2 in memoria: account condiviso e dati di esempio vengono ricreati a ogni avvio, i dati aggiunti si perdono al riavvio e la registrazione sulla demo è chiusa. Il 19 novembre 2026 l’API passa da MySQL a PostgreSQL (in locale con Docker Compose) e aggiunge il profilo neon per un database PostgreSQL su Neon; secondo README e commit, finché su Render non si attiva quel profilo la demo resta su H2 in memoria, e la connessione al database Neon reale non è ancora verificata.',
+    statusDetail: {
+      summary:
+        'API e frontend sono alla 1.2.0, con pagina Impostazioni e GET /api/me; il proprietario ha confermato il cambio password dal sito pubblico. Dal 19 novembre 2026 l’API usa PostgreSQL. La demo online gira su un database H2 in memoria: account condiviso e dati di esempio si ricreano a ogni avvio, i dati aggiunti si perdono al riavvio e la registrazione è chiusa.',
+      pending: [
+        'Attivare su Render il profilo neon e verificare la connessione al database PostgreSQL su Neon',
+        'Tag del frontend 1.2.0 non ancora pubblicato: l’ultimo resta v1.1.0',
+        'Configurare la cache Redis remota prima di attivarla nel deploy',
+        'Controllo visivo sistematico desktop e mobile nei due temi',
+        'Percorso completo in locale con Mailpit',
+      ],
+    },
     latestUpdate: {
       dateLabel: '19 novembre 2026',
       datetime: '2026-11-19',
@@ -277,8 +294,15 @@ export const PROJECTS = [
       note: 'Schema ricavato dal codice. Il passaggio a PROCESSING è verificato a runtime; COMPLETED e FAILED restano da realizzare.',
     },
     status: 'In sviluppo',
-    statusDetail:
-      'Dal 17 novembre 2026 il progetto usa PostgreSQL con migrazioni Flyway ed è pubblicato su Render con Swagger UI (piano gratuito: il primo accesso può richiedere attesa). Dal 19 novembre 2026 il database di produzione previsto è PostgreSQL su Neon al posto del PostgreSQL Free di Render, che scadeva dopo 30 giorni; secondo il repository la connessione dell’app al database Neon reale e il deploy su Render con il profilo neon non sono ancora verificati. Su PostgreSQL in locale sono verificati POST /jobs (201), GET /jobs/{id} (200 e 404) e il passaggio asincrono da CREATED a PROCESSING; online sono verificati Swagger UI e la risposta 404 di GET /jobs/{id}. Completamento fino a COMPLETED o FAILED, ProcessorRegistry e generazione PDF restano da fare.',
+    statusDetail: {
+      summary:
+        'Pubblicato su Render con Swagger UI (piano gratuito: il primo accesso può richiedere attesa), su PostgreSQL con migrazioni Flyway. In locale sono verificati POST /jobs (201), GET /jobs/{id} (200 e 404) e il passaggio asincrono da CREATED a PROCESSING; online sono verificati Swagger UI e la risposta 404 di GET /jobs/{id}.',
+      pending: [
+        'Verificare la connessione al database PostgreSQL su Neon e il deploy su Render con il profilo neon, scelto il 19 novembre 2026 al posto del PostgreSQL Free di Render che scadeva dopo 30 giorni',
+        'Completamento dei job fino a COMPLETED o FAILED',
+        'ProcessorRegistry e generazione PDF',
+      ],
+    },
     latestUpdate: {
       dateLabel: '19 novembre 2026',
       datetime: '2026-11-19',
@@ -357,8 +381,10 @@ export const PROJECTS = [
       note: 'Schema ricavato dal design doc del repository. Nessun passaggio è ancora realizzato.',
     },
     status: 'In progettazione',
-    statusDetail:
-      'Dal 17 novembre 2026 il design è approvato e documentato nel repository. Non c’è ancora codice né test: l’implementazione parte dopo JobFlow. Autenticazione, interfaccia grafica e notifiche reali restano fuori dalla prima versione.',
+    statusDetail: {
+      summary:
+        'Dal 17 novembre 2026 il design è approvato e documentato nel repository. Non c’è ancora codice né test: l’implementazione parte dopo JobFlow. Autenticazione, interfaccia grafica e notifiche reali restano fuori dalla prima versione.',
+    },
     repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/med-transit-msa' }],
   },
   {
@@ -405,8 +431,16 @@ export const PROJECTS = [
       note: 'Schema ricavato dal codice. Le verifiche del flusso JWT e i test automatici restano da completare.',
     },
     status: 'In sviluppo',
-    statusDetail:
-      'Prova autonoma ancora da completare. Login JWT, filtro e autorizzazioni sono presenti nel codice. Dal 19 novembre 2026 PostgreSQL è l’unico database: il profilo MySQL alternativo, mai provato su un server reale, è stato rimosso. Dal 15 novembre 2026 lo schema è gestito da migrazioni Flyway (Hibernate in validate) e c’è un avvio con Docker Compose (PostgreSQL 18 e API): secondo il README, sullo stack Docker sono stati verificati build, migrazione V1, avvio, registrazione e login; test automatici e gli altri endpoint non sono verificati. Il 19 novembre 2026 si aggiunge il profilo neon per una demo persistente su PostgreSQL Neon, con il seeder dei dati demo reso idempotente; secondo il README la connessione al database Neon reale e il deploy su Render con quel profilo non sono ancora verificati. Restano verifiche del flusso JWT, test automatici e chiusura della consegna.',
+    statusDetail: {
+      summary:
+        'Login JWT, filtro e autorizzazioni sono presenti nel codice. PostgreSQL è l’unico database, con schema gestito da migrazioni Flyway e avvio con Docker Compose (PostgreSQL 18 e API). Secondo il README, sullo stack Docker sono verificati build, migrazione V1, avvio, registrazione e login.',
+      pending: [
+        'Verifica del flusso JWT e degli altri endpoint',
+        'Test automatici',
+        'Verificare la connessione al database PostgreSQL su Neon e il deploy su Render con il profilo neon',
+        'Chiusura della consegna: la prova autonoma è ancora da completare',
+      ],
+    },
     latestUpdate: {
       dateLabel: '19 novembre 2026',
       datetime: '2026-11-19',
@@ -448,8 +482,10 @@ export const PROJECTS = [
     ],
     technologies: ['Angular', 'TypeScript', 'RxJS', 'Signals', 'TMDB API', 'Bootstrap'],
     status: 'Concluso',
-    statusDetail:
-      'Release frontend conclusa, realizzata durante il percorso LabForWeb: applicazione Angular che integra la TMDB API per catalogo e dettaglio.',
+    statusDetail: {
+      summary:
+        'Release frontend conclusa, realizzata durante il percorso LabForWeb: applicazione Angular che integra la TMDB API per catalogo e dettaglio.',
+    },
     latestUpdate: {
       dateLabel: '2 ottobre 2026',
       datetime: '2026-10-02',
@@ -517,8 +553,10 @@ export const PROJECTS = [
     ],
     technologies: ['HTML5', 'CSS3', 'JavaScript ES6+', 'DOM API'],
     status: 'Demo frontend',
-    statusDetail:
-      'Progetto realizzato durante il percorso LabForWeb / Nerd Academy per consolidare DOM, eventi e rendering in JavaScript vanilla.',
+    statusDetail: {
+      summary:
+        'Progetto realizzato durante il percorso LabForWeb / Nerd Academy per consolidare DOM, eventi e rendering in JavaScript vanilla.',
+    },
     latestUpdate: {
       dateLabel: '2 ottobre 2026',
       datetime: '2026-10-02',
@@ -570,7 +608,9 @@ export const PROJECTS = [
     ],
     technologies: ['Angular 21', 'TypeScript 5.9', 'HTML', 'CSS', 'Vercel'],
     status: 'Demo frontend',
-    statusDetail: 'Progetto frontend del corso, evoluto nel portfolio professionale attuale.',
+    statusDetail: {
+      summary: 'Progetto frontend del corso, evoluto nel portfolio professionale attuale.',
+    },
     screenshots: [
       {
         src: '/assets/img/project-portfolio.webp',

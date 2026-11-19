@@ -89,10 +89,18 @@
         }
       }
     }
-    <p class="c-card__status-detail">
-      <strong>Stato reale</strong>
-      <span>{{ project.statusDetail }}</span>
-    </p>
+    <div class="c-card__status-detail">
+      <p class="c-card__section-label">Stato reale</p>
+      <p>{{ project.statusDetail.summary }}</p>
+      @if (project.statusDetail.pending?.length) {
+        <p class="c-card__status-subtitle">Cosa manca</p>
+        <ul class="c-card__status-list">
+          @for (item of project.statusDetail.pending; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      }
+    </div>
 
     <div class="c-card__tags" aria-label="Tecnologie utilizzate">
       @for (tech of project.technologies; track tech) {
