@@ -57,6 +57,7 @@ Il prototipo usa e getta della direzione A (https://claude.ai/artifact/W8z2kR4jz
 - Struttura e contenuti invariati; cambia solo lo stile.
 - Tanti effetti e animazioni calmi, oltre il limite di Taste Skill.
 - Mobile e desktop devono cambiare il meno possibile.
+- Il cielo compare anche nelle altre pagine, come fascia più tenue in testata.
 
 ## Il design
 
@@ -83,6 +84,7 @@ indicato.
 | Dove | Effetto | Note |
 |---|---|---|
 | Hero (home) | `painterly-landscape` del kit come sfondo vivo, in colori Calm | Sostituisce la scena Three.js attuale. Pulsante "Ferma il cielo" (oltre 5 s di movimento). Su mobile identico, con risoluzione limitata dal kit. |
+| Testata delle altre pagine (About, Experience, Projects, Contact) | Fascia di cielo con lo stesso effetto, più tenue e più bassa dell'hero, dietro il titolo della pagina | Un solo effetto vivo per pagina. Stesso pulsante di pausa, stesso comportamento su mobile. Decisione di Fabio del 20 novembre 2026. |
 | Hero (home) | `cursor-spotlight` senza griglia: luce bianca morbida che segue il puntatore | Su touch segue il dito durante il trascinamento e torna a riposo. |
 | Hero (home) | Entrata una sola volta al caricamento: nome, ruolo e azioni salgono e appaiono in sequenza (circa 1,1 s) | Il nome resta leggibile anche se lo script tarda. |
 | Una frase nella home | `word-highlight`: le parole passano dal grigio all'inchiostro mentre si scorre | Usa un testo già presente nella home; nessun testo nuovo senza approvazione. |
@@ -101,7 +103,8 @@ rimbalzo; movimenti di sfondo con cicli di decine di secondi.
   `moments/lib.js`, `moments/cursor-spotlight/`, `moments/word-highlight/`, le parti necessarie di
   `motion/`) vanno in `portfolio-angular/src/assets/vendor/taste-skill/`, con la licenza MIT e un
   README che indica versione (2.5.1) e provenienza.
-- Un componente `app-sky` (al posto di `app-hero-scene`) monta l'effetto, gestisce la pausa e lo
+- Un componente `app-sky` (al posto di `app-hero-scene`, con una variante per le testate delle
+  altre pagine) monta l'effetto, gestisce la pausa e lo
   smonta alla distruzione; i momenti si agganciano con attributi `data-moment` nei template.
 - Three.js e `hero-scene` vengono rimossi se nessun'altra parte li usa.
 - Il kit legge i colori dalle sue variabili `--p-*`/`--bg`/`--ink`: si mappano sui token del
