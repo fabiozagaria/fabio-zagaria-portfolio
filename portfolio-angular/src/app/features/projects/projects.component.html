@@ -37,8 +37,23 @@
                   @if (entry.versionTags; as tags) {
                     <app-version-tags [tags]="tags" />
                   }
-                  @if (entry.flow; as flow) {
-                    <app-project-flow [flow]="flow" />
+                  @if (entry.skills; as skills) {
+                    <figure class="c-card__shot c-shot">
+                      <figcaption class="c-shot__bar">
+                        <span class="c-shot__dots" aria-hidden="true"></span>
+                        <span>Skill disponibili ({{ skills.length }})</span>
+                      </figcaption>
+                      <dl class="c-plugin-skills">
+                        @for (skill of skills; track skill.name) {
+                          <div>
+                            <dt>
+                              <code>{{ skill.name }}</code>
+                            </dt>
+                            <dd>{{ skill.purpose }}</dd>
+                          </div>
+                        }
+                      </dl>
+                    </figure>
                   }
                   <p class="c-card__description">{{ entry.description }}</p>
                   @if (entry.note) {

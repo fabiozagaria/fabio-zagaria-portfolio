@@ -86,6 +86,7 @@ describe('ProjectsComponent', () => {
 
     expect(urls).toEqual(
       expect.arrayContaining([
+        'gestionale-spese.vercel.app/',
         'gestionale-spese.vercel.app/dashboard',
         'gestionale-spese.vercel.app/login',
         'lab-tv.vercel.app/catalogo',
@@ -123,18 +124,30 @@ describe('ProjectsComponent', () => {
     );
   });
 
-  it('draws the learning-ledger flow in the AI plugins section, with its repository', () => {
-    const element = render('2026-11-03T10:00:00+01:00');
-    const steps = element.querySelectorAll('#learning-ledger .c-flow__step');
-
-    expect(steps).toHaveLength(6);
-    expect(steps[2].textContent).toContain('ledger.py');
-    expect(element.querySelector('#learning-ledger .c-shot__note')?.textContent).toContain(
-      'in locale',
-    );
-    expect(
-      element.querySelector<HTMLAnchorElement>('#learning-ledger .c-card__action')?.href,
-    ).toContain('github.com/fabiozagaria/learning-ledger');
+  it('lists the available skills of each plugin and derives the caption from their count', () => {
+    const element = render('2026-11-20T10:00:00+01:00');
+    const expected = {
+      'learning-ledger': [
+        'study-today',
+        'quiz',
+        'practice',
+        'explain',
+        'pair',
+        'log-session',
+        'weekly-report',
+      ],
+      'spring-security-advisor': ['audit', 'review', 'map'],
+    };
+    for (const [id, names] of Object.entries(expected)) {
+      const card = element.querySelector('#' + id)!;
+      expect(Array.from(card.querySelectorAll('dt'), (term) => term.textContent.trim())).toEqual(
+        names,
+      );
+      expect(card.querySelector('figcaption')?.textContent).toContain('(' + names.length + ')');
+      expect(card.querySelector<HTMLAnchorElement>('.c-card__action')?.href).toContain(
+        'github.com/fabiozagaria/' + id,
+      );
+    }
   });
 
   it('groups the two Claude Code plugins in their own section, apart from the experiments', () => {
@@ -148,21 +161,6 @@ describe('ProjectsComponent', () => {
       'spring-security-advisor',
     ]);
     expect(experiments?.querySelector('#learning-ledger')).toBeNull();
-  });
-
-  it('draws the spring-security-advisor flow and marks the planned step', () => {
-    const element = render('2026-11-04T10:00:00+01:00');
-
-    expect(element.querySelectorAll('#spring-security-advisor .c-flow__step')).toHaveLength(5);
-    expect(
-      element.querySelectorAll('#spring-security-advisor .c-flow__step[data-pending="true"]'),
-    ).toHaveLength(1);
-    expect(element.querySelector('#spring-security-advisor .c-shot__note')?.textContent).toContain(
-      'pianificati, non realizzati',
-    );
-    expect(
-      element.querySelector<HTMLAnchorElement>('#spring-security-advisor .c-card__action')?.href,
-    ).toContain('github.com/fabiozagaria/spring-security-advisor');
   });
 
   it('shows each latest update as chips: API before frontend, backends and plugins with their own kind', () => {

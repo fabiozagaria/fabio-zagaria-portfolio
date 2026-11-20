@@ -6,7 +6,6 @@ import {
   EXPERIMENTAL_PROJECTS,
   PortfolioCollectionItem,
 } from '../../data/project-collections.data';
-import { ProjectFlowComponent } from '../../shared/project-flow/project-flow.component';
 import { ProjectUpdateComponent } from '../../shared/project-update/project-update.component';
 import { RecentBadgeComponent } from '../../shared/recent-badge/recent-badge.component';
 import { VersionTagsComponent } from '../../shared/version-tags/version-tags.component';
@@ -33,7 +32,6 @@ type ProjectsSection =
   standalone: true,
   imports: [
     ProjectCardComponent,
-    ProjectFlowComponent,
     ProjectUpdateComponent,
     RecentBadgeComponent,
     VersionTagsComponent,
