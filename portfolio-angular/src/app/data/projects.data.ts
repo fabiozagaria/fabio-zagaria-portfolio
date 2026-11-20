@@ -210,7 +210,7 @@ export const PROJECTS = [
       },
       {
         src: '/assets/img/project-expense-tracker-home.webp',
-        path: '/dashboard',
+        path: '/',
         alt: 'Home di Expense Tracker nel tema scuro: titolo «Le tue finanze, al posto giusto.», pulsanti Accedi al tuo spazio e Registrati e riquadro con entrate, spese e saldo.',
         width: 1400,
         height: 640,
@@ -265,7 +265,7 @@ export const PROJECTS = [
       'POST /jobs con DTO validato, risposta 201 Created e header Location; GET /jobs/{id} per la consultazione',
       'Persistenza JPA/PostgreSQL di Job e GeneratePdfWork con cascade PERSIST; schema versionato con Flyway e Hibernate in validate',
       'JobCreatedEvent pubblicato dopo il salvataggio e JobWorker asincrono (@Async con @TransactionalEventListener) che porta il job da CREATED a PROCESSING',
-      'Immagine Docker pubblicata su Render con PostgreSQL gestito e documentazione Swagger UI',
+      'Immagine Docker pubblicata su Render con documentazione Swagger UI',
       'Mapping con MapStruct e test unitari di JobService e JobController',
     ],
     technologies: [
@@ -400,7 +400,7 @@ export const PROJECTS = [
       },
     ],
     description:
-      'API REST per richieste di accesso software: i dipendenti creano e consultano le proprie richieste, i manager le approvano o le rifiutano. PostgreSQL è il database predefinito; MySQL è disponibile come alternativa configurabile.',
+      'API REST per richieste di accesso software: i dipendenti creano e consultano le proprie richieste, i manager le approvano o le rifiutano. I dati sono salvati in PostgreSQL con migrazioni Flyway.',
     highlights: [
       'Login con JWT HS256 e filtro personalizzato OncePerRequestFilter per il Bearer token',
       'Spring Security stateless, ruoli e permessi, autorizzazione con @PreAuthorize',
@@ -415,7 +415,7 @@ export const PROJECTS = [
       'PostgreSQL',
       'Spring Data JPA',
       'MapStruct',
-      'MySQL (alternativa)',
+      'Flyway',
     ],
     flow: {
       title: 'Dal login ai dati',
@@ -424,9 +424,9 @@ export const PROJECTS = [
         { label: 'OncePerRequestFilter', detail: 'Bearer token' },
         { label: 'Spring Security', detail: 'Stateless, ruoli e permessi' },
         { label: '@PreAuthorize', detail: 'Autorizzazione per metodo' },
-        { label: 'JPA · PostgreSQL', detail: 'Database predefinito' },
+        { label: 'JPA · PostgreSQL', detail: 'Schema gestito da Flyway' },
       ],
-      note: 'Schema ricavato dal codice. Le verifiche del flusso JWT e i test automatici restano da completare.',
+      note: 'Schema ricavato dal codice. Registrazione e login verificati sullo stack Docker. I controlli sugli endpoint protetti restano da completare.',
     },
     status: 'In sviluppo',
     statusDetail: {
@@ -434,7 +434,7 @@ export const PROJECTS = [
         'Login JWT, filtro e autorizzazioni sono presenti nel codice. PostgreSQL è l’unico database, con schema gestito da migrazioni Flyway e avvio con Docker Compose (PostgreSQL 18 e API). Secondo il README, sullo stack Docker sono verificati build, migrazione V1, avvio, registrazione e login.',
       pending: [
         'Verifica del flusso JWT e degli altri endpoint',
-        'Test automatici',
+        'Estendere i test automatici agli endpoint protetti',
         'Verificare la connessione al database PostgreSQL su Neon e il deploy su Render con il profilo neon',
         'Chiusura della consegna: la prova autonoma è ancora da completare',
       ],
