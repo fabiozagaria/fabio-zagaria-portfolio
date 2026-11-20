@@ -1428,7 +1428,7 @@ button,
 }
 @media (hover: hover) and (pointer: fine) {
   .c-shot:hover .c-shot__frame img {
-    scale: 1.035;
+    scale: 1.02;
   }
 }
 .c-shot__note {
