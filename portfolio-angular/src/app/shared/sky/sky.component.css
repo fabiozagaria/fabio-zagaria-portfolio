@@ -1,0 +1,70 @@
+:host {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.c-sky__ground {
+  position: absolute;
+  inset: 0;
+}
+
+/* Without WebGL: a calm wash in the same colours, still. */
+:host(.c-sky--fallback) .c-sky__ground {
+  background:
+    radial-gradient(120% 80% at 78% 18%, var(--calm-surface) 0%, transparent 60%),
+    linear-gradient(180deg, var(--calm-page) 0%, var(--calm-accent-soft) 100%);
+}
+
+/* The band behind page titles: lower, softer, fading into the page. */
+:host(.c-sky--band) {
+  inset: 0 0 auto;
+  height: clamp(220px, 34vh, 340px);
+  opacity: 0.55;
+  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent);
+  mask-image: linear-gradient(180deg, #000 55%, transparent);
+}
+
+.c-sky__pause {
+  position: absolute;
+  right: max(1rem, env(safe-area-inset-right, 0px));
+  bottom: 1.25rem;
+  min-height: 44px;
+  padding: 0 1.1rem;
+  border: 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--calm-surface) 72%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--calm-shadow-sm);
+  color: var(--calm-ink);
+  font: 600 0.9375rem / 1 var(--calm-font);
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    background-color 200ms ease,
+    transform 160ms var(--calm-ease);
+}
+.c-sky__pause:hover {
+  background: var(--calm-surface);
+}
+.c-sky__pause:active {
+  transform: scale(0.97);
+}
+.c-sky__pause:focus-visible {
+  outline: 3px solid var(--calm-focus);
+  outline-offset: 3px;
+}
+:host(.c-sky--band) .c-sky__pause {
+  top: calc(var(--header-height) + 1rem);
+  bottom: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c-sky__pause {
+    transition: none;
+  }
+}
