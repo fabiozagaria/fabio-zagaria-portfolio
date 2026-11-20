@@ -496,12 +496,7 @@ main:focus {
 .c-projects__group + .c-projects__group {
   margin-top: 5rem;
 }
-/* Titoli delle sezioni della pagina Progetti: corsivo serif con un ghirigoro "firmato". */
-@property --sign {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 110%;
-}
+/* Titoli delle sezioni della pagina Progetti, con un ghirigoro morbido sotto. */
 .c-projects__group-title {
   position: relative;
   display: inline-block;
@@ -513,8 +508,6 @@ main:focus {
   font-weight: 300;
   letter-spacing: -0.025em;
   line-height: 1.02;
-  -webkit-mask-image: linear-gradient(90deg, #000 calc(var(--sign) - 6%), transparent var(--sign));
-  mask-image: linear-gradient(90deg, #000 calc(var(--sign) - 6%), transparent var(--sign));
 }
 .c-projects__group-title::after {
   content: '';
@@ -1329,13 +1322,10 @@ button,
 .c-experience__content > .c-experience__item::before {
   right: 0;
   height: 1px;
-  background: var(--clr-black-lightest);
+  background: var(--calm-line);
 }
 .c-experience__content > .c-experience__item::after {
-  width: 3rem;
-  height: 3px;
-  margin-top: -1px;
-  background: var(--clr-cyber-green);
+  content: none;
 }
 
 .u-visually-hidden {
@@ -1642,4 +1632,22 @@ html[data-theme='dark'] .c-sky-light {
 :where(.c-about, .c-experience, .c-projects, .c-contact).o-section {
   position: relative;
   isolation: isolate;
+}
+
+/* Taste Skill moments read --ink, --bg and --accent: map them to the Calm tokens.
+   Words not yet reached stay readable (about 4.5:1 on the page). */
+[data-moment] {
+  --ink: var(--calm-ink);
+  --bg: var(--calm-page);
+  --accent: var(--calm-accent-strong);
+}
+.c-explore .mo-wh .mo-w:not(.is-on) {
+  color: color-mix(in oklab, var(--calm-ink) 66%, var(--calm-page));
+}
+
+/* On phones the band's pause button sits above the page title, never under it. */
+@media (max-width: 48em) {
+  :where(.c-about, .c-experience, .c-projects, .c-contact).o-section {
+    padding-top: calc(var(--header-height) + 5rem);
+  }
 }

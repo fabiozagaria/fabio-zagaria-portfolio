@@ -21,14 +21,16 @@ const HERO_PARAMS = {
   blur: 0.85,
   brush: 0.45,
   grain: 0.015,
-  calm: 0.55,
+  calm: 0.7,
   calmX: 0.3,
-  calmY: 0.4,
+  calmY: 0.6,
+  horizon: 0.66,
+  hillY: 0.22,
 };
 
 const SKY = {
   hero: { seed: 7, params: HERO_PARAMS },
-  band: { seed: 11, params: { ...HERO_PARAMS, horizon: 0.62 } },
+  band: { seed: 11, params: { ...HERO_PARAMS, horizon: 0.62, hillY: 0.12 } },
 } as const;
 
 function prefersReducedMotion(): boolean {
@@ -84,8 +86,10 @@ export class SkyComponent {
   protected readonly paused = signal(false);
   protected readonly failed = signal(false);
   private readonly mounted = signal(false);
-  private readonly reduced = prefersReducedMotion();
-  protected readonly live = () => this.mounted() && !this.reduced && !this.failed();
+  private readonly reduced = signal(prefersReducedMotion());
+  private readonly still = signal(false);
+  protected readonly live = () =>
+    this.mounted() && !this.reduced() && !this.failed() && !this.still();
 
   private readonly ground = viewChild.required<ElementRef<HTMLElement>>('ground');
   private readonly loader = inject(KitLoader);
@@ -101,7 +105,13 @@ export class SkyComponent {
       untracked(() => this.controller?.setPalette(readPalette()));
     });
 
+    const motion =
+      typeof matchMedia === 'function' ? matchMedia('(prefers-reduced-motion: reduce)') : null;
+    const onMotion = (event: { matches: boolean }) => this.reduced.set(event.matches);
+    motion?.addEventListener?.('change', onMotion);
+
     inject(DestroyRef).onDestroy(() => {
+      motion?.removeEventListener?.('change', onMotion);
       this.destroyed = true;
       this.controller?.destroy();
       this.controller = null;
@@ -128,6 +138,8 @@ export class SkyComponent {
         return;
       }
       this.controller = controller;
+      // Without WebGL the kit paints a still CSS picture: nothing to pause.
+      this.still.set(Boolean(this.ground().nativeElement.dataset['fxFallback']));
       this.mounted.set(true);
     } catch {
       this.failed.set(true);

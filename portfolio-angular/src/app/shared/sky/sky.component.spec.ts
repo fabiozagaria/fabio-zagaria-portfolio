@@ -13,10 +13,14 @@ class HostComponent {
   readonly variant = input<'hero' | 'band'>('hero');
 }
 
+let motionListeners: ((event: { matches: boolean }) => void)[] = [];
+
 function stubMotion(reduced: boolean): void {
+  motionListeners = [];
   vi.stubGlobal('matchMedia', (query: string) => ({
     matches: query.includes('reduce') ? reduced : false,
-    addEventListener: () => undefined,
+    addEventListener: (_: string, listener: (event: { matches: boolean }) => void) =>
+      motionListeners.push(listener),
     removeEventListener: () => undefined,
   }));
 }
@@ -108,6 +112,23 @@ describe('SkyComponent', () => {
     const { element } = await render();
     const sky = element.querySelector('app-sky')!;
     expect(sky.classList.contains('c-sky--fallback')).toBe(true);
+    expect(element.querySelector('.c-sky__pause')).toBeNull();
+  });
+
+  it('hides the pause button when the kit falls back to a still picture', async () => {
+    mountSky.mockImplementation(async (el: HTMLElement) => {
+      el.dataset['fxFallback'] = 'no-webgl';
+      return controller;
+    });
+    const { element } = await render();
+    expect(element.querySelector('.c-sky__pause')).toBeNull();
+  });
+
+  it('hides the pause button when reduced motion is switched on later', async () => {
+    const { fixture, element } = await render();
+    expect(element.querySelector('.c-sky__pause')).not.toBeNull();
+    motionListeners.forEach((listener) => listener({ matches: true }));
+    fixture.detectChanges();
     expect(element.querySelector('.c-sky__pause')).toBeNull();
   });
 });

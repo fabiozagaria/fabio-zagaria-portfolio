@@ -61,7 +61,7 @@
   outline-offset: 3px;
 }
 :host(.c-sky--band) .c-sky__pause {
-  top: calc(var(--header-height) + 1rem);
+  top: calc(var(--header-height) + 0.75rem);
   bottom: auto;
 }
 
