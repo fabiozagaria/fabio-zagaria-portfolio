@@ -1,13 +1,33 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { HomeComponent } from './home.component';
+import { SkyEngineFactory } from '../../shared/sky/sky-engine';
 
 describe('HomeComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HomeComponent],
-      providers: [provideRouter([])],
+      providers: [
+        provideRouter([]),
+        {
+          provide: SkyEngineFactory,
+          useValue: {
+            create: () => {
+              throw new Error('no canvas in tests');
+            },
+          },
+        },
+      ],
     }).compileComponents();
+  });
+
+  it('renders the sky behind the hero instead of the 3D scene', () => {
+    const fixture = TestBed.createComponent(HomeComponent);
+    fixture.detectChanges();
+    const hero = (fixture.nativeElement as HTMLElement).querySelector('#home')!;
+
+    expect(hero.querySelector('app-sky')).not.toBeNull();
+    expect(hero.querySelector('app-hero-scene')).toBeNull();
   });
 
   it('uses the dedicated CV download URL', () => {
@@ -98,22 +118,5 @@ describe('HomeComponent', () => {
 
     expect(element.textContent).not.toContain('Metodo CARAC');
     expect(element.textContent).not.toContain("Uso dell'AI");
-  });
-
-  it('lights up the hero grid while a fine pointer moves over it', () => {
-    vi.stubGlobal('matchMedia', (query: string) => ({
-      matches: !query.includes('reduce'),
-    }));
-    const fixture = TestBed.createComponent(HomeComponent);
-    fixture.detectChanges();
-    TestBed.tick();
-    const hero = (fixture.nativeElement as HTMLElement).querySelector<HTMLElement>('.c-hero')!;
-
-    hero.dispatchEvent(new PointerEvent('pointermove', { clientX: 120, clientY: 90 }));
-    expect(hero.classList.contains('is-tracking')).toBe(true);
-
-    hero.dispatchEvent(new PointerEvent('pointerleave'));
-    expect(hero.classList.contains('is-tracking')).toBe(false);
-    vi.unstubAllGlobals();
   });
 });

@@ -202,3 +202,9 @@ Values fixed by the spec:
 - [ ] **Step 5:** Emulated phone (Playwright `devices['Pixel 7']`): touch-drag over the hero moves the light and the page still scrolls.
 - [ ] **Step 6:** Rewrite `DESIGN.md` from the implemented CSS (palette Calm, Nunito, radii, shadows, motion inventory, reduced motion, "allowed: slow ambient sky with pause; forbidden: scroll-linked text motion"); update `PRODUCT.md` brand commitments ("animazioni calme e continue") and the library rule (font package and vendored kit allowed); update the other documents listed above. Go through the list and state for each whether it changed or why not.
 - [ ] **Step 7:** Commit: `git commit -m "Documentazione allineata al redesign Cielo dipinto"` and push the branch.
+
+---
+
+## Addendum, 20 novembre 2026: cielo stellato
+
+Dopo il primo giro della PR #76 il design è stato rivisto (sezione «Revisione del 20 novembre 2026: cielo stellato» della spec). Implementazione sulla stessa PR: motore `src/app/shared/sky/sky-engine.ts` (canvas 2D, test delle funzioni pure in `sky-engine.spec.ts`), `SkyComponent` riscritto sul motore (test in `sky.component.spec.ts`), `WordHighlightDirective` al posto di `MomentDirective`, rimossi `KitLoader`, `SkyLightDirective`, i file del kit in `src/assets/vendor/` e la loro voce in `angular.json`.

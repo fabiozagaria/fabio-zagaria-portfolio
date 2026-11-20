@@ -1,31 +1,37 @@
 ---
 name: Fabio Zagaria Portfolio
-description: Portfolio tecnico minimale antracite e teal
+description: Portfolio «Cielo dipinto», calmo e tenue, palette Calm acqua e salvia, cielo stellato di notte e sole di giorno
 colors:
-  primary: "#82dfbd"
-  primary-hover: "#a6ecd1"
-  ground: "#101917"
-  surface: "#192622"
-  ink: "#edf2ea"
-  muted: "#b4c8bc"
-  button-ink: "#10291f"
-  light-ground: "#f4f6f3"
-  light-primary: "#006e5a"
+  page: "#f2f6f5"
+  surface: "#ffffff"
+  ink: "#1f3a3d"
+  body: "#46605f"
+  muted: "#5b7478"
+  accent: "#2f7d84"
+  accent-strong: "#22616a"
+  on-accent: "#ffffff"
+  dark-page: "#0f1a1c"
+  dark-surface: "#162427"
+  dark-ink: "#e4efed"
+  dark-accent: "#7cc4c0"
 typography:
   display:
-    fontFamily: "Space Grotesk, Segoe UI, sans-serif"
-    fontSize: "clamp(3.4rem, 7vw, 6rem)"
-    fontWeight: 500
-    lineHeight: 1.04
+    fontFamily: "Nunito Variable, Nunito, system-ui, sans-serif"
+    fontSize: "clamp(3.6rem, 12vw, 9.5rem)"
+    fontWeight: 300
+    lineHeight: 0.92
     letterSpacing: "-0.04em"
   body:
-    fontFamily: "Space Grotesk, Segoe UI, sans-serif"
+    fontFamily: "Nunito Variable, Nunito, system-ui, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.65
 rounded:
-  sm: "0.25rem"
-  md: "0.75rem"
+  sm: "11px"
+  md: "14px"
+  lg: "18px"
+  card: "28px"
+  pill: "999px"
 spacing:
   sm: "1rem"
   md: "1.5rem"
@@ -33,33 +39,43 @@ spacing:
   xl: "3rem"
 components:
   button-primary:
-    backgroundColor: "{colors.primary}"
-    textColor: "{colors.button-ink}"
-    rounded: "{rounded.sm}"
-    padding: "0.875rem 1.5rem"
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+    rounded: "{rounded.pill}"
+    padding: "0.875rem 1.6rem"
 ---
-# Design System: Fabio Zagaria
+# Design System: Fabio Zagaria — «Cielo dipinto»
 
 ## Overview
-Portfolio tecnico minimale e raffinato, come richiesto e confermato in chat. Nome, ruolo e lavoro reale hanno priorità. La descrizione del sistema deriva dal CSS implementato.
+Stile scelto dal proprietario il 20 novembre 2026: usare il sito deve dare la sensazione di toccare delle nuvole, qualcosa di morbido, calmo e rilassante, con molto movimento ma mai nervoso. Contenuti, sezioni, schede e route sono quelli di prima: è cambiato solo lo stile. Design approvato in `docs/superpowers/specs/2026-11-20-cielo-dipinto-redesign-design.md`. La descrizione deriva dal CSS implementato.
 
 ## Colors
-Accento teal su fondo antracite con tinta verde. Il tema chiaro usa fondo chiaro e teal scuro. Le variabili autorevoli e tutte le varianti sono in portfolio-angular/src/styles.css.
+Token `--calm-*` del Calm theme (repository `fabiozagaria/turni-elisa`, `docs/calm-theme/calm-theme.css`, commit `02d4ba1`), tema chiaro e scuro, in `portfolio-angular/src/styles.css`. I token storici del portfolio (`--clr-*`, `--card`, `--ff-*`, `--radius-*`) mantengono il nome e puntano ai `--calm-*`: per cambiare un colore si cambia il token Calm. Il testo colorato usa `--calm-accent-strong`, perché `--calm-accent` sul fondo chiaro non raggiunge il contrasto AA; `--calm-accent` resta per i pulsanti con `--calm-on-accent`.
 
 ## Typography
-Space Grotesk locale WOFF2 con font-display swap, condivisa da titoli e corpo. Corpo 17px, informazioni secondarie almeno 14px. Monospace soltanto per codice letterale. Titoli bilanciati, tracking non inferiore a -0.04em.
+Solo Nunito variabile, servito in locale da `@fontsource-variable/nunito`. Titoli h1/h2 in peso 300 con tracking negativo, h3/h4 in 650, corpo a 400. Il nome nell'hero diventa lentamente più corposo al passaggio del mouse. Niente testo trasformato in maiuscolo; monospace solo per codice e versioni.
 
 ## Layout
-Container massimo 1248px e padding clamp(1.25rem, 4vw, 4rem). Header 5rem. Breakpoint 60em, 48em e 30em. Le colonne diventano singole su smartphone; la griglia dei progetti usa `minmax(0, 1fr)`, così una scheda con contenuto largo non allarga la colonna oltre lo schermo. Identità iniziale, prova del progetto e elenco dei backend hanno composizioni distinte.
+Container massimo 1248px e padding clamp(1.25rem, 4vw, 4rem). Navigazione sospesa a pillola, staccata dai bordi, semitrasparente con sfocatura. Breakpoint 60em, 48em, 30em e 860px per l'hero. La griglia dei progetti usa `minmax(0, 1fr)`. Smartphone e desktop hanno gli stessi effetti; cambia solo la disposizione.
 
 ## Elevation & Depth
-Superfici piatte e separazione tonale; nessun bagliore o ombra decorativa a riposo.
+Profondità data da ombre ampie e trasparenti (`--calm-shadow-sm` a riposo, `--calm-shadow-md` sollevate), non da bordi. Schede, pannello dell'hero e navigazione sono superfici chiare sopra il fondo; nessun filetto decorativo.
 
 ## Shapes
-Azioni con raggio 4px; superfici di lettura con raggio 12px. Nessun bordo laterale decorativo.
+Raggi Calm 11/14/18px per controlli e superfici interne, 28px per schede, pannello dell'hero e navigazione, pillola per pulsanti, chip e badge.
+
+## Motion
+- **Cielo** (`SkyComponent` con il motore `sky-engine.ts`, canvas 2D del progetto): di notte, cioè col tema scuro, stelle a più profondità che brillano e ruotano piano, nebulosa tenue, una galassia a spirale e una lontana che ruotano, un pianeta con gli anelli e una luna, stelle cadenti rare; di giorno, col tema chiaro, solo il sole con un alone che respira e nuvole morbide che scorrono. Nell'hero il cielo completo, nelle altre pagine una fascia più bassa dietro il titolo. Pulsante «Ferma il cielo»; fermo fuori schermo e a scheda nascosta; immagine ferma con reduced motion.
+- **Costellazioni**: il puntatore o il dito accende le stelle vicine e le unisce con linee sottili; pianeti, galassie, sole e nuvole si spostano appena, a profondità diverse. Ascoltatori passivi: lo scroll non viene mai bloccato.
+- **Notte e giorno**: al cambio tema i due cieli si sfumano in circa 2,5 s (il sole sorge e il pianeta tramonta, o il contrario); sfondi della pagina in 2 s, testi in 0,9 s per restare leggibili; istantaneo con reduced motion.
+- **Frase che si illumina** (`WordHighlightDirective`): un solo paragrafo della home, dal grigio all'inchiostro mentre si scorre; cambiano solo i colori.
+- **Una volta al caricamento**: entrata dell'hero (circa 1,1 s) e salita dei titoli di pagina.
+- **Risposta a un'azione**: schede che si sollevano di 4px e si abbassano al tocco, pulsanti che si premono (scale 0,97), sottolineature che si disegnano, screenshot con zoom 1,02, «Implementazioni importanti» che si apre con altezza animata, badge «Novità» che respira per tre cicli, cambio tema graduale.
+- **Cambio pagina**: View Transitions 240/480ms; la scheda di Expense Tracker si trasforma tra Home e Progetti.
+- Easing `--calm-ease` (cubic-bezier(.23, 1, .32, 1)), risposte 160–500ms, movimenti di sfondo con cicli di decine di secondi. Hover solo con `(hover: hover) and (pointer: fine)`.
 
 ## Components
-Pulsanti alti almeno 48px. Navigazione e toggle almeno 44px; focus con outline teal di 3px e offset 5px. Menu mobile disclosure nello stesso ordine del DOM, Escape ripristina il focus, scorrimento interno nei viewport bassi. Schede con titolo prima di focus e stato. Le anteprime dei plugin usano una lista di termini e descrizioni nella cornice della scheda. Il conteggio in testata deriva dalle voci visualizzate. Transizioni route 120/220ms, disattivate con reduced motion. Badge "Novità" accanto al titolo con pulsazione finita (3 cicli, 1,6s), disattivata con reduced motion; "Implementazioni importanti" è un elemento details/summary alto almeno 44px. "Stato reale" mostra una sintesi breve e l'elenco "Cosa manca", mai un paragrafo cronologico; sotto 30em il padding interno delle schede è 1rem.
+Pulsanti alti almeno 48px, a pillola. Navigazione e toggle almeno 44px; focus con outline di 3px nel colore `--calm-focus`. Menu mobile disclosure nello stesso ordine del DOM, Escape ripristina il focus. Schede con titolo prima di focus e stato. «Stato reale» mostra una sintesi breve e l'elenco «Cosa manca». «Implementazioni importanti» è un elemento details/summary alto almeno 44px.
 
 ## Do's and Don'ts
-Conservare contenuti reali, stato dei progetti, gerarchia semantica, focus e contrasto. Evitare eyebrow decorative, gradienti, icone senza etichetta, animazioni continue e competenze inventate. Non aggiungere immagini o video solo per soddisfare un detector stilistico.
+Conservare contenuti reali, stato dei progetti, gerarchia semantica, focus e contrasto AA. Ammessi: movimento d'ambiente lento con pausa, risposte morbide a ogni azione, gradienti tenui nel cielo, il cielo stellato e il sole disegnati nel canvas. Vietati: testo che si muove con lo scroll, parallasse, reveal che nascondono contenuti finché non si scorre, scroll dirottato o ammorbidito via script, rimbalzi, lampeggi, movimento oltre 5 secondi senza pausa.
