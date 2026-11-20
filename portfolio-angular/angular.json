@@ -47,8 +47,8 @@
               },
               {
                 "glob": "**/*",
-                "input": "src/assets/fonts",
-                "output": "/assets/fonts"
+                "input": "src/assets/vendor",
+                "output": "/assets/vendor"
               },
               {
                 "glob": "*",

@@ -1,25 +1,4 @@
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
-  font-weight: 300 700;
-  font-display: swap;
-  src: url('/assets/fonts/space-grotesk-latin.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Bricolage Grotesque';
-  font-style: normal;
-  font-weight: 200 800;
-  font-stretch: 75% 100%;
-  font-display: swap;
-  src: url('/assets/fonts/bricolage-grotesque-latin-wdth.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/assets/fonts/instrument-serif-latin-400-italic.woff2') format('woff2');
-}
+@import '@fontsource-variable/nunito';
 
 :root {
   --clr-black: #f1f4fa;
