@@ -1,6 +1,6 @@
 # Redesign "Cielo dipinto" — documento di design
 
-Data: 20 novembre 2026. Stato: in attesa di approvazione del proprietario.
+Data: 20 novembre 2026. Stato: approvato dal proprietario il 20 novembre 2026.
 
 ## Perché
 
@@ -66,13 +66,16 @@ Il prototipo usa e getta della direzione A (https://claude.ai/artifact/W8z2kR4jz
 - **Font:** Nunito variabile, installato in locale con `@fontsource-variable/nunito`, al posto di
   Space Grotesk (i file WOFF2 di Space Grotesk vengono rimossi). Titoli in peso leggero (300),
   testo a 400, enfasi a 600–700. Niente maiuscolo nei testi né frecce nei link.
-- **Palette:** quella del Calm theme di Turni Elisa (`docs/calm-theme/calm-theme.css`, variabili
-  `--calm-*`), tema chiaro e scuro che segue il sistema e il pulsante attuale. Finché quel file
-  non è leggibile da qui vale la palette del prototipo come segnaposto:
-  chiaro fondo `#eef5f3`, superficie `#ffffff`, inchiostro `#1f3536`, secondario `#4f6967`,
-  accento `#2f7d74`; scuro fondo `#12201f`, superficie `#1b2b2a`, inchiostro `#e4efeb`,
-  secondario `#a3bab4`, accento `#7fcfc2`. Ogni coppia va verificata a contrasto AA.
-- **Forme:** raggi grandi (schede 28px, pulsanti a pillola), ombre larghe e trasparenti al posto
+- **Palette:** i token `--calm-*` del Calm theme, copiati da `fabiozagaria/turni-elisa`,
+  `docs/calm-theme/calm-theme.css` (commit `02d4ba1`), con tema chiaro e scuro che segue il sistema
+  e il pulsante attuale. Valori principali: chiaro pagina `#f2f6f5`, superficie `#ffffff`,
+  inchiostro `#1f3a3d`, testo `#46605f`, secondario `#5b7478`, accento `#2f7d84`; scuro pagina
+  `#0f1a1c`, superficie `#162427`, inchiostro `#e4efed`, testo `#bdd0cd`, secondario `#95aeaa`,
+  accento `#7cc4c0`. Ombre (`--calm-shadow-sm/md`) ed easing (`--calm-ease`) arrivano dallo stesso
+  file. I token del kit (`--p-*`) e quelli del portfolio vengono mappati sui `--calm-*`.
+- **Forme:** raggi del Calm theme (18, 14, 11px) per controlli e superfici interne; per schede
+  progetto, finestra dell'hero e barra di navigazione un raggio più ampio (circa 28px) e pulsanti
+  a pillola, come nel prototipo (scelta di chi scrive il design, da confermare a vista), ombre larghe e trasparenti al posto
   dei bordi, barra di navigazione sospesa e arrotondata con sfondo semitrasparente.
 
 ### Effetti e animazioni
@@ -136,5 +139,4 @@ stile o Three.js.
 
 ## Punti aperti
 
-- Palette definitiva: serve leggere `calm-theme.css` da `fabiozagaria/turni-elisa` (accesso in
-  lettura da autorizzare) oppure che Fabio incolli il file.
+Nessuno. Documento approvato da Fabio il 20 novembre 2026.
