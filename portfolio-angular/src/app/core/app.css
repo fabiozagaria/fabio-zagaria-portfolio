@@ -5,13 +5,12 @@
 .c-availability-status {
   margin-top: var(--header-height);
   color: var(--clr-white);
-  background: rgba(244, 184, 96, 0.14);
-  border-block: 1px solid rgba(154, 91, 0, 0.2);
+  background: var(--calm-attention-soft);
+  border-block: 0;
 }
 
 .c-availability-status[data-state='away'] {
-  background: rgba(239, 111, 108, 0.12);
-  border-color: rgba(239, 111, 108, 0.24);
+  background: var(--calm-danger-soft);
 }
 
 .c-availability-status__content {
@@ -28,12 +27,12 @@
   margin-top: 0.4rem;
   background: var(--clr-accent-yellow);
   border-radius: var(--radius-full);
-  box-shadow: 0 0 0 0.3rem rgba(244, 184, 96, 0.16);
+  box-shadow: 0 0 0 0.3rem var(--calm-attention-line);
 }
 
 .c-availability-status[data-state='away'] .c-availability-status__indicator {
   background: var(--clr-accent-red);
-  box-shadow: 0 0 0 0.3rem rgba(239, 111, 108, 0.14);
+  box-shadow: 0 0 0 0.3rem var(--calm-danger-line);
 }
 
 .c-availability-status__heading {
@@ -45,9 +44,8 @@
 }
 
 .c-availability-status__heading strong {
-  font-family: var(--ff-mono);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  color: var(--calm-ink);
+  font-weight: var(--fw-bold);
 }
 
 .c-availability-status__heading span {
