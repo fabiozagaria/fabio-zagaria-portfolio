@@ -62,7 +62,7 @@ export class SkyLightDirective {
     // While a finger scrolls the page the browser cancels the pointer, so
     // touches are followed through their own passive events.
     const onTouch = (event: TouchEvent): void => {
-      const touch = event.touches[0];
+      const touch = event.touches?.[0];
       if (touch) aim(touch.clientX, touch.clientY);
     };
     const onLeave = (): void => {
