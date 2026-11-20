@@ -1,7 +1,7 @@
 import { type Type } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { KitLoader } from '../shared/sky/kit-loader.service';
+import { SkyEngineFactory } from '../shared/sky/sky-engine';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ExperienceComponent } from './experience/experience.component';
@@ -22,10 +22,11 @@ describe('Sky band on the inner pages', () => {
         providers: [
           provideRouter([]),
           {
-            provide: KitLoader,
+            provide: SkyEngineFactory,
             useValue: {
-              mountSky: vi.fn().mockRejectedValue(new Error('no kit in tests')),
-              loadMoments: vi.fn(),
+              create: () => {
+                throw new Error('no canvas in tests');
+              },
             },
           },
         ],

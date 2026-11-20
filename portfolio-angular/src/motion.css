@@ -83,8 +83,8 @@
     transition:
       transform 500ms var(--calm-ease),
       box-shadow 500ms var(--calm-ease),
-      background-color 400ms ease,
-      color 400ms ease;
+      background-color 2s ease,
+      color 0.9s ease;
   }
   .c-card:active,
   .c-explore__item:active,
@@ -124,12 +124,13 @@
   article#gestionale-spese {
     view-transition-name: card-expense-tracker;
   }
+  /* Theme change: backgrounds follow the sky (about 2 s), text turns faster to stay readable. */
   body,
   .c-nav,
   .c-footer {
     transition:
-      background-color 400ms ease,
-      color 400ms ease;
+      background-color 2s ease,
+      color 0.9s ease;
   }
   :root {
     interpolate-size: allow-keywords;

@@ -1608,41 +1608,25 @@ button,
   }
 }
 
-/* Pointer light over the sky (SkyLightDirective): above the sky, under the words. */
-.c-sky-light {
-  --light-glow: color-mix(in oklab, #ffffff 70%, transparent);
-}
-html[data-theme='dark'] .c-sky-light {
-  --light-glow: color-mix(in oklab, var(--calm-accent-strong) 20%, transparent);
-}
-.c-sky-light::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(
-    var(--light-r, 520px) circle at var(--light-x, 78%) var(--light-y, 22%),
-    var(--light-glow),
-    transparent 72%
-  );
-}
-
 /* Inner pages carry a sky band behind their title (SkyComponent, variant band). */
 :where(.c-about, .c-experience, .c-projects, .c-contact).o-section {
   position: relative;
   isolation: isolate;
 }
 
-/* Taste Skill moments read --ink, --bg and --accent: map them to the Calm tokens.
-   Words not yet reached stay readable (about 4.5:1 on the page). */
-[data-moment] {
-  --ink: var(--calm-ink);
-  --bg: var(--calm-page);
-  --accent: var(--calm-accent-strong);
-}
-.c-explore .mo-wh .mo-w:not(.is-on) {
+/* Word highlight (WordHighlightDirective): words not yet reached stay readable
+   (about 4.5:1 on the page) and turn to ink as the paragraph crosses the screen. */
+.c-wh__word {
   color: color-mix(in oklab, var(--calm-ink) 66%, var(--calm-page));
+  transition: color 240ms ease;
+}
+.c-wh__word.is-on {
+  color: var(--calm-ink);
+}
+@media (prefers-reduced-motion: reduce) {
+  .c-wh__word {
+    transition: none;
+  }
 }
 
 /* On phones the band's pause button sits above the page title, never under it. */

@@ -612,7 +612,7 @@ export const PROJECTS = [
     screenshots: [
       {
         src: '/assets/img/project-portfolio.webp',
-        alt: 'Home del portfolio: nome su un cielo dipinto in toni acqua e salvia e scheda con stack, sede e formazione.',
+        alt: 'Home del portfolio nel tema chiaro: nome su un cielo con il sole e nuvole, scheda con stack, sede e formazione.',
         width: 1120,
         height: 708,
       },

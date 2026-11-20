@@ -160,7 +160,7 @@ La stessa sequenza viene eseguita automaticamente sulle pull request e sui push 
 
 Il pulsante sole/luna nella navigazione alterna tema chiaro e scuro. Al primo accesso segue il dispositivo; la scelta manuale viene ricordata nel browser.
 
-Lo stile è il «Cielo dipinto»: palette Calm acqua e salvia, font Nunito, un cielo dipinto che si muove lentamente dietro l'hero e i titoli (con il pulsante «Ferma il cielo»), una luce che segue il puntatore o il dito e risposte morbide al tocco. Con la riduzione del movimento attiva nel sistema tutto resta fermo. Lo sfondo usa alcuni file del kit [Taste Skill](https://github.com/Leonxlnx/taste-skill) (licenza MIT), copiati in `portfolio-angular/src/assets/vendor/taste-skill/`.
+Lo stile è il «Cielo dipinto»: palette Calm acqua e salvia, font Nunito e un cielo vero dietro l'hero e i titoli. Col tema scuro è una notte stellata, con galassie, un pianeta con gli anelli e costellazioni che si accendono sotto il puntatore o il dito; col tema chiaro c'è il sole tra le nuvole. Cambiando tema i due cieli si sfumano uno nell'altro. Il cielo ha il pulsante «Ferma il cielo» e, con la riduzione del movimento attiva nel sistema, resta fermo.
 
 ## Curriculum aggiornato — 29 ottobre 2026
 

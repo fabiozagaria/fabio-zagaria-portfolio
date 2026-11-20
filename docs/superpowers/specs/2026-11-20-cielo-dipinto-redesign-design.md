@@ -140,3 +140,24 @@ stile o Three.js.
 ## Punti aperti
 
 Nessuno. Documento approvato da Fabio il 20 novembre 2026.
+
+## Revisione del 20 novembre 2026: cielo stellato
+
+Fabio ha visto la PR #76: il cielo dipinto si nota troppo poco. L'universo è una sua passione, quindi
+il cielo diventa un cielo vero che segue il tema (prototipo approvato:
+https://claude.ai/artifact/GWtoPxMec82mVCWkYXk93u, privato).
+
+- **Notte (tema scuro):** stelle a più profondità che brillano piano e ruotano lentissime, nebulosa
+  tenue nei colori Calm, una galassia a spirale e una lontana che ruotano, un pianeta con gli anelli e
+  una piccola luna con un lieve effetto di profondità, stelle cadenti rare e lente. Il puntatore o il
+  dito accende le stelle vicine e le unisce come una costellazione.
+- **Giorno (tema chiaro):** solo il sole, con un alone che respira, e nuvole morbide che scorrono a
+  velocità diverse. Niente stelle né costellazioni.
+- **Transizione:** al cambio tema i due cieli si sfumano in circa due secondi e mezzo; il sole sorge
+  e il pianeta tramonta, o il contrario. I colori della pagina seguono; i testi cambiano in meno di un
+  secondo per restare leggibili. Istantanea con movimento ridotto.
+- **Pagine interne:** stessa scena nella fascia della testata, più bassa e tenue.
+- **Tecnica:** il cielo è un canvas 2D scritto nel progetto (`src/app/shared/sky/`), senza WebGL e
+  senza il kit Taste Skill; anche la frase che si illumina diventa una direttiva del progetto. Il kit e
+  la luce CSS separata vengono rimossi. Restano pausa, arresto fuori schermo, cielo fermo con movimento
+  ridotto, stesso comportamento su telefono e computer.

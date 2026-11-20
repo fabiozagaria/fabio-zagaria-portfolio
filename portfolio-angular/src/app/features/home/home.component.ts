@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SkyComponent } from '../../shared/sky/sky.component';
-import { SkyLightDirective } from '../../shared/sky/sky-light.directive';
-import { MomentDirective } from '../../shared/sky/moment.directive';
+import { WordHighlightDirective } from '../../shared/sky/word-highlight.directive';
 import { AI_PLUGINS } from '../../data/project-collections.data';
 import { PROJECTS, type PortfolioProject } from '../../data/projects.data';
 import { ProjectCardComponent } from '../projects/project-card/project-card.component';
@@ -10,7 +9,7 @@ import { ProjectCardComponent } from '../projects/project-card/project-card.comp
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, SkyComponent, SkyLightDirective, MomentDirective, ProjectCardComponent],
+  imports: [RouterLink, SkyComponent, WordHighlightDirective, ProjectCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

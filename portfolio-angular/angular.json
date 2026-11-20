@@ -46,11 +46,6 @@
                 "output": "/assets/img"
               },
               {
-                "glob": "**/*",
-                "input": "src/assets/vendor",
-                "output": "/assets/vendor"
-              },
-              {
                 "glob": "*",
                 "input": "src/assets/seo",
                 "output": "/"

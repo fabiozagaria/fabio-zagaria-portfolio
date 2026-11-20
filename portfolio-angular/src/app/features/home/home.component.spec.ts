@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { HomeComponent } from './home.component';
-import { KitLoader } from '../../shared/sky/kit-loader.service';
+import { SkyEngineFactory } from '../../shared/sky/sky-engine';
 
 describe('HomeComponent', () => {
   beforeEach(async () => {
@@ -10,10 +10,11 @@ describe('HomeComponent', () => {
       providers: [
         provideRouter([]),
         {
-          provide: KitLoader,
+          provide: SkyEngineFactory,
           useValue: {
-            mountSky: vi.fn().mockRejectedValue(new Error('no kit in tests')),
-            loadMoments: vi.fn().mockRejectedValue(new Error('no kit in tests')),
+            create: () => {
+              throw new Error('no canvas in tests');
+            },
           },
         },
       ],

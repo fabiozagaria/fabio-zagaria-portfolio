@@ -1,6 +1,6 @@
 ---
 name: Fabio Zagaria Portfolio
-description: Portfolio «Cielo dipinto», calmo e tenue, con palette Calm acqua e salvia
+description: Portfolio «Cielo dipinto», calmo e tenue, palette Calm acqua e salvia, cielo stellato di notte e sole di giorno
 colors:
   page: "#f2f6f5"
   surface: "#ffffff"
@@ -65,9 +65,10 @@ Profondità data da ombre ampie e trasparenti (`--calm-shadow-sm` a riposo, `--c
 Raggi Calm 11/14/18px per controlli e superfici interne, 28px per schede, pannello dell'hero e navigazione, pillola per pulsanti, chip e badge.
 
 ## Motion
-- **Cielo** (`SkyComponent`, effetto `painterly-landscape` del kit Taste Skill): sfondo vivo e lentissimo dell'hero, fascia più tenue dietro il titolo delle altre pagine; pulsante «Ferma il cielo»; fermo fuori schermo; immagine ferma con reduced motion; immagine di riserva senza WebGL.
-- **Luce** (`SkyLightDirective`): segue mouse e dito sull'hero con un ritardo morbido e torna a riposo; non blocca lo scroll.
-- **Frase che si illumina** (`word-highlight`): un solo paragrafo della home, dal grigio all'inchiostro mentre si scorre.
+- **Cielo** (`SkyComponent` con il motore `sky-engine.ts`, canvas 2D del progetto): di notte, cioè col tema scuro, stelle a più profondità che brillano e ruotano piano, nebulosa tenue, una galassia a spirale e una lontana che ruotano, un pianeta con gli anelli e una luna, stelle cadenti rare; di giorno, col tema chiaro, solo il sole con un alone che respira e nuvole morbide che scorrono. Nell'hero il cielo completo, nelle altre pagine una fascia più bassa dietro il titolo. Pulsante «Ferma il cielo»; fermo fuori schermo e a scheda nascosta; immagine ferma con reduced motion.
+- **Costellazioni**: il puntatore o il dito accende le stelle vicine e le unisce con linee sottili; pianeti, galassie, sole e nuvole si spostano appena, a profondità diverse. Ascoltatori passivi: lo scroll non viene mai bloccato.
+- **Notte e giorno**: al cambio tema i due cieli si sfumano in circa 2,5 s (il sole sorge e il pianeta tramonta, o il contrario); sfondi della pagina in 2 s, testi in 0,9 s per restare leggibili; istantaneo con reduced motion.
+- **Frase che si illumina** (`WordHighlightDirective`): un solo paragrafo della home, dal grigio all'inchiostro mentre si scorre; cambiano solo i colori.
 - **Una volta al caricamento**: entrata dell'hero (circa 1,1 s) e salita dei titoli di pagina.
 - **Risposta a un'azione**: schede che si sollevano di 4px e si abbassano al tocco, pulsanti che si premono (scale 0,97), sottolineature che si disegnano, screenshot con zoom 1,02, «Implementazioni importanti» che si apre con altezza animata, badge «Novità» che respira per tre cicli, cambio tema graduale.
 - **Cambio pagina**: View Transitions 240/480ms; la scheda di Expense Tracker si trasforma tra Home e Progetti.
@@ -77,4 +78,4 @@ Raggi Calm 11/14/18px per controlli e superfici interne, 28px per schede, pannel
 Pulsanti alti almeno 48px, a pillola. Navigazione e toggle almeno 44px; focus con outline di 3px nel colore `--calm-focus`. Menu mobile disclosure nello stesso ordine del DOM, Escape ripristina il focus. Schede con titolo prima di focus e stato. «Stato reale» mostra una sintesi breve e l'elenco «Cosa manca». «Implementazioni importanti» è un elemento details/summary alto almeno 44px.
 
 ## Do's and Don'ts
-Conservare contenuti reali, stato dei progetti, gerarchia semantica, focus e contrasto AA. Ammessi: movimento d'ambiente lento con pausa, risposte morbide a ogni azione, gradienti tenui nel cielo. Vietati: testo che si muove con lo scroll, parallasse, reveal che nascondono contenuti finché non si scorre, scroll dirottato o ammorbidito via script, rimbalzi, lampeggi, movimento oltre 5 secondi senza pausa. Non modificare i file del kit in `src/assets/vendor/taste-skill/`: si sostituiscono con una nuova versione.
+Conservare contenuti reali, stato dei progetti, gerarchia semantica, focus e contrasto AA. Ammessi: movimento d'ambiente lento con pausa, risposte morbide a ogni azione, gradienti tenui nel cielo, il cielo stellato e il sole disegnati nel canvas. Vietati: testo che si muove con lo scroll, parallasse, reveal che nascondono contenuti finché non si scorre, scroll dirottato o ammorbidito via script, rimbalzi, lampeggi, movimento oltre 5 secondi senza pausa.
