@@ -96,7 +96,7 @@ costruire comprensione e autonomia.
 | **Architettura Angular** | Componenti standalone, route caricate in modo lazy e dati dei progetti centralizzati e tipizzati                                          |
 | **Qualità del codice**   | TypeScript strict, `ChangeDetectionStrategy.OnPush`, Prettier e test Vitest                                                               |
 | **Accessibilità**        | HTML semantico, gerarchia dei titoli, focus visibile, skip link e menu mobile accessibile da tastiera                                     |
-| **Performance**          | Immagini WebP, copia selettiva degli asset e bundle iniziale stimato in circa 71 kB trasferiti (JS/CSS iniziali; font e immagini esclusi) |
+| **Performance**          | Immagini WebP, copia selettiva degli asset e bundle iniziale stimato in circa 83 kB trasferiti (JS/CSS iniziali; font e immagini esclusi) |
 | **SEO**                  | Metadati e canonical specifici per route, Open Graph e dati strutturati Schema.org                                                        |
 | **Delivery**             | CI su GitHub Actions e deploy automatico su Vercel                                                                                        |
 
@@ -159,6 +159,8 @@ La stessa sequenza viene eseguita automaticamente sulle pull request e sui push 
 ## Tema della pagina
 
 Il pulsante sole/luna nella navigazione alterna tema chiaro e scuro. Al primo accesso segue il dispositivo; la scelta manuale viene ricordata nel browser.
+
+Lo stile è il «Cielo dipinto»: palette Calm acqua e salvia, font Nunito, un cielo dipinto che si muove lentamente dietro l'hero e i titoli (con il pulsante «Ferma il cielo»), una luce che segue il puntatore o il dito e risposte morbide al tocco. Con la riduzione del movimento attiva nel sistema tutto resta fermo. Lo sfondo usa alcuni file del kit [Taste Skill](https://github.com/Leonxlnx/taste-skill) (licenza MIT), copiati in `portfolio-angular/src/assets/vendor/taste-skill/`.
 
 ## Curriculum aggiornato — 29 ottobre 2026
 

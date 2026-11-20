@@ -13,10 +13,10 @@ Recruiter e responsabili tecnici che valutano Fabio Zagaria per ruoli Junior Jav
 Presentare profilo, competenze dimostrabili, progetti e documenti professionali; permettere di esaminare codice, demo e CV e di contattare Fabio.
 
 ## Capabilities and Constraints
-Angular 21 e TypeScript 5.9 esistenti. Preservare route, tema chiaro/scuro, documenti, link e dati tipizzati. Nessuna nuova libreria applicativa, nessuna esperienza o competenza inventata. Commit, push e deploy richiedono approvazione esplicita.
+Angular 21 e TypeScript 5.9 esistenti. Preservare route, tema chiaro/scuro, documenti, link e dati tipizzati. Nessuna nuova libreria applicativa oltre al font Nunito e ai file del kit Taste Skill copiati in `src/assets/vendor/`, nessuna esperienza o competenza inventata. Commit, push e deploy richiedono approvazione esplicita.
 
 ## Brand Commitments
-Testi italiani, identificatori tecnici inglesi. Portfolio minimalista, tecnologico e raffinato; dark mode curata, palette limitata, animazioni discrete. Il proprietario ha confermato la direzione tipografica antracite/teal con nome e ruolo immediati e progetti tecnici al centro.
+Testi italiani, identificatori tecnici inglesi. Stile «Cielo dipinto», confermato dal proprietario il 20 novembre 2026: calmo, tenue e morbido, palette Calm acqua e salvia, Nunito, dark mode curata, animazioni lente e continue che rilassano (cielo vivo con pausa, risposte morbide al tocco), quasi identico su smartphone e desktop. Nome e ruolo restano immediati e i progetti tecnici al centro.
 
 ## Evidence on Hand
 README.md, docs/CONTEXT.md, src/app/data sotto portfolio-angular, CV e attestato nei documenti pubblici. Expense Tracker ha scope funzionale concluso; AccessDesk e JobFlow sono in sviluppo; MedTransit è in progettazione, senza codice. Il collaudo dei progetti collegati non è attestato dal redesign.
