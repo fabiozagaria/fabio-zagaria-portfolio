@@ -1617,3 +1617,23 @@ button,
     animation: none;
   }
 }
+
+/* Pointer light over the sky (SkyLightDirective): above the sky, under the words. */
+.c-sky-light {
+  --light-glow: color-mix(in oklab, #ffffff 70%, transparent);
+}
+html[data-theme='dark'] .c-sky-light {
+  --light-glow: color-mix(in oklab, var(--calm-accent-strong) 20%, transparent);
+}
+.c-sky-light::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    var(--light-r, 520px) circle at var(--light-x, 78%) var(--light-y, 22%),
+    var(--light-glow),
+    transparent 72%
+  );
+}
