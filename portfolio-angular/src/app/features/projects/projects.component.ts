@@ -1,3 +1,4 @@
+import { SkyComponent } from '../../shared/sky/sky.component';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PortfolioProject, ProjectCategory, PROJECTS } from '../../data/projects.data';
 import {
@@ -35,6 +36,7 @@ type ProjectsSection =
     ProjectUpdateComponent,
     RecentBadgeComponent,
     VersionTagsComponent,
+    SkyComponent,
   ],
   templateUrl: './projects.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,

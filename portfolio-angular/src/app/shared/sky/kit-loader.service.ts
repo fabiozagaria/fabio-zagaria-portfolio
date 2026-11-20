@@ -48,6 +48,8 @@ export class KitLoader {
 
   async loadMoments(): Promise<MomentsApi> {
     if (!this.browser) throw new Error('Moments run only in the browser.');
+    // Angular mounts each moment through MomentDirective, not the kit's page scan.
+    (window as Window & { __momentsManual?: boolean }).__momentsManual = true;
     const module = await import(/* @vite-ignore */ `${KIT}/moments/moments.js`);
     return module.default as MomentsApi;
   }

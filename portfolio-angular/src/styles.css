@@ -1637,3 +1637,9 @@ html[data-theme='dark'] .c-sky-light {
     transparent 72%
   );
 }
+
+/* Inner pages carry a sky band behind their title (SkyComponent, variant band). */
+:where(.c-about, .c-experience, .c-projects, .c-contact).o-section {
+  position: relative;
+  isolation: isolate;
+}
