@@ -48,7 +48,7 @@ Expense Tracker ha una sola scheda, con collegamenti distinti a frontend e backe
 | learning-ledger         | [learning-ledger](https://github.com/fabiozagaria/learning-ledger)                 |
 | spring-security-advisor | [spring-security-advisor](https://github.com/fabiozagaria/spring-security-advisor) |
 
-Plugin per Claude Code pubblicati dal proprietario, con uno script Python che verifica e il modello che spiega. Le schede dichiarano versione, limiti e stato delle verifiche, come per gli altri progetti.
+Plugin per Claude Code pubblicati dal proprietario, con uno script Python che verifica e il modello che spiega. Le schede dichiarano versione, limiti e stato delle verifiche, come per gli altri progetti. Ogni plugin elenca le skill disponibili e la funzione di ciascuna.
 
 ## Sperimentale con AI
 
