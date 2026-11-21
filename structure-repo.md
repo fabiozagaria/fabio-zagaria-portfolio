@@ -2,6 +2,8 @@
 
 Aggiornato: 17 novembre 2026.
 
+**Prossimo passo urgente:** rigenerare il CV con Career Ops (vedi `docs/CV-DA-RIGENERARE.md`); il repository `curriculum-vitae-fabio-zagaria` va aggiornato con ogni nuova versione.
+
 Mappa corrente dei repository e della loro collocazione nel portfolio. È un documento di riferimento da mantenere aggiornato insieme ai contenuti del sito.
 
 Le categorie seguono le scelte del proprietario. La presenza di una tecnologia, da sola, non determina la categoria.

@@ -24,10 +24,15 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 - Task Manager: laboratorio guidato; refresh, rotazione e logout implementati, test comportamentali e cookie HttpOnly/Secure da completare.
 - Aggiornati anche generatore e PDF del CV: Expense Tracker, AccessDesk, PostgreSQL autodidatta; formato a pagina singola. Copia identica da sincronizzare nel repository curriculum.
 
+## Prossimo passo urgente
+Rigenerare il CV con Career Ops sul PC di Fabio: il PDF è fermo al 5 novembre 2026 (cita ancora MySQL, mancano JobFlow e MedTransit) mentre il payload è già aggiornato. Procedura in `docs/CV-DA-RIGENERARE.md`.
+
 ## Regole di mantenimento
 - Aggiornare il portfolio solo quando una competenza o un progetto è realmente dimostrabile.
 - Mantenere allineati README, contenuti del sito e CV.
+- **Regola fissa sul CV:** a ogni modifica importante e visibile (nuova tecnologia o strumento studiato e dimostrabile, nuovo progetto o cambio di stato, funzionalità o cambiamento importante, correzione di un dato) l'assistente propone «Vuoi aggiornare anche il CV?» e, se sì, aggiorna payload, PDF, repository del curriculum e data nella stessa attività. Dettagli in `docs/CV-DA-RIGENERARE.md`.
 - Il payload `portfolio-angular/scripts/cv-career-ops.json` contiene i dati del CV corrente; il PDF è generato con Career Ops.
+- **Progetti nel CV (21 novembre 2026, richiesta di Fabio):** il payload elenca solo i progetti full stack e backend, in quest'ordine: Expense Tracker, JobFlow, AccessDesk (in sviluppo) e MedTransit, dichiarato «In progettazione, nessun codice» con tecnologie «Previsti». Restano fuori corsi, plugin ed esercizi. Il PDF va rigenerato con Career Ops e deve restare a una pagina (`--strict-pages`): se quattro progetti non ci stanno, accorciare le descrizioni, non togliere l'etichetta di MedTransit.
 - **Regola fondamentale:** ogni aggiornamento del CV va sempre registrato anche nel repository `curriculum-vitae-fabio-zagaria` (archivio datato, CHANGELOG, tag).
 - Non riportare qui voti, ripassi o cronologia didattica: restano in Notion.
 
