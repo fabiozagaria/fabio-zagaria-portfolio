@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { GithubCardComponent } from '../../shared/github-card/github-card.component';
 import { LinkedinCardComponent } from '../../shared/linkedin-card/linkedin-card.component';
+import { LinkedinPostsComponent } from '../../shared/linkedin-posts/linkedin-posts.component';
 import { SkyComponent } from '../../shared/sky/sky.component';
 
 const MESSAGE_VISIBLE_MS = 5000;
@@ -16,7 +17,7 @@ const MESSAGE_VISIBLE_MS = 5000;
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [GithubCardComponent, LinkedinCardComponent, SkyComponent],
+  imports: [GithubCardComponent, LinkedinCardComponent, LinkedinPostsComponent, SkyComponent],
   templateUrl: './contact.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

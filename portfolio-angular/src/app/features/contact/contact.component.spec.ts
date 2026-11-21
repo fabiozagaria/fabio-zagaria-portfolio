@@ -74,6 +74,16 @@ describe('ContactComponent', () => {
     ).toBeTruthy();
   });
 
+  it('puts the tall LinkedIn post last, so nobody scrolls past it to reach the CV', () => {
+    const documents = element.querySelector('.c-contact__documents') as HTMLElement;
+    const posts = element.querySelector('app-linkedin-posts') as HTMLElement;
+
+    expect(posts.querySelector('iframe')).not.toBeNull();
+    expect(
+      documents.compareDocumentPosition(posts) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
   it('gives every link a name that identifies its destination', () => {
     const hrefsByName = new Map<string, Set<string>>();
     for (const link of Array.from(element.querySelectorAll<HTMLAnchorElement>('a[href]'))) {
