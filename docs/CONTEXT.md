@@ -24,15 +24,12 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 - Task Manager: laboratorio guidato; refresh, rotazione e logout implementati, test comportamentali e cookie HttpOnly/Secure da completare.
 - Aggiornati anche generatore e PDF del CV: Expense Tracker, AccessDesk, PostgreSQL autodidatta; formato a pagina singola. Copia identica da sincronizzare nel repository curriculum.
 
-## Prossimo passo urgente
-Rigenerare il CV con Career Ops sul PC di Fabio: il PDF è fermo al 5 novembre 2026 (cita ancora MySQL, mancano JobFlow e MedTransit) mentre il payload è già aggiornato. Procedura in `docs/CV-DA-RIGENERARE.md`.
-
 ## Regole di mantenimento
 - Aggiornare il portfolio solo quando una competenza o un progetto è realmente dimostrabile.
 - Mantenere allineati README, contenuti del sito e CV.
 - **Regola fissa sul CV:** a ogni modifica importante e visibile (nuova tecnologia o strumento studiato e dimostrabile, nuovo progetto o cambio di stato, funzionalità o cambiamento importante, correzione di un dato) l'assistente propone «Vuoi aggiornare anche il CV?» e, se sì, aggiorna payload, PDF, repository del curriculum e data nella stessa attività. Dettagli in `docs/CV-DA-RIGENERARE.md`.
 - Il payload `portfolio-angular/scripts/cv-career-ops.json` contiene i dati del CV corrente; il PDF è generato con Career Ops.
-- **Progetti nel CV (21 novembre 2026, richiesta di Fabio):** il payload elenca solo i progetti full stack e backend, in quest'ordine: Expense Tracker, JobFlow, AccessDesk (in sviluppo) e MedTransit, dichiarato «In progettazione, nessun codice» con tecnologie «Previsti». Restano fuori corsi, plugin ed esercizi. Il PDF va rigenerato con Career Ops e deve restare a una pagina (`--strict-pages`): se quattro progetti non ci stanno, accorciare le descrizioni, non togliere l'etichetta di MedTransit.
+- **Progetti nel CV (21 novembre 2026, richiesta di Fabio):** il payload elenca solo i progetti full stack e backend, in quest'ordine: Expense Tracker, JobFlow, AccessDesk (in sviluppo) e MedTransit, dichiarato «In progettazione, nessun codice» con tecnologie «Previsti». Restano fuori corsi, plugin ed esercizi. Per far stare quattro progetti in una pagina (`--strict-pages`) le descrizioni sono a una riga e «Studio autonomo» è abbreviato; l'etichetta di MedTransit non si toglie.
 - **Regola fondamentale:** ogni aggiornamento del CV va sempre registrato anche nel repository `curriculum-vitae-fabio-zagaria` (archivio datato, CHANGELOG, tag).
 - Non riportare qui voti, ripassi o cronologia didattica: restano in Notion.
 
@@ -42,7 +39,7 @@ Rigenerare il CV con Career Ops sul PC di Fabio: il PDF è fermo al 5 novembre 2
 - Dal 29 ottobre 2026 il PDF pubblico usa il template nativo Career Ops. Dati: `portfolio-angular/scripts/cv-career-ops.json`. Il generatore Python precedente è stato rimosso; seguire il flusso Career Ops descritto in `AGENTS.md`.
 
 - **Versione del CV (21 novembre 2026).** `portfolio-angular/src/app/data/cv.data.ts` è l'unica fonte di data (`updatedAt`, data dei contenuti, non del build) e SHA-256 del PDF; da lì derivano `?v=`, i link di Home e Contatti e la dicitura «CV aggiornato il …» (Home sotto «Scarica il CV», Contatti sotto le azioni). `npm run cv:meta -- AAAA-MM-GG` aggiorna data e impronta dopo la rigenerazione; `npm run cv:check` (incluso in `test:ci`) fallisce se il PDF non corrisponde ai dati. La data dentro il PDF non è stata implementata: non verificabile con il template Career Ops.
-- Testi del sito e payload del CV allineati a PostgreSQL (21 novembre 2026): Expense Tracker usa PostgreSQL/Neon con Flyway, Testcontainers e CI su GitHub Actions. MySQL resta citato dove è il percorso LabForWeb e i primi progetti. **Il PDF va rigenerato con Career Ops sul PC di Fabio** (qui non è disponibile): finché non lo si fa, il PDF pubblico dice ancora MySQL.
+- Testi del sito e payload del CV allineati a PostgreSQL (21 novembre 2026): Expense Tracker usa PostgreSQL/Neon con Flyway, Testcontainers e CI su GitHub Actions. MySQL resta citato dove è il percorso LabForWeb e i primi progetti. **Il PDF è stato rigenerato il 21 novembre 2026** (`cv.data.ts`: 2026-11-21, sha256 `8915cc58`), con Career Ops installato nel cloud (commit fissato, vedi `docs/CV-DA-RIGENERARE.md`); il rendering cloud è identico pixel per pixel a quello del PDF precedente.
 
 ## Punto di attenzione
 Quando cambiano versione, stato o focus di un progetto pubblico collegato, verificare se il portfolio necessita di sincronizzazione.

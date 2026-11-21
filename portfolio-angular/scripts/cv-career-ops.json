@@ -44,28 +44,28 @@
       "name": "Expense Tracker",
       "url": "https://gestionale-spese.vercel.app/",
       "tech": "Angular, Spring Boot, PostgreSQL",
-      "description": "Applicazione full stack per spese ed entrate personali: dashboard, ricerca, filtro mensile e paginazione. API con JWT, refresh token HttpOnly con rotazione e rate limiting; migrazioni Flyway, test con Testcontainers e CI su GitHub Actions; registrazione e verifica email."
+      "description": "Full stack per spese ed entrate: JWT con refresh token a rotazione, rate limiting, Flyway, Testcontainers e CI su GitHub Actions."
     },
     {
       "name": "JobFlow",
       "url": "https://github.com/fabiozagaria/job-flow",
       "badge": "Autonomo, in sviluppo",
       "tech": "Java 21, Spring Boot, PostgreSQL",
-      "description": "Backend per creare e consultare job asincroni tramite API REST: validazione, persistenza JPA, migrazioni Flyway, Swagger UI e Docker. Elaborazione in un worker separato dopo il commit (eventi transazionali e @Async); generazione PDF e stati finali ancora da completare."
+      "description": "Backend per job asincroni: API REST, JPA, Flyway, Swagger UI, Docker; worker dopo il commit. PDF e stati finali da completare."
     },
     {
       "name": "AccessDesk",
       "url": "https://github.com/fabiozagaria/accessdesk-api",
       "badge": "Autonomo, in sviluppo",
       "tech": "Java 21, Spring Boot, PostgreSQL",
-      "description": "API REST per richieste di accesso software con ruoli dipendente e manager. Autenticazione JWT e autorizzazioni Spring Security; JPA/Hibernate, Flyway, transazioni, locking ottimistico, DTO, validazione e gestione centralizzata degli errori."
+      "description": "API REST per richieste di accesso con ruoli dipendente e manager: JWT, Spring Security, JPA/Hibernate, Flyway, locking ottimistico."
     },
     {
       "name": "MedTransit",
       "url": "https://github.com/fabiozagaria/med-transit-msa",
       "badge": "In progettazione, nessun codice",
-      "tech": "Previsti: Spring Boot, Kafka, PostgreSQL",
-      "description": "Prossimo progetto di studio: trasporti interni in un ospedale con dati fittizi, a microservizi ed eventi (outbox, idempotenza dei consumer, dead-letter). Design approvato e documentato nel repository; l'implementazione parte dopo JobFlow."
+      "tech": "",
+      "description": "Prossimo progetto di studio (Spring Boot, Kafka, PostgreSQL previsti): trasporti ospedalieri fittizi a eventi. Solo design, nessun codice."
     }
   ],
   "education": [
@@ -107,11 +107,11 @@
     },
     {
       "category": "AI e sviluppo assistito",
-      "items": "Claude Code (strumento principale) con plugin e skill, anche sviluppati in proprio; MCP (Model Context Protocol); ChatGPT; OpenAI Codex Desktop e Codex Skills; coding agent per sviluppo, debugging, code review e analisi del codice."
+      "items": "Claude Code (principale) con plugin e skill propri; MCP; ChatGPT; OpenAI Codex Desktop e Skills; coding agent."
     },
     {
       "category": "Studio autonomo",
-      "items": "PostgreSQL in profondità, applicato in Expense Tracker, AccessDesk e JobFlow; utilizzo dell'AI nello sviluppo; architettura software; prossimo approfondimento: C++"
+      "items": "PostgreSQL in profondità; architettura software; prossimo approfondimento: C++"
     },
     {
       "category": "Lingue",
