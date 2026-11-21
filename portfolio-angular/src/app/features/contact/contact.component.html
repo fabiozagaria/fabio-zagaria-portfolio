@@ -23,6 +23,10 @@
           </a>
         </div>
 
+        <p class="c-contact__cv-note">
+          CV aggiornato il <time [attr.datetime]="cv.updatedAt">{{ cv.updatedLabel }}</time>
+        </p>
+
         <div class="c-contact__email">
           <span class="c-contact__address" #address>{{ email }}</span>
           <button
@@ -61,7 +65,7 @@
                 <a
                   class="c-btn c-btn--secondary"
                   [href]="cv.download"
-                  download="CV_Fabio_Zagaria.pdf"
+                  [attr.download]="cv.downloadName"
                   aria-label="Scarica il CV in PDF"
                 >
                   Scarica
@@ -120,6 +124,8 @@
             </article>
           </div>
         </div>
+
+        <app-linkedin-posts />
       </div>
     </div>
   </div>

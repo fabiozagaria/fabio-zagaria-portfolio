@@ -96,6 +96,11 @@
   gap: 1.5rem;
   flex-wrap: wrap;
 }
+.c-hero__cv-note {
+  margin: 0.75rem 0 0;
+  color: var(--calm-muted);
+  font-size: 0.875rem;
+}
 .c-hero__cv {
   display: inline-flex;
   min-height: 44px;

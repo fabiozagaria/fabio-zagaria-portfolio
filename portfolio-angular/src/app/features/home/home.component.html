@@ -8,14 +8,14 @@
           <span class="c-hero__last"><span class="c-hero__word">Zagaria</span></span>
         </h1>
         <p class="c-hero__dimension">
-          <span>Java · Spring Boot · REST API · MySQL</span>
+          <span>Java · Spring Boot · REST API · PostgreSQL</span>
         </p>
       </div>
       <p class="c-hero__role">Junior Backend Developer<br />con visione full stack.</p>
     </div>
     <div class="c-hero__side">
       <p class="c-hero__description">
-        Sviluppo API REST con Java, Spring Boot e MySQL. Con Angular e TypeScript collego
+        Sviluppo API REST con Java, Spring Boot e PostgreSQL. Con Angular e TypeScript collego
         interfaccia, logica applicativa e dati.
       </p>
       <dl class="c-hero__facts">
@@ -34,10 +34,13 @@
       </dl>
       <div class="c-hero__actions">
         <a routerLink="/projects" class="c-btn c-btn--primary">Vedi i progetti</a>
-        <a href="/downloads/CV.pdf?v=8db4d300" download="CV_Fabio_Zagaria.pdf" class="c-hero__cv"
+        <a [href]="cv.download" [attr.download]="cv.downloadName" class="c-hero__cv"
           >Scarica il CV</a
         >
       </div>
+      <p class="c-hero__cv-note">
+        CV aggiornato il <time [attr.datetime]="cv.updatedAt">{{ cv.updatedLabel }}</time>
+      </p>
     </div>
   </div>
 </section>
@@ -99,9 +102,7 @@
     </div>
     <div class="c-resume__actions">
       <a routerLink="/contact" class="c-btn c-btn--primary">Contattami</a
-      ><a href="/assets/documents/CV.pdf?v=8db4d300" target="_blank" rel="noopener noreferrer"
-        >Leggi il CV (PDF)</a
-      >
+      ><a [href]="cv.view" target="_blank" rel="noopener noreferrer">Leggi il CV (PDF)</a>
     </div>
   </div>
 </section>

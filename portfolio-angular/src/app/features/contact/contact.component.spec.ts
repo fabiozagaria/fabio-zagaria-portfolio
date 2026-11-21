@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CV, CV_DOWNLOAD_URL, CV_VIEW_URL, cvUpdatedLabel } from '../../data/cv.data';
 import { ContactComponent } from './contact.component';
 
 describe('ContactComponent', () => {
@@ -30,7 +31,7 @@ describe('ContactComponent', () => {
     const links = Array.from(element.querySelectorAll<HTMLAnchorElement>('a[download]'));
 
     expect(links.map((link) => link.getAttribute('href'))).toEqual([
-      '/downloads/CV.pdf?v=8db4d300',
+      CV_DOWNLOAD_URL,
       '/downloads/Attestato_LabForWeb_Fabio_Zagaria.pdf',
     ]);
   });
@@ -59,7 +60,15 @@ describe('ContactComponent', () => {
     expect(write.textContent?.trim()).toBe('Scrivimi una email');
     expect(write.getAttribute('href')).toBe('mailto:zagariafabio1999@gmail.com');
     expect(cv.textContent?.trim()).toBe('Apri il CV');
-    expect(cv.getAttribute('href')).toBe('/assets/documents/CV.pdf?v=8db4d300');
+    expect(cv.getAttribute('href')).toBe(CV_VIEW_URL);
+  });
+
+  it('says when the CV was last updated, right under the main actions', () => {
+    const note = element.querySelector('.c-contact__cv-note');
+
+    expect(note?.textContent).toContain(`CV aggiornato il ${cvUpdatedLabel()}`);
+    expect(note?.querySelector('time')?.getAttribute('datetime')).toBe(CV.updatedAt);
+    expect(note?.previousElementSibling?.classList.contains('c-contact__actions')).toBe(true);
   });
 
   it('shows each channel once, and before the documents', () => {
@@ -71,6 +80,16 @@ describe('ContactComponent', () => {
     const documents = element.querySelector('.c-contact__documents') as HTMLElement;
     expect(
       places.compareDocumentPosition(documents) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
+  it('puts the tall LinkedIn post last, so nobody scrolls past it to reach the CV', () => {
+    const documents = element.querySelector('.c-contact__documents') as HTMLElement;
+    const posts = element.querySelector('app-linkedin-posts') as HTMLElement;
+
+    expect(posts.querySelector('iframe')).not.toBeNull();
+    expect(
+      documents.compareDocumentPosition(posts) & Node.DOCUMENT_POSITION_FOLLOWING,
     ).toBeTruthy();
   });
 

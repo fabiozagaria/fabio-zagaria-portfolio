@@ -7,8 +7,16 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
+import {
+  CV,
+  CV_DOWNLOAD_NAME,
+  CV_DOWNLOAD_URL,
+  CV_VIEW_URL,
+  cvUpdatedLabel,
+} from '../../data/cv.data';
 import { GithubCardComponent } from '../../shared/github-card/github-card.component';
 import { LinkedinCardComponent } from '../../shared/linkedin-card/linkedin-card.component';
+import { LinkedinPostsComponent } from '../../shared/linkedin-posts/linkedin-posts.component';
 import { SkyComponent } from '../../shared/sky/sky.component';
 
 const MESSAGE_VISIBLE_MS = 5000;
@@ -16,16 +24,19 @@ const MESSAGE_VISIBLE_MS = 5000;
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [GithubCardComponent, LinkedinCardComponent, SkyComponent],
+  imports: [GithubCardComponent, LinkedinCardComponent, LinkedinPostsComponent, SkyComponent],
   templateUrl: './contact.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactComponent {
   readonly email = 'zagariafabio1999@gmail.com';
-  /** Il parametro `v` cambia a ogni nuova versione del CV, così il browser non serve una copia vecchia. */
+  /** Link e data vengono da `cv.data.ts`: l'unico posto da aggiornare a ogni nuovo CV. */
   readonly cv = {
-    view: '/assets/documents/CV.pdf?v=8db4d300',
-    download: '/downloads/CV.pdf?v=8db4d300',
+    view: CV_VIEW_URL,
+    download: CV_DOWNLOAD_URL,
+    downloadName: CV_DOWNLOAD_NAME,
+    updatedAt: CV.updatedAt,
+    updatedLabel: cvUpdatedLabel(),
   };
   readonly copyMessage = signal('');
 

@@ -25,7 +25,7 @@ README.md, docs/CONTEXT.md, src/app/data sotto portfolio-angular, CV e attestato
 - Mostrare prove tecniche concrete e lo stato reale di ciascun progetto.
 - Distinguere lavoro autonomo, formazione e laboratori assistiti.
 - Conservare architettura e funzionalità che già funzionano.
-- Rendere rapida la consultazione del CV e dei contatti.
+- Rendere rapida la consultazione del CV e dei contatti, dichiarando la data dell'ultimo aggiornamento dei contenuti del CV.
 
 ## Accessibility & Inclusion
 HTML semantico, tastiera, contrasto WCAG AA, reduced motion e leggibilità su smartphone.

@@ -1030,6 +1030,11 @@ app-recent-badge {
   flex-wrap: wrap;
   gap: 1rem;
 }
+.c-contact__cv-note {
+  margin: 0.75rem 0 0;
+  color: var(--clr-white-subtle);
+  font-size: var(--fs-300);
+}
 .c-contact__email {
   display: flex;
   flex-wrap: wrap;
@@ -1086,6 +1091,25 @@ app-recent-badge {
   margin-top: auto;
 }
 /* Schede dei profili (LinkedIn e GitHub): stessa superficie, dati del sito, nessuna richiesta a terzi. */
+.c-posts__item {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+.c-posts__item > a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.c-posts__frame {
+  display: block;
+  width: min(100%, 504px);
+  max-width: 100%;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--card);
+  box-shadow: var(--shadow-soft);
+}
 .c-place {
   display: flex;
   height: 100%;

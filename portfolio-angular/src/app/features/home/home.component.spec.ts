@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { CV, CV_DOWNLOAD_URL, CV_VIEW_URL, cvUpdatedLabel } from '../../data/cv.data';
 import { provideRouter } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { SkyEngineFactory } from '../../shared/sky/sky-engine';
@@ -36,8 +37,29 @@ describe('HomeComponent', () => {
     const element = fixture.nativeElement as HTMLElement;
     const downloadLink = element.querySelector<HTMLAnchorElement>('a[download]');
 
-    expect(downloadLink?.getAttribute('href')).toBe('/downloads/CV.pdf?v=8db4d300');
+    expect(downloadLink?.getAttribute('href')).toBe(CV_DOWNLOAD_URL);
     expect(downloadLink?.getAttribute('download')).toBe('CV_Fabio_Zagaria.pdf');
+  });
+
+  it('says when the CV was last updated, with both CV links taken from the same source', () => {
+    const fixture = TestBed.createComponent(HomeComponent);
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+    const note = element.querySelector('.c-hero__cv-note');
+    const links = Array.from(element.querySelectorAll<HTMLAnchorElement>('a[href*="CV.pdf"]'));
+
+    expect(note?.textContent).toContain(`CV aggiornato il ${cvUpdatedLabel()}`);
+    expect(note?.querySelector('time')?.getAttribute('datetime')).toBe(CV.updatedAt);
+    expect(links.map((link) => link.getAttribute('href'))).toEqual([CV_DOWNLOAD_URL, CV_VIEW_URL]);
+  });
+
+  it('presents the backend stack as PostgreSQL, the database of the main projects', () => {
+    const fixture = TestBed.createComponent(HomeComponent);
+    fixture.detectChanges();
+    const hero = (fixture.nativeElement as HTMLElement).querySelector('.c-hero') as HTMLElement;
+
+    expect(hero.textContent).toContain('PostgreSQL');
+    expect(hero.textContent).not.toContain('MySQL');
   });
 
   it('shows only the full stack project, with its demo and repositories, and no coursework', () => {
