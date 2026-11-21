@@ -162,6 +162,8 @@ Il pulsante sole/luna nella navigazione alterna tema chiaro e scuro. Al primo ac
 
 Lo stile è il «Cielo dipinto»: palette Calm acqua e salvia, font Nunito e un cielo vero dietro l'hero e i titoli. Col tema scuro è una notte stellata, con galassie, un pianeta con gli anelli e costellazioni che si accendono sotto il puntatore o il dito; col tema chiaro c'è il sole tra le nuvole. Cambiando tema i due cieli si sfumano uno nell'altro. Il cielo ha il pulsante «Ferma il cielo» e, con la riduzione del movimento attiva nel sistema, resta fermo.
 
+> **Prossimo passo urgente:** rigenerare il CV con Career Ops sul PC. Il PDF pubblicato è del 5 novembre 2026 e cita ancora MySQL, senza JobFlow e MedTransit. Procedura in [docs/CV-DA-RIGENERARE.md](./docs/CV-DA-RIGENERARE.md).
+
 ## Versione del CV
 
 La pagina Home e la pagina Contatti mostrano «CV aggiornato il …». La data è quella dell'ultima **modifica dei contenuti** del CV, non quella di un rebuild del sito. Dati in un solo file, `portfolio-angular/src/app/data/cv.data.ts` (data e SHA-256 del PDF); l'indirizzo con `?v=` è derivato dall'impronta, quindi il browser non serve mai un PDF vecchio.
