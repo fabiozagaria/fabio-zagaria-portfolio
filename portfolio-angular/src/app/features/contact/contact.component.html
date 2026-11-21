@@ -1,76 +1,70 @@
 <section id="contact" class="c-contact o-section">
   <app-sky variant="band" />
   <div class="c-contact__container o-container">
-    <h1 class="c-section-title">CONTATTI</h1>
+    <h1 class="c-section-title">Contatti</h1>
 
     <div class="c-contact__content c-contact__content--single">
       <div class="c-contact__info">
-        <h2>Parliamo di una collaborazione</h2>
-        <p>
+        <p class="c-contact__lead">
           Sono disponibile per ruoli Junior Backend o Full Stack, a Roma oppure in modalità ibrida e
           da remoto in Italia.
         </p>
-        <a
-          class="c-btn c-btn--primary c-contact__primary-action"
-          href="mailto:zagariafabio1999@gmail.com"
-        >
-          Scrivimi
-        </a>
 
-        <div class="c-contact__details">
-          <div class="c-contact__item">
-            <div class="c-contact__links">
-              <a
-                href="mailto:zagariafabio1999@gmail.com"
-                aria-label="Invia una email a zagariafabio1999@gmail.com"
-              >
-                zagariafabio1999@gmail.com
-              </a>
-            </div>
-          </div>
-
-          <div class="c-contact__item">
-            <a
-              href="https://github.com/fabiozagaria"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub · fabiozagaria (apre una nuova scheda)"
-              >GitHub · fabiozagaria</a
-            >
-          </div>
-
-          <div class="c-contact__item">
-            <a
-              href="https://linkedin.com/in/fabiozagaria"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn · fabiozagaria (apre una nuova scheda)"
-              >LinkedIn · fabiozagaria</a
-            >
-          </div>
+        <div class="c-contact__actions">
+          <a class="c-btn c-btn--primary" [href]="'mailto:' + email">Scrivimi una email</a>
+          <a
+            class="c-btn c-btn--secondary"
+            [href]="cv.view"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Apri il CV in PDF (si apre in una nuova scheda)"
+          >
+            Apri il CV
+          </a>
         </div>
 
-        <div class="c-contact__documents" aria-label="Documenti professionali">
-          <h3>Documenti professionali</h3>
+        <div class="c-contact__email">
+          <span class="c-contact__address" #address>{{ email }}</span>
+          <button
+            type="button"
+            class="c-btn c-btn--secondary"
+            (click)="copyEmail()"
+            aria-label="Copia l'indirizzo email negli appunti"
+          >
+            Copia
+          </button>
+          <span class="c-contact__status" role="status">{{ copyMessage() }}</span>
+        </div>
+
+        <h2 class="c-contact__heading">Dove trovarmi</h2>
+        <div class="c-contact__places">
+          <app-linkedin-card />
+          <app-github-card />
+        </div>
+
+        <div class="c-contact__documents">
+          <h2 class="c-contact__heading">Documenti professionali</h2>
 
           <div class="c-contact__documents-grid">
             <article class="c-contact__document">
               <p class="c-contact__document-title">Curriculum vitae</p>
-              <div class="c-contact__document-actions" aria-label="Azioni curriculum">
+              <div class="c-contact__document-actions" role="group" aria-label="Azioni curriculum">
                 <a
-                  class="c-btn c-btn--primary"
-                  href="/assets/documents/CV.pdf?v=8db4d300"
+                  class="c-btn c-btn--secondary"
+                  [href]="cv.view"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Apri il CV in PDF (si apre in una nuova scheda)"
                 >
-                  Guarda CV
+                  Apri
                 </a>
                 <a
                   class="c-btn c-btn--secondary"
-                  href="/downloads/CV.pdf?v=8db4d300"
+                  [href]="cv.download"
                   download="CV_Fabio_Zagaria.pdf"
+                  aria-label="Scarica il CV in PDF"
                 >
-                  Scarica CV
+                  Scarica
                 </a>
               </div>
             </article>
@@ -79,21 +73,27 @@
               <p class="c-contact__document-title">
                 Attestato Full Stack Developer - LabForWeb, 650 ore
               </p>
-              <div class="c-contact__document-actions" aria-label="Azioni attestato LabForWeb">
+              <div
+                class="c-contact__document-actions"
+                role="group"
+                aria-label="Azioni attestato LabForWeb"
+              >
                 <a
-                  class="c-btn c-btn--primary"
+                  class="c-btn c-btn--secondary"
                   href="/assets/documents/Attestato_LabForWeb_Fabio_Zagaria.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Apri l'attestato LabForWeb in PDF (si apre in una nuova scheda)"
                 >
-                  Guarda attestato
+                  Apri
                 </a>
                 <a
                   class="c-btn c-btn--secondary"
                   href="/downloads/Attestato_LabForWeb_Fabio_Zagaria.pdf"
                   download="Attestato_LabForWeb_Fabio_Zagaria.pdf"
+                  aria-label="Scarica l'attestato LabForWeb in PDF"
                 >
-                  Scarica attestato
+                  Scarica
                 </a>
               </div>
             </article>
@@ -102,21 +102,24 @@
               <p class="c-contact__document-title">
                 Attestato di frequenza Master Java &amp; Android - P.C. Academy, 2020
               </p>
-              <div class="c-contact__document-actions" aria-label="Azioni attestato P.C. Academy">
+              <div
+                class="c-contact__document-actions"
+                role="group"
+                aria-label="Azioni attestato P.C. Academy"
+              >
                 <a
-                  class="c-btn c-btn--primary"
+                  class="c-btn c-btn--secondary"
                   href="/assets/documents/Attestato_PCAcademy_Fabio_Zagaria.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Apri l'attestato P.C. Academy in PDF (si apre in una nuova scheda)"
                 >
-                  Guarda attestato
+                  Apri
                 </a>
               </div>
             </article>
           </div>
         </div>
-
-        <app-linkedin-card />
       </div>
     </div>
   </div>
