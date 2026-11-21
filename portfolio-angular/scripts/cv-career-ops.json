@@ -27,7 +27,7 @@
     "education": "Istruzione e formazione",
     "skills": "Competenze tecniche e lingue"
   },
-  "summary": "Junior Java Backend Developer con formazione Full Stack Web di 650 ore. Sviluppo API REST con Java, Spring Boot e MySQL e interfacce Angular/TypeScript. Nei progetti personali applico autenticazione, autorizzazione e persistenza; approfondisco PostgreSQL da autodidatta.",
+  "summary": "Junior Java Backend Developer con formazione Full Stack Web di 650 ore. Sviluppo API REST con Java, Spring Boot e PostgreSQL e interfacce Angular/TypeScript. Nei progetti personali applico autenticazione, autorizzazione, persistenza e test di integrazione.",
   "experience": [
     {
       "company": "Eraclya, Policlinico Gemelli",
@@ -43,8 +43,8 @@
     {
       "name": "Expense Tracker",
       "url": "https://gestionale-spese.vercel.app/",
-      "tech": "Angular, Spring Boot, MySQL",
-      "description": "Applicazione full stack per spese ed entrate personali: dashboard, ricerca, filtro mensile e paginazione. API con JWT, refresh token HttpOnly e controllo del proprietario; registrazione e verifica email."
+      "tech": "Angular, Spring Boot, PostgreSQL",
+      "description": "Applicazione full stack per spese ed entrate personali: dashboard, ricerca, filtro mensile e paginazione. API con JWT, refresh token HttpOnly con rotazione e rate limiting; migrazioni Flyway, test con Testcontainers e CI su GitHub Actions; registrazione e verifica email."
     },
     {
       "name": "AccessDesk",
@@ -77,7 +77,7 @@
   "skills": [
     {
       "category": "Backend e dati",
-      "items": "Java 21, Spring Boot, Spring MVC, Spring Security, JWT, REST API, MySQL, Redis (caching in memoria), SQL, JPA/Hibernate, Spring Data JPA"
+      "items": "Java 21, Spring Boot, Spring MVC, Spring Security, JWT, REST API, PostgreSQL, MySQL, Flyway, Redis (caching in memoria), SQL, JPA/Hibernate, Spring Data JPA"
     },
     {
       "category": "Frontend",
@@ -85,11 +85,11 @@
     },
     {
       "category": "Test",
-      "items": "JUnit, Mockito, test di integrazione con Spring Boot"
+      "items": "JUnit, Mockito, Testcontainers, test di integrazione con Spring Boot"
     },
     {
       "category": "Strumenti di sviluppo e DevOps",
-      "items": "Git, GitHub, Maven, Docker (containerizzazione e ambienti di sviluppo), Postman"
+      "items": "Git, GitHub, GitHub Actions (CI), Maven, Docker (containerizzazione e ambienti di sviluppo), Postman"
     },
     {
       "category": "AI e sviluppo assistito",
@@ -97,7 +97,7 @@
     },
     {
       "category": "Studio autonomo",
-      "items": "PostgreSQL, applicato in AccessDesk; utilizzo dell'AI nello sviluppo; architettura software; prossimo approfondimento: C++"
+      "items": "PostgreSQL in profondità, applicato in Expense Tracker, AccessDesk e JobFlow; utilizzo dell'AI nello sviluppo; architettura software; prossimo approfondimento: C++"
     },
     {
       "category": "Lingue",

@@ -28,12 +28,16 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 - Aggiornare il portfolio solo quando una competenza o un progetto è realmente dimostrabile.
 - Mantenere allineati README, contenuti del sito e CV.
 - Il payload `portfolio-angular/scripts/cv-career-ops.json` contiene i dati del CV corrente; il PDF è generato con Career Ops.
+- **Regola fondamentale:** ogni aggiornamento del CV va sempre registrato anche nel repository `curriculum-vitae-fabio-zagaria` (archivio datato, CHANGELOG, tag).
 - Non riportare qui voti, ripassi o cronologia didattica: restano in Notion.
 
 ## Curriculum pubblico
 - `portfolio-angular/src/assets/documents/CV.pdf` è l'unico curriculum distribuito dal sito.
 - Il layout è a colonna singola, testuale, leggibile e compatibile con i sistemi ATS.
 - Dal 29 ottobre 2026 il PDF pubblico usa il template nativo Career Ops. Dati: `portfolio-angular/scripts/cv-career-ops.json`. Il generatore Python precedente è stato rimosso; seguire il flusso Career Ops descritto in `AGENTS.md`.
+
+- **Versione del CV (21 novembre 2026).** `portfolio-angular/src/app/data/cv.data.ts` è l'unica fonte di data (`updatedAt`, data dei contenuti, non del build) e SHA-256 del PDF; da lì derivano `?v=`, i link di Home e Contatti e la dicitura «CV aggiornato il …» (Home sotto «Scarica il CV», Contatti sotto le azioni). `npm run cv:meta -- AAAA-MM-GG` aggiorna data e impronta dopo la rigenerazione; `npm run cv:check` (incluso in `test:ci`) fallisce se il PDF non corrisponde ai dati. La data dentro il PDF non è stata implementata: non verificabile con il template Career Ops.
+- Testi del sito e payload del CV allineati a PostgreSQL (21 novembre 2026): Expense Tracker usa PostgreSQL/Neon con Flyway, Testcontainers e CI su GitHub Actions. MySQL resta citato dove è il percorso LabForWeb e i primi progetti. **Il PDF va rigenerato con Career Ops sul PC di Fabio** (qui non è disponibile): finché non lo si fa, il PDF pubblico dice ancora MySQL.
 
 ## Punto di attenzione
 Quando cambiano versione, stato o focus di un progetto pubblico collegato, verificare se il portfolio necessita di sincronizzazione.

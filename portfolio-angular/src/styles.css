@@ -1030,6 +1030,11 @@ app-recent-badge {
   flex-wrap: wrap;
   gap: 1rem;
 }
+.c-contact__cv-note {
+  margin: 0.75rem 0 0;
+  color: var(--clr-white-subtle);
+  font-size: var(--fs-300);
+}
 .c-contact__email {
   display: flex;
   flex-wrap: wrap;

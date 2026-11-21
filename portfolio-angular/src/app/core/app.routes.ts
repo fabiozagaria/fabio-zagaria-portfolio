@@ -18,7 +18,7 @@ export const routes: Routes = [
       seo: {
         path: '/',
         description:
-          'Portfolio di Fabio Zagaria, Junior Backend Developer: progetti con Java, Spring Boot, MySQL, Angular e TypeScript.',
+          'Portfolio di Fabio Zagaria, Junior Backend Developer: progetti con Java, Spring Boot, PostgreSQL, Angular e TypeScript.',
       },
     },
     loadComponent: () => import('../features/home/home.component').then((m) => m.HomeComponent),
