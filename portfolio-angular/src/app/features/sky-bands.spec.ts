@@ -11,7 +11,7 @@ const PAGES: [string, Type<unknown>, string][] = [
   ['About', AboutComponent, 'Chi sono'],
   ['Experience', ExperienceComponent, 'Esperienza e formazione'],
   ['Projects', ProjectsComponent, 'Progetti'],
-  ['Contact', ContactComponent, 'CONTATTI'],
+  ['Contact', ContactComponent, 'Contatti'],
 ];
 
 describe('Sky band on the inner pages', () => {

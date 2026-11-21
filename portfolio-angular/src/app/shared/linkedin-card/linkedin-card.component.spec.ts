@@ -28,7 +28,9 @@ describe('LinkedinCardComponent', () => {
     expect(links[0].getAttribute('href')).toBe('https://linkedin.com/in/fabiozagaria');
     expect(links[0].target).toBe('_blank');
     expect(links[0].rel).toBe('noopener noreferrer');
-    expect(links[0].getAttribute('aria-label')).toContain('apre una nuova scheda');
+    // Il nome del collegamento è il suo testo visibile, più l'avviso per chi usa uno screen reader.
+    expect(links[0].textContent).toContain('LinkedIn');
+    expect(links[0].querySelector('.u-visually-hidden')?.textContent).toContain('nuova scheda');
     // La foto è decorativa: il nome è già nel testo del collegamento.
     expect(element.querySelector('img')?.getAttribute('alt')).toBe('');
   });
