@@ -25,7 +25,7 @@ README.md, docs/CONTEXT.md, src/app/data sotto portfolio-angular, CV e attestato
 - Mostrare prove tecniche concrete e lo stato reale di ciascun progetto.
 - Distinguere lavoro autonomo, formazione e laboratori assistiti.
 - Conservare architettura e funzionalità che già funzionano.
-- Tenere il CV allineato al portfolio: dopo ogni modifica importante si propone di aggiornarlo (regola in `docs/CV-DA-RIGENERARE.md`). Prossimo passo urgente: rigenerare il PDF, fermo al 5 novembre 2026.
+- Tenere il CV allineato al portfolio: dopo ogni modifica importante si propone di aggiornarlo (regola in `docs/CV-DA-RIGENERARE.md`).
 - Rendere rapida la consultazione del CV e dei contatti, dichiarando la data dell'ultimo aggiornamento dei contenuti del CV.
 
 ## Accessibility & Inclusion

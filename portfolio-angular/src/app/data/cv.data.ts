@@ -10,8 +10,8 @@
  * data e impronta siano stati aggiornati: nessun CV nuovo passa inosservato.
  */
 export const CV = {
-  updatedAt: '2026-11-05',
-  sha256: '8db4d3002ebccea6a43bd2c24774ead36e6102f8460b4a1fe51a5a11e8deae9e',
+  updatedAt: '2026-11-21',
+  sha256: '8915cc5822f45c8234545e7788130c058a392d27c434757fa6d9d9266d79c28a',
 } as const;
 
 /** Prime otto cifre dell'impronta: cambia a ogni nuovo CV, così il browser non serve una copia vecchia. */
