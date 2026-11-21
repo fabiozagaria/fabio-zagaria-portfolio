@@ -169,3 +169,20 @@ describe('portfolio projects', () => {
     ]);
   });
 });
+
+describe('portfolio card', () => {
+  const portfolio = (PROJECTS as readonly PortfolioProject[]).find(
+    (item) => item.id === 'portfolio',
+  );
+
+  it('declares the portfolio concluded since 21 November 2026, as a choice of the owner', () => {
+    expect(portfolio?.status).toBe('Concluso');
+    expect(portfolio?.statusDetail.summary).toContain('21 novembre 2026');
+    expect(portfolio?.statusDetail.summary).toContain('cambiamenti importanti');
+  });
+
+  it('has no commit history and no latest update, unlike the three main projects', () => {
+    expect(portfolio?.latestUpdate).toBeUndefined();
+    expect(Object.keys(PROJECT_HISTORY)).not.toContain('portfolio');
+  });
+});

@@ -1,6 +1,6 @@
 # Struttura dei repository del portfolio
 
-Aggiornato: 17 novembre 2026.
+Aggiornato: 21 novembre 2026.
 
 Il repository `curriculum-vitae-fabio-zagaria` va aggiornato con ogni nuova versione del CV (vedi `docs/CV-DA-RIGENERARE.md`).
 
@@ -42,6 +42,8 @@ Expense Tracker ha una sola scheda, con collegamenti distinti a frontend e backe
 | LabTV     | [labtv-angular](https://github.com/fabiozagaria/labtv-angular)                     |
 | Fakeflix  | [fakeflix-vanilla-js](https://github.com/fabiozagaria/fakeflix-vanilla-js)         |
 | Portfolio | [fabio-zagaria-portfolio](https://github.com/fabiozagaria/fabio-zagaria-portfolio) |
+
+Il portfolio è concluso dal 21 novembre 2026: la sua scheda dichiara lo stato «Concluso» e non ha storico dei commit.
 
 ## Plugin e Skill AI
 

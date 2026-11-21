@@ -19,9 +19,10 @@ Angular 21 e TypeScript 5.9 esistenti. Preservare route, tema chiaro/scuro, docu
 Testi italiani, identificatori tecnici inglesi. Stile «Cielo dipinto», confermato dal proprietario il 20 novembre 2026: calmo, tenue e morbido, palette Calm acqua e salvia, Nunito, dark mode curata, animazioni lente e continue che rilassano (cielo stellato di notte e sole tra le nuvole di giorno, con pausa; risposte morbide al tocco), ispirate alla passione del proprietario per l'universo, quasi identico su smartphone e desktop. Nome e ruolo restano immediati e i progetti tecnici al centro.
 
 ## Evidence on Hand
-README.md, docs/CONTEXT.md, src/app/data sotto portfolio-angular, CV e attestato nei documenti pubblici. Expense Tracker ha scope funzionale concluso; AccessDesk e JobFlow sono in sviluppo; MedTransit è in progettazione, senza codice. Il collaudo dei progetti collegati non è attestato dal redesign.
+README.md, docs/CONTEXT.md, src/app/data sotto portfolio-angular, CV e attestato nei documenti pubblici. Il portfolio è concluso dal 21 novembre 2026 (modifiche solo per cambiamenti importanti, per scelta del proprietario). Expense Tracker ha scope funzionale concluso; AccessDesk e JobFlow sono in sviluppo; MedTransit è in progettazione, senza codice. Il collaudo dei progetti collegati non è attestato dal redesign.
 
 ## Product Principles
+- Il portfolio è concluso: non si ritocca, salvo cambiamenti importanti. Evitare nuovi redesign e rifiniture non richieste.
 - Mostrare prove tecniche concrete e lo stato reale di ciascun progetto.
 - Distinguere lavoro autonomo, formazione e laboratori assistiti.
 - Conservare architettura e funzionalità che già funzionano.

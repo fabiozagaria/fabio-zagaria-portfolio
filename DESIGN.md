@@ -47,7 +47,7 @@ components:
 # Design System: Fabio Zagaria — «Cielo dipinto»
 
 ## Overview
-Stile scelto dal proprietario il 20 novembre 2026: usare il sito deve dare la sensazione di toccare delle nuvole, qualcosa di morbido, calmo e rilassante, con molto movimento ma mai nervoso. Contenuti, sezioni, schede e route sono quelli di prima: è cambiato solo lo stile. Design approvato in `docs/superpowers/specs/2026-11-20-cielo-dipinto-redesign-design.md`. La descrizione deriva dal CSS implementato.
+Stile scelto dal proprietario il 20 novembre 2026: usare il sito deve dare la sensazione di toccare delle nuvole, qualcosa di morbido, calmo e rilassante, con molto movimento ma mai nervoso. Contenuti, sezioni, schede e route sono quelli di prima: è cambiato solo lo stile. Design approvato in `docs/superpowers/specs/2026-11-20-cielo-dipinto-redesign-design.md`. Definitivo dal 21 novembre 2026: il portfolio è concluso e lo stile non si cambia, salvo cambiamenti importanti. La descrizione deriva dal CSS implementato.
 
 ## Colors
 Token `--calm-*` del Calm theme (repository `fabiozagaria/turni-elisa`, `docs/calm-theme/calm-theme.css`, commit `02d4ba1`), tema chiaro e scuro, in `portfolio-angular/src/styles.css`. I token storici del portfolio (`--clr-*`, `--card`, `--ff-*`, `--radius-*`) mantengono il nome e puntano ai `--calm-*`: per cambiare un colore si cambia il token Calm. Il testo colorato usa `--calm-accent-strong`, perché `--calm-accent` sul fondo chiaro non raggiunge il contrasto AA; `--calm-accent` resta per i pulsanti con `--calm-on-accent`.
