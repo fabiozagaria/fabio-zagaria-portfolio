@@ -51,8 +51,10 @@
     background-color 200ms ease,
     transform 160ms var(--calm-ease);
 }
-.c-sky__pause:hover {
-  background: var(--calm-surface);
+@media (hover: hover) and (pointer: fine) {
+  .c-sky__pause:hover {
+    background: var(--calm-surface);
+  }
 }
 .c-sky__pause:active {
   transform: scale(0.97);

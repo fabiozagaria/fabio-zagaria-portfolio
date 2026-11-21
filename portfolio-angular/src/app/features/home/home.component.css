@@ -226,6 +226,11 @@
   gap: 1.5rem;
   flex-wrap: wrap;
 }
+.c-resume__actions a:not(.c-btn) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
 @media (max-width: 60em) {
   .c-resume__layout {
     gap: 2rem;

@@ -146,4 +146,12 @@ describe('App', () => {
       'Impossibile aprire la pagina',
     );
   });
+
+  it('names the footer links with a role that allows a name', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    const links = (fixture.nativeElement as HTMLElement).querySelector('.c-footer__links');
+    expect(links?.getAttribute('aria-label')).toBe('Collegamenti professionali');
+    expect(links?.getAttribute('role')).toBe('group');
+  });
 });
