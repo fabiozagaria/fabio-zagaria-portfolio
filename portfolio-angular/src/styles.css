@@ -191,9 +191,11 @@ a {
   text-underline-offset: 0.25em;
   transition: color var(--transition-fast);
 }
-a:hover {
-  color: var(--clr-cyber-green-dark);
-  text-decoration: underline;
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: var(--clr-cyber-green-dark);
+    text-decoration: underline;
+  }
 }
 ul {
   list-style: none;
@@ -262,6 +264,7 @@ main:focus {
 .c-nav__logo {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   gap: 0.75rem;
   margin-right: auto;
   color: var(--clr-white);
@@ -317,10 +320,12 @@ main:focus {
   background: var(--clr-black-soft);
   border-radius: var(--radius-sm);
 }
-.theme-toggle:hover,
-.c-nav__toggle:hover {
-  color: var(--clr-cyber-green);
-  background: var(--clr-black-lighter);
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover,
+  .c-nav__toggle:hover {
+    color: var(--clr-cyber-green);
+    background: var(--clr-black-lighter);
+  }
 }
 .theme-toggle__icon {
   width: 20px;
@@ -347,21 +352,33 @@ main:focus {
   color: var(--button-ink);
   background: var(--clr-cyber-green);
 }
-.c-btn--primary:hover,
 .c-btn--primary:focus-visible {
   color: var(--button-ink);
   background: var(--clr-cyber-green-dark);
   text-decoration: none;
 }
+@media (hover: hover) and (pointer: fine) {
+  .c-btn--primary:hover {
+    color: var(--button-ink);
+    background: var(--clr-cyber-green-dark);
+    text-decoration: none;
+  }
+}
 .c-btn--secondary {
   color: var(--clr-white);
   background: var(--clr-black-soft);
 }
-.c-btn--secondary:hover,
 .c-btn--secondary:focus-visible {
   color: var(--clr-white);
   background: var(--clr-black-lighter);
   text-decoration: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .c-btn--secondary:hover {
+    color: var(--clr-white);
+    background: var(--clr-black-lighter);
+    text-decoration: none;
+  }
 }
 
 .c-section-title {
@@ -923,7 +940,7 @@ app-project-card > .c-card {
 }
 .c-update-item__date {
   margin-inline-start: auto;
-  color: var(--clr-white-subtle);
+  color: var(--calm-body);
 }
 .c-update-item__message {
   margin: 0;
@@ -936,6 +953,7 @@ app-project-card > .c-card {
 }
 .c-update-item__note {
   margin: 0;
+  color: var(--calm-body);
 }
 .c-update-item__commit {
   display: inline-flex;
@@ -1024,8 +1042,10 @@ app-recent-badge {
 .c-project-history[open] > .c-project-history__toggle::after {
   content: '−';
 }
-.c-project-history__toggle:hover {
-  background: var(--clr-cyber-green-subtle);
+@media (hover: hover) and (pointer: fine) {
+  .c-project-history__toggle:hover {
+    background: var(--clr-cyber-green-subtle);
+  }
 }
 .c-project-history__count {
   color: var(--clr-white-subtle);
@@ -1426,23 +1446,34 @@ h4 {
   border: 0;
   border-radius: var(--radius-pill);
 }
-.theme-toggle:hover,
-.c-nav__toggle:hover {
-  background: var(--calm-surface-hover);
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover,
+  .c-nav__toggle:hover {
+    background: var(--calm-surface-hover);
+  }
 }
 .c-btn {
   border-radius: var(--radius-pill);
   padding-inline: 1.6rem;
 }
 .c-btn--primary,
-.c-btn--primary:hover,
 .c-btn--primary:focus-visible {
   background: var(--calm-accent);
   color: var(--calm-on-accent);
 }
-.c-btn--primary:hover,
+@media (hover: hover) and (pointer: fine) {
+  .c-btn--primary:hover {
+    background: var(--calm-accent);
+    color: var(--calm-on-accent);
+  }
+}
 .c-btn--primary:focus-visible {
   background: var(--calm-accent-hover);
+}
+@media (hover: hover) and (pointer: fine) {
+  .c-btn--primary:hover {
+    background: var(--calm-accent-hover);
+  }
 }
 .c-btn--secondary {
   background: var(--calm-surface);
@@ -1450,9 +1481,13 @@ h4 {
   color: var(--calm-ink);
   box-shadow: var(--shadow-soft);
 }
-.c-btn--secondary:hover,
 .c-btn--secondary:focus-visible {
   background: var(--calm-surface-hover);
+}
+@media (hover: hover) and (pointer: fine) {
+  .c-btn--secondary:hover {
+    background: var(--calm-surface-hover);
+  }
 }
 .c-section-title::after {
   content: none;
@@ -1626,7 +1661,7 @@ button,
 .c-shot__url {
   min-width: 0;
   overflow: hidden;
-  color: var(--clr-white-subtle);
+  color: var(--calm-body);
   font: 0.75rem/1 var(--ff-mono);
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1640,7 +1675,6 @@ button,
   display: block;
   width: 100%;
   height: auto;
-  transition: scale 700ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 @media (hover: hover) and (pointer: fine) {
   .c-shot:hover .c-shot__frame img {
@@ -1843,7 +1877,7 @@ button,
 /* Word highlight (WordHighlightDirective): words not yet reached stay readable
    (about 4.5:1 on the page) and turn to ink as the paragraph crosses the screen. */
 .c-wh__word {
-  color: color-mix(in oklab, var(--calm-ink) 66%, var(--calm-page));
+  color: color-mix(in oklab, var(--calm-ink) 74%, var(--calm-page));
   transition: color 240ms ease;
 }
 .c-wh__word.is-on {

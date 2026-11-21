@@ -81,6 +81,14 @@ describe('ProjectsComponent', () => {
     expect(map?.querySelector('.c-diagram__note')?.textContent).toContain('Gemini Notebook');
   });
 
+  it('gives a role to every element that carries an aria-label', () => {
+    const element = render('2026-11-03T10:00:00+01:00');
+    const unnamed = element.querySelectorAll(
+      'div[aria-label]:not([role]), span[aria-label]:not([role]), p[aria-label]:not([role])',
+    );
+    expect(unnamed).toHaveLength(0);
+  });
+
   it('flags projects with a recent update as new', () => {
     // JobFlow: ultimo aggiornamento il 19 novembre 2026.
     const element = render('2026-11-19T22:00:00+01:00');

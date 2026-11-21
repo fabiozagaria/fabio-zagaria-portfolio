@@ -55,7 +55,7 @@ import type { PortfolioLatestUpdate } from '../../data/projects.data';
           <p class="c-project-update__summary">{{ summary }}</p>
         }
         @if (update().sources; as sources) {
-          <div class="c-project-update__sources" aria-label="Fonti dell’aggiornamento">
+          <div class="c-project-update__sources" role="group" aria-label="Fonti dell’aggiornamento">
             @for (source of sources; track source.url) {
               <a [href]="source.url" target="_blank" rel="noopener noreferrer">
                 {{ source.label }}

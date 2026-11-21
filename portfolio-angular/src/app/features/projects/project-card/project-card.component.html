@@ -170,7 +170,7 @@
       }
     </div>
 
-    <div class="c-card__tags" aria-label="Tecnologie utilizzate">
+    <div class="c-card__tags" role="group" aria-label="Tecnologie utilizzate">
       @for (tech of project.technologies; track tech) {
         <span class="c-card__tag">{{ tech }}</span>
       }
@@ -244,7 +244,11 @@
               </p>
               <p class="c-project-history__title">{{ entry.title }}</p>
               <p class="c-project-history__summary">{{ entry.summary }}</p>
-              <div class="c-project-update__sources" aria-label="Fonti dell’implementazione">
+              <div
+                class="c-project-update__sources"
+                role="group"
+                aria-label="Fonti dell’implementazione"
+              >
                 @for (source of entry.sources; track source.url) {
                   <a [href]="source.url" target="_blank" rel="noopener noreferrer">
                     {{ source.label }}

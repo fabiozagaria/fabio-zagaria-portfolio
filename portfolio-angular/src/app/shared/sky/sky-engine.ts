@@ -47,6 +47,11 @@ export function stepMix(mix: number, target: number, dt: number): number {
   return Math.abs(target - next) < 0.002 ? target : next;
 }
 
+/** While the sky only drifts, drawing at about 30 frames per second is enough and halves the cost. */
+export function shouldDraw(now: number, lastDraw: number, busy: boolean): boolean {
+  return busy || now - lastDraw >= 30;
+}
+
 /** Ease in and out (smoothstep). */
 export function smooth(t: number): number {
   return t * t * (3 - 2 * t);
@@ -128,8 +133,10 @@ class CanvasSky implements SkyEngine {
   private mix: number;
   private mixTarget: number;
   private time = 0;
-  private last = 0;
   private frame = 0;
+  private lastDraw = 0;
+  private planetSprites: { planet?: Sprite; moon?: Sprite } = {};
+  private halos: { cool?: HTMLCanvasElement; warm?: HTMLCanvasElement } = {};
   private paused = false;
   private visible = true;
   private meteor: { x: number; y: number; life: number } | null = null;
@@ -207,15 +214,18 @@ class CanvasSky implements SkyEngine {
       return;
     }
     const run = (now: number) => {
-      const dt = this.last ? Math.min(50, now - this.last) : 16;
-      this.last = now;
       const blending = this.mix !== this.mixTarget;
       const settling = Math.abs(this.pointer.target - this.pointer.on) > 0.01;
       const live = !this.paused && this.visible && !document.hidden;
-      if (live || blending || settling || once) this.draw(dt);
+      const busy = blending || settling || once;
+      if ((live || busy) && shouldDraw(now, this.lastDraw, busy)) {
+        const dt = this.lastDraw ? Math.min(50, now - this.lastDraw) : 16;
+        this.lastDraw = now;
+        this.draw(dt);
+      }
       once = false;
       this.frame = live || blending || settling ? requestAnimationFrame(run) : 0;
-      if (!this.frame) this.last = 0;
+      if (!this.frame) this.lastDraw = 0;
     };
     this.frame = requestAnimationFrame(run);
   }
@@ -236,6 +246,7 @@ class CanvasSky implements SkyEngine {
     this.backdrops = { night: this.makeBackdrop(true), day: this.makeBackdrop(false) };
     this.layers = { night: this.makeCanvas(), day: this.makeCanvas() };
     this.galaxies = this.makeGalaxies();
+    this.makeSprites();
     this.clouds = this.makeClouds();
     this.draw(0);
     this.wake();
@@ -253,26 +264,33 @@ class CanvasSky implements SkyEngine {
     this.mix = this.options.reduced ? this.mixTarget : stepMix(this.mix, this.mixTarget, dt);
     const day = smooth(this.mix);
     const m = this.main;
+    // Settled on night or on day: paint straight on the canvas, no intermediate copy.
+    if (day === 0 || day === 1) {
+      this.paintScene(m, day === 0, dt);
+      return;
+    }
     m.setTransform(1, 0, 0, 1, 0, 0);
     m.globalAlpha = 1;
-    if (day < 1) m.drawImage(this.paintLayer(true, dt), 0, 0);
-    if (day > 0) {
-      m.globalAlpha = day;
-      m.drawImage(this.paintLayer(false, dt), 0, 0);
-      m.globalAlpha = 1;
-    }
+    m.drawImage(this.paintLayer(true, dt), 0, 0);
+    m.globalAlpha = day;
+    m.drawImage(this.paintLayer(false, dt), 0, 0);
+    m.globalAlpha = 1;
+  }
+
+  private paintScene(target: CanvasRenderingContext2D, night: boolean, dt: number): void {
+    this.ctx = target;
+    target.setTransform(1, 0, 0, 1, 0, 0);
+    target.globalAlpha = 1;
+    target.drawImage(night ? this.backdrops.night! : this.backdrops.day!, 0, 0);
+    target.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+    if (night) this.drawNight(dt);
+    else this.drawDay(dt);
+    this.ctx = this.main;
   }
 
   private paintLayer(night: boolean, dt: number): HTMLCanvasElement {
     const layer = night ? this.layers.night! : this.layers.day!;
-    this.ctx = layer.getContext('2d')!;
-    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
-    this.ctx.globalAlpha = 1;
-    this.ctx.drawImage(night ? this.backdrops.night! : this.backdrops.day!, 0, 0);
-    this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
-    if (night) this.drawNight(dt);
-    else this.drawDay(dt);
-    this.ctx = this.main;
+    this.paintScene(layer.getContext('2d')!, night, dt);
     return layer;
   }
 
@@ -286,7 +304,7 @@ class CanvasSky implements SkyEngine {
     light.addColorStop(0, `rgba(166,219,214,${0.1 + 0.1 * p.on})`);
     light.addColorStop(1, 'rgba(166,219,214,0)');
     ctx.fillStyle = light;
-    ctx.fillRect(0, 0, W, H);
+    ctx.fillRect(p.x - lr, p.y - lr, lr * 2, lr * 2);
 
     const reach = Math.min(240, Math.max(140, W * 0.16));
     const drift = reduced ? 0 : this.time * 0.000004; // the sky turns slowly, like the Earth
@@ -302,12 +320,11 @@ class CanvasSky implements SkyEngine {
       const a = Math.min(1, s.base * twinkle + s.glow * 0.8);
       const r = s.r * (1 + s.glow * 0.9);
       const rgb = s.warm ? '244,214,170' : '236,246,244';
-      if (r > 1.2) {
-        const halo = ctx.createRadialGradient(x, y, 0, x, y, r * 4);
-        halo.addColorStop(0, `rgba(${rgb},${a * 0.35})`);
-        halo.addColorStop(1, `rgba(${rgb},0)`);
-        ctx.fillStyle = halo;
-        ctx.fillRect(x - r * 4, y - r * 4, r * 8, r * 8);
+      const halo = s.warm ? this.halos.warm : this.halos.cool;
+      if (r > 1.2 && halo) {
+        ctx.globalAlpha = a;
+        ctx.drawImage(halo, x - r * 4, y - r * 4, r * 8, r * 8);
+        ctx.globalAlpha = 1;
       }
       ctx.fillStyle = `rgba(${rgb},${a})`;
       ctx.beginPath();
@@ -387,18 +404,52 @@ class CanvasSky implements SkyEngine {
   }
 
   private drawPlanets(): void {
-    const { width: W, height: H, pointer: p } = this;
+    const { width: W, height: H, pointer: p, ctx } = this;
     const px = p.x - W / 2;
     const py = p.y - H / 2;
     const m = Math.min(W, H);
     const sink = smooth(this.mix) * H * 0.55; // in the morning the planets set
     const bob = this.options.reduced ? 0 : Math.sin(this.time * 0.0004) * m * 0.004;
-    this.drawPlanet(W * 0.86 - px * 0.04, H * 0.2 - py * 0.04 + bob + sink, m * 0.065, PLANET);
-    this.drawPlanet(W * 0.66 - px * 0.025, H * 0.47 - py * 0.025 - bob + sink, m * 0.014, MOON);
+    const put = (sprite: Sprite | undefined, cx: number, cy: number) => {
+      if (sprite)
+        ctx.drawImage(sprite.canvas, cx - sprite.w / 2, cy - sprite.h / 2, sprite.w, sprite.h);
+    };
+    put(this.planetSprites.planet, W * 0.86 - px * 0.04, H * 0.2 - py * 0.04 + bob + sink);
+    put(this.planetSprites.moon, W * 0.66 - px * 0.025, H * 0.47 - py * 0.025 - bob + sink);
   }
 
-  private drawPlanet(cx: number, cy: number, r: number, look: PlanetLook): void {
-    const ctx = this.ctx;
+  /** The planets and the star halos never change: they are drawn once per size. */
+  private makeSprites(): void {
+    const m = Math.min(this.width, this.height);
+    const planet = (r: number, look: PlanetLook): Sprite => {
+      const size = r * 4.4;
+      const c = this.makeCanvas(size * this.dpr, size * this.dpr);
+      const g = c.getContext('2d')!;
+      g.scale(this.dpr, this.dpr);
+      this.drawPlanet(g, size / 2, size / 2, r, look);
+      return { canvas: c, w: size, h: size };
+    };
+    this.planetSprites = { planet: planet(m * 0.065, PLANET), moon: planet(m * 0.014, MOON) };
+    const halo = (rgb: string): HTMLCanvasElement => {
+      const c = this.makeCanvas(64, 64);
+      const g = c.getContext('2d')!;
+      const glow = g.createRadialGradient(32, 32, 0, 32, 32, 32);
+      glow.addColorStop(0, `rgba(${rgb},0.35)`);
+      glow.addColorStop(1, `rgba(${rgb},0)`);
+      g.fillStyle = glow;
+      g.fillRect(0, 0, 64, 64);
+      return c;
+    };
+    this.halos = { cool: halo('236,246,244'), warm: halo('244,214,170') };
+  }
+
+  private drawPlanet(
+    ctx: CanvasRenderingContext2D,
+    cx: number,
+    cy: number,
+    r: number,
+    look: PlanetLook,
+  ): void {
     const tilt = -0.38;
     const ring = (from: number, to: number) => {
       ctx.save();
@@ -494,7 +545,7 @@ class CanvasSky implements SkyEngine {
     halo.addColorStop(0.35, 'rgba(255,240,214,0.22)');
     halo.addColorStop(1, 'rgba(255,244,226,0)');
     ctx.fillStyle = halo;
-    ctx.fillRect(0, 0, W, H);
+    ctx.fillRect(sx - sr * 7, sy - sr * 7, sr * 14, sr * 14);
     const disc = ctx.createRadialGradient(sx - sr * 0.2, sy - sr * 0.2, 0, sx, sy, sr);
     disc.addColorStop(0, '#fffdf6');
     disc.addColorStop(0.8, '#fff3d9');

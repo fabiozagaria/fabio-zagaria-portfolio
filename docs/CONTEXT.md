@@ -92,6 +92,26 @@ Da fare e limiti noti:
 - Layout mobile: a 280px (per esempio un telefono pieghevole chiuso) la pagina Progetti ha ancora uno sforamento orizzontale di circa 28px, causato dai passaggi dello schema di JobFlow. Non corretto: è sotto le larghezze dei telefoni comuni.
 - I link esterni (demo, repository, commit) non sono verificati automaticamente: l’ambiente di sviluppo non li raggiunge.
 
+## Verifiche di accessibilità, linee guida web e animazioni — 2026-11-21
+Sul sito con il cielo stellato (master `57b241d`), controlli con le skill di revisione (WCAG 2.1 AA, Web Interface Guidelines di Vercel, principi di animazione) e con strumenti automatici, in Chromium locale (software rendering, quindi i tempi sono indicativi). Correzioni nella stessa PR:
+
+- **Contrasto**: axe-core 4.10 trovava testi sotto 4,5:1 in tema chiaro (indirizzo nelle cornici degli screenshot, date e note degli aggiornamenti, parole non ancora illuminate della frase). Ora usano `--calm-body` o una miscela più marcata, e axe non trova violazioni su 5 pagine, 2 temi e 2 larghezze (1440 e 390). Il testo sopra il cielo, che axe non sa valutare perché lo sfondo è un canvas, è stato misurato sui pixel in 106 punti (menu, titoli, hero, pulsante di pausa): nessuno sotto soglia.
+- **`aria-label` su elementi senza ruolo**: i `div` delle tecnologie, delle fonti degli aggiornamenti e dei link del footer hanno ora `role="group"`; un test impedisce di reintrodurre `aria-label` su `div`, `span` o `p` senza ruolo.
+- **Aree di tocco**: logo della barra e link «Leggi il CV (PDF)» alti almeno 44px. Restano a 32px i link dei commit negli aggiornamenti (sopra il minimo di 24px del livello AA di WCAG 2.2, sotto i 44px consigliati).
+- **Hover solo con puntatore preciso**: tutte le regole `:hover` stanno in `@media (hover: hover) and (pointer: fine)`, così su telefono un tocco non lascia stati di hover appiccicati. Verificato con postcss che non ne restino fuori.
+- **Colore della barra del browser**: dopo una scelta manuale del tema, `ThemeService` aggiorna i `meta theme-color`, che prima seguivano solo il sistema.
+- **Costo del cielo**: il motore ridisegnava a ogni fotogramma i pianeti (gradienti e ritagli), gli aloni delle stelle e due copie a tutto schermo. Ora i pianeti e gli aloni sono immagini disegnate una volta per dimensione, il cielo si ridisegna a circa 30 fotogrammi al secondo quando deriva soltanto (60 durante la transizione o dopo un movimento del puntatore) e dipinge direttamente sul canvas quando non c'è transizione. Misurato: tempo di JavaScript per secondo da 440 a 39 ms (computer) e da 331 a 17 ms (telefono emulato); con la CPU rallentata di 4 volte l'intervallo tra i fotogrammi scende da 37 a 17 ms e i compiti lunghi da 17–21 a 5. Non è stato misurato su un telefono reale.
+- **Transizione duplicata** dello zoom degli screenshot tolta da `styles.css`: resta quella di `motion.css`, che rispetta il movimento ridotto.
+
+Verificati senza problemi: ordine di tabulazione (collegamento «Vai al contenuto principale» per primo, poi menu, tema, pausa del cielo, contenuti), anello di focus visibile su ogni elemento in entrambi i temi, un solo `h1` e livelli dei titoli senza salti in ogni pagina, titoli e `lang` per ogni route, nessuno scroll orizzontale a 720 e 320 px (ingrandimento 200% e 400%), menu mobile che si chiude con Escape riportando il focus sul pulsante, canvas nascosto alle tecnologie assistive, nessuno spostamento di layout al caricamento (CLS 0), `font-display: swap` per Nunito.
+
+Scelte lasciate come sono, da riconsiderare se servono:
+- **Animazioni non solo di `transform` e `opacity`**: ombra delle schede (500 ms), altezza di «Implementazioni importanti» (`details::details-content`, 400 ms), sottolineature con `background-size` e peso del nome nell'hero (`font-variation-settings`, 900 ms: con il mouse sopra il nome si allarga di circa 14px senza spostare il resto). Servono alla morbidezza voluta dal proprietario e girano solo su azione dell'utente.
+- **Durate oltre i 300 ms** (transizione di pagina 480 ms, risposte delle schede 500 ms): scelta di stile, con le stesse curve di uscita morbida.
+- **`animation: none !important` e `transition: none !important`** con il movimento ridotto in `styles.css`: rete di sicurezza globale.
+- **`outline: none` su `main:focus`**: `main` non è interattivo, è solo la destinazione del collegamento «Vai al contenuto principale».
+
+
 ## Indicatori di caricamento — 16 novembre 2026
 
 Il portfolio mantiene i dati statici: nessuna richiesta fittizia per mostrare skeleton. `LoadingImageDirective` (`shared/loading/`) copre le miniature nelle card condivise fra home e Progetti durante il caricamento reale, mantiene le dimensioni dell'immagine e termina su load, errore o risorsa già in cache. In caso di errore espone un'etichetta accessibile e conserva il link originale. `LoadingSpinnerComponent`, con dimensioni sm/md/lg, indica la navigazione lazy usando il signal `Router.currentNavigation`; fine, errore e annullamento seguono lo stato del router. Un errore di caricamento route viene comunicato con un alert. I token di tema esistenti guidano i colori; con movimento ridotto shimmer e rotazione sono disabilitati. Nessuna dipendenza o attesa artificiale aggiunta.

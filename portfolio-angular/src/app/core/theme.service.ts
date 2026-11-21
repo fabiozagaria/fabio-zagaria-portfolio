@@ -26,10 +26,14 @@ export class ThemeService {
     this.destroyRef.onDestroy(() => media.removeEventListener('change', onChange));
     this.markManual = () => {
       manual = true;
+      this.chosen = true;
     };
+    this.chosen = manual;
+    if (manual) this.colourBrowserBar(this.dark());
   }
 
   private markManual = () => {};
+  private chosen = false;
 
   toggle(): void {
     if (!this.browser) return;
@@ -47,5 +51,15 @@ export class ThemeService {
     this.document.documentElement.setAttribute('data-bs-theme', dark ? 'dark' : 'light');
     this.document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
     this.document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+    if (this.chosen) this.colourBrowserBar(dark);
+  }
+
+  /** Once the visitor has chosen, the browser bar follows the choice and no longer the system. */
+  private colourBrowserBar(dark: boolean): void {
+    const colour = dark ? '#0f1a1c' : '#f2f6f5';
+    this.document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+      meta.removeAttribute('media');
+      meta.setAttribute('content', colour);
+    });
   }
 }
