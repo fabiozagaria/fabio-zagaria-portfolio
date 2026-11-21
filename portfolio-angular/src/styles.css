@@ -580,6 +580,56 @@ app-project-card > .c-card {
   margin-bottom: 1.5rem;
   color: var(--clr-white-subtle);
 }
+/* Video della scheda: verticale (9:16), a larghezza limitata; il testo accanto è l'alternativa testuale. */
+.c-video {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  align-items: flex-start;
+  margin-bottom: 1.75rem;
+}
+.c-video__player {
+  flex: 0 1 17rem;
+  width: min(100%, 17rem);
+  margin: 0;
+}
+.c-video__player video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: var(--calm-radius-lg);
+  background: var(--calm-surface-soft);
+  box-shadow: var(--calm-shadow-md);
+}
+.c-video__text {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+.c-video__text h4 {
+  margin-bottom: 0.75rem;
+  font-size: var(--fs-500);
+}
+.c-video__text p {
+  max-width: 55ch;
+  margin: 0 0 1rem;
+  color: var(--clr-white-subtle);
+}
+.c-video__text ul {
+  list-style: disc;
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  max-width: 55ch;
+  color: var(--clr-white-subtle);
+}
+.c-video__text li + li {
+  margin-top: 0.5rem;
+}
+.c-video__note {
+  margin: 0;
+  font-size: var(--fs-300);
+}
 .c-card__section-label {
   margin-bottom: 0.75rem;
   font-weight: 600;

@@ -50,6 +50,38 @@
     }
     <p class="c-card__description">{{ project.description }}</p>
 
+    @if (!compact() && project.video; as video) {
+      <section class="c-video" [attr.aria-labelledby]="project.id + '-video-title'">
+        <figure class="c-video__player">
+          <video
+            controls
+            preload="none"
+            playsinline
+            [attr.poster]="video.poster"
+            [attr.width]="video.width"
+            [attr.height]="video.height"
+            [attr.aria-label]="video.title + ', ' + video.durationLabel"
+          >
+            <source [attr.src]="video.src" type="video/mp4" />
+            <a [href]="video.src">Scarica il video ({{ video.durationLabel }})</a>
+          </video>
+        </figure>
+        <div class="c-video__text">
+          <h4 [id]="project.id + '-video-title'">{{ video.title }}</h4>
+          <p>{{ video.summary }}</p>
+          <ul>
+            @for (topic of video.topics; track topic) {
+              <li>{{ topic }}</li>
+            }
+          </ul>
+          <p class="c-video__note">
+            {{ video.durationLabel }}, con sottotitoli incorporati. Creato con {{ video.credit }},
+            uno strumento di intelligenza artificiale.
+          </p>
+        </div>
+      </section>
+    }
+
     @if (project.category !== 'Frontend') {
       <p class="c-card__section-label">Responsabilità e scelte tecniche</p>
       <ul class="c-card__highlights">

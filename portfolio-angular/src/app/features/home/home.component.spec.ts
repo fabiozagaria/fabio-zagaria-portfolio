@@ -69,6 +69,7 @@ describe('HomeComponent', () => {
 
     expect(element.querySelector('.c-card__decision')).toBeNull();
     expect(element.querySelector('details.c-project-history')).toBeNull();
+    expect(element.querySelector('video')).toBeNull();
     expect(fullCard?.getAttribute('href')).toBe('/projects#gestionale-spese');
   });
 
