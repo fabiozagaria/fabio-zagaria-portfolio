@@ -3,7 +3,15 @@ import { EXERCISE_COLLECTIONS, EXPERIMENTAL_PROJECTS } from './project-collectio
 import { PROJECT_HISTORY } from './project-history.data';
 
 /** Ultimi commit noti che non entrano nello storico (documentazione o testi). */
-const MINOR_LATEST_COMMITS = ['f645156', '91c0c79', 'dde6338', '10c795b', '3696dcb'];
+const MINOR_LATEST_COMMITS = [
+  'f645156',
+  '91c0c79',
+  'dde6338',
+  '10c795b',
+  '3696dcb',
+  '66fbc7f',
+  '6f2ad3f',
+];
 
 describe('project history', () => {
   const projects: readonly PortfolioProject[] = PROJECTS;
