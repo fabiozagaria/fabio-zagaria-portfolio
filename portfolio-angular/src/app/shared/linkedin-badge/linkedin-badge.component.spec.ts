@@ -56,6 +56,46 @@ describe('LinkedinBadgeComponent', () => {
     expect(scripts()).toHaveLength(1);
   });
 
+  it('asks LinkedIn to render the badge as soon as its script is ready', () => {
+    const render = vi.fn();
+    (window as Window & { LIRenderAll?: () => void }).LIRenderAll = render;
+    try {
+      const fixture = TestBed.createComponent(LinkedinBadgeComponent);
+      fixture.detectChanges();
+      (fixture.nativeElement as HTMLElement).querySelector<HTMLButtonElement>('button')?.click();
+      expect(render).not.toHaveBeenCalled();
+
+      scripts()[0].dispatchEvent(new Event('load'));
+      expect(render).toHaveBeenCalledTimes(1);
+    } finally {
+      delete (window as Window & { LIRenderAll?: () => void }).LIRenderAll;
+    }
+  });
+
+  it('says so if the script loads but no badge appears', () => {
+    vi.useFakeTimers();
+    try {
+      const fixture = TestBed.createComponent(LinkedinBadgeComponent);
+      fixture.detectChanges();
+      const element = fixture.nativeElement as HTMLElement;
+      element.querySelector<HTMLButtonElement>('button')?.click();
+      scripts()[0].dispatchEvent(new Event('load'));
+
+      vi.advanceTimersByTime(3999);
+      fixture.detectChanges();
+      expect(element.querySelector('[role="status"]')).toBeNull();
+
+      // In jsdom l'altezza è sempre 0: il badge risulta assente.
+      vi.advanceTimersByTime(1);
+      fixture.detectChanges();
+      const status = element.querySelector('[role="status"]');
+      expect(status?.textContent).toContain('non ha mostrato il profilo');
+      expect(status?.querySelector('a')?.getAttribute('href')).toContain('linkedin.com/in/');
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it('explains the failure and offers the direct link if LinkedIn cannot be loaded', () => {
     const fixture = TestBed.createComponent(LinkedinBadgeComponent);
     fixture.detectChanges();

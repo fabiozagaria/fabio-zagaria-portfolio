@@ -2,6 +2,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   ElementRef,
   PLATFORM_ID,
   inject,
@@ -13,6 +14,11 @@ import { ThemeService } from '../../core/theme.service';
 const PROFILE_VANITY = 'fabiozagaria';
 const PROFILE_URL = `https://it.linkedin.com/in/${PROFILE_VANITY}?trk=profile-badge`;
 const BADGE_SCRIPT = 'https://platform.linkedin.com/badges/js/profile.js';
+/** Un badge disegnato da LinkedIn è una scheda alta; il solo link di riserva è molto più basso. */
+const RENDERED_MIN_HEIGHT = 100;
+const RENDER_CHECK_MS = 4000;
+
+type LinkedinWindow = Window & { LIRenderAll?: () => void };
 
 /**
  * Badge del profilo LinkedIn caricato solo su richiesta. Lo script di LinkedIn può impostare cookie
@@ -45,10 +51,16 @@ const BADGE_SCRIPT = 'https://platform.linkedin.com/badges/js/profile.js';
             Apri su LinkedIn
           </a>
         </div>
-      } @else if (failed()) {
+      } @else if (problem(); as problem) {
         <p role="status">
-          Non sono riuscito a caricare il profilo da LinkedIn (potrebbe essere bloccato dal
-          browser). Puoi aprirlo direttamente:
+          @if (problem === 'blocked') {
+            Non sono riuscito a caricare il profilo da LinkedIn (potrebbe essere bloccato dal
+            browser).
+          } @else {
+            LinkedIn ha risposto ma non ha mostrato il profilo (può dipendere dal browser o da un
+            blocco dei contenuti di terze parti).
+          }
+          Puoi aprirlo direttamente:
           <a [href]="profileUrl" target="_blank" rel="noopener noreferrer">
             linkedin.com/in/fabiozagaria
           </a>
@@ -63,10 +75,16 @@ export class LinkedinBadgeComponent {
   private readonly theme = inject(ThemeService);
   private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
   private readonly host = viewChild.required<ElementRef<HTMLElement>>('badgeHost');
+  private renderCheck: ReturnType<typeof setTimeout> | undefined;
+
+  constructor() {
+    inject(DestroyRef).onDestroy(() => clearTimeout(this.renderCheck));
+  }
 
   readonly profileUrl = PROFILE_URL;
   readonly loaded = signal(false);
-  readonly failed = signal(false);
+  /** `blocked`: lo script non si è caricato. `empty`: si è caricato ma il badge non è comparso. */
+  readonly problem = signal<'blocked' | 'empty' | null>(null);
 
   /** Inserisce il badge e poi lo script: lo script cerca i badge presenti quando viene eseguito. */
   load(): void {
@@ -98,9 +116,22 @@ export class LinkedinBadgeComponent {
     script.async = true;
     script.defer = true;
     script.dataset['linkedinBadge'] = 'true';
-    script.addEventListener('error', () => this.failed.set(true));
+    script.addEventListener('error', () => this.problem.set('blocked'));
+    script.addEventListener('load', () => {
+      // Lo script cerca i badge quando la pagina ha finito di caricarsi: qui la pagina è già pronta,
+      // quindi si chiede a LinkedIn di ridisegnare i badge presenti, se la funzione esiste.
+      (window as LinkedinWindow).LIRenderAll?.();
+      this.checkRendered(badge);
+    });
     this.document.head.append(script);
 
     this.loaded.set(true);
+  }
+
+  private checkRendered(badge: HTMLElement): void {
+    clearTimeout(this.renderCheck);
+    this.renderCheck = setTimeout(() => {
+      if (badge.getBoundingClientRect().height < RENDERED_MIN_HEIGHT) this.problem.set('empty');
+    }, RENDER_CHECK_MS);
   }
 }
