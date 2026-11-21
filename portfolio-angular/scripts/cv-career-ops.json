@@ -47,11 +47,25 @@
       "description": "Applicazione full stack per spese ed entrate personali: dashboard, ricerca, filtro mensile e paginazione. API con JWT, refresh token HttpOnly con rotazione e rate limiting; migrazioni Flyway, test con Testcontainers e CI su GitHub Actions; registrazione e verifica email."
     },
     {
+      "name": "JobFlow",
+      "url": "https://github.com/fabiozagaria/job-flow",
+      "badge": "Autonomo, in sviluppo",
+      "tech": "Java 21, Spring Boot, PostgreSQL",
+      "description": "Backend per creare e consultare job asincroni tramite API REST: validazione, persistenza JPA, migrazioni Flyway, Swagger UI e Docker. Elaborazione in un worker separato dopo il commit (eventi transazionali e @Async); generazione PDF e stati finali ancora da completare."
+    },
+    {
       "name": "AccessDesk",
       "url": "https://github.com/fabiozagaria/accessdesk-api",
       "badge": "Autonomo, in sviluppo",
       "tech": "Java 21, Spring Boot, PostgreSQL",
-      "description": "API REST per richieste di accesso software con ruoli dipendente e manager. Autenticazione JWT e autorizzazioni Spring Security; JPA/Hibernate, transazioni, locking ottimistico, DTO, validazione e gestione centralizzata degli errori."
+      "description": "API REST per richieste di accesso software con ruoli dipendente e manager. Autenticazione JWT e autorizzazioni Spring Security; JPA/Hibernate, Flyway, transazioni, locking ottimistico, DTO, validazione e gestione centralizzata degli errori."
+    },
+    {
+      "name": "MedTransit",
+      "url": "https://github.com/fabiozagaria/med-transit-msa",
+      "badge": "In progettazione, nessun codice",
+      "tech": "Previsti: Spring Boot, Kafka, PostgreSQL",
+      "description": "Prossimo progetto di studio: trasporti interni in un ospedale con dati fittizi, a microservizi ed eventi (outbox, idempotenza dei consumer, dead-letter). Design approvato e documentato nel repository; l'implementazione parte dopo JobFlow."
     }
   ],
   "education": [

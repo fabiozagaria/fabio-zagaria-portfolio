@@ -168,6 +168,10 @@ La pagina Home e la pagina Contatti mostrano «CV aggiornato il …». La data �
 
 Dopo aver rigenerato il PDF con Career Ops: copiarlo in `portfolio-angular/src/assets/documents/CV.pdf`, eseguire `npm run cv:meta -- AAAA-MM-GG` (data in cui sono cambiati i contenuti) e copiare lo stesso PDF nel repository [curriculum-vitae-fabio-zagaria](https://github.com/fabiozagaria/curriculum-vitae-fabio-zagaria), che conserva l'archivio datato. `npm run test:ci` fallisce se il PDF cambia senza aggiornare data e impronta (`npm run cv:check`).
 
+## Progetti nel CV — 21 novembre 2026
+
+Il payload del CV elenca ora Expense Tracker, JobFlow, AccessDesk e MedTransit (quest'ultimo dichiarato «In progettazione, nessun codice»), solo progetti full stack e backend. Il PDF pubblicato cambia quando viene rigenerato con Career Ops.
+
 ## Curriculum aggiornato — 29 ottobre 2026
 
 CV a pagina singola allineato a Expense Tracker, AccessDesk e studio autodidatta di PostgreSQL. La versione pubblicata è generata con il template nativo Career Ops dal payload `portfolio-angular/scripts/cv-career-ops.json`. Il flusso di installazione, generazione e verifica è documentato in `AGENTS.md`. La copia nel repository curriculum richiede una sincronizzazione separata.

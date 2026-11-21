@@ -28,6 +28,7 @@ Presentare in modo professionale e verificabile il profilo di Fabio Zagaria come
 - Aggiornare il portfolio solo quando una competenza o un progetto è realmente dimostrabile.
 - Mantenere allineati README, contenuti del sito e CV.
 - Il payload `portfolio-angular/scripts/cv-career-ops.json` contiene i dati del CV corrente; il PDF è generato con Career Ops.
+- **Progetti nel CV (21 novembre 2026, richiesta di Fabio):** il payload elenca solo i progetti full stack e backend, in quest'ordine: Expense Tracker, JobFlow, AccessDesk (in sviluppo) e MedTransit, dichiarato «In progettazione, nessun codice» con tecnologie «Previsti». Restano fuori corsi, plugin ed esercizi. Il PDF va rigenerato con Career Ops e deve restare a una pagina (`--strict-pages`): se quattro progetti non ci stanno, accorciare le descrizioni, non togliere l'etichetta di MedTransit.
 - **Regola fondamentale:** ogni aggiornamento del CV va sempre registrato anche nel repository `curriculum-vitae-fabio-zagaria` (archivio datato, CHANGELOG, tag).
 - Non riportare qui voti, ripassi o cronologia didattica: restano in Notion.
 
