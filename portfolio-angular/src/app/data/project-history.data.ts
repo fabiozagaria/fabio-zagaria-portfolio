@@ -308,7 +308,7 @@ export const PROJECT_HISTORY: Readonly<Record<string, readonly PortfolioHistoryE
       dateLabel: '19 novembre 2026, 09:28',
       title: 'API: migrazione da MySQL a PostgreSQL',
       summary:
-        'Driver, Flyway, Docker Compose e Testcontainers passano a PostgreSQL; le migrazioni MySQL diventano un’unica V1 PostgreSQL. Username ed email restano unici senza distinguere maiuscole e minuscole tramite indici su lower(). Il profilo neon sostituisce aiven; la demo online resta su H2 finché il profilo non viene attivato su Render.',
+        'Driver, Flyway, Docker Compose e Testcontainers passano a PostgreSQL; le migrazioni MySQL diventano un’unica V1 PostgreSQL. Username ed email restano unici senza distinguere maiuscole e minuscole tramite indici su lower(). Il profilo neon sostituisce aiven.',
       sources: [
         {
           label: 'Commit',

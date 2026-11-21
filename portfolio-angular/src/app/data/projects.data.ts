@@ -65,6 +65,22 @@ export interface PortfolioScreenshot {
   readonly height: number;
 }
 
+/** Video che accompagna una scheda: mai in riproduzione automatica, scaricato solo al clic. */
+export interface PortfolioVideo {
+  readonly src: string;
+  readonly poster: string;
+  readonly title: string;
+  /** Una o due frasi su ciò che il video mostra: è anche l'alternativa testuale. */
+  readonly summary: string;
+  /** Argomenti trattati, verificati sul codice del progetto. */
+  readonly topics: readonly string[];
+  readonly durationLabel: string;
+  /** Strumento con cui è stato creato, dichiarato accanto al video. */
+  readonly credit: string;
+  readonly width: number;
+  readonly height: number;
+}
+
 export interface PortfolioFlowStep {
   readonly label: string;
   readonly detail: string;
@@ -110,6 +126,7 @@ export interface PortfolioProject {
     readonly output: string;
   };
   readonly screenshots?: readonly PortfolioScreenshot[];
+  readonly video?: PortfolioVideo;
   readonly flow?: PortfolioFlow;
   readonly liveLink?: string;
   readonly liveLabel?: string;
@@ -141,6 +158,23 @@ export const PROJECTS = [
     ],
     description:
       'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
+    video: {
+      src: '/assets/video/expense-tracker-backend.mp4',
+      poster: '/assets/img/project-expense-tracker-backend-video.webp',
+      title: 'Il backend spiegato in video',
+      summary:
+        'In poco più di un minuto il video percorre i livelli dell’API di Expense Tracker: dove stanno i dati, come si velocizzano le letture, come ci si protegge dagli abusi e come funziona l’autenticazione.',
+      topics: [
+        'Dati su PostgreSQL serverless di Neon, con lo schema versionato da Flyway',
+        'Cache Redis separata per utente, con scadenza di 2 minuti',
+        'Limite di richieste per indirizzo IP con Bucket4j, contro brute force e spam',
+        'Access token JWT da 15 minuti e refresh token in un cookie HttpOnly da 7 giorni',
+      ],
+      durationLabel: '1 minuto e 15 secondi',
+      credit: 'Gemini Notebook',
+      width: 720,
+      height: 1280,
+    },
     highlights: [
       'Frontend Angular con Signals, Reactive Forms, ricerca, filtro mensile e liste paginate',
       'CRUD completo di spese ed entrate, dashboard e grafici con persistenza JPA/PostgreSQL',

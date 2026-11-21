@@ -580,6 +580,56 @@ app-project-card > .c-card {
   margin-bottom: 1.5rem;
   color: var(--clr-white-subtle);
 }
+/* Video della scheda: verticale (9:16), a larghezza limitata; il testo accanto è l'alternativa testuale. */
+.c-video {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  align-items: flex-start;
+  margin-bottom: 1.75rem;
+}
+.c-video__player {
+  flex: 0 1 17rem;
+  width: min(100%, 17rem);
+  margin: 0;
+}
+.c-video__player video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: var(--calm-radius-lg);
+  background: var(--calm-surface-soft);
+  box-shadow: var(--calm-shadow-md);
+}
+.c-video__text {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+.c-video__text h4 {
+  margin-bottom: 0.75rem;
+  font-size: var(--fs-500);
+}
+.c-video__text p {
+  max-width: 55ch;
+  margin: 0 0 1rem;
+  color: var(--clr-white-subtle);
+}
+.c-video__text ul {
+  list-style: disc;
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  max-width: 55ch;
+  color: var(--clr-white-subtle);
+}
+.c-video__text li + li {
+  margin-top: 0.5rem;
+}
+.c-video__note {
+  margin: 0;
+  font-size: var(--fs-300);
+}
 .c-card__section-label {
   margin-bottom: 0.75rem;
   font-weight: 600;
@@ -1024,6 +1074,68 @@ app-recent-badge {
   gap: 1rem;
   margin-top: auto;
 }
+/* Scheda del profilo LinkedIn: un solo collegamento, con i dati del sito. Nessuna richiesta a LinkedIn. */
+.c-profile {
+  margin-top: 3rem;
+}
+.c-profile h3 {
+  margin-bottom: 1.25rem;
+  font-size: var(--fs-600);
+}
+.c-profile__card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  max-width: 34rem;
+  padding: 1.5rem;
+  color: inherit;
+  text-decoration: none;
+  background: var(--clr-black-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--calm-shadow-sm);
+}
+.c-profile__card:focus-visible {
+  outline: 3px solid var(--calm-focus);
+  outline-offset: 3px;
+}
+.c-profile__photo {
+  flex: none;
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.c-profile__text {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+.c-profile__name {
+  font-size: var(--fs-500);
+  font-weight: 700;
+}
+.c-profile__role,
+.c-profile__place {
+  color: var(--clr-white-subtle);
+}
+.c-profile__url {
+  margin-top: 0.4rem;
+  color: var(--clr-cyber-green);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+@media (hover: hover) and (pointer: fine) {
+  .c-profile__card {
+    transition: box-shadow 0.25s var(--calm-ease);
+  }
+  .c-profile__card:hover {
+    box-shadow: var(--calm-shadow-md);
+  }
+  .c-profile__card:hover .c-profile__url {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
 .c-footer {
   padding-block: 2rem;
   background: var(--clr-black-soft);
@@ -1127,6 +1239,9 @@ app-recent-badge {
   }
   .c-contact__document {
     padding: 1.5rem;
+  }
+  .c-profile__card {
+    padding: 1.25rem;
   }
   /* Su telefono il margine della pagina e quello della scheda si sommano: si riduce il secondo. */
   .c-card__content {

@@ -32,6 +32,29 @@ describe('ProjectsComponent', () => {
     }
   });
 
+  it('shows the backend video only on the full Expense Tracker card, never autoplaying', () => {
+    const element = render('2026-11-03T10:00:00+01:00');
+    const videos = element.querySelectorAll('video');
+    const video = element.querySelector<HTMLVideoElement>('#gestionale-spese video');
+
+    expect(videos).toHaveLength(1);
+    expect(video?.hasAttribute('controls')).toBe(true);
+    expect(video?.hasAttribute('autoplay')).toBe(false);
+    expect(video?.getAttribute('preload')).toBe('none');
+    expect(video?.getAttribute('poster')).toBe(
+      '/assets/img/project-expense-tracker-backend-video.webp',
+    );
+    expect(video?.querySelector('source')?.getAttribute('src')).toBe(
+      '/assets/video/expense-tracker-backend.mp4',
+    );
+    expect(video?.getAttribute('aria-label')).toContain('1 minuto e 15 secondi');
+    // Alternativa testuale e dichiarazione dello strumento accanto al video.
+    expect(element.querySelectorAll('#gestionale-spese .c-video__text li')).toHaveLength(4);
+    expect(element.querySelector('#gestionale-spese .c-video__note')?.textContent).toContain(
+      'Gemini Notebook',
+    );
+  });
+
   it('flags projects with a recent update as new', () => {
     // JobFlow: ultimo aggiornamento il 19 novembre 2026.
     const element = render('2026-11-19T22:00:00+01:00');
