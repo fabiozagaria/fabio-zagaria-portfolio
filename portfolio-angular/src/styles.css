@@ -630,6 +630,57 @@ app-project-card > .c-card {
   margin: 0;
   font-size: var(--fs-300);
 }
+/* Infografica della scheda: alta e stretta; i passaggi accanto sono anche l'alternativa testuale. */
+.c-diagram {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  align-items: flex-start;
+  margin-bottom: 1.75rem;
+}
+.c-diagram__figure {
+  flex: 0 1 20rem;
+  width: min(100%, 20rem);
+  margin: 0;
+}
+.c-diagram__frame {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--calm-radius-lg);
+  background: var(--calm-surface-soft);
+  box-shadow: var(--calm-shadow-md);
+}
+.c-diagram__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.c-diagram__text {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+.c-diagram__text h4 {
+  margin-bottom: 0.75rem;
+  font-size: var(--fs-500);
+}
+.c-diagram__text p {
+  max-width: 55ch;
+  margin: 0 0 1rem;
+  color: var(--clr-white-subtle);
+}
+.c-diagram__text ol {
+  margin: 0 0 1rem;
+  padding-left: 1.25rem;
+  max-width: 55ch;
+  color: var(--clr-white-subtle);
+}
+.c-diagram__text li + li {
+  margin-top: 0.5rem;
+}
+.c-diagram__note {
+  margin: 0;
+  font-size: var(--fs-300);
+}
 .c-card__section-label {
   margin-bottom: 0.75rem;
   font-weight: 600;

@@ -55,6 +55,32 @@ describe('ProjectsComponent', () => {
     );
   });
 
+  it('shows the API flow map only on the full Expense Tracker card, with a text alternative', () => {
+    const element = render('2026-11-03T10:00:00+01:00');
+    const maps = element.querySelectorAll('.c-diagram');
+    const map = element.querySelector('#gestionale-spese .c-diagram');
+    const link = map?.querySelector<HTMLAnchorElement>('a.c-diagram__frame');
+    const image = map?.querySelector<HTMLImageElement>('img');
+
+    expect(maps).toHaveLength(1);
+    expect(map?.querySelector('h4')?.textContent).toContain('Mappa del flusso API');
+    expect(link?.getAttribute('href')).toBe('/assets/img/project-expense-tracker-flusso-api.webp');
+    expect(link?.getAttribute('target')).toBe('_blank');
+    expect(link?.getAttribute('rel')).toContain('noopener');
+    expect(image?.getAttribute('alt')?.length).toBeGreaterThan(80);
+    expect(image?.getAttribute('loading')).toBe('lazy');
+    expect(image?.getAttribute('width')).toBe('1116');
+    expect(image?.getAttribute('height')).toBe('2000');
+    // Le cinque tappe sono anche testo, nell'ordine dell'immagine.
+    const steps = Array.from(map?.querySelectorAll('.c-diagram__text li') ?? []).map(
+      (item) => item.textContent ?? '',
+    );
+    expect(steps).toHaveLength(5);
+    expect(steps[0]).toContain('/auth/login');
+    expect(steps[4]).toContain('PostgreSQL');
+    expect(map?.querySelector('.c-diagram__note')?.textContent).toContain('Gemini Notebook');
+  });
+
   it('flags projects with a recent update as new', () => {
     // JobFlow: ultimo aggiornamento il 19 novembre 2026.
     const element = render('2026-11-19T22:00:00+01:00');

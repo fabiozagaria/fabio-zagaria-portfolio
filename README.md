@@ -123,7 +123,7 @@ costruire comprensione e autonomia.
 - `portfolio-angular/src/app/core`: shell applicativa, navigazione e routing.
 - `portfolio-angular/src/app/data`: modelli e contenuti tipizzati dei progetti.
 - `portfolio-angular/src/app/features`: pagine standalone del portfolio.
-- `portfolio-angular/src/assets`: documenti, immagini ottimizzate e il video di Expense Tracker (`video/`).
+- `portfolio-angular/src/assets`: documenti, immagini ottimizzate (compresa l'infografica del flusso API di Expense Tracker) e il video di Expense Tracker (`video/`).
 - `portfolio-angular/scripts/cv-career-ops.json`: contenuti del curriculum pubblicato, impaginato con Career Ops.
 - `.github/workflows/ci.yml`: controlli automatici di qualità, test e build.
 
