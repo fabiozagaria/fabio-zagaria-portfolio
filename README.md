@@ -37,8 +37,8 @@ Questo repository contiene il codice sorgente del mio portfolio professionale. �
 |                            |                                                                                                                                                   |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Ruoli di interesse**     | Junior Backend Developer · Junior Full Stack Developer                                                                                            |
-| **Focus backend**          | Java · Spring Boot · Spring Security · Spring Data JPA · REST API · PostgreSQL (MySQL dal percorso formativo) |
-| **PostgreSQL**             | Studio autodidatta, applicato con migrazioni Flyway in Expense Tracker, AccessDesk e JobFlow |
+| **Focus backend**          | Java · Spring Boot · Spring Security · Spring Data JPA · REST API · PostgreSQL (MySQL dal percorso formativo)                                     |
+| **PostgreSQL**             | Studio autodidatta, applicato con migrazioni Flyway in Expense Tracker, AccessDesk e JobFlow                                                      |
 | **Altri studi autonomi**   | Utilizzo dell'AI nello sviluppo e architettura software; prossimo approfondimento: C++                                                            |
 | **Competenze frontend**    | Angular · TypeScript · JavaScript · HTML · CSS                                                                                                    |
 | **Formazione recente**     | Percorso Full Stack Web LabForWeb di 650 ore, concluso il 7 agosto 2026                                                                           |
