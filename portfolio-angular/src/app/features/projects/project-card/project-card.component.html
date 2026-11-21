@@ -82,6 +82,42 @@
       </section>
     }
 
+    @if (!compact() && project.diagram; as diagram) {
+      <section class="c-diagram" [attr.aria-labelledby]="project.id + '-diagram-title'">
+        <figure class="c-diagram__figure">
+          <a
+            appLoadingImage
+            class="c-diagram__frame"
+            [href]="diagram.src"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              [src]="diagram.src"
+              [alt]="diagram.alt"
+              [attr.width]="diagram.width"
+              [attr.height]="diagram.height"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="u-visually-hidden">(apre l’immagine intera in una nuova scheda)</span>
+          </a>
+        </figure>
+        <div class="c-diagram__text">
+          <h4 [id]="project.id + '-diagram-title'">{{ diagram.title }}</h4>
+          <p>{{ diagram.summary }}</p>
+          <ol>
+            @for (step of diagram.steps; track step) {
+              <li>{{ step }}</li>
+            }
+          </ol>
+          <p class="c-diagram__note">
+            Infografica creata con {{ diagram.credit }}, uno strumento di intelligenza artificiale.
+          </p>
+        </div>
+      </section>
+    }
+
     @if (project.category !== 'Frontend') {
       <p class="c-card__section-label">Responsabilità e scelte tecniche</p>
       <ul class="c-card__highlights">

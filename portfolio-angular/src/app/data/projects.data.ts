@@ -81,6 +81,22 @@ export interface PortfolioVideo {
   readonly height: number;
 }
 
+/** Infografica che accompagna una scheda: il testo accanto è l'alternativa testuale. */
+export interface PortfolioDiagram {
+  readonly src: string;
+  readonly title: string;
+  /** Descrizione dell'immagine per chi non la vede. */
+  readonly alt: string;
+  /** Una o due frasi su ciò che l'infografica mostra. */
+  readonly summary: string;
+  /** Le tappe nell'ordine dell'immagine, verificate sul codice del progetto. */
+  readonly steps: readonly string[];
+  /** Strumento con cui è stata creata, dichiarato accanto all'immagine. */
+  readonly credit: string;
+  readonly width: number;
+  readonly height: number;
+}
+
 export interface PortfolioFlowStep {
   readonly label: string;
   readonly detail: string;
@@ -127,6 +143,7 @@ export interface PortfolioProject {
   };
   readonly screenshots?: readonly PortfolioScreenshot[];
   readonly video?: PortfolioVideo;
+  readonly diagram?: PortfolioDiagram;
   readonly flow?: PortfolioFlow;
   readonly liveLink?: string;
   readonly liveLabel?: string;
@@ -174,6 +191,23 @@ export const PROJECTS = [
       credit: 'Gemini Notebook',
       width: 720,
       height: 1280,
+    },
+    diagram: {
+      src: '/assets/img/project-expense-tracker-flusso-api.webp',
+      title: 'Mappa del flusso API',
+      alt: 'Infografica a cinque tappe sul ciclo di vita di una richiesta all’API di Expense Tracker: 1. login su /auth/login, con token JWT da 15 minuti e refresh token da 7 giorni; 2. filtro di Spring Security che valida il token Bearer e applica il limite di richieste con Bucket4j; 3. controller REST con validazione dei DTO ed estrazione dell’identità dell’utente; 4. controllo della cache Redis, con scadenza di 2 minuti, sui dati dell’utente; 5. persistenza su PostgreSQL con Spring Data JPA e schema gestito da Flyway.',
+      summary:
+        'Il percorso di una richiesta dall’accesso fino al database, in cinque tappe: autenticazione, filtri di sicurezza, controller, cache e persistenza.',
+      steps: [
+        'Autenticazione: il login su /auth/login restituisce un token JWT da 15 minuti e un refresh token da 7 giorni',
+        'Sicurezza: Spring Security valida il token Bearer e Bucket4j applica il limite di richieste',
+        'Controller: l’endpoint REST valida i dati in ingresso con i DTO ed estrae l’identità dell’utente',
+        'Cache: prima del database si controlla la cache Redis, con scadenza di 2 minuti',
+        'Persistenza: Spring Data JPA salva i dati su PostgreSQL, con lo schema gestito da Flyway',
+      ],
+      credit: 'Gemini Notebook',
+      width: 1116,
+      height: 2000,
     },
     highlights: [
       'Frontend Angular con Signals, Reactive Forms, ricerca, filtro mensile e liste paginate',

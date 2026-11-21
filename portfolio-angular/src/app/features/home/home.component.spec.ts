@@ -31,6 +31,15 @@ describe('HomeComponent', () => {
     expect(hero.querySelector('app-hero-scene')).toBeNull();
   });
 
+  it('keeps the API flow map and the video out of the compact home card', () => {
+    const fixture = TestBed.createComponent(HomeComponent);
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+
+    expect(element.querySelector('.c-diagram')).toBeNull();
+    expect(element.querySelector('video')).toBeNull();
+  });
+
   it('uses the dedicated CV download URL', () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
