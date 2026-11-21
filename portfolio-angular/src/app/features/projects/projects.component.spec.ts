@@ -67,7 +67,7 @@ describe('ProjectsComponent', () => {
   });
 
   it('removes the new badge once the update is older than three days', () => {
-    const element = render('2026-11-23T10:00:00+01:00');
+    const element = render('2026-11-25T10:00:00+01:00');
 
     expect(element.querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
@@ -79,12 +79,12 @@ describe('ProjectsComponent', () => {
     );
 
     expect(flagged.sort()).toEqual(['accessdesk', 'gestionale-spese', 'jobflow']);
-    expect(render('2026-11-23T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
+    expect(render('2026-11-25T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
     expect(
-      render('2026-11-21T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
+      render('2026-11-24T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
     ).not.toBeNull();
     expect(
-      render('2026-11-23T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
+      render('2026-11-25T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
     ).toBeNull();
   });
 
@@ -246,10 +246,10 @@ describe('ProjectsComponent', () => {
         ?.textContent?.replace(/\s+/g, ' ')
         .trim();
 
-    expect(badge('2026-11-19T12:00:00+01:00')).toBe('Commit recente oggi');
-    expect(badge('2026-11-20T12:00:00+01:00')).toBe('Commit recente ieri');
-    expect(badge('2026-11-21T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
-    expect(badge('2026-11-22T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
+    expect(badge('2026-11-21T12:00:00+01:00')).toBe('Commit recente oggi');
+    expect(badge('2026-11-22T12:00:00+01:00')).toBe('Commit recente ieri');
+    expect(badge('2026-11-23T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
+    expect(badge('2026-11-24T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
   });
 
   it('shows the recent commit badge on plugin cards too, with the same wording', () => {
