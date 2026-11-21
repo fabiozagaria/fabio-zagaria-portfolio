@@ -671,11 +671,17 @@ export const PROJECTS = [
     highlights: [
       'Componenti standalone e routing lazy',
       'Metadati specifici per route e dati tipizzati',
+      'Cielo disegnato su canvas 2D: notte stellata col tema scuro, giorno con sole e nuvole col tema chiaro, con pulsante di pausa e movimento ridotto rispettato',
+      'Accessibilità controllata con axe-core su cinque pagine, due temi e due larghezze, senza violazioni',
     ],
-    technologies: ['Angular 21', 'TypeScript 5.9', 'HTML', 'CSS', 'Vercel'],
-    status: 'Demo frontend',
+    technologies: ['Angular 21', 'TypeScript 5.9', 'HTML', 'CSS', 'Canvas 2D', 'Vitest', 'Vercel'],
+    status: 'Concluso',
     statusDetail: {
-      summary: 'Progetto frontend del corso, evoluto nel portfolio professionale attuale.',
+      summary:
+        'Progetto frontend del corso, evoluto nel portfolio professionale attuale. Concluso dal 21 novembre 2026, per scelta del proprietario: stile, sezioni e animazioni sono definitivi e si modificano soltanto per cambiamenti importanti.',
+      pending: [
+        'Controllo su telefoni reali, con screen reader e con Lighthouse dopo il redesign, non eseguito',
+      ],
     },
     screenshots: [
       {

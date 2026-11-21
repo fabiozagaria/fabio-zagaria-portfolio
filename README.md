@@ -172,6 +172,10 @@ Dopo aver rigenerato il PDF con Career Ops: copiarlo in `portfolio-angular/src/a
 
 Il CV elenca Expense Tracker, JobFlow, AccessDesk e MedTransit (quest'ultimo dichiarato «In progettazione, nessun codice»), solo progetti full stack e backend, e cita PostgreSQL con Flyway, Testcontainers e GitHub Actions. Il PDF del 21 novembre 2026 è generato con Career Ops in un ambiente cloud (procedura in [docs/CV-DA-RIGENERARE.md](./docs/CV-DA-RIGENERARE.md)).
 
+## Stato del portfolio
+
+Il portfolio è **concluso dal 21 novembre 2026**: stile, sezioni e animazioni sono definitivi, per scelta del proprietario. Si modifica soltanto per cambiamenti importanti, come un nuovo progetto o un dato che cambia. La sua scheda nella pagina Progetti riporta lo stato «Concluso» e, a differenza dei progetti principali, non ha storico dei commit.
+
 ## Curriculum aggiornato — 29 ottobre 2026
 
 CV a pagina singola allineato a Expense Tracker, AccessDesk e studio autodidatta di PostgreSQL. La versione pubblicata è generata con il template nativo Career Ops dal payload `portfolio-angular/scripts/cv-career-ops.json`. Il flusso di installazione, generazione e verifica è documentato in `AGENTS.md`. La copia nel repository curriculum richiede una sincronizzazione separata.
