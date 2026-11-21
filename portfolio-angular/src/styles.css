@@ -1074,6 +1074,34 @@ app-recent-badge {
   gap: 1rem;
   margin-top: auto;
 }
+/* Badge LinkedIn su richiesta: riquadro Calm con spiegazione, pulsante e, dopo il clic, il badge di LinkedIn. */
+.c-linkedin {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--clr-black-soft);
+  border-radius: var(--radius-md);
+}
+.c-linkedin h3 {
+  margin-bottom: 0.75rem;
+  font-size: var(--fs-600);
+}
+.c-linkedin p {
+  max-width: 60ch;
+  margin-bottom: 1.25rem;
+  color: var(--clr-white-subtle);
+}
+.c-linkedin__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.c-linkedin__badge {
+  min-width: 0;
+  overflow-x: auto;
+}
+.c-linkedin__badge:not(:empty) {
+  margin-top: 0.5rem;
+}
 .c-footer {
   padding-block: 2rem;
   background: var(--clr-black-soft);
@@ -1175,7 +1203,8 @@ app-recent-badge {
   .c-about__portrait {
     max-width: 20rem;
   }
-  .c-contact__document {
+  .c-contact__document,
+  .c-linkedin {
     padding: 1.5rem;
   }
   /* Su telefono il margine della pagina e quello della scheda si sommano: si riduce il secondo. */

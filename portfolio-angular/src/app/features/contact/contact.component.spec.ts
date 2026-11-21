@@ -28,6 +28,7 @@ describe('ContactComponent', () => {
 
     expect(element.textContent).toContain('GitHub · fabiozagaria');
     expect(element.textContent).toContain('LinkedIn · fabiozagaria');
+    expect(element.textContent).toContain('Mostra il profilo LinkedIn');
     expect(element.textContent).not.toContain('X ·');
     expect(element.textContent).not.toContain('Instagram ·');
     expect(externalLinks.every((link) => link.rel === 'noopener noreferrer')).toBe(true);
