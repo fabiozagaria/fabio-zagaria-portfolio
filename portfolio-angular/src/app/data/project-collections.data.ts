@@ -116,6 +116,39 @@ export const AI_PLUGINS = [
       { label: 'Repository', url: 'https://github.com/fabiozagaria/spring-security-advisor' },
     ],
   },
+  {
+    id: 'project-lifecycle-skill',
+    title: 'project-lifecycle-skill',
+    latestUpdate: {
+      dateLabel: '25 novembre 2026',
+      datetime: '2026-11-25',
+      items: [
+        {
+          kind: 'Plugin',
+          version: 'v0.1.0',
+          hash: '0ca92f3',
+          message: 'Initialize project lifecycle skill v0.1.0',
+          dateLabel: '25 novembre 2026',
+          note: 'Prima versione del repository: la skill project-lifecycle con i template, i protocolli di inizio e fine sessione e le guide di integrazione per Codex e Claude Code. Non ci sono tag Git né un manifest di plugin: la versione v0.1.0 è quella dichiarata in README e CHANGELOG.',
+          url: 'https://github.com/fabiozagaria/project-lifecycle-skill/commit/0ca92f3b46ddc6e9758b44192dcad897f003e7d6',
+        },
+      ],
+    },
+    description:
+      'Skill per assistenti AI che governa la documentazione e la continuità di lavoro di un progetto: inizializza o riprende un repository, ne verifica lo stato, controlla le istruzioni per gli agenti, registra le decisioni e lascia un passaggio di consegne a fine sessione, senza sovrascrivere il lavoro esistente. Il metodo sta nella skill, il contesto nel repository di destinazione.',
+    skills: [
+      {
+        name: 'project-lifecycle',
+        purpose:
+          'Operazioni di bootstrap, resume, handoff, audit, sync, migrate, status, plan e decision.',
+      },
+    ],
+    technologies: ['Markdown', 'Skill per Claude Code', 'Codex'],
+    note: 'Prototipo documentale, solo istruzioni Markdown senza CLI né dipendenze. Installazione nativa e test di integrazione non ancora verificati; la licenza è da decidere.',
+    repositories: [
+      { label: 'Repository', url: 'https://github.com/fabiozagaria/project-lifecycle-skill' },
+    ],
+  },
 ] as const satisfies readonly PortfolioCollectionItem[];
 
 export const EXPERIMENTAL_PROJECTS = [

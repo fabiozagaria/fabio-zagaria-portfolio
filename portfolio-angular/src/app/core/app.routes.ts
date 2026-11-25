@@ -62,6 +62,21 @@ export const routes: Routes = [
       import('../features/projects/projects.component').then((m) => m.ProjectsComponent),
   },
   {
+    path: 'intelligenza-umana',
+    title: 'Intelligenza Umana | Fabio Zagaria',
+    data: {
+      seo: {
+        path: '/intelligenza-umana',
+        description:
+          'Intelligenza Umana: che cos’è, a cosa serve, perché esiste e come funziona il progetto di divulgazione sull’intelligenza artificiale di Fabio Zagaria, agli albori e separato dai progetti di sviluppo.',
+      },
+    },
+    loadComponent: () =>
+      import('../features/intelligenza-umana/intelligenza-umana.component').then(
+        (m) => m.IntelligenzaUmanaComponent,
+      ),
+  },
+  {
     path: 'contact',
     title: 'Contatti | Fabio Zagaria',
     data: {
