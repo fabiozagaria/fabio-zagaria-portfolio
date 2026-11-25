@@ -37,6 +37,7 @@
   color: inherit;
   font-weight: 600;
 }
+.c-iu__site a,
 .c-iu__back a {
   display: inline-flex;
   align-items: center;
