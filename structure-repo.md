@@ -51,8 +51,9 @@ Il portfolio è concluso dal 21 novembre 2026: la sua scheda dichiara lo stato �
 | ----------------------- | ---------------------------------------------------------------------------------- |
 | learning-ledger         | [learning-ledger](https://github.com/fabiozagaria/learning-ledger)                 |
 | spring-security-advisor | [spring-security-advisor](https://github.com/fabiozagaria/spring-security-advisor) |
+| project-lifecycle-skill | [project-lifecycle-skill](https://github.com/fabiozagaria/project-lifecycle-skill) |
 
-Plugin per Claude Code pubblicati dal proprietario, con uno script Python che verifica e il modello che spiega. Le schede dichiarano versione, limiti e stato delle verifiche, come per gli altri progetti. Ogni plugin elenca le skill disponibili e la funzione di ciascuna.
+Plugin e skill per assistenti AI pubblicati dal proprietario: i plugin per Claude Code hanno uno script Python che verifica e il modello che spiega; project-lifecycle-skill è una skill documentale in Markdown. Le schede dichiarano versione, limiti e stato delle verifiche, come per gli altri progetti. Ogni plugin elenca le skill disponibili e la funzione di ciascuna.
 
 ## Sperimentale con AI
 

@@ -101,7 +101,8 @@ describe('ProjectsComponent', () => {
   });
 
   it('removes the new badge once the update is older than three days', () => {
-    const element = render('2026-11-25T10:00:00+01:00');
+    // Ultimo commit più recente: project-lifecycle-skill, 25 novembre 2026.
+    const element = render('2026-11-29T10:00:00+01:00');
 
     expect(element.querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
@@ -113,7 +114,8 @@ describe('ProjectsComponent', () => {
     );
 
     expect(flagged.sort()).toEqual(['accessdesk', 'gestionale-spese', 'jobflow']);
-    expect(render('2026-11-25T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
+    expect(render('2026-11-28T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(1);
+    expect(render('2026-11-29T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
     expect(
       render('2026-11-24T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
     ).not.toBeNull();
@@ -194,6 +196,7 @@ describe('ProjectsComponent', () => {
         'weekly-report',
       ],
       'spring-security-advisor': ['audit', 'review', 'map'],
+      'project-lifecycle-skill': ['project-lifecycle'],
     };
     for (const [id, names] of Object.entries(expected)) {
       const card = element.querySelector('#' + id)!;
@@ -207,7 +210,7 @@ describe('ProjectsComponent', () => {
     }
   });
 
-  it('groups the two Claude Code plugins in their own section, apart from the experiments', () => {
+  it('groups the Claude Code plugins and skills in their own section, apart from the experiments', () => {
     const element = render('2026-11-04T10:00:00+01:00');
     const section = element.querySelector('[aria-labelledby="plugin-skill-ai-title"]');
     const experiments = element.querySelector('[aria-labelledby="sperimentale-ai-title"]');
@@ -216,6 +219,7 @@ describe('ProjectsComponent', () => {
     expect([...(section?.querySelectorAll('article') ?? [])].map((a) => a.id)).toEqual([
       'learning-ledger',
       'spring-security-advisor',
+      'project-lifecycle-skill',
     ]);
     expect(experiments?.querySelector('#learning-ledger')).toBeNull();
   });
@@ -232,6 +236,7 @@ describe('ProjectsComponent', () => {
     expect(kinds('accessdesk')).toEqual(['Backend']);
     expect(kinds('learning-ledger')).toEqual(['Plugin']);
     expect(kinds('spring-security-advisor')).toEqual(['Plugin']);
+    expect(kinds('project-lifecycle-skill')).toEqual(['Plugin']);
     expect(element.querySelector('#jobflow .c-update-item__version')?.textContent).toContain(
       'v0.1.0-alpha.1',
     );
@@ -249,6 +254,7 @@ describe('ProjectsComponent', () => {
     expect(tags('accessdesk')).toEqual(['Backend:v0.1.0-alpha.1']);
     expect(tags('learning-ledger')).toEqual(['Plugin:1.0.0']);
     expect(tags('spring-security-advisor')).toEqual(['Plugin:1.0.0']);
+    expect(tags('project-lifecycle-skill')).toEqual([]);
     expect(tags('labtv')).toEqual([]);
     const link = element.querySelector<HTMLAnchorElement>('#gestionale-spese .c-vtag a');
     expect(link?.href).toBe(
