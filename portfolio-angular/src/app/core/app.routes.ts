@@ -68,7 +68,7 @@ export const routes: Routes = [
       seo: {
         path: '/intelligenza-umana',
         description:
-          'Intelligenza Umana: un progetto di divulgazione sull’intelligenza artificiale di Fabio Zagaria, in costruzione e separato dai progetti di sviluppo.',
+          'Intelligenza Umana: che cos’è, a cosa serve, perché esiste e come funziona il progetto di divulgazione sull’intelligenza artificiale di Fabio Zagaria, agli albori e separato dai progetti di sviluppo.',
       },
     },
     loadComponent: () =>

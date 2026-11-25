@@ -29,7 +29,17 @@ describe('IntelligenzaUmanaComponent', () => {
 
     expect(element.querySelector('h1')?.textContent).toContain('Intelligenza Umana');
     expect(logo?.getAttribute('alt')).toContain('Intelligenza Umana');
-    expect(element.textContent).toContain('in costruzione');
+    expect(element.textContent).toContain('agli albori');
+    expect(
+      Array.from(element.querySelectorAll('h2'), (title) => title.textContent?.trim()),
+    ).toEqual([
+      'Che cos’è',
+      'A cosa serve',
+      'Perché esiste',
+      'Come funziona',
+      'A che punto è',
+      'Perché ha una pagina sua',
+    ]);
     for (const link of Array.from(element.querySelectorAll('a'))) {
       expect(link.getAttribute('href') ?? '').not.toMatch(/^https?:/);
     }
