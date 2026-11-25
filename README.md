@@ -174,7 +174,7 @@ Il CV elenca Expense Tracker, JobFlow, AccessDesk e MedTransit (quest'ultimo dic
 
 ## Stato del portfolio
 
-Il portfolio è **concluso dal 21 novembre 2026**: stile, sezioni e animazioni sono definitivi, per scelta del proprietario. Si modifica soltanto per cambiamenti importanti, come un nuovo progetto o un dato che cambia. La sua scheda nella pagina Progetti riporta lo stato «Concluso» e, a differenza dei progetti principali, non ha storico dei commit. Dal 25 novembre 2026 la home ha anche una breve sezione «Intelligenza Umana», un progetto di divulgazione sull'intelligenza artificiale a parte, senza link finché il sito non è online.
+Il portfolio è **concluso dal 21 novembre 2026**: stile, sezioni e animazioni sono definitivi, per scelta del proprietario. Si modifica soltanto per cambiamenti importanti, come un nuovo progetto o un dato che cambia. La sua scheda nella pagina Progetti riporta lo stato «Concluso» e, a differenza dei progetti principali, non ha storico dei commit. Dal 25 novembre 2026 il menu ha anche la voce «Intelligenza Umana», una pagina a parte su un progetto di divulgazione sull'intelligenza artificiale, separata dai progetti di sviluppo e senza link finché il sito non è online.
 
 ## Curriculum aggiornato — 29 ottobre 2026
 

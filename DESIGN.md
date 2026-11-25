@@ -80,4 +80,4 @@ Pulsanti alti almeno 48px, a pillola. Navigazione (compreso il logo), toggle e l
 ## Do's and Don'ts
 Conservare contenuti reali, stato dei progetti, gerarchia semantica, focus e contrasto AA. Ammessi: movimento d'ambiente lento con pausa, risposte morbide a ogni azione, gradienti tenui nel cielo, il cielo stellato e il sole disegnati nel canvas. Vietati: testo che si muove con lo scroll, parallasse, reveal che nascondono contenuti finché non si scorre, scroll dirottato o ammorbidito via script, rimbalzi, lampeggi, movimento oltre 5 secondi senza pausa.
 
-- **Sezione «Intelligenza Umana» (home, 25 novembre 2026)**: blocco sobrio, solo testo, con filetto superiore e stessi colori e titoli delle altre sezioni; nessuna animazione nuova.
+- **Pagina «Intelligenza Umana» (25 novembre 2026)**: voce nel menu e pagina a parte con intestazione come le altre pagine; il logo orizzontale sta su un riquadro avorio dello stesso colore del suo sfondo, per leggersi in tema chiaro e scuro. Nessuna animazione nuova.

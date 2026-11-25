@@ -201,27 +201,6 @@
     grid-template-columns: 1fr;
   }
 }
-.c-side {
-  padding-block: 0 5rem;
-}
-.c-side__body {
-  max-width: 62ch;
-  border-top: 1px solid var(--clr-white-subtle);
-  padding-top: 2rem;
-}
-.c-side__eyebrow {
-  margin: 0 0 0.5rem;
-  font-size: var(--fs-300);
-  color: var(--clr-white-subtle);
-}
-.c-side h2 {
-  margin-bottom: 0.75rem;
-  font-size: var(--fs-700);
-}
-.c-side p:last-child {
-  margin: 0;
-  color: var(--clr-white-subtle);
-}
 .c-resume {
   background: var(--clr-black-soft);
   padding-block: 5rem;
@@ -270,8 +249,5 @@
   .c-showcase,
   .c-explore {
     padding-block: 3rem;
-  }
-  .c-side {
-    padding-block: 0 3rem;
   }
 }

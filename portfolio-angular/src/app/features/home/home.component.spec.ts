@@ -151,13 +151,4 @@ describe('HomeComponent', () => {
     expect(element.textContent).not.toContain('Metodo CARAC');
     expect(element.textContent).not.toContain("Uso dell'AI");
   });
-
-  it('shows Intelligenza Umana as a separate project without any link to a private repository', () => {
-    const fixture = TestBed.createComponent(HomeComponent);
-    fixture.detectChanges();
-    const section = (fixture.nativeElement as HTMLElement).querySelector('.c-side');
-
-    expect(section?.querySelector('h2')?.textContent).toContain('Intelligenza Umana');
-    expect(section?.querySelectorAll('a')).toHaveLength(0);
-  });
 });

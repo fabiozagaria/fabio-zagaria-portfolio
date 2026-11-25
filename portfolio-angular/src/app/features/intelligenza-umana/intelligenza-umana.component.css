@@ -1,0 +1,32 @@
+.c-iu__logo {
+  margin: 0 0 2.5rem;
+  max-width: 34rem;
+  padding: 1.5rem 2rem;
+  background: #fbf6ed;
+  border-radius: var(--radius-card);
+}
+.c-iu__logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.c-iu__text {
+  max-width: 62ch;
+}
+.c-iu__status {
+  margin: 0 0 1rem;
+  font-size: var(--fs-300);
+  color: var(--clr-white-subtle);
+}
+.c-iu__text h2 {
+  margin: 2rem 0 0.75rem;
+  font-size: var(--fs-600);
+}
+.c-iu__text h2:first-of-type {
+  margin-top: 0;
+}
+.c-iu__back a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
