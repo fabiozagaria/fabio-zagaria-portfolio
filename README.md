@@ -179,3 +179,5 @@ Il portfolio è **concluso dal 21 novembre 2026**: stile, sezioni e animazioni s
 ## Curriculum aggiornato — 29 ottobre 2026
 
 CV a pagina singola allineato a Expense Tracker, AccessDesk e studio autodidatta di PostgreSQL. La versione pubblicata è generata con il template nativo Career Ops dal payload `portfolio-angular/scripts/cv-career-ops.json`. Il flusso di installazione, generazione e verifica è documentato in `AGENTS.md`. La copia nel repository curriculum richiede una sincronizzazione separata.
+
+Navigazione: Home, Profilo professionale, Percorso professionale, Progetti software, Intelligenza Umana e Contatti. Gli URL esistenti restano invariati.

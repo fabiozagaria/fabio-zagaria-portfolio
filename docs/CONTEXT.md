@@ -122,3 +122,6 @@ Il portfolio mantiene i dati statici: nessuna richiesta fittizia per mostrare sk
 Verifiche locali: test su immagini pendenti, cache, errore e navigazione lazy; Chromium a 390 e 1440 px, chiaro/scuro, movimento ridotto, dimensioni delle immagini stabili e assenza di overflow orizzontale. Controlli su anteprima locale, senza pubblicazione.
 
 **Presentazione dello spinner di navigazione — 16 novembre 2026.** Indicatore centrato nella viewport su desktop e mobile, con pannello a superficie di tema, bordo e ombra per distinguerlo dai contenuti sottostanti. Due anelli CSS ruotano in direzioni opposte intorno al monogramma FZ; l'etichetta è visibile. Il pannello non intercetta i clic e compare soltanto durante la navigazione reale. Nessuna immagine da scaricare o durata minima introdotta; con movimento ridotto entrambi gli anelli restano statici.
+
+## Etichette navigazione — 2026-11-25
+Menu: Home, Profilo professionale, Percorso professionale, Progetti software, Intelligenza Umana, Contatti. Route e titoli SEO invariati. Test di regressione aggiunto, esecuzione e resa responsive da verificare.

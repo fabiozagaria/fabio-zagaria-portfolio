@@ -34,6 +34,30 @@ describe('App', () => {
     expect(compiled.querySelector('.c-nav__logo-text')?.textContent).toContain('Fabio Zagaria');
   });
 
+  it('uses professional navigation labels without changing destinations', () => {
+    const fixture = TestBed.createComponent(App);
+    fixture.detectChanges();
+    const links = Array.from(
+      (fixture.nativeElement as HTMLElement).querySelectorAll<HTMLAnchorElement>('#nav-menu a'),
+    );
+    expect(links.map((link) => link.textContent?.trim())).toEqual([
+      'Home',
+      'Profilo professionale',
+      'Percorso professionale',
+      'Progetti software',
+      'Intelligenza Umana',
+      'Contatti',
+    ]);
+    expect(links.map((link) => link.getAttribute('href'))).toEqual([
+      '/',
+      '/about',
+      '/experience',
+      '/projects',
+      '/intelligenza-umana',
+      '/contact',
+    ]);
+  });
+
   it('should expose the mobile menu state to assistive technologies', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();

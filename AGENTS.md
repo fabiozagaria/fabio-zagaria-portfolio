@@ -40,3 +40,5 @@ Il generatore Python precedente è stato rimosso. Non ricreare un generatore alt
 
 ## Project Lifecycle — integrità del contesto
 Prima di modificare, inventaria struttura e stato Git, leggi README, HANDOFF, docs/CONTEXT.md e docs/DOCUMENTATION_MAP.md; individua fonti e impatto. Preserva regole locali, verifica codice e documenti, segnala conflitti e blocchi. Aggiorna contestualmente le fonti obsolete e registra quelle invariate; applica docs/DEFINITION_OF_DONE.md. Aggiorna HANDOFF dopo sessioni significative. Nessun redesign implicito, nessuna pubblicazione o push senza autorizzazione. Le regole locali sono autosufficienti.
+
+Eccezione approvata il 25 novembre: aggiornamento delle sole etichette del menu (Profilo professionale, Percorso professionale, Progetti software), senza cambiare URL, stile o contenuti.
