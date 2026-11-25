@@ -21,7 +21,7 @@ describe('IntelligenzaUmanaComponent', () => {
     }).compileComponents();
   });
 
-  it('presents the project on its own page with the horizontal logo and no external links', () => {
+  it('presents the project on its own page with the horizontal logo and a single external link to its site', () => {
     const fixture = TestBed.createComponent(IntelligenzaUmanaComponent);
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
@@ -40,8 +40,15 @@ describe('IntelligenzaUmanaComponent', () => {
       'A che punto è',
       'Perché ha una pagina sua',
     ]);
-    for (const link of Array.from(element.querySelectorAll('a'))) {
-      expect(link.getAttribute('href') ?? '').not.toMatch(/^https?:/);
-    }
+    const externalLinks = Array.from(element.querySelectorAll('a')).filter((link) =>
+      /^https?:/.test(link.getAttribute('href') ?? ''),
+    );
+
+    expect(externalLinks.length).toBe(1);
+    expect(externalLinks[0].getAttribute('href')).toBe(
+      'https://intelligenza-umana-web.vercel.app/',
+    );
+    expect(externalLinks[0].getAttribute('target')).toBe('_blank');
+    expect(externalLinks[0].getAttribute('rel')).toContain('noopener');
   });
 });
