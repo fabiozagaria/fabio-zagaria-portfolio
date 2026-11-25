@@ -1,0 +1,11 @@
+# Mappa documentale
+- AGENTS.md: regole operative; CLAUDE.md le importa.
+- README.md: presentazione pubblica, stack, progetti, avvio.
+- docs/CONTEXT.md: stato tecnico e limiti.
+- PRODUCT.md e DESIGN.md: prodotto e design; consultare prima di modifiche UI.
+- structure-repo.md: classificazione repository.
+- docs/CV-DA-RIGENERARE.md: procedura CV; dati in portfolio-angular/scripts/cv-career-ops.json e src/app/data/cv.data.ts.
+- docs/superpowers/: specifiche e piani storici.
+- portfolio-angular/src/app/core/app.routes.ts: routing effettivo; codice e configurazione prevalgono per fatti tecnici.
+- HANDOFF.md: stato sessione; docs/DECISIONS.md: decisioni; docs/DEFINITION_OF_DONE.md: chiusura.
+- Conservare le regole Notion e CV già presenti in AGENTS. Aggiornare questa mappa quando cambiano responsabilità o struttura.
