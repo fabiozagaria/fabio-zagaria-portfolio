@@ -7,7 +7,7 @@ Portfolio professionale concluso dal 21 novembre, salvo aggiornamenti significat
 - Pagina Progetti: mostra quattro sezioni curate, in ordine fisso. Plugin e skill trasferiti in Intelligenza Umana e raccolte di esercizi sono stati tolti dai contenuti e dai dati della pagina. Home ridotta alle aree Backend e Progetti del corso.
 - Repository: allowlist ordinata in `portfolio-angular/src/app/data/portfolio-repositories.json`, con GET individuale dei 10 repository mostrati. Il workflow GitHub Actions è settimanale e avviabile manualmente. Il pulsante finale apre tutte le repository pubbliche su GitHub.
 - Navigazione Progetti: link dell’indice e ritorno all’indice usano fragment Angular con ID reali sulle sezioni.
-- Pagina Intelligenza Umana: foundation e quattro repository di strumenti pubblici MIT ora trasferiti in `Intelligenza-Umana`: Learning Ledger, Spring Security Advisor, Project Lifecycle Skill v0.3.0 e IU Model Router v0.1.0. Collegamenti della pagina aggiornati ai nuovi owner. Il repository del sito resta privato e non è collegato. Installazione e compatibilità degli strumenti restano da verificare; il progetto principale è ancora da scegliere.
+- Pagina Intelligenza Umana: foundation e quattro repository di strumenti pubblici MIT ora trasferiti in `Intelligenza-Umana`: Learning Ledger, Spring Security Advisor, Project Lifecycle Skill v0.3.0 e Model Router v0.1.0. Collegamenti della pagina aggiornati ai nuovi owner. Il repository del sito resta privato e non è collegato. Installazione e compatibilità degli strumenti restano da verificare; il progetto principale è ancora da scegliere.
 
 ### Fonti aggiornate
 
@@ -28,7 +28,7 @@ Portfolio professionale concluso dal 21 novembre, salvo aggiornamenti significat
 - `docs/PROJECT_REGISTRY.md` nella foundation e il profilo `.github` hanno contenuti ancora non riallineati ai trasferimenti. Le modifiche locali non includono quei repository esterni.
 - La CI della PR #90 è passata prima del merge.
 
-2026-11-26: Aggiornata la pagina Intelligenza Umana con fonti della foundation e dell’organizzazione pubblica `Intelligenza-Umana`: quattro repository canonici pubblici MIT, Project Lifecycle Skill v0.3.0, IU Model Router v0.1.0, link a foundation, organizzazione, profilo e registro. In seguito i repository risultano trasferiti nell’organizzazione; vedi la nota «Aggiornamento — trasferimento repository IU» sopra. Notion riallineato con una voce datata. Test Angular non eseguiti.
+2026-11-26: Aggiornata la pagina Intelligenza Umana con fonti della foundation e dell’organizzazione pubblica `Intelligenza-Umana`: quattro repository canonici pubblici MIT, Project Lifecycle Skill v0.3.0, Model Router v0.1.0, link a foundation, organizzazione, profilo e registro. In seguito i repository risultano trasferiti nell’organizzazione; vedi la nota «Aggiornamento — trasferimento repository IU» sopra. Notion riallineato con una voce datata. Test Angular non eseguiti.
 
 2026-11-26: Rimossi dalla pagina Progetti i plugin e le skill spostati in Intelligenza Umana, insieme alle schede e ai dati degli esercizi. Home aggiornata a due aree; allowlist e JSON commit ridotti ai repository mostrati. Indice ridotto a quattro sezioni; documentazione e test aggiornati.
 Integrato metodo di integrità documentale in AGENTS, mappa, definition of done e registro decisioni; CLAUDE importa AGENTS e resta invariato. README, CONTEXT, PRODUCT, DESIGN e structure-repo non richiedono cambi di contenuto applicativo per questa integrazione; verifiche complete di PRODUCT, DESIGN e structure-repo ancora da effettuare prima di interventi pertinenti. Nessuna copia integrale della skill privata. Nessun test software eseguito. Prossimo passo facoltativo: concordare etichette di navigazione, preservando URL, design e contenuti. Nessuna modifica CV.
@@ -39,7 +39,7 @@ Aggiornate solo le tre etichette del menu; URL, titoli SEO, CSS, contenuti e CV 
 ## Aggiornamento — 2026-11-26
 La pagina Intelligenza Umana e la descrizione SEO sono state allineate alla foundation v0.2.0, senza modificare layout, route o animazioni. La pubblicazione delle modifiche deve essere verificata. Build e suite `npm run test:ci` eseguite; la foundation è aperta ai contributi e le verifiche dei prodotti restano aperte. Il sito collegato potrebbe mostrare ancora la pagina precedente fino al rilascio del nuovo portale.
 
-2026-11-26: Aggiornato il numero e l’elenco dei progetti Intelligenza Umana per includere IU Model Router. Test della pagina eseguito; il CV non è stato modificato.
+2026-11-26: Aggiornato il numero e l’elenco dei progetti Intelligenza Umana per includere Model Router. Test della pagina eseguito; il CV non è stato modificato.
 
 2026-11-26: Aggiunto aggiornamento GitHub Actions dei commit per i repository classificati nelle schede Progetti, con JSON servito come asset Angular e workflow giornaliero/manuale che committa solo le variazioni per attivare Vercel. Esercizi, portfolio e repository esclusi restano fuori. Verificati sintassi Node e configurazione; rete GitHub non disponibile in locale e dipendenze Angular non installate, quindi generazione live e build non verificate. Notion non sincronizzato.
 
@@ -48,3 +48,5 @@ La pagina Intelligenza Umana e la descrizione SEO sono state allineate alla foun
 2026-11-26: Revisione del catalogo Progetti richiesta da Fabio. Allowlist JSON ordinata per aggiornamento commit tramite GET per singolo repository; la UI usa commit aggiornati per le schede curate. Rimossa la sezione Esercizi e rinominato il link finale «Altri repository su GitHub». Indice e ritorno usano RouterLink con fragment `/projects`; gli ID sono assegnati ai gruppi di sezione, così gli anchor hanno un target reale. Workflow impostato settimanale e manuale. Verifiche Angular da eseguire dopo installazione dipendenze.
 
 2026-11-26: Ritmo verticale di Progetti e Intelligenza Umana sistemato, ritratto nell’hero e motivazione (da `docs/MOTIVATION.md`) sotto la presentazione (Home). `npm run test:ci` (112 test) e build eseguiti; verifica visiva su desktop e telefono emulato. CV non modificato.
+
+2026-11-26: Nome mostrato «IU Model Router» cambiato in «Model Router» (pagina Intelligenza Umana, test e documenti). Repository e URL `iu-model-router` invariati, come richiesto da Fabio. CV non modificato.
