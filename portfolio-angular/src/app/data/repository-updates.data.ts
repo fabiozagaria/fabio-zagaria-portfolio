@@ -25,7 +25,12 @@ export function latestRepositoryUpdate(
 ): PortfolioLatestUpdate | undefined {
   if (!projectRepositories?.length) return previousUpdate;
 
-  const repositoryName = (url: string) => url.replace(/\/$/, '').split('/').at(-1) ?? '';
+  const repositoryName = (url: string) =>
+    url
+      .replace(/\/commit\/[^/]+$/, '')
+      .replace(/\/$/, '')
+      .split('/')
+      .at(-1) ?? '';
   const projectRepositoryNames = projectRepositories.map((repository) =>
     repositoryName(repository.url),
   );
