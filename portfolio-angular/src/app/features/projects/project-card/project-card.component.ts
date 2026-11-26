@@ -6,6 +6,7 @@ import { ProjectFlowComponent } from '../../../shared/project-flow/project-flow.
 import { ProjectUpdateComponent } from '../../../shared/project-update/project-update.component';
 import { VersionTagsComponent } from '../../../shared/version-tags/version-tags.component';
 import { RecentBadgeComponent } from '../../../shared/recent-badge/recent-badge.component';
+import { latestRepositoryUpdate } from '../../../data/repository-updates.data';
 
 /**
  * Scheda di un progetto principale (full stack o backend, oppure frontend del corso).
@@ -28,6 +29,10 @@ import { RecentBadgeComponent } from '../../../shared/recent-badge/recent-badge.
 export class ProjectCardComponent {
   readonly projectInput = input.required<PortfolioProject>({ alias: 'project' });
   readonly compact = input(false);
+
+  repositoryUpdate(project: PortfolioProject) {
+    return latestRepositoryUpdate(project.repositories?.[0]?.url);
+  }
 
   /** Dominio della demo online, mostrato nella barra della cornice dello screenshot. */
   hostOf(project: PortfolioProject): string {

@@ -11,6 +11,7 @@ import { ProjectUpdateComponent } from '../../shared/project-update/project-upda
 import { RecentBadgeComponent } from '../../shared/recent-badge/recent-badge.component';
 import { VersionTagsComponent } from '../../shared/version-tags/version-tags.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
+import { latestRepositoryUpdate } from '../../data/repository-updates.data';
 
 type ProjectsSection =
   | {
@@ -42,6 +43,10 @@ type ProjectsSection =
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent {
+  repositoryUpdate(repositoryUrl: string | undefined) {
+    return latestRepositoryUpdate(repositoryUrl);
+  }
+
   /**
    * Ordine della pagina: Full Stack, Backend, Plugin e Skill AI, Progetti Frontend del Corso,
    * Sperimentale con AI, Esercizi.

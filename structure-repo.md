@@ -1,6 +1,6 @@
 # Struttura dei repository del portfolio
 
-Aggiornato: 21 novembre 2026.
+Aggiornato: 26 novembre 2026.
 
 Il repository `curriculum-vitae-fabio-zagaria` va aggiornato con ogni nuova versione del CV (vedi `docs/CV-DA-RIGENERARE.md`).
 
@@ -99,3 +99,5 @@ Quando cambia la collocazione o la visibilità di un repository:
 5. Verificare descrizioni, tecnologie, stato e link nei repository collegati; eseguire i controlli pertinenti alle modifiche del sito.
 
 Le descrizioni tecniche e gli stati dei singoli progetti sono mantenuti nei dati del sito e verificati sul codice, sulla configurazione e sui README dei rispettivi repository.
+
+Gli aggiornamenti automatici dei commit seguono i repository nelle categorie Full Stack, Backend, Frontend, Plugin e Sperimentale con AI. I repository della categoria Esercizi, quelli esclusi e il portfolio stesso non sono interrogati. Lo script è `portfolio-angular/scripts/repository-updates.mjs`; il JSON è aggiornato dal workflow `.github/workflows/update-repository-commits.yml` e consumato dalla UI usando `ProjectUpdateComponent`.

@@ -9,3 +9,5 @@ Aggiornate solo le tre etichette del menu; URL, titoli SEO, CSS, contenuti e CV 
 La pagina Intelligenza Umana e la descrizione SEO sono state allineate alla foundation v0.2.0, senza modificare layout, route o animazioni. La pubblicazione delle modifiche deve essere verificata. Build e suite `npm run test:ci` eseguite; la foundation è aperta ai contributi e le verifiche dei prodotti restano aperte. Il sito collegato potrebbe mostrare ancora la pagina precedente fino al rilascio del nuovo portale.
 
 2026-11-26: Aggiornato il numero e l’elenco dei progetti Intelligenza Umana per includere IU Model Router. Test della pagina eseguito; il CV non è stato modificato.
+
+2026-11-26: Aggiunto aggiornamento GitHub Actions dei commit per i repository classificati nelle schede Progetti, con JSON servito come asset Angular e workflow giornaliero/manuale che committa solo le variazioni per attivare Vercel. Esercizi, portfolio e repository esclusi restano fuori. Verificati sintassi Node e configurazione; rete GitHub non disponibile in locale e dipendenze Angular non installate, quindi generazione live e build non verificate. Notion non sincronizzato.

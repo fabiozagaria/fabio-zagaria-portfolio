@@ -124,8 +124,11 @@ costruire comprensione e autonomia.
 - `portfolio-angular/src/app/data`: modelli e contenuti tipizzati dei progetti.
 - `portfolio-angular/src/app/features`: pagine standalone del portfolio.
 - `portfolio-angular/src/assets`: documenti, immagini ottimizzate (compresa l'infografica del flusso API di Expense Tracker) e il video di Expense Tracker (`video/`).
+- `portfolio-angular/src/assets/data/repository-updates.json`: ultimi commit dei repository classificati nelle schede Progetti, aggiornati da GitHub Actions ogni giorno e pubblicati dal deploy Vercel.
 - `portfolio-angular/scripts/cv-career-ops.json`: contenuti del curriculum pubblicato, impaginato con Career Ops.
 - `.github/workflows/ci.yml`: controlli automatici di qualità, test e build.
+- `.github/workflows/update-repository-commits.yml`: aggiornamento giornaliero e manuale dei commit mostrati in Progetti.
+- `.github/workflows/update-repository-commits.yml`: aggiornamento giornaliero e manuale dei commit mostrati in Progetti.
 
 ## Avvio locale
 

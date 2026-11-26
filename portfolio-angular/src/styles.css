@@ -912,7 +912,8 @@ app-project-card > .c-card {
   --kind: var(--kind-api);
 }
 .c-update-item[data-kind='Plugin'],
-.c-vtag[data-kind='Plugin'] {
+.c-vtag[data-kind='Plugin'],
+.c-update-item[data-kind='Repository'] {
   --kind: var(--kind-plugin);
 }
 .c-update-item__head {
