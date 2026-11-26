@@ -8,6 +8,15 @@
       e le skill per Claude Code, gli esperimenti con AI e le raccolte di esercizi.
     </p>
 
+    <nav id="projects-index" class="c-projects__index" aria-label="Indice dei progetti">
+      <span class="c-projects__index-label">Vai a una sezione</span>
+      <ul>
+        @for (section of sections; track section.id) {
+          <li><a [href]="'#' + section.id">{{ section.title }}</a></li>
+        }
+      </ul>
+    </nav>
+
     @for (section of sections; track section.id) {
       @if (section.type === 'projects') {
         <section class="c-projects__group" [attr.aria-labelledby]="section.id + '-title'">
@@ -123,4 +132,5 @@
       </a>
     </div>
   </div>
+  <a class="c-projects__index-return" href="#projects-index">Indice dei progetti ↑</a>
 </section>

@@ -128,6 +128,7 @@ costruire comprensione e autonomia.
 - `portfolio-angular/scripts/cv-career-ops.json`: contenuti del curriculum pubblicato, impaginato con Career Ops.
 - `.github/workflows/ci.yml`: controlli automatici di qualità, test e build.
 - `.github/workflows/update-repository-commits.yml`: aggiornamento giornaliero e manuale dei commit mostrati in Progetti.
+- La pagina Progetti include un indice per raggiungere le sezioni e un collegamento fisso per tornarvi rapidamente.
 - `.github/workflows/update-repository-commits.yml`: aggiornamento giornaliero e manuale dei commit mostrati in Progetti.
 
 ## Avvio locale

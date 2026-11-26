@@ -11,3 +11,5 @@ La pagina Intelligenza Umana e la descrizione SEO sono state allineate alla foun
 2026-11-26: Aggiornato il numero e l’elenco dei progetti Intelligenza Umana per includere IU Model Router. Test della pagina eseguito; il CV non è stato modificato.
 
 2026-11-26: Aggiunto aggiornamento GitHub Actions dei commit per i repository classificati nelle schede Progetti, con JSON servito come asset Angular e workflow giornaliero/manuale che committa solo le variazioni per attivare Vercel. Esercizi, portfolio e repository esclusi restano fuori. Verificati sintassi Node e configurazione; rete GitHub non disponibile in locale e dipendenze Angular non installate, quindi generazione live e build non verificate. Notion non sincronizzato.
+
+2026-11-26: Aggiunto indice delle sei sezioni alla pagina Progetti e collegamento fisso per ritornare all’indice, con scroll margin sui titoli. Nessuna libreria aggiunta. Diff CSS verificato; build e controlli visuali non eseguiti perché le dipendenze Angular non sono installate. Notion non sincronizzato.

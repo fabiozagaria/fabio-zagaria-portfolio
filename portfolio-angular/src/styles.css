@@ -513,6 +513,64 @@ main:focus {
 .c-projects__group + .c-projects__group {
   margin-top: 5rem;
 }
+.c-projects__index {
+  display: grid;
+  gap: 0.65rem;
+  margin: 2rem 0 4rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--calm-line);
+  border-radius: var(--radius-md);
+  background: var(--clr-black-soft);
+  scroll-margin-top: calc(var(--header-height) + 1.5rem);
+}
+.c-projects__index-label {
+  color: var(--clr-white-subtle);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-bold);
+}
+.c-projects__index ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.c-projects__index a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-pill);
+  color: var(--clr-white);
+  background: color-mix(in srgb, var(--calm-accent) 12%, transparent);
+  text-decoration: none;
+}
+.c-projects__index a:hover {
+  background: color-mix(in srgb, var(--calm-accent) 22%, transparent);
+}
+.c-projects__index-return {
+  position: fixed;
+  z-index: 1000;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--calm-line);
+  border-radius: var(--radius-pill);
+  color: var(--clr-white);
+  background: var(--clr-black-soft);
+  box-shadow: var(--shadow-lift);
+  text-decoration: none;
+}
+.c-projects__index-return:hover {
+  background: var(--clr-black-lighter);
+}
+.c-projects__group {
+  scroll-margin-top: calc(var(--header-height) + 1.5rem);
+}
 /* Titoli delle sezioni della pagina Progetti, con un ghirigoro morbido sotto. */
 .c-projects__group-title {
   position: relative;

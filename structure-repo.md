@@ -101,3 +101,5 @@ Quando cambia la collocazione o la visibilità di un repository:
 Le descrizioni tecniche e gli stati dei singoli progetti sono mantenuti nei dati del sito e verificati sul codice, sulla configurazione e sui README dei rispettivi repository.
 
 Gli aggiornamenti automatici dei commit seguono i repository nelle categorie Full Stack, Backend, Frontend, Plugin e Sperimentale con AI. I repository della categoria Esercizi, quelli esclusi e il portfolio stesso non sono interrogati. Lo script è `portfolio-angular/scripts/repository-updates.mjs`; il JSON è aggiornato dal workflow `.github/workflows/update-repository-commits.yml` e consumato dalla UI usando `ProjectUpdateComponent`.
+
+La pagina Progetti include un indice collegato alle sei sezioni e un pulsante fisso per tornare all’indice. Il comportamento è limitato alla route `/projects`.

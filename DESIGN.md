@@ -58,6 +58,8 @@ Solo Nunito variabile, servito in locale da `@fontsource-variable/nunito`. Titol
 ## Layout
 Container massimo 1248px e padding clamp(1.25rem, 4vw, 4rem). Navigazione sospesa a pillola, staccata dai bordi, semitrasparente con sfocatura. Breakpoint 60em, 48em, 30em e 860px per l'hero. La griglia dei progetti usa `minmax(0, 1fr)`. Smartphone e desktop hanno gli stessi effetti; cambia solo la disposizione.
 
+La pagina Progetti offre un indice delle sei sezioni in un pannello flessibile con link a pillola. Un link fisso in basso a destra riporta all’indice; usa i token tema, rispetta l’area sicura dello schermo e compare solo in questa pagina. Gli ancoraggi hanno margine rispetto alla navigazione superiore.
+
 ## Elevation & Depth
 Profondità data da ombre ampie e trasparenti (`--calm-shadow-sm` a riposo, `--calm-shadow-md` sollevate), non da bordi. Schede, pannello dell'hero e navigazione sono superfici chiare sopra il fondo; nessun filetto decorativo.
 
