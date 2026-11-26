@@ -9,6 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:ci": "npm run cv:check && ng test --watch=false",
+    "cv:install": "node scripts/install-career-ops.mjs",
     "cv:meta": "node scripts/update-cv-meta.mjs",
     "repositories:update": "node scripts/repository-updates.mjs",
     "cv:check": "node scripts/update-cv-meta.mjs --check",

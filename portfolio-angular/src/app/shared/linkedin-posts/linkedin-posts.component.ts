@@ -1,3 +1,4 @@
+import { TranslatePipe } from '../../core/translate.pipe';
 import { isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
@@ -43,25 +44,28 @@ interface EmbeddedPost {
  * non produce nulla.
  */
 @Component({
+  imports: [TranslatePipe],
   selector: 'app-linkedin-posts',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (posts.length) {
       <section class="c-posts" aria-labelledby="posts-title">
-        <h2 id="posts-title" class="c-contact__heading">Post in evidenza</h2>
+        <h2 id="posts-title" class="c-contact__heading">{{ 'Post in evidenza' | translate }}</h2>
         @for (post of posts; track post.urn) {
           <div class="c-posts__item" [attr.data-urn]="post.urn">
             <iframe
               class="c-posts__frame"
               [src]="loaded().has(post.urn) ? post.embed : blank"
               [style.height.px]="post.height"
-              [attr.title]="'Post di LinkedIn: ' + post.summary"
+              [attr.title]="'Post di LinkedIn: {0}' | translate: (post.summary | translate)"
               allowfullscreen
             ></iframe>
             <a [href]="post.link" target="_blank" rel="noopener noreferrer">
-              Apri il post su LinkedIn
-              <span class="u-visually-hidden">(si apre in una nuova scheda)</span>
+              {{ 'Apri il post su LinkedIn' | translate }}
+              <span class="u-visually-hidden">{{
+                '(si apre in una nuova scheda)' | translate
+              }}</span>
             </a>
           </div>
         }

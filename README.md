@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://fabio-zagaria-portfolio.vercel.app/"><strong>Portfolio live</strong></a>
   ·
-  <a href="./portfolio-angular/src/assets/documents/CV.pdf">Curriculum PDF</a>
+  <a href="./portfolio-angular/src/assets/documents/CV.pdf">CV italiano</a> · <a href="./portfolio-angular/src/assets/documents/CV-en.pdf">English CV</a>
   ·
   <a href="./portfolio-angular/src/assets/documents/Attestato_LabForWeb_Fabio_Zagaria.pdf">Attestato LabForWeb</a>
   ·
@@ -102,11 +102,13 @@ costruire comprensione e autonomia.
 
 ## Scelte tecniche principali
 
+- Portfolio in italiano e in inglese. Le bandiere nell’header cambiano lingua sulla pagina corrente e il browser ricorda la preferenza.
+- Il profilo professionale mostra lo stack su due righe di loghi che scorrono in direzioni opposte, con pausa e supporto per il movimento ridotto. [Fonti dei loghi e delle bandiere](docs/ASSET-SOURCES.md).
+
 - Le pagine sono caricate solo quando vengono visitate, riducendo il JavaScript iniziale.
 - I dati dei progetti sono separati dai componenti e verificati tramite tipi TypeScript.
 - I componenti statici usano `OnPush` per evitare controlli non necessari.
-- Il CV pubblico usa un unico PDF a colonna singola, leggibile e compatibile con i sistemi ATS; gli
-  asset sorgente non necessari vengono esclusi dalla build.
+- I CV italiano e inglese sono PDF testuali a pagina singola, generati con Career Ops.
 - La navigazione mantiene titoli di pagina specifici e ripristina la posizione di scroll tra le route.
 
 ## Stack
@@ -120,13 +122,13 @@ costruire comprensione e autonomia.
 
 ## Struttura essenziale
 
-- `portfolio-angular/src/app/core`: shell applicativa, navigazione e routing.
+- `portfolio-angular/src/app/core`: shell applicativa, navigazione e routing. I cataloghi in `core/locales` contengono le traduzioni.
 - `portfolio-angular/src/app/data`: modelli e contenuti tipizzati dei progetti.
 - `portfolio-angular/src/app/features`: pagine standalone del portfolio.
 - `portfolio-angular/src/assets`: documenti, immagini ottimizzate (compresa l'infografica del flusso API di Expense Tracker) e il video di Expense Tracker (`video/`).
 - `portfolio-angular/src/app/data/portfolio-repositories.json`: allowlist ordinata dei repository curati interrogati da GitHub Actions. Gli altri repository restano raggiungibili dal link «Altri repository su GitHub».
 - `portfolio-angular/src/assets/data/repository-updates.json`: ultimi commit dell’allowlist, aggiornati settimanalmente o manualmente da GitHub Actions e pubblicati dal deploy Vercel.
-- `portfolio-angular/scripts/cv-career-ops.json`: contenuti del curriculum pubblicato, impaginato con Career Ops.
+- `portfolio-angular/scripts/cv-career-ops.json` e `cv-career-ops.en.json`: contenuti dei due CV, impaginati con Career Ops.
 - `.github/workflows/ci.yml`: controlli automatici di qualità, test e build.
 - La pagina Progetti include un indice per raggiungere le sezioni e un collegamento fisso per tornarvi rapidamente; gli esercizi e gli altri repository pubblici sono raggiungibili dal link GitHub in fondo alla pagina.
 - `.github/workflows/update-repository-commits.yml`: aggiornamento settimanale e manuale dei commit mostrati in Progetti.
@@ -168,9 +170,9 @@ Lo stile è il «Cielo dipinto»: palette Calm acqua e salvia, font Nunito e un 
 
 ## Versione del CV
 
-La pagina Home e la pagina Contatti mostrano «CV aggiornato il …». La data è quella dell'ultima **modifica dei contenuti** del CV, non quella di un rebuild del sito. Dati in un solo file, `portfolio-angular/src/app/data/cv.data.ts` (data e SHA-256 del PDF); l'indirizzo con `?v=` è derivato dall'impronta, quindi il browser non serve mai un PDF vecchio.
+Home e Contatti collegano il PDF della lingua selezionata e mostrano la relativa data dei contenuti. `portfolio-angular/src/app/data/cv.data.ts` registra data e SHA-256 di ogni PDF. Il parametro `?v=` deriva dall’impronta.
 
-Dopo aver rigenerato il PDF con Career Ops: copiarlo in `portfolio-angular/src/assets/documents/CV.pdf`, eseguire `npm run cv:meta -- AAAA-MM-GG` (data in cui sono cambiati i contenuti) e copiare lo stesso PDF nel repository [curriculum-vitae-fabio-zagaria](https://github.com/fabiozagaria/curriculum-vitae-fabio-zagaria), che conserva l'archivio datato. `npm run test:ci` fallisce se il PDF cambia senza aggiornare data e impronta (`npm run cv:check`).
+In `portfolio-angular`, `npm run cv:install` installa Career Ops in una cartella locale dedicata. Dopo aver rigenerato `CV.pdf` o `CV-en.pdf`, registrare l’impronta con `npm run cv:meta -- AAAA-MM-GG it` oppure `npm run cv:meta -- AAAA-MM-GG en` e sincronizzare il PDF con l’archivio del curriculum. `npm run cv:check` verifica entrambi i file durante la CI. [Procedura completa](./docs/CV-DA-RIGENERARE.md)
 
 ## Progetti nel CV — 21 novembre 2026
 
@@ -178,10 +180,10 @@ Il CV elenca Expense Tracker, JobFlow, AccessDesk e MedTransit (quest'ultimo dic
 
 ## Stato del portfolio
 
-Il portfolio è **concluso dal 21 novembre 2026**: stile, sezioni e animazioni sono definitivi, per scelta del proprietario. Si modifica soltanto per cambiamenti importanti, come un nuovo progetto o un dato che cambia. La sua scheda nella pagina Progetti riporta lo stato «Concluso» e, a differenza dei progetti principali, non ha storico dei commit. Dal 25 novembre 2026 il menu ha anche la voce «Intelligenza Umana», una pagina dedicata al laboratorio tecnologico indipendente, orientato a software, ricerca applicata e collaborazione. Dal 26 novembre foundation e quattro repository di strumenti risultano trasferiti nell’organizzazione [Intelligenza-Umana](https://github.com/Intelligenza-Umana); la pagina li collega agli owner aggiornati e rimanda anche al [sito di Intelligenza Umana](https://intelligenza-umana-web.vercel.app/).
+Il portfolio è **concluso dal 21 novembre 2026**: stile, sezioni e animazioni sono definitivi, per scelta del proprietario. Si modifica soltanto per cambiamenti importanti, come un nuovo progetto o un dato che cambia. La sua scheda nella pagina Progetti riporta lo stato «Concluso» e, a differenza dei progetti principali, non ha storico dei commit. Dal 25 novembre 2026 il menu ha anche la voce «Intelligenza Umana», una pagina dedicata al laboratorio tecnologico indipendente, orientato a software, ricerca applicata e collaborazione. Dal 26 novembre foundation e quattro repository di strumenti risultano trasferiti nell’organizzazione [Intelligenza-Umana](https://github.com/Intelligenza-Umana); la pagina li collega ai repository aggiornati e dà un pulsante dedicato al sito di Intelligenza Umana. Fabio ha verificato i test di Project Lifecycle Skill e ne ha confermato il funzionamento. [Sito di Intelligenza Umana](https://intelligenza-umana-web.vercel.app/)
 
 ## Curriculum aggiornato — 29 ottobre 2026
 
-CV a pagina singola allineato a Expense Tracker, AccessDesk e studio autodidatta di PostgreSQL. La versione pubblicata è generata con il template nativo Career Ops dal payload `portfolio-angular/scripts/cv-career-ops.json`. Il flusso di installazione, generazione e verifica è documentato in `AGENTS.md`. La copia nel repository curriculum richiede una sincronizzazione separata.
+CV a pagina singola allineato a Expense Tracker, AccessDesk e studio autodidatta di PostgreSQL. Quella versione è stata generata con il template nativo Career Ops dal payload `portfolio-angular/scripts/cv-career-ops.json`. Il flusso di installazione, generazione e verifica è documentato in `AGENTS.md`. La copia nel repository curriculum richiede una sincronizzazione separata.
 
 Navigazione: Home, Profilo professionale, Percorso professionale, Progetti software, Intelligenza Umana e Contatti. Gli URL esistenti restano invariati. Ogni progetto ha ora anche una pagina propria (`/projects/<id>`) con la scheda completa; l'elenco e la Home mostrano card brevi. Le pagine si aprono con una discesa morbida degli elementi (disattivata con «riduci movimento») e il tema chiaro è meno luminoso. Il 26 novembre 2026, su richiesta di Fabio, la Home mostra il ritratto nella scheda di presentazione e, sotto l’hero, la motivazione in inglese tratta da Intelligenza Umana; spaziature e leggibilità di Progetti e Intelligenza Umana sono state riordinate.

@@ -1,31 +1,52 @@
-/**
- * Versione del CV distribuito dal sito.
- *
- * - `updatedAt` è la data in cui sono cambiati i CONTENUTI del CV: non la data della build né quella
- *   della copia nel repository del curriculum. Se il CV non cambia, la data resta quella.
- * - `sha256` è l'impronta del file `src/assets/documents/CV.pdf`.
- *
- * Si aggiornano insieme, dopo ogni rigenerazione con Career Ops, con
- * `npm run cv:meta -- AAAA-MM-GG`. Il test `cv.data.spec.ts` fallisce se il PDF cambia senza che
- * data e impronta siano stati aggiornati: nessun CV nuovo passa inosservato.
- */
+import type { PortfolioLanguage } from '../core/language.service';
+
+/** Data dei contenuti e SHA-256 dei PDF, registrati da `npm run cv:meta`. */
 export const CV = {
   updatedAt: '2026-11-21',
   sha256: '8915cc5822f45c8234545e7788130c058a392d27c434757fa6d9d9266d79c28a',
 } as const;
 
-/** Prime otto cifre dell'impronta: cambia a ogni nuovo CV, così il browser non serve una copia vecchia. */
-export const CV_VERSION = CV.sha256.slice(0, 8);
-export const CV_VIEW_URL = `/assets/documents/CV.pdf?v=${CV_VERSION}`;
-export const CV_DOWNLOAD_URL = `/downloads/CV.pdf?v=${CV_VERSION}`;
-export const CV_DOWNLOAD_NAME = 'CV_Fabio_Zagaria.pdf';
+export const CV_EN = {
+  updatedAt: '2026-11-26',
+  sha256: '4a0446d57a8da7041afa39473e66d1fd7ffb13631f7aeea2152cd10463a3d730',
+} as const;
 
-/** «5 novembre 2026». La data è un giorno di calendario: si legge in UTC per non scivolare di giorno. */
-export function cvUpdatedLabel(): string {
-  return new Intl.DateTimeFormat('it-IT', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
-  }).format(new Date(`${CV.updatedAt}T00:00:00Z`));
+const italianDate = new Intl.DateTimeFormat('it-IT', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+/** Il fuso UTC mantiene la data del documento anche cambiando fuso orario. */
+export function cvUpdatedLabel(updatedAt: string = CV.updatedAt): string {
+  return italianDate.format(new Date(`${updatedAt}T00:00:00Z`));
 }
+
+function documentLinks(
+  language: PortfolioLanguage,
+  filename: string,
+  downloadName: string,
+  metadata: { readonly updatedAt: string; readonly sha256: string },
+) {
+  const version = metadata.sha256.slice(0, 8);
+  return {
+    language,
+    version,
+    view: `/assets/documents/${filename}?v=${version}`,
+    download: `/downloads/${filename}?v=${version}`,
+    downloadName,
+    updatedAt: metadata.updatedAt,
+    updatedLabel: cvUpdatedLabel(metadata.updatedAt),
+  } as const;
+}
+
+export const CV_DOCUMENTS = {
+  it: documentLinks('it', 'CV.pdf', 'CV_Fabio_Zagaria.pdf', CV),
+  en: documentLinks('en', 'CV-en.pdf', 'CV_Fabio_Zagaria_EN.pdf', CV_EN),
+};
+
+export const CV_VERSION = CV_DOCUMENTS.it.version;
+export const CV_VIEW_URL = CV_DOCUMENTS.it.view;
+export const CV_DOWNLOAD_URL = CV_DOCUMENTS.it.download;
+export const CV_DOWNLOAD_NAME = CV_DOCUMENTS.it.downloadName;

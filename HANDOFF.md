@@ -1,3 +1,18 @@
+## CV inglese e pagina Intelligenza Umana — 2026-11-26
+
+- Career Ops 1.40.0 al commit `dee72e0` installato nel cloud e in `portfolio-angular/.career-ops`. Il comando ripetibile è `npm run cv:install` da `portfolio-angular`. Le dipendenze del tool restano nella sua cartella locale.
+- Il CV inglese (`CV-en.pdf`, SHA-256 breve `4a0446d5`) traduce il CV italiano del 21 novembre. Home e Contatti collegano il PDF e la data della lingua attiva. PDF inglese e copia archiviata coincidono nel checkout del repository curriculum.
+- CV inglese verificato su una pagina A4 con testo estraibile e link. Career Ops ha dato 90/100 nel controllo ATS. Il confronto con il CV italiano è stato fatto sui contenuti, perché il controllo dei fatti richiede un `cv.md` non disponibile nel cloud.
+- In Intelligenza Umana, il sito ufficiale ha un pulsante primario separato. Titoli e descrizioni usano le maiuscole iniziali. Il nome visibile nel portfolio è «Model Router». Fabio ha verificato i test di Project Lifecycle Skill e ne ha confermato il funzionamento.
+- Verifiche locali: 127 test Angular, build, formato e Chromium per i due CV e la pagina Intelligenza Umana. Aggiornati README, contesto, struttura, design, prodotto, istruzioni e procedura CV nei repository pertinenti. Il riepilogo resta nel repository. Le modifiche attendono pubblicazione.
+
+## Portfolio bilingue e stack animato — 2026-11-26
+
+- Il selettore delle bandiere cambia la lingua sulla pagina corrente. Italiano al primo accesso, preferenza in `localStorage`, titoli e metadati client aggiornati con la lingua. Le traduzioni vivono in `core/locales`. Il CV, gli attestati, i media dei progetti e i contenuti esterni mantengono la lingua originale.
+- Lo stack del profilo professionale scorre su due righe in direzioni opposte, con 29 loghi e la voce testuale REST API. La pausa, la stampa e l’impostazione di movimento ridotto mostrano l’elenco statico. C++ è indicato come studio previsto.
+- Verifiche locali superate: build di produzione, Prettier e 126 test. Chromium ha verificato le 13 pagine in inglese, il cambio lingua e la persistenza dopo il ricaricamento, i loghi, la pausa e l’header fino a 320 px. Axe non ha segnalato violazioni sul profilo nelle configurazioni desktop e mobile verificate.
+- Aggiornati `README.md`, `docs/CONTEXT.md`, `structure-repo.md`, `PRODUCT.md`, `DESIGN.md`, `AGENTS.md`, la mappa documentale e il registro decisioni. Le fonti delle immagini sono in `docs/ASSET-SOURCES.md`. Il riepilogo resta nel repository su scelta di Fabio. Modifiche nella copia di lavoro, in attesa di pubblicazione.
+
 # Handoff — 2026-11-25
 Portfolio professionale concluso dal 21 novembre, salvo aggiornamenti significativi richiesti dal proprietario. Angular 21, routing lazy, Vitest, CI e deploy Vercel documentati. Rotte verificate nel sorgente: /, /about, /experience, /projects, /intelligenza-umana, /contact; alias /home. La pagina IU è già presente. Nessuna modifica applicativa in questa sessione.
 ## Handoff conversazione — 2026-11-26

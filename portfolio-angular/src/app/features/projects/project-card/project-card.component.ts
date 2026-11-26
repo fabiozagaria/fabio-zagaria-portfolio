@@ -1,3 +1,4 @@
+import { TranslatePipe, PortfolioDatePipe } from '../../../core/translate.pipe';
 import { LoadingImageDirective } from '../../../shared/loading/loading-image.directive';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -20,6 +21,8 @@ import { latestRepositoryUpdate } from '../../../data/repository-updates.data';
   selector: 'app-project-card',
   standalone: true,
   imports: [
+    TranslatePipe,
+    PortfolioDatePipe,
     RichTextPipe,
     RouterLink,
     LoadingImageDirective,

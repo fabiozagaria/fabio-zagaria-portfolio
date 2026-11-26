@@ -1,31 +1,38 @@
 <section id="about" class="c-about o-section">
   <app-sky variant="band" />
   <div class="c-about__container o-container">
-    <h1 class="c-section-title">Chi sono</h1>
+    <h1 class="c-section-title">{{ 'Chi sono' | translate }}</h1>
 
     <div class="c-about__content">
       <div class="c-about__text">
         <div class="c-about__text-block">
-          <h2>Junior Backend Developer, con visione full stack</h2>
-          <p>
-            Sono Fabio Zagaria. Ho completato un
-            <strong>percorso Full Stack Web di 650 ore</strong> e sto consolidando il mio profilo
-            backend con <strong>Java, Spring Boot, API REST e PostgreSQL</strong>.
-          </p>
-          <p>
-            Nel lavoro in ambito ospedaliero ho sviluppato
-            <strong>precisione, affidabilità</strong> e capacità di gestire responsabilità e ritmi
-            intensi: <em>qualità che porto anche nello sviluppo software</em>.
-          </p>
-          <p>
-            Cerco un'<strong>opportunità junior</strong> in cui contribuire a progetti concreti,
-            ricevere feedback da sviluppatori esperti e crescere scrivendo
-            <em>codice leggibile e ben organizzato</em>.
-          </p>
+          <h2>{{ 'Junior Backend Developer, con visione full stack' | translate }}</h2>
+          <p
+            [innerHTML]="
+              'Sono Fabio Zagaria. Ho completato un {b}percorso Full Stack Web di 650 ore{/b} e sto consolidando il mio profilo backend con {b}Java, Spring Boot, API REST e PostgreSQL{/b}.'
+                | translate
+                | rich
+            "
+          ></p>
+          <p
+            [innerHTML]="
+              'Nel lavoro in ambito ospedaliero ho sviluppato {b}precisione, affidabilità{/b} e capacità di gestire responsabilità e ritmi intensi: {i}qualità che porto anche nello sviluppo software{/i}.'
+                | translate
+                | rich
+            "
+          ></p>
+          <p
+            [innerHTML]="
+              'Cerco un\'{b}opportunità junior{/b} in cui contribuire a progetti concreti, ricevere feedback da sviluppatori esperti e crescere scrivendo {i}codice leggibile e ben organizzato{/i}.'
+                | translate
+                | rich
+            "
+          ></p>
         </div>
 
         <div class="c-about__text-block">
-          <h2>Stack tecnologico</h2>
+          <h2>{{ 'Stack tecnologico' | translate }}</h2>
+          <app-stack-marquee />
           <dl class="c-about__stack">
             <div>
               <dt>Backend</dt>
@@ -35,18 +42,21 @@
               </dd>
             </div>
             <div>
-              <dt>PostgreSQL · autodidatta</dt>
+              <dt>{{ 'PostgreSQL · autodidatta' | translate }}</dt>
               <dd>
-                Studiato da autodidatta e applicato, con migrazioni Flyway, in Expense Tracker (demo
-                online su Neon), AccessDesk e JobFlow. MySQL resta quello del percorso LabForWeb e
-                dei primi progetti.
+                {{
+                  'Studiato da autodidatta e applicato, con migrazioni Flyway, in Expense Tracker (demo online su Neon), AccessDesk e JobFlow. MySQL resta quello del percorso LabForWeb e dei primi progetti.'
+                    | translate
+                }}
               </dd>
             </div>
             <div>
-              <dt>Altri studi autonomi</dt>
+              <dt>{{ 'Altri studi autonomi' | translate }}</dt>
               <dd>
-                Utilizzo dell'AI nello sviluppo e architettura software; prossimo approfondimento:
-                C++.
+                {{
+                  "Utilizzo dell'AI nello sviluppo e architettura software; prossimo approfondimento: C++."
+                    | translate
+                }}
               </dd>
             </div>
             <div>
@@ -54,41 +64,52 @@
               <dd>Angular, TypeScript, JavaScript, HTML, CSS</dd>
             </div>
             <div>
-              <dt>Test</dt>
-              <dd>JUnit, Mockito, Testcontainers, test di integrazione con Spring Boot</dd>
+              <dt>{{ 'Test' | translate }}</dt>
+              <dd>
+                {{
+                  'JUnit, Mockito, Testcontainers, test di integrazione con Spring Boot' | translate
+                }}
+              </dd>
             </div>
             <div>
-              <dt>Strumenti</dt>
+              <dt>{{ 'Strumenti' | translate }}</dt>
               <dd>Git, GitHub, GitHub Actions (CI), Maven, Docker, Vercel, Render, Neon</dd>
             </div>
             <div>
-              <dt>Sviluppo assistito da AI</dt>
+              <dt>{{ 'Sviluppo assistito da AI' | translate }}</dt>
               <dd>
-                Claude Code e Codex, con skill, plugin e integrazioni MCP, anche realizzati in
-                proprio (vedi Progetti).
+                {{
+                  'Claude Code e Codex, con skill, plugin e integrazioni MCP, anche realizzati in proprio (vedi Progetti).'
+                    | translate
+                }}
               </dd>
             </div>
           </dl>
         </div>
 
         <div class="c-about__text-block">
-          <h2>Come lavoro</h2>
-          <p>
-            Parto da un <strong>flusso piccolo e verificabile</strong>, separo le responsabilità e
-            confronto il risultato con il problema iniziale. Uso test, debugging e revisione del
-            codice per consolidare le scelte e individuare i limiti da affrontare nel passo
-            successivo.
-          </p>
-          <p>
-            Uso agenti AI come <strong>Claude Code e Codex</strong>, con skill, plugin e
-            integrazioni MCP, per <strong>generare e verificare codice</strong> quando lavoro su
-            concetti già acquisiti.
-          </p>
-          <p>
-            Quando apprendo un nuovo concetto, un’architettura o una specifica, non delego agli
-            agenti la generazione e la verifica del codice: le svolgo in prima persona per costruire
-            <em>comprensione e autonomia</em>.
-          </p>
+          <h2>{{ 'Come lavoro' | translate }}</h2>
+          <p
+            [innerHTML]="
+              'Parto da un {b}flusso piccolo e verificabile{/b}, separo le responsabilità e confronto il risultato con il problema iniziale. Uso test, debugging e revisione del codice per consolidare le scelte e individuare i limiti da affrontare nel passo successivo.'
+                | translate
+                | rich
+            "
+          ></p>
+          <p
+            [innerHTML]="
+              'Uso agenti AI come {b}Claude Code e Codex{/b}, con skill, plugin e integrazioni MCP, per {b}generare e verificare codice{/b} quando lavoro su concetti già acquisiti.'
+                | translate
+                | rich
+            "
+          ></p>
+          <p
+            [innerHTML]="
+              'Quando apprendo un nuovo concetto, un’architettura o una specifica, non delego agli agenti la generazione e la verifica del codice: le svolgo in prima persona per costruire {i}comprensione e autonomia{/i}.'
+                | translate
+                | rich
+            "
+          ></p>
         </div>
       </div>
 
@@ -96,7 +117,7 @@
         <figure class="c-about__portrait">
           <img
             src="assets/img/io-640.webp"
-            alt="Ritratto di Fabio Zagaria"
+            [alt]="'Ritratto di Fabio Zagaria' | translate"
             class="c-about__portrait-img"
             width="640"
             height="640"
@@ -108,15 +129,15 @@
         <div class="c-about__stats">
           <div class="c-about__stat-item">
             <span class="c-about__stat-number">{{ projectCount }}</span>
-            <span class="c-about__stat-label">Progetti e laboratorio</span>
+            <span class="c-about__stat-label">{{ 'Progetti e laboratorio' | translate }}</span>
           </div>
           <div class="c-about__stat-item">
             <span class="c-about__stat-number">650</span>
-            <span class="c-about__stat-label">Ore di formazione</span>
+            <span class="c-about__stat-label">{{ 'Ore di formazione' | translate }}</span>
           </div>
           <div class="c-about__stat-item">
             <span class="c-about__stat-number">Backend</span>
-            <span class="c-about__stat-label">Focus professionale</span>
+            <span class="c-about__stat-label">{{ 'Focus professionale' | translate }}</span>
           </div>
         </div>
       </div>

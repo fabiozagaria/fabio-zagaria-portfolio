@@ -4,9 +4,11 @@
 - docs/CONTEXT.md: stato tecnico e limiti.
 - PRODUCT.md e DESIGN.md: prodotto e design; consultare prima di modifiche UI.
 - structure-repo.md: classificazione repository.
-- docs/CV-DA-RIGENERARE.md: procedura CV; dati in portfolio-angular/scripts/cv-career-ops.json e src/app/data/cv.data.ts.
+- docs/CV-DA-RIGENERARE.md: installazione Career Ops, generazione e archivio. Payload in portfolio-angular/scripts/cv-career-ops.json e cv-career-ops.en.json, date e checksum in src/app/data/cv.data.ts.
 - docs/superpowers/: specifiche e piani storici.
 - portfolio-angular/src/app/core/app.routes.ts: routing effettivo; codice e configurazione prevalgono per fatti tecnici.
+- portfolio-angular/src/app/core/locales/: cataloghi di traduzione dei testi e dei dati del sito.
+- docs/ASSET-SOURCES.md: provenienza di loghi e bandiere.
 - portfolio-angular/scripts/repository-updates.mjs, portfolio-angular/src/assets/data/repository-updates.json e .github/workflows/update-repository-commits.yml: aggiornamento automatico dei commit mostrati in Progetti.
 - portfolio-angular/src/app/data/portfolio-repositories.json: elenco ordinato esplicito dei repository interrogati dall’aggiornamento GitHub.
 - HANDOFF.md: stato sessione; docs/DECISIONS.md: decisioni; docs/DEFINITION_OF_DONE.md: chiusura.

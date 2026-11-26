@@ -1,3 +1,4 @@
+import { TranslatePipe } from '../../core/translate.pipe';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 /**
@@ -7,6 +8,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
  * Il badge ufficiale di LinkedIn è stato provato e non si disegnava (vedi docs/CONTEXT.md).
  */
 @Component({
+  imports: [TranslatePipe],
   selector: 'app-linkedin-card',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,10 +31,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <span class="c-place__text">
         <span class="c-place__title">LinkedIn</span>
         <span class="c-place__name">Fabio Zagaria</span>
-        <span class="c-place__role">Junior Backend Developer, con visione full stack</span>
-        <span class="c-place__place">Roma, ibrido o remoto in Italia</span>
+        <span class="c-place__role">{{
+          'Junior Backend Developer, con visione full stack' | translate
+        }}</span>
+        <span class="c-place__place">{{ 'Roma, ibrido o remoto in Italia' | translate }}</span>
         <span class="c-place__url">linkedin.com/in/fabiozagaria</span>
-        <span class="u-visually-hidden">(si apre in una nuova scheda)</span>
+        <span class="u-visually-hidden">{{ '(si apre in una nuova scheda)' | translate }}</span>
       </span>
     </a>
   `,

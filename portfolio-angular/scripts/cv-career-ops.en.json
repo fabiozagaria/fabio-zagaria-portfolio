@@ -1,0 +1,121 @@
+{
+  "lang": "en",
+  "page_format": "a4",
+  "candidate": {
+    "name": "Fabio Zagaria",
+    "title": "Junior Java Backend Developer",
+    "location": "Rome, Italy",
+    "phone": "+39 366 719 1008",
+    "email": "zagariafabio1999@gmail.com",
+    "github": {
+      "url": "https://github.com/fabiozagaria",
+      "display": "github.com/fabiozagaria"
+    },
+    "linkedin": {
+      "url": "https://linkedin.com/in/fabiozagaria",
+      "display": "linkedin.com/in/fabiozagaria"
+    },
+    "portfolio": {
+      "url": "https://fabio-zagaria-portfolio.vercel.app/",
+      "display": "Portfolio and demos"
+    }
+  },
+  "sections": {
+    "summary": "Professional Summary",
+    "experience": "Work Experience",
+    "projects": "Projects",
+    "education": "Education",
+    "skills": "Skills"
+  },
+  "summary": "Junior Java Backend Developer with 650 hours of full-stack web training. I build REST APIs with Java, Spring Boot, and PostgreSQL, and interfaces with Angular and TypeScript. My projects cover authentication, authorization, persistence, and integration testing.",
+  "experience": [
+    {
+      "company": "Eraclya, Policlinico Gemelli",
+      "role": "Hospital Porter",
+      "location": "Rome, Italy",
+      "dates": "Jun 2021 - Present",
+      "bullets": [
+        "Transport patients and support hospital operations under changing priorities and procedures. Coordinate daily with clinical, technical, and administrative staff."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Expense Tracker",
+      "url": "https://gestionale-spese.vercel.app/",
+      "tech": "Angular, Spring Boot, PostgreSQL",
+      "description": "Full-stack income and expense tracker with JWT refresh-token rotation, rate limiting, Flyway, Testcontainers, and GitHub Actions CI."
+    },
+    {
+      "name": "JobFlow",
+      "url": "https://github.com/fabiozagaria/job-flow",
+      "badge": "Independent, in development",
+      "tech": "Java 21, Spring Boot, PostgreSQL",
+      "description": "Asynchronous job API with JPA, Flyway, Swagger UI, and Docker. Worker runs after commit. PDF generation and final states are pending."
+    },
+    {
+      "name": "AccessDesk",
+      "url": "https://github.com/fabiozagaria/accessdesk-api",
+      "badge": "Independent, in development",
+      "tech": "Java 21, Spring Boot, PostgreSQL",
+      "description": "REST API for access requests with employee and manager roles, JWT, Spring Security, JPA/Hibernate, Flyway, and optimistic locking."
+    },
+    {
+      "name": "MedTransit",
+      "url": "https://github.com/fabiozagaria/med-transit-msa",
+      "badge": "Design only, no code",
+      "tech": "",
+      "description": "Event-driven hospital transport project using fictional data. Planned stack: Spring Boot, Kafka, and PostgreSQL."
+    }
+  ],
+  "education": [
+    {
+      "title": "Full Stack Web Development Program",
+      "org": "LabForWeb",
+      "year": "Jan 2026 - Aug 2026",
+      "description": "650 hours covering Java, Spring Boot, REST APIs, Angular, TypeScript, and MySQL."
+    },
+    {
+      "title": "Java & Android Programming Course",
+      "org": "P.C. Academy",
+      "year": "Nov 2019 - May 2020",
+      "description": "In-person course covering programming fundamentals, Java 8, SQL databases, and Java for Android. Certificate of attendance."
+    },
+    {
+      "title": "Technical High School Diploma",
+      "org": "ITIS A. Einstein",
+      "year": "2018",
+      "description": "Computer Science and Telecommunications. Grade: 75/100."
+    }
+  ],
+  "skills": [
+    {
+      "category": "Backend and Data",
+      "items": "Java 21, Spring Boot, Spring MVC, Spring Security, JWT, REST APIs, PostgreSQL, MySQL, Flyway, Redis caching, SQL, JPA/Hibernate, Spring Data JPA"
+    },
+    {
+      "category": "Frontend",
+      "items": "Angular 21, TypeScript, JavaScript, Signals, Reactive Forms, HTML5, CSS3"
+    },
+    {
+      "category": "Testing",
+      "items": "JUnit, Mockito, Testcontainers, Spring Boot integration tests"
+    },
+    {
+      "category": "Development Tools and DevOps",
+      "items": "Git, GitHub, GitHub Actions (CI), Maven, Docker for containers and development environments, Postman"
+    },
+    {
+      "category": "AI-Assisted Development",
+      "items": "Claude Code (primary), custom plugins and skills, MCP, ChatGPT, OpenAI Codex Desktop/Skills, coding agents"
+    },
+    {
+      "category": "Independent Study",
+      "items": "PostgreSQL in depth and software architecture. C++ is planned."
+    },
+    {
+      "category": "Languages",
+      "items": "Italian (native); English (B2 comprehension, B1 production and interaction)"
+    }
+  ]
+}

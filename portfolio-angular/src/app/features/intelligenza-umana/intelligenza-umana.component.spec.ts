@@ -31,23 +31,30 @@ describe('IntelligenzaUmanaComponent', () => {
     expect(logo?.getAttribute('alt')).toContain('Intelligenza Umana');
     expect(element.textContent).toContain('laboratorio tecnologico indipendente');
     expect(element.querySelector('.c-iu__status')?.textContent).toContain(
-      'organizzazione GitHub attiva',
+      'Organizzazione GitHub attiva',
     );
     expect(element.textContent).not.toContain('Lancio editoriale');
     expect(element.textContent).toContain('modelli condivisi per issue e pull request');
     expect(element.textContent).toContain('sono state trasferite dall’account personale');
-    expect(element.textContent).toContain('Project Lifecycle Skill v0.3.0');
-    expect(element.textContent).toContain('Model Router v0.1.0');
+    const lifecycle = element.querySelector('.c-iu__list a[href$="/iu-project-lifecycle-skill"]');
+    expect(lifecycle?.textContent?.trim()).toBe('Project Lifecycle Skill v0.3.0');
+    expect(lifecycle?.closest('li')?.textContent).toContain('ha verificato i test');
+    expect(lifecycle?.closest('li')?.textContent).toContain('confermato il funzionamento');
+    const modelRouter = element.querySelector('.c-iu__list a[href$="/iu-model-router"]');
+    expect(modelRouter?.textContent?.trim()).toBe('Model Router v0.1.0');
+    for (const description of element.querySelectorAll('.c-iu__list li > span')) {
+      expect(description.textContent?.trim()).toMatch(/^\p{Lu}/u);
+    }
     expect(
       Array.from(element.querySelectorAll('h2'), (title) => title.textContent?.trim()),
     ).toEqual([
-      'Che cos’è',
-      'A cosa serve',
-      'Perché esiste',
-      'Come funziona',
-      'Repository e progetti',
-      'A che punto è',
-      'Perché ha una pagina sua',
+      'Che Cos’è',
+      'A Cosa Serve',
+      'Perché Esiste',
+      'Come Funziona',
+      'Repository e Progetti',
+      'A Che Punto È',
+      'Perché Ha una Pagina Sua',
     ]);
     const externalLinks = Array.from(
       element.querySelectorAll<HTMLAnchorElement>('a[href^="https://"]'),
@@ -63,6 +70,11 @@ describe('IntelligenzaUmanaComponent', () => {
       'https://github.com/Intelligenza-Umana/intelligenza-umana/blob/main/docs/PROJECT_REGISTRY.md',
       'https://intelligenza-umana-web.vercel.app/',
     ]);
+    const officialSite = element.querySelector<HTMLAnchorElement>(
+      'a[href="https://intelligenza-umana-web.vercel.app/"]',
+    );
+    expect(officialSite?.classList.contains('c-btn--primary')).toBe(true);
+    expect(officialSite?.closest('.c-iu__site')).toBeNull();
     for (const link of externalLinks) {
       expect(link.getAttribute('target')).toBe('_blank');
       expect(link.getAttribute('rel')).toContain('noopener');

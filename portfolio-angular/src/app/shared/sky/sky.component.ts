@@ -1,3 +1,4 @@
+import { TranslatePipe } from '../../core/translate.pipe';
 import {
   afterNextRender,
   ChangeDetectionStrategy,
@@ -25,6 +26,7 @@ function reducedMotionQuery(): MediaQueryList | null {
  * Decorative and hidden from assistive technology, except for its pause control.
  */
 @Component({
+  imports: [TranslatePipe],
   selector: 'app-sky',
   standalone: true,
   template: `
@@ -36,7 +38,7 @@ function reducedMotionQuery(): MediaQueryList | null {
         [attr.aria-pressed]="paused()"
         (click)="togglePause()"
       >
-        {{ paused() ? 'Fai muovere il cielo' : 'Ferma il cielo' }}
+        {{ (paused() ? 'Fai muovere il cielo' : 'Ferma il cielo') | translate }}
       </button>
     }
   `,

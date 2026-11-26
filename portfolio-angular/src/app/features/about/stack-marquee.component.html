@@ -1,0 +1,31 @@
+<div class="c-stack-marquee" [class.c-stack-marquee--paused]="paused()">
+  <button
+    class="c-stack-marquee__pause"
+    type="button"
+    [attr.aria-pressed]="paused()"
+    (click)="paused.set(!paused())"
+  >
+    {{ 'Pausa scorrimento loghi' | translate }}
+  </button>
+
+  @for (row of rows; track $index) {
+    <div class="c-stack-marquee__row" [class.c-stack-marquee__row--reverse]="$index === 1">
+      <div class="c-stack-marquee__track">
+        @for (copy of [0, 1]; track copy) {
+          <ul class="c-stack-marquee__items" role="list" [attr.aria-hidden]="copy ? 'true' : null">
+            @for (technology of row; track technology.name) {
+              <li class="c-stack-marquee__item">
+                @if (technology.logo) {
+                  <span class="c-stack-marquee__mark">
+                    <img [src]="'assets/stack/' + technology.logo" alt="" width="24" height="24" />
+                  </span>
+                }
+                {{ technology.name | translate }}
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    </div>
+  }
+</div>

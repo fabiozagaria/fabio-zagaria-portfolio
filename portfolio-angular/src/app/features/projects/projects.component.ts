@@ -1,3 +1,4 @@
+import { TranslatePipe } from '../../core/translate.pipe';
 import { SkyComponent } from '../../shared/sky/sky.component';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -33,6 +34,7 @@ type ProjectsSection =
   selector: 'app-projects',
   standalone: true,
   imports: [
+    TranslatePipe,
     RichTextPipe,
     ProjectCardComponent,
     ProjectUpdateComponent,

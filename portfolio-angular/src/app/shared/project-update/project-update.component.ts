@@ -1,3 +1,4 @@
+import { TranslatePipe, PortfolioDatePipe } from '../../core/translate.pipe';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import type { PortfolioLatestUpdate } from '../../data/projects.data';
 
@@ -7,14 +8,21 @@ import type { PortfolioLatestUpdate } from '../../data/projects.data';
  * Le card senza `items` mostrano ancora il riepilogo testuale.
  */
 @Component({
+  imports: [TranslatePipe, PortfolioDatePipe],
   selector: 'app-project-update',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="c-project-update" role="group" aria-label="Ultimo aggiornamento">
+    <div
+      class="c-project-update"
+      role="group"
+      [attr.aria-label]="'Ultimo aggiornamento' | translate"
+    >
       <p class="c-project-update__meta">
-        <strong>Ultimo aggiornamento</strong>
-        <time [attr.datetime]="update().datetime">{{ update().dateLabel }}</time>
+        <strong>{{ 'Ultimo aggiornamento' | translate }}</strong>
+        <time [attr.datetime]="update().datetime">{{
+          update().datetime | portfolioDate: update().dateLabel
+        }}</time>
         @if (update().version; as version) {
           <span>v{{ version }}</span>
         }
@@ -28,11 +36,11 @@ import type { PortfolioLatestUpdate } from '../../data/projects.data';
                 @if (item.version; as version) {
                   <code class="c-update-item__version">{{ version }}</code>
                 }
-                <span class="c-update-item__date">{{ item.dateLabel }}</span>
+                <span class="c-update-item__date">{{ null | portfolioDate: item.dateLabel }}</span>
               </div>
               <p class="c-update-item__message">{{ item.message }}</p>
               @if (item.note; as note) {
-                <p class="c-update-item__note">{{ note }}</p>
+                <p class="c-update-item__note">{{ note | translate }}</p>
               }
               <a
                 class="c-update-item__commit"
@@ -40,7 +48,8 @@ import type { PortfolioLatestUpdate } from '../../data/projects.data';
                 target="_blank"
                 rel="noopener noreferrer"
                 [attr.aria-label]="
-                  'Commit ' + item.hash + ' di ' + item.kind + ' su GitHub (apre una nuova scheda)'
+                  'Commit {0} di {1} su GitHub (apre una nuova scheda)'
+                    | translate: item.hash : item.kind
                 "
               >
                 Commit <code>{{ item.hash }}</code>
@@ -50,13 +59,17 @@ import type { PortfolioLatestUpdate } from '../../data/projects.data';
         </ol>
       } @else {
         @if (update().summary; as summary) {
-          <p class="c-project-update__summary">{{ summary }}</p>
+          <p class="c-project-update__summary">{{ summary | translate }}</p>
         }
         @if (update().sources; as sources) {
-          <div class="c-project-update__sources" role="group" aria-label="Fonti dell’aggiornamento">
+          <div
+            class="c-project-update__sources"
+            role="group"
+            [attr.aria-label]="'Fonti dell’aggiornamento' | translate"
+          >
             @for (source of sources; track source.url) {
               <a [href]="source.url" target="_blank" rel="noopener noreferrer">
-                {{ source.label }}
+                {{ source.label | translate }}
               </a>
             }
           </div>

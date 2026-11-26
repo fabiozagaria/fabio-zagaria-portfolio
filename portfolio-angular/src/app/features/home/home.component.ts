@@ -1,33 +1,33 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TranslatePipe, PortfolioDatePipe } from '../../core/translate.pipe';
+import { RichTextPipe } from '../../shared/rich-text/rich-text.pipe';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SkyComponent } from '../../shared/sky/sky.component';
 import { WordHighlightDirective } from '../../shared/sky/word-highlight.directive';
-import {
-  CV,
-  CV_DOWNLOAD_NAME,
-  CV_DOWNLOAD_URL,
-  CV_VIEW_URL,
-  cvUpdatedLabel,
-} from '../../data/cv.data';
+import { LanguageService } from '../../core/language.service';
+import { CV_DOCUMENTS } from '../../data/cv.data';
 import { PROJECTS, type PortfolioProject } from '../../data/projects.data';
 import { ProjectCardComponent } from '../projects/project-card/project-card.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, SkyComponent, WordHighlightDirective, ProjectCardComponent],
+  imports: [
+    TranslatePipe,
+    PortfolioDatePipe,
+    RichTextPipe,
+    RouterLink,
+    SkyComponent,
+    WordHighlightDirective,
+    ProjectCardComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  readonly cv = {
-    view: CV_VIEW_URL,
-    download: CV_DOWNLOAD_URL,
-    downloadName: CV_DOWNLOAD_NAME,
-    updatedAt: CV.updatedAt,
-    updatedLabel: cvUpdatedLabel(),
-  };
+  protected readonly language = inject(LanguageService);
+  protected readonly cvDocument = computed(() => CV_DOCUMENTS[this.language.current()]);
   readonly mainProject: PortfolioProject = PROJECTS[0];
   /** Aree della pagina Progetti, con il numero di schede lette dai dati. */
   readonly areas: readonly { id: string; title: string; text: string; count: number }[] = [
