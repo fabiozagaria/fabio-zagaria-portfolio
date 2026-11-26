@@ -280,12 +280,15 @@ describe('ProjectsComponent', () => {
   it('queries only the curated repository list in the same order as the project cards', () => {
     const projectRepositories = [
       ...PROJECTS.filter((project) => project.category !== 'Frontend'),
-      ...PROJECTS.filter((project) => project.category === 'Frontend' && project.id !== 'portfolio'),
+      ...PROJECTS.filter(
+        (project) => project.category === 'Frontend' && project.id !== 'portfolio',
+      ),
       ...EXPERIMENTAL_PROJECTS,
-    ].flatMap((project) =>
-      project.repositories?.map((repository) => {
-        return repository.url.replace(/\/$/, '').split('/').at(-1);
-      }) ?? [],
+    ].flatMap(
+      (project) =>
+        project.repositories?.map((repository) => {
+          return repository.url.replace(/\/$/, '').split('/').at(-1);
+        }) ?? [],
     );
     const curatedRepositories = repositories.map((repository) => repository.repository);
 

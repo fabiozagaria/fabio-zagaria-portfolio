@@ -2,7 +2,10 @@ import { SkyComponent } from '../../shared/sky/sky.component';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PortfolioProject, ProjectCategory, PROJECTS } from '../../data/projects.data';
-import { EXPERIMENTAL_PROJECTS, PortfolioCollectionItem } from '../../data/project-collections.data';
+import {
+  EXPERIMENTAL_PROJECTS,
+  PortfolioCollectionItem,
+} from '../../data/project-collections.data';
 import { ProjectUpdateComponent } from '../../shared/project-update/project-update.component';
 import { RecentBadgeComponent } from '../../shared/recent-badge/recent-badge.component';
 import { VersionTagsComponent } from '../../shared/version-tags/version-tags.component';

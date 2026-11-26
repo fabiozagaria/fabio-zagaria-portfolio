@@ -29,13 +29,13 @@ export function latestRepositoryUpdate(
   const projectRepositoryNames = projectRepositories.map((repository) =>
     repositoryName(repository.url),
   );
-  const previousRepositoryNames = previousUpdate?.items?.map((item) => repositoryName(item.url)) ?? [];
-  const orderedRepositoryNames = [
-    ...previousRepositoryNames,
-    ...projectRepositoryNames,
-  ].filter((repository, index, all) => {
-    return projectRepositoryNames.includes(repository) && all.indexOf(repository) === index;
-  });
+  const previousRepositoryNames =
+    previousUpdate?.items?.map((item) => repositoryName(item.url)) ?? [];
+  const orderedRepositoryNames = [...previousRepositoryNames, ...projectRepositoryNames].filter(
+    (repository, index, all) => {
+      return projectRepositoryNames.includes(repository) && all.indexOf(repository) === index;
+    },
+  );
 
   const matchingUpdates = orderedRepositoryNames.flatMap((repository) => {
     const projectRepository = projectRepositories.find((item) => {
@@ -64,7 +64,9 @@ export function latestRepositoryUpdate(
     return current.update.datetime > latest ? current.update.datetime : latest;
   }, matchingUpdates[0].update.datetime);
 
-  const latestUpdate = matchingUpdates.find((current) => current.update.datetime === latestDatetime);
+  const latestUpdate = matchingUpdates.find(
+    (current) => current.update.datetime === latestDatetime,
+  );
 
   return {
     datetime: latestDatetime,

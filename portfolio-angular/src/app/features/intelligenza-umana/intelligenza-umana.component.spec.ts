@@ -30,7 +30,9 @@ describe('IntelligenzaUmanaComponent', () => {
     expect(element.querySelector('h1')?.textContent).toContain('Intelligenza Umana');
     expect(logo?.getAttribute('alt')).toContain('Intelligenza Umana');
     expect(element.textContent).toContain('laboratorio tecnologico indipendente');
-    expect(element.querySelector('.c-iu__status')?.textContent).toContain('organizzazione GitHub attiva');
+    expect(element.querySelector('.c-iu__status')?.textContent).toContain(
+      'organizzazione GitHub attiva',
+    );
     expect(element.textContent).not.toContain('Lancio editoriale');
     expect(element.textContent).toContain('modelli condivisi per issue e pull request');
     expect(element.textContent).toContain('Project Lifecycle Skill v0.3.0');

@@ -146,7 +146,6 @@ describe('portfolio projects', () => {
     expect(labTv?.repositories[0].url).toContain('labtv-angular');
   });
 
-
   it('keeps the project order intentional', () => {
     expect(PROJECTS.map((project) => project.id)).toEqual([
       'gestionale-spese',
