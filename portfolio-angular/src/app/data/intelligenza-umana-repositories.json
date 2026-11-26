@@ -1,0 +1,9 @@
+{
+  "owner": "Intelligenza-Umana",
+  "repositories": [
+    { "repository": "iu-learning-ledger", "kind": "Plugin" },
+    { "repository": "iu-spring-security-advisor", "kind": "Plugin" },
+    { "repository": "iu-project-lifecycle-skill", "kind": "Repository" },
+    { "repository": "iu-model-router", "kind": "Repository" }
+  ]
+}

@@ -7,6 +7,7 @@ import type {
 } from './projects.data';
 
 export interface RepositoryUpdate {
+  readonly owner?: string;
   readonly repository: string;
   readonly datetime: string;
   readonly dateLabel: string;
@@ -46,7 +47,7 @@ export function latestRepositoryUpdate(
     const projectRepository = projectRepositories.find((item) => {
       return repositoryName(item.url) === repository;
     });
-    const update = REPOSITORY_UPDATES.find((item) => item.repository === repository);
+    const update = REPOSITORY_UPDATES.find((item) => !item.owner && item.repository === repository);
     const manifestEntry = portfolioRepositories.find((item) => item.repository === repository);
     if (!projectRepository || !update || !manifestEntry) return [];
 

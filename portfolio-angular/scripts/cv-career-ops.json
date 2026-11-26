@@ -103,7 +103,7 @@
     },
     {
       "category": "Strumenti di sviluppo e DevOps",
-      "items": "Git, GitHub, GitHub Actions (CI), Maven, Docker (containerizzazione e ambienti di sviluppo), Postman"
+      "items": "Git, GitHub, GitHub Actions (CI e commit di Intelligenza Umana), Maven, Docker, Postman"
     },
     {
       "category": "AI e sviluppo assistito",

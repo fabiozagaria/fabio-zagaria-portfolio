@@ -73,3 +73,5 @@ La pagina Intelligenza Umana e la descrizione SEO sono state allineate alla foun
 2026-11-26: Leggibilità dei testi (grassetti, corsivi, interlinea, misura), palette senza marroni, discesa su tutto il portfolio, freccia di ritorno nella pagina del progetto e ritratto meno ravvicinato. `npm run test:ci` (124 test) e build eseguiti; verifica visiva in entrambi i temi; scorrimento di tutte le pagine senza elementi bloccati. Non fatto: ritratto e palette del sito di Intelligenza Umana. CV non modificato.
 
 2026-11-26: Nome mostrato «IU Model Router» cambiato in «Model Router» (pagina Intelligenza Umana, test e documenti). Repository e URL `iu-model-router` invariati, come richiesto da Fabio. CV non modificato.
+
+2026-11-26: La pagina Intelligenza Umana riusa il riquadro «Ultimo aggiornamento» per i quattro strumenti pubblici. Il workflow settimanale e manuale del portfolio aggiorna il JSON dei commit da un elenco dedicato ai repository dell’organizzazione. I CV italiano e inglese citano l’uso di GitHub Actions per questo aggiornamento e sono stati rigenerati con Career Ops.

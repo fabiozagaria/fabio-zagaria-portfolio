@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import intelligenzaUmana from '../../data/intelligenza-umana-repositories.json';
 import { SkyEngineFactory } from '../../shared/sky/sky-engine';
 import { IntelligenzaUmanaComponent } from './intelligenza-umana.component';
 
@@ -57,7 +58,9 @@ describe('IntelligenzaUmanaComponent', () => {
       'Perché Ha una Pagina Sua',
     ]);
     const externalLinks = Array.from(
-      element.querySelectorAll<HTMLAnchorElement>('a[href^="https://"]'),
+      element.querySelectorAll<HTMLAnchorElement>(
+        'a[href^="https://"]:not(.c-update-item__commit)',
+      ),
     );
     expect(externalLinks.map((link) => link.getAttribute('href'))).toEqual([
       'https://github.com/Intelligenza-Umana/iu-learning-ledger',
@@ -78,6 +81,30 @@ describe('IntelligenzaUmanaComponent', () => {
     for (const link of externalLinks) {
       expect(link.getAttribute('target')).toBe('_blank');
       expect(link.getAttribute('rel')).toContain('noopener');
+    }
+  });
+
+  it('shows the date and latest commit of each tool from its canonical repository', () => {
+    const fixture = TestBed.createComponent(IntelligenzaUmanaComponent);
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+    const tools = Array.from(element.querySelectorAll('.c-iu__list > li'));
+
+    expect(tools).toHaveLength(intelligenzaUmana.repositories.length);
+    expect(element.querySelectorAll('app-project-update')).toHaveLength(tools.length);
+    for (const [index, { repository }] of intelligenzaUmana.repositories.entries()) {
+      const tool = tools[index];
+      const panel = tool.querySelector('app-project-update');
+      const date = panel?.querySelector('time')?.getAttribute('datetime') ?? '';
+      const commit = panel?.querySelector<HTMLAnchorElement>('a');
+      const url = `https://github.com/${intelligenzaUmana.owner}/${repository}`;
+
+      expect(tool.querySelector(':scope > a')?.getAttribute('href')).toBe(url);
+      expect(panel?.textContent).toContain('Ultimo aggiornamento');
+      expect(Number.isFinite(Date.parse(date))).toBe(true);
+      expect(panel?.querySelectorAll('.c-update-item')).toHaveLength(1);
+      expect(commit?.getAttribute('href')).toMatch(new RegExp(`^${url}/commit/[a-f0-9]{40}$`));
+      expect(commit?.getAttribute('rel')).toContain('noopener');
     }
   });
 });
