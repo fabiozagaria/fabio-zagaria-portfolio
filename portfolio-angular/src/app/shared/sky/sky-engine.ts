@@ -667,8 +667,8 @@ class CanvasSky implements SkyEngine {
         const r = h * (0.22 + Math.sin(t * Math.PI) * 0.26 + this.rnd() * 0.06);
         const y = h * 0.66 - Math.sin(t * Math.PI) * h * 0.18 + (this.rnd() - 0.5) * h * 0.05;
         const puff = g.createRadialGradient(x, y - r * 0.25, r * 0.1, x, y, r);
-        puff.addColorStop(0, 'rgba(255,255,255,0.95)');
-        puff.addColorStop(0.6, 'rgba(250,252,252,0.75)');
+        puff.addColorStop(0, 'rgba(246,250,250,0.8)');
+        puff.addColorStop(0.6, 'rgba(238,244,245,0.6)');
         puff.addColorStop(1, 'rgba(240,246,247,0)');
         g.fillStyle = puff;
         g.beginPath();

@@ -1,42 +1,44 @@
 @import '@fontsource-variable/nunito';
 
 :root {
-  /* Calm theme: fabiozagaria/turni-elisa docs/calm-theme/calm-theme.css @ 02d4ba1 */
-  --calm-page: #f2f6f5;
-  --calm-surface: #ffffff;
-  --calm-surface-soft: #f7faf9;
-  --calm-surface-hover: #eaf2f0;
-  --calm-surface-selected: #ffffff;
-  --calm-chip: #ebf3f1;
+  /* Calm theme: fabiozagaria/turni-elisa docs/calm-theme/calm-theme.css @ 02d4ba1.
+     Tema chiaro del portfolio (26 novembre 2026): superfici e sfondo abbassati verso un salvia
+     chiaro, senza bianco puro, per ridurre l'abbagliamento. Il tema scuro non cambia. */
+  --calm-page: #ebf0ee;
+  --calm-surface: #f6f9f8;
+  --calm-surface-soft: #eef3f1;
+  --calm-surface-hover: #e2ebe8;
+  --calm-surface-selected: #f6f9f8;
+  --calm-chip: #e2ebe9;
   --calm-ink: #1f3a3d;
   --calm-body: #46605f;
-  --calm-muted: #5b7478;
-  --calm-line: #e1eae7;
-  --calm-line-soft: #ecf2f0;
-  --calm-line-strong: #c2d5d0;
-  --calm-field-line: #ccdad6;
+  --calm-muted: #52696d;
+  --calm-line: #d8e3e0;
+  --calm-line-soft: #e0e9e6;
+  --calm-line-strong: #b8ccc7;
+  --calm-field-line: #c3d3cf;
   --calm-accent: #2f7d84;
   --calm-accent-strong: #22616a;
-  --calm-accent-soft: #e3f0ef;
+  --calm-accent-soft: #daeae8;
   --calm-accent-line: #a8cfcb;
   --calm-on-accent: #ffffff;
   --calm-accent-hover: #22616a;
   --calm-focus: #3b93a0;
   --calm-attention: #8f5d2d;
-  --calm-attention-soft: #fbf4ea;
+  --calm-attention-soft: #f4ecdd;
   --calm-attention-line: #ecd9bd;
   --calm-danger: #a24d47;
-  --calm-danger-soft: #fbf1f0;
+  --calm-danger-soft: #f5e7e5;
   --calm-danger-line: #ecc9c5;
   --calm-on-danger: #ffffff;
   --calm-good: #36785a;
-  --calm-tint-1: #eef5f8;
+  --calm-tint-1: #e6eff3;
   --calm-tint-1-tag: #d9eaf2;
   --calm-tint-1-ink: #2e5972;
-  --calm-tint-2: #eef6f1;
+  --calm-tint-2: #e6f1ea;
   --calm-tint-2-tag: #d8eadf;
   --calm-tint-2-ink: #2d5b47;
-  --calm-tint-3: #f8f3ea;
+  --calm-tint-3: #f1ebdd;
   --calm-tint-3-tag: #f1e4cb;
   --calm-tint-3-ink: #6d4b20;
   --calm-shadow-sm: 0 1px 2px rgb(31 58 61 / 0.04), 0 6px 18px rgb(31 58 61 / 0.06);
@@ -120,12 +122,12 @@ html[data-theme='dark'] {
   --calm-line-soft: #1f3438;
   --calm-line-strong: #3b5c60;
   --calm-field-line: #36565a;
-  --calm-accent: #7cc4c0;
+  --calm-accent: #66afac;
   --calm-accent-strong: #a6dbd6;
   --calm-accent-soft: #1c3a3d;
   --calm-accent-line: #33666a;
   --calm-on-accent: #0c2023;
-  --calm-accent-hover: #92d2ce;
+  --calm-accent-hover: #7cc4c0;
   --calm-focus: #7cc4c0;
   --calm-attention: #e5b98a;
   --calm-attention-soft: #2d2618;
@@ -2086,4 +2088,26 @@ button,
 .c-project-detail h1.c-card__title {
   font-size: var(--fs-700);
   font-weight: 500;
+}
+
+/* Passi del flusso: forme morbide e bordi discreti, senza il turchese vivace. */
+.c-flow__step {
+  border-color: var(--calm-line-strong);
+  border-radius: var(--radius-sm);
+}
+.c-flow__step:not(:last-child)::after {
+  background: var(--calm-line-strong);
+}
+.c-flow__step[data-pending='true'] {
+  border-color: var(--calm-line-strong);
+}
+
+/* Tema scuro: le etichette delle versioni diventano tonali invece di pastelli pieni. */
+html[data-theme='dark'] .c-vtag {
+  border-color: color-mix(in srgb, var(--kind) 40%, transparent);
+  box-shadow: none;
+}
+html[data-theme='dark'] .c-vtag__label {
+  background: color-mix(in srgb, var(--kind) 22%, var(--card));
+  color: var(--kind);
 }
