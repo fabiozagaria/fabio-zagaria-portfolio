@@ -174,7 +174,7 @@ export const PROJECTS = [
       },
     ],
     description:
-      'Applicazione full stack per registrare entrate e spese personali, con autenticazione e dashboard di riepilogo.',
+      '{b}Applicazione full stack{/b} per registrare entrate e spese personali, con {b}autenticazione{/b} e {i}dashboard di riepilogo{/i}.',
     video: {
       src: '/assets/video/expense-tracker-backend.mp4',
       poster: '/assets/img/project-expense-tracker-backend-video.webp',
@@ -182,10 +182,10 @@ export const PROJECTS = [
       summary:
         'In poco più di un minuto il video percorre i livelli dell’API di Expense Tracker: dove stanno i dati, come si velocizzano le letture, come ci si protegge dagli abusi e come funziona l’autenticazione.',
       topics: [
-        'Dati su PostgreSQL serverless di Neon, con lo schema versionato da Flyway',
-        'Cache Redis separata per utente, con scadenza di 2 minuti',
-        'Limite di richieste per indirizzo IP con Bucket4j, contro brute force e spam',
-        'Access token JWT da 15 minuti e refresh token in un cookie HttpOnly da 7 giorni',
+        'Dati su {b}PostgreSQL serverless di Neon{/b}, con lo schema versionato da Flyway',
+        '{b}Cache Redis{/b} separata per utente, con scadenza di 2 minuti',
+        '{b}Limite di richieste{/b} per indirizzo IP con Bucket4j, contro brute force e spam',
+        '{b}Access token JWT{/b} da 15 minuti e refresh token in un cookie HttpOnly da 7 giorni',
       ],
       durationLabel: '1 minuto e 15 secondi',
       credit: 'Gemini Notebook',
@@ -199,21 +199,21 @@ export const PROJECTS = [
       summary:
         'Il percorso di una richiesta dall’accesso fino al database, in cinque tappe: autenticazione, filtri di sicurezza, controller, cache e persistenza.',
       steps: [
-        'Autenticazione: il login su /auth/login restituisce un token JWT da 15 minuti e un refresh token da 7 giorni',
-        'Sicurezza: Spring Security valida il token Bearer e Bucket4j applica il limite di richieste',
-        'Controller: l’endpoint REST valida i dati in ingresso con i DTO ed estrae l’identità dell’utente',
-        'Cache: prima del database si controlla la cache Redis, con scadenza di 2 minuti',
-        'Persistenza: Spring Data JPA salva i dati su PostgreSQL, con lo schema gestito da Flyway',
+        '{b}Autenticazione:{/b} il login su /auth/login restituisce un token JWT da 15 minuti e un refresh token da 7 giorni',
+        '{b}Sicurezza:{/b} Spring Security valida il token Bearer e Bucket4j applica il limite di richieste',
+        '{b}Controller:{/b} l’endpoint REST valida i dati in ingresso con i DTO ed estrae l’identità dell’utente',
+        '{b}Cache:{/b} prima del database si controlla la cache Redis, con scadenza di 2 minuti',
+        '{b}Persistenza:{/b} Spring Data JPA salva i dati su PostgreSQL, con lo schema gestito da Flyway',
       ],
       credit: 'Gemini Notebook',
       width: 1116,
       height: 2000,
     },
     highlights: [
-      'Frontend Angular con Signals, Reactive Forms, ricerca, filtro mensile e liste paginate',
-      'CRUD completo di spese ed entrate, dashboard e grafici con persistenza JPA/PostgreSQL',
-      'Registrazione online con verifica email tramite API Brevo HTTPS, JWT e refresh token HttpOnly',
-      'Cache Redis delle liste e della ricerca spese, separata per utente e invalidata dopo le scritture',
+      '{b}Frontend Angular{/b} con Signals, Reactive Forms, ricerca, filtro mensile e liste paginate',
+      '{b}CRUD completo{/b} di spese ed entrate, dashboard e grafici con persistenza JPA/PostgreSQL',
+      '{b}Registrazione online{/b} con verifica email tramite API Brevo HTTPS, JWT e refresh token HttpOnly',
+      '{b}Cache Redis{/b} delle liste e della ricerca spese, separata per utente e invalidata dopo le scritture',
     ],
     technologies: [
       'Angular',
@@ -327,14 +327,14 @@ export const PROJECTS = [
       },
     ],
     description:
-      'Backend per creare e consultare job tramite API REST, con validazione e persistenza JPA su PostgreSQL. Il lavoro associato descrive una futura generazione di PDF.',
+      '{b}Backend{/b} per creare e consultare job tramite {b}API REST{/b}, con validazione e persistenza {b}JPA{/b} su {b}PostgreSQL{/b}. Il lavoro associato descrive {i}una futura generazione di PDF{/i}.',
     highlights: [
-      'Dominio Job con stati CREATED, PROCESSING, COMPLETED e FAILED',
-      'POST /jobs con DTO validato, risposta 201 Created e header Location; GET /jobs/{id} per la consultazione',
-      'Persistenza JPA/PostgreSQL di Job e GeneratePdfWork con cascade PERSIST; schema versionato con Flyway e Hibernate in validate',
-      'JobCreatedEvent pubblicato dopo il salvataggio e JobWorker asincrono (@Async con @TransactionalEventListener) che porta il job da CREATED a PROCESSING',
-      'Immagine Docker pubblicata su Render con documentazione Swagger UI',
-      'Mapping con MapStruct e test unitari di JobService e JobController',
+      '{b}Dominio Job{/b} con stati CREATED, PROCESSING, COMPLETED e FAILED',
+      '{b}POST /jobs{/b} con DTO validato, risposta 201 Created e header Location; GET /jobs/{id} per la consultazione',
+      '{b}Persistenza JPA/PostgreSQL{/b} di Job e GeneratePdfWork con cascade PERSIST; schema versionato con Flyway e Hibernate in validate',
+      '{b}JobCreatedEvent{/b} pubblicato dopo il salvataggio e JobWorker asincrono (@Async con @TransactionalEventListener) che porta il job da CREATED a PROCESSING',
+      '{b}Immagine Docker{/b} pubblicata su Render con documentazione Swagger UI',
+      '{b}Mapping{/b} con MapStruct e test unitari di JobService e JobController',
     ],
     technologies: [
       'Java',
@@ -401,12 +401,12 @@ export const PROJECTS = [
     icon: 'fas fa-truck-medical',
     focus: 'Backend · microservizi ed eventi con Kafka',
     description:
-      'Sistema a microservizi per le richieste di trasporto interno in un ospedale, con dati fittizi: un reparto chiede un trasporto, il sistema lo assegna a un operatore per priorità e turno e avvisa tutti a ogni cambio di stato. Il progetto è in fase di progettazione: il design è approvato, il codice non c’è ancora.',
+      '{b}Sistema a microservizi{/b} per le richieste di trasporto interno in un ospedale, con {i}dati fittizi{/i}: un reparto chiede un trasporto, il sistema lo assegna a un operatore per priorità e turno e avvisa tutti a ogni cambio di stato. Il progetto è in fase di progettazione: il design è approvato, il codice non c’è ancora.',
     highlights: [
-      'Design approvato: tre servizi indipendenti (richieste, assegnazione, notifiche), un database per servizio e nessun codice condiviso',
-      'Eventi previsti: richiesta creata, assegnata, presa in carico e completata, con una chiave per richiesta per mantenere l’ordine',
-      'Da dimostrare: outbox pattern, consumer idempotenti, dead-letter topic e tracciamento di una richiesta con correlationId',
-      'Test previsti su evento duplicato, consumer che si ferma e riparte, messaggio in dead-letter e assegnazione concorrente',
+      '{b}Design approvato:{/b} tre servizi indipendenti (richieste, assegnazione, notifiche), un database per servizio e nessun codice condiviso',
+      '{b}Eventi previsti:{/b} richiesta creata, assegnata, presa in carico e completata, con una chiave per richiesta per mantenere l’ordine',
+      '{i}Da dimostrare:{/i} outbox pattern, consumer idempotenti, dead-letter topic e tracciamento di una richiesta con correlationId',
+      '{i}Test previsti{/i} su evento duplicato, consumer che si ferma e riparte, messaggio in dead-letter e assegnazione concorrente',
     ],
     technologies: [
       'Java (previsto)',
@@ -468,12 +468,12 @@ export const PROJECTS = [
       },
     ],
     description:
-      'API REST per richieste di accesso software: i dipendenti creano e consultano le proprie richieste, i manager le approvano o le rifiutano. I dati sono salvati in PostgreSQL con migrazioni Flyway.',
+      '{b}API REST{/b} per richieste di accesso software: i dipendenti creano e consultano le proprie richieste, i manager le approvano o le rifiutano. I dati sono salvati in {b}PostgreSQL{/b} con migrazioni {b}Flyway{/b}.',
     highlights: [
-      'Login con JWT HS256 e filtro personalizzato OncePerRequestFilter per il Bearer token',
-      'Spring Security stateless, ruoli e permessi, autorizzazione con @PreAuthorize',
+      '{b}Login con JWT HS256{/b} e filtro personalizzato OncePerRequestFilter per il Bearer token',
+      '{b}Spring Security stateless{/b}, ruoli e permessi, autorizzazione con @PreAuthorize',
       'Errori del filtro delegati a HandlerExceptionResolver e gestione globale delle eccezioni',
-      'JPA/Hibernate, MapStruct, transazioni, locking ottimistico e paginazione Page/Pageable',
+      '{b}JPA/Hibernate{/b}, MapStruct, transazioni, locking ottimistico e paginazione Page/Pageable',
     ],
     technologies: [
       'Java 21',
@@ -540,11 +540,11 @@ export const PROJECTS = [
     icon: 'fas fa-film',
     focus: 'Frontend · progetto del corso LabForWeb',
     description:
-      'Applicazione Angular per esplorare film, cast e titoli simili attraverso i dati della TMDB API.',
+      '{b}Applicazione Angular{/b} per esplorare film, cast e titoli simili attraverso i dati della {b}TMDB API{/b}.',
     highlights: [
-      'Catalogo dinamico con HttpClient, RxJS e modelli TypeScript',
-      'Routing parametrico per dettaglio, cast, regista e film simili',
-      'Stati di caricamento ed errore gestiti nei flussi asincroni',
+      '{b}Catalogo dinamico{/b} con HttpClient, RxJS e modelli TypeScript',
+      '{b}Routing parametrico{/b} per dettaglio, cast, regista e film simili',
+      '{b}Stati di caricamento ed errore{/b} gestiti nei flussi asincroni',
     ],
     technologies: ['Angular', 'TypeScript', 'RxJS', 'Signals', 'TMDB API', 'Bootstrap'],
     status: 'Concluso',
@@ -611,11 +611,11 @@ export const PROJECTS = [
     icon: 'fas fa-film',
     focus: 'Frontend · progetto del corso LabForWeb / Nerd Academy',
     description:
-      'Landing page responsive dedicata a Stranger Things, realizzata con HTML, CSS e JavaScript vanilla. Include schede dinamiche di episodi e trailer e validazione del form email.',
+      '{b}Landing page responsive{/b} dedicata a {i}Stranger Things{/i}, realizzata con HTML, CSS e {b}JavaScript vanilla{/b}. Include schede dinamiche di episodi e trailer e validazione del form email.',
     highlights: [
-      'Manipolazione del DOM ed eventi con JavaScript nativo',
-      'Schede dinamiche per episodi, trailer e piani',
-      'Validazione email e modale trailer riutilizzabile',
+      '{b}Manipolazione del DOM ed eventi{/b} con JavaScript nativo',
+      '{b}Schede dinamiche{/b} per episodi, trailer e piani',
+      '{b}Validazione email{/b} e modale trailer riutilizzabile',
     ],
     technologies: ['HTML5', 'CSS3', 'JavaScript ES6+', 'DOM API'],
     status: 'Demo frontend',
@@ -667,12 +667,12 @@ export const PROJECTS = [
     icon: 'fas fa-code',
     focus: 'Frontend · progetto del corso',
     description:
-      'Portfolio Angular con componenti standalone, routing lazy e contenuti tipizzati, con attenzione ad accessibilità e SEO.',
+      '{b}Portfolio Angular{/b} con componenti standalone, routing lazy e contenuti tipizzati, con attenzione ad {b}accessibilità{/b} e {b}SEO{/b}.',
     highlights: [
       'Componenti standalone e routing lazy',
-      'Metadati specifici per route e dati tipizzati',
-      'Cielo disegnato su canvas 2D: notte stellata col tema scuro, giorno con sole e nuvole col tema chiaro, con pulsante di pausa e movimento ridotto rispettato',
-      'Accessibilità controllata con axe-core su cinque pagine, due temi e due larghezze, senza violazioni',
+      '{b}Metadati specifici per route{/b} e dati tipizzati',
+      '{b}Cielo disegnato su canvas 2D:{/b} notte stellata col tema scuro, giorno con sole e nuvole col tema chiaro, con pulsante di pausa e movimento ridotto rispettato',
+      '{b}Accessibilità controllata{/b} con axe-core su cinque pagine, due temi e due larghezze, senza violazioni',
     ],
     technologies: ['Angular 21', 'TypeScript 5.9', 'HTML', 'CSS', 'Canvas 2D', 'Vitest', 'Vercel'],
     status: 'Concluso',

@@ -160,10 +160,6 @@
   margin: 0;
   color: var(--clr-white-subtle);
 }
-.c-showcase__more {
-  margin: 1.25rem 0 0;
-}
-.c-showcase__more a,
 .c-explore__actions a:not(.c-btn),
 .c-explore__link {
   display: inline-flex;

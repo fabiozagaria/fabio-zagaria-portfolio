@@ -29,7 +29,7 @@
           <h2 class="c-projects__group-title" [id]="section.id + '-title'">{{ section.title }}</h2>
           <div
             class="c-projects__grid"
-            [class.c-projects__grid--single]="section.category !== 'Backend'"
+            [class.c-projects__grid--single]="section.projects.length === 1"
           >
             @for (project of section.projects; track project.id) {
               <app-project-card [project]="project" />
@@ -59,9 +59,9 @@
                   @if (entry.versionTags; as tags) {
                     <app-version-tags [tags]="tags" />
                   }
-                  <p class="c-card__description">{{ entry.description }}</p>
+                  <p class="c-card__description" [innerHTML]="entry.description | rich"></p>
                   @if (entry.note) {
-                    <p class="c-card__status-detail">{{ entry.note }}</p>
+                    <p class="c-card__status-detail" [innerHTML]="entry.note | rich"></p>
                   }
                   <div class="c-card__tags" role="group" aria-label="Tecnologie utilizzate">
                     @for (tech of entry.technologies; track tech) {

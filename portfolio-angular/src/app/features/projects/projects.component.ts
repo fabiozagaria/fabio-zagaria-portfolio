@@ -9,6 +9,7 @@ import {
 import { ProjectUpdateComponent } from '../../shared/project-update/project-update.component';
 import { RecentBadgeComponent } from '../../shared/recent-badge/recent-badge.component';
 import { VersionTagsComponent } from '../../shared/version-tags/version-tags.component';
+import { RichTextPipe } from '../../shared/rich-text/rich-text.pipe';
 import { ProjectCardComponent } from './project-card/project-card.component';
 import { latestRepositoryUpdate } from '../../data/repository-updates.data';
 
@@ -32,6 +33,7 @@ type ProjectsSection =
   selector: 'app-projects',
   standalone: true,
   imports: [
+    RichTextPipe,
     ProjectCardComponent,
     ProjectUpdateComponent,
     RecentBadgeComponent,
