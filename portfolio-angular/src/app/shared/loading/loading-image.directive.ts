@@ -1,6 +1,8 @@
 import { afterNextRender, DestroyRef, Directive, ElementRef, inject, signal } from '@angular/core';
 
 /** Keeps the image's reserved space while its real resource is loading. */
+import { LanguageService } from '../../core/language.service';
+
 @Directive({
   selector: 'a[appLoadingImage]',
   host: {
@@ -8,10 +10,11 @@ import { afterNextRender, DestroyRef, Directive, ElementRef, inject, signal } fr
     '[class.image-failed]': 'failed()',
     '[attr.aria-busy]': 'loading()',
     '[attr.aria-label]':
-      "failed() ? 'Anteprima non disponibile. Apri l’immagine originale in una nuova scheda.' : null",
+      "failed() ? language.translate('Anteprima non disponibile. Apri l’immagine originale in una nuova scheda.') : null",
   },
 })
 export class LoadingImageDirective {
+  protected readonly language = inject(LanguageService);
   readonly loading = signal(true);
   readonly failed = signal(false);
   private readonly element = inject<ElementRef<HTMLAnchorElement>>(ElementRef);

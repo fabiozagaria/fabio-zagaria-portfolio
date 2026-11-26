@@ -1,19 +1,17 @@
+import { TranslatePipe, PortfolioDatePipe } from '../../core/translate.pipe';
+import { RichTextPipe } from '../../shared/rich-text/rich-text.pipe';
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   DestroyRef,
   ElementRef,
   inject,
   signal,
   viewChild,
 } from '@angular/core';
-import {
-  CV,
-  CV_DOWNLOAD_NAME,
-  CV_DOWNLOAD_URL,
-  CV_VIEW_URL,
-  cvUpdatedLabel,
-} from '../../data/cv.data';
+import { LanguageService } from '../../core/language.service';
+import { CV_DOCUMENTS } from '../../data/cv.data';
 import { GithubCardComponent } from '../../shared/github-card/github-card.component';
 import { LinkedinCardComponent } from '../../shared/linkedin-card/linkedin-card.component';
 import { LinkedinPostsComponent } from '../../shared/linkedin-posts/linkedin-posts.component';
@@ -24,20 +22,23 @@ const MESSAGE_VISIBLE_MS = 5000;
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [GithubCardComponent, LinkedinCardComponent, LinkedinPostsComponent, SkyComponent],
+  imports: [
+    TranslatePipe,
+    PortfolioDatePipe,
+    RichTextPipe,
+    GithubCardComponent,
+    LinkedinCardComponent,
+    LinkedinPostsComponent,
+    SkyComponent,
+  ],
   templateUrl: './contact.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContactComponent {
   readonly email = 'zagariafabio1999@gmail.com';
   /** Link e data vengono da `cv.data.ts`: l'unico posto da aggiornare a ogni nuovo CV. */
-  readonly cv = {
-    view: CV_VIEW_URL,
-    download: CV_DOWNLOAD_URL,
-    downloadName: CV_DOWNLOAD_NAME,
-    updatedAt: CV.updatedAt,
-    updatedLabel: cvUpdatedLabel(),
-  };
+  protected readonly language = inject(LanguageService);
+  protected readonly cvDocument = computed(() => CV_DOCUMENTS[this.language.current()]);
   readonly copyMessage = signal('');
 
   private readonly address = viewChild.required<ElementRef<HTMLElement>>('address');

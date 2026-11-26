@@ -1,19 +1,26 @@
 <section id="projects" class="c-projects o-section">
   <app-sky variant="band" />
   <div class="c-projects__container o-container">
-    <h1 class="c-section-title">Progetti</h1>
+    <h1 class="c-section-title">{{ 'Progetti' | translate }}</h1>
     <p class="c-section-subtitle">
-      Expense Tracker, JobFlow e AccessDesk in primo piano: un progetto full stack concluso e due
-      backend con API REST, persistenza e sicurezza. Seguono i progetti frontend del corso e gli
-      esperimenti con AI.
+      {{
+        'Expense Tracker, JobFlow e AccessDesk in primo piano: un progetto full stack concluso e due backend con API REST, persistenza e sicurezza. Seguono i progetti frontend del corso e gli esperimenti con AI.'
+          | translate
+      }}
     </p>
 
-    <nav id="projects-index" class="c-projects__index" aria-label="Indice dei progetti">
-      <span class="c-projects__index-label">Vai a una sezione</span>
+    <nav
+      id="projects-index"
+      class="c-projects__index"
+      [attr.aria-label]="'Indice dei progetti' | translate"
+    >
+      <span class="c-projects__index-label">{{ 'Vai a una sezione' | translate }}</span>
       <ul>
         @for (section of sections; track section.id) {
           <li>
-            <a [routerLink]="['/projects']" [fragment]="section.id">{{ section.title }}</a>
+            <a [routerLink]="['/projects']" [fragment]="section.id">{{
+              section.title | translate
+            }}</a>
           </li>
         }
       </ul>
@@ -26,7 +33,9 @@
           class="c-projects__group"
           [attr.aria-labelledby]="section.id + '-title'"
         >
-          <h2 class="c-projects__group-title" [id]="section.id + '-title'">{{ section.title }}</h2>
+          <h2 class="c-projects__group-title" [id]="section.id + '-title'">
+            {{ section.title | translate }}
+          </h2>
           <div
             class="c-projects__grid"
             [class.c-projects__grid--single]="section.projects.length === 1"
@@ -42,8 +51,10 @@
           class="c-projects__group"
           [attr.aria-labelledby]="section.id + '-title'"
         >
-          <h2 class="c-projects__group-title" [id]="section.id + '-title'">{{ section.title }}</h2>
-          <p class="c-projects__group-description">{{ section.description }}</p>
+          <h2 class="c-projects__group-title" [id]="section.id + '-title'">
+            {{ section.title | translate }}
+          </h2>
+          <p class="c-projects__group-description">{{ section.description | translate }}</p>
           <div class="c-projects__grid">
             @for (entry of section.entries; track entry.id) {
               <article class="c-card" [id]="entry.id">
@@ -59,11 +70,21 @@
                   @if (entry.versionTags; as tags) {
                     <app-version-tags [tags]="tags" />
                   }
-                  <p class="c-card__description" [innerHTML]="entry.description | rich"></p>
+                  <p
+                    class="c-card__description"
+                    [innerHTML]="entry.description | translate | rich"
+                  ></p>
                   @if (entry.note) {
-                    <p class="c-card__status-detail" [innerHTML]="entry.note | rich"></p>
+                    <p
+                      class="c-card__status-detail"
+                      [innerHTML]="entry.note | translate | rich"
+                    ></p>
                   }
-                  <div class="c-card__tags" role="group" aria-label="Tecnologie utilizzate">
+                  <div
+                    class="c-card__tags"
+                    role="group"
+                    [attr.aria-label]="'Tecnologie utilizzate' | translate"
+                  >
                     @for (tech of entry.technologies; track tech) {
                       <span class="c-card__tag">{{ tech }}</span>
                     }
@@ -76,10 +97,10 @@
                         rel="noopener noreferrer"
                         class="c-card__action"
                         [attr.aria-label]="
-                          'Demo online di ' + entry.title + ' (apre una nuova scheda)'
+                          'Demo online di {0} (apre una nuova scheda)' | translate: entry.title
                         "
                       >
-                        Demo online
+                        {{ 'Demo online' | translate }}
                       </a>
                     }
                     @for (repository of entry.repositories; track repository.url) {
@@ -89,14 +110,11 @@
                         rel="noopener noreferrer"
                         class="c-card__action"
                         [attr.aria-label]="
-                          'Apri ' +
-                          repository.label +
-                          ' di ' +
-                          entry.title +
-                          ' su GitHub in una nuova scheda'
+                          'Apri {0} di {1} su GitHub in una nuova scheda'
+                            | translate: (repository.label | translate) : entry.title
                         "
                       >
-                        {{ repository.label }}
+                        {{ repository.label | translate }}
                       </a>
                     }
                   </div>
@@ -112,19 +130,24 @@
       }
     }
     <div class="c-projects__github-cta">
-      <p>Per gli esercizi e gli altri repository pubblici, apri l’elenco completo su GitHub.</p>
+      <p>
+        {{
+          'Per gli esercizi e gli altri repository pubblici, apri l’elenco completo su GitHub.'
+            | translate
+        }}
+      </p>
       <a
         href="https://github.com/fabiozagaria?tab=repositories"
         target="_blank"
         rel="noopener noreferrer"
         class="c-btn c-btn--secondary c-projects__github-link"
-        aria-label="Apri tutti i repository GitHub (apre una nuova scheda)"
+        [attr.aria-label]="'Apri tutti i repository GitHub (apre una nuova scheda)' | translate"
       >
-        Altri repository su GitHub
+        {{ 'Altri repository su GitHub' | translate }}
       </a>
     </div>
   </div>
   <a class="c-projects__index-return" [routerLink]="['/projects']" [fragment]="'projects-index'">
-    Indice dei progetti ↑
+    {{ 'Indice dei progetti ↑' | translate }}
   </a>
 </section>

@@ -41,6 +41,16 @@
                 "output": "/assets/icons"
               },
               {
+                "glob": "*.svg",
+                "input": "src/assets/flags",
+                "output": "/assets/flags"
+              },
+              {
+                "glob": "*.{svg,png}",
+                "input": "src/assets/stack",
+                "output": "/assets/stack"
+              },
+              {
                 "glob": "*.webp",
                 "input": "src/assets/img",
                 "output": "/assets/img"

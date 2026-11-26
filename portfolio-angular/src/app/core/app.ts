@@ -1,3 +1,5 @@
+import { LanguageService } from './language.service';
+import { TranslatePipe } from './translate.pipe';
 import { LoadingSpinnerComponent } from '../shared/loading/loading-spinner.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ViewportScroller } from '@angular/common';
@@ -25,7 +27,7 @@ import { getAvailabilityStatus } from './availability-status';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [LoadingSpinnerComponent, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [TranslatePipe, LoadingSpinnerComponent, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -33,6 +35,7 @@ import { getAvailabilityStatus } from './availability-status';
 export class App {
   readonly router = inject(Router);
   readonly navigationError = signal(false);
+  readonly language = inject(LanguageService);
   readonly theme = inject(ThemeService);
   private readonly softDescend = inject(SoftDescendService);
   private readonly menuToggle = viewChild<ElementRef<HTMLButtonElement>>('menuToggle');

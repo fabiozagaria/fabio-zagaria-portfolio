@@ -1,81 +1,95 @@
 <section id="experience" class="c-experience o-section">
   <app-sky variant="band" />
   <div class="c-experience__container o-container">
-    <h1 class="c-section-title">Esperienza e formazione</h1>
+    <h1 class="c-section-title">{{ 'Esperienza e formazione' | translate }}</h1>
 
     <div class="c-experience__current">
       <div class="c-experience__item c-experience__item--current">
-        <h2>Portantino</h2>
-        <p class="c-experience__employer">Eraclya — Policlinico Gemelli, Roma</p>
-        <p class="c-experience__date">Giugno 2021 — in corso</p>
-        <p>
-          Esperienza lavorativa in <strong>ambiente ospedaliero</strong> ad alta responsabilità,
-          dove ho sviluppato
-          <em>precisione, affidabilità, gestione dello stress e collaborazione con il personale</em
-          >.
+        <h2>{{ 'Portantino' | translate }}</h2>
+        <p class="c-experience__employer">
+          {{ 'Eraclya — Policlinico Gemelli, Roma' | translate }}
         </p>
+        <p class="c-experience__date">{{ 'Giugno 2021 — in corso' | translate }}</p>
+        <p
+          [innerHTML]="
+            'Esperienza lavorativa in {b}ambiente ospedaliero{/b} ad alta responsabilità, dove ho sviluppato {i}precisione, affidabilità, gestione dello stress e collaborazione con il personale{/i}.'
+              | translate
+              | rich
+          "
+        ></p>
       </div>
     </div>
 
-    <h2 class="c-experience__section-label">Percorso formativo e sviluppo IT</h2>
+    <h2 class="c-experience__section-label">
+      {{ 'Percorso formativo e sviluppo IT' | translate }}
+    </h2>
 
     <div class="c-experience__content">
       <div class="c-experience__item">
-        <h3>Approfondimento autodidatta</h3>
-        <h4>PostgreSQL e sicurezza backend</h4>
-        <p class="c-experience__date">In corso</p>
-        <p>
-          Studio PostgreSQL da autodidatta e lo applico, con <strong>migrazioni Flyway</strong>, in
-          Expense Tracker, AccessDesk e JobFlow. In Expense Tracker lavoro su
-          <strong>refresh token con rotazione</strong> e limite di richieste; in AccessDesk applico
-          <strong>JWT</strong>, un filtro di autenticazione personalizzato e autorizzazioni con
-          Spring Security, insieme a JPA/Hibernate e MapStruct. Studio anche l'utilizzo dell'AI
-          nello sviluppo e l'architettura software; <em>il prossimo approfondimento sarà C++</em>.
-        </p>
+        <h3>{{ 'Approfondimento autodidatta' | translate }}</h3>
+        <h4>{{ 'PostgreSQL e sicurezza backend' | translate }}</h4>
+        <p class="c-experience__date">{{ 'In corso' | translate }}</p>
+        <p
+          [innerHTML]="
+            'Studio PostgreSQL da autodidatta e lo applico, con {b}migrazioni Flyway{/b}, in Expense Tracker, AccessDesk e JobFlow. In Expense Tracker lavoro su {b}refresh token con rotazione{/b} e limite di richieste; in AccessDesk applico {b}JWT{/b}, un filtro di autenticazione personalizzato e autorizzazioni con Spring Security, insieme a JPA/Hibernate e MapStruct. Studio anche l\'utilizzo dell\'AI nello sviluppo e l\'architettura software; {i}il prossimo approfondimento sarà C++{/i}.'
+              | translate
+              | rich
+          "
+        ></p>
       </div>
       <div class="c-experience__item">
-        <h3>Percorso Full Stack Web</h3>
+        <h3>{{ 'Percorso Full Stack Web' | translate }}</h3>
         <h4>LabForWeb</h4>
-        <p class="c-experience__date">19 gennaio 2026 - 7 agosto 2026</p>
-        <p>
-          <strong>Corso pratico Full Stack Web di 650 ore</strong> completato, dedicato a HTML, CSS,
-          JavaScript, TypeScript, Angular, MySQL, Java, Java EE, Spring e Spring Boot, con sviluppo
-          di applicazioni CRUD e progetti frontend e backend.
-        </p>
+        <p class="c-experience__date">{{ '19 gennaio 2026 - 7 agosto 2026' | translate }}</p>
+        <p
+          [innerHTML]="
+            '{b}Corso pratico Full Stack Web di 650 ore{/b} completato, dedicato a HTML, CSS, JavaScript, TypeScript, Angular, MySQL, Java, Java EE, Spring e Spring Boot, con sviluppo di applicazioni CRUD e progetti frontend e backend.'
+              | translate
+              | rich
+          "
+        ></p>
         <a
           class="c-experience__document-link"
+          hreflang="it"
           href="/assets/documents/Attestato_LabForWeb_Fabio_Zagaria.pdf"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Visualizza attestato di frequenza
+          {{ 'Visualizza attestato di frequenza' | translate }}
         </a>
       </div>
 
       <div class="c-experience__item">
-        <h3>Master in aula di Programmazione Java &amp; Android</h3>
-        <h4>P.C. Academy, Roma</h4>
-        <p class="c-experience__date">Novembre 2019 — maggio 2020</p>
+        <h3>{{ 'Master in aula di Programmazione Java & Android' | translate }}</h3>
+        <h4>{{ 'P.C. Academy, Roma' | translate }}</h4>
+        <p class="c-experience__date">{{ 'Novembre 2019 — maggio 2020' | translate }}</p>
         <p>
-          Corso in aula con lezioni due volte a settimana. Argomenti: logica di programmazione,
-          linguaggio Java (Java 8), basi di dati SQL e Java per Android. Attestato di frequenza
-          rilasciato il 6 maggio 2020.
+          {{
+            'Corso in aula con lezioni due volte a settimana. Argomenti: logica di programmazione, linguaggio Java (Java 8), basi di dati SQL e Java per Android. Attestato di frequenza rilasciato il 6 maggio 2020.'
+              | translate
+          }}
         </p>
         <a
           class="c-experience__document-link"
+          hreflang="it"
           href="/assets/documents/Attestato_PCAcademy_Fabio_Zagaria.pdf"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Visualizza attestato di frequenza
+          {{ 'Visualizza attestato di frequenza' | translate }}
         </a>
       </div>
 
       <div class="c-experience__item">
-        <h3>Diploma in Informatica e Telecomunicazioni</h3>
-        <h4>ITIS Albert Einstein, Roma</h4>
+        <h3>{{ 'Diploma in Informatica e Telecomunicazioni' | translate }}</h3>
+        <h4>{{ 'ITIS Albert Einstein, Roma' | translate }}</h4>
         <p class="c-experience__date">2013 — 2018</p>
-        <p>Indirizzo tecnico con Informatica, Telecomunicazioni, Sistemi e Reti. Voto: 75/100.</p>
+        <p>
+          {{
+            'Indirizzo tecnico con Informatica, Telecomunicazioni, Sistemi e Reti. Voto: 75/100.'
+              | translate
+          }}
+        </p>
       </div>
     </div>
   </div>

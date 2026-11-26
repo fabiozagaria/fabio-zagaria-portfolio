@@ -1,3 +1,4 @@
+import { TranslatePipe } from '../../../core/translate.pipe';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PortfolioProject, PROJECTS } from '../../../data/projects.data';
@@ -18,12 +19,12 @@ const SECTION_BY_CATEGORY = {
 @Component({
   selector: 'app-project-detail',
   standalone: true,
-  imports: [ProjectCardComponent, SkyComponent, RouterLink],
+  imports: [TranslatePipe, ProjectCardComponent, SkyComponent, RouterLink],
   template: `
     <section class="c-project-detail o-section">
       <app-sky variant="band" />
       <div class="o-container">
-        <nav class="c-project-detail__nav" aria-label="Percorso">
+        <nav class="c-project-detail__nav" [attr.aria-label]="'Percorso' | translate">
           <a routerLink="/projects" [fragment]="sectionId">
             <svg
               class="c-project-detail__arrow"
@@ -40,7 +41,7 @@ const SECTION_BY_CATEGORY = {
             >
               <path d="M19 12H5M11 6l-6 6 6 6" />
             </svg>
-            Tutti i progetti</a
+            {{ 'Tutti i progetti' | translate }}</a
           >
         </nav>
         <app-project-card [project]="project" mode="detail" />
@@ -61,7 +62,7 @@ const SECTION_BY_CATEGORY = {
             >
               <path d="M19 12H5M11 6l-6 6 6 6" />
             </svg>
-            Torna ai progetti</a
+            {{ 'Torna ai progetti' | translate }}</a
           >
         </p>
       </div>

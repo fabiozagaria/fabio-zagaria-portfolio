@@ -1,13 +1,17 @@
+import { TranslatePipe } from '../../core/translate.pipe';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
+  imports: [TranslatePipe],
   selector: 'app-loading-spinner',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { role: 'status' },
   template: `<span class="c-spinner" [style.--spinner-size]="diameters[size()]" aria-hidden="true"
       ><span class="c-spinner__mark">FZ</span></span
     >
-    <span class="c-spinner__label" [class.u-visually-hidden]="!showLabel()">{{ label() }}</span>`,
+    <span class="c-spinner__label" [class.u-visually-hidden]="!showLabel()">{{
+      label() | translate
+    }}</span>`,
 })
 export class LoadingSpinnerComponent {
   readonly size = input<'sm' | 'md' | 'lg'>('md');

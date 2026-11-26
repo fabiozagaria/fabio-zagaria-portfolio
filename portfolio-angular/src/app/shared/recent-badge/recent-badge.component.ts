@@ -1,3 +1,4 @@
+import { TranslatePipe } from '../../core/translate.pipe';
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import type { PortfolioLatestUpdate } from '../../data/projects.data';
 import { recentUpdateAge } from '../recent-update';
@@ -7,6 +8,7 @@ import { recentUpdateAge } from '../recent-update';
  * ultimo aggiornamento è entro la finestra di 3 giorni, e dice quando è avvenuto.
  */
 @Component({
+  imports: [TranslatePipe],
   selector: 'app-recent-badge',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,8 +21,9 @@ import { recentUpdateAge } from '../recent-update';
             d="M8 5.2a2.8 2.8 0 1 1 0 5.6 2.8 2.8 0 0 1 0-5.6zM0 7.2h4.2v1.6H0zm11.8 0H16v1.6h-4.2z"
           />
         </svg>
-        <span>Commit recente</span>{{ ' ' }}
-        <span class="c-badge-new__when">{{ when }}</span>
+        <span>{{ 'Commit recente' | translate }}</span
+        >{{ ' ' }}
+        <span class="c-badge-new__when">{{ when | translate }}</span>
       </span>
     }
   `,

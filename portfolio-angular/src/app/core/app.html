@@ -1,13 +1,13 @@
-<a class="c-skip-link" href="#main-content">Vai al contenuto principale</a>
+<a class="c-skip-link" href="#main-content">{{ 'Vai al contenuto principale' | translate }}</a>
 
 <nav
   (focusout)="onNavFocusOut($event)"
   class="c-nav"
   id="navbar"
-  aria-label="Navigazione principale"
+  [attr.aria-label]="'Navigazione principale' | translate"
 >
   <div class="c-nav__container o-container">
-    <a class="c-nav__logo" routerLink="/">
+    <a class="c-nav__logo" routerLink="/" aria-label="Fabio Zagaria">
       <img
         class="c-nav__logo-mark"
         src="assets/img/io-nav-96.webp"
@@ -26,9 +26,9 @@
       type="button"
       aria-controls="nav-menu"
       [attr.aria-expanded]="isMenuOpen"
-      [attr.aria-label]="isMenuOpen ? 'Chiudi il menu' : 'Apri il menu'"
+      [attr.aria-label]="(isMenuOpen ? 'Chiudi il menu' : 'Apri il menu') | translate"
     >
-      <span>{{ isMenuOpen ? 'Chiudi' : 'Menu' }}</span>
+      <span>{{ (isMenuOpen ? 'Chiudi' : 'Menu') | translate }}</span>
     </button>
     <ul class="c-nav__menu" [class.c-nav__menu--active]="isMenuOpen" id="nav-menu">
       <li>
@@ -49,7 +49,7 @@
           ariaCurrentWhenActive="page"
           class="c-nav__link"
           (click)="closeMenu()"
-          >Profilo professionale</a
+          >{{ 'Profilo professionale' | translate }}</a
         >
       </li>
       <li>
@@ -59,7 +59,7 @@
           ariaCurrentWhenActive="page"
           class="c-nav__link"
           (click)="closeMenu()"
-          >Percorso professionale</a
+          >{{ 'Percorso professionale' | translate }}</a
         >
       </li>
       <li>
@@ -69,7 +69,7 @@
           ariaCurrentWhenActive="page"
           class="c-nav__link"
           (click)="closeMenu()"
-          >Progetti software</a
+          >{{ 'Progetti software' | translate }}</a
         >
       </li>
       <li>
@@ -89,39 +89,63 @@
           ariaCurrentWhenActive="page"
           class="c-nav__link"
           (click)="closeMenu()"
-          >Contatti</a
+          >{{ 'Contatti' | translate }}</a
         >
       </li>
     </ul>
-    <button
-      type="button"
-      class="theme-toggle"
-      (click)="theme.toggle()"
-      [attr.aria-pressed]="theme.dark()"
-      [attr.aria-label]="theme.dark() ? 'Attiva tema chiaro' : 'Attiva tema scuro'"
-      [title]="theme.dark() ? 'Attiva tema chiaro' : 'Attiva tema scuro'"
-    >
-      <svg
-        class="theme-toggle__icon"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.75"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-        focusable="false"
+    <div class="c-nav__controls">
+      <div class="c-language-toggle" role="group" [attr.aria-label]="'Lingua' | translate">
+        <button
+          type="button"
+          lang="it"
+          aria-label="Italiano"
+          title="Italiano"
+          [attr.aria-pressed]="language.current() === 'it'"
+          (click)="language.select('it')"
+        >
+          <img src="assets/flags/it.svg" alt="" width="22" height="16" />
+        </button>
+        <button
+          type="button"
+          lang="en"
+          aria-label="English (United States)"
+          title="English (United States)"
+          [attr.aria-pressed]="language.current() === 'en'"
+          (click)="language.select('en')"
+        >
+          <img src="assets/flags/us.svg" alt="" width="22" height="16" />
+        </button>
+      </div>
+      <button
+        type="button"
+        class="theme-toggle"
+        (click)="theme.toggle()"
+        [attr.aria-pressed]="theme.dark()"
+        [attr.aria-label]="(theme.dark() ? 'Attiva tema chiaro' : 'Attiva tema scuro') | translate"
+        [title]="(theme.dark() ? 'Attiva tema chiaro' : 'Attiva tema scuro') | translate"
       >
-        @if (theme.dark()) {
-          <circle cx="12" cy="12" r="4" />
-          <path
-            d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"
-          />
-        } @else {
-          <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z" />
-        }
-      </svg>
-    </button>
+        <svg
+          class="theme-toggle__icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.75"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          focusable="false"
+        >
+          @if (theme.dark()) {
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"
+            />
+          } @else {
+            <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z" />
+          }
+        </svg>
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -130,16 +154,16 @@
     class="c-availability-status"
     [attr.data-state]="status.state"
     role="status"
-    aria-label="Stato di disponibilità"
+    [attr.aria-label]="'Stato di disponibilità' | translate"
   >
     <div class="c-availability-status__content o-container">
       <span class="c-availability-status__indicator" aria-hidden="true"></span>
       <div>
         <p class="c-availability-status__heading">
-          <strong>{{ status.title }}</strong>
-          <span>{{ status.dateRange }}</span>
+          <strong>{{ status.title | translate }}</strong>
+          <span>{{ status.dateRange | translate }}</span>
         </p>
-        <p class="c-availability-status__message">{{ status.message }}</p>
+        <p class="c-availability-status__message">{{ status.message | translate }}</p>
       </div>
     </div>
   </aside>
@@ -147,12 +171,12 @@
 
 @if (router.currentNavigation()) {
   <div class="c-route-status">
-    <app-loading-spinner size="lg" [showLabel]="true" label="Caricamento pagina…" />
+    <app-loading-spinner size="lg" [showLabel]="true" [label]="'Caricamento pagina…' | translate" />
   </div>
 }
 @if (navigationError()) {
   <p class="o-container" role="alert">
-    Impossibile aprire la pagina. Riprova dal menu di navigazione.
+    {{ 'Impossibile aprire la pagina. Riprova dal menu di navigazione.' | translate }}
   </p>
 }
 <main id="main-content" tabindex="-1" [attr.aria-busy]="!!router.currentNavigation()">
@@ -163,20 +187,24 @@
   <div class="o-container">
     <div class="c-footer__content">
       <div class="c-footer__text">
-        <p>&copy; {{ currentYear }} Fabio Zagaria. Sviluppato con Angular.</p>
+        <p>&copy; {{ currentYear }} Fabio Zagaria. {{ 'Sviluppato con Angular.' | translate }}</p>
       </div>
-      <div class="c-footer__links" role="group" aria-label="Collegamenti professionali">
+      <div
+        class="c-footer__links"
+        role="group"
+        [attr.aria-label]="'Collegamenti professionali' | translate"
+      >
         <a href="https://github.com/fabiozagaria" target="_blank" rel="noopener noreferrer"
           >GitHub</a
         >
         <a href="https://linkedin.com/in/fabiozagaria" target="_blank" rel="noopener noreferrer"
           >LinkedIn</a
         >
-        <a routerLink="/contact">Contatti e CV</a>
+        <a routerLink="/contact">{{ 'Contatti e CV' | translate }}</a>
       </div>
     </div>
     <p class="c-footer__note">
-      LabTV e le locandine mostrate nella pagina Progetti:
+      {{ 'LabTV e le locandine mostrate nella pagina Progetti:' | translate }}
       <span lang="en"
         >This product uses the TMDB API but is not endorsed or certified by
         <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a

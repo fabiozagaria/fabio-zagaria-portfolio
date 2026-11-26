@@ -1,3 +1,4 @@
+@let cv = cvDocument();
 <section id="home" class="c-hero o-section" aria-labelledby="hero-title">
   <app-sky variant="hero" />
   <div class="o-container c-hero__sheet">
@@ -11,24 +12,29 @@
           <span>Java · Spring Boot · REST API · PostgreSQL</span>
         </p>
       </div>
-      <p class="c-hero__role">Junior Backend Developer<br />con visione full stack.</p>
+      <p class="c-hero__role">
+        Junior Backend Developer<br />{{ 'con visione full stack.' | translate }}
+      </p>
     </div>
     <div class="c-hero__side">
       <div class="c-hero__intro">
         <img
           src="assets/img/io-640.webp"
-          alt="Ritratto di Fabio Zagaria"
+          [alt]="'Ritratto di Fabio Zagaria' | translate"
           class="c-hero__portrait"
           width="640"
           height="640"
           decoding="async"
           fetchpriority="high"
         />
-        <p class="c-hero__description">
-          Sviluppo <strong>API REST</strong> con <strong>Java</strong>,
-          <strong>Spring Boot</strong> e <strong>PostgreSQL</strong>. Con <strong>Angular</strong> e
-          <strong>TypeScript</strong> collego <em>interfaccia, logica applicativa e dati</em>.
-        </p>
+        <p
+          class="c-hero__description"
+          [innerHTML]="
+            'Sviluppo {b}API REST{/b} con {b}Java{/b}, {b}Spring Boot{/b} e {b}PostgreSQL{/b}. Con {b}Angular{/b} e {b}TypeScript{/b} collego {i}interfaccia, logica applicativa e dati{/i}.'
+              | translate
+              | rich
+          "
+        ></p>
       </div>
       <dl class="c-hero__facts">
         <div>
@@ -36,22 +42,31 @@
           <dd>Angular, TypeScript</dd>
         </div>
         <div>
-          <dt>Sede</dt>
-          <dd>Roma, ibrido o remoto in Italia</dd>
+          <dt>{{ 'Sede' | translate }}</dt>
+          <dd>{{ 'Roma, ibrido o remoto in Italia' | translate }}</dd>
         </div>
         <div>
-          <dt>Formazione</dt>
-          <dd>Full Stack Web LabForWeb, 650 ore, agosto 2026</dd>
+          <dt>{{ 'Formazione' | translate }}</dt>
+          <dd>{{ 'Full Stack Web LabForWeb, 650 ore, agosto 2026' | translate }}</dd>
         </div>
       </dl>
       <div class="c-hero__actions">
-        <a routerLink="/projects" class="c-btn c-btn--primary">Vedi i progetti</a>
-        <a [href]="cv.download" [attr.download]="cv.downloadName" class="c-hero__cv"
-          >Scarica il CV</a
+        <a routerLink="/projects" class="c-btn c-btn--primary">{{
+          'Vedi i progetti' | translate
+        }}</a>
+        <a
+          [href]="cv.download"
+          [attr.hreflang]="cv.language"
+          [attr.download]="cv.downloadName"
+          class="c-hero__cv"
+          >{{ 'Scarica il CV' | translate }}</a
         >
       </div>
       <p class="c-hero__cv-note">
-        CV aggiornato il <time [attr.datetime]="cv.updatedAt">{{ cv.updatedLabel }}</time>
+        {{ 'CV aggiornato il' | translate }}
+        <time [attr.datetime]="cv.updatedAt">{{
+          cv.updatedAt | portfolioDate: cv.updatedLabel
+        }}</time>
       </p>
     </div>
   </div>
@@ -59,52 +74,58 @@
 
 <section class="c-motivation" aria-labelledby="motivation-title">
   <div class="o-container">
-    <figure class="c-motivation__figure" lang="en">
-      <h2 id="motivation-title" class="c-motivation__title">Why Intelligenza Umana exists</h2>
+    <figure class="c-motivation__figure">
+      <h2 id="motivation-title" class="c-motivation__title">
+        {{ 'Why Intelligenza Umana exists' | translate }}
+      </h2>
       <blockquote class="c-motivation__quote">
         <p>
-          We live in a time when a machine can answer almost any question with an ease that, not
-          long ago, seemed impossible. Artificial intelligence is fast, useful and at times
-          surprising. It lowers barriers, makes accessible what was reserved for a few, and opens
-          paths that were not visible before. But every powerful tool asks something in return: that
-          whoever uses it knows what they are doing.
+          {{
+            'We live in a time when a machine can answer almost any question with an ease that, not long ago, seemed impossible. Artificial intelligence is fast, useful and at times surprising. It lowers barriers, makes accessible what was reserved for a few, and opens paths that were not visible before. But every powerful tool asks something in return: that whoever uses it knows what they are doing.'
+              | translate
+          }}
         </p>
         <p>
-          Since 2023, with the arrival of ChatGPT, I approached generative language models with
-          wonder. Talking with them felt like a dialogue, and within that dialogue one could explore
-          big questions about life, the universe, and what is not yet known. Above all, these tools
-          made the study of programming more alive, and helped me stay focused.
+          {{
+            'Since 2023, with the arrival of ChatGPT, I approached generative language models with wonder. Talking with them felt like a dialogue, and within that dialogue one could explore big questions about life, the universe, and what is not yet known. Above all, these tools made the study of programming more alive, and helped me stay focused.'
+              | translate
+          }}
         </p>
+        <p
+          [innerHTML]="
+            'Over time an uncomfortable truth emerged. A language model does not know in the way a person knows: it computes the most probable answer. That probability can be very high and still be wrong. {i}Nothing solid can be built on a percentage.{/i} This is why {b}human review is not a detail{/b}: it is what turns a plausible answer into something for which someone can take responsibility.'
+              | translate
+              | rich
+          "
+        ></p>
+        <p
+          [innerHTML]="
+            'In software this matters even more. Programming, in its deepest sense, is reasoning: breaking a problem down, choosing one idea among many possible ones, turning it into bits and algorithms, and writing code that another human being can read and understand. Code can be generated, but {b}understanding and verifying it remains a human act{/b}. {i}A program that no one understands is a program that no one can truly govern.{/i}'
+              | translate
+              | rich
+          "
+        ></p>
         <p>
-          Over time an uncomfortable truth emerged. A language model does not know in the way a
-          person knows: it computes the most probable answer. That probability can be very high and
-          still be wrong. <em>Nothing solid can be built on a percentage.</em> This is why
-          <strong>human review is not a detail</strong>: it is what turns a plausible answer into
-          something for which someone can take responsibility.
-        </p>
-        <p>
-          In software this matters even more. Programming, in its deepest sense, is reasoning:
-          breaking a problem down, choosing one idea among many possible ones, turning it into bits
-          and algorithms, and writing code that another human being can read and understand. Code
-          can be generated, but <strong>understanding and verifying it remains a human act</strong>.
-          <em>A program that no one understands is a program that no one can truly govern.</em>
-        </p>
-        <p>
-          Concretely, the project is born from my desire to spread the idea that code can be
-          generated with artificial intelligence, but with review and awareness.
+          {{
+            'Concretely, the project is born from my desire to spread the idea that code can be generated with artificial intelligence, but with review and awareness.'
+              | translate
+          }}
         </p>
         <p class="c-motivation__closing">
-          Intelligenza Umana is born from this conviction: artificial intelligence can amplify
-          thought, but thought must remain human.
+          {{
+            'Intelligenza Umana is born from this conviction: artificial intelligence can amplify thought, but thought must remain human.'
+              | translate
+          }}
         </p>
       </blockquote>
       <figcaption class="c-motivation__source">
         Fabio Zagaria,
         <a
           href="https://github.com/Intelligenza-Umana/intelligenza-umana/blob/main/docs/MOTIVATION.md"
+          hreflang="en"
           target="_blank"
           rel="noopener noreferrer"
-          >Why Intelligenza Umana exists</a
+          >{{ 'Why Intelligenza Umana exists' | translate }}</a
         >
       </figcaption>
     </figure>
@@ -114,11 +135,14 @@
 <section class="c-showcase" aria-labelledby="showcase-title">
   <div class="o-container">
     <div class="c-showcase__header">
-      <h2 id="showcase-title">Il progetto in primo piano</h2>
-      <p>
-        Un progetto <strong>full stack dal browser al database</strong>, con demo online e codice.
-        Scelte tecniche, esempi e storico sono nella pagina del progetto.
-      </p>
+      <h2 id="showcase-title">{{ 'Il progetto in primo piano' | translate }}</h2>
+      <p
+        [innerHTML]="
+          'Un progetto {b}full stack dal browser al database{/b}, con demo online e codice. Scelte tecniche, esempi e storico sono nella pagina del progetto.'
+            | translate
+            | rich
+        "
+      ></p>
     </div>
     <app-project-card [project]="mainProject" />
   </div>
@@ -127,27 +151,34 @@
 <section class="c-explore" aria-labelledby="explore-title">
   <div class="o-container">
     <div class="c-explore__header">
-      <h2 id="explore-title">Il resto dei progetti</h2>
-      <p appWordHighlight>
-        Nella pagina Progetti trovi tutto il lavoro, diviso per tipo. Ogni scheda dice che cosa è
-        stato fatto, a che punto è e quali verifiche mancano.
-      </p>
+      <h2 id="explore-title">{{ 'Il resto dei progetti' | translate }}</h2>
+      @let intro =
+        'Nella pagina Progetti trovi tutto il lavoro, diviso per tipo. Ogni scheda dice che cosa è stato fatto, a che punto è e quali verifiche mancano.'
+          | translate;
+      @for (entry of [{ language: language.current(), text: intro }]; track entry.language) {
+        <p appWordHighlight>{{ entry.text }}</p>
+      }
     </div>
     <ul class="c-explore__grid">
       @for (area of areas; track area.id) {
         <li class="c-explore__item">
-          <h3>{{ area.title }}</h3>
-          <p>{{ area.text }}</p>
+          <h3>{{ area.title | translate }}</h3>
+          <p>{{ area.text | translate }}</p>
           <a routerLink="/projects" [fragment]="area.id + '-title'" class="c-explore__link"
-            >{{ area.count }} {{ area.count === 1 ? 'progetto' : 'progetti' }}: apri la sezione
-            <span class="u-visually-hidden">{{ area.title }}</span></a
+            >{{
+              (area.count === 1 ? '{0} progetto: apri la sezione' : '{0} progetti: apri la sezione')
+                | translate: area.count
+            }}
+            <span class="u-visually-hidden">{{ area.title | translate }}</span></a
           >
         </li>
       }
     </ul>
     <p class="c-explore__actions">
-      <a routerLink="/projects" class="c-btn c-btn--primary">Vedi tutti i progetti</a>
-      <a routerLink="/about">Il mio percorso e lo stack</a>
+      <a routerLink="/projects" class="c-btn c-btn--primary">{{
+        'Vedi tutti i progetti' | translate
+      }}</a>
+      <a routerLink="/about">{{ 'Il mio percorso e lo stack' | translate }}</a>
     </p>
   </div>
 </section>
@@ -155,15 +186,24 @@
 <section class="c-resume" aria-labelledby="resume-title">
   <div class="o-container c-resume__layout">
     <div>
-      <h2 id="resume-title">Parliamo del prossimo passo.</h2>
-      <p>
-        Cerco un’opportunità <strong>Junior Backend o Full Stack</strong>. Nel CV trovi progetti,
-        formazione e percorso professionale.
-      </p>
+      <h2 id="resume-title">{{ 'Parliamo del prossimo passo.' | translate }}</h2>
+      <p
+        [innerHTML]="
+          'Cerco un’opportunità {b}Junior Backend o Full Stack{/b}. Nel CV trovi progetti, formazione e percorso professionale.'
+            | translate
+            | rich
+        "
+      ></p>
     </div>
     <div class="c-resume__actions">
-      <a routerLink="/contact" class="c-btn c-btn--primary">Contattami</a
-      ><a [href]="cv.view" target="_blank" rel="noopener noreferrer">Leggi il CV (PDF)</a>
+      <a routerLink="/contact" class="c-btn c-btn--primary">{{ 'Contattami' | translate }}</a
+      ><a
+        [href]="cv.view"
+        [attr.hreflang]="cv.language"
+        target="_blank"
+        rel="noopener noreferrer"
+        >{{ 'Leggi il CV (PDF)' | translate }}</a
+      >
     </div>
   </div>
 </section>

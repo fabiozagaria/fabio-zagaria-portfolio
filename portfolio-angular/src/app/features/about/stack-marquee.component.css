@@ -1,0 +1,120 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.c-stack-marquee {
+  --stack-gap: 0.625rem;
+  display: grid;
+  gap: 0.625rem;
+  margin-block: 1rem;
+}
+
+.c-stack-marquee__pause {
+  justify-self: start;
+  min-height: 44px;
+  padding: 0.35rem 0.875rem;
+  border: 1px solid var(--calm-line);
+  border-radius: var(--radius-pill);
+  color: var(--calm-ink);
+  background: var(--calm-surface);
+  font-size: var(--fs-300);
+}
+
+.c-stack-marquee__pause[aria-pressed='true'],
+.c-stack-marquee__pause:hover {
+  background: var(--calm-accent-soft);
+}
+
+.c-stack-marquee__row {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.c-stack-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: stack-scroll 48s linear infinite;
+}
+
+.c-stack-marquee__row--reverse .c-stack-marquee__track {
+  animation-direction: reverse;
+  animation-duration: 56s;
+}
+
+.c-stack-marquee__items {
+  display: flex;
+  flex: none;
+  gap: var(--stack-gap);
+  padding: 0 var(--stack-gap) 0 0;
+  margin: 0;
+  list-style: none;
+}
+
+.c-stack-marquee__item {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--calm-line);
+  border-radius: var(--radius-pill);
+  background: var(--calm-surface);
+  color: var(--calm-ink);
+  font-size: var(--fs-300);
+  font-weight: var(--fw-bold);
+}
+
+.c-stack-marquee__mark {
+  display: grid;
+  width: 1.875rem;
+  height: 1.875rem;
+  place-items: center;
+  border-radius: 0.375rem;
+  background: #fff;
+}
+
+.c-stack-marquee__mark img {
+  display: block;
+  object-fit: contain;
+}
+
+@keyframes stack-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.c-stack-marquee--paused .c-stack-marquee__track {
+  animation: none;
+  width: auto;
+}
+
+.c-stack-marquee--paused .c-stack-marquee__items {
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.c-stack-marquee--paused .c-stack-marquee__items[aria-hidden='true'] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce), print {
+  .c-stack-marquee__track {
+    animation: none;
+    width: auto;
+  }
+
+  .c-stack-marquee__items {
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  .c-stack-marquee__items[aria-hidden='true'],
+  .c-stack-marquee__pause {
+    display: none;
+  }
+}

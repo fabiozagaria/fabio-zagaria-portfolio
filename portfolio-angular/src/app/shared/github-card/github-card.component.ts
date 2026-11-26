@@ -1,3 +1,4 @@
+import { TranslatePipe } from '../../core/translate.pipe';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PROJECTS } from '../../data/projects.data';
 
@@ -15,6 +16,7 @@ interface RepositoryLink {
  * schede e non mostra numeri che non possiamo verificare, come stelle o follower.
  */
 @Component({
+  imports: [TranslatePipe],
   selector: 'app-github-card',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,15 +30,17 @@ interface RepositoryLink {
         rel="noopener noreferrer"
       >
         github.com/fabiozagaria
-        <span class="u-visually-hidden">(si apre in una nuova scheda)</span>
+        <span class="u-visually-hidden">{{ '(si apre in una nuova scheda)' | translate }}</span>
       </a>
-      <p class="c-place__label" id="github-repos">Repository principali</p>
+      <p class="c-place__label" id="github-repos">{{ 'Repository principali' | translate }}</p>
       <ul class="c-place__repos" aria-labelledby="github-repos">
         @for (repository of repositories; track repository.url) {
           <li>
             <a [href]="repository.url" target="_blank" rel="noopener noreferrer">
               {{ repository.name }}
-              <span class="u-visually-hidden">(si apre in una nuova scheda)</span>
+              <span class="u-visually-hidden">{{
+                '(si apre in una nuova scheda)' | translate
+              }}</span>
             </a>
           </li>
         }

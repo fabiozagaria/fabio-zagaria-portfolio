@@ -15,11 +15,11 @@
         </h3>
       }
       <span class="c-card__status" [attr.data-status]="project.status">
-        {{ project.status }}
+        {{ project.status | translate }}
       </span>
     </div>
 
-    <p class="c-card__focus">{{ project.focus }}</p>
+    <p class="c-card__focus">{{ project.focus | translate }}</p>
     @if (project.versionTags; as tags) {
       <app-version-tags [tags]="tags" />
     }
@@ -43,13 +43,15 @@
             >
               <img
                 [src]="shot.src"
-                [alt]="shot.alt"
+                [alt]="shot.alt | translate"
                 [attr.width]="shot.width"
                 [attr.height]="shot.height"
                 loading="lazy"
                 decoding="async"
               />
-              <span class="u-visually-hidden">(apre l’immagine intera in una nuova scheda)</span>
+              <span class="u-visually-hidden">{{
+                '(apre l’immagine intera in una nuova scheda)' | translate
+              }}</span>
             </a>
           </figure>
         }
@@ -57,7 +59,7 @@
     } @else if (detail && project.flow; as flow) {
       <app-project-flow [flow]="flow" />
     }
-    <p class="c-card__description" [innerHTML]="project.description | rich"></p>
+    <p class="c-card__description" [innerHTML]="project.description | translate | rich"></p>
 
     @if (detail && project.video; as video) {
       <section class="c-video" [attr.aria-labelledby]="project.id + '-video-title'">
@@ -69,23 +71,27 @@
             [attr.poster]="video.poster"
             [attr.width]="video.width"
             [attr.height]="video.height"
-            [attr.aria-label]="video.title + ', ' + video.durationLabel"
+            [attr.aria-label]="(video.title | translate) + ', ' + (video.durationLabel | translate)"
           >
             <source [attr.src]="video.src" type="video/mp4" />
-            <a [href]="video.src">Scarica il video ({{ video.durationLabel }})</a>
+            <a [href]="video.src">{{
+              'Scarica il video ({0})' | translate: (video.durationLabel | translate)
+            }}</a>
           </video>
         </figure>
         <div class="c-video__text">
-          <h4 [id]="project.id + '-video-title'">{{ video.title }}</h4>
-          <p [innerHTML]="video.summary | rich"></p>
+          <h4 [id]="project.id + '-video-title'">{{ video.title | translate }}</h4>
+          <p [innerHTML]="video.summary | translate | rich"></p>
           <ul>
             @for (topic of video.topics; track topic) {
-              <li [innerHTML]="topic | rich"></li>
+              <li [innerHTML]="topic | translate | rich"></li>
             }
           </ul>
           <p class="c-video__note">
-            {{ video.durationLabel }}, con sottotitoli incorporati. Creato con {{ video.credit }},
-            uno strumento di intelligenza artificiale.
+            {{
+              '{0}, con sottotitoli incorporati. Creato con {1}, uno strumento di intelligenza artificiale.'
+                | translate: (video.durationLabel | translate) : video.credit
+            }}
           </p>
         </div>
       </section>
@@ -103,85 +109,90 @@
           >
             <img
               [src]="diagram.src"
-              [alt]="diagram.alt"
+              [alt]="diagram.alt | translate"
               [attr.width]="diagram.width"
               [attr.height]="diagram.height"
               loading="lazy"
               decoding="async"
             />
-            <span class="u-visually-hidden">(apre l’immagine intera in una nuova scheda)</span>
+            <span class="u-visually-hidden">{{
+              '(apre l’immagine intera in una nuova scheda)' | translate
+            }}</span>
           </a>
         </figure>
         <div class="c-diagram__text">
-          <h4 [id]="project.id + '-diagram-title'">{{ diagram.title }}</h4>
-          <p [innerHTML]="diagram.summary | rich"></p>
+          <h4 [id]="project.id + '-diagram-title'">{{ diagram.title | translate }}</h4>
+          <p [innerHTML]="diagram.summary | translate | rich"></p>
           <ol>
             @for (step of diagram.steps; track step) {
-              <li [innerHTML]="step | rich"></li>
+              <li [innerHTML]="step | translate | rich"></li>
             }
           </ol>
           <p class="c-diagram__note">
-            Infografica creata con {{ diagram.credit }}, uno strumento di intelligenza artificiale.
+            {{
+              'Infografica creata con {0}, uno strumento di intelligenza artificiale.'
+                | translate: diagram.credit
+            }}
           </p>
         </div>
       </section>
     }
 
     @if (detail && project.category !== 'Frontend') {
-      <p class="c-card__section-label">Responsabilità e scelte tecniche</p>
+      <p class="c-card__section-label">{{ 'Responsabilità e scelte tecniche' | translate }}</p>
       <ul class="c-card__highlights">
         @for (highlight of project.highlights; track highlight) {
-          <li [innerHTML]="highlight | rich"></li>
+          <li [innerHTML]="highlight | translate | rich"></li>
         }
       </ul>
 
       @if (project.decision; as decision) {
         <div class="c-card__decision">
-          <h4>Una scelta tecnica</h4>
+          <h4>{{ 'Una scelta tecnica' | translate }}</h4>
           <dl>
             <div>
-              <dt>Problema</dt>
-              <dd [innerHTML]="decision.problem | rich"></dd>
+              <dt>{{ 'Problema' | translate }}</dt>
+              <dd [innerHTML]="decision.problem | translate | rich"></dd>
             </div>
             <div>
-              <dt>Soluzione</dt>
-              <dd [innerHTML]="decision.solution | rich"></dd>
+              <dt>{{ 'Soluzione' | translate }}</dt>
+              <dd [innerHTML]="decision.solution | translate | rich"></dd>
             </div>
             <div>
-              <dt>Compromesso</dt>
-              <dd [innerHTML]="decision.tradeoff | rich"></dd>
+              <dt>{{ 'Compromesso' | translate }}</dt>
+              <dd [innerHTML]="decision.tradeoff | translate | rich"></dd>
             </div>
           </dl>
         </div>
       }
       @if (project.example; as example) {
         <div class="c-card__example">
-          <h4>Dal comando al codice</h4>
-          <p>Comando</p>
+          <h4>{{ 'Dal comando al codice' | translate }}</h4>
+          <p>{{ 'Comando' | translate }}</p>
           <pre><code>{{ example.command }}</code></pre>
-          <p>File generati</p>
+          <p>{{ 'File generati' | translate }}</p>
           <pre><code>{{ example.output }}</code></pre>
         </div>
       }
     }
     @if (detail) {
       <div class="c-card__status-detail">
-        <p class="c-card__section-label">Stato reale</p>
-        <p [innerHTML]="project.statusDetail.summary | rich"></p>
+        <p class="c-card__section-label">{{ 'Stato reale' | translate }}</p>
+        <p [innerHTML]="project.statusDetail.summary | translate | rich"></p>
         @if (project.statusDetail.pending?.length) {
-          <p class="c-card__status-subtitle">Cosa manca</p>
+          <p class="c-card__status-subtitle">{{ 'Cosa manca' | translate }}</p>
           <ul class="c-card__status-list">
             @for (item of project.statusDetail.pending; track item) {
-              <li [innerHTML]="item | rich"></li>
+              <li [innerHTML]="item | translate | rich"></li>
             }
           </ul>
         }
       </div>
     }
 
-    <div class="c-card__tags" role="group" aria-label="Tecnologie utilizzate">
+    <div class="c-card__tags" role="group" [attr.aria-label]="'Tecnologie utilizzate' | translate">
       @for (tech of project.technologies; track tech) {
-        <span class="c-card__tag">{{ tech }}</span>
+        <span class="c-card__tag">{{ tech | translate }}</span>
       }
     </div>
 
@@ -191,8 +202,8 @@
           <a
             class="c-btn c-btn--primary c-card__action--details"
             [routerLink]="['/projects', project.id]"
-            [attr.aria-label]="'Apri i dettagli di ' + project.title"
-            >Apri i dettagli</a
+            [attr.aria-label]="'Apri i dettagli di {0}' | translate: project.title"
+            >{{ 'Apri i dettagli' | translate }}</a
           >
         }
         @if (project.liveLink) {
@@ -202,14 +213,11 @@
             rel="noopener noreferrer"
             class="c-card__action"
             [attr.aria-label]="
-              'Apri ' +
-              (project.liveLabel ?? 'la demo') +
-              ' di ' +
-              project.title +
-              ' in una nuova scheda'
+              'Apri {0} di {1} in una nuova scheda'
+                | translate: (project.liveLabel ?? 'la demo' | translate) : project.title
             "
           >
-            {{ project.liveLabel ?? 'Demo' }}
+            {{ project.liveLabel ?? 'Demo' | translate }}
           </a>
         }
         @if (project.apiDocsLink) {
@@ -218,7 +226,9 @@
             target="_blank"
             rel="noopener noreferrer"
             class="c-card__action"
-            [attr.aria-label]="'Apri Swagger UI di ' + project.title + ' in una nuova scheda'"
+            [attr.aria-label]="
+              'Apri Swagger UI di {0} in una nuova scheda' | translate: project.title
+            "
           >
             Swagger UI
           </a>
@@ -230,10 +240,11 @@
             rel="noopener noreferrer"
             class="c-card__action"
             [attr.aria-label]="
-              'Apri ' + repository.label + ' di ' + project.title + ' su GitHub in una nuova scheda'
+              'Apri {0} di {1} su GitHub in una nuova scheda'
+                | translate: (repository.label | translate) : project.title
             "
           >
-            {{ repository.label }}
+            {{ repository.label | translate }}
           </a>
         }
       </div>
@@ -247,28 +258,30 @@
     @if (entries.length && detail) {
       <details class="c-project-history">
         <summary class="c-project-history__toggle">
-          Implementazioni importanti
+          {{ 'Implementazioni importanti' | translate }}
           <span class="c-project-history__count">{{ entries.length }}</span>
         </summary>
         <ol class="c-project-history__list">
           @for (entry of entries; track entry.datetime + entry.title) {
             <li class="c-project-history__item">
               <p class="c-project-history__meta">
-                <time [attr.datetime]="entry.datetime">{{ entry.dateLabel }}</time>
+                <time [attr.datetime]="entry.datetime">{{
+                  entry.datetime | portfolioDate: entry.dateLabel
+                }}</time>
                 @if (entry.version) {
                   <span>{{ entry.version }}</span>
                 }
               </p>
-              <p class="c-project-history__title">{{ entry.title }}</p>
-              <p class="c-project-history__summary">{{ entry.summary }}</p>
+              <p class="c-project-history__title">{{ entry.title | translate }}</p>
+              <p class="c-project-history__summary">{{ entry.summary | translate }}</p>
               <div
                 class="c-project-update__sources"
                 role="group"
-                aria-label="Fonti dell’implementazione"
+                [attr.aria-label]="'Fonti dell’implementazione' | translate"
               >
                 @for (source of entry.sources; track source.url) {
                   <a [href]="source.url" target="_blank" rel="noopener noreferrer">
-                    {{ source.label }}
+                    {{ source.label | translate }}
                   </a>
                 }
               </div>

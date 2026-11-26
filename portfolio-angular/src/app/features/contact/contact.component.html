@@ -1,30 +1,41 @@
+@let cv = cvDocument();
 <section id="contact" class="c-contact o-section">
   <app-sky variant="band" />
   <div class="c-contact__container o-container">
-    <h1 class="c-section-title">Contatti</h1>
+    <h1 class="c-section-title">{{ 'Contatti' | translate }}</h1>
 
     <div class="c-contact__content c-contact__content--single">
       <div class="c-contact__info">
-        <p class="c-contact__lead">
-          Sono disponibile per ruoli <strong>Junior Backend o Full Stack</strong>, a
-          <strong>Roma</strong> oppure in modalità <em>ibrida e da remoto in Italia</em>.
-        </p>
+        <p
+          class="c-contact__lead"
+          [innerHTML]="
+            'Sono disponibile per ruoli {b}Junior Backend o Full Stack{/b}, a {b}Roma{/b} oppure in modalità {i}ibrida e da remoto in Italia{/i}.'
+              | translate
+              | rich
+          "
+        ></p>
 
         <div class="c-contact__actions">
-          <a class="c-btn c-btn--primary" [href]="'mailto:' + email">Scrivimi una email</a>
+          <a class="c-btn c-btn--primary" [href]="'mailto:' + email">{{
+            'Scrivimi una email' | translate
+          }}</a>
           <a
             class="c-btn c-btn--secondary"
             [href]="cv.view"
+            [attr.hreflang]="cv.language"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Apri il CV in PDF (si apre in una nuova scheda)"
+            [attr.aria-label]="'Apri il CV in PDF (si apre in una nuova scheda)' | translate"
           >
-            Apri il CV
+            {{ 'Apri il CV' | translate }}
           </a>
         </div>
 
         <p class="c-contact__cv-note">
-          CV aggiornato il <time [attr.datetime]="cv.updatedAt">{{ cv.updatedLabel }}</time>
+          {{ 'CV aggiornato il' | translate }}
+          <time [attr.datetime]="cv.updatedAt">{{
+            cv.updatedAt | portfolioDate: cv.updatedLabel
+          }}</time>
         </p>
 
         <div class="c-contact__email">
@@ -33,92 +44,107 @@
             type="button"
             class="c-btn c-btn--secondary"
             (click)="copyEmail()"
-            aria-label="Copia l'indirizzo email negli appunti"
+            [attr.aria-label]="'Copia l\'indirizzo email negli appunti' | translate"
           >
-            Copia
+            {{ 'Copia' | translate }}
           </button>
-          <span class="c-contact__status" role="status">{{ copyMessage() }}</span>
+          <span class="c-contact__status" role="status">{{ copyMessage() | translate }}</span>
         </div>
 
-        <h2 class="c-contact__heading">Dove trovarmi</h2>
+        <h2 class="c-contact__heading">{{ 'Dove trovarmi' | translate }}</h2>
         <div class="c-contact__places">
           <app-linkedin-card />
           <app-github-card />
         </div>
 
         <div class="c-contact__documents">
-          <h2 class="c-contact__heading">Documenti professionali</h2>
+          <h2 class="c-contact__heading">{{ 'Documenti professionali' | translate }}</h2>
 
           <div class="c-contact__documents-grid">
             <article class="c-contact__document">
-              <p class="c-contact__document-title">Curriculum vitae</p>
-              <div class="c-contact__document-actions" role="group" aria-label="Azioni curriculum">
+              <p class="c-contact__document-title">{{ 'Curriculum vitae' | translate }}</p>
+              <div
+                class="c-contact__document-actions"
+                role="group"
+                [attr.aria-label]="'Azioni curriculum' | translate"
+              >
                 <a
                   class="c-btn c-btn--secondary"
                   [href]="cv.view"
+                  [attr.hreflang]="cv.language"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Apri il CV in PDF (si apre in una nuova scheda)"
+                  [attr.aria-label]="'Apri il CV in PDF (si apre in una nuova scheda)' | translate"
                 >
-                  Apri
+                  {{ 'Apri' | translate }}
                 </a>
                 <a
                   class="c-btn c-btn--secondary"
                   [href]="cv.download"
+                  [attr.hreflang]="cv.language"
                   [attr.download]="cv.downloadName"
-                  aria-label="Scarica il CV in PDF"
+                  [attr.aria-label]="'Scarica il CV in PDF' | translate"
                 >
-                  Scarica
+                  {{ 'Scarica' | translate }}
                 </a>
               </div>
             </article>
 
             <article class="c-contact__document">
               <p class="c-contact__document-title">
-                Attestato Full Stack Developer - LabForWeb, 650 ore
+                {{ 'Attestato Full Stack Developer - LabForWeb, 650 ore' | translate }}
               </p>
               <div
                 class="c-contact__document-actions"
                 role="group"
-                aria-label="Azioni attestato LabForWeb"
+                [attr.aria-label]="'Azioni attestato LabForWeb' | translate"
               >
                 <a
                   class="c-btn c-btn--secondary"
+                  hreflang="it"
                   href="/assets/documents/Attestato_LabForWeb_Fabio_Zagaria.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Apri l'attestato LabForWeb in PDF (si apre in una nuova scheda)"
+                  [attr.aria-label]="
+                    'Apri l\'attestato LabForWeb in PDF (si apre in una nuova scheda)' | translate
+                  "
                 >
-                  Apri
+                  {{ 'Apri' | translate }}
                 </a>
                 <a
                   class="c-btn c-btn--secondary"
                   href="/downloads/Attestato_LabForWeb_Fabio_Zagaria.pdf"
                   download="Attestato_LabForWeb_Fabio_Zagaria.pdf"
-                  aria-label="Scarica l'attestato LabForWeb in PDF"
+                  [attr.aria-label]="'Scarica l\'attestato LabForWeb in PDF' | translate"
                 >
-                  Scarica
+                  {{ 'Scarica' | translate }}
                 </a>
               </div>
             </article>
 
             <article class="c-contact__document">
               <p class="c-contact__document-title">
-                Attestato di frequenza Master Java &amp; Android - P.C. Academy, 2020
+                {{
+                  'Attestato di frequenza Master Java & Android - P.C. Academy, 2020' | translate
+                }}
               </p>
               <div
                 class="c-contact__document-actions"
                 role="group"
-                aria-label="Azioni attestato P.C. Academy"
+                [attr.aria-label]="'Azioni attestato P.C. Academy' | translate"
               >
                 <a
                   class="c-btn c-btn--secondary"
+                  hreflang="it"
                   href="/assets/documents/Attestato_PCAcademy_Fabio_Zagaria.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Apri l'attestato P.C. Academy in PDF (si apre in una nuova scheda)"
+                  [attr.aria-label]="
+                    'Apri l\'attestato P.C. Academy in PDF (si apre in una nuova scheda)'
+                      | translate
+                  "
                 >
-                  Apri
+                  {{ 'Apri' | translate }}
                 </a>
               </div>
             </article>

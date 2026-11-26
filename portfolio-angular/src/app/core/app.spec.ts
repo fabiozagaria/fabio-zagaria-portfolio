@@ -58,6 +58,81 @@ describe('App', () => {
     ]);
   });
 
+  it('switches the current page to English and remembers the choice', async () => {
+    const fixture = TestBed.createComponent(App);
+    const router = TestBed.inject(Router);
+    const element = fixture.nativeElement as HTMLElement;
+    await router.navigateByUrl('/about');
+    await fixture.whenStable();
+
+    expect(element.querySelector('main h1')?.textContent).toBe('Chi sono');
+    const english = element.querySelector<HTMLButtonElement>('button[lang="en"]');
+    expect(english).toBeTruthy();
+    try {
+      english?.click();
+      await fixture.whenStable();
+      expect(router.url).toBe('/about');
+      expect(document.documentElement.lang).toBe('en');
+      expect(document.title).toBe('About me | Fabio Zagaria');
+      expect(element.querySelector('main h1')?.textContent).toBe('About me');
+      expect(english?.getAttribute('aria-pressed')).toBe('true');
+      expect(localStorage.getItem('portfolio-language')).toBe('en');
+      element.querySelector<HTMLButtonElement>('button[lang="it"]')?.click();
+      await fixture.whenStable();
+      expect(element.querySelector('main h1')?.textContent).toBe('Chi sono');
+    } finally {
+      localStorage.removeItem('portfolio-language');
+      document.documentElement.lang = 'it';
+    }
+  });
+
+  it('offers an English CV on Home and Contact while keeping Italian certificate links', async () => {
+    const fixture = TestBed.createComponent(App);
+    const router = TestBed.inject(Router);
+    const element = fixture.nativeElement as HTMLElement;
+    await router.navigateByUrl('/');
+    await fixture.whenStable();
+
+    try {
+      element.querySelector<HTMLButtonElement>('button[lang="en"]')!.click();
+      await fixture.whenStable();
+      const homeDownload = element.querySelector<HTMLAnchorElement>('.c-hero__cv')!;
+      expect(homeDownload.getAttribute('href')).toMatch(/^\/downloads\/CV-en\.pdf\?v=[0-9a-f]{8}$/);
+      expect(homeDownload.getAttribute('download')).toBe('CV_Fabio_Zagaria_EN.pdf');
+      expect(homeDownload.hreflang).toBe('en');
+
+      await router.navigateByUrl('/contact');
+      await fixture.whenStable();
+      const cv = element.querySelector<HTMLAnchorElement>('main a[href^="/assets/documents/CV-"]');
+      expect(cv?.getAttribute('href')).toMatch(/^\/assets\/documents\/CV-en\.pdf\?v=[0-9a-f]{8}$/);
+      expect(
+        element.querySelector<HTMLAnchorElement>('main a[href*="Attestato_LabForWeb"]')?.hreflang,
+      ).toBe('it');
+      element.querySelector<HTMLButtonElement>('button[lang="it"]')!.click();
+      await fixture.whenStable();
+      expect(element.querySelector('main a[href^="/assets/documents/CV.pdf"]')).toBeTruthy();
+    } finally {
+      localStorage.removeItem('portfolio-language');
+      document.documentElement.lang = 'it';
+    }
+  });
+
+  it('shows the stack logos in two rows with a pause control', async () => {
+    const fixture = TestBed.createComponent(App);
+    await TestBed.inject(Router).navigateByUrl('/about');
+    await fixture.whenStable();
+    const element = fixture.nativeElement as HTMLElement;
+    const rows = element.querySelectorAll('.c-stack-marquee__row');
+
+    expect(rows.length).toBe(2);
+    expect(rows[0]?.querySelector('img[src$="/java.svg"]')).toBeTruthy();
+    expect(rows[1]?.querySelector('img[src$="/angular.svg"]')).toBeTruthy();
+    const pause = element.querySelector<HTMLButtonElement>('.c-stack-marquee__pause');
+    pause?.click();
+    await fixture.whenStable();
+    expect(pause?.getAttribute('aria-pressed')).toBe('true');
+  });
+
   it('should expose the mobile menu state to assistive technologies', () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();

@@ -8,60 +8,76 @@
         src="assets/img/intelligenza-umana-logo.webp"
         width="1200"
         height="400"
-        alt="Logo di Intelligenza Umana: il monogramma IU accanto al nome su due righe"
+        [alt]="
+          'Logo di Intelligenza Umana: il monogramma IU accanto al nome su due righe' | translate
+        "
       />
     </figure>
 
     <div class="c-iu__text">
-      <p class="c-iu__status">Foundation pubblica · organizzazione GitHub attiva</p>
+      <p class="c-iu__status">
+        {{ 'Foundation pubblica · Organizzazione GitHub attiva' | translate }}
+      </p>
 
       <div class="c-iu__grid">
         <div class="c-iu__block">
-          <h2>Che cos’è</h2>
-          <p>
-            Intelligenza Umana è un <strong>laboratorio tecnologico indipendente</strong> che unisce
-            ingegneria del software, ricerca applicata e collaborazione. L'iniziativa è orientata
-            all'open source ed è attualmente gestita da me.
-          </p>
+          <h2>{{ 'Che Cos’è' | translate }}</h2>
+          <p
+            [innerHTML]="
+              'Intelligenza Umana è un {b}laboratorio tecnologico indipendente{/b} che unisce ingegneria del software, ricerca applicata e collaborazione. L\'iniziativa è orientata all\'open source ed è attualmente gestita da me.'
+                | translate
+                | rich
+            "
+          ></p>
         </div>
 
         <div class="c-iu__block">
-          <h2>A cosa serve</h2>
-          <p>
-            A risolvere problemi concreti con
-            <strong>software utile, sicuro, affidabile, comprensibile e verificabile</strong>:
-            librerie, strumenti per sviluppatori, plugin e altri progetti indipendenti.
-          </p>
+          <h2>{{ 'A Cosa Serve' | translate }}</h2>
+          <p
+            [innerHTML]="
+              'A risolvere problemi concreti con {b}software utile, sicuro, affidabile, comprensibile e verificabile{/b}: librerie, strumenti per sviluppatori, plugin e altri progetti indipendenti.'
+                | translate
+                | rich
+            "
+          ></p>
         </div>
 
         <div class="c-iu__block">
-          <h2>Perché esiste</h2>
-          <p>
-            <em>Credo che l'intelligenza artificiale possa amplificare le capacità umane</em>.
-            Comprensione, ragionamento e responsabilità restano alle persone che progettano e
-            verificano il software.
-          </p>
+          <h2>{{ 'Perché Esiste' | translate }}</h2>
+          <p
+            [innerHTML]="
+              '{i}Credo che l\'intelligenza artificiale possa amplificare le capacità umane{/i}. Comprensione, ragionamento e responsabilità restano alle persone che progettano e verificano il software.'
+                | translate
+                | rich
+            "
+          ></p>
         </div>
 
         <div class="c-iu__block">
-          <h2>Come funziona</h2>
-          <p>
-            Si parte da un <strong>problema reale</strong>, si studiano alternative e si motivano le
-            scelte. Il codice, anche quando è assistito dall'IA, richiede comprensione e
-            <strong>revisione umana</strong>; controlli riproducibili e trasparenza sui limiti
-            affiancano il giudizio delle persone.
-          </p>
-          <p>
-            <strong>Gli ambiti prioritari</strong> comprendono backend, sicurezza, integrità dei
-            dati, algoritmi, sistemi distribuiti e affidabilità dell'IA.
-          </p>
+          <h2>{{ 'Come Funziona' | translate }}</h2>
+          <p
+            [innerHTML]="
+              'Si parte da un {b}problema reale{/b}, si studiano alternative e si motivano le scelte. Il codice, anche quando è assistito dall\'IA, richiede comprensione e {b}revisione umana{/b}; controlli riproducibili e trasparenza sui limiti affiancano il giudizio delle persone.'
+                | translate
+                | rich
+            "
+          ></p>
+          <p
+            [innerHTML]="
+              '{b}Gli ambiti prioritari{/b} comprendono backend, sicurezza, integrità dei dati, algoritmi, sistemi distribuiti e affidabilità dell\'IA.'
+                | translate
+                | rich
+            "
+          ></p>
         </div>
       </div>
 
-      <h2 class="c-iu__section">Repository e progetti</h2>
+      <h2 class="c-iu__section">{{ 'Repository e Progetti' | translate }}</h2>
       <p>
-        Il registro ufficiale associa all’iniziativa quattro strumenti. I nomi portano ai repository
-        canonici, tutti pubblici e con licenza MIT:
+        {{
+          'Il registro ufficiale associa all’iniziativa quattro strumenti. I nomi portano ai repository canonici, tutti pubblici e con licenza MIT:'
+            | translate
+        }}
       </p>
       <ul class="c-iu__list">
         <li>
@@ -71,11 +87,10 @@
             rel="noopener noreferrer"
             ><strong>Learning Ledger</strong></a
           >
-          <span
-            >registro locale delle evidenze per l’apprendimento assistito. I test Python sono
-            automatizzati; installazione e compatibilità con Claude Code restano da
-            verificare.</span
-          >
+          <span>{{
+            'Registro locale delle evidenze per l’apprendimento assistito. I test Python sono automatizzati; installazione e compatibilità con Claude Code restano da verificare.'
+              | translate
+          }}</span>
         </li>
         <li>
           <a
@@ -84,11 +99,10 @@
             rel="noopener noreferrer"
             ><strong>Spring Security Advisor</strong></a
           >
-          <span
-            >assistente per la revisione di sicurezza di applicazioni Spring Boot; il punteggio non
-            è una certificazione di sicurezza. I test Python sono automatizzati; installazione e
-            compatibilità con Claude Code restano da verificare.</span
-          >
+          <span>{{
+            'Assistente per la revisione di sicurezza di applicazioni Spring Boot; il punteggio non è una certificazione di sicurezza. I test Python sono automatizzati; installazione e compatibilità con Claude Code restano da verificare.'
+              | translate
+          }}</span>
         </li>
         <li>
           <a
@@ -97,10 +111,10 @@
             rel="noopener noreferrer"
             ><strong>Project Lifecycle Skill v0.3.0</strong></a
           >
-          <span
-            >guida a contesto e passaggi di consegne tra sessioni di lavoro. I flussi nativi dei
-            vari assistenti non sono ancora verificati.</span
-          >
+          <span>{{
+            'Guida alla gestione del contesto e dei passaggi di consegne tra sessioni di lavoro. Fabio ha verificato i test e confermato il funzionamento della skill.'
+              | translate
+          }}</span>
         </li>
         <li>
           <a
@@ -109,58 +123,62 @@
             rel="noopener noreferrer"
             ><strong>Model Router v0.1.0</strong></a
           >
-          <span
-            >skill iniziale per instradare le richieste degli agenti di codice in base al compito;
-            il comportamento negli assistenti non è ancora verificato.</span
-          >
+          <span>{{
+            'Skill iniziale per instradare le richieste degli agenti di codice in base al compito; il comportamento negli assistenti non è ancora verificato.'
+              | translate
+          }}</span>
         </li>
       </ul>
 
-      <h2 class="c-iu__section">A che punto è</h2>
+      <h2 class="c-iu__section">{{ 'A Che Punto È' | translate }}</h2>
       <p>
-        La foundation documentale e i quattro strumenti elencati sono pubblici nell’organizzazione
-        GitHub Intelligenza Umana; le repository sono state trasferite dall’account personale il 26
-        novembre 2026. La foundation è distribuita con licenza MIT. L’organizzazione ha un profilo
-        pubblico e modelli condivisi per issue e pull request. La foundation è mantenuta dal
-        fondatore e accoglie contributi; la scelta del progetto principale è ancora aperta.
+        {{
+          'La foundation documentale e i quattro strumenti elencati sono pubblici nell’organizzazione GitHub Intelligenza Umana; le repository sono state trasferite dall’account personale il 26 novembre 2026. La foundation è distribuita con licenza MIT. L’organizzazione ha un profilo pubblico e modelli condivisi per issue e pull request. La foundation è mantenuta dal fondatore e accoglie contributi; la scelta del progetto principale è ancora aperta.'
+            | translate
+        }}
       </p>
       <p class="c-iu__site">
-        <a href="https://github.com/Intelligenza-Umana" target="_blank" rel="noopener noreferrer"
-          >Profilo GitHub dell’organizzazione</a
-        >
+        <a href="https://github.com/Intelligenza-Umana" target="_blank" rel="noopener noreferrer">{{
+          'Profilo GitHub dell’organizzazione' | translate
+        }}</a>
         <a
           href="https://github.com/Intelligenza-Umana/.github/blob/main/profile/README.md"
           target="_blank"
           rel="noopener noreferrer"
-          >Profilo pubblico e contributi</a
+          >{{ 'Profilo pubblico e contributi' | translate }}</a
         >
         <a
           href="https://github.com/Intelligenza-Umana/intelligenza-umana"
           target="_blank"
           rel="noopener noreferrer"
-          >Repository della foundation</a
+          >{{ 'Repository della foundation' | translate }}</a
         >
         <a
           href="https://github.com/Intelligenza-Umana/intelligenza-umana/blob/main/docs/PROJECT_REGISTRY.md"
           target="_blank"
           rel="noopener noreferrer"
-          >Registro ufficiale dei progetti</a
+          >{{ 'Registro ufficiale dei progetti' | translate }}</a
         >
+      </p>
+      <p>
         <a
+          class="c-btn c-btn--primary"
           href="https://intelligenza-umana-web.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
-          >Apri il sito di Intelligenza Umana</a
+          >{{ 'Apri il sito di Intelligenza Umana' | translate }}</a
         >
       </p>
 
-      <h2 class="c-iu__section">Perché ha una pagina sua</h2>
+      <h2 class="c-iu__section">{{ 'Perché Ha una Pagina Sua' | translate }}</h2>
       <p>
-        Il portfolio presenta il mio percorso professionale. Intelligenza Umana ha una missione e
-        un'identità proprie, aperte nel tempo alla collaborazione con altre persone.
+        {{
+          "Il portfolio presenta il mio percorso professionale. Intelligenza Umana ha una missione e un'identità proprie, aperte nel tempo alla collaborazione con altre persone."
+            | translate
+        }}
       </p>
       <p class="c-iu__back">
-        <a routerLink="/projects">Vai ai progetti di sviluppo</a>
+        <a routerLink="/projects">{{ 'Vai ai progetti di sviluppo' | translate }}</a>
       </p>
     </div>
   </div>

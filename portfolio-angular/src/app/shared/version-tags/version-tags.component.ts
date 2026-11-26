@@ -1,3 +1,4 @@
+import { TranslatePipe } from '../../core/translate.pipe';
 import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import type { PortfolioVersionTag } from '../../data/projects.data';
@@ -10,11 +11,11 @@ import type { PortfolioVersionTag } from '../../data/projects.data';
 @Component({
   selector: 'app-version-tags',
   standalone: true,
-  imports: [NgTemplateOutlet],
+  imports: [TranslatePipe, NgTemplateOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     @if (tags().length) {
-      <ul class="c-vtags" aria-label="Tag e versioni">
+      <ul class="c-vtags" [attr.aria-label]="'Tag e versioni' | translate">
         @for (tag of tags(); track tag.label + tag.tag; let i = $index) {
           <li class="c-vtag" [attr.data-kind]="tag.kind ?? 'Backend'" [style.--i]="i">
             @if (tag.url; as url) {
@@ -24,10 +25,8 @@ import type { PortfolioVersionTag } from '../../data/projects.data';
                 target="_blank"
                 rel="noopener noreferrer"
                 [attr.aria-label]="
-                  tag.label +
-                  ' ' +
-                  tag.tag +
-                  ': apre il codice di questa versione su GitHub (nuova scheda)'
+                  '{0} {1}: apre il codice di questa versione su GitHub (nuova scheda)'
+                    | translate: (tag.label | translate) : tag.tag
                 "
               >
                 <ng-container *ngTemplateOutlet="segments; context: { $implicit: tag }" />
@@ -50,7 +49,7 @@ import type { PortfolioVersionTag } from '../../data/projects.data';
             d="M1.5 1.5h6l7 7-6 6-7-7zm3 1.8a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"
           />
         </svg>
-        {{ tag.label }}
+        {{ tag.label | translate }}
       </span>
       <code class="c-vtag__value">{{ tag.tag }}</code>
     </ng-template>
