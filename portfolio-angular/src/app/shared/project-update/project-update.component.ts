@@ -3,7 +3,7 @@ import type { PortfolioLatestUpdate } from '../../data/projects.data';
 
 /**
  * «Ultimo aggiornamento» di una card: una riga per repository, con chip colorato
- * (Frontend, API, Backend o Plugin), tag, messaggio e hash del commit reale.
+ * (Frontend, API, Backend, Plugin o Repository), tag, messaggio e hash del commit reale.
  * Le card senza `items` mostrano ancora il riepilogo testuale.
  */
 @Component({

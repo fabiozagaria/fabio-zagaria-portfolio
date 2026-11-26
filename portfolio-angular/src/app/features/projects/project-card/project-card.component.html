@@ -224,6 +224,8 @@
 
     @if (project.latestUpdate; as update) {
       <app-project-update [update]="update" />
+    } @else if (repositoryUpdate(project); as update) {
+      <app-project-update [update]="update" />
     }
 
     @let entries = history(project.id);

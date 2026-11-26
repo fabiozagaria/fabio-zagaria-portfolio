@@ -100,6 +100,8 @@
 
                   @if (entry.latestUpdate; as update) {
                     <app-project-update [update]="update" />
+                  } @else if (repositoryUpdate(entry.repositories[0]?.url); as update) {
+                    <app-project-update [update]="update" />
                   }
                 </div>
               </article>

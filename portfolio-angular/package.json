@@ -10,6 +10,7 @@
     "test": "ng test",
     "test:ci": "npm run cv:check && ng test --watch=false",
     "cv:meta": "node scripts/update-cv-meta.mjs",
+    "repositories:update": "node scripts/repository-updates.mjs",
     "cv:check": "node scripts/update-cv-meta.mjs --check",
     "format:check": "prettier --check ../README.md README.md \"src/**/*.{ts,html,css}\" angular.json package.json vercel.json \"../.github/workflows/*.yml\""
   },

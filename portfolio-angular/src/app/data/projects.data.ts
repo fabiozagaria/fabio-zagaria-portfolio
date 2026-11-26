@@ -27,7 +27,7 @@ export interface PortfolioVersionTag {
   readonly url?: string;
 }
 
-export type PortfolioUpdateKind = 'API' | 'Frontend' | 'Backend' | 'Plugin';
+export type PortfolioUpdateKind = 'API' | 'Frontend' | 'Backend' | 'Plugin' | 'Repository';
 
 /** Ultimo commit reale di un repository, mostrato come riga con chip colorato. */
 export interface PortfolioUpdateItem {
