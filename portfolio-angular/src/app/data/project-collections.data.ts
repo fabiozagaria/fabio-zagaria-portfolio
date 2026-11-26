@@ -125,12 +125,12 @@ export const AI_PLUGINS = [
       items: [
         {
           kind: 'Plugin',
-          version: 'v0.1.0',
-          hash: '0ca92f3',
-          message: 'Initialize project lifecycle skill v0.1.0',
+          version: 'v0.2.0',
+          hash: '0c3aca8',
+          message: 'Add mandatory context integrity protocol v0.2.0',
           dateLabel: '25 novembre 2026',
-          note: 'Prima versione del repository: la skill project-lifecycle con i template, i protocolli di inizio e fine sessione e le guide di integrazione per Codex e Claude Code. Non ci sono tag Git né un manifest di plugin: la versione v0.1.0 è quella dichiarata in README e CHANGELOG.',
-          url: 'https://github.com/fabiozagaria/project-lifecycle-skill/commit/0ca92f3b46ddc6e9758b44192dcad897f003e7d6',
+          note: 'Aggiunge il protocollo di integrità del contesto, la mappa documentale e la Definition of Done, con i relativi riferimenti, template e criteri di verifica. Non ci sono tag Git né un manifest di plugin: la versione v0.2.0 è quella dichiarata in README e CHANGELOG.',
+          url: 'https://github.com/fabiozagaria/project-lifecycle-skill/commit/0c3aca86fc50c821b173f9b455ac696642bf93ad',
         },
       ],
     },
