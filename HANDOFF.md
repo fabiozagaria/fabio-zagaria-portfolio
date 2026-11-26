@@ -7,21 +7,28 @@ Portfolio professionale concluso dal 21 novembre, salvo aggiornamenti significat
 - Pagina Progetti: mostra quattro sezioni curate, in ordine fisso. Plugin e skill trasferiti in Intelligenza Umana e raccolte di esercizi sono stati tolti dai contenuti e dai dati della pagina. Home ridotta alle aree Backend e Progetti del corso.
 - Repository: allowlist ordinata in `portfolio-angular/src/app/data/portfolio-repositories.json`, con GET individuale dei 10 repository mostrati. Il workflow GitHub Actions è settimanale e avviabile manualmente. Il pulsante finale apre tutte le repository pubbliche su GitHub.
 - Navigazione Progetti: link dell’indice e ritorno all’indice usano fragment Angular con ID reali sulle sezioni.
-- Pagina Intelligenza Umana: foundation pubblica e MIT; organizzazione GitHub `Intelligenza-Umana` con profilo pubblico e modelli condivisi per issue e pull request. Quattro strumenti pubblici MIT collegati ai repository canonici: Learning Ledger, Spring Security Advisor, Project Lifecycle Skill v0.3.0 e IU Model Router v0.1.0. I repository dei prodotti non sono stati trasferiti nell’organizzazione. Installazione e compatibilità degli strumenti restano da verificare; il progetto principale è ancora da scegliere.
+- Pagina Intelligenza Umana: foundation e quattro repository di strumenti pubblici MIT ora trasferiti in `Intelligenza-Umana`: Learning Ledger, Spring Security Advisor, Project Lifecycle Skill v0.3.0 e IU Model Router v0.1.0. Collegamenti della pagina aggiornati ai nuovi owner. Il repository del sito resta privato e non è collegato. Installazione e compatibilità degli strumenti restano da verificare; il progetto principale è ancora da scegliere.
 
 ### Fonti aggiornate
 
-- Foundation: [fabiozagaria/intelligenza-umana](https://github.com/fabiozagaria/intelligenza-umana), README, `docs/PROJECT_REGISTRY.md` e licenza.
+- Foundation trasferita: [Intelligenza-Umana/intelligenza-umana](https://github.com/Intelligenza-Umana/intelligenza-umana), README, `docs/PROJECT_REGISTRY.md` e licenza. Il registro e il profilo pubblico riportano ancora i vecchi URL sotto `fabiozagaria`; GitHub li reindirizza, ma le fonti vanno riallineate.
 - Organizzazione: [Intelligenza-Umana](https://github.com/Intelligenza-Umana), con profilo pubblico in `Intelligenza-Umana/.github/profile/README.md`.
 - Scheda Notion «Portfolio personale» aggiornata con il riepilogo e verificata con data 26 novembre 2026.
 
 ### Verifiche e prossimi passi
 
-- `git diff --check` passa. Test Angular non eseguiti; Prettier non è installato nell’ambiente.
-- Tutte le modifiche restano locali e non committate, non inviate e non pubblicate.
+- Al merge della PR #89 la CI ha superato format, 112 test e build. Le modifiche locali successive al trasferimento IU non sono ancora verificate né pubblicate.
+- Il branch `chore/update-iu-organization-links` contiene le modifiche correnti; non sono ancora committate o inviate.
 - Resta aperta la domanda se aggiornare anche il CV, secondo la regola di `AGENTS.md`.
 
-2026-11-26: Aggiornata la pagina Intelligenza Umana con fonti attuali della foundation `fabiozagaria/intelligenza-umana` e dell’organizzazione pubblica `Intelligenza-Umana`: quattro repository canonici pubblici MIT, Project Lifecycle Skill v0.3.0, IU Model Router v0.1.0, link a foundation, organizzazione, profilo e registro. Dati verificati nel README/registro e nel profilo GitHub; aggiornati anche i test della pagina e i documenti di progetto. Notion riallineato con una voce datata. Test Angular non eseguiti.
+### Aggiornamento — trasferimento repository IU (2026-11-26)
+
+- L’API GitHub conferma l’owner `Intelligenza-Umana` per la foundation e i quattro strumenti presentati. Sono stati aggiornati la pagina IU, il test dei link e i documenti di contesto e catalogo.
+- La repository `intelligenza-umana-web` risulta privata; il portfolio continua a collegare solo il sito pubblico.
+- `docs/PROJECT_REGISTRY.md` nella foundation e il profilo `.github` hanno contenuti ancora non riallineati ai trasferimenti. Le modifiche locali non includono quei repository esterni.
+- La CI non è stata avviata per queste modifiche.
+
+2026-11-26: Aggiornata la pagina Intelligenza Umana con fonti della foundation e dell’organizzazione pubblica `Intelligenza-Umana`: quattro repository canonici pubblici MIT, Project Lifecycle Skill v0.3.0, IU Model Router v0.1.0, link a foundation, organizzazione, profilo e registro. In seguito i repository risultano trasferiti nell’organizzazione; vedi la nota «Aggiornamento — trasferimento repository IU» sopra. Notion riallineato con una voce datata. Test Angular non eseguiti.
 
 2026-11-26: Rimossi dalla pagina Progetti i plugin e le skill spostati in Intelligenza Umana, insieme alle schede e ai dati degli esercizi. Home aggiornata a due aree; allowlist e JSON commit ridotti ai repository mostrati. Indice ridotto a quattro sezioni; documentazione e test aggiornati.
 Integrato metodo di integrità documentale in AGENTS, mappa, definition of done e registro decisioni; CLAUDE importa AGENTS e resta invariato. README, CONTEXT, PRODUCT, DESIGN e structure-repo non richiedono cambi di contenuto applicativo per questa integrazione; verifiche complete di PRODUCT, DESIGN e structure-repo ancora da effettuare prima di interventi pertinenti. Nessuna copia integrale della skill privata. Nessun test software eseguito. Prossimo passo facoltativo: concordare etichette di navigazione, preservando URL, design e contenuti. Nessuna modifica CV.

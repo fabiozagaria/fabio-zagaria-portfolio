@@ -47,12 +47,12 @@ Il portfolio è concluso dal 21 novembre 2026: la sua scheda dichiara lo stato �
 
 | Progetto                 | Repository                                                                                          | Stato registrato                                                                 |
 | ------------------------ | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| Learning Ledger          | [iu-learning-ledger](https://github.com/fabiozagaria/iu-learning-ledger)                             | Pubblico, MIT; test Python automatizzati                                         |
-| Spring Security Advisor  | [iu-spring-security-advisor](https://github.com/fabiozagaria/iu-spring-security-advisor)             | Pubblico, MIT; test Python automatizzati                                         |
-| Project Lifecycle Skill  | [iu-project-lifecycle-skill](https://github.com/fabiozagaria/iu-project-lifecycle-skill)             | Pubblico, MIT, v0.3.0; flussi host nativi da verificare                           |
-| IU Model Router          | [iu-model-router](https://github.com/fabiozagaria/iu-model-router)                                   | Pubblico, MIT, v0.1.0; comportamento negli host da verificare                    |
+| Learning Ledger          | [iu-learning-ledger](https://github.com/Intelligenza-Umana/iu-learning-ledger)                             | Pubblico, MIT; test Python automatizzati                                         |
+| Spring Security Advisor  | [iu-spring-security-advisor](https://github.com/Intelligenza-Umana/iu-spring-security-advisor)             | Pubblico, MIT; test Python automatizzati                                         |
+| Project Lifecycle Skill  | [iu-project-lifecycle-skill](https://github.com/Intelligenza-Umana/iu-project-lifecycle-skill)             | Pubblico, MIT, v0.3.0; flussi host nativi da verificare                           |
+| IU Model Router          | [iu-model-router](https://github.com/Intelligenza-Umana/iu-model-router)                                   | Pubblico, MIT, v0.1.0; comportamento negli host da verificare                    |
 
-La foundation è [pubblica e MIT](https://github.com/fabiozagaria/intelligenza-umana). L’organizzazione GitHub [Intelligenza-Umana](https://github.com/Intelligenza-Umana) ha un profilo pubblico e modelli condivisi per issue e pull request. Il [registro ufficiale](https://github.com/fabiozagaria/intelligenza-umana/blob/main/docs/PROJECT_REGISTRY.md) è la fonte per URL canonici e maturità. I repository dei prodotti restano sotto l’account del fondatore: non sono stati trasferiti.
+La foundation è [pubblica e MIT](https://github.com/Intelligenza-Umana/intelligenza-umana). La foundation e le quattro repository di strumenti sono state trasferite nell’organizzazione GitHub [Intelligenza-Umana](https://github.com/Intelligenza-Umana), che ha un profilo pubblico e modelli condivisi per issue e pull request. Il [registro ufficiale](https://github.com/Intelligenza-Umana/intelligenza-umana/blob/main/docs/PROJECT_REGISTRY.md) e il profilo pubblico riportano ancora link con il vecchio owner `fabiozagaria`; GitHub li reindirizza, ma le fonti vanno riallineate. Il repository del sito è privato e non viene collegato.
 
 ## Sperimentale con AI
 

@@ -35,6 +35,7 @@ describe('IntelligenzaUmanaComponent', () => {
     );
     expect(element.textContent).not.toContain('Lancio editoriale');
     expect(element.textContent).toContain('modelli condivisi per issue e pull request');
+    expect(element.textContent).toContain('sono state trasferite dall’account personale');
     expect(element.textContent).toContain('Project Lifecycle Skill v0.3.0');
     expect(element.textContent).toContain('IU Model Router v0.1.0');
     expect(
@@ -52,14 +53,14 @@ describe('IntelligenzaUmanaComponent', () => {
       element.querySelectorAll<HTMLAnchorElement>('a[href^="https://"]'),
     );
     expect(externalLinks.map((link) => link.getAttribute('href'))).toEqual([
-      'https://github.com/fabiozagaria/iu-learning-ledger',
-      'https://github.com/fabiozagaria/iu-spring-security-advisor',
-      'https://github.com/fabiozagaria/iu-project-lifecycle-skill',
-      'https://github.com/fabiozagaria/iu-model-router',
+      'https://github.com/Intelligenza-Umana/iu-learning-ledger',
+      'https://github.com/Intelligenza-Umana/iu-spring-security-advisor',
+      'https://github.com/Intelligenza-Umana/iu-project-lifecycle-skill',
+      'https://github.com/Intelligenza-Umana/iu-model-router',
       'https://github.com/Intelligenza-Umana',
       'https://github.com/Intelligenza-Umana/.github/blob/main/profile/README.md',
-      'https://github.com/fabiozagaria/intelligenza-umana',
-      'https://github.com/fabiozagaria/intelligenza-umana/blob/main/docs/PROJECT_REGISTRY.md',
+      'https://github.com/Intelligenza-Umana/intelligenza-umana',
+      'https://github.com/Intelligenza-Umana/intelligenza-umana/blob/main/docs/PROJECT_REGISTRY.md',
       'https://intelligenza-umana-web.vercel.app/',
     ]);
     for (const link of externalLinks) {
