@@ -1,9 +1,17 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { EXPERIMENTAL_PROJECTS } from '../../data/project-collections.data';
+import { PROJECTS } from '../../data/projects.data';
+import repositories from '../../data/portfolio-repositories.json';
+import { REPOSITORY_UPDATES } from '../../data/repository-updates.data';
 import { ProjectsComponent } from './projects.component';
 
 describe('ProjectsComponent', () => {
   beforeEach(async () => {
-    await TestBed.configureTestingModule({ imports: [ProjectsComponent] }).compileComponents();
+    await TestBed.configureTestingModule({
+      imports: [ProjectsComponent],
+      providers: [provideRouter([])],
+    }).compileComponents();
   });
 
   afterEach(() => {
@@ -16,6 +24,36 @@ describe('ProjectsComponent', () => {
     const fixture = TestBed.createComponent(ProjectsComponent);
     fixture.detectChanges();
     return fixture.nativeElement as HTMLElement;
+  }
+
+  function timeAtUpdateAge(datetime: string, days: number): string {
+    const date = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Rome',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    })
+      .format(new Date(datetime))
+      .split('-')
+      .map(Number);
+    return new Date(Date.UTC(date[0], date[1] - 1, date[2] + days, 12)).toISOString();
+  }
+
+  function timeAtRepositoryAge(repository: string, days: number): string {
+    const update = REPOSITORY_UPDATES.find((item) => item.repository === repository);
+    if (!update) throw new Error(`Nessun commit di test per ${repository}`);
+    return timeAtUpdateAge(update.datetime, days);
+  }
+
+  function projectUpdateTime(repositories: readonly string[], days: number): string {
+    const latestDatetime = Math.max(
+      ...repositories.map((repository) => {
+        const update = REPOSITORY_UPDATES.find((item) => item.repository === repository);
+        if (!update) throw new Error(`Nessun commit di test per ${repository}`);
+        return Date.parse(update.datetime);
+      }),
+    );
+    return timeAtUpdateAge(new Date(latestDatetime).toISOString(), days);
   }
 
   it('shows the history button only for the three main projects', () => {
@@ -90,8 +128,7 @@ describe('ProjectsComponent', () => {
   });
 
   it('flags projects with a recent update as new', () => {
-    // JobFlow: ultimo aggiornamento il 19 novembre 2026.
-    const element = render('2026-11-19T22:00:00+01:00');
+    const element = render(timeAtRepositoryAge('job-flow', 0));
     const flagged = Array.from(element.querySelectorAll('.c-badge-new')).map((badge) =>
       badge.closest('article')?.getAttribute('id'),
     );
@@ -101,26 +138,16 @@ describe('ProjectsComponent', () => {
   });
 
   it('removes the new badge once the update is older than three days', () => {
-    // Ultimo commit più recente: project-lifecycle-skill, 25 novembre 2026.
-    const element = render('2026-11-29T10:00:00+01:00');
+    const element = render(timeAtRepositoryAge('job-flow', 4));
 
     expect(element.querySelectorAll('.c-badge-new')).toHaveLength(0);
   });
 
   it('keeps the badge until the third day after the latest commit', () => {
-    const element = render('2026-11-22T10:00:00+01:00');
-    const flagged = Array.from(element.querySelectorAll('.c-badge-new')).map((badge) =>
-      badge.closest('article')?.getAttribute('id'),
-    );
-
-    expect(flagged.sort()).toEqual(['accessdesk', 'gestionale-spese', 'jobflow']);
-    expect(render('2026-11-28T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(1);
-    expect(render('2026-11-29T10:00:00+01:00').querySelectorAll('.c-badge-new')).toHaveLength(0);
+    const element = render(timeAtRepositoryAge('job-flow', 3));
+    expect(element.querySelector('#jobflow .c-badge-new')).not.toBeNull();
     expect(
-      render('2026-11-24T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
-    ).not.toBeNull();
-    expect(
-      render('2026-11-25T10:00:00+01:00').querySelector('#gestionale-spese .c-badge-new'),
+      render(timeAtRepositoryAge('job-flow', 4)).querySelector('#jobflow .c-badge-new'),
     ).toBeNull();
   });
 
@@ -183,48 +210,7 @@ describe('ProjectsComponent', () => {
     );
   });
 
-  it('lists the available skills of each plugin and derives the caption from their count', () => {
-    const element = render('2026-11-20T10:00:00+01:00');
-    const expected = {
-      'learning-ledger': [
-        'study-today',
-        'quiz',
-        'practice',
-        'explain',
-        'pair',
-        'log-session',
-        'weekly-report',
-      ],
-      'spring-security-advisor': ['audit', 'review', 'map'],
-      'project-lifecycle-skill': ['project-lifecycle'],
-    };
-    for (const [id, names] of Object.entries(expected)) {
-      const card = element.querySelector('#' + id)!;
-      expect(Array.from(card.querySelectorAll('dt'), (term) => term.textContent.trim())).toEqual(
-        names,
-      );
-      expect(card.querySelector('figcaption')?.textContent).toContain('(' + names.length + ')');
-      expect(card.querySelector<HTMLAnchorElement>('.c-card__action')?.href).toContain(
-        'github.com/fabiozagaria/' + id,
-      );
-    }
-  });
-
-  it('groups the Claude Code plugins and skills in their own section, apart from the experiments', () => {
-    const element = render('2026-11-04T10:00:00+01:00');
-    const section = element.querySelector('[aria-labelledby="plugin-skill-ai-title"]');
-    const experiments = element.querySelector('[aria-labelledby="sperimentale-ai-title"]');
-
-    expect(section?.querySelector('h2')?.textContent).toContain('Plugin e Skill AI');
-    expect([...(section?.querySelectorAll('article') ?? [])].map((a) => a.id)).toEqual([
-      'learning-ledger',
-      'spring-security-advisor',
-      'project-lifecycle-skill',
-    ]);
-    expect(experiments?.querySelector('#learning-ledger')).toBeNull();
-  });
-
-  it('shows each latest update as chips: API before frontend, backends and plugins with their own kind', () => {
+  it('shows each latest update as chips: API before frontend and backends with their own kind', () => {
     const element = render('2026-11-04T10:00:00+01:00');
     const kinds = (id: string) =>
       Array.from(element.querySelectorAll<HTMLElement>(`#${id} .c-update-item`)).map(
@@ -234,9 +220,6 @@ describe('ProjectsComponent', () => {
     expect(kinds('gestionale-spese')).toEqual(['API', 'Frontend']);
     expect(kinds('jobflow')).toEqual(['Backend']);
     expect(kinds('accessdesk')).toEqual(['Backend']);
-    expect(kinds('learning-ledger')).toEqual(['Plugin']);
-    expect(kinds('spring-security-advisor')).toEqual(['Plugin']);
-    expect(kinds('project-lifecycle-skill')).toEqual(['Plugin']);
     expect(element.querySelector('#jobflow .c-update-item__version')?.textContent).toContain(
       'v0.1.0-alpha.1',
     );
@@ -252,9 +235,6 @@ describe('ProjectsComponent', () => {
     expect(tags('gestionale-spese')).toEqual(['Frontend:v1.2.0', 'API:v1.3.0']);
     expect(tags('jobflow')).toEqual(['Backend:v0.1.0-alpha.1']);
     expect(tags('accessdesk')).toEqual(['Backend:v0.1.0-alpha.1']);
-    expect(tags('learning-ledger')).toEqual(['Plugin:1.0.0']);
-    expect(tags('spring-security-advisor')).toEqual(['Plugin:1.0.0']);
-    expect(tags('project-lifecycle-skill')).toEqual([]);
     expect(tags('labtv')).toEqual([]);
     const link = element.querySelector<HTMLAnchorElement>('#gestionale-spese .c-vtag a');
     expect(link?.href).toBe(
@@ -263,7 +243,7 @@ describe('ProjectsComponent', () => {
     expect(link?.getAttribute('aria-label')).toMatch(/^Frontend v1\.2\.0/);
   });
 
-  it('orders the sections: full stack, backend, plugins, course frontend, experiments, exercises', () => {
+  it('orders the curated sections and links the index to their Angular fragments', () => {
     const element = render('2026-11-04T10:00:00+01:00');
     const titles = Array.from(element.querySelectorAll('h2.c-projects__group-title')).map((title) =>
       title.textContent?.trim(),
@@ -272,11 +252,45 @@ describe('ProjectsComponent', () => {
     expect(titles).toEqual([
       'Full Stack',
       'Backend',
-      'Plugin e Skill AI',
       'Progetti Frontend del Corso',
       'Sperimentale con AI',
-      'Esercizi',
     ]);
+
+    const indexLinks = Array.from(
+      element.querySelectorAll<HTMLAnchorElement>('.c-projects__index a'),
+    );
+    expect(indexLinks).toHaveLength(titles.length);
+    expect(indexLinks.map((link) => link.textContent?.trim())).toEqual(titles);
+    expect(indexLinks.map((link) => link.getAttribute('href'))).toEqual([
+      '/projects#full-stack',
+      '/projects#backend',
+      '/projects#frontend',
+      '/projects#sperimentale-ai',
+    ]);
+    for (const link of indexLinks) {
+      expect(element.querySelector(`#${link.hash.slice(1)}`)).not.toBeNull();
+    }
+    expect(element.querySelector('.c-projects__index-return')?.getAttribute('href')).toBe(
+      '/projects#projects-index',
+    );
+    expect(element.querySelector('#plugin-skill-ai')).toBeNull();
+    expect(element.querySelector('#esercizi')).toBeNull();
+  });
+
+  it('queries only the curated repository list in the same order as the project cards', () => {
+    const projectRepositories = [
+      ...PROJECTS.filter((project) => project.category !== 'Frontend'),
+      ...PROJECTS.filter((project) => project.category === 'Frontend' && project.id !== 'portfolio'),
+      ...EXPERIMENTAL_PROJECTS,
+    ].flatMap((project) =>
+      project.repositories?.map((repository) => {
+        return repository.url.replace(/\/$/, '').split('/').at(-1);
+      }) ?? [],
+    );
+    const curatedRepositories = repositories.map((repository) => repository.repository);
+
+    expect(curatedRepositories).toEqual(projectRepositories);
+    expect(curatedRepositories).toHaveLength(new Set(curatedRepositories).size);
   });
 
   it('says how long ago the latest commit was: today, yesterday, N days ago', () => {
@@ -286,26 +300,16 @@ describe('ProjectsComponent', () => {
         ?.textContent?.replace(/\s+/g, ' ')
         .trim();
 
-    expect(badge('2026-11-21T12:00:00+01:00')).toBe('Commit recente oggi');
-    expect(badge('2026-11-22T12:00:00+01:00')).toBe('Commit recente ieri');
-    expect(badge('2026-11-23T12:00:00+01:00')).toBe('Commit recente 2 giorni fa');
-    expect(badge('2026-11-24T12:00:00+01:00')).toBe('Commit recente 3 giorni fa');
-  });
-
-  it('shows the recent commit badge on plugin cards too, with the same wording', () => {
-    const element = render('2026-11-19T10:00:00+01:00');
-    const badge = (id: string) =>
-      element.querySelector(`#${id} .c-badge-new`)?.textContent?.replace(/\s+/g, ' ').trim();
-
-    expect(badge('learning-ledger')).toBe('Commit recente 2 giorni fa');
-    expect(badge('spring-security-advisor')).toBe('Commit recente 2 giorni fa');
-    expect(badge('jobflow')).toBe('Commit recente oggi');
-    expect(element.querySelector('#labtv .c-badge-new')).toBeNull();
+    const expenseTrackerRepos = ['expense-tracker-api', 'expense-tracker-angular'];
+    expect(badge(projectUpdateTime(expenseTrackerRepos, 0))).toBe('Commit recente oggi');
+    expect(badge(projectUpdateTime(expenseTrackerRepos, 1))).toBe('Commit recente ieri');
+    expect(badge(projectUpdateTime(expenseTrackerRepos, 2))).toBe('Commit recente 2 giorni fa');
+    expect(badge(projectUpdateTime(expenseTrackerRepos, 3))).toBe('Commit recente 3 giorni fa');
   });
 
   it('does not flag an update dated in the future', () => {
-    const element = render('2026-11-02T10:00:00+01:00');
+    const element = render(timeAtRepositoryAge('job-flow', -1));
 
-    expect(element.querySelector('#learning-ledger .c-badge-new')).toBeNull();
+    expect(element.querySelector('#jobflow .c-badge-new')).toBeNull();
   });
 });

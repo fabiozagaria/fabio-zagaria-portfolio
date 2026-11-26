@@ -1,32 +1,8 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
+import repositories from '../src/app/data/portfolio-repositories.json' with { type: 'json' };
 
 const username = 'fabiozagaria';
-const sources = [
-  {
-    file: 'src/app/data/projects.data.ts',
-    pattern: /category: '(?:Full stack|Backend|Frontend)'[\s\S]*?repositories: \[([\s\S]*?)\]/g,
-  },
-  {
-    file: 'src/app/data/project-collections.data.ts',
-    pattern: /export const AI_PLUGINS = \[([\s\S]*?)\] as const[\s\S]*?export const EXPERIMENTAL_PROJECTS = \[([\s\S]*?)\] as const/g,
-  },
-];
 const outputPath = 'src/assets/data/repository-updates.json';
-const previousOutputPath = new URL('../src/assets/data/repository-updates.json', import.meta.url);
-const excludedRepositories = new Set(['fabio-zagaria-portfolio']);
-
-function repositoryNames(source, sectionPattern) {
-  const repositories = new Set();
-  const sections = [...source.matchAll(sectionPattern)].flatMap((match) => match.slice(1));
-
-  for (const section of sections) {
-    for (const match of section.matchAll(/https:\/\/github\.com\/fabiozagaria\/([a-zA-Z0-9_.-]+)/g)) {
-      if (!excludedRepositories.has(match[1])) repositories.add(match[1]);
-    }
-  }
-
-  return [...repositories];
-}
 
 function dateLabel(date) {
   return new Intl.DateTimeFormat('it-IT', {
@@ -37,7 +13,7 @@ function dateLabel(date) {
   }).format(date);
 }
 
-async function latestCommit(repository) {
+async function latestCommit({ repository, kind }) {
   const response = await fetch(
     `https://api.github.com/repos/${username}/${repository}/commits?per_page=1`,
     {
@@ -64,7 +40,7 @@ async function latestCommit(repository) {
     dateLabel: dateLabel(date),
     items: [
       {
-        kind: 'Repository',
+        kind,
         hash: commit.sha.slice(0, 7),
         message: commit.commit.message.split('\n')[0],
         dateLabel: dateLabel(date),
@@ -76,15 +52,12 @@ async function latestCommit(repository) {
 
 const results = [];
 const failures = [];
-for (const { file, pattern } of sources) {
-  const source = await readFile(file, 'utf8');
-  for (const repository of repositoryNames(source, pattern)) {
-    try {
-      const update = await latestCommit(repository);
-      if (update) results.push(update);
-    } catch (error) {
-      failures.push(error.message);
-    }
+for (const repository of repositories) {
+  try {
+    const update = await latestCommit(repository);
+    if (update) results.push(update);
+  } catch (error) {
+    failures.push(error.message);
   }
 }
 

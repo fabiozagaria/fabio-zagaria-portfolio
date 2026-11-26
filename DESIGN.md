@@ -58,7 +58,7 @@ Solo Nunito variabile, servito in locale da `@fontsource-variable/nunito`. Titol
 ## Layout
 Container massimo 1248px e padding clamp(1.25rem, 4vw, 4rem). Navigazione sospesa a pillola, staccata dai bordi, semitrasparente con sfocatura. Breakpoint 60em, 48em, 30em e 860px per l'hero. La griglia dei progetti usa `minmax(0, 1fr)`. Smartphone e desktop hanno gli stessi effetti; cambia solo la disposizione.
 
-La pagina Progetti offre un indice delle sei sezioni in un pannello flessibile con link a pillola. Un link fisso in basso a destra riporta all’indice; usa i token tema, rispetta l’area sicura dello schermo e compare solo in questa pagina. Gli ancoraggi hanno margine rispetto alla navigazione superiore.
+La pagina Progetti offre un indice delle quattro sezioni curate in un pannello flessibile con link a pillola. Un link fisso in basso a destra riporta all’indice; usa i token tema, rispetta l’area sicura dello schermo e compare solo in questa pagina. Gli ancoraggi usano i fragment di Angular e hanno margine rispetto alla navigazione superiore.
 
 ## Elevation & Depth
 Profondità data da ombre ampie e trasparenti (`--calm-shadow-sm` a riposo, `--calm-shadow-md` sollevate), non da bordi. Schede, pannello dell'hero e navigazione sono superfici chiare sopra il fondo; nessun filetto decorativo.
@@ -82,4 +82,4 @@ Pulsanti alti almeno 48px, a pillola. Navigazione (compreso il logo), toggle e l
 ## Do's and Don'ts
 Conservare contenuti reali, stato dei progetti, gerarchia semantica, focus e contrasto AA. Ammessi: movimento d'ambiente lento con pausa, risposte morbide a ogni azione, gradienti tenui nel cielo, il cielo stellato e il sole disegnati nel canvas. Vietati: testo che si muove con lo scroll, parallasse, reveal che nascondono contenuti finché non si scorre, scroll dirottato o ammorbidito via script, rimbalzi, lampeggi, movimento oltre 5 secondi senza pausa.
 
-- **Pagina «Intelligenza Umana» (25 novembre 2026)**: voce nel menu e pagina a parte con intestazione come le altre pagine; il logo orizzontale sta su un riquadro avorio dello stesso colore del suo sfondo, per leggersi in tema chiaro e scuro. Il collegamento al sito di Intelligenza Umana è un link di testo con area di tocco di almeno 44px, che si apre in una nuova scheda. Nessuna animazione nuova.
+- **Pagina «Intelligenza Umana» (25 novembre 2026)**: voce nel menu e pagina a parte con intestazione come le altre pagine; il logo orizzontale sta su un riquadro avorio dello stesso colore del suo sfondo, per leggersi in tema chiaro e scuro. I link ai repository, alla foundation, al profilo GitHub e al sito sono link di testo con area di tocco di almeno 44px e si aprono in una nuova scheda. Nessuna animazione nuova.

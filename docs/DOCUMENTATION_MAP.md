@@ -8,5 +8,6 @@
 - docs/superpowers/: specifiche e piani storici.
 - portfolio-angular/src/app/core/app.routes.ts: routing effettivo; codice e configurazione prevalgono per fatti tecnici.
 - portfolio-angular/scripts/repository-updates.mjs, portfolio-angular/src/assets/data/repository-updates.json e .github/workflows/update-repository-commits.yml: aggiornamento automatico dei commit mostrati in Progetti.
+- portfolio-angular/src/app/data/portfolio-repositories.json: elenco ordinato esplicito dei repository interrogati dall’aggiornamento GitHub.
 - HANDOFF.md: stato sessione; docs/DECISIONS.md: decisioni; docs/DEFINITION_OF_DONE.md: chiusura.
 - Conservare le regole Notion e CV già presenti in AGENTS. Aggiornare questa mappa quando cambiano responsabilità o struttura.

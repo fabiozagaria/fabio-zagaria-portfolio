@@ -1,0 +1,42 @@
+[
+  {
+    "repository": "expense-tracker-angular",
+    "kind": "Frontend"
+  },
+  {
+    "repository": "expense-tracker-api",
+    "kind": "API"
+  },
+  {
+    "repository": "job-flow",
+    "kind": "Backend"
+  },
+  {
+    "repository": "med-transit-msa",
+    "kind": "Backend"
+  },
+  {
+    "repository": "accessdesk-api",
+    "kind": "Backend"
+  },
+  {
+    "repository": "labtv-angular",
+    "kind": "Frontend"
+  },
+  {
+    "repository": "fakeflix-vanilla-js",
+    "kind": "Frontend"
+  },
+  {
+    "repository": "spring-scaffold-cli",
+    "kind": "Backend"
+  },
+  {
+    "repository": "patchme-game",
+    "kind": "Repository"
+  },
+  {
+    "repository": "study-flow-android",
+    "kind": "Repository"
+  }
+]

@@ -136,7 +136,6 @@ describe('HomeComponent', () => {
 
     expect(links).toEqual([
       '/projects#backend-title',
-      '/projects#plugin-skill-ai-title',
       '/projects#frontend-title',
     ]);
     expect(element.querySelector('.c-explore')?.textContent).not.toContain('JobFlow');

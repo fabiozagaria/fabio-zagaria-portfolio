@@ -4,22 +4,28 @@
     <h1 class="c-section-title">Progetti</h1>
     <p class="c-section-subtitle">
       Expense Tracker, JobFlow e AccessDesk in primo piano: un progetto full stack concluso e due
-      backend con API REST, persistenza e sicurezza. Seguono i progetti frontend del corso, i plugin
-      e le skill per Claude Code, gli esperimenti con AI e le raccolte di esercizi.
+      backend con API REST, persistenza e sicurezza. Seguono i progetti frontend del corso e gli
+      esperimenti con AI.
     </p>
 
     <nav id="projects-index" class="c-projects__index" aria-label="Indice dei progetti">
       <span class="c-projects__index-label">Vai a una sezione</span>
       <ul>
         @for (section of sections; track section.id) {
-          <li><a [href]="'#' + section.id">{{ section.title }}</a></li>
+          <li>
+            <a [routerLink]="['/projects']" [fragment]="section.id">{{ section.title }}</a>
+          </li>
         }
       </ul>
     </nav>
 
     @for (section of sections; track section.id) {
       @if (section.type === 'projects') {
-        <section class="c-projects__group" [attr.aria-labelledby]="section.id + '-title'">
+        <section
+          [id]="section.id"
+          class="c-projects__group"
+          [attr.aria-labelledby]="section.id + '-title'"
+        >
           <h2 class="c-projects__group-title" [id]="section.id + '-title'">{{ section.title }}</h2>
           <div
             class="c-projects__grid"
@@ -31,7 +37,11 @@
           </div>
         </section>
       } @else {
-        <section class="c-projects__group" [attr.aria-labelledby]="section.id + '-title'">
+        <section
+          [id]="section.id"
+          class="c-projects__group"
+          [attr.aria-labelledby]="section.id + '-title'"
+        >
           <h2 class="c-projects__group-title" [id]="section.id + '-title'">{{ section.title }}</h2>
           <p class="c-projects__group-description">{{ section.description }}</p>
           <div class="c-projects__grid">
@@ -41,29 +51,13 @@
                   <div class="c-card__heading">
                     <h3 class="c-card__title">
                       {{ entry.title }}
-                      <app-recent-badge [update]="entry.latestUpdate" />
+                      <app-recent-badge
+                        [update]="repositoryUpdate(entry.repositories, entry.latestUpdate)"
+                      />
                     </h3>
                   </div>
                   @if (entry.versionTags; as tags) {
                     <app-version-tags [tags]="tags" />
-                  }
-                  @if (entry.skills; as skills) {
-                    <figure class="c-card__shot c-shot">
-                      <figcaption class="c-shot__bar">
-                        <span class="c-shot__dots" aria-hidden="true"></span>
-                        <span>Skill disponibili ({{ skills.length }})</span>
-                      </figcaption>
-                      <dl class="c-plugin-skills">
-                        @for (skill of skills; track skill.name) {
-                          <div>
-                            <dt>
-                              <code>{{ skill.name }}</code>
-                            </dt>
-                            <dd>{{ skill.purpose }}</dd>
-                          </div>
-                        }
-                      </dl>
-                    </figure>
                   }
                   <p class="c-card__description">{{ entry.description }}</p>
                   @if (entry.note) {
@@ -107,9 +101,7 @@
                     }
                   </div>
 
-                  @if (entry.latestUpdate; as update) {
-                    <app-project-update [update]="update" />
-                  } @else if (repositoryUpdate(entry.repositories[0]?.url); as update) {
+                  @if (repositoryUpdate(entry.repositories, entry.latestUpdate); as update) {
                     <app-project-update [update]="update" />
                   }
                 </div>
@@ -120,17 +112,23 @@
       }
     }
     <div class="c-projects__github-cta">
-      <p>Vuoi vedere anche esercizi, esperimenti e progetti ancora in evoluzione?</p>
+      <p>Per gli esercizi e gli altri repository pubblici, apri l’elenco completo su GitHub.</p>
       <a
         href="https://github.com/fabiozagaria?tab=repositories"
         target="_blank"
         rel="noopener noreferrer"
         class="c-btn c-btn--secondary c-projects__github-link"
-        aria-label="Tutti i repository su GitHub (apre una nuova scheda)"
+        aria-label="Apri tutti i repository GitHub (apre una nuova scheda)"
       >
-        Tutti i repository su GitHub
+        Altri repository su GitHub
       </a>
     </div>
   </div>
-  <a class="c-projects__index-return" href="#projects-index">Indice dei progetti ↑</a>
+  <a
+    class="c-projects__index-return"
+    [routerLink]="['/projects']"
+    [fragment]="'projects-index'"
+  >
+    Indice dei progetti ↑
+  </a>
 </section>

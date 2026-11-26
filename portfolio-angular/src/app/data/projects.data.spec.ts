@@ -1,5 +1,5 @@
 import { PortfolioProject, PROJECTS } from './projects.data';
-import { EXERCISE_COLLECTIONS, EXPERIMENTAL_PROJECTS } from './project-collections.data';
+import { EXPERIMENTAL_PROJECTS } from './project-collections.data';
 import { PROJECT_HISTORY } from './project-history.data';
 
 /** Ultimi commit noti che non entrano nello storico (documentazione o testi). */
@@ -146,16 +146,6 @@ describe('portfolio projects', () => {
     expect(labTv?.repositories[0].url).toContain('labtv-angular');
   });
 
-  it('labels Task Manager honestly as a guided learning lab', () => {
-    const taskManager = EXERCISE_COLLECTIONS.find(
-      (project) => project.id === 'task-manager-security-lab',
-    );
-
-    expect(taskManager?.description).toContain('Laboratorio guidato');
-    expect(taskManager?.note).toContain('restano da completare');
-    expect(taskManager?.technologies).toContain('Spring Security');
-    expect(taskManager?.technologies).toContain('Hibernate');
-  });
 
   it('keeps the project order intentional', () => {
     expect(PROJECTS.map((project) => project.id)).toEqual([

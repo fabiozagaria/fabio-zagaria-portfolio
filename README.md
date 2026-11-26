@@ -124,12 +124,12 @@ costruire comprensione e autonomia.
 - `portfolio-angular/src/app/data`: modelli e contenuti tipizzati dei progetti.
 - `portfolio-angular/src/app/features`: pagine standalone del portfolio.
 - `portfolio-angular/src/assets`: documenti, immagini ottimizzate (compresa l'infografica del flusso API di Expense Tracker) e il video di Expense Tracker (`video/`).
-- `portfolio-angular/src/assets/data/repository-updates.json`: ultimi commit dei repository classificati nelle schede Progetti, aggiornati da GitHub Actions ogni giorno e pubblicati dal deploy Vercel.
+- `portfolio-angular/src/app/data/portfolio-repositories.json`: allowlist ordinata dei repository curati interrogati da GitHub Actions. Gli altri repository restano raggiungibili dal link «Altri repository su GitHub».
+- `portfolio-angular/src/assets/data/repository-updates.json`: ultimi commit dell’allowlist, aggiornati settimanalmente o manualmente da GitHub Actions e pubblicati dal deploy Vercel.
 - `portfolio-angular/scripts/cv-career-ops.json`: contenuti del curriculum pubblicato, impaginato con Career Ops.
 - `.github/workflows/ci.yml`: controlli automatici di qualità, test e build.
-- `.github/workflows/update-repository-commits.yml`: aggiornamento giornaliero e manuale dei commit mostrati in Progetti.
-- La pagina Progetti include un indice per raggiungere le sezioni e un collegamento fisso per tornarvi rapidamente.
-- `.github/workflows/update-repository-commits.yml`: aggiornamento giornaliero e manuale dei commit mostrati in Progetti.
+- La pagina Progetti include un indice per raggiungere le sezioni e un collegamento fisso per tornarvi rapidamente; gli esercizi e gli altri repository pubblici sono raggiungibili dal link GitHub in fondo alla pagina.
+- `.github/workflows/update-repository-commits.yml`: aggiornamento settimanale e manuale dei commit mostrati in Progetti.
 
 ## Avvio locale
 
@@ -178,7 +178,7 @@ Il CV elenca Expense Tracker, JobFlow, AccessDesk e MedTransit (quest'ultimo dic
 
 ## Stato del portfolio
 
-Il portfolio è **concluso dal 21 novembre 2026**: stile, sezioni e animazioni sono definitivi, per scelta del proprietario. Si modifica soltanto per cambiamenti importanti, come un nuovo progetto o un dato che cambia. La sua scheda nella pagina Progetti riporta lo stato «Concluso» e, a differenza dei progetti principali, non ha storico dei commit. Dal 25 novembre 2026 il menu ha anche la voce «Intelligenza Umana», una pagina dedicata al laboratorio tecnologico indipendente Intelligenza Umana, orientato a software, ricerca applicata e collaborazione, con un collegamento al suo sito (https://intelligenza-umana-web.vercel.app/). Il rilascio pubblico del portale aggiornato è da verificare.
+Il portfolio è **concluso dal 21 novembre 2026**: stile, sezioni e animazioni sono definitivi, per scelta del proprietario. Si modifica soltanto per cambiamenti importanti, come un nuovo progetto o un dato che cambia. La sua scheda nella pagina Progetti riporta lo stato «Concluso» e, a differenza dei progetti principali, non ha storico dei commit. Dal 25 novembre 2026 il menu ha anche la voce «Intelligenza Umana», una pagina dedicata al laboratorio tecnologico indipendente, orientato a software, ricerca applicata e collaborazione. La pagina presenta la foundation pubblica con licenza MIT, l’organizzazione GitHub e i quattro strumenti registrati, con link ai repository canonici e al registro ufficiale; rimanda anche al [sito di Intelligenza Umana](https://intelligenza-umana-web.vercel.app/).
 
 ## Curriculum aggiornato — 29 ottobre 2026
 

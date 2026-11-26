@@ -13,9 +13,7 @@ Le categorie seguono le scelte del proprietario. La presenza di una tecnologia, 
 1. Full Stack
 2. Backend
 3. Progetti Frontend del Corso
-4. Plugin e Skill AI
-5. Sperimentale con AI
-6. Esercizi
+4. Sperimentale con AI
 
 I tre progetti principali restano, nell’ordine: **Expense Tracker**, **JobFlow**, **AccessDesk**.
 
@@ -45,15 +43,16 @@ Expense Tracker ha una sola scheda, con collegamenti distinti a frontend e backe
 
 Il portfolio è concluso dal 21 novembre 2026: la sua scheda dichiara lo stato «Concluso» e non ha storico dei commit.
 
-## Plugin e Skill AI
+## Intelligenza Umana (fuori dal portfolio)
 
-| Progetto                | Repository                                                                         |
-| ----------------------- | ---------------------------------------------------------------------------------- |
-| learning-ledger         | [learning-ledger](https://github.com/fabiozagaria/learning-ledger)                 |
-| spring-security-advisor | [spring-security-advisor](https://github.com/fabiozagaria/spring-security-advisor) |
-| project-lifecycle-skill | [project-lifecycle-skill](https://github.com/fabiozagaria/project-lifecycle-skill) |
+| Progetto                 | Repository                                                                                          | Stato registrato                                                                 |
+| ------------------------ | ---------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Learning Ledger          | [iu-learning-ledger](https://github.com/fabiozagaria/iu-learning-ledger)                             | Pubblico, MIT; test Python automatizzati                                         |
+| Spring Security Advisor  | [iu-spring-security-advisor](https://github.com/fabiozagaria/iu-spring-security-advisor)             | Pubblico, MIT; test Python automatizzati                                         |
+| Project Lifecycle Skill  | [iu-project-lifecycle-skill](https://github.com/fabiozagaria/iu-project-lifecycle-skill)             | Pubblico, MIT, v0.3.0; flussi host nativi da verificare                           |
+| IU Model Router          | [iu-model-router](https://github.com/fabiozagaria/iu-model-router)                                   | Pubblico, MIT, v0.1.0; comportamento negli host da verificare                    |
 
-Plugin e skill per assistenti AI pubblicati dal proprietario: i plugin per Claude Code hanno uno script Python che verifica e il modello che spiega; project-lifecycle-skill è una skill documentale in Markdown. Le schede dichiarano versione, limiti e stato delle verifiche, come per gli altri progetti. Ogni plugin elenca le skill disponibili e la funzione di ciascuna.
+La foundation è [pubblica e MIT](https://github.com/fabiozagaria/intelligenza-umana). L’organizzazione GitHub [Intelligenza-Umana](https://github.com/Intelligenza-Umana) ha un profilo pubblico e modelli condivisi per issue e pull request. Il [registro ufficiale](https://github.com/fabiozagaria/intelligenza-umana/blob/main/docs/PROJECT_REGISTRY.md) è la fonte per URL canonici e maturità. I repository dei prodotti restano sotto l’account del fondatore: non sono stati trasferiti.
 
 ## Sperimentale con AI
 
@@ -65,7 +64,7 @@ Plugin e skill per assistenti AI pubblicati dal proprietario: i plugin per Claud
 
 La categoria descrive il ruolo sperimentale e il supporto dell’AI nello sviluppo o nello studio. Eventuali funzionalità AI interne alle applicazioni vanno dichiarate soltanto se verificate nel codice.
 
-## Esercizi
+## Esercizi (fuori dal portfolio)
 
 | Raccolta o esercizio          | Repository                                                                                                                  |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -86,7 +85,7 @@ I due repository C++ sono raccolti in una sola scheda, con collegamenti distinti
 - [curriculum-vitae-fabio-zagaria](https://github.com/fabiozagaria/curriculum-vitae-fabio-zagaria)
 - [about-me](https://github.com/fabiozagaria/about-me)
 
-La mappa comprende **23 repository**: **19 visibili**, raccolti in **17 schede**, e **4 esclusi**.
+La pagina Progetti mostra **11 repository dichiarati** in **10 schede**. I sette repository di esercizi, i quattro repository di Intelligenza Umana e i quattro repository esclusi non vengono mostrati nelle schede; gli altri repository pubblici restano raggiungibili dal collegamento al profilo GitHub.
 
 ## Aggiornamento della struttura
 
@@ -100,6 +99,6 @@ Quando cambia la collocazione o la visibilità di un repository:
 
 Le descrizioni tecniche e gli stati dei singoli progetti sono mantenuti nei dati del sito e verificati sul codice, sulla configurazione e sui README dei rispettivi repository.
 
-Gli aggiornamenti automatici dei commit seguono i repository nelle categorie Full Stack, Backend, Frontend, Plugin e Sperimentale con AI. I repository della categoria Esercizi, quelli esclusi e il portfolio stesso non sono interrogati. Lo script è `portfolio-angular/scripts/repository-updates.mjs`; il JSON è aggiornato dal workflow `.github/workflows/update-repository-commits.yml` e consumato dalla UI usando `ProjectUpdateComponent`.
+L’elenco esplicito dei repository interrogati da GitHub Actions è `portfolio-angular/src/app/data/portfolio-repositories.json`. Ogni voce identifica un repository e il tipo di chip da mostrare. Il flusso esegue un GET dei commit per ciascuna voce e non scopre automaticamente altri repository del profilo. Un nuovo repository entra solo quando viene aggiunto a questo elenco e ai dati della scheda. Il portfolio, gli esercizi e i repository di Intelligenza Umana restano fuori.
 
-La pagina Progetti include un indice collegato alle sei sezioni e un pulsante fisso per tornare all’indice. Il comportamento è limitato alla route `/projects`.
+La pagina Progetti include un indice collegato alle quattro sezioni e un pulsante fisso per tornare all’indice. Il comportamento è limitato alla route `/projects`; per gli altri repository c’è un link diretto all’elenco GitHub.
