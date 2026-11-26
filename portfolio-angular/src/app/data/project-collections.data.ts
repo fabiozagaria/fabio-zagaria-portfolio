@@ -21,9 +21,9 @@ export const EXPERIMENTAL_PROJECTS = [
     id: 'spring-scaffold-cli',
     title: 'Spring Scaffold CLI',
     description:
-      'CLI Java per generare record DTO vuoti simple, request e response, con validazione del naming e controllo dei file già esistenti.',
+      '{b}CLI Java{/b} per generare record DTO vuoti simple, request e response, con validazione del naming e controllo dei file già esistenti.',
     technologies: ['Java 17', 'Maven', 'Picocli', 'CLI', 'Code generation'],
-    note: 'MVP disponibile con test del generatore. Nuove funzionalità sospese; la generazione di risorse Spring complete resta da implementare.',
+    note: '{b}MVP disponibile{/b} con test del generatore. {i}Nuove funzionalità sospese;{/i} la generazione di risorse Spring complete resta da implementare.',
     repositories: [
       { label: 'Repository', url: 'https://github.com/fabiozagaria/spring-scaffold-cli' },
     ],
@@ -32,9 +32,9 @@ export const EXPERIMENTAL_PROJECTS = [
     id: 'patchme',
     title: 'PatchMe',
     description:
-      'Applicazione per trasformare persone e momenti in patch notes, con editor, anteprima ed esportazione delle immagini. I dati sono conservati nel browser.',
+      '{b}Applicazione{/b} per trasformare persone e momenti in {b}patch notes{/b}, con editor, anteprima ed esportazione delle immagini. I dati sono conservati nel browser.',
     technologies: ['React', 'TypeScript', 'TanStack Start', 'Tailwind CSS'],
-    note: 'Versione 1.0.0 stabile, realizzata con assistenza AI per progettazione, codice, revisione, contenuti e immagini.',
+    note: '{b}Versione 1.0.0 stabile{/b}, realizzata con assistenza AI per progettazione, codice, revisione, contenuti e immagini.',
     liveLink: 'https://patchme-fabiozagariadev.vercel.app/',
     repositories: [{ label: 'Repository', url: 'https://github.com/fabiozagaria/patchme-game' }],
   },

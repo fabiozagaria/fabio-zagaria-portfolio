@@ -54,3 +54,5 @@ La pagina Intelligenza Umana e la descrizione SEO sono state allineate alla foun
 2026-11-26: Controllo degli spazi su tutte le pagine (verifica automatica dei blocchi consecutivi e screenshot desktop/telefono): corretti storico «Implementazioni importanti» (spazi, gerarchia, larghezza del testo) e vuoto eccessivo tra descrizione e stato nelle card sperimentali. Altre pagine senza elementi attaccati.
 
 2026-11-26: Discesa morbida degli elementi (all'apertura e allo scroll, rispetta «riduci movimento»), tema chiaro meno luminoso, tema scuro con colori attenuati. `npm run test:ci` (120 test) e build eseguiti; controllo visivo in entrambi i temi. Non verificato: l'effetto su dispositivi reali e con CPU lenta. CV non modificato.
+
+2026-11-26: Leggibilità dei testi (grassetti, corsivi, interlinea, misura), palette senza marroni, discesa su tutto il portfolio, freccia di ritorno nella pagina del progetto e ritratto meno ravvicinato. `npm run test:ci` (124 test) e build eseguiti; verifica visiva in entrambi i temi; scorrimento di tutte le pagine senza elementi bloccati. Non fatto: ritratto e palette del sito di Intelligenza Umana. CV non modificato.

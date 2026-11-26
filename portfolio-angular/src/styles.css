@@ -1,4 +1,5 @@
 @import '@fontsource-variable/nunito';
+@import '@fontsource-variable/nunito/wght-italic.css';
 
 :root {
   /* Calm theme: fabiozagaria/turni-elisa docs/calm-theme/calm-theme.css @ 02d4ba1.
@@ -24,12 +25,12 @@
   --calm-on-accent: #ffffff;
   --calm-accent-hover: #22616a;
   --calm-focus: #3b93a0;
-  --calm-attention: #8f5d2d;
-  --calm-attention-soft: #f4ecdd;
-  --calm-attention-line: #ecd9bd;
-  --calm-danger: #a24d47;
-  --calm-danger-soft: #f5e7e5;
-  --calm-danger-line: #ecc9c5;
+  --calm-attention: #5b4f9e;
+  --calm-attention-soft: #e9e6f3;
+  --calm-attention-line: #cbc5e3;
+  --calm-danger: #b04a63;
+  --calm-danger-soft: #f3e4e8;
+  --calm-danger-line: #e3c2cb;
   --calm-on-danger: #ffffff;
   --calm-good: #36785a;
   --calm-tint-1: #e6eff3;
@@ -38,9 +39,9 @@
   --calm-tint-2: #e6f1ea;
   --calm-tint-2-tag: #d8eadf;
   --calm-tint-2-ink: #2d5b47;
-  --calm-tint-3: #f1ebdd;
-  --calm-tint-3-tag: #f1e4cb;
-  --calm-tint-3-ink: #6d4b20;
+  --calm-tint-3: #e9e6f3;
+  --calm-tint-3-tag: #d9d4ea;
+  --calm-tint-3-ink: #473f7a;
   --calm-shadow-sm: 0 1px 2px rgb(31 58 61 / 0.04), 0 6px 18px rgb(31 58 61 / 0.06);
   --calm-shadow-md: 0 2px 4px rgb(31 58 61 / 0.05), 0 16px 38px rgb(31 58 61 / 0.12);
   --calm-backdrop: rgb(12 28 30 / 0.45);
@@ -129,13 +130,13 @@ html[data-theme='dark'] {
   --calm-on-accent: #0c2023;
   --calm-accent-hover: #7cc4c0;
   --calm-focus: #7cc4c0;
-  --calm-attention: #e5b98a;
-  --calm-attention-soft: #2d2618;
-  --calm-attention-line: #55442a;
-  --calm-danger: #e6a8a1;
-  --calm-danger-soft: #2c1f1f;
-  --calm-danger-line: #5d3d3a;
-  --calm-on-danger: #2a1413;
+  --calm-attention: #c2b8f0;
+  --calm-attention-soft: #221f33;
+  --calm-attention-line: #453f6b;
+  --calm-danger: #eba7b6;
+  --calm-danger-soft: #2c1f24;
+  --calm-danger-line: #5d3a45;
+  --calm-on-danger: #2a1319;
   --calm-good: #9fd2b4;
   --calm-tint-1: #182a31;
   --calm-tint-1-tag: #21404d;
@@ -143,9 +144,9 @@ html[data-theme='dark'] {
   --calm-tint-2: #182b25;
   --calm-tint-2-tag: #25443b;
   --calm-tint-2-ink: #b4dccb;
-  --calm-tint-3: #2a261c;
-  --calm-tint-3-tag: #4a3b22;
-  --calm-tint-3-ink: #ecc99a;
+  --calm-tint-3: #1f1c30;
+  --calm-tint-3-tag: #373259;
+  --calm-tint-3-ink: #cfc8f2;
   --calm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.25), 0 8px 22px rgb(0 0 0 / 0.22);
   --calm-shadow-md: 0 2px 4px rgb(0 0 0 / 0.3), 0 18px 40px rgb(0 0 0 / 0.4);
   color-scheme: dark;
@@ -2110,4 +2111,59 @@ html[data-theme='dark'] .c-vtag {
 html[data-theme='dark'] .c-vtag__label {
   background: color-mix(in srgb, var(--kind) 22%, var(--card));
   color: var(--kind);
+}
+
+.c-project-detail__nav a,
+.c-project-detail__back a {
+  gap: 0.5rem;
+}
+.c-project-detail__arrow {
+  flex: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .c-project-detail__arrow {
+    transition: translate 300ms var(--calm-ease);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .c-project-detail__nav a:hover .c-project-detail__arrow,
+    .c-project-detail__back a:hover .c-project-detail__arrow {
+      translate: -4px 0;
+    }
+  }
+}
+
+/* Leggibilità pulita (26 novembre 2026): interlinea ampia, righe di lunghezza comoda, a capo
+   ordinato, grassetto sulle parole chiave (colore d'accento) e corsivo per sfumature e limiti. */
+body {
+  line-height: 1.7;
+}
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+strong,
+b {
+  color: var(--calm-accent-strong);
+  font-weight: 700;
+}
+em,
+i {
+  font-style: italic;
+}
+.c-about__text-block p,
+.c-experience__item p,
+.c-iu__block p,
+.c-iu__text > p {
+  max-width: 66ch;
+}
+.c-card__status-list li,
+.c-card__decision div:last-child dd {
+  font-style: italic;
 }

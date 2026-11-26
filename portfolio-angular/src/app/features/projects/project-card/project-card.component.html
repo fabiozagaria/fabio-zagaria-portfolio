@@ -57,7 +57,7 @@
     } @else if (detail && project.flow; as flow) {
       <app-project-flow [flow]="flow" />
     }
-    <p class="c-card__description">{{ project.description }}</p>
+    <p class="c-card__description" [innerHTML]="project.description | rich"></p>
 
     @if (detail && project.video; as video) {
       <section class="c-video" [attr.aria-labelledby]="project.id + '-video-title'">
@@ -77,10 +77,10 @@
         </figure>
         <div class="c-video__text">
           <h4 [id]="project.id + '-video-title'">{{ video.title }}</h4>
-          <p>{{ video.summary }}</p>
+          <p [innerHTML]="video.summary | rich"></p>
           <ul>
             @for (topic of video.topics; track topic) {
-              <li>{{ topic }}</li>
+              <li [innerHTML]="topic | rich"></li>
             }
           </ul>
           <p class="c-video__note">
@@ -114,10 +114,10 @@
         </figure>
         <div class="c-diagram__text">
           <h4 [id]="project.id + '-diagram-title'">{{ diagram.title }}</h4>
-          <p>{{ diagram.summary }}</p>
+          <p [innerHTML]="diagram.summary | rich"></p>
           <ol>
             @for (step of diagram.steps; track step) {
-              <li>{{ step }}</li>
+              <li [innerHTML]="step | rich"></li>
             }
           </ol>
           <p class="c-diagram__note">
@@ -131,7 +131,7 @@
       <p class="c-card__section-label">Responsabilità e scelte tecniche</p>
       <ul class="c-card__highlights">
         @for (highlight of project.highlights; track highlight) {
-          <li>{{ highlight }}</li>
+          <li [innerHTML]="highlight | rich"></li>
         }
       </ul>
 
@@ -141,15 +141,15 @@
           <dl>
             <div>
               <dt>Problema</dt>
-              <dd>{{ decision.problem }}</dd>
+              <dd [innerHTML]="decision.problem | rich"></dd>
             </div>
             <div>
               <dt>Soluzione</dt>
-              <dd>{{ decision.solution }}</dd>
+              <dd [innerHTML]="decision.solution | rich"></dd>
             </div>
             <div>
               <dt>Compromesso</dt>
-              <dd>{{ decision.tradeoff }}</dd>
+              <dd [innerHTML]="decision.tradeoff | rich"></dd>
             </div>
           </dl>
         </div>
@@ -167,12 +167,12 @@
     @if (detail) {
       <div class="c-card__status-detail">
         <p class="c-card__section-label">Stato reale</p>
-        <p>{{ project.statusDetail.summary }}</p>
+        <p [innerHTML]="project.statusDetail.summary | rich"></p>
         @if (project.statusDetail.pending?.length) {
           <p class="c-card__status-subtitle">Cosa manca</p>
           <ul class="c-card__status-list">
             @for (item of project.statusDetail.pending; track item) {
-              <li>{{ item }}</li>
+              <li [innerHTML]="item | rich"></li>
             }
           </ul>
         }

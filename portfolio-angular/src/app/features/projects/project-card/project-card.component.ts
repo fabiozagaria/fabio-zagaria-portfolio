@@ -1,6 +1,7 @@
 import { LoadingImageDirective } from '../../../shared/loading/loading-image.directive';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { RichTextPipe } from '../../../shared/rich-text/rich-text.pipe';
 import { PortfolioProject, PortfolioScreenshot } from '../../../data/projects.data';
 import { PortfolioHistoryEntry, PROJECT_HISTORY } from '../../../data/project-history.data';
 import { ProjectFlowComponent } from '../../../shared/project-flow/project-flow.component';
@@ -19,6 +20,7 @@ import { latestRepositoryUpdate } from '../../../data/repository-updates.data';
   selector: 'app-project-card',
   standalone: true,
   imports: [
+    RichTextPipe,
     RouterLink,
     LoadingImageDirective,
     ProjectFlowComponent,

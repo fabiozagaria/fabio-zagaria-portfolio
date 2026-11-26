@@ -24,11 +24,45 @@ const SECTION_BY_CATEGORY = {
       <app-sky variant="band" />
       <div class="o-container">
         <nav class="c-project-detail__nav" aria-label="Percorso">
-          <a routerLink="/projects" [fragment]="sectionId">Tutti i progetti</a>
+          <a routerLink="/projects" [fragment]="sectionId">
+            <svg
+              class="c-project-detail__arrow"
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M19 12H5M11 6l-6 6 6 6" />
+            </svg>
+            Tutti i progetti</a
+          >
         </nav>
         <app-project-card [project]="project" mode="detail" />
         <p class="c-project-detail__back">
-          <a routerLink="/projects" [fragment]="sectionId">Torna ai progetti</a>
+          <a routerLink="/projects" [fragment]="sectionId">
+            <svg
+              class="c-project-detail__arrow"
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M19 12H5M11 6l-6 6 6 6" />
+            </svg>
+            Torna ai progetti</a
+          >
         </p>
       </div>
     </section>

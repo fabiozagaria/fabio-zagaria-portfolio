@@ -59,9 +59,9 @@
                   @if (entry.versionTags; as tags) {
                     <app-version-tags [tags]="tags" />
                   }
-                  <p class="c-card__description">{{ entry.description }}</p>
+                  <p class="c-card__description" [innerHTML]="entry.description | rich"></p>
                   @if (entry.note) {
-                    <p class="c-card__status-detail">{{ entry.note }}</p>
+                    <p class="c-card__status-detail" [innerHTML]="entry.note | rich"></p>
                   }
                   <div class="c-card__tags" role="group" aria-label="Tecnologie utilizzate">
                     @for (tech of entry.technologies; track tech) {

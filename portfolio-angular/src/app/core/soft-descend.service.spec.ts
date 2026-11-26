@@ -13,7 +13,8 @@ describe('SoftDescendService', () => {
     const element = document.createElement('p');
     element.id = id;
     element.getBoundingClientRect = () => ({ top }) as DOMRect;
-    host.querySelector('.o-container')!.append(element);
+    element.className = 'c-iu__block';
+    host.append(element);
     return element;
   }
 
@@ -49,7 +50,7 @@ describe('SoftDescendService', () => {
     callback = undefined;
     observed = [];
     host = document.createElement('section');
-    host.innerHTML = '<div class="o-container"></div>';
+
     document.body.append(host);
   });
 

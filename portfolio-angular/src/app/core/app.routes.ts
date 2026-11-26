@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { PROJECTS } from '../data/projects.data';
+import { plainText } from '../shared/rich-text/rich-text.pipe';
 
 const projectVersionSummary = PROJECTS.filter((project) =>
   ['gestionale-spese', 'jobflow', 'accessdesk'].includes(project.id),
@@ -16,7 +17,7 @@ const projectDetailRoutes: Routes = PROJECTS.map((project) => ({
   title: `${project.title} | Fabio Zagaria`,
   data: {
     projectId: project.id,
-    seo: { path: `/projects/${project.id}`, description: project.description },
+    seo: { path: `/projects/${project.id}`, description: plainText(project.description) },
   },
   loadComponent: () =>
     import('../features/projects/project-detail/project-detail.component').then(
