@@ -1,6 +1,7 @@
 import { LoadingImageDirective } from '../../../shared/loading/loading-image.directive';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { PortfolioProject } from '../../../data/projects.data';
+import { RouterLink } from '@angular/router';
+import { PortfolioProject, PortfolioScreenshot } from '../../../data/projects.data';
 import { PortfolioHistoryEntry, PROJECT_HISTORY } from '../../../data/project-history.data';
 import { ProjectFlowComponent } from '../../../shared/project-flow/project-flow.component';
 import { ProjectUpdateComponent } from '../../../shared/project-update/project-update.component';
@@ -10,13 +11,15 @@ import { latestRepositoryUpdate } from '../../../data/repository-updates.data';
 
 /**
  * Scheda di un progetto principale (full stack o backend, oppure frontend del corso).
- * La usano la pagina Progetti e la home; con `compact` la home omette scelta tecnica,
- * esempio e storico, che restano nella scheda completa.
+ * `summary` (predefinita) è la scheda breve di elenco, usata dalla pagina Progetti e dalla home:
+ * titolo, stato, descrizione, tecnologie, un'anteprima e il collegamento alla pagina del progetto.
+ * `detail` è la scheda completa, mostrata nella pagina del singolo progetto.
  */
 @Component({
   selector: 'app-project-card',
   standalone: true,
   imports: [
+    RouterLink,
     LoadingImageDirective,
     ProjectFlowComponent,
     ProjectUpdateComponent,
@@ -28,7 +31,13 @@ import { latestRepositoryUpdate } from '../../../data/repository-updates.data';
 })
 export class ProjectCardComponent {
   readonly projectInput = input.required<PortfolioProject>({ alias: 'project' });
-  readonly compact = input(false);
+  readonly mode = input<'summary' | 'detail'>('summary');
+
+  /** Nella scheda breve resta solo la prima anteprima; nel dettaglio le mostra tutte. */
+  screenshotsToShow(project: PortfolioProject): readonly PortfolioScreenshot[] {
+    const shots = project.screenshots ?? [];
+    return this.mode() === 'detail' ? shots : shots.slice(0, 1);
+  }
 
   repositoryUpdate(project: PortfolioProject) {
     return latestRepositoryUpdate(project.repositories, project.latestUpdate);

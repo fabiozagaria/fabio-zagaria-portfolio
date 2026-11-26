@@ -10,6 +10,20 @@ const projectVersionSummary = PROJECTS.filter((project) =>
   )
   .join(' · ');
 
+/** Una pagina di dettaglio per ogni progetto curato, con titolo e descrizione propri. */
+const projectDetailRoutes: Routes = PROJECTS.map((project) => ({
+  path: `projects/${project.id}`,
+  title: `${project.title} | Fabio Zagaria`,
+  data: {
+    projectId: project.id,
+    seo: { path: `/projects/${project.id}`, description: project.description },
+  },
+  loadComponent: () =>
+    import('../features/projects/project-detail/project-detail.component').then(
+      (m) => m.ProjectDetailComponent,
+    ),
+}));
+
 export const routes: Routes = [
   {
     path: '',
@@ -61,6 +75,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('../features/projects/projects.component').then((m) => m.ProjectsComponent),
   },
+  ...projectDetailRoutes,
   {
     path: 'intelligenza-umana',
     title: 'Intelligenza Umana | Fabio Zagaria',

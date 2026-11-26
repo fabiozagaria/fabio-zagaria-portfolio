@@ -29,7 +29,7 @@
           <h2 class="c-projects__group-title" [id]="section.id + '-title'">{{ section.title }}</h2>
           <div
             class="c-projects__grid"
-            [class.c-projects__grid--single]="section.category !== 'Backend'"
+            [class.c-projects__grid--single]="section.projects.length === 1"
           >
             @for (project of section.projects; track project.id) {
               <app-project-card [project]="project" />

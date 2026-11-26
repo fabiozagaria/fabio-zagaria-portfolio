@@ -271,13 +271,10 @@ main:focus {
   flex-shrink: 0;
 }
 .c-nav__logo-mark {
-  display: grid;
-  place-items: center;
+  display: block;
   width: 2.5rem;
   height: 2.5rem;
   background: var(--clr-cyber-green);
-  color: var(--button-ink);
-  font: 600 1rem var(--ff-primary);
   border-radius: var(--radius-sm);
 }
 .c-nav__logo-text {
@@ -830,12 +827,21 @@ app-project-card > .c-card {
 .c-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
+  gap: 0.5rem;
   margin-top: auto;
 }
+/* Tecnologie: pillole tonali e discrete, leggibili in tema chiaro e scuro. */
 .c-card__tag {
-  color: var(--clr-cyber-green);
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.2rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--calm-accent) 11%, transparent);
+  color: var(--calm-ink);
   font-size: var(--fs-300);
+  font-weight: 500;
+  line-height: 1.3;
 }
 .c-card__actions {
   display: flex;
@@ -866,7 +872,8 @@ app-project-card > .c-card {
   margin: 0;
 }
 .c-project-update__meta strong {
-  color: var(--clr-white);
+  color: var(--calm-ink);
+  font-size: var(--fs-400);
 }
 .c-project-update__summary {
   margin: 0;
@@ -937,27 +944,21 @@ app-project-card > .c-card {
 /* Ultimo aggiornamento: una riga per repository, con chip colorato per tipo. */
 .c-update-items {
   display: grid;
-  gap: 0.75rem;
-  margin: 0.25rem 0 0;
+  margin: 0.5rem 0 0;
   padding: 0;
+  overflow: hidden;
   list-style: none;
+  border-radius: var(--radius-md);
+  background: var(--calm-surface-soft);
 }
 .c-update-item {
   --kind: var(--kind-api);
-  position: relative;
   display: grid;
-  gap: 0.4rem;
-  padding: 0.75rem 0.9rem 0.75rem 1.2rem;
-  border: 1px solid color-mix(in srgb, var(--kind) 30%, transparent);
-  border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--kind) 7%, var(--card));
+  gap: 0.6rem;
+  padding: 1.1rem 1.25rem;
 }
-.c-update-item::before {
-  content: '';
-  position: absolute;
-  inset: -1px auto -1px -1px;
-  width: 4px;
-  background: var(--kind);
+.c-update-item + .c-update-item {
+  border-top: 1px solid var(--calm-line-soft);
 }
 .c-update-item[data-kind='Frontend'],
 .c-vtag[data-kind='Frontend'] {
@@ -977,37 +978,33 @@ app-project-card > .c-card {
 .c-update-item__head {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem 0.6rem;
+  gap: 0.35rem 0.75rem;
   align-items: center;
 }
 .c-update-item__chip {
-  padding: 0.1rem 0.6rem;
-  border-radius: var(--radius-sm);
-  background: var(--kind);
-  color: var(--button-ink);
+  padding: 0.15rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--kind) 14%, transparent);
+  color: var(--kind);
   font-size: var(--fs-300);
-  font-weight: var(--fw-bold);
+  font-weight: 700;
   line-height: 1.5;
 }
 .c-update-item__version {
-  padding: 0.05rem 0.45rem;
-  border: 1px solid var(--kind);
-  border-radius: var(--radius-sm);
-  color: var(--clr-white);
+  color: var(--calm-muted);
   font-family: var(--ff-mono);
   font-size: 0.8125rem;
 }
 .c-update-item__date {
   margin-inline-start: auto;
-  color: var(--calm-body);
+  color: var(--calm-muted);
 }
 .c-update-item__message {
   margin: 0;
-  color: var(--clr-white);
-}
-.c-update-item__message code {
-  font-family: var(--ff-mono);
-  font-size: 0.8125rem;
+  color: var(--calm-ink);
+  font-size: var(--fs-400);
+  font-weight: 600;
+  line-height: 1.4;
   overflow-wrap: anywhere;
 }
 .c-update-item__note {
@@ -1016,14 +1013,19 @@ app-project-card > .c-card {
 }
 .c-update-item__commit {
   display: inline-flex;
-  gap: 0.4rem;
+  gap: 0.5rem;
   align-items: center;
   justify-self: start;
-  min-height: 32px;
+  min-height: 44px;
   font-weight: 600;
 }
 .c-update-item__commit code {
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--calm-ink) 7%, transparent);
   font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
 }
 app-recent-badge {
   display: contents;
@@ -1487,9 +1489,7 @@ h4 {
 .c-nav__logo-mark {
   border-radius: var(--radius-pill);
   background: var(--calm-accent-soft);
-  color: var(--calm-accent-strong);
-  font-family: var(--ff-primary);
-  font-weight: 800;
+  object-fit: cover;
 }
 .c-nav__link {
   border-radius: var(--radius-pill);
@@ -2003,7 +2003,6 @@ button,
   margin-top: var(--space-md);
   padding-top: var(--space-md);
   border-top: 1px solid var(--calm-line-soft);
-  line-height: 1.5;
 }
 .c-card__actions {
   margin-top: var(--space-sm);
@@ -2037,4 +2036,45 @@ button,
 .c-diagram__figure {
   flex: 0 1 18rem;
   width: min(100%, 18rem);
+}
+
+/* Scheda breve (elenco e home) e pagina del singolo progetto. */
+.c-card--summary .c-card__content {
+  gap: 0;
+}
+.c-card--summary .c-card__tags {
+  margin-top: auto;
+}
+.c-card--summary .c-card__description {
+  margin-bottom: var(--space-md);
+}
+.c-card__actions .c-card__action--details {
+  margin-inline-end: var(--space-xs);
+}
+.c-project-detail__nav,
+.c-project-detail__back {
+  margin: 0;
+}
+.c-project-detail__nav {
+  margin-bottom: var(--space-md);
+}
+.c-project-detail__back {
+  margin-top: var(--space-lg);
+}
+.c-project-detail__nav a,
+.c-project-detail__back a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+}
+.c-card--summary .c-shot__frame img {
+  width: 100%;
+  max-height: 15rem;
+  object-fit: cover;
+  object-position: top;
+}
+.c-project-detail h1.c-card__title {
+  font-size: var(--fs-700);
+  font-weight: 500;
 }

@@ -115,16 +115,11 @@
     <div class="c-showcase__header">
       <h2 id="showcase-title">Il progetto in primo piano</h2>
       <p>
-        Un progetto full stack dal browser al database, con demo online, codice e ultimi
-        aggiornamenti. Scelte tecniche, esempi e storico sono nella scheda completa.
+        Un progetto full stack dal browser al database, con demo online e codice. Scelte tecniche,
+        esempi e storico sono nella pagina del progetto.
       </p>
     </div>
-    <app-project-card [project]="mainProject" [compact]="true" />
-    <p class="c-showcase__more">
-      <a routerLink="/projects" [fragment]="mainProject.id"
-        >Scheda completa di {{ mainProject.title }}</a
-      >
-    </p>
+    <app-project-card [project]="mainProject" />
   </div>
 </section>
 
