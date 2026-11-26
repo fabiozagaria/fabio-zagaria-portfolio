@@ -1939,3 +1939,102 @@ button,
     padding-top: calc(var(--header-height) + 5rem);
   }
 }
+
+/* Ritmo verticale della pagina Progetti: stacchi regolari e blocchi interni separati. */
+.c-section-subtitle {
+  margin-bottom: 2.5rem;
+}
+.c-projects__index {
+  margin: 0 0 var(--space-3xl);
+}
+.c-projects__group + .c-projects__group {
+  margin-top: var(--space-3xl);
+}
+.c-projects__group-title {
+  margin-bottom: var(--space-md);
+}
+.c-projects__group-description {
+  max-width: 65ch;
+  margin: 0 0 var(--space-lg);
+  color: var(--clr-white-subtle);
+}
+.c-projects__grid {
+  gap: var(--space-lg);
+}
+.c-card__heading {
+  margin-bottom: 0.75rem;
+}
+.c-card__focus {
+  margin-bottom: 0.5rem;
+}
+.c-card__description {
+  margin-bottom: var(--space-lg);
+  line-height: 1.7;
+}
+.c-card__section-label {
+  margin: var(--space-lg) 0 0.75rem;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--calm-line-soft);
+  font-size: var(--fs-500);
+}
+.c-card__highlights {
+  margin-bottom: var(--space-md);
+  line-height: 1.65;
+}
+.c-card__highlights li + li {
+  margin-top: 0.6rem;
+}
+.c-card__decision,
+.c-card__example {
+  margin: var(--space-lg) 0;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--calm-line-soft);
+}
+.c-card__decision dl {
+  gap: var(--space-md);
+}
+.c-card__status-detail {
+  margin: var(--space-lg) 0;
+}
+.c-card__status-detail .c-card__section-label {
+  margin-top: 0;
+}
+.c-card__tags {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--calm-line-soft);
+  line-height: 1.5;
+}
+.c-card__actions {
+  margin-top: var(--space-sm);
+}
+.c-project-update {
+  margin-top: var(--space-md);
+}
+@media (max-width: 760px) {
+  .c-section-subtitle {
+    margin-bottom: 1.5rem;
+  }
+  .c-projects__index {
+    margin-bottom: var(--space-xl);
+  }
+  .c-projects__group + .c-projects__group {
+    margin-top: var(--space-2xl);
+  }
+  .c-projects__grid {
+    gap: var(--space-md);
+  }
+  .c-card__content {
+    padding: 1.25rem;
+  }
+}
+.c-video,
+.c-diagram {
+  gap: var(--space-md) var(--space-xl);
+  margin: var(--space-lg) 0;
+}
+.c-video__player,
+.c-diagram__figure {
+  flex: 0 1 18rem;
+  width: min(100%, 18rem);
+}

@@ -14,10 +14,21 @@
       <p class="c-hero__role">Junior Backend Developer<br />con visione full stack.</p>
     </div>
     <div class="c-hero__side">
-      <p class="c-hero__description">
-        Sviluppo API REST con Java, Spring Boot e PostgreSQL. Con Angular e TypeScript collego
-        interfaccia, logica applicativa e dati.
-      </p>
+      <div class="c-hero__intro">
+        <img
+          src="assets/img/io-640.webp"
+          alt="Ritratto di Fabio Zagaria"
+          class="c-hero__portrait"
+          width="640"
+          height="640"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <p class="c-hero__description">
+          Sviluppo API REST con Java, Spring Boot e PostgreSQL. Con Angular e TypeScript collego
+          interfaccia, logica applicativa e dati.
+        </p>
+      </div>
       <dl class="c-hero__facts">
         <div>
           <dt>Frontend</dt>
@@ -42,6 +53,60 @@
         CV aggiornato il <time [attr.datetime]="cv.updatedAt">{{ cv.updatedLabel }}</time>
       </p>
     </div>
+  </div>
+</section>
+
+<section class="c-motivation" aria-labelledby="motivation-title">
+  <div class="o-container">
+    <figure class="c-motivation__figure" lang="en">
+      <h2 id="motivation-title" class="c-motivation__title">Why Intelligenza Umana exists</h2>
+      <blockquote class="c-motivation__quote">
+        <p>
+          We live in a time when a machine can answer almost any question with an ease that, not
+          long ago, seemed impossible. Artificial intelligence is fast, useful and at times
+          surprising. It lowers barriers, makes accessible what was reserved for a few, and opens
+          paths that were not visible before. But every powerful tool asks something in return: that
+          whoever uses it knows what they are doing.
+        </p>
+        <p>
+          Since 2023, with the arrival of ChatGPT, the founder approached generative language models
+          with wonder. Talking with them felt like a dialogue, and within that dialogue one could
+          explore big questions about life, the universe, and what is not yet known. Above all,
+          these tools made the study of programming more alive, and helped to stay focused.
+        </p>
+        <p>
+          Over time an uncomfortable truth emerged. A language model does not know in the way a
+          person knows: it computes the most probable answer. That probability can be very high and
+          still be wrong. Nothing solid can be built on a percentage. This is why human review is
+          not a detail: it is what turns a plausible answer into something for which someone can
+          take responsibility.
+        </p>
+        <p>
+          In software this matters even more. Programming, in its deepest sense, is reasoning:
+          breaking a problem down, choosing one idea among many possible ones, turning it into bits
+          and algorithms, and writing code that another human being can read and understand. Code
+          can be generated, but understanding and verifying it remains a human act. A program that
+          no one understands is a program that no one can truly govern.
+        </p>
+        <p>
+          The project is concretely born from a desire: to spread the idea that code can be
+          generated with artificial intelligence, but with review and awareness.
+        </p>
+        <p class="c-motivation__closing">
+          Intelligenza Umana is born from this conviction: artificial intelligence can amplify
+          thought, but thought must remain human.
+        </p>
+      </blockquote>
+      <figcaption class="c-motivation__source">
+        Fabio Zagaria,
+        <a
+          href="https://github.com/Intelligenza-Umana/intelligenza-umana/blob/main/docs/MOTIVATION.md"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Why Intelligenza Umana exists</a
+        >
+      </figcaption>
+    </figure>
   </div>
 </section>
 
