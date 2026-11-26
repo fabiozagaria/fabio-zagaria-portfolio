@@ -29,7 +29,8 @@ describe('IntelligenzaUmanaComponent', () => {
 
     expect(element.querySelector('h1')?.textContent).toContain('Intelligenza Umana');
     expect(logo?.getAttribute('alt')).toContain('Intelligenza Umana');
-    expect(element.textContent).toContain('agli albori');
+    expect(element.textContent).toContain('laboratorio tecnologico indipendente');
+    expect(element.textContent).not.toContain('Lancio editoriale');
     expect(
       Array.from(element.querySelectorAll('h2'), (title) => title.textContent?.trim()),
     ).toEqual([
