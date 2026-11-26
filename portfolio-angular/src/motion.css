@@ -1,6 +1,7 @@
-/* Motion: calm and slow. Things move on load, on a route change or in answer
-   to a touch; nothing moves because the page scrolled. Every rule has its
-   reduced-motion counterpart at the end of this file. */
+/* Motion: calm and slow. Things move on load, on a route change, in answer to a
+   touch, and blocks below the fold settle in once as they come into view
+   (see "Soft descent" below). Every rule has its reduced-motion counterpart
+   at the end of this file. */
 
 /* Route change: the old page fades, the new one settles in. */
 @media (prefers-reduced-motion: no-preference) {
@@ -69,6 +70,43 @@
     from {
       opacity: 0;
       transform: translateY(0.4em);
+    }
+  }
+}
+
+/* Soft descent: page blocks fade in while sinking a few pixels into place, one after
+   the other. It starts by itself (no flash on first paint); blocks below the fold are
+   paused by SoftDescendService until they come into view. The selector list must stay
+   identical to SOFT_DESCEND_SELECTOR in src/app/core/soft-descend.service.ts. */
+@media (prefers-reduced-motion: no-preference) {
+  section:not(.c-hero):not(.c-about):not(.c-projects):not(.c-iu)
+    > .o-container
+    > :not(.c-section-title),
+  .c-about__text-block,
+  .c-about__aside,
+  .c-projects .c-section-subtitle,
+  .c-projects__index,
+  .c-projects__group-title,
+  .c-projects__group-description,
+  .c-projects__grid > *,
+  .c-projects__github-cta,
+  .c-iu__logo,
+  .c-iu__status,
+  .c-iu__block,
+  .c-iu__section,
+  .c-iu__text > p,
+  .c-iu__list > li,
+  .c-iu__site,
+  .c-iu__back {
+    animation: soft-descend 1300ms var(--calm-ease) var(--soft-delay, 0ms) backwards;
+  }
+  [data-soft='wait'] {
+    animation-play-state: paused !important;
+  }
+  @keyframes soft-descend {
+    from {
+      opacity: 0;
+      transform: translateY(-14px);
     }
   }
 }
