@@ -37,7 +37,7 @@ describe('IntelligenzaUmanaComponent', () => {
     expect(element.textContent).toContain('modelli condivisi per issue e pull request');
     expect(element.textContent).toContain('sono state trasferite dall’account personale');
     expect(element.textContent).toContain('Project Lifecycle Skill v0.3.0');
-    expect(element.textContent).toContain('IU Model Router v0.1.0');
+    expect(element.textContent).toContain('Model Router v0.1.0');
     expect(
       Array.from(element.querySelectorAll('h2'), (title) => title.textContent?.trim()),
     ).toEqual([
