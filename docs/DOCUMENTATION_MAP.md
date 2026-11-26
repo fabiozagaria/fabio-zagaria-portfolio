@@ -9,7 +9,7 @@
 - portfolio-angular/src/app/core/app.routes.ts: routing effettivo; codice e configurazione prevalgono per fatti tecnici.
 - portfolio-angular/src/app/core/locales/: cataloghi di traduzione dei testi e dei dati del sito.
 - docs/ASSET-SOURCES.md: provenienza di loghi e bandiere.
-- portfolio-angular/scripts/repository-updates.mjs, portfolio-angular/src/assets/data/repository-updates.json e .github/workflows/update-repository-commits.yml: aggiornamento automatico dei commit mostrati in Progetti.
-- portfolio-angular/src/app/data/portfolio-repositories.json: elenco ordinato esplicito dei repository interrogati dall’aggiornamento GitHub.
+- portfolio-angular/scripts/repository-updates.mjs, portfolio-angular/src/assets/data/repository-updates.json e .github/workflows/update-repository-commits.yml: aggiornamento automatico dei commit mostrati in Progetti e Intelligenza Umana.
+- portfolio-angular/src/app/data/portfolio-repositories.json e portfolio-angular/src/app/data/intelligenza-umana-repositories.json: elenchi dei repository interrogati per le due pagine.
 - HANDOFF.md: stato sessione; docs/DECISIONS.md: decisioni; docs/DEFINITION_OF_DONE.md: chiusura.
 - Conservare le regole Notion e CV già presenti in AGENTS. Aggiornare questa mappa quando cambiano responsabilità o struttura.

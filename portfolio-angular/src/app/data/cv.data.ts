@@ -2,13 +2,13 @@ import type { PortfolioLanguage } from '../core/language.service';
 
 /** Data dei contenuti e SHA-256 dei PDF, registrati da `npm run cv:meta`. */
 export const CV = {
-  updatedAt: '2026-11-21',
-  sha256: '8915cc5822f45c8234545e7788130c058a392d27c434757fa6d9d9266d79c28a',
+  updatedAt: '2026-11-26',
+  sha256: '7ad2e54a54ead95120f5b955e68cf6ba407c2edde681027fce17804c73f8fab9',
 } as const;
 
 export const CV_EN = {
   updatedAt: '2026-11-26',
-  sha256: '4a0446d57a8da7041afa39473e66d1fd7ffb13631f7aeea2152cd10463a3d730',
+  sha256: '6bd3b3839f4ab5224a292e79a86f822fd8339c67cd61f55bb27b20afaf8b7cc2',
 } as const;
 
 const italianDate = new Intl.DateTimeFormat('it-IT', {

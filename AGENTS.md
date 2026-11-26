@@ -17,6 +17,7 @@ Questo repository contiene il portfolio professionale di Fabio Zagaria. È un pr
 
 ## Fonti di verità
 - Il codice e la configurazione del repository sono la verità tecnica del portfolio.
+- I commit della pagina Intelligenza Umana provengono dai quattro repository pubblici elencati in `portfolio-angular/src/app/data/intelligenza-umana-repositories.json`, attraverso il workflow condiviso con Progetti.
 - `README.md` è la presentazione pubblica.
 - `docs/CONTEXT.md` riassume stato e priorità tecniche correnti.
 - La roadmap didattica, i voti e i ripassi appartengono a Notion e non vanno duplicati qui.

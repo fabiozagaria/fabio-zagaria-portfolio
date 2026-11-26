@@ -91,6 +91,9 @@
             'Registro locale delle evidenze per l’apprendimento assistito. I test Python sono automatizzati; installazione e compatibilità con Claude Code restano da verificare.'
               | translate
           }}</span>
+          @if (repositoryUpdates['iu-learning-ledger']; as update) {
+            <app-project-update [update]="update" />
+          }
         </li>
         <li>
           <a
@@ -103,6 +106,9 @@
             'Assistente per la revisione di sicurezza di applicazioni Spring Boot; il punteggio non è una certificazione di sicurezza. I test Python sono automatizzati; installazione e compatibilità con Claude Code restano da verificare.'
               | translate
           }}</span>
+          @if (repositoryUpdates['iu-spring-security-advisor']; as update) {
+            <app-project-update [update]="update" />
+          }
         </li>
         <li>
           <a
@@ -115,6 +121,9 @@
             'Guida alla gestione del contesto e dei passaggi di consegne tra sessioni di lavoro. Fabio ha verificato i test e confermato il funzionamento della skill.'
               | translate
           }}</span>
+          @if (repositoryUpdates['iu-project-lifecycle-skill']; as update) {
+            <app-project-update [update]="update" />
+          }
         </li>
         <li>
           <a
@@ -127,6 +136,9 @@
             'Skill iniziale per instradare le richieste degli agenti di codice in base al compito; il comportamento negli assistenti non è ancora verificato.'
               | translate
           }}</span>
+          @if (repositoryUpdates['iu-model-router']; as update) {
+            <app-project-update [update]="update" />
+          }
         </li>
       </ul>
 

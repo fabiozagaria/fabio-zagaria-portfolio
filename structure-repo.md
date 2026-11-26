@@ -99,7 +99,7 @@ Quando cambia la collocazione o la visibilità di un repository:
 
 Le descrizioni tecniche e gli stati dei singoli progetti sono mantenuti nei dati del sito e verificati sul codice, sulla configurazione e sui README dei rispettivi repository.
 
-L’elenco esplicito dei repository interrogati da GitHub Actions è `portfolio-angular/src/app/data/portfolio-repositories.json`. Ogni voce identifica un repository e il tipo di chip da mostrare. Il flusso esegue un GET dei commit per ciascuna voce e non scopre automaticamente altri repository del profilo. Un nuovo repository entra solo quando viene aggiunto a questo elenco e ai dati della scheda. Il portfolio, gli esercizi e i repository di Intelligenza Umana restano fuori.
+GitHub Actions interroga due elenchi espliciti. `portfolio-angular/src/app/data/portfolio-repositories.json` contiene i repository della pagina Progetti e `portfolio-angular/src/app/data/intelligenza-umana-repositories.json` contiene i quattro strumenti pubblici della pagina Intelligenza Umana. Ogni voce indica il repository e il tipo di chip da mostrare. L’aggiornamento riguarda le schede collegate a questi elenchi. La foundation e il sito sono collegamenti di riferimento nella pagina Intelligenza Umana.
 
 La pagina Progetti include un indice collegato alle quattro sezioni e un pulsante fisso per tornare all’indice. Il comportamento è limitato alla route `/projects`; ogni progetto ha anche la sua pagina `/projects/<id>` (componente `project-detail`, rotte generate da `PROJECTS`); per gli altri repository c’è un link diretto all’elenco GitHub.
 

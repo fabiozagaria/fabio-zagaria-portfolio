@@ -60,7 +60,7 @@
   padding: 0;
   list-style: none;
 }
-.c-iu__list li {
+.c-iu__list > li {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -69,16 +69,20 @@
   background: var(--clr-black-soft);
   color: var(--clr-white-subtle);
 }
-.c-iu__list li > a {
+.c-iu__list > li > a {
   align-self: flex-start;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
   font-size: var(--fs-500);
 }
-.c-iu__list li > span {
+.c-iu__list > li > span {
   max-width: 52ch;
   line-height: 1.6;
+}
+.c-iu__list app-project-update {
+  margin-top: auto;
+  padding-top: 0.5rem;
 }
 .c-iu__list strong {
   color: inherit;

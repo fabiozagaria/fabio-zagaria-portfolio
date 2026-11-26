@@ -2,7 +2,7 @@
 
 Aggiornato il 26 novembre 2026.
 
-I CV si rigenerano con Career Ops dai payload italiano e inglese in `portfolio-angular/scripts/`. Si può fare sul PC di Fabio o in un ambiente cloud, anche con il PC spento. Il 21 novembre 2026 il PDF è stato rigenerato nel cloud (`cv.data.ts`: 2026-11-21, sha256 `8915cc58`).
+I CV si rigenerano con Career Ops dai payload italiano e inglese in `portfolio-angular/scripts/`. Si può fare sul PC di Fabio o in un ambiente cloud, anche con il PC spento. Entrambe le edizioni del 26 novembre 2026 sono state rigenerate nel cloud. Le impronte registrate in `cv.data.ts` iniziano con `7ad2e54a` (italiano) e `6bd3b383` (inglese).
 
 ## Regola fissa: quando si aggiorna il CV
 Il CV si aggiorna ogni volta che cambia qualcosa di importante e visibile:

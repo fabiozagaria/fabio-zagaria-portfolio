@@ -138,5 +138,65 @@
         "url": "https://github.com/fabiozagaria/study-flow-android/commit/cf177f8a136020fddb5c87cb12c906b95d070cfe"
       }
     ]
+  },
+  {
+    "owner": "Intelligenza-Umana",
+    "repository": "iu-learning-ledger",
+    "datetime": "2026-11-26T09:45:02Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Plugin",
+        "hash": "6dead9b",
+        "message": "Improve public installation guidance and verification",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/Intelligenza-Umana/iu-learning-ledger/commit/6dead9b048da58a6cedddf50d56c7eaa48bafecf"
+      }
+    ]
+  },
+  {
+    "owner": "Intelligenza-Umana",
+    "repository": "iu-spring-security-advisor",
+    "datetime": "2026-11-26T09:44:58Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Plugin",
+        "hash": "c5578db",
+        "message": "Improve public installation guidance and verification",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/Intelligenza-Umana/iu-spring-security-advisor/commit/c5578dbaecb602de142c9795dc77f25236a0bd50"
+      }
+    ]
+  },
+  {
+    "owner": "Intelligenza-Umana",
+    "repository": "iu-project-lifecycle-skill",
+    "datetime": "2026-11-26T09:35:59Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "80ea03c",
+        "message": "Add project lifecycle skill for Codex and Claude",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/Intelligenza-Umana/iu-project-lifecycle-skill/commit/80ea03c54e8b3b3dd4b563acb42de8a1fad176dd"
+      }
+    ]
+  },
+  {
+    "owner": "Intelligenza-Umana",
+    "repository": "iu-model-router",
+    "datetime": "2026-11-26T09:44:53Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "04d00d2",
+        "message": "Improve public installation guidance and verification",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/Intelligenza-Umana/iu-model-router/commit/04d00d2230627d6e4b4b59356e9b03a9b9a60d65"
+      }
+    ]
   }
 ]

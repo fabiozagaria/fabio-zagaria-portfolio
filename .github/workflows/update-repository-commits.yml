@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 22
 
-      - name: Aggiorna i commit recenti
+      - name: Aggiorna i commit di Progetti e Intelligenza Umana
         working-directory: portfolio-angular
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

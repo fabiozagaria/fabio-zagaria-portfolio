@@ -126,12 +126,13 @@ costruire comprensione e autonomia.
 - `portfolio-angular/src/app/data`: modelli e contenuti tipizzati dei progetti.
 - `portfolio-angular/src/app/features`: pagine standalone del portfolio.
 - `portfolio-angular/src/assets`: documenti, immagini ottimizzate (compresa l'infografica del flusso API di Expense Tracker) e il video di Expense Tracker (`video/`).
-- `portfolio-angular/src/app/data/portfolio-repositories.json`: allowlist ordinata dei repository curati interrogati da GitHub Actions. Gli altri repository restano raggiungibili dal link «Altri repository su GitHub».
-- `portfolio-angular/src/assets/data/repository-updates.json`: ultimi commit dell’allowlist, aggiornati settimanalmente o manualmente da GitHub Actions e pubblicati dal deploy Vercel.
+- `portfolio-angular/src/app/data/portfolio-repositories.json`: elenco ordinato dei repository della pagina Progetti interrogati da GitHub Actions. Gli altri repository restano raggiungibili dal link «Altri repository su GitHub».
+- `portfolio-angular/src/app/data/intelligenza-umana-repositories.json`: elenco dei quattro strumenti pubblici di cui la pagina Intelligenza Umana mostra la data e l’ultimo commit.
+- `portfolio-angular/src/assets/data/repository-updates.json`: ultimi commit dei due elenchi, aggiornati settimanalmente o manualmente da GitHub Actions e pubblicati dal deploy Vercel.
 - `portfolio-angular/scripts/cv-career-ops.json` e `cv-career-ops.en.json`: contenuti dei due CV, impaginati con Career Ops.
 - `.github/workflows/ci.yml`: controlli automatici di qualità, test e build.
 - La pagina Progetti include un indice per raggiungere le sezioni e un collegamento fisso per tornarvi rapidamente; gli esercizi e gli altri repository pubblici sono raggiungibili dal link GitHub in fondo alla pagina.
-- `.github/workflows/update-repository-commits.yml`: aggiornamento settimanale e manuale dei commit mostrati in Progetti.
+- `.github/workflows/update-repository-commits.yml`: aggiornamento settimanale e manuale dei commit mostrati in Progetti e Intelligenza Umana.
 
 ## Avvio locale
 
@@ -174,16 +175,12 @@ Home e Contatti collegano il PDF della lingua selezionata e mostrano la relativa
 
 In `portfolio-angular`, `npm run cv:install` installa Career Ops in una cartella locale dedicata. Dopo aver rigenerato `CV.pdf` o `CV-en.pdf`, registrare l’impronta con `npm run cv:meta -- AAAA-MM-GG it` oppure `npm run cv:meta -- AAAA-MM-GG en` e sincronizzare il PDF con l’archivio del curriculum. `npm run cv:check` verifica entrambi i file durante la CI. [Procedura completa](./docs/CV-DA-RIGENERARE.md)
 
-## Progetti nel CV — 21 novembre 2026
+## CV aggiornato — 26 novembre 2026
 
-Il CV elenca Expense Tracker, JobFlow, AccessDesk e MedTransit (quest'ultimo dichiarato «In progettazione, nessun codice»), solo progetti full stack e backend, e cita PostgreSQL con Flyway, Testcontainers e GitHub Actions. Il PDF del 21 novembre 2026 è generato con Career Ops in un ambiente cloud (procedura in [docs/CV-DA-RIGENERARE.md](./docs/CV-DA-RIGENERARE.md)).
+Il CV elenca Expense Tracker, JobFlow, AccessDesk e MedTransit (in progettazione, senza codice). Nelle competenze DevOps cita GitHub Actions per la CI e per l’aggiornamento dei commit della pagina Intelligenza Umana. Le versioni italiana e inglese sono generate con Career Ops, ciascuna in un PDF A4 a una pagina. [Procedura di generazione](./docs/CV-DA-RIGENERARE.md)
 
 ## Stato del portfolio
 
 Il portfolio è **concluso dal 21 novembre 2026**: stile, sezioni e animazioni sono definitivi, per scelta del proprietario. Si modifica soltanto per cambiamenti importanti, come un nuovo progetto o un dato che cambia. La sua scheda nella pagina Progetti riporta lo stato «Concluso» e, a differenza dei progetti principali, non ha storico dei commit. Dal 25 novembre 2026 il menu ha anche la voce «Intelligenza Umana», una pagina dedicata al laboratorio tecnologico indipendente, orientato a software, ricerca applicata e collaborazione. Dal 26 novembre foundation e quattro repository di strumenti risultano trasferiti nell’organizzazione [Intelligenza-Umana](https://github.com/Intelligenza-Umana); la pagina li collega ai repository aggiornati e dà un pulsante dedicato al sito di Intelligenza Umana. Fabio ha verificato i test di Project Lifecycle Skill e ne ha confermato il funzionamento. [Sito di Intelligenza Umana](https://intelligenza-umana-web.vercel.app/)
-
-## Curriculum aggiornato — 29 ottobre 2026
-
-CV a pagina singola allineato a Expense Tracker, AccessDesk e studio autodidatta di PostgreSQL. Quella versione è stata generata con il template nativo Career Ops dal payload `portfolio-angular/scripts/cv-career-ops.json`. Il flusso di installazione, generazione e verifica è documentato in `AGENTS.md`. La copia nel repository curriculum richiede una sincronizzazione separata.
 
 Navigazione: Home, Profilo professionale, Percorso professionale, Progetti software, Intelligenza Umana e Contatti. Gli URL esistenti restano invariati. Ogni progetto ha ora anche una pagina propria (`/projects/<id>`) con la scheda completa; l'elenco e la Home mostrano card brevi. Le pagine si aprono con una discesa morbida degli elementi (disattivata con «riduci movimento») e il tema chiaro è meno luminoso. Il 26 novembre 2026, su richiesta di Fabio, la Home mostra il ritratto nella scheda di presentazione e, sotto l’hero, la motivazione in inglese tratta da Intelligenza Umana; spaziature e leggibilità di Progetti e Intelligenza Umana sono state riordinate.
