@@ -125,3 +125,5 @@ Verifiche locali: test su immagini pendenti, cache, errore e navigazione lazy; C
 
 ## Etichette navigazione — 2026-11-25
 Menu: Home, Profilo professionale, Percorso professionale, Progetti software, Intelligenza Umana, Contatti. Route e titoli SEO invariati. Test di regressione aggiunto, esecuzione e resa responsive da verificare.
+
+**Ritmo, ritratto e citazione — 2026-11-26.** Su richiesta esplicita di Fabio (eccezione alla regola «portfolio concluso»): margini e padding della pagina Progetti e della pagina Intelligenza Umana riordinati; ritratto (`io-640.webp`) nella scheda dell’hero della Home; sotto l’hero, testo della motivazione di Fabio, in inglese e per intero, preso da `docs/MOTIVATION.md` del repository `Intelligenza-Umana/intelligenza-umana` (originale italiano in `docs/MOTIVAZIONE.it.md`), tra virgolette, con l’ultima frase in corpo più grande.

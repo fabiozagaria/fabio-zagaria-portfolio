@@ -67,6 +67,20 @@
   backdrop-filter: blur(16px) saturate(1.1);
   box-shadow: var(--shadow-lift);
 }
+.c-hero__intro {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+}
+.c-hero__portrait {
+  display: block;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  box-shadow: var(--shadow-lift);
+}
 .c-hero__description {
   max-width: 44ch;
   margin: 0;
@@ -249,5 +263,74 @@
   .c-showcase,
   .c-explore {
     padding-block: 3rem;
+  }
+}
+
+/* Motivazione: testo intero in inglese, tipo leggero e grande, tra virgolette. */
+.c-motivation {
+  padding-block: clamp(3.5rem, 7vw, 6rem) clamp(1rem, 3vw, 2rem);
+}
+.c-motivation__figure {
+  max-width: 50rem;
+  margin: 0 auto;
+}
+.c-motivation__title {
+  margin: 0 0 1.5rem;
+  color: var(--calm-ink);
+  font: 300 var(--fs-600) / 1.2 var(--ff-primary);
+}
+.c-motivation__quote {
+  position: relative;
+  margin: 0;
+  padding-left: clamp(1.5rem, 5vw, 3.5rem);
+}
+.c-motivation__quote::before {
+  content: '“';
+  position: absolute;
+  top: -0.15em;
+  left: -0.05em;
+  color: var(--calm-accent-line);
+  font: 300 clamp(5rem, 12vw, 8rem) / 1 var(--ff-primary);
+}
+.c-motivation__quote p {
+  max-width: 62ch;
+  margin: 0 0 1.5rem;
+  color: var(--calm-body);
+  font: 300 clamp(1.25rem, 2.2vw, 1.5rem) / 1.65 var(--ff-primary);
+}
+.c-motivation__quote p.c-motivation__closing {
+  max-width: 32ch;
+  margin: 2.5rem 0 0;
+  color: var(--calm-ink);
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.c-motivation__closing::after {
+  content: '”';
+  margin-left: 0.08em;
+  color: var(--calm-accent-line);
+  font-size: 1.6em;
+  line-height: 0;
+  vertical-align: -0.2em;
+}
+.c-motivation__source {
+  margin-top: 2rem;
+  padding-left: clamp(1.5rem, 5vw, 3.5rem);
+  color: var(--calm-muted);
+  font-size: var(--fs-300);
+}
+.c-motivation__source a {
+  color: inherit;
+  text-underline-offset: 0.3em;
+}
+@media (max-width: 520px) {
+  .c-hero__intro {
+    grid-template-columns: 4.25rem minmax(0, 1fr);
+  }
+  .c-hero__portrait {
+    width: 4.25rem;
+    height: 4.25rem;
   }
 }
