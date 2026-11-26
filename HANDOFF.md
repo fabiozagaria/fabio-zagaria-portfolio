@@ -17,8 +17,8 @@ Portfolio professionale concluso dal 21 novembre, salvo aggiornamenti significat
 
 ### Verifiche e prossimi passi
 
-- Al merge della PR #89 la CI ha superato format, 112 test e build. Le modifiche locali successive al trasferimento IU non sono ancora verificate né pubblicate.
-- Il branch `chore/update-iu-organization-links` contiene le modifiche correnti; non sono ancora committate o inviate.
+- PR #89 e PR #90 sono mergiate in `master`. La CI della PR #90 ha superato formato, test e build.
+- I link della pagina IU puntano all’owner `Intelligenza-Umana`. Il branch `chore/update-iu-organization-links` contiene la versione integrata.
 - Resta aperta la domanda se aggiornare anche il CV, secondo la regola di `AGENTS.md`.
 
 ### Aggiornamento — trasferimento repository IU (2026-11-26)
@@ -26,7 +26,7 @@ Portfolio professionale concluso dal 21 novembre, salvo aggiornamenti significat
 - L’API GitHub conferma l’owner `Intelligenza-Umana` per la foundation e i quattro strumenti presentati. Sono stati aggiornati la pagina IU, il test dei link e i documenti di contesto e catalogo.
 - La repository `intelligenza-umana-web` risulta privata; il portfolio continua a collegare solo il sito pubblico.
 - `docs/PROJECT_REGISTRY.md` nella foundation e il profilo `.github` hanno contenuti ancora non riallineati ai trasferimenti. Le modifiche locali non includono quei repository esterni.
-- La CI non è stata avviata per queste modifiche.
+- La CI della PR #90 è passata prima del merge.
 
 2026-11-26: Aggiornata la pagina Intelligenza Umana con fonti della foundation e dell’organizzazione pubblica `Intelligenza-Umana`: quattro repository canonici pubblici MIT, Project Lifecycle Skill v0.3.0, IU Model Router v0.1.0, link a foundation, organizzazione, profilo e registro. In seguito i repository risultano trasferiti nell’organizzazione; vedi la nota «Aggiornamento — trasferimento repository IU» sopra. Notion riallineato con una voce datata. Test Angular non eseguiti.
 
