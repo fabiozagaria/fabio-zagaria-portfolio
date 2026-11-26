@@ -1,1 +1,184 @@
-[]
+[
+  {
+    "repository": "expense-tracker-api",
+    "datetime": "2026-11-26T09:36:33Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "c077fa9",
+        "message": "Add project lifecycle skill for Codex and Claude",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/expense-tracker-api/commit/c077fa9b0c7d71fde73af46f40b6ab61e90bb736"
+      }
+    ]
+  },
+  {
+    "repository": "expense-tracker-angular",
+    "datetime": "2026-11-26T09:36:22Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "562a5ee",
+        "message": "Add project lifecycle skill for Codex and Claude",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/expense-tracker-angular/commit/562a5ee479fefee7e60c4baa5ff3efa636b1a7d8"
+      }
+    ]
+  },
+  {
+    "repository": "job-flow",
+    "datetime": "2026-11-26T09:36:27Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "ad4248c",
+        "message": "Add project lifecycle skill for Codex and Claude",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/job-flow/commit/ad4248cf44289fcd0cd798b625778fe3af2d7d14"
+      }
+    ]
+  },
+  {
+    "repository": "med-transit-msa",
+    "datetime": "2026-11-26T09:36:41Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "9d2c3ff",
+        "message": "Add project lifecycle skill for Codex and Claude",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/med-transit-msa/commit/9d2c3ffdffe9ddc0cdf99f0a9fbd488945f8ece1"
+      }
+    ]
+  },
+  {
+    "repository": "accessdesk-api",
+    "datetime": "2026-11-26T09:36:58Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "2887aa4",
+        "message": "Add project lifecycle skill for Codex and Claude",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/accessdesk-api/commit/2887aa427baecad2bb3340d1e87dd17ef7eaea4e"
+      }
+    ]
+  },
+  {
+    "repository": "labtv-angular",
+    "datetime": "2026-11-26T09:36:55Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "f99a219",
+        "message": "Add project lifecycle skill for Codex and Claude",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/labtv-angular/commit/f99a2192151754ca57e5bb132085942f821f4a92"
+      }
+    ]
+  },
+  {
+    "repository": "fakeflix-vanilla-js",
+    "datetime": "2026-11-26T09:36:46Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "e0aba13",
+        "message": "Add project lifecycle skill for Codex and Claude",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/fakeflix-vanilla-js/commit/e0aba13a88415534d026611299e1acfd05b121bb"
+      }
+    ]
+  },
+  {
+    "repository": "spring-scaffold-cli",
+    "datetime": "2026-10-02T15:23:01Z",
+    "dateLabel": "2 ottobre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "b6e31a0",
+        "message": "Merge pull request #1 from fabiozagaria/docs/readme-scope-2026-10-02",
+        "dateLabel": "2 ottobre 2026",
+        "url": "https://github.com/fabiozagaria/spring-scaffold-cli/commit/b6e31a095fb61833335de31247ccc4f8f2bdd5c0"
+      }
+    ]
+  },
+  {
+    "repository": "patchme-game",
+    "datetime": "2026-11-26T09:36:44Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "a6a611a",
+        "message": "Add project lifecycle skill for Codex and Claude",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/patchme-game/commit/a6a611abdc64a38d8c1fecf75e025ffd785ea46f"
+      }
+    ]
+  },
+  {
+    "repository": "study-flow-android",
+    "datetime": "2026-11-26T09:36:41Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "cf177f8",
+        "message": "Add project lifecycle skill for Codex and Claude",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/study-flow-android/commit/cf177f8a136020fddb5c87cb12c906b95d070cfe"
+      }
+    ]
+  },
+  {
+    "repository": "learning-ledger",
+    "datetime": "2026-11-26T09:45:02Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "6dead9b",
+        "message": "Improve public installation guidance and verification",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/iu-learning-ledger/commit/6dead9b048da58a6cedddf50d56c7eaa48bafecf"
+      }
+    ]
+  },
+  {
+    "repository": "spring-security-advisor",
+    "datetime": "2026-11-26T09:44:58Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "c5578db",
+        "message": "Improve public installation guidance and verification",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/iu-spring-security-advisor/commit/c5578dbaecb602de142c9795dc77f25236a0bd50"
+      }
+    ]
+  },
+  {
+    "repository": "project-lifecycle-skill",
+    "datetime": "2026-11-26T09:35:59Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "Repository",
+        "hash": "80ea03c",
+        "message": "Add project lifecycle skill for Codex and Claude",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/iu-project-lifecycle-skill/commit/80ea03c54e8b3b3dd4b563acb42de8a1fad176dd"
+      }
+    ]
+  }
+]
