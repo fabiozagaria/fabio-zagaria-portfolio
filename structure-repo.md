@@ -101,4 +101,4 @@ Le descrizioni tecniche e gli stati dei singoli progetti sono mantenuti nei dati
 
 L’elenco esplicito dei repository interrogati da GitHub Actions è `portfolio-angular/src/app/data/portfolio-repositories.json`. Ogni voce identifica un repository e il tipo di chip da mostrare. Il flusso esegue un GET dei commit per ciascuna voce e non scopre automaticamente altri repository del profilo. Un nuovo repository entra solo quando viene aggiunto a questo elenco e ai dati della scheda. Il portfolio, gli esercizi e i repository di Intelligenza Umana restano fuori.
 
-La pagina Progetti include un indice collegato alle quattro sezioni e un pulsante fisso per tornare all’indice. Il comportamento è limitato alla route `/projects`; per gli altri repository c’è un link diretto all’elenco GitHub.
+La pagina Progetti include un indice collegato alle quattro sezioni e un pulsante fisso per tornare all’indice. Il comportamento è limitato alla route `/projects`; ogni progetto ha anche la sua pagina `/projects/<id>` (componente `project-detail`, rotte generate da `PROJECTS`); per gli altri repository c’è un link diretto all’elenco GitHub.

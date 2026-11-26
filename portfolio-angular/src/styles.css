@@ -1,44 +1,47 @@
 @import '@fontsource-variable/nunito';
+@import '@fontsource-variable/nunito/wght-italic.css';
 
 :root {
-  /* Calm theme: fabiozagaria/turni-elisa docs/calm-theme/calm-theme.css @ 02d4ba1 */
-  --calm-page: #f2f6f5;
-  --calm-surface: #ffffff;
-  --calm-surface-soft: #f7faf9;
-  --calm-surface-hover: #eaf2f0;
-  --calm-surface-selected: #ffffff;
-  --calm-chip: #ebf3f1;
+  /* Calm theme: fabiozagaria/turni-elisa docs/calm-theme/calm-theme.css @ 02d4ba1.
+     Tema chiaro del portfolio (26 novembre 2026): superfici e sfondo abbassati verso un salvia
+     chiaro, senza bianco puro, per ridurre l'abbagliamento. Il tema scuro non cambia. */
+  --calm-page: #ebf0ee;
+  --calm-surface: #f6f9f8;
+  --calm-surface-soft: #eef3f1;
+  --calm-surface-hover: #e2ebe8;
+  --calm-surface-selected: #f6f9f8;
+  --calm-chip: #e2ebe9;
   --calm-ink: #1f3a3d;
   --calm-body: #46605f;
-  --calm-muted: #5b7478;
-  --calm-line: #e1eae7;
-  --calm-line-soft: #ecf2f0;
-  --calm-line-strong: #c2d5d0;
-  --calm-field-line: #ccdad6;
+  --calm-muted: #52696d;
+  --calm-line: #d8e3e0;
+  --calm-line-soft: #e0e9e6;
+  --calm-line-strong: #b8ccc7;
+  --calm-field-line: #c3d3cf;
   --calm-accent: #2f7d84;
   --calm-accent-strong: #22616a;
-  --calm-accent-soft: #e3f0ef;
+  --calm-accent-soft: #daeae8;
   --calm-accent-line: #a8cfcb;
   --calm-on-accent: #ffffff;
   --calm-accent-hover: #22616a;
   --calm-focus: #3b93a0;
-  --calm-attention: #8f5d2d;
-  --calm-attention-soft: #fbf4ea;
-  --calm-attention-line: #ecd9bd;
-  --calm-danger: #a24d47;
-  --calm-danger-soft: #fbf1f0;
-  --calm-danger-line: #ecc9c5;
+  --calm-attention: #5b4f9e;
+  --calm-attention-soft: #e9e6f3;
+  --calm-attention-line: #cbc5e3;
+  --calm-danger: #b04a63;
+  --calm-danger-soft: #f3e4e8;
+  --calm-danger-line: #e3c2cb;
   --calm-on-danger: #ffffff;
   --calm-good: #36785a;
-  --calm-tint-1: #eef5f8;
+  --calm-tint-1: #e6eff3;
   --calm-tint-1-tag: #d9eaf2;
   --calm-tint-1-ink: #2e5972;
-  --calm-tint-2: #eef6f1;
+  --calm-tint-2: #e6f1ea;
   --calm-tint-2-tag: #d8eadf;
   --calm-tint-2-ink: #2d5b47;
-  --calm-tint-3: #f8f3ea;
-  --calm-tint-3-tag: #f1e4cb;
-  --calm-tint-3-ink: #6d4b20;
+  --calm-tint-3: #e9e6f3;
+  --calm-tint-3-tag: #d9d4ea;
+  --calm-tint-3-ink: #473f7a;
   --calm-shadow-sm: 0 1px 2px rgb(31 58 61 / 0.04), 0 6px 18px rgb(31 58 61 / 0.06);
   --calm-shadow-md: 0 2px 4px rgb(31 58 61 / 0.05), 0 16px 38px rgb(31 58 61 / 0.12);
   --calm-backdrop: rgb(12 28 30 / 0.45);
@@ -120,20 +123,20 @@ html[data-theme='dark'] {
   --calm-line-soft: #1f3438;
   --calm-line-strong: #3b5c60;
   --calm-field-line: #36565a;
-  --calm-accent: #7cc4c0;
+  --calm-accent: #66afac;
   --calm-accent-strong: #a6dbd6;
   --calm-accent-soft: #1c3a3d;
   --calm-accent-line: #33666a;
   --calm-on-accent: #0c2023;
-  --calm-accent-hover: #92d2ce;
+  --calm-accent-hover: #7cc4c0;
   --calm-focus: #7cc4c0;
-  --calm-attention: #e5b98a;
-  --calm-attention-soft: #2d2618;
-  --calm-attention-line: #55442a;
-  --calm-danger: #e6a8a1;
-  --calm-danger-soft: #2c1f1f;
-  --calm-danger-line: #5d3d3a;
-  --calm-on-danger: #2a1413;
+  --calm-attention: #c2b8f0;
+  --calm-attention-soft: #221f33;
+  --calm-attention-line: #453f6b;
+  --calm-danger: #eba7b6;
+  --calm-danger-soft: #2c1f24;
+  --calm-danger-line: #5d3a45;
+  --calm-on-danger: #2a1319;
   --calm-good: #9fd2b4;
   --calm-tint-1: #182a31;
   --calm-tint-1-tag: #21404d;
@@ -141,9 +144,9 @@ html[data-theme='dark'] {
   --calm-tint-2: #182b25;
   --calm-tint-2-tag: #25443b;
   --calm-tint-2-ink: #b4dccb;
-  --calm-tint-3: #2a261c;
-  --calm-tint-3-tag: #4a3b22;
-  --calm-tint-3-ink: #ecc99a;
+  --calm-tint-3: #1f1c30;
+  --calm-tint-3-tag: #373259;
+  --calm-tint-3-ink: #cfc8f2;
   --calm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.25), 0 8px 22px rgb(0 0 0 / 0.22);
   --calm-shadow-md: 0 2px 4px rgb(0 0 0 / 0.3), 0 18px 40px rgb(0 0 0 / 0.4);
   color-scheme: dark;
@@ -271,13 +274,10 @@ main:focus {
   flex-shrink: 0;
 }
 .c-nav__logo-mark {
-  display: grid;
-  place-items: center;
+  display: block;
   width: 2.5rem;
   height: 2.5rem;
   background: var(--clr-cyber-green);
-  color: var(--button-ink);
-  font: 600 1rem var(--ff-primary);
   border-radius: var(--radius-sm);
 }
 .c-nav__logo-text {
@@ -830,12 +830,21 @@ app-project-card > .c-card {
 .c-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
+  gap: 0.5rem;
   margin-top: auto;
 }
+/* Tecnologie: pillole tonali e discrete, leggibili in tema chiaro e scuro. */
 .c-card__tag {
-  color: var(--clr-cyber-green);
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.2rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--calm-accent) 11%, transparent);
+  color: var(--calm-ink);
   font-size: var(--fs-300);
+  font-weight: 500;
+  line-height: 1.3;
 }
 .c-card__actions {
   display: flex;
@@ -866,7 +875,8 @@ app-project-card > .c-card {
   margin: 0;
 }
 .c-project-update__meta strong {
-  color: var(--clr-white);
+  color: var(--calm-ink);
+  font-size: var(--fs-400);
 }
 .c-project-update__summary {
   margin: 0;
@@ -937,27 +947,21 @@ app-project-card > .c-card {
 /* Ultimo aggiornamento: una riga per repository, con chip colorato per tipo. */
 .c-update-items {
   display: grid;
-  gap: 0.75rem;
-  margin: 0.25rem 0 0;
+  margin: 0.5rem 0 0;
   padding: 0;
+  overflow: hidden;
   list-style: none;
+  border-radius: var(--radius-md);
+  background: var(--calm-surface-soft);
 }
 .c-update-item {
   --kind: var(--kind-api);
-  position: relative;
   display: grid;
-  gap: 0.4rem;
-  padding: 0.75rem 0.9rem 0.75rem 1.2rem;
-  border: 1px solid color-mix(in srgb, var(--kind) 30%, transparent);
-  border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--kind) 7%, var(--card));
+  gap: 0.6rem;
+  padding: 1.1rem 1.25rem;
 }
-.c-update-item::before {
-  content: '';
-  position: absolute;
-  inset: -1px auto -1px -1px;
-  width: 4px;
-  background: var(--kind);
+.c-update-item + .c-update-item {
+  border-top: 1px solid var(--calm-line-soft);
 }
 .c-update-item[data-kind='Frontend'],
 .c-vtag[data-kind='Frontend'] {
@@ -977,37 +981,33 @@ app-project-card > .c-card {
 .c-update-item__head {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem 0.6rem;
+  gap: 0.35rem 0.75rem;
   align-items: center;
 }
 .c-update-item__chip {
-  padding: 0.1rem 0.6rem;
-  border-radius: var(--radius-sm);
-  background: var(--kind);
-  color: var(--button-ink);
+  padding: 0.15rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--kind) 14%, transparent);
+  color: var(--kind);
   font-size: var(--fs-300);
-  font-weight: var(--fw-bold);
+  font-weight: 700;
   line-height: 1.5;
 }
 .c-update-item__version {
-  padding: 0.05rem 0.45rem;
-  border: 1px solid var(--kind);
-  border-radius: var(--radius-sm);
-  color: var(--clr-white);
+  color: var(--calm-muted);
   font-family: var(--ff-mono);
   font-size: 0.8125rem;
 }
 .c-update-item__date {
   margin-inline-start: auto;
-  color: var(--calm-body);
+  color: var(--calm-muted);
 }
 .c-update-item__message {
   margin: 0;
-  color: var(--clr-white);
-}
-.c-update-item__message code {
-  font-family: var(--ff-mono);
-  font-size: 0.8125rem;
+  color: var(--calm-ink);
+  font-size: var(--fs-400);
+  font-weight: 600;
+  line-height: 1.4;
   overflow-wrap: anywhere;
 }
 .c-update-item__note {
@@ -1016,14 +1016,19 @@ app-project-card > .c-card {
 }
 .c-update-item__commit {
   display: inline-flex;
-  gap: 0.4rem;
+  gap: 0.5rem;
   align-items: center;
   justify-self: start;
-  min-height: 32px;
+  min-height: 44px;
   font-weight: 600;
 }
 .c-update-item__commit code {
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--calm-ink) 7%, transparent);
   font-family: var(--ff-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
 }
 app-recent-badge {
   display: contents;
@@ -1074,8 +1079,8 @@ app-recent-badge {
   }
 }
 .c-project-history {
-  margin-top: 1rem;
-  padding-top: 1rem;
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
   border-top: 1px solid var(--clr-black-lighter);
   font-size: var(--fs-300);
 }
@@ -1112,15 +1117,15 @@ app-recent-badge {
 }
 .c-project-history__list {
   display: grid;
-  gap: 1rem;
-  margin: 1rem 0 0;
+  gap: 0;
+  margin: var(--space-md) 0 0;
   padding: 0;
   list-style: none;
 }
 .c-project-history__item {
   display: grid;
-  gap: 0.25rem;
-  padding-top: 1rem;
+  gap: 0.5rem;
+  padding-block: 1.25rem;
   border-top: 1px solid var(--clr-black-lighter);
   color: var(--clr-white-subtle);
 }
@@ -1129,14 +1134,23 @@ app-recent-badge {
   flex-wrap: wrap;
   gap: 0.25rem 0.75rem;
   margin: 0;
+  color: var(--calm-muted);
 }
 .c-project-history__title {
   margin: 0;
-  color: var(--clr-white);
-  font-weight: var(--fw-bold);
+  color: var(--calm-ink);
+  font-size: var(--fs-400);
+  font-weight: 600;
+  line-height: 1.4;
 }
 .c-project-history__summary {
+  max-width: 70ch;
   margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+.c-project-history__item .c-project-update__sources {
+  margin-top: 0.25rem;
 }
 .c-projects__github-cta {
   display: grid;
@@ -1487,9 +1501,7 @@ h4 {
 .c-nav__logo-mark {
   border-radius: var(--radius-pill);
   background: var(--calm-accent-soft);
-  color: var(--calm-accent-strong);
-  font-family: var(--ff-primary);
-  font-weight: 800;
+  object-fit: cover;
 }
 .c-nav__link {
   border-radius: var(--radius-pill);
@@ -1994,7 +2006,7 @@ button,
   gap: var(--space-md);
 }
 .c-card__status-detail {
-  margin: var(--space-lg) 0;
+  margin: 0 0 var(--space-lg);
 }
 .c-card__status-detail .c-card__section-label {
   margin-top: 0;
@@ -2003,7 +2015,6 @@ button,
   margin-top: var(--space-md);
   padding-top: var(--space-md);
   border-top: 1px solid var(--calm-line-soft);
-  line-height: 1.5;
 }
 .c-card__actions {
   margin-top: var(--space-sm);
@@ -2037,4 +2048,122 @@ button,
 .c-diagram__figure {
   flex: 0 1 18rem;
   width: min(100%, 18rem);
+}
+
+/* Scheda breve (elenco e home) e pagina del singolo progetto. */
+.c-card--summary .c-card__content {
+  gap: 0;
+}
+.c-card--summary .c-card__tags {
+  margin-top: auto;
+}
+.c-card--summary .c-card__description {
+  margin-bottom: var(--space-md);
+}
+.c-card__actions .c-card__action--details {
+  margin-inline-end: var(--space-xs);
+}
+.c-project-detail__nav,
+.c-project-detail__back {
+  margin: 0;
+}
+.c-project-detail__nav {
+  margin-bottom: var(--space-md);
+}
+.c-project-detail__back {
+  margin-top: var(--space-lg);
+}
+.c-project-detail__nav a,
+.c-project-detail__back a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+}
+.c-card--summary .c-shot__frame img {
+  width: 100%;
+  max-height: 15rem;
+  object-fit: cover;
+  object-position: top;
+}
+.c-project-detail h1.c-card__title {
+  font-size: var(--fs-700);
+  font-weight: 500;
+}
+
+/* Passi del flusso: forme morbide e bordi discreti, senza il turchese vivace. */
+.c-flow__step {
+  border-color: var(--calm-line-strong);
+  border-radius: var(--radius-sm);
+}
+.c-flow__step:not(:last-child)::after {
+  background: var(--calm-line-strong);
+}
+.c-flow__step[data-pending='true'] {
+  border-color: var(--calm-line-strong);
+}
+
+/* Tema scuro: le etichette delle versioni diventano tonali invece di pastelli pieni. */
+html[data-theme='dark'] .c-vtag {
+  border-color: color-mix(in srgb, var(--kind) 40%, transparent);
+  box-shadow: none;
+}
+html[data-theme='dark'] .c-vtag__label {
+  background: color-mix(in srgb, var(--kind) 22%, var(--card));
+  color: var(--kind);
+}
+
+.c-project-detail__nav a,
+.c-project-detail__back a {
+  gap: 0.5rem;
+}
+.c-project-detail__arrow {
+  flex: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .c-project-detail__arrow {
+    transition: translate 300ms var(--calm-ease);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .c-project-detail__nav a:hover .c-project-detail__arrow,
+    .c-project-detail__back a:hover .c-project-detail__arrow {
+      translate: -4px 0;
+    }
+  }
+}
+
+/* Leggibilità pulita (26 novembre 2026): interlinea ampia, righe di lunghezza comoda, a capo
+   ordinato, grassetto sulle parole chiave (colore d'accento) e corsivo per sfumature e limiti. */
+body {
+  line-height: 1.7;
+}
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+strong,
+b {
+  color: var(--calm-accent-strong);
+  font-weight: 700;
+}
+em,
+i {
+  font-style: italic;
+}
+.c-about__text-block p,
+.c-experience__item p,
+.c-iu__block p,
+.c-iu__text > p {
+  max-width: 66ch;
+}
+.c-card__status-list li,
+.c-card__decision div:last-child dd {
+  font-style: italic;
 }

@@ -1,11 +1,19 @@
 @let project = projectInput();
-<article class="c-card" [id]="project.id">
+@let detail = mode() === 'detail';
+<article class="c-card" [class.c-card--summary]="!detail" [id]="project.id">
   <div class="c-card__content">
     <div class="c-card__heading">
-      <h3 class="c-card__title">
-        {{ project.title }}
-        <app-recent-badge [update]="repositoryUpdate(project)" />
-      </h3>
+      @if (detail) {
+        <h1 class="c-card__title">
+          {{ project.title }}
+          <app-recent-badge [update]="repositoryUpdate(project)" />
+        </h1>
+      } @else {
+        <h3 class="c-card__title">
+          {{ project.title }}
+          <app-recent-badge [update]="repositoryUpdate(project)" />
+        </h3>
+      }
       <span class="c-card__status" [attr.data-status]="project.status">
         {{ project.status }}
       </span>
@@ -15,7 +23,8 @@
     @if (project.versionTags; as tags) {
       <app-version-tags [tags]="tags" />
     }
-    @if (project.screenshots; as shots) {
+    @let shots = screenshotsToShow(project);
+    @if (shots.length) {
       <div class="c-shots" [class.c-shots--multi]="shots.length > 1">
         @for (shot of shots; track shot.src) {
           <figure class="c-card__shot c-shot">
@@ -45,12 +54,12 @@
           </figure>
         }
       </div>
-    } @else if (project.flow; as flow) {
+    } @else if (detail && project.flow; as flow) {
       <app-project-flow [flow]="flow" />
     }
-    <p class="c-card__description">{{ project.description }}</p>
+    <p class="c-card__description" [innerHTML]="project.description | rich"></p>
 
-    @if (!compact() && project.video; as video) {
+    @if (detail && project.video; as video) {
       <section class="c-video" [attr.aria-labelledby]="project.id + '-video-title'">
         <figure class="c-video__player">
           <video
@@ -68,10 +77,10 @@
         </figure>
         <div class="c-video__text">
           <h4 [id]="project.id + '-video-title'">{{ video.title }}</h4>
-          <p>{{ video.summary }}</p>
+          <p [innerHTML]="video.summary | rich"></p>
           <ul>
             @for (topic of video.topics; track topic) {
-              <li>{{ topic }}</li>
+              <li [innerHTML]="topic | rich"></li>
             }
           </ul>
           <p class="c-video__note">
@@ -82,7 +91,7 @@
       </section>
     }
 
-    @if (!compact() && project.diagram; as diagram) {
+    @if (detail && project.diagram; as diagram) {
       <section class="c-diagram" [attr.aria-labelledby]="project.id + '-diagram-title'">
         <figure class="c-diagram__figure">
           <a
@@ -105,10 +114,10 @@
         </figure>
         <div class="c-diagram__text">
           <h4 [id]="project.id + '-diagram-title'">{{ diagram.title }}</h4>
-          <p>{{ diagram.summary }}</p>
+          <p [innerHTML]="diagram.summary | rich"></p>
           <ol>
             @for (step of diagram.steps; track step) {
-              <li>{{ step }}</li>
+              <li [innerHTML]="step | rich"></li>
             }
           </ol>
           <p class="c-diagram__note">
@@ -118,57 +127,57 @@
       </section>
     }
 
-    @if (project.category !== 'Frontend') {
+    @if (detail && project.category !== 'Frontend') {
       <p class="c-card__section-label">Responsabilità e scelte tecniche</p>
       <ul class="c-card__highlights">
         @for (highlight of project.highlights; track highlight) {
-          <li>{{ highlight }}</li>
+          <li [innerHTML]="highlight | rich"></li>
         }
       </ul>
 
-      @if (!compact()) {
-        @if (project.decision; as decision) {
-          <div class="c-card__decision">
-            <h4>Una scelta tecnica</h4>
-            <dl>
-              <div>
-                <dt>Problema</dt>
-                <dd>{{ decision.problem }}</dd>
-              </div>
-              <div>
-                <dt>Soluzione</dt>
-                <dd>{{ decision.solution }}</dd>
-              </div>
-              <div>
-                <dt>Compromesso</dt>
-                <dd>{{ decision.tradeoff }}</dd>
-              </div>
-            </dl>
-          </div>
-        }
-        @if (project.example; as example) {
-          <div class="c-card__example">
-            <h4>Dal comando al codice</h4>
-            <p>Comando</p>
-            <pre><code>{{ example.command }}</code></pre>
-            <p>File generati</p>
-            <pre><code>{{ example.output }}</code></pre>
-          </div>
-        }
+      @if (project.decision; as decision) {
+        <div class="c-card__decision">
+          <h4>Una scelta tecnica</h4>
+          <dl>
+            <div>
+              <dt>Problema</dt>
+              <dd [innerHTML]="decision.problem | rich"></dd>
+            </div>
+            <div>
+              <dt>Soluzione</dt>
+              <dd [innerHTML]="decision.solution | rich"></dd>
+            </div>
+            <div>
+              <dt>Compromesso</dt>
+              <dd [innerHTML]="decision.tradeoff | rich"></dd>
+            </div>
+          </dl>
+        </div>
+      }
+      @if (project.example; as example) {
+        <div class="c-card__example">
+          <h4>Dal comando al codice</h4>
+          <p>Comando</p>
+          <pre><code>{{ example.command }}</code></pre>
+          <p>File generati</p>
+          <pre><code>{{ example.output }}</code></pre>
+        </div>
       }
     }
-    <div class="c-card__status-detail">
-      <p class="c-card__section-label">Stato reale</p>
-      <p>{{ project.statusDetail.summary }}</p>
-      @if (project.statusDetail.pending?.length) {
-        <p class="c-card__status-subtitle">Cosa manca</p>
-        <ul class="c-card__status-list">
-          @for (item of project.statusDetail.pending; track item) {
-            <li>{{ item }}</li>
-          }
-        </ul>
-      }
-    </div>
+    @if (detail) {
+      <div class="c-card__status-detail">
+        <p class="c-card__section-label">Stato reale</p>
+        <p [innerHTML]="project.statusDetail.summary | rich"></p>
+        @if (project.statusDetail.pending?.length) {
+          <p class="c-card__status-subtitle">Cosa manca</p>
+          <ul class="c-card__status-list">
+            @for (item of project.statusDetail.pending; track item) {
+              <li [innerHTML]="item | rich"></li>
+            }
+          </ul>
+        }
+      </div>
+    }
 
     <div class="c-card__tags" role="group" aria-label="Tecnologie utilizzate">
       @for (tech of project.technologies; track tech) {
@@ -176,8 +185,16 @@
       }
     </div>
 
-    @if (project.liveLink || project.apiDocsLink || project.repositories?.length) {
+    @if (!detail || project.liveLink || project.apiDocsLink || project.repositories?.length) {
       <div class="c-card__actions">
+        @if (!detail) {
+          <a
+            class="c-btn c-btn--primary c-card__action--details"
+            [routerLink]="['/projects', project.id]"
+            [attr.aria-label]="'Apri i dettagli di ' + project.title"
+            >Apri i dettagli</a
+          >
+        }
         @if (project.liveLink) {
           <a
             [href]="project.liveLink"
@@ -222,12 +239,12 @@
       </div>
     }
 
-    @if (repositoryUpdate(project); as update) {
+    @if (detail && repositoryUpdate(project); as update) {
       <app-project-update [update]="update" />
     }
 
     @let entries = history(project.id);
-    @if (entries.length && !compact()) {
+    @if (entries.length && detail) {
       <details class="c-project-history">
         <summary class="c-project-history__toggle">
           Implementazioni importanti

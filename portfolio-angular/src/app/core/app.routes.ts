@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { PROJECTS } from '../data/projects.data';
+import { plainText } from '../shared/rich-text/rich-text.pipe';
 
 const projectVersionSummary = PROJECTS.filter((project) =>
   ['gestionale-spese', 'jobflow', 'accessdesk'].includes(project.id),
@@ -9,6 +10,20 @@ const projectVersionSummary = PROJECTS.filter((project) =>
       `${project.title} ${'versionTags' in project ? project.versionTags.map((version) => version.tag).join(' / ') : ''}`,
   )
   .join(' · ');
+
+/** Una pagina di dettaglio per ogni progetto curato, con titolo e descrizione propri. */
+const projectDetailRoutes: Routes = PROJECTS.map((project) => ({
+  path: `projects/${project.id}`,
+  title: `${project.title} | Fabio Zagaria`,
+  data: {
+    projectId: project.id,
+    seo: { path: `/projects/${project.id}`, description: plainText(project.description) },
+  },
+  loadComponent: () =>
+    import('../features/projects/project-detail/project-detail.component').then(
+      (m) => m.ProjectDetailComponent,
+    ),
+}));
 
 export const routes: Routes = [
   {
@@ -61,6 +76,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('../features/projects/projects.component').then((m) => m.ProjectsComponent),
   },
+  ...projectDetailRoutes,
   {
     path: 'intelligenza-umana',
     title: 'Intelligenza Umana | Fabio Zagaria',

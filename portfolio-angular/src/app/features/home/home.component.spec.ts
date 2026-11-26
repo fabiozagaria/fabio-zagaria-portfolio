@@ -92,38 +92,21 @@ describe('HomeComponent', () => {
     expect(element.textContent).not.toContain('Task Manager Security Lab');
   });
 
-  it('keeps the card compact: no technical decision and no history, only a link to the full card', () => {
+  it('keeps the card short: no technical detail, only a link to the project page', () => {
     const fixture = TestBed.createComponent(HomeComponent);
     fixture.detectChanges();
     const element = fixture.nativeElement as HTMLElement;
-    const fullCard = element.querySelector<HTMLAnchorElement>('.c-showcase__more a');
-
-    expect(element.querySelector('.c-card__decision')).toBeNull();
-    expect(element.querySelector('details.c-project-history')).toBeNull();
-    expect(element.querySelector('video')).toBeNull();
-    expect(fullCard?.getAttribute('href')).toBe('/projects#gestionale-spese');
-  });
-
-  it('shows the API update before the frontend update, each with chip, tag, message and commit', () => {
-    const fixture = TestBed.createComponent(HomeComponent);
-    fixture.detectChanges();
-    const element = fixture.nativeElement as HTMLElement;
-    const items = Array.from(
-      element.querySelectorAll<HTMLElement>('#gestionale-spese .c-update-item'),
+    const details = element.querySelector<HTMLAnchorElement>(
+      '#gestionale-spese .c-card__action--details',
     );
 
-    expect(items.map((item) => item.dataset['kind'])).toEqual(['API', 'Frontend']);
-    expect(
-      items.map((item) => item.querySelector('.c-update-item__version')?.textContent?.trim()),
-    ).toEqual(['v1.3.0', 'v1.2.0']);
-    for (const item of items) {
-      expect(
-        item.querySelector('.c-update-item__message code')?.textContent?.length,
-      ).toBeGreaterThan(5);
-      expect(item.querySelector<HTMLAnchorElement>('.c-update-item__commit')?.href).toMatch(
-        /github\.com\/fabiozagaria\/[\w.-]+\/commit\/[0-9a-f]{40}$/,
-      );
-    }
+    expect(element.querySelector('.c-card__decision')).toBeNull();
+    expect(element.querySelector('.c-card__highlights')).toBeNull();
+    expect(element.querySelector('.c-card__status-detail')).toBeNull();
+    expect(element.querySelector('.c-update-item')).toBeNull();
+    expect(element.querySelector('details.c-project-history')).toBeNull();
+    expect(element.querySelector('video')).toBeNull();
+    expect(details?.getAttribute('href')).toBe('/projects/gestionale-spese');
   });
 
   it('invites to the projects page with one entry per area, without presenting single projects', () => {

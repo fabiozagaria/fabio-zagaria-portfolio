@@ -1,6 +1,7 @@
-/* Motion: calm and slow. Things move on load, on a route change or in answer
-   to a touch; nothing moves because the page scrolled. Every rule has its
-   reduced-motion counterpart at the end of this file. */
+/* Motion: calm and slow. Things move on load, on a route change, in answer to a
+   touch, and blocks below the fold settle in once as they come into view
+   (see "Soft descent" below). Every rule has its reduced-motion counterpart
+   at the end of this file. */
 
 /* Route change: the old page fades, the new one settles in. */
 @media (prefers-reduced-motion: no-preference) {
@@ -22,12 +23,12 @@
   @keyframes route-in {
     from {
       opacity: 0;
-      transform: translateY(8px);
+      transform: translateY(-8px);
     }
   }
 }
 
-/* Hero: one soft entrance on load (about 1.1 s), then it stands still. */
+/* Hero: one soft descending entrance on load (about 1.1 s), then it stands still. */
 @media (prefers-reduced-motion: no-preference) {
   .c-hero__word {
     animation: hero-rise 1100ms var(--calm-ease) both;
@@ -49,18 +50,18 @@
   }
   @keyframes hero-rise {
     from {
-      transform: translateY(105%);
+      transform: translateY(-105%);
     }
   }
   @keyframes hero-lift {
     from {
       opacity: 0;
-      transform: translateY(12px);
+      transform: translateY(-12px);
     }
   }
 }
 
-/* Page titles rise once when the page opens. */
+/* Page titles sink into place once when the page opens. */
 @media (prefers-reduced-motion: no-preference) {
   .c-section-title {
     animation: title-rise 900ms var(--calm-ease) backwards;
@@ -68,7 +69,64 @@
   @keyframes title-rise {
     from {
       opacity: 0;
-      transform: translateY(0.4em);
+      transform: translateY(-0.4em);
+    }
+  }
+}
+
+/* Soft descent: page blocks fade in while sinking a few pixels into place, one after
+   the other. It starts by itself (no flash on first paint); blocks below the fold are
+   paused by SoftDescendService until they come into view. The selector list must stay
+   identical to SOFT_DESCEND_SELECTOR in src/app/core/soft-descend.service.ts. */
+@media (prefers-reduced-motion: no-preference) {
+  .c-motivation__title,
+  .c-motivation__quote > p,
+  .c-motivation__source,
+  .c-showcase__header,
+  .c-showcase .o-container > app-project-card,
+  .c-explore__header,
+  .c-explore__grid > *,
+  .c-explore__actions,
+  .c-resume__layout,
+  .c-about__text-block > :not(.c-about__stack),
+  .c-about__stack > div,
+  .c-about__portrait,
+  .c-about__stat-item,
+  .c-experience__current,
+  .c-experience__section-label,
+  .c-experience__content > *,
+  .c-projects .c-section-subtitle,
+  .c-projects__index,
+  .c-projects__group-title,
+  .c-projects__group-description,
+  .c-projects__grid > *,
+  .c-projects__github-cta,
+  .c-project-detail__nav,
+  .c-project-detail .c-card__content > *,
+  .c-project-detail__back,
+  .c-iu__logo,
+  .c-iu__status,
+  .c-iu__block,
+  .c-iu__section,
+  .c-iu__text > p,
+  .c-iu__list > li,
+  .c-iu__site,
+  .c-iu__back,
+  .c-contact__info > :not(.c-contact__documents):not(.c-contact__places),
+  .c-contact__places > *,
+  .c-contact__documents > :not(.c-contact__documents-grid),
+  .c-contact__documents-grid > *,
+  .c-footer__content,
+  .c-footer__note {
+    animation: soft-descend 1300ms var(--calm-ease) var(--soft-delay, 0ms) backwards;
+  }
+  [data-soft='wait'] {
+    animation-play-state: paused !important;
+  }
+  @keyframes soft-descend {
+    from {
+      opacity: 0;
+      transform: translateY(-14px);
     }
   }
 }

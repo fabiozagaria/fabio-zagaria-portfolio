@@ -30,9 +30,7 @@ import type { PortfolioLatestUpdate } from '../../data/projects.data';
                 }
                 <span class="c-update-item__date">{{ item.dateLabel }}</span>
               </div>
-              <p class="c-update-item__message">
-                <code>{{ item.message }}</code>
-              </p>
+              <p class="c-update-item__message">{{ item.message }}</p>
               @if (item.note; as note) {
                 <p class="c-update-item__note">{{ note }}</p>
               }

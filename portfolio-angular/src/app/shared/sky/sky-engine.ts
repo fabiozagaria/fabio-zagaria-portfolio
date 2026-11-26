@@ -108,8 +108,8 @@ interface PlanetLook {
 }
 
 const PLANET: PlanetLook = {
-  bands: ['#d9ecdf', '#b4dccb', '#e8d3b0', '#9fcbbd', '#7fb5a8', '#c9b28c'],
-  ring: '233,206,164',
+  bands: ['#d9ecdf', '#b4dccb', '#cfe0ec', '#9fcbbd', '#7fb5a8', '#a9c3d6'],
+  ring: '190,214,228',
   atmo: '166,219,214',
 };
 const MOON: PlanetLook = {
@@ -319,7 +319,7 @@ class CanvasSky implements SkyEngine {
       if (close > 0.15) near.push({ x, y, k: close });
       const a = Math.min(1, s.base * twinkle + s.glow * 0.8);
       const r = s.r * (1 + s.glow * 0.9);
-      const rgb = s.warm ? '244,214,170' : '236,246,244';
+      const rgb = s.warm ? '206,224,246' : '236,246,244';
       const halo = s.warm ? this.halos.warm : this.halos.cool;
       if (r > 1.2 && halo) {
         ctx.globalAlpha = a;
@@ -440,7 +440,7 @@ class CanvasSky implements SkyEngine {
       g.fillRect(0, 0, 64, 64);
       return c;
     };
-    this.halos = { cool: halo('236,246,244'), warm: halo('244,214,170') };
+    this.halos = { cool: halo('236,246,244'), warm: halo('206,224,246') };
   }
 
   private drawPlanet(
@@ -578,7 +578,7 @@ class CanvasSky implements SkyEngine {
     const sky = b.createLinearGradient(0, 0, 0, H);
     const stops = night
       ? ['#060d10', '#0c1a1e', '#13292c']
-      : ['#c9e0ea', '#e4eff0', '#f6efe3', '#eef3ee'];
+      : ['#c9e0ea', '#e4eff0', '#eaf1f2', '#eef3ee'];
     stops.forEach((colour, i) => sky.addColorStop(i / (stops.length - 1), colour));
     b.fillStyle = sky;
     b.fillRect(0, 0, W, H);
@@ -586,10 +586,10 @@ class CanvasSky implements SkyEngine {
       ? [
           [0.78, 0.28, 0.42, '124,196,192,0.20'],
           [0.62, 0.42, 0.3, '159,210,180,0.12'],
-          [0.88, 0.12, 0.22, '229,185,138,0.10'],
+          [0.88, 0.12, 0.22, '150,170,214,0.10'],
           [0.2, 0.75, 0.35, '124,196,192,0.07'],
         ]
-      : [[0.8, 0.22, 0.5, '255,246,226,0.55']];
+      : [[0.8, 0.22, 0.5, '246,250,250,0.55']];
     for (const [cx, cy, rr, rgba] of glows) {
       const rgb = rgba.split(',').slice(0, 3).join(',');
       const radius = rr * Math.max(W, H);
@@ -624,7 +624,7 @@ class CanvasSky implements SkyEngine {
         const r = t * R * 0.95 + (this.rnd() - 0.5) * R * 0.06;
         g.fillStyle =
           t < 0.25
-            ? `rgba(244,214,170,${0.55 - t})`
+            ? `rgba(206,224,246,${0.55 - t})`
             : `rgba(${t > 0.6 ? '166,219,214' : '214,236,232'},${0.5 * (1 - t) + 0.08})`;
         const size = this.rnd() < 0.04 ? 1.4 : 0.7;
         g.fillRect(Math.cos(a) * r, Math.sin(a) * r, size, size);
@@ -633,7 +633,7 @@ class CanvasSky implements SkyEngine {
     };
     return [
       {
-        ...make(m * 0.24, 2, 2600, '244,226,196'),
+        ...make(m * 0.24, 2, 2600, '226,236,244'),
         x: 0.27,
         y: 0.2,
         tilt: -0.5,
@@ -667,8 +667,8 @@ class CanvasSky implements SkyEngine {
         const r = h * (0.22 + Math.sin(t * Math.PI) * 0.26 + this.rnd() * 0.06);
         const y = h * 0.66 - Math.sin(t * Math.PI) * h * 0.18 + (this.rnd() - 0.5) * h * 0.05;
         const puff = g.createRadialGradient(x, y - r * 0.25, r * 0.1, x, y, r);
-        puff.addColorStop(0, 'rgba(255,255,255,0.95)');
-        puff.addColorStop(0.6, 'rgba(250,252,252,0.75)');
+        puff.addColorStop(0, 'rgba(246,250,250,0.8)');
+        puff.addColorStop(0.6, 'rgba(238,244,245,0.6)');
         puff.addColorStop(1, 'rgba(240,246,247,0)');
         g.fillStyle = puff;
         g.beginPath();

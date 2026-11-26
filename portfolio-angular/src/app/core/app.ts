@@ -2,6 +2,7 @@ import { LoadingSpinnerComponent } from '../shared/loading/loading-spinner.compo
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ViewportScroller } from '@angular/common';
 import { ThemeService } from './theme.service';
+import { SoftDescendService } from './soft-descend.service';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -33,6 +34,7 @@ export class App {
   readonly router = inject(Router);
   readonly navigationError = signal(false);
   readonly theme = inject(ThemeService);
+  private readonly softDescend = inject(SoftDescendService);
   private readonly menuToggle = viewChild<ElementRef<HTMLButtonElement>>('menuToggle');
   private readonly navigation = viewChild<ElementRef<HTMLElement>>('navigation');
   isMenuOpen = false;
