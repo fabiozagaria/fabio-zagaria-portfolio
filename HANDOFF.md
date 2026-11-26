@@ -7,3 +7,5 @@ Aggiornate solo le tre etichette del menu; URL, titoli SEO, CSS, contenuti e CV 
 
 ## Aggiornamento — 2026-11-26
 La pagina Intelligenza Umana e la descrizione SEO sono state allineate alla foundation v0.2.0, senza modificare layout, route o animazioni. La pubblicazione delle modifiche deve essere verificata. Build e suite `npm run test:ci` eseguite; la foundation è aperta ai contributi e le verifiche dei prodotti restano aperte. Il sito collegato potrebbe mostrare ancora la pagina precedente fino al rilascio del nuovo portale.
+
+2026-11-26: Aggiornato il numero e l’elenco dei progetti Intelligenza Umana per includere IU Model Router. Test della pagina eseguito; il CV non è stato modificato.
