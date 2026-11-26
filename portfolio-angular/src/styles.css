@@ -1076,8 +1076,8 @@ app-recent-badge {
   }
 }
 .c-project-history {
-  margin-top: 1rem;
-  padding-top: 1rem;
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
   border-top: 1px solid var(--clr-black-lighter);
   font-size: var(--fs-300);
 }
@@ -1114,15 +1114,15 @@ app-recent-badge {
 }
 .c-project-history__list {
   display: grid;
-  gap: 1rem;
-  margin: 1rem 0 0;
+  gap: 0;
+  margin: var(--space-md) 0 0;
   padding: 0;
   list-style: none;
 }
 .c-project-history__item {
   display: grid;
-  gap: 0.25rem;
-  padding-top: 1rem;
+  gap: 0.5rem;
+  padding-block: 1.25rem;
   border-top: 1px solid var(--clr-black-lighter);
   color: var(--clr-white-subtle);
 }
@@ -1131,14 +1131,23 @@ app-recent-badge {
   flex-wrap: wrap;
   gap: 0.25rem 0.75rem;
   margin: 0;
+  color: var(--calm-muted);
 }
 .c-project-history__title {
   margin: 0;
-  color: var(--clr-white);
-  font-weight: var(--fw-bold);
+  color: var(--calm-ink);
+  font-size: var(--fs-400);
+  font-weight: 600;
+  line-height: 1.4;
 }
 .c-project-history__summary {
+  max-width: 70ch;
   margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+.c-project-history__item .c-project-update__sources {
+  margin-top: 0.25rem;
 }
 .c-projects__github-cta {
   display: grid;
@@ -1994,7 +2003,7 @@ button,
   gap: var(--space-md);
 }
 .c-card__status-detail {
-  margin: var(--space-lg) 0;
+  margin: 0 0 var(--space-lg);
 }
 .c-card__status-detail .c-card__section-label {
   margin-top: 0;

@@ -50,3 +50,5 @@ La pagina Intelligenza Umana e la descrizione SEO sono state allineate alla foun
 2026-11-26: Ritmo verticale di Progetti e Intelligenza Umana sistemato, ritratto nell’hero e motivazione (da `docs/MOTIVATION.md`) sotto la presentazione (Home). `npm run test:ci` (112 test) e build eseguiti; verifica visiva su desktop e telefono emulato. CV non modificato.
 
 2026-11-26: Pagina dedicata per ogni progetto (`/projects/<id>`), card brevi in elenco e Home, tag delle tecnologie come pillole tonali, riquadro «Ultimo aggiornamento» ridisegnato, ritratto al posto di «FZ» nell'header. `npm run test:ci` (116 test) e build eseguiti; controllo visivo in tema chiaro/scuro e su telefono emulato. CV non modificato.
+
+2026-11-26: Controllo degli spazi su tutte le pagine (verifica automatica dei blocchi consecutivi e screenshot desktop/telefono): corretti storico «Implementazioni importanti» (spazi, gerarchia, larghezza del testo) e vuoto eccessivo tra descrizione e stato nelle card sperimentali. Altre pagine senza elementi attaccati.
