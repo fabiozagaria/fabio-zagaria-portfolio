@@ -134,11 +134,7 @@ describe('HomeComponent', () => {
       (link) => link.getAttribute('href'),
     );
 
-    expect(links).toEqual([
-      '/projects#backend-title',
-      '/projects#plugin-skill-ai-title',
-      '/projects#frontend-title',
-    ]);
+    expect(links).toEqual(['/projects#backend-title', '/projects#frontend-title']);
     expect(element.querySelector('.c-explore')?.textContent).not.toContain('JobFlow');
     expect(element.querySelector('.c-explore')?.textContent).not.toContain('AccessDesk');
   });

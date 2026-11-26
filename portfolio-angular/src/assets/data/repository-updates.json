@@ -1,29 +1,29 @@
 [
   {
-    "repository": "expense-tracker-api",
-    "datetime": "2026-11-26T09:36:33Z",
-    "dateLabel": "26 novembre 2026",
-    "items": [
-      {
-        "kind": "Repository",
-        "hash": "c077fa9",
-        "message": "Add project lifecycle skill for Codex and Claude",
-        "dateLabel": "26 novembre 2026",
-        "url": "https://github.com/fabiozagaria/expense-tracker-api/commit/c077fa9b0c7d71fde73af46f40b6ab61e90bb736"
-      }
-    ]
-  },
-  {
     "repository": "expense-tracker-angular",
     "datetime": "2026-11-26T09:36:22Z",
     "dateLabel": "26 novembre 2026",
     "items": [
       {
-        "kind": "Repository",
+        "kind": "Frontend",
         "hash": "562a5ee",
         "message": "Add project lifecycle skill for Codex and Claude",
         "dateLabel": "26 novembre 2026",
         "url": "https://github.com/fabiozagaria/expense-tracker-angular/commit/562a5ee479fefee7e60c4baa5ff3efa636b1a7d8"
+      }
+    ]
+  },
+  {
+    "repository": "expense-tracker-api",
+    "datetime": "2026-11-26T09:36:33Z",
+    "dateLabel": "26 novembre 2026",
+    "items": [
+      {
+        "kind": "API",
+        "hash": "c077fa9",
+        "message": "Add project lifecycle skill for Codex and Claude",
+        "dateLabel": "26 novembre 2026",
+        "url": "https://github.com/fabiozagaria/expense-tracker-api/commit/c077fa9b0c7d71fde73af46f40b6ab61e90bb736"
       }
     ]
   },
@@ -33,7 +33,7 @@
     "dateLabel": "26 novembre 2026",
     "items": [
       {
-        "kind": "Repository",
+        "kind": "Backend",
         "hash": "ad4248c",
         "message": "Add project lifecycle skill for Codex and Claude",
         "dateLabel": "26 novembre 2026",
@@ -47,7 +47,7 @@
     "dateLabel": "26 novembre 2026",
     "items": [
       {
-        "kind": "Repository",
+        "kind": "Backend",
         "hash": "9d2c3ff",
         "message": "Add project lifecycle skill for Codex and Claude",
         "dateLabel": "26 novembre 2026",
@@ -61,7 +61,7 @@
     "dateLabel": "26 novembre 2026",
     "items": [
       {
-        "kind": "Repository",
+        "kind": "Backend",
         "hash": "2887aa4",
         "message": "Add project lifecycle skill for Codex and Claude",
         "dateLabel": "26 novembre 2026",
@@ -75,7 +75,7 @@
     "dateLabel": "26 novembre 2026",
     "items": [
       {
-        "kind": "Repository",
+        "kind": "Frontend",
         "hash": "f99a219",
         "message": "Add project lifecycle skill for Codex and Claude",
         "dateLabel": "26 novembre 2026",
@@ -89,7 +89,7 @@
     "dateLabel": "26 novembre 2026",
     "items": [
       {
-        "kind": "Repository",
+        "kind": "Frontend",
         "hash": "e0aba13",
         "message": "Add project lifecycle skill for Codex and Claude",
         "dateLabel": "26 novembre 2026",
@@ -103,7 +103,7 @@
     "dateLabel": "2 ottobre 2026",
     "items": [
       {
-        "kind": "Repository",
+        "kind": "Backend",
         "hash": "b6e31a0",
         "message": "Merge pull request #1 from fabiozagaria/docs/readme-scope-2026-10-02",
         "dateLabel": "2 ottobre 2026",
@@ -136,48 +136,6 @@
         "message": "Add project lifecycle skill for Codex and Claude",
         "dateLabel": "26 novembre 2026",
         "url": "https://github.com/fabiozagaria/study-flow-android/commit/cf177f8a136020fddb5c87cb12c906b95d070cfe"
-      }
-    ]
-  },
-  {
-    "repository": "learning-ledger",
-    "datetime": "2026-11-26T09:45:02Z",
-    "dateLabel": "26 novembre 2026",
-    "items": [
-      {
-        "kind": "Repository",
-        "hash": "6dead9b",
-        "message": "Improve public installation guidance and verification",
-        "dateLabel": "26 novembre 2026",
-        "url": "https://github.com/fabiozagaria/iu-learning-ledger/commit/6dead9b048da58a6cedddf50d56c7eaa48bafecf"
-      }
-    ]
-  },
-  {
-    "repository": "spring-security-advisor",
-    "datetime": "2026-11-26T09:44:58Z",
-    "dateLabel": "26 novembre 2026",
-    "items": [
-      {
-        "kind": "Repository",
-        "hash": "c5578db",
-        "message": "Improve public installation guidance and verification",
-        "dateLabel": "26 novembre 2026",
-        "url": "https://github.com/fabiozagaria/iu-spring-security-advisor/commit/c5578dbaecb602de142c9795dc77f25236a0bd50"
-      }
-    ]
-  },
-  {
-    "repository": "project-lifecycle-skill",
-    "datetime": "2026-11-26T09:35:59Z",
-    "dateLabel": "26 novembre 2026",
-    "items": [
-      {
-        "kind": "Repository",
-        "hash": "80ea03c",
-        "message": "Add project lifecycle skill for Codex and Claude",
-        "dateLabel": "26 novembre 2026",
-        "url": "https://github.com/fabiozagaria/iu-project-lifecycle-skill/commit/80ea03c54e8b3b3dd4b563acb42de8a1fad176dd"
       }
     ]
   }

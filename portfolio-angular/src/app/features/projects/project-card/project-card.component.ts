@@ -31,7 +31,7 @@ export class ProjectCardComponent {
   readonly compact = input(false);
 
   repositoryUpdate(project: PortfolioProject) {
-    return latestRepositoryUpdate(project.repositories?.[0]?.url);
+    return latestRepositoryUpdate(project.repositories, project.latestUpdate);
   }
 
   /** Dominio della demo online, mostrato nella barra della cornice dello screenshot. */

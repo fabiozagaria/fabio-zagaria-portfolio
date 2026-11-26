@@ -1746,21 +1746,6 @@ button,
   color: var(--clr-white-subtle);
   font-size: var(--fs-300);
 }
-.c-plugin-skills {
-  display: grid;
-  gap: 0.75rem;
-  padding: 1rem;
-  margin: 0;
-}
-.c-plugin-skills dt {
-  color: var(--clr-white);
-  font-weight: 600;
-}
-.c-plugin-skills dd {
-  margin: 0.15rem 0 0;
-  color: var(--clr-white-subtle);
-  font-size: var(--fs-300);
-}
 .c-flow {
   display: grid;
   gap: 1.25rem;

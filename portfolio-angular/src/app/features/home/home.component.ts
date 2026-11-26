@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SkyComponent } from '../../shared/sky/sky.component';
 import { WordHighlightDirective } from '../../shared/sky/word-highlight.directive';
-import { AI_PLUGINS } from '../../data/project-collections.data';
 import {
   CV,
   CV_DOWNLOAD_NAME,
@@ -37,12 +36,6 @@ export class HomeComponent {
       title: 'Backend',
       text: 'API REST con persistenza e sicurezza, con Java e Spring Boot.',
       count: PROJECTS.filter((project) => project.category === 'Backend').length,
-    },
-    {
-      id: 'plugin-skill-ai',
-      title: 'Plugin e Skill AI',
-      text: 'Plugin per Claude Code: il modello ragiona e uno script Python verifica.',
-      count: AI_PLUGINS.length,
     },
     {
       id: 'frontend',

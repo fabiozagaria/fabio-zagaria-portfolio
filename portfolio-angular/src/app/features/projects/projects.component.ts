@@ -1,9 +1,8 @@
 import { SkyComponent } from '../../shared/sky/sky.component';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { PortfolioProject, ProjectCategory, PROJECTS } from '../../data/projects.data';
 import {
-  AI_PLUGINS,
-  EXERCISE_COLLECTIONS,
   EXPERIMENTAL_PROJECTS,
   PortfolioCollectionItem,
 } from '../../data/project-collections.data';
@@ -38,30 +37,25 @@ type ProjectsSection =
     RecentBadgeComponent,
     VersionTagsComponent,
     SkyComponent,
+    RouterLink,
   ],
   templateUrl: './projects.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent {
-  repositoryUpdate(repositoryUrl: string | undefined) {
-    return latestRepositoryUpdate(repositoryUrl);
+  repositoryUpdate(
+    repositories: PortfolioCollectionItem['repositories'],
+    previousUpdate: PortfolioCollectionItem['latestUpdate'],
+  ) {
+    return latestRepositoryUpdate(repositories, previousUpdate);
   }
 
   /**
-   * Ordine della pagina: Full Stack, Backend, Plugin e Skill AI, Progetti Frontend del Corso,
-   * Sperimentale con AI, Esercizi.
+   * Ordine fisso dei progetti curati nel portfolio.
    */
   readonly sections: readonly ProjectsSection[] = [
     this.projectsSection('full-stack', 'Full Stack', 'Full stack'),
     this.projectsSection('backend', 'Backend', 'Backend'),
-    {
-      type: 'collection',
-      id: 'plugin-skill-ai',
-      title: 'Plugin e Skill AI',
-      description:
-        'Plugin per Claude Code in cui il modello ragiona e uno script Python verifica, così i risultati si possono ripetere e controllare.',
-      entries: AI_PLUGINS,
-    },
     this.projectsSection('frontend', 'Progetti Frontend del Corso', 'Frontend'),
     {
       type: 'collection',
@@ -69,14 +63,6 @@ export class ProjectsComponent {
       title: 'Sperimentale con AI',
       description: 'Progetti esplorativi e strumenti di studio con il supporto dell’AI.',
       entries: EXPERIMENTAL_PROJECTS,
-    },
-    {
-      type: 'collection',
-      id: 'esercizi',
-      title: 'Esercizi',
-      description:
-        'Raccolte di studio e materiali del corso, consultabili nei repository dedicati.',
-      entries: EXERCISE_COLLECTIONS,
     },
   ];
 
