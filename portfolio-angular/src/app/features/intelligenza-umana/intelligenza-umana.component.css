@@ -101,6 +101,11 @@
 .c-iu__site a:hover {
   background: color-mix(in srgb, var(--calm-accent) 22%, transparent);
 }
+.c-iu__site img {
+  width: 1.25rem;
+  height: auto;
+  margin-right: 0.5rem;
+}
 .c-iu__back a {
   display: inline-flex;
   align-items: center;
