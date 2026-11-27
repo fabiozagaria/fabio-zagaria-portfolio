@@ -1,5 +1,7 @@
 # Contesto tecnico — Portfolio
 
+Aggiornamento 2026-11-27: la pagina «Intelligenza Umana» collega anche al server Discord dell’iniziativa, con simbolo ufficiale non modificato. Invito: https://discord.gg/fMRBCNgHb.
+
 Aggiornato: 2026-11-26
 
 ## Obiettivo
