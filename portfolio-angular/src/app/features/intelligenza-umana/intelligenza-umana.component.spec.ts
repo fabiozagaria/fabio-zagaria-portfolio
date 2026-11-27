@@ -68,7 +68,7 @@ describe('IntelligenzaUmanaComponent', () => {
       'https://github.com/Intelligenza-Umana/.github/blob/main/profile/README.md',
       'https://github.com/Intelligenza-Umana/intelligenza-umana',
       'https://github.com/Intelligenza-Umana/intelligenza-umana/blob/main/docs/PROJECT_REGISTRY.md',
-      'https://discord.gg/uP3D3ybbmT',
+      'https://discord.gg/Zt85ZYEXAA',
       'https://intelligenza-umana-web.vercel.app/',
     ]);
     const officialSite = element.querySelector<HTMLAnchorElement>(
@@ -77,7 +77,7 @@ describe('IntelligenzaUmanaComponent', () => {
     expect(officialSite?.classList.contains('c-btn--primary')).toBe(true);
     expect(officialSite?.closest('.c-iu__site')).toBeNull();
     const discordLink = element.querySelector<HTMLAnchorElement>(
-      'a[href="https://discord.gg/uP3D3ybbmT"]',
+      'a[href="https://discord.gg/Zt85ZYEXAA"]',
     );
     expect(discordLink?.textContent).toContain('Entra nel server Discord');
     expect(discordLink?.querySelector('img')?.getAttribute('src')).toBe(
