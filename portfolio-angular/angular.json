@@ -56,6 +56,11 @@
                 "output": "/assets/img"
               },
               {
+                "glob": "*.svg",
+                "input": "src/assets/img",
+                "output": "/assets/img"
+              },
+              {
                 "glob": "*.mp4",
                 "input": "src/assets/video",
                 "output": "/assets/video"
