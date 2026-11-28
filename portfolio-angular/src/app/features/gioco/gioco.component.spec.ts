@@ -121,6 +121,13 @@ describe('GiocoComponent', () => {
     expect(element.textContent).toContain('illustrazione, non una schermata del gioco');
   });
 
+  it('has a decorative pixel-art sky layer hidden from assistive technology', () => {
+    const sky = render().querySelector('.c-gioco__sky');
+    expect(sky).toBeTruthy();
+    expect(sky?.getAttribute('aria-hidden')).toBe('true');
+    expect(sky?.textContent?.trim()).toBe('');
+  });
+
   it('does not throw when the canvas has no 2d context', () => {
     const spy = vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null);
     try {

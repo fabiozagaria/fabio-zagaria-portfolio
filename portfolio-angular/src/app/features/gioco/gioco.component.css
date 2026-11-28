@@ -28,15 +28,30 @@
   font-family: var(--gioco-body);
   font-size: 1.45rem;
   line-height: 1.35;
-  background:
-    radial-gradient(1.5px 1.5px at 12% 18%, var(--gioco-fg) 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 78% 12%, var(--gioco-fg) 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 42% 64%, var(--gioco-fg) 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 90% 80%, var(--gioco-fg) 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 24% 88%, var(--gioco-fg) 50%, transparent 51%),
-    linear-gradient(180deg, var(--gioco-bg2), var(--gioco-bg) 40%);
+  background: linear-gradient(180deg, var(--gioco-bg2), var(--gioco-bg) 40%);
   background-repeat: no-repeat;
   overflow-wrap: anywhere;
+}
+
+/* Sfondo: universo in pixel art (tessera senza cuciture, vedi scripts/generate-gioco-background.py).
+   Pixel interi: la tessera è 320x640, quindi 2x sugli schermi stretti e 4x su quelli larghi. */
+.c-gioco__sky {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url('/assets/img/gioco-sfondo.webp');
+  background-repeat: repeat;
+  background-position: center top;
+  background-size: 640px auto;
+  image-rendering: pixelated;
+  opacity: 0.7;
+}
+
+@media (min-width: 62em) {
+  .c-gioco__sky {
+    background-size: 1280px auto;
+  }
 }
 
 .c-gioco__container {
