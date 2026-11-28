@@ -4,9 +4,9 @@ import { GiocoComponent } from './gioco.component';
 
 // Il repository del gioco è privato: non deve comparire in nessuna forma.
 const FORBIDDEN = /idle-project-blackhole|github\.com\/fabiozagaria/i;
-// Dettagli volutamente non raccontati: elenco dei finali, numero dei finali, fasi.
-const TOO_DETAILED =
-  /nana bianca|supernova|buco nero|tre finali|quattro finali|nebulosa|protostella|sequenza principale|gigante rossa|267/i;
+// I finali non vanno né nominati né contati.
+const ENDINGS_REVEALED =
+  /nana bianca|nana bruna|supernova|buco nero|black hole|tre finali|quattro finali|cinque finali/i;
 
 describe('GiocoComponent', () => {
   beforeEach(async () => {
@@ -30,32 +30,48 @@ describe('GiocoComponent', () => {
     const titles = Array.from(render().querySelectorAll('h2'), (h) => h.textContent?.trim());
     expect(titles).toEqual([
       'Perché l’ho fatto',
-      'Di cosa parla',
+      'Come funziona',
       'Come lo costruisco',
       'Come sta andando',
     ]);
   });
 
-  it('explains the subject in basic terms and mentions several endings without counting them', () => {
+  it('explains how the game works in connected paragraphs', () => {
+    const section = render().querySelector('section[aria-labelledby="gioco-funziona"]');
+    const paragraphs = Array.from(section?.querySelectorAll('p') ?? [], (p) => p.textContent ?? '');
+    expect(paragraphs.length).toBeGreaterThanOrEqual(4);
+    for (const paragraph of paragraphs) expect(paragraph.trim().length).toBeGreaterThan(150);
+    const text = paragraphs.join(' ');
+    for (const topic of [
+      'produce energia',
+      'particelle di energia',
+      'potenziamenti',
+      'polvere stellare',
+      'nascita',
+    ]) {
+      expect(text, topic).toContain(topic);
+    }
+  });
+
+  it('mentions several endings without naming or counting them', () => {
     const text = render().textContent ?? '';
-    expect(text).toContain('nascita, la sua vita e la sua morte');
     expect(text).toContain('diversi finali');
-    expect(text).not.toMatch(TOO_DETAILED);
+    expect(text).not.toMatch(ENDINGS_REVEALED);
   });
 
   it('says the game may change completely and is not playable', () => {
     const text = render().textContent ?? '';
-    expect(text).toContain('potrebbero cambiare anche completamente');
-    expect(text).toContain('non ancora in alfa');
+    expect(text).toContain('potrebbe cambiare anche completamente');
+    expect(text).toContain('non è ancora nemmeno in alfa');
     expect(text).toContain('non ci sono app disponibili');
   });
 
-  it('announces Android only, with no iOS version planned and no release date', () => {
+  it('announces Android only, with no iOS version planned and no precise date', () => {
     const text = render().textContent ?? '';
     expect(text).toContain('soltanto su Android');
     expect(text).toContain('iOS');
     expect(text).toContain('non è prevista');
-    expect(text).toContain('non c’è ancora una data');
+    expect(text).toContain('senza una data precisa');
   });
 
   it('says it is built with the support of artificial intelligence', () => {
@@ -146,14 +162,15 @@ describe('GiocoComponent', () => {
       const text = element.textContent ?? '';
       expect(Array.from(element.querySelectorAll('h2'), (h) => h.textContent?.trim())).toEqual([
         'Why I made it',
-        'What it is about',
+        'How it works',
         'How I build it',
         'How it is going',
       ]);
       expect(text).toContain('Provisional name');
       expect(text).toContain('could change completely');
+      expect(text).toContain('several endings');
       expect(text).toContain('only on Android');
-      expect(text).not.toMatch(TOO_DETAILED);
+      expect(text).not.toMatch(ENDINGS_REVEALED);
       expect(element.innerHTML).not.toMatch(FORBIDDEN);
       expect(element.querySelectorAll('a[href]').length).toBe(0);
     });

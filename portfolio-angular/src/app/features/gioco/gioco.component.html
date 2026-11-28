@@ -2,12 +2,14 @@
   <div class="c-gioco__container">
     <header class="c-gioco__hero">
       <div class="c-gioco__intro">
-        <p class="c-gioco__tag">{{ 'In costruzione' | translate }}</p>
+        <div class="c-gioco__tags">
+          <p class="c-gioco__tag">{{ 'In costruzione' | translate }}</p>
+          <p class="c-gioco__provisional">{{ 'Nome provvisorio' | translate }}</p>
+        </div>
         <h1 class="c-gioco__title">Idle Project Blackhole</h1>
-        <p class="c-gioco__provisional">{{ 'Nome provvisorio' | translate }}</p>
         <p class="c-gioco__lead">
           {{
-            'Un gioco idle per Android™ sull’evoluzione di una stella: dalla nascita alla morte.'
+            'Un gioco idle per Android™ in cui accompagni una stella dalla nascita alla morte, per ricominciare ogni volta un po’ più forte.'
               | translate
           }}
         </p>
@@ -31,29 +33,46 @@
       <div class="c-gioco__box">
         <p>
           {{
-            'Mi appassiona l’astronomia da quando sono piccolo. Mi piace anche la semplicità dei giochi idle: sessioni brevi, poco stress.'
+            'Mi appassiona l’astronomia da quando sono piccolo, e mi ha sempre affascinato il modo in cui una stella nasce, brilla per milioni di anni e poi si spegne. Allo stesso tempo mi attira la semplicità dei giochi idle, quelli che avanzano da soli e si giocano a sessioni brevi, senza chiedere attenzione continua.'
               | translate
           }}
         </p>
         <p>
           {{
-            'Volevo un gioco tutto mio, semplice, da costruire un pezzo alla volta. È quello che sto facendo.'
+            'Da qui l’idea di fare un gioco tutto mio che unisse le due cose: semplice da giocare, pensato per scaricare lo stress e costruito un pezzo alla volta, imparando strada facendo.'
               | translate
           }}
         </p>
       </div>
     </section>
 
-    <section class="c-gioco__block" aria-labelledby="gioco-tema">
-      <h2 id="gioco-tema">{{ 'Di cosa parla' | translate }}</h2>
+    <section class="c-gioco__block" aria-labelledby="gioco-funziona">
+      <h2 id="gioco-funziona">{{ 'Come funziona' | translate }}</h2>
       <div class="c-gioco__box">
         <p>
           {{
-            'Il gioco parla dell’evoluzione di una stella: la sua nascita, la sua vita e la sua morte.'
+            'Ogni partita racconta la nascita, la vita e la morte di una stella, dalla nube di gas che si addensa fino alla sua fine: prima la nebulosa, poi la protostella che si accende, la lunga stagione stabile della sequenza principale e infine la fase di gigante rossa. La massa decide quanto la stella brilla, quanto carburante ha e quanto a lungo vive, e da lei dipende anche come la sua storia si conclude. Ci sono diversi finali, e preferisco lasciarli da scoprire.'
               | translate
           }}
         </p>
-        <p>{{ 'Ci sono diversi finali.' | translate }}</p>
+        <p>
+          {{
+            'Finché la stella vive produce energia da sola, e lo fa anche a gioco chiuso: quando riapri l’app il progresso accumulato viene conteggiato. Intorno alla stella compaiono particelle di energia, all’apparenza tutte uguali, e la loro rarità si scopre soltanto toccandole, con uno scoppio di luce che cresce con il loro valore. Ogni tanto ne compaiono due più preziose, riconoscibili in anticipo, e a intervalli casuali si verificano eventi rari come un brillamento solare o una pioggia di meteore, mai a tuo danno.'
+              | translate
+          }}
+        </p>
+        <p>
+          {{
+            'L’energia raccolta si spende nei potenziamenti, che aumentano la produzione e crescono di livello: a certe soglie evolvono, cambiano nome e raddoppiano il loro rendimento. Quando una fase è giunta al termine si passa alla successiva con una breve sequenza spettacolare, mentre una catena di missioni offre sempre un obiettivo a portata di mano e un piccolo bonus accoglie chi torna a giocare ogni giorno.'
+              | translate
+          }}
+        </p>
+        <p>
+          {{
+            'Quando la stella muore si può rinascere. La polvere stellare guadagnata dà un moltiplicatore permanente alla produzione e qualche livello gratuito di partenza, e si può spendere per aumentare la massa con cui comincia la stella successiva: così ogni nuova vita parte più forte della precedente.'
+              | translate
+          }}
+        </p>
       </div>
     </section>
 
@@ -84,21 +103,18 @@
             <span>Android</span>
           </li>
         </ul>
-        <ul class="c-gioco__facts">
-          <li>
-            {{
-              'Lo sviluppo avviene con Godot, un motore per videogiochi, e con il linguaggio GDScript.'
-                | translate
-            }}
-          </li>
-          <li>
-            {{ 'Lo costruisco sempre con il sostegno dell’intelligenza artificiale.' | translate }}
-          </li>
-          <li>{{ 'Grafica e suoni sono generati dal codice.' | translate }}</li>
-          <li>
-            {{ 'Ci sono test automatici per controllare che le regole funzionino.' | translate }}
-          </li>
-        </ul>
+        <p>
+          {{
+            'Il gioco è sviluppato con Godot, un motore open source per videogiochi, e con il linguaggio GDScript, ed è pensato per Android con lo schermo in verticale. Lo costruisco sempre con il sostegno dell’intelligenza artificiale, un pezzo alla volta e tenendo le regole separate dal codice: fasi, economia, potenziamenti, eventi e missioni sono dati che posso cambiare senza toccare la logica.'
+              | translate
+          }}
+        </p>
+        <p>
+          {{
+            'Grafica e suoni sono generati dal codice, un simulatore mi aiuta a bilanciare l’economia e dei test automatici controllano che le regole continuino a funzionare dopo ogni modifica.'
+              | translate
+          }}
+        </p>
         <div class="c-gioco__legal">
           <p>
             {{
@@ -113,10 +129,8 @@
             }}
           </p>
           <p>
-            {{
-              'The Android robot is reproduced or modified from work created and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License.'
-                | translate
-            }}
+            The Android robot is reproduced or modified from work created and shared by Google and
+            used according to terms described in the Creative Commons 3.0 Attribution License.
           </p>
           <p>{{ 'Android è un marchio di Google LLC.' | translate }}</p>
         </div>
@@ -128,19 +142,13 @@
       <div class="c-gioco__box">
         <p>
           {{
-            'È ancora in sviluppo, non ancora in alfa: le cose potrebbero cambiare anche completamente.'
+            'Il gioco è ancora in sviluppo e non è ancora nemmeno in alfa, quindi tutto ciò che leggi qui potrebbe cambiare anche completamente: regole, grafica e contenuti sono ancora in movimento. Per questo non si può provare e non ci sono app disponibili.'
               | translate
           }}
         </p>
         <p>
-          {{ 'Per ora non si può provare e non ci sono app disponibili.' | translate }}
-        </p>
-        <p>
-          {{ 'Uscirà per ora soltanto su Android, e non c’è ancora una data.' | translate }}
-        </p>
-        <p>
           {{
-            'Una versione per iOS al momento non è prevista, perché non potrei provarla direttamente.'
+            'Quando sarà pronto uscirà per ora soltanto su Android, senza una data precisa. Una versione per iOS al momento non è prevista, perché non potrei provarla direttamente.'
               | translate
           }}
         </p>
