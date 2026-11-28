@@ -88,4 +88,18 @@ describe('IntelligenzaUmanaComponent', () => {
       expect(link.getAttribute('rel')).toContain('noopener');
     }
   });
+
+  it('embeds the official Discord widget with an accessible title and a restrictive sandbox', () => {
+    const fixture = TestBed.createComponent(IntelligenzaUmanaComponent);
+    fixture.detectChanges();
+    const frame = (fixture.nativeElement as HTMLElement).querySelector<HTMLIFrameElement>(
+      'app-discord-widget iframe',
+    );
+    expect(frame?.getAttribute('src')).toBe(
+      'https://discord.com/widget?id=1575893115879956510&theme=dark',
+    );
+    expect(frame?.getAttribute('title')).toContain('Discord');
+    expect(frame?.getAttribute('loading')).toBe('lazy');
+    expect(frame?.getAttribute('sandbox')).not.toContain('allow-top-navigation');
+  });
 });

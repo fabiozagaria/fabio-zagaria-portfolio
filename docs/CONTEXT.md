@@ -1,6 +1,6 @@
 # Contesto tecnico — Portfolio
 
-Aggiornamento 2026-11-27: la pagina «Intelligenza Umana» collega anche al server Discord dell’iniziativa, con simbolo ufficiale non modificato. Invito: https://discord.gg/Zt85ZYEXAA.
+Aggiornamento 2026-11-27: la pagina «Intelligenza Umana» collega anche al server Discord dell’iniziativa, con simbolo ufficiale non modificato. Invito: https://discord.gg/Zt85ZYEXAA. Aggiornamento 2026-11-28: la pagina incorpora anche il widget ufficiale del server (iframe `discord.com/widget`, componente `shared/discord-widget`), con membri online e canali pubblici.
 
 Aggiornamento 2026-11-28: nuova rotta `/gioco`, pagina «Idle Project Blackhole» (nome provvisorio), eccezione richiesta da Fabio e registrata in `AGENTS.md`.
 
