@@ -78,3 +78,9 @@ Struttura precisa dei componenti, nomi delle classi CSS, disegno dei pixel della
 - Come lo costruisce: Godot e GDScript, sempre con il sostegno dell'intelligenza artificiale.
 - Stato: contenuti che potrebbero cambiare anche completamente; non provabile, nessuna app; uscita per ora soltanto su Android, senza data; nessuna versione iOS prevista perché non potrebbe provarla.
 - Immagini di Godot e Android in pixel art (fornite da Fabio, rielaborate dai loghi ufficiali), con attribuzioni CC BY 4.0 (Godot) e CC BY 3.0 più nota sul marchio (Android). Questa revisione sostituisce le sezioni «Il ciclo di una stella» e «Come lo costruisco» descritte sopra.
+
+## Seconda revisione del 28 novembre (richiesta di Fabio dopo la preview)
+- Testi più elaborati: paragrafi discorsivi e ordinati invece di frasi corte e staccate.
+- Nuova sezione «Come funziona»: spiega nel dettaglio il ciclo di vita, l'energia anche a gioco chiuso, le particelle, gli eventi rari, i potenziamenti, le missioni e la rinascita con la polvere stellare, usando solo meccaniche già presenti nel gioco. I finali restano mai nominati né contati («diversi finali»).
+- Spazi: nessun elemento attaccato a un altro; almeno 24 px tra gli elementi di un riquadro, 12 px tra i tag, 48 px tra le sezioni.
+- Grafica e palette confermate da Fabio («va bene come grafica»).
