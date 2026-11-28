@@ -111,7 +111,37 @@
   align-items: center;
   min-height: 44px;
 }
+.c-iu__community {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-lg);
+  margin: 0 0 var(--space-xl);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: var(--radius-card);
+  background: var(--clr-black-soft);
+}
+.c-iu__community-text h2 {
+  margin: 0 0 0.75rem;
+}
+.c-iu__community-text p {
+  max-width: 46ch;
+  margin: 0 0 1.5rem;
+  color: var(--clr-white-subtle);
+}
+.c-iu__discord {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.c-iu__discord img {
+  width: 24px;
+  height: 18px;
+}
 @media (max-width: 760px) {
+  .c-iu__community {
+    grid-template-columns: minmax(0, 1fr);
+  }
   .c-iu__grid,
   .c-iu__list {
     grid-template-columns: minmax(0, 1fr);

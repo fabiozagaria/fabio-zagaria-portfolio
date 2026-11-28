@@ -54,6 +54,7 @@ describe('IntelligenzaUmanaComponent', () => {
       'Come Funziona',
       'Repository e Progetti',
       'A Che Punto È',
+      'Community Discord',
       'Perché Ha una Pagina Sua',
     ]);
     const externalLinks = Array.from(
