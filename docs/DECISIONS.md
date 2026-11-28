@@ -5,3 +5,4 @@
 - 2026-11-25: approvate etichette Profilo professionale, Percorso professionale e Progetti software; URL, design e titoli SEO invariati.
 
 - 2026-11-26: selettore italiano/inglese sulla pagina corrente, con preferenza locale. Marchi dello stack nel profilo, su due righe in direzioni opposte e con opzione statica.
+- 2026-11-28: nuova rotta `/gioco` con la pagina «Idle Project Blackhole» (nome provvisorio), stile 8/16 bit isolato; repository del gioco privato, non citato (eccezione in AGENTS.md).

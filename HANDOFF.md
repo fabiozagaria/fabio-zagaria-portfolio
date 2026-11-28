@@ -1,5 +1,12 @@
 ## CV inglese e pagina Intelligenza Umana — 2026-11-26
 
+## Pagina del gioco Idle Project Blackhole — 2026-11-28
+
+- Nuova rotta `/gioco`, componente `GiocoComponent`, voce di menu «Idle Project Blackhole» con il segno «nome provvisorio», sitemap aggiornata. Stile 8/16 bit isolato nella pagina; italiano e inglese. Il repository del gioco è privato e non è citato. Design: `docs/superpowers/specs/2026-11-28-pagina-gioco-design.md`; piano: `docs/superpowers/plans/2026-11-28-pagina-gioco.md`.
+- Verificato: test Angular, build, formato (vedi report di sessione). Non verificato: telefono reale, screen reader, Lighthouse, preview online (da fare prima del merge).
+- Aperto per Fabio: conferma palette viola e oro, eventuali screenshot reali del gioco, scheda Notion del portfolio non aggiornata, domanda sul CV.
+
+
 - Career Ops 1.40.0 al commit `dee72e0` installato nel cloud e in `portfolio-angular/.career-ops`. Il comando ripetibile è `npm run cv:install` da `portfolio-angular`. Le dipendenze del tool restano nella sua cartella locale.
 - Il CV inglese (`CV-en.pdf`, SHA-256 breve `4a0446d5`) traduce il CV italiano del 21 novembre. Home e Contatti collegano il PDF e la data della lingua attiva. PDF inglese e copia archiviata coincidono nel checkout del repository curriculum.
 - CV inglese verificato su una pagina A4 con testo estraibile e link. Career Ops ha dato 90/100 nel controllo ATS. Il confronto con il CV italiano è stato fatto sui contenuti, perché il controllo dei fatti richiede un `cv.md` non disponibile nel cloud.

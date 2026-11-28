@@ -69,3 +69,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+## Font della pagina del gioco
+
+| Font | Fonte e licenza |
+| --- | --- |
+| Press Start 2P | Pacchetto npm `@fontsource/press-start-2p` (sottoinsieme latino), licenza SIL Open Font License 1.1, servito in locale. |
+| VT323 | Pacchetto npm `@fontsource/vt323` (sottoinsieme latino), licenza SIL Open Font License 1.1, servito in locale. |
+
+La stella e le icone di fase della pagina `/gioco` sono disegnate dal codice (`features/gioco/pixel-art.ts`): non ci sono immagini esterne.

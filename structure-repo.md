@@ -64,6 +64,10 @@ La foundation è [pubblica e MIT](https://github.com/Intelligenza-Umana/intellig
 
 La categoria descrive il ruolo sperimentale e il supporto dell’AI nello sviluppo o nello studio. Eventuali funzionalità AI interne alle applicazioni vanno dichiarate soltanto se verificate nel codice.
 
+## Idle Project Blackhole (pagina dedicata, repository privato)
+
+Il gioco idle per Android in Godot è presentato dalla pagina `/gioco` (`portfolio-angular/src/app/features/gioco/`). Il suo repository è privato e non viene collegato né mostrato nelle schede dei Progetti. Il nome è provvisorio. Il gioco è in sviluppo, non ancora in alfa.
+
 ## Esercizi (fuori dal portfolio)
 
 | Raccolta o esercizio          | Repository                                                                                                                  |
