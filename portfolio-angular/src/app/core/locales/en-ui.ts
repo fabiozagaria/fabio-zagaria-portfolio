@@ -160,6 +160,8 @@ export const enUi: Readonly<Record<string, string>> = {
   'Registro ufficiale dei progetti': 'Official project registry',
   'Apri il sito di Intelligenza Umana': 'Open the Intelligenza Umana site',
   'Entra nel server Discord': 'Join the Discord server',
+  'Server Discord di Intelligenza Umana: membri online e canali':
+    'Intelligenza Umana Discord server: online members and channels',
   'Perché Ha una Pagina Sua': 'Why It Has Its Own Page',
   "Il portfolio presenta il mio percorso professionale. Intelligenza Umana ha una missione e un'identità proprie, aperte nel tempo alla collaborazione con altre persone.":
     'The portfolio presents my professional background. Intelligenza Umana has its own mission and identity, with room for other people to collaborate over time.',

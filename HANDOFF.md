@@ -85,3 +85,5 @@ La pagina Intelligenza Umana e la descrizione SEO sono state allineate alla foun
 2026-11-26: Nome mostrato «IU Model Router» cambiato in «Model Router» (pagina Intelligenza Umana, test e documenti). Repository e URL `iu-model-router` invariati, come richiesto da Fabio. CV non modificato.
 
 2026-11-27: Added the official Discord server invitation to the Intelligenza Umana page, using Discord's unmodified symbol. Sources and the maintenance exception are recorded in `docs/ASSET-SOURCES.md` and `AGENTS.md`; README, CONTEXT, structure, PRODUCT, DESIGN and the Notion project page were aligned. No CV changes. Tests and build were not run in this session.
+
+2026-11-28: Aggiunto alla pagina Intelligenza Umana il widget Discord ufficiale (iframe `discord.com/widget`, componente `shared/discord-widget`, test aggiunto). Build e `ng test` (146 test) riusciti; verifica visiva nel browser non eseguita. README, CONTEXT, PRODUCT, DESIGN e AGENTS aggiornati; `structure-repo.md` aggiornato; scheda Notion e CV non toccati (il CV non cambia: ritocco minore). Nessun commit o push.

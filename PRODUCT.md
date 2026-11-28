@@ -15,7 +15,7 @@ Presentare profilo, competenze dimostrabili, progetti e documenti professionali;
 ## Capabilities and Constraints
 Angular 21 e TypeScript 5.9 esistenti. Preservare route, tema chiaro/scuro, documenti, link e dati tipizzati. La sezione Progetti mostra solo i repository dichiarati nell’allowlist ordinata, aggiornati con GET GitHub per singolo repository; plugin e skill sono presentati nella pagina Intelligenza Umana, con dati verificati sulla foundation e sull’organizzazione GitHub. Esercizi e repository non dichiarati sono raggiungibili dal link agli altri repository. Le schede curate restano in posizione fissa e conservano i propri media. La pagina offre un indice delle sezioni e un collegamento fisso per tornarvi. Nessuna nuova libreria applicativa oltre al font Nunito e, solo per la pagina del gioco, ai font Press Start 2P e VT323 (`@fontsource`, in locale), nessuna esperienza o competenza inventata. Commit, push e deploy richiedono approvazione esplicita.
 
-La pagina «Intelligenza Umana» collega alla foundation, al sito e al server Discord dell’iniziativa.
+La pagina «Intelligenza Umana» collega alla foundation, al sito e al server Discord dell’iniziativa, e ne mostra il widget ufficiale incorporato (membri online e canali).
 
 La pagina «Idle Project Blackhole» (`/gioco`, nome provvisorio) racconta il gioco idle in sviluppo, senza link al repository privato e senza promettere date o download.
 
