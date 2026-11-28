@@ -88,3 +88,6 @@ Struttura precisa dei componenti, nomi delle classi CSS, disegno dei pixel della
 ## Correzione del 28 novembre (dopo la prova su telefono)
 - Voce di menu con il solo nome del gioco: il segno «nome provvisorio» è stato tolto dal menu e resta nella pagina e nel titolo della scheda. Questa correzione sostituisce la scelta iniziale di mostrarlo nel menu.
 - Tag della pagina con testo scuro su rosa e giallo, perché il testo chiaro non si leggeva.
+
+## Sfondo (richiesta di Fabio dopo la prova su telefono)
+- Sfondo dedicato all'universo in pixel art con qualche galassia, discreto. Realizzato come tessera 320×640 generata da script, ripetuta in pixel interi e attenuata al 70%; strato decorativo statico.

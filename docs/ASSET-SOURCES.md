@@ -79,6 +79,8 @@ SOFTWARE.
 
 La stella della pagina `/gioco` è disegnata dal codice (`features/gioco/pixel-art.ts`).
 
+Lo sfondo `img/gioco-sfondo.webp` (tessera 320×640 senza cuciture, sfondo trasparente) è generato dallo script `portfolio-angular/scripts/generate-gioco-background.py` (Pillow e NumPy, seed 2811): nebulose a retino, stelle e sei galassie in pixel art, tutto in toni scuri. Non usa immagini esterne.
+
 | Asset | Fonte e licenza |
 | --- | --- |
 | `img/godot-pixel.webp` | Disegno in pixel art fornito da Fabio, rielaborato dal logo di Godot Engine ([press kit ufficiale](https://godotengine.org/press/), licenza Creative Commons Attribution 4.0 International). Sfondo bianco reso trasparente e ridimensionato a 384×384. L'autore del logo non è indicato nel press kit consultato. |

@@ -6,6 +6,7 @@
 - Verificato: test Angular, build, formato (vedi report di sessione). Non verificato: telefono reale, screen reader, Lighthouse, preview online (da fare prima del merge).
 - Revisione del 28 novembre su richiesta di Fabio: racconto più basico (niente fasi né elenco dei finali, solo «diversi finali»), costruzione con il sostegno dell’IA, uscita per ora soltanto su Android senza data, nessuna versione iOS, loghi di Godot e Android in pixel art forniti da lui, con le attribuzioni delle licenze.
 - Seconda revisione del 28 novembre su richiesta di Fabio: testi in paragrafi discorsivi e ordinati, nuova sezione «Come funziona» con le meccaniche del gioco già presenti nel codice (nessun finale nominato o contato, nessuna funzione segreta o pianificata), spazi più ampi tra tag, titolo e riquadri.
+- Sfondo universo in pixel art (galassie, nebulose, stelle) aggiunto su richiesta di Fabio, generato da `portfolio-angular/scripts/generate-gioco-background.py`; contrasto del testo misurato nel browser (≥5,3:1 nel 99,5% dell'area dietro il testo, qualche stella da un pixel può coprire una lettera). Merge di Fabio dopo aver visto la preview.
 - Aperto per Fabio: conferma palette viola e oro, eventuali screenshot reali del gioco, scheda Notion del portfolio non aggiornata, domanda sul CV.
 
 
