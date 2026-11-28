@@ -4,6 +4,9 @@ import { GiocoComponent } from './gioco.component';
 
 // Il repository del gioco è privato: non deve comparire in nessuna forma.
 const FORBIDDEN = /idle-project-blackhole|github\.com\/fabiozagaria/i;
+// Dettagli volutamente non raccontati: elenco dei finali, numero dei finali, fasi.
+const TOO_DETAILED =
+  /nana bianca|supernova|buco nero|tre finali|quattro finali|nebulosa|protostella|sequenza principale|gigante rossa|267/i;
 
 describe('GiocoComponent', () => {
   beforeEach(async () => {
@@ -27,16 +30,61 @@ describe('GiocoComponent', () => {
     const titles = Array.from(render().querySelectorAll('h2'), (h) => h.textContent?.trim());
     expect(titles).toEqual([
       'Perché l’ho fatto',
-      'Il ciclo di una stella',
+      'Di cosa parla',
       'Come lo costruisco',
       'Come sta andando',
     ]);
   });
 
-  it('says honestly that the game is not playable and not yet in alpha', () => {
+  it('explains the subject in basic terms and mentions several endings without counting them', () => {
     const text = render().textContent ?? '';
+    expect(text).toContain('nascita, la sua vita e la sua morte');
+    expect(text).toContain('diversi finali');
+    expect(text).not.toMatch(TOO_DETAILED);
+  });
+
+  it('says the game may change completely and is not playable', () => {
+    const text = render().textContent ?? '';
+    expect(text).toContain('potrebbero cambiare anche completamente');
     expect(text).toContain('non ancora in alfa');
-    expect(text).toContain('non si può ancora provare');
+    expect(text).toContain('non ci sono app disponibili');
+  });
+
+  it('announces Android only, with no iOS version planned and no release date', () => {
+    const text = render().textContent ?? '';
+    expect(text).toContain('soltanto su Android');
+    expect(text).toContain('iOS');
+    expect(text).toContain('non è prevista');
+    expect(text).toContain('non c’è ancora una data');
+  });
+
+  it('says it is built with the support of artificial intelligence', () => {
+    expect(render().textContent).toContain('sostegno dell’intelligenza artificiale');
+  });
+
+  it('shows the Godot and Android logos redrawn in pixel art, with alt text and dimensions', () => {
+    const element = render();
+    const godot = element.querySelector<HTMLImageElement>('img[src="assets/img/godot-pixel.webp"]');
+    const android = element.querySelector<HTMLImageElement>(
+      'img[src="assets/img/android-pixel.webp"]',
+    );
+    for (const logo of [godot, android]) {
+      expect(logo).toBeTruthy();
+      expect(logo?.getAttribute('alt')).toBeTruthy();
+      expect(logo?.getAttribute('width')).toBeTruthy();
+      expect(logo?.getAttribute('height')).toBeTruthy();
+    }
+  });
+
+  it('carries the attribution required by the Android and Godot logo licenses', () => {
+    const text = render().textContent ?? '';
+    expect(text).toContain(
+      'The Android robot is reproduced or modified from work created and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License.',
+    );
+    expect(text).toContain('Android è un marchio di Google LLC');
+    expect(text).toContain('Creative Commons Attribution 4.0 International');
+    expect(text).toContain('rielaborati in pixel art');
+    expect(text).toContain('Android™');
   });
 
   it('has no links: the game repository is private', () => {
@@ -49,32 +97,12 @@ describe('GiocoComponent', () => {
     expect(element.innerHTML).not.toMatch(FORBIDDEN);
   });
 
-  it('dates the automated checks figure', () => {
-    const paragraph = Array.from(render().querySelectorAll('p, li')).find((node) =>
-      node.textContent?.includes('267 controlli automatici'),
-    );
-    expect(paragraph?.textContent).toContain('23 novembre 2026');
-  });
-
-  it('lists the three endings by mass', () => {
-    const text = render().textContent ?? '';
-    for (const ending of ['nana bianca', 'supernova', 'buco nero']) {
-      expect(text.toLowerCase()).toContain(ending);
-    }
-  });
-
   it('shows the star as an illustration, not as a game screenshot', () => {
     const element = render();
     const star = element.querySelector('canvas.c-gioco__star');
     expect(star?.getAttribute('role')).toBe('img');
     expect(star?.getAttribute('aria-label')).toBeTruthy();
     expect(element.textContent).toContain('illustrazione, non una schermata del gioco');
-  });
-
-  it('draws one decorative icon per phase', () => {
-    const icons = render().querySelectorAll('canvas.c-gioco__phase-icon');
-    expect(icons.length).toBe(4);
-    for (const icon of Array.from(icons)) expect(icon.getAttribute('aria-hidden')).toBe('true');
   });
 
   it('does not throw when the canvas has no 2d context', () => {
@@ -104,29 +132,28 @@ describe('GiocoComponent', () => {
       TestBed.inject(LanguageService).select('en');
       const english = blocks(render());
       expect(english.length).toBe(italian.length);
-      const sameInBothLanguages = ['Idle Project Blackhole', 'Supernova'];
+      const sameStart = ['Idle Project Blackhole', 'The Android robot is reproduced'];
+      const sameExact = ['Godot', 'Android'];
       english.forEach((text, index) => {
-        if (sameInBothLanguages.some((name) => text.startsWith(name))) return;
+        if (sameStart.some((name) => text.startsWith(name)) || sameExact.includes(text)) return;
         expect(text, `block ${index}: ${italian[index]}`).not.toBe(italian[index]);
       });
     });
 
-    it('uses the English section titles and declares the name as provisional', () => {
+    it('uses the English section titles and keeps the key statements', () => {
       TestBed.inject(LanguageService).select('en');
       const element = render();
+      const text = element.textContent ?? '';
       expect(Array.from(element.querySelectorAll('h2'), (h) => h.textContent?.trim())).toEqual([
         'Why I made it',
-        'The life cycle of a star',
+        'What it is about',
         'How I build it',
         'How it is going',
       ]);
-      expect(element.textContent).toContain('Provisional name');
-      expect(element.textContent).toContain('not yet in alpha');
-    });
-
-    it('never mentions the private repository', () => {
-      TestBed.inject(LanguageService).select('en');
-      const element = render();
+      expect(text).toContain('Provisional name');
+      expect(text).toContain('could change completely');
+      expect(text).toContain('only on Android');
+      expect(text).not.toMatch(TOO_DETAILED);
       expect(element.innerHTML).not.toMatch(FORBIDDEN);
       expect(element.querySelectorAll('a[href]').length).toBe(0);
     });

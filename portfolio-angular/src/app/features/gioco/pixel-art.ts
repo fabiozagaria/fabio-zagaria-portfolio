@@ -5,10 +5,7 @@ export interface StarColors {
   readonly accent2: string;
 }
 
-export type PhaseKind = 'nebula' | 'proto' | 'main' | 'giant';
-
 const STAR_SIZE = 40;
-const ICON_SIZE = 8;
 
 /** Stella 40x40 a pixel: nucleo con dithering a scacchiera, alone e quattro raggi. */
 export function drawStar(ctx: CanvasRenderingContext2D, colors: StarColors): void {
@@ -47,39 +44,5 @@ export function drawStar(ctx: CanvasRenderingContext2D, colors: StarColors): voi
     [STAR_SIZE - 3, mid],
   ]) {
     ctx.fillRect(x, y, 1, 1);
-  }
-}
-
-const ICONS: Record<PhaseKind, { radius: number; dither: boolean }> = {
-  nebula: { radius: 3.9, dither: true },
-  proto: { radius: 2.4, dither: false },
-  main: { radius: 3.1, dither: false },
-  giant: { radius: 3.9, dither: false },
-};
-
-/** Icona di fase 8x8: un disco di pixel, la nebulosa è a scacchiera. */
-export function drawPhaseIcon(
-  ctx: CanvasRenderingContext2D,
-  kind: PhaseKind,
-  colors: StarColors,
-): void {
-  const { radius, dither } = ICONS[kind];
-  const [first, second] =
-    kind === 'nebula'
-      ? [colors.accent2, colors.accent]
-      : kind === 'proto'
-        ? [colors.accent, colors.accent2]
-        : kind === 'main'
-          ? [colors.fg, colors.accent]
-          : [colors.accent2, colors.accent2];
-  ctx.clearRect(0, 0, ICON_SIZE, ICON_SIZE);
-  ctx.globalAlpha = 1;
-  for (let y = 0; y < ICON_SIZE; y++) {
-    for (let x = 0; x < ICON_SIZE; x++) {
-      if (Math.hypot(x - 3.5, y - 3.5) < radius) {
-        ctx.fillStyle = dither && (x + y) % 2 ? second : first;
-        ctx.fillRect(x, y, 1, 1);
-      }
-    }
   }
 }

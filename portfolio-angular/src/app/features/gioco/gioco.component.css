@@ -140,7 +140,6 @@
 }
 
 .c-gioco__box,
-.c-gioco__phases li,
 .c-gioco__facts li {
   padding: 1rem 1.125rem;
   background: var(--gioco-panel);
@@ -152,60 +151,65 @@
   margin-top: 0.8em;
 }
 
-.c-gioco__phases,
 .c-gioco__facts,
-.c-gioco__endings {
-  display: grid;
-  gap: 0.875rem;
+.c-gioco__logos {
   margin: 0;
   padding: 0;
   list-style: none;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
 }
 
 .c-gioco__facts {
+  display: grid;
+  gap: 0.875rem;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
 }
 
-.c-gioco__phases strong,
-.c-gioco__endings strong {
-  display: block;
-  margin-bottom: 0.6rem;
+.c-gioco__box .c-gioco__facts {
+  margin-top: 1.25rem;
+}
+
+.c-gioco__box .c-gioco__facts li {
+  box-shadow: none;
+}
+
+.c-gioco__logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.c-gioco__logos li {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: center;
   font-family: var(--gioco-px);
   font-size: 0.7rem;
-  font-weight: 400;
   line-height: 1.6;
 }
 
-.c-gioco__phases strong {
-  color: var(--gioco-accent);
-}
-
-.c-gioco__phase-icon {
+.c-gioco__logos img {
   display: block;
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-bottom: 0.6rem;
+  width: clamp(6rem, 22vw, 9rem);
+  height: auto;
   image-rendering: pixelated;
 }
 
-.c-gioco__endings {
-  margin-top: 0.875rem;
-}
-
-.c-gioco__endings li {
-  padding: 0.75rem;
-  border: 4px dashed var(--gioco-line);
-}
-
-.c-gioco__endings strong {
-  color: var(--gioco-accent2);
-}
-
-.c-gioco__note {
+.c-gioco__legal {
   margin-top: 1.25rem;
+  padding-top: 0.875rem;
+  border-top: 4px dashed var(--gioco-line);
+}
+
+.c-gioco__legal p {
   color: var(--gioco-muted);
-  font-size: 1.2rem;
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.c-gioco__legal p + p {
+  margin-top: 0.4em;
 }
 
 @media (prefers-reduced-motion: reduce) {

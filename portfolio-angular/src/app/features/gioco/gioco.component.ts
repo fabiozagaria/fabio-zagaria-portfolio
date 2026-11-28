@@ -6,7 +6,7 @@ import {
   inject,
 } from '@angular/core';
 import { TranslatePipe } from '../../core/translate.pipe';
-import { drawPhaseIcon, drawStar, PhaseKind, StarColors } from './pixel-art';
+import { drawStar, StarColors } from './pixel-art';
 
 /** Ripiego se le variabili CSS non sono leggibili (stessi valori della palette in CSS). */
 const FALLBACK_COLORS: StarColors = { fg: '#f2eaff', accent: '#ffd23f', accent2: '#ff6b9d' };
@@ -40,12 +40,5 @@ export class GiocoComponent {
     const star = root.querySelector<HTMLCanvasElement>('canvas.c-gioco__star');
     const starContext = star?.getContext('2d');
     if (starContext) drawStar(starContext, colors);
-
-    for (const icon of Array.from(
-      root.querySelectorAll<HTMLCanvasElement>('canvas.c-gioco__phase-icon'),
-    )) {
-      const context = icon.getContext('2d');
-      if (context) drawPhaseIcon(context, icon.dataset['phase'] as PhaseKind, colors);
-    }
   }
 }

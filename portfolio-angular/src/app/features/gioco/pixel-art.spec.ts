@@ -1,4 +1,4 @@
-import { drawPhaseIcon, drawStar, PhaseKind, StarColors } from './pixel-art';
+import { drawStar, StarColors } from './pixel-art';
 
 const COLORS: StarColors = { fg: '#f2eaff', accent: '#ffd23f', accent2: '#ff6b9d' };
 
@@ -32,27 +32,5 @@ describe('pixel art', () => {
       expect(r.x + r.w).toBeLessThanOrEqual(40);
       expect(r.y + r.h).toBeLessThanOrEqual(40);
     }
-  });
-
-  it.each<PhaseKind>(['nebula', 'proto', 'main', 'giant'])(
-    'draws the %s icon inside the 8x8 canvas',
-    (kind) => {
-      const { ctx, rects } = recorder();
-      drawPhaseIcon(ctx, kind, COLORS);
-      expect(rects.length).toBeGreaterThanOrEqual(1);
-      for (const r of rects) {
-        expect(r.x + r.w).toBeLessThanOrEqual(8);
-        expect(r.y + r.h).toBeLessThanOrEqual(8);
-      }
-    },
-  );
-
-  it('draws different shapes for different phases', () => {
-    const shapes = (['nebula', 'proto', 'main', 'giant'] as PhaseKind[]).map((kind) => {
-      const { ctx, rects } = recorder();
-      drawPhaseIcon(ctx, kind, COLORS);
-      return rects.length;
-    });
-    expect(new Set(shapes).size).toBeGreaterThan(1);
   });
 });
