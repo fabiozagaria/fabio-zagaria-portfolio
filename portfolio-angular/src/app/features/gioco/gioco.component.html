@@ -1,0 +1,188 @@
+<section id="gioco" class="c-gioco">
+  <div class="c-gioco__container">
+    <header class="c-gioco__hero">
+      <div class="c-gioco__intro">
+        <p class="c-gioco__tag">{{ 'In costruzione' | translate }}</p>
+        <h1 class="c-gioco__title">Idle Project Blackhole</h1>
+        <p class="c-gioco__provisional">{{ 'Nome provvisorio' | translate }}</p>
+        <p class="c-gioco__lead">
+          {{
+            'Un gioco idle per Android in cui fai vivere una stella, dalla nebulosa fino alla sua fine. Poi si ricomincia.'
+              | translate
+          }}
+        </p>
+      </div>
+      <figure class="c-gioco__figure">
+        <canvas
+          class="c-gioco__star"
+          width="40"
+          height="40"
+          role="img"
+          [attr.aria-label]="'Una stella in pixel art' | translate"
+        ></canvas>
+        <figcaption>
+          {{ 'Questa è un’illustrazione, non una schermata del gioco.' | translate }}
+        </figcaption>
+      </figure>
+    </header>
+
+    <section class="c-gioco__block" aria-labelledby="gioco-perche">
+      <h2 id="gioco-perche">{{ 'Perché l’ho fatto' | translate }}</h2>
+      <div class="c-gioco__box">
+        <p>
+          {{
+            'Mi appassiona l’astronomia da quando sono piccolo. Mi piace anche la semplicità dei giochi idle: sessioni brevi, poco stress.'
+              | translate
+          }}
+        </p>
+        <p>
+          {{
+            'Volevo un gioco tutto mio, semplice, da costruire un pezzo alla volta. È quello che sto facendo.'
+              | translate
+          }}
+        </p>
+      </div>
+    </section>
+
+    <section class="c-gioco__block" aria-labelledby="gioco-ciclo">
+      <h2 id="gioco-ciclo">{{ 'Il ciclo di una stella' | translate }}</h2>
+      <ol class="c-gioco__phases">
+        <li>
+          <canvas
+            class="c-gioco__phase-icon"
+            width="8"
+            height="8"
+            data-phase="nebula"
+            aria-hidden="true"
+          ></canvas>
+          <strong>{{ 'Nebulosa' | translate }}</strong>
+          {{ 'Una nube di gas e polveri collassa sotto la propria gravità.' | translate }}
+        </li>
+        <li>
+          <canvas
+            class="c-gioco__phase-icon"
+            width="8"
+            height="8"
+            data-phase="proto"
+            aria-hidden="true"
+          ></canvas>
+          <strong>{{ 'Protostella' | translate }}</strong>
+          {{ 'Il nucleo si scalda per contrazione, la fusione non è ancora iniziata.' | translate }}
+        </li>
+        <li>
+          <canvas
+            class="c-gioco__phase-icon"
+            width="8"
+            height="8"
+            data-phase="main"
+            aria-hidden="true"
+          ></canvas>
+          <strong>{{ 'Sequenza principale' | translate }}</strong>
+          {{
+            'Fusione stabile dell’idrogeno in elio: la fase più lunga della vita di una stella.'
+              | translate
+          }}
+        </li>
+        <li>
+          <canvas
+            class="c-gioco__phase-icon"
+            width="8"
+            height="8"
+            data-phase="giant"
+            aria-hidden="true"
+          ></canvas>
+          <strong>{{ 'Gigante rossa' | translate }}</strong>
+          {{
+            'L’idrogeno nel nucleo è finito: fusione dell’elio, la stella si gonfia.' | translate
+          }}
+        </li>
+      </ol>
+      <ul class="c-gioco__endings">
+        <li>
+          <strong>{{ 'Nana bianca' | translate }}</strong>
+          {{ 'Il finale per le stelle meno massicce.' | translate }}
+        </li>
+        <li>
+          <strong>{{ 'Supernova' | translate }}</strong>
+          {{ 'Il finale per le stelle di massa intermedia.' | translate }}
+        </li>
+        <li>
+          <strong>{{ 'Buco nero' | translate }}</strong>
+          {{ 'Il finale raro, per le stelle più massicce.' | translate }}
+        </li>
+      </ul>
+      <p class="c-gioco__note">
+        {{
+          'Il finale dipende dalla massa. Poi la polvere stellare ti fa ripartire con un moltiplicatore permanente.'
+            | translate
+        }}
+      </p>
+    </section>
+
+    <section class="c-gioco__block" aria-labelledby="gioco-costruisco">
+      <h2 id="gioco-costruisco">{{ 'Come lo costruisco' | translate }}</h2>
+      <ul class="c-gioco__facts">
+        <li>
+          {{
+            'Godot 4.7 con GDScript e renderer Compatibility, pensato per Android con schermo verticale.'
+              | translate
+          }}
+        </li>
+        <li>
+          {{
+            'La stella è in 3D, con shader per corpo, alone e cielo; si ingrandisce col pizzico e si ruota col dito.'
+              | translate
+          }}
+        </li>
+        <li>
+          {{
+            'Fasi, finali, economia, potenziamenti, eventi e missioni sono dati JSON, non codice: le regole si cambiano senza toccare la logica.'
+              | translate
+          }}
+        </li>
+        <li>
+          {{
+            'Un simulatore dell’economia stima quanto dura una run in base alla massa della stella.'
+              | translate
+          }}
+        </li>
+        <li>
+          {{
+            'Test automatici in modalità headless: 267 controlli automatici, al 23 novembre 2026.'
+              | translate
+          }}
+        </li>
+        <li>
+          {{
+            'Salvataggio firmato, con migrazioni di versione, copia di sicurezza e progresso offline.'
+              | translate
+          }}
+        </li>
+        <li>
+          {{
+            'Audio e grafica generati dal codice, senza immagini o suoni esterni; italiano e inglese; opzioni di accessibilità come effetti ridotti e modalità risparmio per gli schermi OLED.'
+              | translate
+          }}
+        </li>
+      </ul>
+    </section>
+
+    <section class="c-gioco__block" aria-labelledby="gioco-stato">
+      <h2 id="gioco-stato">{{ 'Come sta andando' | translate }}</h2>
+      <div class="c-gioco__box">
+        <p>
+          {{
+            'È in sviluppo, non ancora in alfa: per ora non si può ancora provare e non ha una data di uscita.'
+              | translate
+          }}
+        </p>
+        <p>
+          {{
+            'Resta da verificare su telefoni reali, in particolare le prestazioni sui modelli economici.'
+              | translate
+          }}
+        </p>
+      </div>
+    </section>
+  </div>
+</section>

@@ -1,0 +1,215 @@
+@import '@fontsource/press-start-2p/latin-400.css';
+@import '@fontsource/vt323/latin-400.css';
+
+/*
+ * Pagina del gioco: stile 8/16 bit, volutamente fuori dal tema Calm del resto del sito.
+ * Palette e font sono definiti solo qui e non seguono il tema chiaro/scuro del sistema.
+ */
+:host {
+  display: block;
+}
+
+.c-gioco {
+  --gioco-bg: #120a22;
+  --gioco-bg2: #1d1138;
+  --gioco-panel: #241548;
+  --gioco-fg: #f2eaff;
+  --gioco-muted: #b9a8e0;
+  --gioco-accent: #ffd23f;
+  --gioco-accent2: #ff6b9d;
+  --gioco-line: #5a3fa0;
+  --gioco-px: 'Press Start 2P', ui-monospace, 'Courier New', monospace;
+  --gioco-body: 'VT323', ui-monospace, 'Courier New', monospace;
+
+  position: relative;
+  isolation: isolate;
+  padding: calc(var(--header-height) + 2rem) 1rem 4rem;
+  color: var(--gioco-fg);
+  font-family: var(--gioco-body);
+  font-size: 1.45rem;
+  line-height: 1.35;
+  background:
+    radial-gradient(1.5px 1.5px at 12% 18%, var(--gioco-fg) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 78% 12%, var(--gioco-fg) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 42% 64%, var(--gioco-fg) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 90% 80%, var(--gioco-fg) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 24% 88%, var(--gioco-fg) 50%, transparent 51%),
+    linear-gradient(180deg, var(--gioco-bg2), var(--gioco-bg) 40%);
+  background-repeat: no-repeat;
+  overflow-wrap: anywhere;
+}
+
+.c-gioco__container {
+  max-width: 62rem;
+  margin-inline: auto;
+}
+
+.c-gioco h1,
+.c-gioco h2 {
+  margin: 0;
+  font-family: var(--gioco-px);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.6;
+  text-transform: none;
+}
+
+.c-gioco h1 {
+  color: var(--gioco-accent);
+  font-size: clamp(1.1rem, 4.6vw, 2rem);
+  text-shadow: 4px 4px 0 var(--gioco-line);
+}
+
+.c-gioco h2 {
+  margin-bottom: 1rem;
+  color: var(--gioco-accent);
+  font-size: clamp(0.8rem, 2.6vw, 1.1rem);
+}
+
+.c-gioco p {
+  margin: 0;
+  color: var(--gioco-fg);
+  font-family: var(--gioco-body);
+}
+
+.c-gioco__hero {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  padding-block: 1.5rem 2.5rem;
+  text-align: center;
+}
+
+@media (min-width: 48em) {
+  .c-gioco__hero {
+    grid-template-columns: 1.3fr 1fr;
+    text-align: left;
+  }
+}
+
+.c-gioco__tag,
+.c-gioco__provisional {
+  display: inline-block;
+  margin: 0 0.5rem 0.75rem 0;
+  padding: 0.4rem 0.6rem;
+  color: var(--gioco-bg);
+  font-family: var(--gioco-px);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  background: var(--gioco-accent2);
+}
+
+.c-gioco__provisional {
+  background: var(--gioco-accent);
+}
+
+.c-gioco__lead {
+  margin-top: 1rem;
+  font-size: 1.7rem;
+}
+
+.c-gioco__figure {
+  margin: 0;
+  justify-self: center;
+  text-align: center;
+}
+
+.c-gioco__star {
+  display: block;
+  width: min(100%, 20rem);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  image-rendering: pixelated;
+  animation: gioco-bob 4s steps(4) infinite;
+}
+
+.c-gioco__figure figcaption {
+  margin-top: 0.75rem;
+  color: var(--gioco-muted);
+  font-size: 1.15rem;
+}
+
+@keyframes gioco-bob {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.c-gioco__block {
+  margin-top: 2.75rem;
+}
+
+.c-gioco__box,
+.c-gioco__phases li,
+.c-gioco__facts li {
+  padding: 1rem 1.125rem;
+  background: var(--gioco-panel);
+  border: 4px solid var(--gioco-line);
+  box-shadow: 8px 8px 0 rgb(0 0 0 / 40%);
+}
+
+.c-gioco__box p + p {
+  margin-top: 0.8em;
+}
+
+.c-gioco__phases,
+.c-gioco__facts,
+.c-gioco__endings {
+  display: grid;
+  gap: 0.875rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+}
+
+.c-gioco__facts {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+
+.c-gioco__phases strong,
+.c-gioco__endings strong {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-family: var(--gioco-px);
+  font-size: 0.7rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.c-gioco__phases strong {
+  color: var(--gioco-accent);
+}
+
+.c-gioco__phase-icon {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: 0.6rem;
+  image-rendering: pixelated;
+}
+
+.c-gioco__endings {
+  margin-top: 0.875rem;
+}
+
+.c-gioco__endings li {
+  padding: 0.75rem;
+  border: 4px dashed var(--gioco-line);
+}
+
+.c-gioco__endings strong {
+  color: var(--gioco-accent2);
+}
+
+.c-gioco__note {
+  margin-top: 1.25rem;
+  color: var(--gioco-muted);
+  font-size: 1.2rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .c-gioco__star {
+    animation: none;
+  }
+}
