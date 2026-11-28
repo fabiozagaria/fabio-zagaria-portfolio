@@ -6,6 +6,7 @@ I percorsi sono relativi a `portfolio-angular/src/assets`. I marchi identificano
 | --- | --- |
 | `flags/it.svg` | [Sorgente](https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/it.svg) |
 | `flags/us.svg` | [Sorgente](https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/us.svg) |
+| `img/intelligenza-umana-wordmark.svg` | [`assets/brand/wordmark-light.svg`](https://github.com/Intelligenza-Umana/intelligenza-umana/blob/main/assets/brand/wordmark-light.svg) della repo madre Intelligenza Umana (identità visiva approvata, Logo 02 ritirato); copia senza modifiche, usata nella pagina Intelligenza Umana. Il marchio resta riservato all’iniziativa. |
 | `img/discord-symbol.svg` | [Simbolo ufficiale Discord, variante blurple](https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e3d80db9971f10a9757c99_Symbol.svg); usato senza modifiche accanto al link al server nella pagina Intelligenza Umana. Discord Inc. resta titolare del marchio. |
 | `stack/angular.svg` | [Sorgente](https://raw.githubusercontent.com/devicons/devicon/master/icons/angular/angular-original.svg) |
 | `stack/claude-code.svg` | [Sorgente](https://raw.githubusercontent.com/lobehub/lobe-icons/master/packages/static-svg/icons/claudecode-color.svg) |
