@@ -122,8 +122,8 @@ export const enUi: Readonly<Record<string, string>> = {
     "I'm looking for a {b}junior backend or full-stack role{/b}. My CV covers projects, training, and work experience.",
   Contattami: 'Contact me',
   'Leggi il CV (PDF)': 'View CV (PDF)',
-  'Logo di Intelligenza Umana: il monogramma IU accanto al nome su due righe':
-    'Intelligenza Umana logo with the IU monogram alongside the name on two lines',
+  'Logo di Intelligenza Umana: l’emblema della mano aperta e della figura umana accanto al nome':
+    'Intelligenza Umana logo: the open hand and human figure emblem alongside the name',
   'Foundation pubblica · Organizzazione GitHub attiva':
     'Public foundation · Active GitHub organization',
   'Che Cos’è': 'What It Is',

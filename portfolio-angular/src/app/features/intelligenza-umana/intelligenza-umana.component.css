@@ -2,8 +2,8 @@
 .c-iu__logo {
   margin: 0 0 var(--space-lg);
   max-width: 30rem;
-  padding: 1.25rem 1.75rem;
-  background: #fbf6ed;
+  overflow: hidden;
+  background: #fff;
   border-radius: var(--radius-card);
 }
 .c-iu__logo img {
