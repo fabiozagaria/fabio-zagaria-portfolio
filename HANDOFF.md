@@ -2,7 +2,7 @@
 
 ## Pagina del gioco Idle Project Blackhole — 2026-11-28
 
-- Nuova rotta `/gioco`, componente `GiocoComponent`, voce di menu «Idle Project Blackhole» con il segno «nome provvisorio», sitemap aggiornata. Stile 8/16 bit isolato nella pagina; italiano e inglese. Il repository del gioco è privato e non è citato. Design: `docs/superpowers/specs/2026-11-28-pagina-gioco-design.md`; piano: `docs/superpowers/plans/2026-11-28-pagina-gioco.md`.
+- Nuova rotta `/gioco`, componente `GiocoComponent`, voce di menu «Idle Project Blackhole» (il «nome provvisorio» è dichiarato nella pagina e nel titolo della scheda, non nel menu), sitemap aggiornata. Stile 8/16 bit isolato nella pagina; italiano e inglese. Il repository del gioco è privato e non è citato. Design: `docs/superpowers/specs/2026-11-28-pagina-gioco-design.md`; piano: `docs/superpowers/plans/2026-11-28-pagina-gioco.md`.
 - Verificato: test Angular, build, formato (vedi report di sessione). Non verificato: telefono reale, screen reader, Lighthouse, preview online (da fare prima del merge).
 - Revisione del 28 novembre su richiesta di Fabio: racconto più basico (niente fasi né elenco dei finali, solo «diversi finali»), costruzione con il sostegno dell’IA, uscita per ora soltanto su Android senza data, nessuna versione iOS, loghi di Godot e Android in pixel art forniti da lui, con le attribuzioni delle licenze.
 - Seconda revisione del 28 novembre su richiesta di Fabio: testi in paragrafi discorsivi e ordinati, nuova sezione «Come funziona» con le meccaniche del gioco già presenti nel codice (nessun finale nominato o contato, nessuna funzione segreta o pianificata), spazi più ampi tra tag, titolo e riquadri.

@@ -8,3 +8,4 @@
 - 2026-11-28: nuova rotta `/gioco` con la pagina «Idle Project Blackhole» (nome provvisorio), stile 8/16 bit isolato; repository del gioco privato, non citato (eccezione in AGENTS.md).
 - 2026-11-28: contenuto della pagina `/gioco` ridotto a un racconto basico (nessun elenco di fasi o finali, nessun numero di test), con uscita solo Android senza data, nessuna versione iOS prevista, costruzione con il sostegno dell’IA e loghi Godot e Android in pixel art con attribuzioni.
 - 2026-11-28: seconda revisione della pagina `/gioco`: testi in paragrafi più elaborati, sezione «Come funziona» con le meccaniche già presenti (finali mai nominati né contati), spaziature uniformi tra i blocchi.
+- 2026-11-28: tolto il segno «nome provvisorio» dalla voce di menu di `/gioco` (resta nella pagina e nel titolo della scheda); corretto il colore del testo dei tag, che risultava chiaro su giallo.

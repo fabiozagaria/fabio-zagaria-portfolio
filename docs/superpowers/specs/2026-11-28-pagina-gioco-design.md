@@ -84,3 +84,7 @@ Struttura precisa dei componenti, nomi delle classi CSS, disegno dei pixel della
 - Nuova sezione «Come funziona»: spiega nel dettaglio il ciclo di vita, l'energia anche a gioco chiuso, le particelle, gli eventi rari, i potenziamenti, le missioni e la rinascita con la polvere stellare, usando solo meccaniche già presenti nel gioco. I finali restano mai nominati né contati («diversi finali»).
 - Spazi: nessun elemento attaccato a un altro; almeno 24 px tra gli elementi di un riquadro, 12 px tra i tag, 48 px tra le sezioni.
 - Grafica e palette confermate da Fabio («va bene come grafica»).
+
+## Correzione del 28 novembre (dopo la prova su telefono)
+- Voce di menu con il solo nome del gioco: il segno «nome provvisorio» è stato tolto dal menu e resta nella pagina e nel titolo della scheda. Questa correzione sostituisce la scelta iniziale di mostrarlo nel menu.
+- Tag della pagina con testo scuro su rosa e giallo, perché il testo chiaro non si leggeva.
