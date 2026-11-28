@@ -24,7 +24,7 @@ const WIDGET_URL = 'https://discord.com/widget?id=1575893115879956510&theme=dark
     :host {
       display: block;
       max-width: 350px;
-      margin: 0 0 1.5rem;
+      margin: 0;
     }
     iframe {
       display: block;

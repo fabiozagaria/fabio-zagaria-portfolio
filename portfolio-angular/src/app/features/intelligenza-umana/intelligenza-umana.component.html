@@ -159,13 +159,29 @@
           rel="noopener noreferrer"
           >{{ 'Registro ufficiale dei progetti' | translate }}</a
         >
-        <a href="https://discord.gg/Zt85ZYEXAA" target="_blank" rel="noopener noreferrer"
-          ><img src="assets/img/discord-symbol.svg" width="24" height="18" alt="" />{{
-            'Entra nel server Discord' | translate
-          }}</a
-        >
       </p>
-      <app-discord-widget />
+
+      <div class="c-iu__community">
+        <div class="c-iu__community-text">
+          <h2>{{ 'Community Discord' | translate }}</h2>
+          <p>
+            {{
+              'Il server di Intelligenza Umana è lo spazio per seguire l’iniziativa e confrontarsi con le altre persone. Il riquadro mostra i canali pubblici e chi è online.'
+                | translate
+            }}
+          </p>
+          <a
+            class="c-btn c-btn--secondary c-iu__discord"
+            href="https://discord.gg/Zt85ZYEXAA"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><img src="assets/img/discord-symbol.svg" width="24" height="18" alt="" />{{
+              'Entra nel server Discord' | translate
+            }}</a
+          >
+        </div>
+        <app-discord-widget />
+      </div>
       <p>
         <a
           class="c-btn c-btn--primary"
