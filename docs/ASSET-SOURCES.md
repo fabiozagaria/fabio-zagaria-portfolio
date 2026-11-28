@@ -77,4 +77,9 @@ SOFTWARE.
 | Press Start 2P | Pacchetto npm `@fontsource/press-start-2p` (sottoinsieme latino), licenza SIL Open Font License 1.1, servito in locale. |
 | VT323 | Pacchetto npm `@fontsource/vt323` (sottoinsieme latino), licenza SIL Open Font License 1.1, servito in locale. |
 
-La stella e le icone di fase della pagina `/gioco` sono disegnate dal codice (`features/gioco/pixel-art.ts`): non ci sono immagini esterne.
+La stella della pagina `/gioco` è disegnata dal codice (`features/gioco/pixel-art.ts`).
+
+| Asset | Fonte e licenza |
+| --- | --- |
+| `img/godot-pixel.webp` | Disegno in pixel art fornito da Fabio, rielaborato dal logo di Godot Engine ([press kit ufficiale](https://godotengine.org/press/), licenza Creative Commons Attribution 4.0 International). Sfondo bianco reso trasparente e ridimensionato a 384×384. L'autore del logo non è indicato nel press kit consultato. |
+| `img/android-pixel.webp` | Disegno in pixel art fornito da Fabio, rielaborato dal robot Android ([linee guida del marchio](https://developer.android.com/distribute/marketing-tools/brand-guidelines)). Il robot può essere riprodotto o modificato includendo la riga di attribuzione CC BY 3.0 e la nota «Android è un marchio di Google LLC», entrambe presenti nella pagina. Sfondo reso trasparente e ridimensionato a 384×384. |

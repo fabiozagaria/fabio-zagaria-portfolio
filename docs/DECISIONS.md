@@ -6,3 +6,4 @@
 
 - 2026-11-26: selettore italiano/inglese sulla pagina corrente, con preferenza locale. Marchi dello stack nel profilo, su due righe in direzioni opposte e con opzione statica.
 - 2026-11-28: nuova rotta `/gioco` con la pagina «Idle Project Blackhole» (nome provvisorio), stile 8/16 bit isolato; repository del gioco privato, non citato (eccezione in AGENTS.md).
+- 2026-11-28: contenuto della pagina `/gioco` ridotto a un racconto basico (nessun elenco di fasi o finali, nessun numero di test), con uscita solo Android senza data, nessuna versione iOS prevista, costruzione con il sostegno dell’IA e loghi Godot e Android in pixel art con attribuzioni.

@@ -8,7 +8,7 @@
 
 **Tech Stack:** Angular 21, TypeScript 5.9, Vitest (`ng test`), `@fontsource/press-start-2p` e `@fontsource/vt323`, Playwright (preinstallato) per le anteprime.
 
-**Spec:** `docs/superpowers/specs/2026-11-28-pagina-gioco-design.md`
+**Spec:** `docs/superpowers/specs/2026-11-28-pagina-gioco-design.md` (vedi anche la sezione «Revisione del 28 novembre»: il contenuto della pagina è stato semplificato dopo questo piano)
 
 ## Global Constraints
 

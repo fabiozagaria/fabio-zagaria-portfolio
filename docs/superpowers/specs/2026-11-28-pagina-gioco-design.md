@@ -72,3 +72,9 @@ Struttura precisa dei componenti, nomi delle classi CSS, disegno dei pixel della
 ## Aperto, di Fabio
 - Conferma della palette viola e oro (ha detto «va bene» senza sceglierne una).
 - Eventuali screenshot reali del gioco, da aggiungere in seguito.
+
+## Revisione del 28 novembre (richiesta di Fabio dopo la prima versione)
+- Racconto più basico: il tema (nascita, vita e morte di una stella), «diversi finali» senza numero né elenco, nessun dettaglio sulle fasi, nessun numero di test.
+- Come lo costruisce: Godot e GDScript, sempre con il sostegno dell'intelligenza artificiale.
+- Stato: contenuti che potrebbero cambiare anche completamente; non provabile, nessuna app; uscita per ora soltanto su Android, senza data; nessuna versione iOS prevista perché non potrebbe provarla.
+- Immagini di Godot e Android in pixel art (fornite da Fabio, rielaborate dai loghi ufficiali), con attribuzioni CC BY 4.0 (Godot) e CC BY 3.0 più nota sul marchio (Android). Questa revisione sostituisce le sezioni «Il ciclo di una stella» e «Come lo costruisco» descritte sopra.
