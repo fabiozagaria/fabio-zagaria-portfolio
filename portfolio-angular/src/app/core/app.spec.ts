@@ -46,10 +46,10 @@ describe('App', () => {
       'Percorso professionale',
       'Progetti software',
       'Intelligenza Umana',
-      'Idle Project Blackhole nome provvisorio',
+      'Idle Project Blackhole',
       'Contatti',
     ]);
-    expect(links[5].querySelector('.c-nav__tag')?.textContent?.trim()).toBe('nome provvisorio');
+    expect(links[5].querySelector('.c-nav__tag')).toBeNull();
     expect(links.map((link) => link.getAttribute('href'))).toEqual([
       '/',
       '/about',
@@ -89,7 +89,7 @@ describe('App', () => {
     }
   });
 
-  it('shows the provisional-name tag and page title of the game in English', async () => {
+  it('keeps the provisional name in the English page title but not in the menu', async () => {
     const fixture = TestBed.createComponent(App);
     const router = TestBed.inject(Router);
     const element = fixture.nativeElement as HTMLElement;
@@ -100,9 +100,8 @@ describe('App', () => {
       element.querySelector<HTMLButtonElement>('button[lang="en"]')!.click();
       await fixture.whenStable();
       expect(document.title).toBe('Idle Project Blackhole (provisional name) | Fabio Zagaria');
-      expect(element.querySelector('#nav-menu a[href="/gioco"] .c-nav__tag')?.textContent).toBe(
-        'provisional name',
-      );
+      const link = element.querySelector('#nav-menu a[href="/gioco"]');
+      expect(link?.textContent?.replace(/\s+/g, ' ').trim()).toBe('Idle Project Blackhole');
     } finally {
       localStorage.removeItem('portfolio-language');
       document.documentElement.lang = 'it';

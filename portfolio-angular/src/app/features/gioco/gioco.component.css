@@ -103,6 +103,12 @@
   background: var(--gioco-accent);
 }
 
+/* I tag sono paragrafi: senza questa regola più specifica il colore del testo diventa quello dei paragrafi (chiaro su giallo e su rosa). */
+.c-gioco p.c-gioco__tag,
+.c-gioco p.c-gioco__provisional {
+  color: var(--gioco-bg);
+}
+
 .c-gioco__lead {
   margin: 0;
   font-size: 1.7rem;

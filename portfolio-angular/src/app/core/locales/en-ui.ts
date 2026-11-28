@@ -250,7 +250,6 @@ export const enUi: Readonly<Record<string, string>> = {
   'Demo online di {0} (apre una nuova scheda)': 'Live demo for {0} (opens in a new tab)',
   'Idle Project Blackhole (nome provvisorio) | Fabio Zagaria':
     'Idle Project Blackhole (provisional name) | Fabio Zagaria',
-  'nome provvisorio': 'provisional name',
   'In costruzione': 'Under construction',
   'Nome provvisorio': 'Provisional name',
   'Un gioco idle per Android™ in cui accompagni una stella dalla nascita alla morte, per ricominciare ogni volta un po’ più forte.':
