@@ -69,3 +69,19 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+## Font della pagina del gioco
+
+| Font | Fonte e licenza |
+| --- | --- |
+| Press Start 2P | Pacchetto npm `@fontsource/press-start-2p` (sottoinsieme latino), licenza SIL Open Font License 1.1, servito in locale. |
+| VT323 | Pacchetto npm `@fontsource/vt323` (sottoinsieme latino), licenza SIL Open Font License 1.1, servito in locale. |
+
+La stella della pagina `/gioco` è disegnata dal codice (`features/gioco/pixel-art.ts`).
+
+Lo sfondo `img/gioco-sfondo.webp` (tessera 320×640 senza cuciture, sfondo trasparente) è generato dallo script `portfolio-angular/scripts/generate-gioco-background.py` (Pillow e NumPy, seed 2811): nebulose a retino, stelle e sei galassie in pixel art, tutto in toni scuri. Non usa immagini esterne.
+
+| Asset | Fonte e licenza |
+| --- | --- |
+| `img/godot-pixel.webp` | Disegno in pixel art fornito da Fabio, rielaborato dal logo di Godot Engine ([press kit ufficiale](https://godotengine.org/press/), licenza Creative Commons Attribution 4.0 International). Sfondo bianco reso trasparente e ridimensionato a 384×384. L'autore del logo non è indicato nel press kit consultato. |
+| `img/android-pixel.webp` | Disegno in pixel art fornito da Fabio, rielaborato dal robot Android ([linee guida del marchio](https://developer.android.com/distribute/marketing-tools/brand-guidelines)). Il robot può essere riprodotto o modificato includendo la riga di attribuzione CC BY 3.0 e la nota «Android è un marchio di Google LLC», entrambe presenti nella pagina. Sfondo reso trasparente e ridimensionato a 384×384. |

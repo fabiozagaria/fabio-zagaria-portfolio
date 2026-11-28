@@ -248,4 +248,44 @@ export const enUi: Readonly<Record<string, string>> = {
   Versione: 'Version',
   'Laboratorio attivo': 'Active lab',
   'Demo online di {0} (apre una nuova scheda)': 'Live demo for {0} (opens in a new tab)',
+  'Idle Project Blackhole (nome provvisorio) | Fabio Zagaria':
+    'Idle Project Blackhole (provisional name) | Fabio Zagaria',
+  'In costruzione': 'Under construction',
+  'Nome provvisorio': 'Provisional name',
+  'Un gioco idle per Android™ in cui accompagni una stella dalla nascita alla morte, per ricominciare ogni volta un po’ più forte.':
+    'An idle game for Android™ in which you guide a star from birth to death, starting over a little stronger each time.',
+  'Una stella in pixel art': 'A star in pixel art',
+  'Questa è un’illustrazione, non una schermata del gioco.':
+    'This is an illustration, not a screenshot of the game.',
+  'Perché l’ho fatto': 'Why I made it',
+  'Mi appassiona l’astronomia da quando sono piccolo, e mi ha sempre affascinato il modo in cui una stella nasce, brilla per milioni di anni e poi si spegne. Allo stesso tempo mi attira la semplicità dei giochi idle, quelli che avanzano da soli e si giocano a sessioni brevi, senza chiedere attenzione continua.':
+    'I have loved astronomy since I was a kid, and I have always been fascinated by how a star is born, shines for millions of years and then burns out. At the same time I am drawn to the simplicity of idle games, the ones that move forward on their own and are played in short sessions, without asking for constant attention.',
+  'Da qui l’idea di fare un gioco tutto mio che unisse le due cose: semplice da giocare, pensato per scaricare lo stress e costruito un pezzo alla volta, imparando strada facendo.':
+    'Hence the idea of making a game entirely of my own that combines the two: simple to play, meant to relieve stress and built one piece at a time, learning along the way.',
+  'Come funziona': 'How it works',
+  'Ogni partita racconta la nascita, la vita e la morte di una stella, dalla nube di gas che si addensa fino alla sua fine: prima la nebulosa, poi la protostella che si accende, la lunga stagione stabile della sequenza principale e infine la fase di gigante rossa. La massa decide quanto la stella brilla, quanto carburante ha e quanto a lungo vive, e da lei dipende anche come la sua storia si conclude. Ci sono diversi finali, e preferisco lasciarli da scoprire.':
+    'Each game tells the birth, life and death of a star, from the gas cloud that thickens to its end: first the nebula, then the protostar that ignites, the long stable season of the main sequence and finally the red giant phase. Mass decides how brightly the star shines, how much fuel it has and how long it lives, and it also determines how its story ends. There are several endings, and I prefer to leave them to be discovered.',
+  'Finché la stella vive produce energia da sola, e lo fa anche a gioco chiuso: quando riapri l’app il progresso accumulato viene conteggiato. Intorno alla stella compaiono particelle di energia, all’apparenza tutte uguali, e la loro rarità si scopre soltanto toccandole, con uno scoppio di luce che cresce con il loro valore. Ogni tanto ne compaiono due più preziose, riconoscibili in anticipo, e a intervalli casuali si verificano eventi rari come un brillamento solare o una pioggia di meteore, mai a tuo danno.':
+    'As long as the star lives it produces energy on its own, even while the game is closed: when you reopen the app, the progress accumulated is counted. Energy particles appear around the star, seemingly all alike, and their rarity is only revealed by touching them, with a burst of light that grows with their value. Every now and then two more precious ones appear, recognizable in advance, and at random intervals rare events occur, such as a solar flare or a meteor shower, never to your detriment.',
+  'L’energia raccolta si spende nei potenziamenti, che aumentano la produzione e crescono di livello: a certe soglie evolvono, cambiano nome e raddoppiano il loro rendimento. Quando una fase è giunta al termine si passa alla successiva con una breve sequenza spettacolare, mentre una catena di missioni offre sempre un obiettivo a portata di mano e un piccolo bonus accoglie chi torna a giocare ogni giorno.':
+    'The energy you collect is spent on upgrades, which raise production and grow in level: at certain thresholds they evolve, change name and double their output. When a phase comes to an end, the next one begins with a short spectacular sequence, while a chain of missions always offers a goal within reach and a small bonus welcomes whoever comes back to play each day.',
+  'Quando la stella muore si può rinascere. La polvere stellare guadagnata dà un moltiplicatore permanente alla produzione e qualche livello gratuito di partenza, e si può spendere per aumentare la massa con cui comincia la stella successiva: così ogni nuova vita parte più forte della precedente.':
+    'When the star dies you can be reborn. The stardust you earn gives a permanent production multiplier and a few free starting levels, and it can be spent to raise the mass the next star starts with: so every new life starts stronger than the last.',
+  'Come lo costruisco': 'How I build it',
+  'Il logo di Godot Engine in pixel art': 'The Godot Engine logo in pixel art',
+  'Il robot di Android in pixel art': 'The Android robot in pixel art',
+  'Il gioco è sviluppato con Godot, un motore open source per videogiochi, e con il linguaggio GDScript, ed è pensato per Android con lo schermo in verticale. Lo costruisco sempre con il sostegno dell’intelligenza artificiale, un pezzo alla volta e tenendo le regole separate dal codice: fasi, economia, potenziamenti, eventi e missioni sono dati che posso cambiare senza toccare la logica.':
+    'The game is developed with Godot, an open-source game engine, and the GDScript language, and it is designed for Android in portrait orientation. I always build it with the support of artificial intelligence, one piece at a time and keeping the rules separate from the code: phases, economy, upgrades, events and missions are data I can change without touching the logic.',
+  'Grafica e suoni sono generati dal codice, un simulatore mi aiuta a bilanciare l’economia e dei test automatici controllano che le regole continuino a funzionare dopo ogni modifica.':
+    'Graphics and sounds are generated by code, a simulator helps me balance the economy and automated tests check that the rules keep working after every change.',
+  'I disegni di Godot e del robot Android in questa pagina sono rielaborati in pixel art dai loghi originali.':
+    'The Godot and Android robot drawings on this page are redrawn in pixel art from the original logos.',
+  'Il logo di Godot Engine è distribuito con licenza Creative Commons Attribution 4.0 International.':
+    'The Godot Engine logo is distributed under the Creative Commons Attribution 4.0 International license.',
+  'Android è un marchio di Google LLC.': 'Android is a trademark of Google LLC.',
+  'Come sta andando': 'How it is going',
+  'Il gioco è ancora in sviluppo e non è ancora nemmeno in alfa, quindi tutto ciò che leggi qui potrebbe cambiare anche completamente: regole, grafica e contenuti sono ancora in movimento. Per questo non si può provare e non ci sono app disponibili.':
+    'The game is still in development and is not even in alpha yet, so everything you read here could change completely: rules, graphics and content are still in motion. That is why it cannot be played and there are no apps available.',
+  'Quando sarà pronto uscirà per ora soltanto su Android, senza una data precisa. Una versione per iOS al momento non è prevista, perché non potrei provarla direttamente.':
+    'When it is ready it will come out, for now, only on Android, without a precise date. An iOS version is not planned for now, because I could not test it directly.',
 };

@@ -93,6 +93,20 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'gioco',
+    title: 'Idle Project Blackhole (nome provvisorio) | Fabio Zagaria',
+    data: {
+      seo: {
+        path: '/gioco',
+        description:
+          'Idle Project Blackhole (nome provvisorio): il gioco idle per Android che Fabio Zagaria sta costruendo con Godot, sul ciclo di vita di una stella. In sviluppo, non ancora in alfa.',
+        englishDescription:
+          'Idle Project Blackhole (provisional name): the idle game for Android that Fabio Zagaria is building with Godot, about the life cycle of a star. In development, not yet in alpha.',
+      },
+    },
+    loadComponent: () => import('../features/gioco/gioco.component').then((m) => m.GiocoComponent),
+  },
+  {
     path: 'contact',
     title: 'Contatti | Fabio Zagaria',
     data: {

@@ -1513,6 +1513,15 @@ h4 {
   background: var(--calm-accent-soft);
   text-decoration: none;
 }
+/* Barra desktop: il nome del gioco sta su una riga e un po' meno spazio tra le voci evita che le altre vadano a capo. */
+@media (min-width: 56.0625em) {
+  .c-nav__menu {
+    gap: 1rem;
+  }
+  .c-nav__link--game {
+    white-space: nowrap;
+  }
+}
 .theme-toggle,
 .c-nav__toggle {
   background: transparent;
